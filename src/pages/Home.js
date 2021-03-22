@@ -48,8 +48,7 @@ const Home = () => {
   useEffect(() => {
     db.collection("projects")
       .orderBy('date_added')
-      .get()
-      .then((snapshot) => {
+      .onSnapshot((snapshot) => {
         let projects = [];
 
         snapshot.forEach((doc) => {
