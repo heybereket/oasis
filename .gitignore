@@ -1,0 +1,7 @@
+/node_modules
+/build
+.netlify
+debug.log
+yarn-error.log
+yarn.lock
+.env

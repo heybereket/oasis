@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    background-color: #111111;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    color: white;
+    font-weight: 650;
+    padding: 0 40px;
+  }
+  
+  .navbar__title {
+    margin-right: auto;
+    font-size: 150%;
+    padding: 12px 16px;
+  }
+  
+  .navbar__item {
+    padding: 20px 13px;
+    cursor: pointer;
+    vertical-align: middle;
+    color: #8a8f98;
+    transition: all ease 0.3s;
+  }
+  
+  .navbar__item:hover {
+    color: #fff;
+    transition: all ease 0.3s;
+  }
+  
+  .github-logo {
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 23px;
+    height: 23px;
+    position: relative; 
+    top: 1px;
+    transition: all ease 0.3s;
+  }
+  
+  .github-logo:hover {
+    transform: translateY(-3px);
+    transition: all ease 0.3s;
+  }

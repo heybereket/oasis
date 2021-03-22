@@ -1,0 +1,28 @@
+import Home from './pages/Home';
+import New from './pages/New'
+import Admin from './pages/Admin'
+import Account from './pages/Account'
+import InvalidPage from './components/InvalidPage'
+import Project from './components/Project'
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
+
+function App() {
+  return (
+       <div>
+      <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/new" component={New} />
+          <Route exact path="/admin" component={Admin} />
+          <Route exact path="/account" component={Account} />
+          <Route exact path={`/:owner/:name`} component={Project}/>
+          <Route path="*" component={InvalidPage} />
+        </Switch>
+       </div>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
