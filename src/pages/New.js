@@ -66,8 +66,7 @@ const New = () => {
         archived: data.archived,
         fork: data.fork,
         submitted_by: user.email,
-        date_added: new Date().toLocaleDateString(),
-        time_added: new Date().toLocaleTimeString()
+        date_added: new Date()
       }
 
       const projectRef = db.collection("projects").doc(data.owner.login.toLowerCase() + "-" + data.name.toLowerCase())
@@ -85,8 +84,7 @@ const New = () => {
         await projectRef.set(repoData)
       }
 
-      window.location.reload()
-
+      window.location = "/"
 }
 
 const DeleteRepo = async (id) => {
@@ -124,7 +122,7 @@ const DeleteRepo = async (id) => {
   />
 
 
-  <button className="submit-repo" onClick={sendData}>Add Repo</button>
+  {user ? <button className="submit-repo" onClick={sendData}>Add Repo</button> : <button className="submit-repo" onClick={loginGitHub}>Login to Submit</button>}
 
 </div>
 <br/>
@@ -279,7 +277,7 @@ const DeleteRepo = async (id) => {
 
           .tool {
             width: 352.5px;
-            height: 175px;
+            height: 200px;
           }
           
           @media (max-width: 550px){
