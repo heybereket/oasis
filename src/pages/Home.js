@@ -1,12 +1,12 @@
 import '../style/App.css';
 import tools from '../data/tools.json';
 import { colours } from '../lib/constants.js'
-import logo from '../assets/hiddentools-logo.png'
 import { useState, useEffect } from 'react';
 import { Navbar, Footer, Loading } from '../components'
 import { countBy } from 'lodash';
 import firebase from '../data/firebase'
 import { Link } from 'react-router-dom'
+import logo from '../oasis-logo.png'
 
 const Home = () => {
   // makes a list of just the categories of the tools
@@ -84,9 +84,13 @@ const Home = () => {
 
       <header>
         <div className="header-content">
-          <img alt={user ? user.displayName.toLowerCase() + "'s avatar" : 'CodeTribute Logo'} className="logo" src={user ? user.photoURL : logo}/>
-          <h1 className="heading">{user ? 'Hey, ' + user.displayName + '! 👋🏻' : 'CodeTribute'}</h1>
-          <p className="header-subtitle">{user ? 'Welcome! Browse open-source projects.' : 'Welcome! Become a better developer, help out in the open-source community, and have fun while doing it!'}</p>
+
+         <Link to="/">
+          <img alt={user ? user.displayName.toLowerCase() + "'s avatar" : 'CodeTribute Logo'} className="logo" src={logo}/>
+         </Link>
+
+          <br/><br/> 
+          <p className="header-subtitle">Browse open source projects.</p>
           <div className="search-wrapper">
             <input
               className="search" type="text" autoComplete="off" spellCheck="false" placeholder="Search projects..."
@@ -103,6 +107,8 @@ const Home = () => {
           </div>
         </div>
       </header>
+
+      
 
 
       { (visibleTools.length === 0) && (

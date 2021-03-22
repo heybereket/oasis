@@ -38,11 +38,10 @@ a {
 .logo {
   -webkit-transition: -webkit-transform .8s ease-in-out;
   transition:         transform .8s ease-in-out;
-  width: 70px;
-  margin-bottom: -15px;
+  width: 250px;
+  margin-bottom: -30px;
   user-select: none;
   border-radius: 50%;
-  border: 4px solid #fff;
 }
 
 .heading {
@@ -54,10 +53,10 @@ a {
 }
 
 .header-subtitle {
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto 2rem;
-  color: rgba(255,255,255,0.4);
-  font-size: 18px;
+  color: rgba(255,255,255,0.7);
+  font-size: 1.25rem;
   font-weight: 400;
   font-family: 'Inter', sans-serif;
 }
@@ -103,8 +102,8 @@ a {
   text-align: center;
   align-items: center;
   justify-content: center;
-  width: 150%;
-  margin-left: -100px;
+  width: 200%;
+  margin-left: -170px;
   margin-bottom: -35px;
 }
 
@@ -119,16 +118,14 @@ a {
   color: #686c7a;
 }
 
-.filter-button:hover {
-  background-color: white;
-  color: #131313;
+.filter-button:hover, .filter-active {
+  background-color: rgb(51, 57, 64);
   transition: all 0.15s ease;
 }
 
 .filter-active {
-  background-color: white;
-  color: #131313;
-  transition: all 0.15s ease;
+  border: 1px solid #fff;
+  background: transparent;
 }
 
 .no-results {
@@ -155,7 +152,7 @@ a {
   width: 370px;
   border-radius: 3px;
   padding: 1.8rem;
-  height: 300px;
+  height: 325px;
   border-radius: 10px;
   margin-bottom: 1rem;
   border: 1px solid #5f6368;
@@ -239,7 +236,7 @@ a {
 
 button {
   border-radius: 5px;
-  background: transparent;
+  background: #222428;
   border: 1px solid hsla(0,0%,100%,0.2);
   padding: 5px 10px;
   color: #fff;
