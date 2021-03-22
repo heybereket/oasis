@@ -48,7 +48,7 @@ const New = () => {
       const response = await fetch(`https://api.github.com/repos${newURL}`)
       const data = await response.json()
 
-      if (response.status == 404){
+      if (response.status === 404){
         setError("Repository does not exist")
         return
       } 
