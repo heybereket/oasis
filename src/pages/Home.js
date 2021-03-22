@@ -6,7 +6,7 @@ import { Navbar, Footer, Loading } from '../components'
 import { countBy } from 'lodash';
 import firebase from '../data/firebase'
 import { Link } from 'react-router-dom'
-import logo from '../oasis-logo.png'
+import logo from '../static/oasis-logo.png'
 
 const Home = () => {
   // makes a list of just the categories of the tools
