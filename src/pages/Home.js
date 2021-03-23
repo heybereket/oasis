@@ -14,7 +14,7 @@ const Home = () => {
   const [list, setList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const allCategories = list.map( project => project.language )
+  const allCategories = list.filter(project => project.language != null).map(project => project.language)
   const countCategories = countBy(allCategories)
   const [currCategory, setCurrCategory] = useState("All")
   const [searchQuery, setSearchQuery] = useState("")
@@ -146,6 +146,8 @@ const Home = () => {
                )}
 
               <div className="category-wrapper">
+
+                
               {(project.language in colours) && (
                 <button className="language">
                   <svg viewBox="0 0 80 80" width="10" height="10">
@@ -155,16 +157,23 @@ const Home = () => {
                     {project.language}</button>   
                )}
 
-               {
-                 (project.language === null) && (
-                  <button className="language">
-                    <svg viewBox="0 0 80 80" width="10" height="10">
-                      <circle style={{fill: 'white'}} className="circle" cx="40" cy="40" r="38"/>
+               {!(project.language in colours) && (project.language != null) && (
+                <button className="language">
+                  <svg viewBox="0 0 80 80" width="10" height="10">
+                      <circle style={{fill: '#fff'}} className="circle" cx="40" cy="40" r="38"/>
                     </svg>
-                      &nbsp;
-                      Unknown</button>   
-                 )
-               }
+                    &nbsp;
+                    {project.language}</button>   
+               )}
+
+              {(project.language === null) && (
+                <button className="language">
+                  <svg viewBox="0 0 80 80" width="10" height="10">
+                      <circle style={{fill: '#fff'}} className="circle" cx="40" cy="40" r="38"/>
+                    </svg>
+                    &nbsp;
+                    Unknown</button>   
+               )}
  
               <button className="issues">🚨 {project.issues} issues</button>
                <br/>
