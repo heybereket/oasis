@@ -34,5 +34,6 @@ export const colours = {
     "TypeScript": "#2b7489",
     "Visual Basic": "#945db7",
     "VBA": "#867db1",
+    "Vim script": "#199f4b"
 
 }
