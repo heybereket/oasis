@@ -76,8 +76,12 @@ const New = () => {
         setError("Repository already added")
         return
 
-      } if (data.archived === true){
+      } else if (data.archived === true){
         setError("Repository is archived")
+        return
+
+      } else if (data.open_issues <= 5) {
+        setError("Repository has under 5 issues")
         return
 
       } else {
@@ -122,13 +126,13 @@ const DeleteRepo = async (id) => {
   />
 
 
-  {user ? <button className="submit-repo" onClick={sendData}>Add Repo</button> : <button className="submit-repo" onClick={loginGitHub}>Login to Submit</button>}
+  {user ? <button className="submit-repo" onClick={sendData}>Add Repo</button> : <button className="submit-repo" onClick={loginGitHub}>Sign In to Submit</button>}
 
 </div>
 <br/>
 
 
-<label className="submitted-label">{user ? <strong>{user.displayName}'s Submitted Repositories:</strong> : <span style={{fontWeight: 'normal'}}>To view submitted repos, <strong style={{cursor: 'pointer'}} onClick={loginGitHub}>sign in.</strong></span>}</label>
+<label className="submitted-label">{user ? <strong>{user.displayName}'s Submitted Repositories:</strong> : ''}</label>
 <br/>
 <small>{user ? `Manage repositories you've submitted.` : ''}</small>
 

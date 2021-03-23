@@ -142,7 +142,7 @@ const Home = () => {
                )}
 
               { (project.desc === null) && (
-                    <small>No description found.</small>
+                    <small>No description.</small>
                )}
 
               <div className="category-wrapper">
@@ -172,7 +172,7 @@ const Home = () => {
                       <circle style={{fill: '#fff'}} className="circle" cx="40" cy="40" r="38"/>
                     </svg>
                     &nbsp;
-                    Unknown</button>   
+                    N/A</button>   
                )}
  
               <button className="issues">🚨 {project.issues} issues</button>
