@@ -66,7 +66,7 @@ const New = () => {
         archived: data.archived,
         fork: data.fork,
         submitted_by: user.email,
-        date_added: new Date()
+        date_added: Date.now()
       }
 
       const projectRef = db.collection("projects").doc(data.owner.login.toLowerCase() + "-" + data.name.toLowerCase())
