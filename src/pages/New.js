@@ -10,6 +10,12 @@ const New = () => {
   const [projectURL, setProjectURL] = useState("")
   const [isLoading, setIsLoading] = useState(true)
 
+  const something=(event)=> {
+    if (event.keyCode === 13) {
+        sendData()
+    }
+}
+
   useEffect(() => {
     db.collection("projects")
       .get()
@@ -49,7 +55,7 @@ const New = () => {
       const data = await response.json()
 
       if (response.status === 404){
-        setError("Repository does not exist")
+        setError(`Repository does not exist, or the URL is mistyped`)
         return
       } 
 
@@ -119,6 +125,7 @@ const DeleteRepo = async (id) => {
   {error && (<label className="paste-in-label"><span style={{color: 'coral'}}>Error:</span> {error}</label>)}
   <input 
   placeholder="full url (ex. https://github.com/heybereket/codetribute)"
+  onKeyDown={(e) => something(e) }
   onChange={(change) => {
     setProjectURL(change.target.value);
   }}
@@ -126,8 +133,18 @@ const DeleteRepo = async (id) => {
   />
 
 
-  {user ? <button className="submit-repo" onClick={sendData}>Add Repo</button> : <button className="submit-repo" onClick={loginGitHub}>Sign In to Submit</button>}
+  {user ? 
+        <button 
+        className="submit-repo" onClick={sendData}
+        >
+          Add Repo
+        </button> : 
 
+        <button 
+        className="submit-repo" 
+        onClick={loginGitHub}>
+          Sign In to Submit
+          </button>}
 </div>
 <br/>
 
