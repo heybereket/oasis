@@ -1,5 +1,6 @@
- 
-<img src="./images/oasis-logo.png" width=300>
+<p align="center">
+  <img src="./images/oasis-logo.png" width="100%">
+</p>
 
   <a href="/LICENSE">
     <img src="https://img.shields.io/github/license/heybereket/oasis.svg" alt="MIT License" />
