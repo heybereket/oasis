@@ -1,14 +1,15 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore'
 import 'firebase/auth'
+require("dotenv").config();
 
 const config = {
-    apiKey: "AIzaSyCqQCTPv2kjV7g9mNiQo_9tRjfXNkmr5KM",
-    authDomain: "codetribute-database-15c0c.firebaseapp.com",
-    projectId: "codetribute-database-15c0c",
-    storageBucket: "codetribute-database-15c0c.appspot.com",
-    messagingSenderId: "874980120452",
-    appId: "1:874980120452:web:ca9d0863d53f9313a7efd1"
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  projectID: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId
 };
 
 export function login(provider) {
