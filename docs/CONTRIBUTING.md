@@ -22,3 +22,5 @@ Discovered a bug on the site? Report it to the <a href="https://github.com/heybe
 - We are using Firebase Firestore for the database
 - Everytime you change the .env file, you need to restart the server
 - If you are running out of ideas on what to contribute, take a look at <a href="https://github.com/heybereket/oasis/projects/1">our project board</a>.
+
+**Not sure on what to contribute?** Check out our <a href="https://github.com/heybereket/oasis/projects/1">project board</a>.
