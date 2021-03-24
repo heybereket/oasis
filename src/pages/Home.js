@@ -92,18 +92,6 @@ const Home = () => {
             />
           </Link>
 
-          <Link to="/">
-            <img
-              alt={
-                user
-                  ? user.displayName.toLowerCase() + "'s avatar"
-                  : "CodeTribute Logo"
-              }
-              className="logo"
-              src={logo}
-            />
-          </Link>
-
           <br />
           <br />
           <p className="header-subtitle">
