@@ -8,7 +8,7 @@ const db = firebase.firestore();
 
 async function deleteRepo(id) {
   // delete project from firestore
-  await db.collection("projects").doc(id).delete();
+  await db.collection("repos").doc(id).delete();
 
   // reload window
   window.location.reload();

@@ -37,7 +37,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    db.collection("projects")
+    db.collection("repos")
       .orderBy("date_added")
       .onSnapshot(snapshot => {
         let projects = [];

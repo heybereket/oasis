@@ -22,7 +22,7 @@ const New = () => {
   };
 
   useEffect(() => {
-    db.collection("projects")
+    db.collection("repos")
       .get()
       .then(snapshot => {
         let projects = [];
@@ -95,7 +95,7 @@ const New = () => {
     };
 
     const projectRef = db
-      .collection("projects")
+      .collection("repos")
       .doc(data.owner.login.toLowerCase() + "-" + data.name.toLowerCase());
     const project = await projectRef.get();
 

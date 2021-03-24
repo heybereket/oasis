@@ -10,7 +10,7 @@ const Admin = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    db.collection("projects")
+    db.collection("repos")
       .get()
       .then(snapshot => {
         let projects = [];
