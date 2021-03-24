@@ -26,5 +26,3 @@ Thanks you for contributing and making Oasis 1% better! ([emoji key](https://all
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
