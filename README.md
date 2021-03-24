@@ -1,7 +1,6 @@
-## Contributing
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+## Contributing
 If you would like to contribute to Oasis, take a look at our <a href="https://github.com/heybereket/oasis/blob/main/docs/CONTRIBUTING.md">contributing docs</a>.
 
 ## Author
