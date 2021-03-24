@@ -92,9 +92,23 @@ const Home = () => {
             />
           </Link>
 
+          <Link to="/">
+            <img
+              alt={
+                user
+                  ? user.displayName.toLowerCase() + "'s avatar"
+                  : "CodeTribute Logo"
+              }
+              className="logo"
+              src={logo}
+            />
+          </Link>
+
           <br />
           <br />
-          <p className="header-subtitle">Browse open source projects.</p>
+          <p className="header-subtitle">
+            Browse {list.length}+ open source projects.{" "}
+          </p>
           <div className="search-wrapper">
             <input
               className="search"

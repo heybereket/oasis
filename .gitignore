@@ -5,3 +5,4 @@ debug.log
 yarn-error.log
 .env
 localConfig.js
+.next
