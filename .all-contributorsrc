@@ -1,11 +1,14 @@
 {
   "projectName": "oasis",
   "projectOwner": "heybereket",
+  "repoType": "github",
+  "repoHost": "https://github.com",
   "files": [
     "README.md"
   ],
   "imageSize": 100,
   "commit": false,
+  "commitConvention": "none",
   "contributors": [
     {
       "login": "heybereket",
@@ -16,6 +19,7 @@
         "code",
         "design",
         "doc",
+        "ideas",
         "infra"
       ]
     },
@@ -27,11 +31,26 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "JosiasAurel",
+      "name": "Josias Aurel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47951376?v=4",
+      "profile": "https://josiasaurel.github.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kingsley-einstein",
+      "name": "Kingsley Victor",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35224620?v=4",
+      "profile": "https://theweirddeveloper.dev/",
+      "contributions": [
+        "code",
+        "content"
+      ]
     }
   ],
-  "repoType": "github",
-  "repoHost": "https://github.com",
-  "contributorsPerLine": 7,
-  "commitConvention": "none",
-  "skipCi": true
+  "contributorsPerLine": 7
 }
