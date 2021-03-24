@@ -8,6 +8,11 @@ import firebase from '../data/firebase'
 import { Link } from 'react-router-dom'
 import logo from '../static/oasis-logo.png'
 
+// importing utility functions
+import { searchTools, filterToolsByCategory } from "../utils/filterTools"
+
+
+
 const Home = () => {
   // makes a list of just the categories of the tools
   const db = firebase.firestore();
@@ -25,22 +30,10 @@ const Home = () => {
   // if searchQuery or currCategory changes, then update visibleTools
   useEffect(() => {
     setVisibleTools(
-      filteredTools()
+      filterToolsByCategory(tools, currCategory)
     )
   }, [searchQuery, currCategory])
-
-  // returns an object of tools
-  const filteredTools = () => {
-    const toolsByCategory = currCategory === "All"
-      ? tools // if all
-      : tools.filter(tool => tool.category === currCategory) // otherwise apply category
-
-    // query name and description
-    const toolsBySearch = toolsByCategory
-      .filter(tool => ((tool.name + tool.desc + tool.pricing + tool.category).toLowerCase()).includes(searchQuery.toLowerCase()))
-    return toolsBySearch;
-  }
-
+  
   const changeSearch = (event) => {
     setSearchQuery(event.target.value)
   }

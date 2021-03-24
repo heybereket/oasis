@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import firebase, { loginGitHub } from "../data/firebase";
 import { Navbar, Loading } from '../components'
 
+// import utility functions
+import { deleteRepo } from "../utils/controls"
+
 const New = () => {
   var db = firebase.firestore();
   const [list, setList] = useState([])
@@ -97,11 +100,6 @@ const New = () => {
       window.location = "/"
 }
 
-const DeleteRepo = async (id) => {
-  await db.collection("projects").doc(id).delete()
-  window.location.reload()
-}
-
 
   return (
     <>
@@ -167,7 +165,7 @@ const DeleteRepo = async (id) => {
               <p key={index}><span className="owner">{project.owner}</span>/<span className="name">{project.name}</span></p>
 
               <div className="category-wrapper">
-              <button className="popular" onClick={() => DeleteRepo(project.id)}>❌ Remove Repo</button>
+              <button className="popular" onClick={() => deleteRepo(project.id)}>❌ Remove Repo</button>
               </div>
 
             </div>
