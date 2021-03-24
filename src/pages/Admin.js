@@ -1,49 +1,59 @@
-import '../style/Admin.css'
-import firebase from '../data/firebase'
-import { useEffect, useState } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import "../style/Admin.css";
+import firebase from "../data/firebase";
+import { deleteRepo } from "../utils/controls";
+import { useEffect, useState } from "react";
+import _ from "lodash";
 
 const Admin = () => {
-    const db = firebase.firestore();
-    const [list, setList] = useState([]);
+  const db = firebase.firestore();
+  const [list, setList] = useState([]);
 
-    useEffect(() => {
-        db.collection("projects")
-          .get()
-          .then((snapshot) => {
-            let projects = [];
-    
-            snapshot.forEach((doc) => {
-              projects.push(doc.data());
-            });
-            setList(projects);
+  useEffect(() => {
+    db.collection("projects")
+      .get()
+      .then(snapshot => {
+        let projects = [];
+
+        // snapshot.forEach(doc => {
+        //   projects.push(doc.data());
+        // });
+        for (const doc of snapshot.docs)
+          projects = _.concat(projects, {
+            id: doc.id,
+            ...doc.data()
           });
-      }, []);
 
-    return (
-      <>
+        setList(projects);
+      });
+  }, []);
 
-<table>
+  const removeRepo = id => deleteRepo(id);
+
+  return (
+    <>
+      <table>
         <tbody>
-        <tr>
-    <th>Name</th>
-    <th>Owner</th>
-    <th>Danger Zone</th>
-  </tr>
-{
-  list.map((project, key) => (
-  <tr>
-    <td>{project.name}</td>
-    <td>{project.owner}</td>
-    <td><button>Delete Document</button></td>
-  </tr>
-  ))}
-  </tbody>
-    </table>
+          <tr>
+            <th>Name</th>
+            <th>Owner</th>
+            <th>Danger Zone</th>
+          </tr>
+          {list.map(project => (
+            <tr key={project.id}>
+              <td>{project.name}</td>
+              <td>{project.owner}</td>
+              <td>
+                <button onClick={() => removeRepo(project.id)}>
+                  Delete Document
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+};
 
-  
-      </>
-    );
-  };
-  
-  export default Admin;
-  
+export default Admin;
