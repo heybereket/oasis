@@ -1,4 +1,3 @@
-
 // utility functions for tools searching and filtering
 
 /* 
@@ -9,10 +8,11 @@ The [currCategory] reference the category by which one want's to search a tool
 */
 
 function filterToolsByCategory(tools, currCategory) {
-    const toolsByCategory = currCategory === "All" 
-    ? tools // return all tools if category is all
-    : tools.filter(tool => tool.category === currCategory) // return tools that match the specified category
-    return toolsByCategory
+  const toolsByCategory =
+    currCategory === "All"
+      ? tools // return all tools if category is all
+      : tools.filter(tool => tool.category === currCategory); // return tools that match the specified category
+  return toolsByCategory;
 }
 
 /* 
@@ -22,9 +22,12 @@ The searchSpace param is the space(values ) from which to search the tools
 */
 
 function searchTools(searchQuery, searchSpace) {
-    const toolsBySearch = searchSpace
-            .filter(tool => (tool.name, tool.desc, tool.pricing, tool.category).includes(searchQuery.toLowerCase()))
-    return toolsBySearch
+  const toolsBySearch = searchSpace.filter(tool =>
+    (tool.name, tool.desc, tool.pricing, tool.category).includes(
+      searchQuery.toLowerCase()
+    )
+  );
+  return toolsBySearch;
 }
 
-export { filterToolsByCategory, searchTools }
+export { filterToolsByCategory, searchTools };

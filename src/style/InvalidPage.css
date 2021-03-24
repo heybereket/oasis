@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap");
 
 main {
   align-items: center;
@@ -26,19 +26,19 @@ main {
 }
 
 .description {
-    font-weight: 400;
+  font-weight: 400;
 }
 
-@media (max-width: 550px){
-    .invalid-heading {
-        font-size: 65px;
-    }
-
-    .description {
-         width: 320px;
-         line-height: 1.4;
-      }
+@media (max-width: 550px) {
+  .invalid-heading {
+    font-size: 65px;
   }
+
+  .description {
+    width: 320px;
+    line-height: 1.4;
+  }
+}
 
 ::-webkit-scrollbar {
   background: transparent;
@@ -46,7 +46,6 @@ main {
 
 ::-webkit-scrollbar {
   width: 10px;
-  
 }
 ::-webkit-scrollbar-thumb {
   background: #eee;

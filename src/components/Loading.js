@@ -1,10 +1,9 @@
-const Loading = ({message}) => {
-
+const Loading = ({ message }) => {
   return (
     <>
-
-        <p className="center"><strong>loading {message}...</strong></p>
-
+      <p className="center">
+        <strong>loading {message}...</strong>
+      </p>
     </>
   );
 };
