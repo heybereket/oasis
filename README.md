@@ -1,5 +1,5 @@
 <p>
-  <img src="./images/oasis-logo.png" width="250">
+  <img src="./images/oasis-logo.png" width="200">
 </p>
 
 ## Contributing
