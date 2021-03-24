@@ -1,0 +1,25 @@
+{
+  "projectName": "oasis",
+  "projectOwner": "heybereket",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "heybereket",
+      "name": "Bereket Semagn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68391329?v=4",
+      "profile": "https://github.com/heybereket",
+      "contributions": [
+        "code",
+        "design",
+        "doc",
+        "infra"
+      ]
+    }
+  ],
+  "repoType": "github",
+  "commitConvention": "none"
+}

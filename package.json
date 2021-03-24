@@ -28,24 +28,17 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettify": "prettier --write **/**/*.{js,json,html,css}"
+    "prettify": "prettier --write **/**/*.{js,json,html,css}",
+    "contrib:add": "all-contributors add",
+    "contrib:build": "all-contributors generate"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {
+    "all-contributors-cli": "^6.20.0",
+    "lint-staged": "^10.5.4"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+  "lint-staged": {
+    ".all-contributorsrc": [
+      "npm run contrib:build"
     ]
   }
 }
