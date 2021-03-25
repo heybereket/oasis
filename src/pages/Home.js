@@ -82,14 +82,18 @@ const Home = () => {
         .onSnapshot(snapshot => {
           let projects = [...list];
 
-          snapshot.forEach(doc => {
-            projects.push({
-              id: doc.id,
-              ...doc.data()
+          if (snapshot.docs.length) {
+            snapshot.forEach(doc => {
+              projects.push({
+                id: doc.id,
+                ...doc.data()
+              });
             });
-          });
 
-          setList(projects);
+            setList(projects);
+          } else {
+            setHasMoreRepos(false);
+          }
 
           // for (const doc of snapshot.docs)
           //   projects = _.concat(projects, {
@@ -176,12 +180,12 @@ const Home = () => {
           <InfiniteScroll
             dataLength={list.length}
             next={fetchMoreData}
-            hasMore={true}
-            loader={() => render()(<Loading message="repos" />)}
+            hasMore={hasMoreRepos}
+            loader={<Loading message="more repos" />}
             endMessage={
-              <h1 style={{ textAlign: "center", color: "white" }}>
-                no more repos
-              </h1>
+              <p style={{ textAlign: "center", color: "white" }}>
+                <b>No more repositories</b>
+              </p>
             }
           >
             <div className="tools">
