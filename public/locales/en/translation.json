@@ -1,0 +1,26 @@
+{
+  "common": {},
+  "home": {
+    "browseProjects": "Browse 0+ open source projects.",
+    "searchProjectsPlaceholder": "Search projects...",
+    "all": "All"
+  },
+  "new": {
+    "addRepoHeader": "Add a new repo to CodeTribute",
+    "addRepo": "Add Repo",
+    "addRepoPlaceholder": "full url (ex. https://github.com/heybereket/codetribute)",
+    "signInToSubmit": "Sign In to Submit"
+  },
+  "header": {
+    "submit" : "Submit",
+    "signInUp": "Sign in/up",
+    "signOut": "Sign Out"
+  },
+  "footer": {
+    "oasisBy": "Oasis by",
+    "followUsOn": "follow us on",
+    "twitter": "twitter",
+    "openSourceOn": "open-source on",
+    "github": "github"
+  }
+}

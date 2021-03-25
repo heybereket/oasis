@@ -11,12 +11,14 @@ import logo from "../static/oasis-logo.png";
 
 // importing utility functions
 import { filterToolsByCategory } from "../utils/filterTools";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   // makes a list of just the categories of the tools
   const db = firebase.firestore();
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
 
   const allCategories = list
     .filter(project => project.language != null)
@@ -95,7 +97,7 @@ const Home = () => {
           <br />
           <br />
           <p className="header-subtitle">
-            Browse {list.length}+ open source projects.{" "}
+            {t('home.browseProjects', {total: list.length})}
           </p>
           <div className="search-wrapper">
             <input
@@ -103,12 +105,12 @@ const Home = () => {
               type="text"
               autoComplete="off"
               spellCheck="false"
-              placeholder="Search projects..."
+              placeholder={t('home.searchProjectsPlaceholder')}
               value={searchQuery}
               onChange={changeSearch}
             />
             <div className="filter-wrapper">
-              <Button category="All" count={list.length} />
+              <Button category={t('home.all')} count={list.length} />
               {Object.keys(countCategories).map(category => (
                 <Button category={category} count={countCategories[category]} />
               ))}

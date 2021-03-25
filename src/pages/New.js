@@ -6,6 +6,7 @@ import { Navbar, Loading } from "../components";
 
 // import utility functions
 import { deleteRepo } from "../utils/controls";
+import { useTranslation } from "react-i18next";
 
 const New = () => {
   var db = firebase.firestore();
@@ -14,6 +15,7 @@ const New = () => {
   const user = firebase.auth().currentUser;
   const [projectURL, setProjectURL] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
 
   const something = event => {
     if (event.keyCode === 13) {
@@ -140,7 +142,7 @@ const New = () => {
                   <line x1="8" y1="12" x2="16" y2="12"></line>
                 </svg>
                 <h1 className="heading">{window.location.pathname}</h1>
-                <p className="header-subtitle">Add a new repo to CodeTribute</p>
+                <p className="header-subtitle">{t('new.addRepoHeader')}</p>
               </div>
             </header>
 
@@ -151,7 +153,7 @@ const New = () => {
                 </label>
               )}
               <input
-                placeholder="full url (ex. https://github.com/heybereket/codetribute)"
+                placeholder={t('new.addRepoPlaceholder')}
                 onKeyDown={e => something(e)}
                 onChange={change => {
                   setProjectURL(change.target.value);
@@ -161,11 +163,11 @@ const New = () => {
 
               {user ? (
                 <button className="submit-repo" onClick={sendData}>
-                  Add Repo
+                  {t('common.addRepo')}
                 </button>
               ) : (
                 <button className="submit-repo" onClick={loginGitHub}>
-                  Sign In to Submit
+                  {t('new.signInToSubmit')}
                 </button>
               )}
             </div>
