@@ -103,7 +103,11 @@ const Home = () => {
     }
   };
 
-  const Button = ({ category, count }) => {
+  function formatNumber(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+  const Button = ({ category }) => {
     return (
       <button
         className={`filter-button ${
@@ -114,7 +118,7 @@ const Home = () => {
           setCurrCategory(category);
         }}
       >
-        {category} <span className="filter-count"> [{count}]</span>
+        {category}
       </button>
     );
   };
@@ -140,7 +144,7 @@ const Home = () => {
           <br />
           <br />
           <p className="header-subtitle">
-            Browse {list.length}+ open source projects.{" "}
+            Browse open source projects.{" "}
           </p>
           <div className="search-wrapper">
             <input
@@ -153,7 +157,7 @@ const Home = () => {
               onChange={changeSearch}
             />
             <div className="filter-wrapper">
-              <Button category="All" count={list.length} />
+              <Button category="All"/>
               {Object.keys(countCategories).map(category => (
                 <Button
                   key={category}
@@ -286,7 +290,7 @@ const Home = () => {
                       </button>
                       <br />
                       <button className="stars">
-                        ⭐ {project.stars} stars
+                        ⭐ {formatNumber(project.stars)} stars
                       </button>
                     </div>
                   </div>

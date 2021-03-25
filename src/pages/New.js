@@ -165,7 +165,6 @@ const New = () => {
                 onChange={change => {
                   setProjectURL(change.target.value);
                 }}
-                required
               />
 
               {user ? (
