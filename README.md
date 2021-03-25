@@ -1,7 +1,27 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 
-## Contributing
-If you would like to contribute to Oasis, take a look at our <a href="https://github.com/heybereket/oasis/blob/main/docs/CONTRIBUTING.md">contributing docs</a>.
+
+---
+
+## Structure
+
+| Codebase             |      Description      |
+| :------------------- | :-------------------: |
+| coming soon!         |   coming soon!      |
+| coming soon!         |   coming soon!      |
+| coming soon!         |   coming soon!      |   
+
+
+## Contributions
+
+Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let me know what you are working on first that way we don't overwrite each other.
+
+Please read [CONTRIBUTING.md](https://github.com/heybereket/oasis/blob/main/docs/CONTRIBUTING.md) for details on the project.
+
+
+## Code of Conduct
+
+Please read [CODE_OF_CONDUCT.md](https://github.com/heybereket/oasis/blob/main/docs/CODE_OF_CONDUCT.md) for details on our code of conduct.
 
 ## Author
 Bereket Semagn (<a href="https://twitter.com/heybereket">@heybereket</a>)
