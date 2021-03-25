@@ -12,9 +12,8 @@
   --primary-colour-1: #fff;
   --primary-colour-2: #eee;
   --secondary-colour-1: rgba(255, 255, 255, 0.7);
-  --link-colour: #eee; 
+  --link-colour: #eee;
 }
-
 
 html {
   scroll-behavior: smooth;
@@ -22,7 +21,7 @@ html {
 
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-  Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: var(--primary-colour-2);
   background-color: var(--background-colour);
   background-repeat: no-repeat;
@@ -172,6 +171,10 @@ a {
   opacity: 1;
   transition: all 0.15s ease;
   position: relative;
+  text-align: center;
+}
+
+.center {
   text-align: center;
 }
 
