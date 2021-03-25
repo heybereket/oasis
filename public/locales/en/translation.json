@@ -8,7 +8,7 @@
   "new": {
     "addRepoHeader": "Add a new repo to CodeTribute",
     "addRepo": "Add Repo",
-    "addRepoPlaceholder": "full url (ex. https://github.com/heybereket/codetribute)",
+    "addRepoPlaceholder": "full url (ex. https://github.com/heybereket/oasis)",
     "signInToSubmit": "Sign In to Submit"
   },
   "header": {

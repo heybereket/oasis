@@ -8,7 +8,7 @@
 	"new": {
 		"addRepoHeader": "Agregar un nuevo repositorio a CodeTribute",
 		"addRepo": "Agregar repositorio",
-		"addRepoPlaceholder": "URL completa (ejemplo https://github.com/heybereket/codetribute)",
+		"addRepoPlaceholder": "URL completa (ejemplo https://github.com/heybereket/oasis)",
 		"signInToSubmit": "Inicia sesión para hacer un envío"
 	},
 	"header": {
