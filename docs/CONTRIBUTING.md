@@ -1,5 +1,18 @@
 # Contributing to Oasis
 
+We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
+- Reporting an issue
+- Discussing the current state of the code
+- Submitting a fix
+- Proposing new features
+- Becoming a maintainer
+
+## Code of Conduct
+The code of conduct is described in [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
+
+## Our Development Process
+All changes happen through pull requests. Pull requests are the best way to propose changes. We actively welcome your pull requests and invite you to submit pull requests directly <a href="https://github.com/benawad/dogehouse/pulls">here</a>, and after review, these can be merged into the project.
+
 **Getting started:**
 1. Fork this repository and clone it to your local machine
 2. Make sure you have yarn installed. If you don't, run ```npm install --g yarn```
