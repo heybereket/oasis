@@ -1,10 +1,14 @@
 import "../style/footer.css";
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "./LanguageSelector";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="footer">
-        Oasis by -{" "}
+        {`${t('footer.oasisBy')} `}
         <a
           aria-label="Bereket's Twitter"
           href="https://twitter.com/heybereket"
@@ -15,16 +19,16 @@ const Footer = () => {
         </a>{" "}
         🤞🏻
         <br />
-        follow us on{" "}
+        {`${t('footer.followUsOn')} `}
         <a
           aria-label="Hidden Tools' Twitter"
           href="https://twitter.com/hiddentools_"
           target="_blank"
           rel="noreferrer"
         >
-          twitter
+          {t('footer.twitter')}
         </a>
-        , open-source on
+        , {t('footer.openSourceOn')}
         <a
           aria-label="Hidden Tools' Github"
           href="https://github.com/heybereket/hiddentools.dev"
@@ -32,9 +36,12 @@ const Footer = () => {
           rel="noreferrer"
         >
           {" "}
-          github
+          {t('footer.github')}
         </a>
         .
+        <div className="footer__language-selector">
+          <LanguageSelector />
+        </div>
       </div>
     </>
   );
