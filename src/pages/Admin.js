@@ -15,9 +15,10 @@ const Admin = () => {
       .then(snapshot => {
         let projects = [];
 
-        // snapshot.forEach(doc => {
-        //   projects.push(doc.data());
-        // });
+        snapshot.forEach(doc => {
+          projects.push(doc.data());
+        });
+
         for (const doc of snapshot.docs)
           projects = _.concat(projects, {
             id: doc.id,

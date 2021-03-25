@@ -27,12 +27,13 @@ const New = () => {
       .then(snapshot => {
         let projects = [];
 
-        // snapshot.forEach(doc => {
-        //   projects.push({
-        //     id: doc.id,
-        //     ...doc.data()
-        //   });
-        // });
+        snapshot.forEach(doc => {
+          projects.push({
+            id: doc.id,
+            ...doc.data()
+          });
+        });
+
         for (const doc of snapshot.docs)
           projects = _.concat(projects, {
             id: doc.id,
