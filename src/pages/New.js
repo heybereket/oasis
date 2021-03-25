@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-// import _ from "lodash";
+import _ from "lodash";
 import firebase, { loginGitHub } from "../data/firebase";
 import { Navbar, Loading } from "../components";
 import { useLocation } from 'react-router-dom'
