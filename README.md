@@ -32,6 +32,7 @@ Thanks you for contributing and making Oasis 1% better! ([emoji key](https://all
     <td align="center"><a href="https://theweirddeveloper.dev/"><img src="https://avatars.githubusercontent.com/u/35224620?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kingsley Victor</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=kingsley-einstein" title="Code">💻</a> <a href="#content-kingsley-einstein" title="Content">🖋</a></td>
     <td align="center"><a href="https://www.felipecespedes.co"><img src="https://avatars.githubusercontent.com/u/11846311?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felipe Céspedes</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=felipecespedes" title="Documentation">📖</a> <a href="https://github.com/heybereket/oasis/commits?author=felipecespedes" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Mudrank"><img src="https://avatars.githubusercontent.com/u/70035508?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mudrank</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=Mudrank" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://madeunlinked.com"><img src="https://avatars.githubusercontent.com/u/70179217?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ben</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=benzend" title="Code">💻</a></td>
   </tr>
 </table>
 
