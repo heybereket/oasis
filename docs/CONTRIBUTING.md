@@ -1,16 +1,17 @@
 # Contributing to Oasis
 Discovered a bug on the site? Report it to the <a href="https://github.com/heybereket/oasis/issues">issues</a> tab. 
 
-**Getting started with the database:**
-
+**Getting started:**
 1. Fork this repository and clone it to your local machine
 2. Make sure you have yarn installed. If you don't, run ```npm install --g yarn```
-3. Head over to [Firebase](https://firebase.google.com) and create a project, get the credidentials 
-4. Go to the ```.env.example``` file where you can update the boiler text, as well as rename ```.env.example to .env```
-5. Run ```yarn``` or ```yarn install``` to install all required packages 
-6. Build/start the application by running ```yarn dev```
-7. Make your changes
-8. Submit a <a href="https://github.com/heybereket/oasis/pulls">pull request</a>!
+
+**Getting started with the database:**
+1. Head over to [Firebase](https://firebase.google.com) and create a project, get the credidentials 
+2. Go to the ```.env.example``` file where you can update the boiler text, as well as rename ```.env.example to .env```
+3. Run ```yarn``` or ```yarn install``` to install all required packages 
+4. Build/start the application by running ```yarn dev```
+5. Make your changes
+6. Submit a <a href="https://github.com/heybereket/oasis/pulls">pull request</a>!
 
 **Getting started with OAuth:**
 1. Head over to your firebase console
