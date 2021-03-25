@@ -27,7 +27,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false) // will use useEffect to load projects when in prod and set this to false once done
 
   const allCategories = list.filter(project => project.language != null).map(project => project.language)
-  const countCategories = countBy(allCategories)
+  const countCategories = countBy(list)
   const [currCategory, setCurrCategory] = useState("All")
   const [searchQuery, setSearchQuery] = useState("")
   const [visibleTools, setVisibleTools] = useState(tools)
@@ -43,6 +43,18 @@ const Home = () => {
   
   const changeSearch = (event) => {
     setSearchQuery(event.target.value)
+  }
+
+  const handlerFormSubmit = (event) => {
+    event.preventDefault() // prevent browser reloading when form submitted
+    let result = searchTools(searchQuery, list)
+    if (searchQuery.toLowerCase() === "") {
+      setList(tools)
+    } else if (searchQuery.toLocaleLowerCase() === "all") {
+      setList(tools)
+    } else {
+      setList(result)
+    }
   }
 
   //enable live project fetching in prod
@@ -78,6 +90,7 @@ const Home = () => {
      countCategories={countCategories}
      categoryHandler={setCurrCategory}
      list={list}
+     formSubmitHandler={handlerFormSubmit}
      />
 
       { (visibleTools.length === 0) && (

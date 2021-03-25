@@ -3,7 +3,17 @@ import React from "react"
 import { Link } from "react-router-dom"
 import Button from "./categoryButton"
 
-const Header = ({ user, logo, searchQuery, changeSearch, currCategory, countCategories, categoryHandler, list }) => {
+const Header = ({
+    user, 
+    logo, 
+    searchQuery, 
+    changeSearch, 
+    currCategory, 
+    countCategories, 
+    categoryHandler, 
+    list,
+    formSubmitHandler
+}) => {
     return (
         <header>
         <div className="header-content">
@@ -13,13 +23,19 @@ const Header = ({ user, logo, searchQuery, changeSearch, currCategory, countCate
          </Link>
 
           <br/><br/> 
-          <p className="header-subtitle">Browse open source projects.</p>
+          <p className="header-subtitle">Browse Open Source Projects.</p>
           <div className="search-wrapper">
-            <input
-              className="search" type="text" autoComplete="off" spellCheck="false" placeholder="Search projects..."
+            <form onSubmit={formSubmitHandler}>
+                <input
+              className="search" 
+              type="text" 
+              autoComplete="off" 
+              spellCheck="false" 
+              placeholder="Search Projects..."
               value={searchQuery}
               onChange={changeSearch}
             />
+            </form>
            <div className="filter-wrapper">
             <Button 
             category="All" 

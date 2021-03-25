@@ -1,19 +1,30 @@
 [
   {
+    "name": "Oasis",
+    "owner": "Bereket Semagn",
+    "avatar": "None",
+    "issues": "0",
+    "stars": "5",
+    "desc": "Find and contribute to cool github repositories",
+    "pricing": "Free"
+  },
+  {
     "name": "Github Profile Viewer",
     "owner": "Josias Aurel",
     "avatar": "None",
     "issues": "0",
     "stars": "1",
-    "desc": "View your github profile in a beautiful card"
+    "desc": "View your github profile in a beautiful card",
+    "pricing": "Free"
   },
   {
     "name": "Hidden Tools",
     "owner": "Bereket Semagn",
     "avatar": "None",
     "issues": "0",
-    "stars": "5",
-    "desc": "An app to find the best tools by Indie Makers. Updated weekly"
+    "stars": "3",
+    "desc": "An app to find the best tools by Indie Makers. Updated weekly",
+    "pricing": "Free"
   },
   {
     "name": "Speech Recognition",
@@ -21,7 +32,8 @@
     "avatar": "None",
     "issues": "0",
     "stars": "1",
-    "desc": "Convert your voice records into a text transcripts"
+    "desc": "Convert your voice records into a text transcripts",
+    "pricing": "Free"
   },
   {
     "name": "PeasyNotes",
@@ -29,7 +41,8 @@
     "avatar": "None",
     "issues": "1",
     "stars": "2",
-    "desc": "Storageless note taking app. Take notes and save them in URLs"
+    "desc": "Storageless note taking app. Take notes and save them in URLs",
+    "pricing": "Free"
   },
   {
     "name": "Scooter",
@@ -37,6 +50,7 @@
     "avatar": "None",
     "issues": "0",
     "stars": "1",
-    "desc": "Write and share beautiful code snippets"
+    "desc": "Write and share beautiful code snippets",
+    "pricing": "Free"
   }
 ]
