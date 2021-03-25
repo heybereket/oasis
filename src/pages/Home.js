@@ -1,45 +1,76 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import "../style/App.css";
-import tools from "../data/tools.json";
-import { colours } from "../lib/constants.js";
-import { useState, useEffect } from "react";
-import { Navbar, Footer, Loading } from "../components";
-import _, { last } from "lodash";
-import firebase from "../data/firebase";
-import { Link } from "react-router-dom";
-import logo from "../static/oasis-logo.png";
+import '../style/App.css';
+import tools from "../data/tools.json"
+import { colours } from '../lib/constants.js'
+import { useState, useEffect } from 'react';
+import { Navbar, Footer, Loading } from '../components'
+import { countBy } from 'lodash';
+import firebase from '../data/firebase'
+import { Link } from 'react-router-dom'
+
+// import custom components
+import Button from "../components/homeComponents/categoryButton"
+import Header from "../components/homeComponents/Header"
 
 // importing utility functions
-import { filterToolsByCategory } from "../utils/filterTools";
+import { searchTools, filterToolsByCategory } from "../utils/filterTools"
+
+// import icons
+import logo from '../static/oasis-logo.png'
+import forkIcon from "../assets/icons/forkIcon.svg"
+
+// importing utility functions
 import InfiniteScroll from "react-infinite-scroll-component";
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 
 const Home = () => {
+  const sampleProjects = JSON.parse(JSON.stringify(tools))
   // makes a list of just the categories of the tools
   const db = firebase.firestore();
-  const [list, setList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const allTools = tools
+
+  const [currCategory, setCurrCategory] = useState("All")
+  const [searchQuery, setSearchQuery] = useState("")
+  const [visibleTools, setVisibleTools] = useState(allTools)
+  const [list, setList] = useState(sampleProjects);
+  const [isLoading, setIsLoading] = useState(false); // set loading to true in production
   const [hasMoreRepos, setHasMoreRepos] = useState(true);
+
+  const countCategories = countBy(list)
 
   const allCategories = list
     .filter(project => project.language != null)
     .map(project => project.language);
-  const countCategories = _.countBy(allCategories);
-  const [currCategory, setCurrCategory] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [visibleTools, setVisibleTools] = useState(tools);
   const user = firebase.auth().currentUser;
 
   // if searchQuery or currCategory changes, then update visibleTools
+  
   useEffect(() => {
-    setVisibleTools(filterToolsByCategory(tools, currCategory));
-  }, [searchQuery, currCategory]);
+    setVisibleTools(
+      filterToolsByCategory(tools, currCategory)
+    )
+  }, [searchQuery, currCategory])
+  
+  
+  const changeSearch = (event) => {
+    setSearchQuery(event.target.value)
+  }
 
-  const changeSearch = event => {
-    setSearchQuery(event.target.value);
-  };
+  const handlerFormSubmit = (event) => {
+    event.preventDefault() // prevent browser reloading when form submitted
+    let result = searchTools(searchQuery, list)
+    if (searchQuery.toLowerCase() === "") {
+      setList(allTools)
+    } else if (searchQuery.toLowerCase() === "all") {
+      setList(allTools)
+    } else {
+      setList(result)
+    }
+  }
 
-  useEffect(() => {
+  //enable live project fetching in prod
+
+{/*
+useEffect(() => {
     const getRepos = async () => {
       try {
         db.collection("repos")
@@ -102,74 +133,30 @@ const Home = () => {
           //   });
         });
     } catch (err) {
-      console.err(err);
+      console.error(err);
     }
   };
-
-  const Button = ({ category, count }) => {
-    return (
-      <button
-        className={`filter-button ${
-          category === currCategory ? "filter-active" : ""
-        }`}
-        title={category}
-        onClick={() => {
-          setCurrCategory(category);
-        }}
-      >
-        {category} <span className="filter-count"> [{count}]</span>
-      </button>
-    );
-  };
+*/}
 
   return (
     <div>
-      <Navbar />
+ 
+     <Navbar />
+     <Header 
+     user={user} 
+     logo={logo} 
+     searchQuery={searchQuery} 
+     changeSearch={changeSearch} 
+     searchQueryHandler={setSearchQuery}
+     currCategory={currCategory} 
+     countCategories={countCategories}
+     categoryHandler={setCurrCategory}
+     list={list}
+     formSubmitHandler={handlerFormSubmit}
+     allTools={allTools}
+     />
 
-      <header>
-        <div className="header-content">
-          <Link to="/">
-            <img
-              alt={
-                user
-                  ? user.displayName.toLowerCase() + "'s avatar"
-                  : "CodeTribute Logo"
-              }
-              className="logo"
-              src={logo}
-            />
-          </Link>
-
-          <br />
-          <br />
-          <p className="header-subtitle">
-            Browse {list.length}+ open source projects.{" "}
-          </p>
-          <div className="search-wrapper">
-            <input
-              className="search"
-              type="text"
-              autoComplete="off"
-              spellCheck="false"
-              placeholder="Search projects..."
-              value={searchQuery}
-              onChange={changeSearch}
-            />
-            <div className="filter-wrapper">
-              <Button category="All" count={list.length} />
-              {Object.keys(countCategories).map(category => (
-                <Button
-                  key={category}
-                  category={category}
-                  count={countCategories[category]}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {visibleTools.length === 0 && (
+    {visibleTools.length === 0 && (
         <center>
           <span className="no-results">
             😥 No results found for <strong>{searchQuery}</strong>.
@@ -181,9 +168,10 @@ const Home = () => {
         {isLoading ? (
           <Loading message="repos" />
         ) : (
-          <InfiniteScroll
+              <InfiniteScroll
             dataLength={list.length}
-            next={fetchMoreData}
+            next={list}
+            //next={fetchMoreData}
             hasMore={hasMoreRepos}
             loader={<Loading message="more repos" />}
             endMessage={
@@ -192,7 +180,9 @@ const Home = () => {
               </p>
             }
           >
-            <div className="tools">
+          
+            <div>
+              <div className="tools">
               {list.map((project, index) => (
                 <Link
                   key={project.url + index}
@@ -232,6 +222,7 @@ const Home = () => {
                     </p>
 
                     {project.desc != null && <small>{project.desc}</small>}
+
 
                     {project.desc === null && <small>No description.</small>}
 
@@ -296,11 +287,14 @@ const Home = () => {
                 </Link>
               ))}
             </div>
+            </div>
           </InfiniteScroll>
         )}
       </div>
       <Footer />
     </div>
+
+      
   );
 };
 
