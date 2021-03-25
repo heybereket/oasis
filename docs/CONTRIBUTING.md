@@ -26,7 +26,8 @@
 - <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">Forking a Repository</a>
 - <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository">Cloning a Repository</a>
 - <a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork">Creating a Pull Request</a>
-- <a href="https://cloud.google.com/firestore/docs/client/get-firebase">Getting Started with Firebase</a>
+- <a href="https://firebase.google.com/docs/firestore/">Firebase Firestore Docs</a>
+- <a href="https://firebase.google.com/docs/auth/">Firebase Authentication Docs</a>
 
 **Important Notes:**
 - We are using Firebase Firestore for the database
