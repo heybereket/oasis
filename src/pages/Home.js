@@ -158,7 +158,11 @@ const Home = () => {
             <div className="filter-wrapper">
               <Button category="All" count={list.length} />
               {Object.keys(countCategories).map(category => (
-                <Button category={category} count={countCategories[category]} />
+                <Button
+                  key={category}
+                  category={category}
+                  count={countCategories[category]}
+                />
               ))}
             </div>
           </div>
@@ -191,7 +195,7 @@ const Home = () => {
             <div className="tools">
               {list.map((project, index) => (
                 <Link
-                  key={project.url}
+                  key={project.url + index}
                   to={`/${project.owner}/${project.name}`}
                   rel="noreferrer"
                 >
