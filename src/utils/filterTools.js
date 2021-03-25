@@ -33,7 +33,7 @@ function searchTools(searchQuery, searchSpace) {
     let match = ((tool.name + tool.desc + tool.price + tool.owner).toLowerCase() + searchSpace.indexOf(tool))
     let unitMatchResult = match.match(search) ? match.match(search).input : ""
     let toolNameArr = unitMatchResult.split("")
-    let toolIndex = toolNameArr[toolNameArr.length - 1]
+    // let toolIndex = toolNameArr[toolNameArr.length - 1]
     // console.log(toolIndex)
     return unitMatchResult[0]
     })

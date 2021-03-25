@@ -8,7 +8,7 @@ import firebase from '../data/firebase'
 import { Link } from 'react-router-dom'
 
 // import custom components
-import Button from "../components/homeComponents/categoryButton"
+// import Button from "../components/homeComponents/categoryButton"
 import Header from "../components/homeComponents/Header"
 
 // importing utility functions
@@ -16,7 +16,7 @@ import { searchTools, filterToolsByCategory } from "../utils/filterTools"
 
 // import icons
 import logo from '../static/oasis-logo.png'
-import forkIcon from "../assets/icons/forkIcon.svg"
+// import forkIcon from "../assets/icons/forkIcon.svg"
 
 // importing utility functions
 import InfiniteScroll from "react-infinite-scroll-component";
