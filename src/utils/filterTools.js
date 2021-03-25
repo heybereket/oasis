@@ -22,6 +22,18 @@ The searchSpace param is the space(values ) from which to search the tools
 */
 
 function searchTools(searchQuery, searchSpace) {
+    // filter? 
+    const search = new RegExp(searchQuery)
+    const toolsBySearch = searchSpace.filter(tool => {
+    let match = ((tool.name + tool.desc + tool.price + tool.owner).toLowerCase() + searchSpace.indexOf(tool))
+    let unitMatchResult = match.match(search) ? match.match(search).input : ""
+    let toolNameArr = unitMatchResult.split("")
+    // let toolIndex = toolNameArr[toolNameArr.length - 1]
+    // console.log(toolIndex)
+    return unitMatchResult[0]
+    })
+    return toolsBySearch
+    
   const toolsBySearch = searchSpace.filter(tool =>
     (tool.name, tool.desc, tool.pricing, tool.category).includes(
       searchQuery.toLowerCase()

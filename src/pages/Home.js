@@ -1,3 +1,23 @@
+
+import '../style/App.css';
+import tools from "../data/tools.json"
+import { colours } from '../lib/constants.js'
+import { useState, useEffect } from 'react';
+import { Navbar, Footer, Loading } from '../components'
+import { countBy } from 'lodash';
+import firebase from '../data/firebase'
+import { Link } from 'react-router-dom'
+
+// import custom components
+// import Button from "../components/homeComponents/categoryButton"
+import Header from "../components/homeComponents/Header"
+
+// importing utility functions
+import { searchTools, filterToolsByCategory } from "../utils/filterTools"
+
+// import icons
+import logo from '../static/oasis-logo.png'
+// import forkIcon from "../assets/icons/forkIcon.svg
 /* eslint-disable react-hooks/exhaustive-deps */
 import "../style/App.css";
 import tools from "../data/tools.json";
