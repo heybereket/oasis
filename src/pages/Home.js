@@ -111,7 +111,13 @@ const Home = () => {
 
 
               <img alt={`${project.owner.toLowerCase()}'s logo`} className="display" src={project.avatar}/>
-              <p key={index}><span className="owner">{project.owner}</span>/<span className="name">{project.name}</span></p>
+              <p key={index}>
+                <span className="owner">
+                  {project.owner.split(" ").join("")}
+                </span>/<span className="name">
+                  {project.name.split(" ").join("-").toLowerCase()}
+                </span>
+              </p>
               
               { (project.desc != null) && (
                     <small>{project.desc}</small>
