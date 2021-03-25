@@ -21,7 +21,7 @@ function Project(props) {
     const empty = querySnapshot.empty;
 
     if (empty) {
-      window.location = "/new";
+      window.location = `/new?repo=https://github.com/${props.match.params.owner}/${props.match.params.name}`;
     } else {
       querySnapshot.forEach(doc => {
         const projectData = doc.data();
