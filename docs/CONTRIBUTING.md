@@ -1,5 +1,4 @@
 # Contributing to Oasis
-Discovered a bug on the site? Report it to the <a href="https://github.com/heybereket/oasis/issues">issues</a> tab. 
 
 **Getting started:**
 1. Fork this repository and clone it to your local machine
