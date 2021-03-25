@@ -1,3 +1,4 @@
+
 import '../style/App.css';
 import tools from "../data/tools.json"
 import { colours } from '../lib/constants.js'
@@ -16,61 +17,49 @@ import { searchTools, filterToolsByCategory } from "../utils/filterTools"
 
 // import icons
 import logo from '../static/oasis-logo.png'
-// import forkIcon from "../assets/icons/forkIcon.svg"
+// import forkIcon from "../assets/icons/forkIcon.svg
+/* eslint-disable react-hooks/exhaustive-deps */
+import "../style/App.css";
+import tools from "../data/tools.json";
+import { colours } from "../lib/constants.js";
+import { useState, useEffect } from "react";
+import { Navbar, Footer, Loading } from "../components";
+import _, { last } from "lodash";
+import firebase from "../data/firebase";
+import { Link } from "react-router-dom";
+import logo from "../static/oasis-logo.png";
 
 // importing utility functions
+import { filterToolsByCategory } from "../utils/filterTools";
 import InfiniteScroll from "react-infinite-scroll-component";
-// import { render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 
 const Home = () => {
-  const sampleProjects = JSON.parse(JSON.stringify(tools))
   // makes a list of just the categories of the tools
   const db = firebase.firestore();
-  const allTools = tools
-
-  const [currCategory, setCurrCategory] = useState("All")
-  const [searchQuery, setSearchQuery] = useState("")
-  const [visibleTools, setVisibleTools] = useState(allTools)
-  const [list, setList] = useState(sampleProjects);
-  const [isLoading, setIsLoading] = useState(false); // set loading to true in production
+  const [list, setList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [hasMoreRepos, setHasMoreRepos] = useState(true);
-
-  const countCategories = countBy(list)
 
   const allCategories = list
     .filter(project => project.language != null)
     .map(project => project.language);
+  const countCategories = _.countBy(allCategories);
+  const [currCategory, setCurrCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [visibleTools, setVisibleTools] = useState(tools);
   const user = firebase.auth().currentUser;
 
   // if searchQuery or currCategory changes, then update visibleTools
-  
   useEffect(() => {
-    setVisibleTools(
-      filterToolsByCategory(tools, currCategory)
-    )
-  }, [searchQuery, currCategory])
-  
-  
-  const changeSearch = (event) => {
-    setSearchQuery(event.target.value)
-  }
+    setVisibleTools(filterToolsByCategory(tools, currCategory));
+  }, [searchQuery, currCategory]);
 
-  const handlerFormSubmit = (event) => {
-    event.preventDefault() // prevent browser reloading when form submitted
-    let result = searchTools(searchQuery, list)
-    if (searchQuery.toLowerCase() === "") {
-      setList(allTools)
-    } else if (searchQuery.toLowerCase() === "all") {
-      setList(allTools)
-    } else {
-      setList(result)
-    }
-  }
+  const changeSearch = event => {
+    setSearchQuery(event.target.value);
+  };
 
-  //enable live project fetching in prod
-
-{/*
-useEffect(() => {
+  useEffect(() => {
     const getRepos = async () => {
       try {
         db.collection("repos")
@@ -133,30 +122,74 @@ useEffect(() => {
           //   });
         });
     } catch (err) {
-      console.error(err);
+      console.err(err);
     }
   };
-*/}
+
+  const Button = ({ category, count }) => {
+    return (
+      <button
+        className={`filter-button ${
+          category === currCategory ? "filter-active" : ""
+        }`}
+        title={category}
+        onClick={() => {
+          setCurrCategory(category);
+        }}
+      >
+        {category} <span className="filter-count"> [{count}]</span>
+      </button>
+    );
+  };
 
   return (
     <div>
- 
-     <Navbar />
-     <Header 
-     user={user} 
-     logo={logo} 
-     searchQuery={searchQuery} 
-     changeSearch={changeSearch} 
-     searchQueryHandler={setSearchQuery}
-     currCategory={currCategory} 
-     countCategories={countCategories}
-     categoryHandler={setCurrCategory}
-     list={list}
-     formSubmitHandler={handlerFormSubmit}
-     allTools={allTools}
-     />
+      <Navbar />
 
-    {visibleTools.length === 0 && (
+      <header>
+        <div className="header-content">
+          <Link to="/">
+            <img
+              alt={
+                user
+                  ? user.displayName.toLowerCase() + "'s avatar"
+                  : "CodeTribute Logo"
+              }
+              className="logo"
+              src={logo}
+            />
+          </Link>
+
+          <br />
+          <br />
+          <p className="header-subtitle">
+            Browse {list.length}+ open source projects.{" "}
+          </p>
+          <div className="search-wrapper">
+            <input
+              className="search"
+              type="text"
+              autoComplete="off"
+              spellCheck="false"
+              placeholder="Search projects..."
+              value={searchQuery}
+              onChange={changeSearch}
+            />
+            <div className="filter-wrapper">
+              <Button category="All" count={list.length} />
+              {Object.keys(countCategories).map(category => (
+                <Button
+                  key={category}
+                  category={category}
+                  count={countCategories[category]}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {visibleTools.length === 0 && (
         <center>
           <span className="no-results">
             😥 No results found for <strong>{searchQuery}</strong>.
@@ -168,10 +201,9 @@ useEffect(() => {
         {isLoading ? (
           <Loading message="repos" />
         ) : (
-              <InfiniteScroll
+          <InfiniteScroll
             dataLength={list.length}
-            next={list}
-            //next={fetchMoreData}
+            next={fetchMoreData}
             hasMore={hasMoreRepos}
             loader={<Loading message="more repos" />}
             endMessage={
@@ -180,9 +212,7 @@ useEffect(() => {
               </p>
             }
           >
-          
-            <div>
-              <div className="tools">
+            <div className="tools">
               {list.map((project, index) => (
                 <Link
                   key={project.url + index}
@@ -222,7 +252,6 @@ useEffect(() => {
                     </p>
 
                     {project.desc != null && <small>{project.desc}</small>}
-
 
                     {project.desc === null && <small>No description.</small>}
 
@@ -287,14 +316,11 @@ useEffect(() => {
                 </Link>
               ))}
             </div>
-            </div>
           </InfiniteScroll>
         )}
       </div>
       <Footer />
     </div>
-
-      
   );
 };
 
