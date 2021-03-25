@@ -2,9 +2,11 @@ import GithubLogo from "../static/github.svg";
 import firebase, { loginGitHub, logout } from "../data/firebase";
 import { Link } from "react-router-dom";
 import "../style/Navbar.css";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const user = firebase.auth().currentUser;
+  const { t } = useTranslation();
 
   return (
     <>
@@ -12,14 +14,20 @@ const Navbar = () => {
         <div className="navbar__title navbar__item"></div>
         <Link to="/new">
           {" "}
-          <div className="navbar__item">Submit</div>
+          <div className="navbar__item">
+            {t('header.submit')}
+          </div>
         </Link>
         <div className="navbar__item">
           {" "}
           {user ? (
-            <span onClick={logout}>Sign Out</span>
+            <span onClick={logout}>
+              {t('header.signOut')}
+            </span>
           ) : (
-            <span onClick={loginGitHub}>Sign in/up</span>
+            <span onClick={loginGitHub}>
+              {t('header.signInUp')}
+            </span>
           )}
         </div>
         <a

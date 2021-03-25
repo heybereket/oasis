@@ -1,25 +1,7 @@
 {
   "name": "oasis",
-  "description": "Browse open source projects you are interested in",
-  "version": "1.0.0",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/heybereket/oasis.git"
-  },
-  "bugs": {
-    "url": "https://github.com/heybereket/oasis/issues"
-  },
-  "homepage": "https://oasis.sh",
-  "scripts": {
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "prettify": "prettier --config .prettierrc --write **/**/*.{js,json,html,css}",
-    "contrib:add": "all-contributors add",
-    "contrib:build": "all-contributors generate"
-  },
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -28,11 +10,15 @@
     "emailjs-com": "^2.6.4",
     "env-cmd": "^10.1.0",
     "firebase": "^8.3.0",
+    "i18next": "^20.1.0",
+    "i18next-browser-languagedetector": "^6.1.0",
+    "i18next-http-backend": "^1.2.0",
     "jquery": "^3.5.1",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
+    "react-i18next": "^11.8.11",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -40,6 +26,16 @@
     "require-context": "^1.1.0",
     "valid-url": "^1.0.9",
     "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prettify": "prettier --write **/**/*.{js,json,html,css}",
+    "contrib:add": "all-contributors add",
+    "contrib:build": "all-contributors generate",
+    "i18n": "node scripts/syncTranslations.js"
   },
   "eslintConfig": {
     "extends": [
@@ -61,7 +57,8 @@
   },
   "devDependencies": {
     "all-contributors-cli": "^6.20.0",
-    "lint-staged": "^10.5.4"
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1"
   },
   "lint-staged": {
     ".all-contributorsrc": [

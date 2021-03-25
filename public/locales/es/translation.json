@@ -1,0 +1,26 @@
+{
+	"common": {},
+	"home": {
+		"browseProjects": "Más de {{total}}+ proyectos de código abierto.",
+		"all": "Todos",
+		"searchProjectsPlaceholder": "Buscar proyectos..."
+	},
+	"new": {
+		"addRepoHeader": "Agregar un nuevo repositorio a CodeTribute",
+		"addRepo": "Agregar repositorio",
+		"addRepoPlaceholder": "URL completa (ejemplo https://github.com/heybereket/oasis)",
+		"signInToSubmit": "Inicia sesión para hacer un envío"
+	},
+	"header": {
+		"submit": "Enviar",
+		"signInUp": "Iniciar Sesión/Registrarse",
+		"signOut": "Cerrar Sesión "
+	},
+	"footer": {
+		"oasisBy": "creado por",
+		"followUsOn": "síguenos en",
+		"twitter": "twitter",
+		"openSourceOn": "código abierto en",
+		"github": "github"
+	}
+}

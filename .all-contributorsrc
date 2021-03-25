@@ -57,6 +57,16 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/11846311?v=4",
       "profile": "https://www.felipecespedes.co",
       "contributions": [
+        "doc",
+        "code"
+      ]
+    },
+    {
+      "login": "Mudrank",
+      "name": "Mudrank",
+      "avatar_url": "https://avatars.githubusercontent.com/u/70035508?v=4",
+      "profile": "https://github.com/Mudrank",
+      "contributions": [
         "doc"
       ]
     }
