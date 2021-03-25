@@ -20,6 +20,7 @@
     "react-helmet": "^6.1.0",
     "react-i18next": "^11.8.11",
     "react-icons": "^4.2.0",
+    "react-infinite-scroll-component": "^6.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "reactjs-popup": "^2.0.4",
