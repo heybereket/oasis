@@ -285,9 +285,17 @@ const Home = () => {
                         </button>
                       )}
 
+                      {
+                      
+                      (project.issues > 1000) ? <button className="issues">
+                        🚨 1k+ issues
+                      </button> : 
+                      
                       <button className="issues">
                         🚨 {project.issues} issues
                       </button>
+                      }
+
                       <br />
                       <button className="stars">
                         ⭐ {formatNumber(project.stars)} stars
