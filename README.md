@@ -3,15 +3,6 @@
 
 ---
 
-## Structure
-
-| Codebase             |      Description      |
-| :------------------- | :-------------------: |
-| coming soon!         |   coming soon!      |
-| coming soon!         |   coming soon!      |
-| coming soon!         |   coming soon!      |   
-
-
 ## Contributions
 
 Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let me know what you are working on first that way we don't overwrite each other.
