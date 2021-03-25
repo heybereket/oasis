@@ -1,7 +1,7 @@
 {
   "common": {},
   "home": {
-    "browseProjects": "Browse 0+ open source projects.",
+    "browseProjects": "Browse {{total}}+ open source projects.",
     "searchProjectsPlaceholder": "Search projects...",
     "all": "All"
   },
