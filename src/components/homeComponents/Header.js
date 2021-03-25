@@ -8,11 +8,13 @@ const Header = ({
     logo, 
     searchQuery, 
     changeSearch, 
+    searchQueryHandler,
     currCategory, 
     countCategories, 
     categoryHandler, 
     list,
-    formSubmitHandler
+    formSubmitHandler,
+    allTools
 }) => {
     return (
         <header>
@@ -26,20 +28,25 @@ const Header = ({
           <p className="header-subtitle">Browse Open Source Projects.</p>
           <div className="search-wrapper">
             <form onSubmit={formSubmitHandler}>
-                <input
-              className="search" 
-              type="text" 
-              autoComplete="off" 
-              spellCheck="false" 
-              placeholder="Search Projects..."
-              value={searchQuery}
-              onChange={changeSearch}
-            />
+                <span className="searchInputBar">
+                    <input
+                        className="search" 
+                        type="text" 
+                        autoComplete="off" 
+                        spellCheck="false" 
+                        placeholder="Search Projects..."
+                        value={searchQuery}
+                        onChange={changeSearch}
+                    />
+                    <button type="button" onClick={() => searchQueryHandler("")}>
+                        X
+                    </button>
+                </span>
             </form>
            <div className="filter-wrapper">
             <Button 
             category="All" 
-            count={list.length} 
+            count={allTools.length} 
             clickHandler={categoryHandler} />
 
              { Object.keys(countCategories).map(category =>

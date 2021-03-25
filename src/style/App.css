@@ -81,6 +81,19 @@ a {
     }
 }
 
+.searchInputBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.searchInputBar button {
+  min-height: 35px;
+  min-width: 40px;
+  position: relative;
+  bottom: 5px;
+}
 .search {
   border: 1px solid #666;
   background: #191919;

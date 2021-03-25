@@ -23,23 +23,26 @@ const Home = () => {
   const sampleProjects = JSON.parse(JSON.stringify(tools))
   // makes a list of just the categories of the tools
   const db = firebase.firestore();
+  const allTools = tools
   const [list, setList] = useState(sampleProjects) // use sample projects list in development
   const [isLoading, setIsLoading] = useState(false) // will use useEffect to load projects when in prod and set this to false once done
 
-  const allCategories = list.filter(project => project.language != null).map(project => project.language)
+  const allCategories = allTools.filter(project => project.language != null).map(project => project.language)
   const countCategories = countBy(list)
   const [currCategory, setCurrCategory] = useState("All")
   const [searchQuery, setSearchQuery] = useState("")
-  const [visibleTools, setVisibleTools] = useState(tools)
+  const [visibleTools, setVisibleTools] = useState(allTools)
   const user = firebase.auth().currentUser;
 
   
   // if searchQuery or currCategory changes, then update visibleTools
+  
   useEffect(() => {
     setVisibleTools(
       filterToolsByCategory(tools, currCategory)
     )
   }, [searchQuery, currCategory])
+  
   
   const changeSearch = (event) => {
     setSearchQuery(event.target.value)
@@ -49,9 +52,9 @@ const Home = () => {
     event.preventDefault() // prevent browser reloading when form submitted
     let result = searchTools(searchQuery, list)
     if (searchQuery.toLowerCase() === "") {
-      setList(tools)
-    } else if (searchQuery.toLocaleLowerCase() === "all") {
-      setList(tools)
+      setList(allTools)
+    } else if (searchQuery.toLowerCase() === "all") {
+      setList(allTools)
     } else {
       setList(result)
     }
@@ -86,11 +89,13 @@ const Home = () => {
      logo={logo} 
      searchQuery={searchQuery} 
      changeSearch={changeSearch} 
+     searchQueryHandler={setSearchQuery}
      currCategory={currCategory} 
      countCategories={countCategories}
      categoryHandler={setCurrCategory}
      list={list}
      formSubmitHandler={handlerFormSubmit}
+     allTools={allTools}
      />
 
       { (visibleTools.length === 0) && (
