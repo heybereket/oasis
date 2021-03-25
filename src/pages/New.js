@@ -34,11 +34,11 @@ const New = () => {
           });
         });
 
-        for (const doc of snapshot.docs)
-          projects = _.concat(projects, {
-            id: doc.id,
-            ...doc.data()
-          });
+        // for (const doc of snapshot.docs)
+        //   projects = _.concat(projects, {
+        //     id: doc.id,
+        //     ...doc.data()
+        //   });
 
         setIsLoading(false);
         setList(projects);
