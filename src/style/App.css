@@ -193,6 +193,7 @@ a {
 .display {
   border-radius: 50%;
   width: 25px;
+  height: 25px;
   margin-bottom: -13px;
   max-width: 100%;
 }
