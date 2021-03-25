@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import "../style/Admin.css";
 import firebase from "../data/firebase";
 import { deleteRepo } from "../utils/controls";
 import { useEffect, useState } from "react";
@@ -53,6 +52,21 @@ const Admin = () => {
           ))}
         </tbody>
       </table>
+
+      <style jsx>
+        {`
+          table {
+            border-collapse: collapse;
+          }
+          
+          td,
+          th {
+            text-align: left;
+            padding: 10px;
+            width: 5%;
+          }
+        `}
+      </style>
     </>
   );
 };

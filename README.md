@@ -19,6 +19,7 @@ Thanks you for contributing and making Oasis 1% better! ([emoji key](https://all
     <td align="center"><a href="https://github.com/TheLDB"><img src="https://avatars.githubusercontent.com/u/29960599?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Landon Boles</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=TheLDB" title="Code">💻</a></td>
     <td align="center"><a href="https://josiasaurel.github.io/"><img src="https://avatars.githubusercontent.com/u/47951376?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josias Aurel</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=JosiasAurel" title="Code">💻</a></td>
     <td align="center"><a href="https://theweirddeveloper.dev/"><img src="https://avatars.githubusercontent.com/u/35224620?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kingsley Victor</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=kingsley-einstein" title="Code">💻</a> <a href="#content-kingsley-einstein" title="Content">🖋</a></td>
+    <td align="center"><a href="https://www.felipecespedes.co"><img src="https://avatars.githubusercontent.com/u/11846311?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felipe Céspedes</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=felipecespedes" title="Documentation">📖</a></td>
   </tr>
 </table>
 

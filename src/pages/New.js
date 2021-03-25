@@ -152,7 +152,7 @@ const New = () => {
                 </label>
               )}
               <input
-                placeholder="full url (ex. https://github.com/heybereket/codetribute)"
+                placeholder="full url (ex. https://github.com/heybereket/oasis)"
                 onKeyDown={e => something(e)}
                 onChange={change => {
                   setProjectURL(change.target.value);
