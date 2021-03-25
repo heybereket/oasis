@@ -1,7 +1,7 @@
 # Contributing to Oasis
 Discovered a bug on the site? Report it to the <a href="https://github.com/heybereket/oasis/issues">issues</a> tab. 
 
-**We're always actively looking for contributors:**
+**Getting started with the database:**
 
 1. Fork this repository and clone it to your local machine
 2. Make sure you have yarn installed. If you don't, run ```npm install --g yarn```
@@ -11,6 +11,16 @@ Discovered a bug on the site? Report it to the <a href="https://github.com/heybe
 6. Build/start the application by running ```yarn dev```
 7. Make your changes
 8. Submit a <a href="https://github.com/heybereket/oasis/pulls">pull request</a>!
+
+**Getting started with OAuth:**
+1. Head over to your firebase console
+2. On the sidebar, click "Authentication" and go to the "Sign-in Method" tab
+3. Now scroll to where it says "GitHub and click it"
+4. If it's disabled click "enable", then go to <a href="https://github.com/settings/developers">GitHub's Developer Settings</a>
+5. Next make a OAuth App and fill in the fields, and get the ```Client ID + Client Secret```, go back to Firebase
+6. Make sure you have the credidentials copied, paste them into Firebase 
+7. At the bottom copy the callback URL and paste that in the GitHub Developer Settings spot for it
+8. Click "Save", and you will be good to go!
 
 **Uh oh, errors?**
 - <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">Forking a Repository</a>
