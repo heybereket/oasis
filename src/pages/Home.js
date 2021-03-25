@@ -6,18 +6,25 @@ import { Navbar, Footer, Loading } from '../components'
 import { countBy } from 'lodash';
 import firebase from '../data/firebase'
 import { Link } from 'react-router-dom'
-import logo from '../static/oasis-logo.png'
+
+// import custom components
+import Button from "../components/homeComponents/categoryButton"
+import Header from "../components/homeComponents/Header"
 
 // importing utility functions
 import { searchTools, filterToolsByCategory } from "../utils/filterTools"
 
+// import icons
+import logo from '../static/oasis-logo.png'
+import forkIcon from "../assets/icons/forkIcon.svg"
 
-
+// Home component
 const Home = () => {
+  const sampleProjects = JSON.parse(JSON.stringify(tools))
   // makes a list of just the categories of the tools
   const db = firebase.firestore();
-  const [list, setList] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [list, setList] = useState(sampleProjects) // use sample projects list in development
+  const [isLoading, setIsLoading] = useState(false) // will use useEffect to load projects when in prod and set this to false once done
 
   const allCategories = list.filter(project => project.language != null).map(project => project.language)
   const countCategories = countBy(allCategories)
@@ -38,7 +45,9 @@ const Home = () => {
     setSearchQuery(event.target.value)
   }
 
-  useEffect(() => {
+  //enable live project fetching in prod
+
+/*   useEffect(() => {
     db.collection("projects")
       .orderBy('date_added')
       .onSnapshot((snapshot) => {
@@ -53,58 +62,33 @@ const Home = () => {
         setList(projects);
         setIsLoading(false)
       });
-  }, []);
+  }, []); */
 
-
-
-  const Button = ({ category, count }) => {
-    return (
-      <button
-        className={`filter-button ${category === currCategory ? 'filter-active' : ''}`}
-        title={category}
-        onClick={() => {setCurrCategory(category)}}
-      >
-          {category} <span className="filter-count"> [{count}]</span>
-      </button>
-    )
-  }
 
   return (
     <div>
  
      <Navbar />
-
-      <header>
-        <div className="header-content">
-
-         <Link to="/">
-          <img alt={user ? user.displayName.toLowerCase() + "'s avatar" : 'CodeTribute Logo'} className="logo" src={logo}/>
-         </Link>
-
-          <br/><br/> 
-          <p className="header-subtitle">Browse open source projects.</p>
-          <div className="search-wrapper">
-            <input
-              className="search" type="text" autoComplete="off" spellCheck="false" placeholder="Search projects..."
-              value={searchQuery}
-              onChange={changeSearch}
-            />
-           <div className="filter-wrapper">
-            <Button category="All" count={list.length} />
-             { Object.keys(countCategories).map(category =>
-              <Button category={category} count={countCategories[category]} />
-            )}
-           
-           </div>
-          </div>
-        </div>
-      </header>
-
-      
-
+     <Header 
+     user={user} 
+     logo={logo} 
+     searchQuery={searchQuery} 
+     changeSearch={changeSearch} 
+     currCategory={currCategory} 
+     countCategories={countCategories}
+     categoryHandler={setCurrCategory}
+     list={list}
+     />
 
       { (visibleTools.length === 0) && (
-          <center><span className="no-results">😥 No results found for <strong>{searchQuery}</strong>.</span></center>
+          <center>
+            <span className="no-results">
+              😥 No results found for 
+              <strong>
+                {searchQuery}
+              </strong>.
+            </span>
+          </center>
 
       )}
 
@@ -112,7 +96,7 @@ const Home = () => {
       <div className="tools">
         {
           
-            isLoading ? 
+             isLoading ? 
             <Loading message="repos"/> : 
           list.map((project, index) => (
             
@@ -121,9 +105,8 @@ const Home = () => {
 
             { (project.fork === true) && (
                    <div className="fork-icon" title={`${project.full_name} is a forked repository`}>
-                     <svg viewBox="0 0 16 16" version="1.1" width="20" height="20" aria-hidden="true" fill="white">
-                       <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
-                       </svg></div>
+                     {forkIcon}
+                   </div>
                )}
 
 
@@ -154,9 +137,10 @@ const Home = () => {
                 <button className="language">
                   <svg viewBox="0 0 80 80" width="10" height="10">
                       <circle style={{fill: '#fff'}} className="circle" cx="40" cy="40" r="38"/>
-                    </svg>
+                  </svg>
                     &nbsp;
-                    {project.language}</button>   
+                    {project.language}
+                </button>   
                )}
 
               {(project.language === null) && (

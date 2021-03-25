@@ -1,10 +1,42 @@
 [
-    {
-      "img": "https://ph-files.imgix.net/9abd55f9-6c3d-43a7-a458-785a18710986.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=635&h=380&fit=max",
-      "name": "Ray.so",
-      "desc": "Create beautiful images of your code, customize it, and share it.",
-      "url": "https://ray.so",
-      "pricing": "Free Forever",
-      "category": "Featured"
-    }
-    ]
+  {
+    "name": "Github Profile Viewer",
+    "owner": "Josias Aurel",
+    "avatar": "None",
+    "issues": "0",
+    "stars": "1",
+    "desc": "View your github profile in a beautiful card"
+  },
+  {
+    "name": "Hidden Tools",
+    "owner": "Bereket Semagn",
+    "avatar": "None",
+    "issues": "0",
+    "stars": "5",
+    "desc": "An app to find the best tools by Indie Makers. Updated weekly"
+  },
+  {
+    "name": "Speech Recognition",
+    "owner": "Josias Aurel",
+    "avatar": "None",
+    "issues": "0",
+    "stars": "1",
+    "desc": "Convert your voice records into a text transcripts"
+  },
+  {
+    "name": "PeasyNotes",
+    "owner": "Josias Aurel",
+    "avatar": "None",
+    "issues": "1",
+    "stars": "2",
+    "desc": "Storageless note taking app. Take notes and save them in URLs"
+  },
+  {
+    "name": "Scooter",
+    "owner": "Josias Aurel",
+    "avatar": "None",
+    "issues": "0",
+    "stars": "1",
+    "desc": "Write and share beautiful code snippets"
+  }
+]
