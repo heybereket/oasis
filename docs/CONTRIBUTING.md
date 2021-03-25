@@ -22,6 +22,9 @@
 7. At the bottom copy the callback URL and paste that in the GitHub Developer Settings spot for it
 8. Click "Save", and you will be good to go!
 
+**Translations:** <br>
+If you would like to add a language to oasis, feel free todo so by editing <a href="https://github.com/heybereket/oasis/tree/main/public/locales">the languages folder</a>. We are always open to making Oasis more accessible by adding languages or by any other way! More parts of the site will be translated soon as well.
+
 **Uh oh, errors?**
 - <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">Forking a Repository</a>
 - <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository">Cloning a Repository</a>
