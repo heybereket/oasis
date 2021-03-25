@@ -13,7 +13,7 @@ function Project(props) {
   const name = props.match.params.name;
   const owner = props.match.params.owner;
   var docRef = db
-    .collection("projects")
+    .collection("repos")
     .where("name", "==", name)
     .where("owner", "==", owner);
 

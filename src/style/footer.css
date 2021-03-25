@@ -3,16 +3,10 @@
   padding: 10px 0;
   border-top: 2px solid hsla(0, 0%, 100%, 0.1);
   background-color: transparent;
-  color: hsla(0, 0%, 100%, 0.7);
   font-family: "Inter", sans-serif;
   font-weight: 450;
   font-size: 15px;
   text-align: center;
-}
-
-.footer a {
-  color: #fff;
-  text-decoration: none;
 }
 
 .footer__language-selector {

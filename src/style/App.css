@@ -12,7 +12,7 @@
   --primary-colour-1: #fff;
   --primary-colour-2: #eee;
   --secondary-colour-1: rgba(255, 255, 255, 0.7);
-  --link-colour: #eee;
+  --link-colour: #DEDEDE;
 }
 
 html {
@@ -180,7 +180,7 @@ a {
 
 @media (max-width: 550px) {
   .tool {
-    width: 320px;
+    width: 330px;
   }
 }
 

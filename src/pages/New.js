@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import _ from "lodash";
 import firebase, { loginGitHub } from "../data/firebase";
 import { Navbar, Loading } from "../components";
+import { useLocation } from 'react-router-dom'
 
 // import utility functions
 import { deleteRepo } from "../utils/controls";
@@ -17,11 +18,22 @@ const New = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
 
+  const search = useLocation().search;
+  const repo = new URLSearchParams(search).get('repo');
+
+
   const something = event => {
     if (event.keyCode === 13) {
       sendData();
     }
   };
+
+  useEffect(() => {
+    if (!/^(http[s]?:\/\/)(www\.)?github\.com\/[a-zA-Z0-9-]*\/[a-zA-Z0-9]*/.test(repo)) {
+      setError("Invalid GitHub Repository URL");
+      return
+    }
+  })
 
   useEffect(() => {
     db.collection("repos")
@@ -155,6 +167,7 @@ const New = () => {
               )}
               <input
                 placeholder={t('new.addRepoPlaceholder')}
+                value={repo}
                 onKeyDown={e => something(e)}
                 onChange={change => {
                   setProjectURL(change.target.value);
@@ -164,7 +177,7 @@ const New = () => {
 
               {user ? (
                 <button className="submit-repo" onClick={sendData}>
-                  {t('common.addRepo')}
+                  {t('add Repo')}
                 </button>
               ) : (
                 <button className="submit-repo" onClick={loginGitHub}>
