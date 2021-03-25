@@ -160,10 +160,10 @@ a {
 .tool {
   display: flex;
   flex-direction: column;
-  width: 370px;
+  width: 415px;
   border-radius: 3px;
   padding: 1.8rem;
-  height: 325px;
+  height: 335px;
   border-radius: 10px;
   margin-bottom: 1rem;
   border: 1px solid #5f6368;
@@ -181,6 +181,7 @@ a {
 @media (max-width: 550px) {
   .tool {
     width: 330px;
+    height: 380px;
   }
 }
 
@@ -202,7 +203,7 @@ a {
   text-align: left;
   font-weight: 800;
   line-height: 1.8;
-  font-size: 1.2rem;
+  font-size: 1.125rem;
   color: var(--primary-colour-2);
 }
 
