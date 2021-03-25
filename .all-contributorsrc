@@ -50,7 +50,17 @@
         "code",
         "content"
       ]
+    },
+    {
+      "login": "felipecespedes",
+      "name": "Felipe Céspedes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11846311?v=4",
+      "profile": "https://www.felipecespedes.co",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }

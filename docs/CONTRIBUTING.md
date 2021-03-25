@@ -5,8 +5,8 @@ Discovered a bug on the site? Report it to the <a href="https://github.com/heybe
 
 1. Fork this repository and clone it to your local machine
 2. Make sure you have yarn installed. If you don't, run ```npm install --g yarn```
-3. Head over to Firebase and create a project to use, get the crededentials 
-4. Now, go to ```.env.example``` file where you can update credientials to <a href="https://firebase.google.com">Firebase</a> there (rename .env.example to .env)
+3. Head over to [Firebase](https://firebase.google.com) and create a project, get the credidentials 
+4. Go to the ```.env.example``` file where you can update the boiler text, as well as rename ```.env.example to .env```
 5. Run ```yarn``` or ```yarn install``` to install all required packages 
 6. Build/start the application by running ```yarn dev```
 7. Make your changes
