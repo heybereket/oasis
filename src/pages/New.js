@@ -29,13 +29,6 @@ const New = () => {
   };
 
   useEffect(() => {
-    if (!/^(http[s]?:\/\/)(www\.)?github\.com\/[a-zA-Z0-9-]*\/[a-zA-Z0-9]*/.test(repo)) {
-      setError("Invalid GitHub Repository URL");
-      return
-    }
-  })
-
-  useEffect(() => {
     db.collection("repos")
       .get()
       .then(snapshot => {
