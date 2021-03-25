@@ -1,18 +1,15 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import "../style/App.css";
-import tools from "../data/tools.json";
-import { colours } from "../lib/constants.js";
-import { useState, useEffect } from "react";
-import { Navbar, Footer, Loading } from "../components";
-import _, { last } from "lodash";
-import firebase from "../data/firebase";
-import { Link } from "react-router-dom";
-import logo from "../static/oasis-logo.png";
 
-// importing utility functions
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Navbar, Footer, Loading } from "../components";
+import tools from "../data/tools.json";
+import _ from "lodash";
+import firebase from "../data/firebase";
+import logo from "../static/oasis-logo.png";
+import "../style/App.css";
 import { filterToolsByCategory } from "../utils/filterTools";
+import { colours } from "../lib/constants.js";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { render } from "@testing-library/react";
 
 const Home = () => {
   // makes a list of just the categories of the tools
