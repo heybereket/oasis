@@ -10,12 +10,17 @@
     "emailjs-com": "^2.6.4",
     "env-cmd": "^10.1.0",
     "firebase": "^8.3.0",
+    "i18next": "^20.1.0",
+    "i18next-browser-languagedetector": "^6.1.0",
+    "i18next-http-backend": "^1.2.0",
     "jquery": "^3.5.1",
-    "loadash": "^1.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
+    "react-i18next": "^11.8.11",
     "react-icons": "^4.2.0",
+    "react-infinite-scroll-component": "^6.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "reactjs-popup": "^2.0.4",
@@ -27,7 +32,11 @@
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettify": "prettier --write **/**/*.{js,json,html,css}",
+    "contrib:add": "all-contributors add",
+    "contrib:build": "all-contributors generate",
+    "i18n": "node scripts/syncTranslations.js"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +54,16 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "all-contributors-cli": "^6.20.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1"
+  },
+  "lint-staged": {
+    ".all-contributorsrc": [
+      "npm run contrib:build"
     ]
   }
 }

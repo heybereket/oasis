@@ -1,0 +1,85 @@
+{
+  "projectName": "oasis",
+  "projectOwner": "heybereket",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "heybereket",
+      "name": "Bereket Semagn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/68391329?v=4",
+      "profile": "https://github.com/heybereket",
+      "contributions": [
+        "code",
+        "design",
+        "doc",
+        "ideas",
+        "infra"
+      ]
+    },
+    {
+      "login": "TheLDB",
+      "name": "Landon Boles",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29960599?v=4",
+      "profile": "https://github.com/TheLDB",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "JosiasAurel",
+      "name": "Josias Aurel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47951376?v=4",
+      "profile": "https://josiasaurel.github.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kingsley-einstein",
+      "name": "Kingsley Victor",
+      "avatar_url": "https://avatars.githubusercontent.com/u/35224620?v=4",
+      "profile": "https://theweirddeveloper.dev/",
+      "contributions": [
+        "code",
+        "content"
+      ]
+    },
+    {
+      "login": "felipecespedes",
+      "name": "Felipe Céspedes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11846311?v=4",
+      "profile": "https://www.felipecespedes.co",
+      "contributions": [
+        "doc",
+        "code"
+      ]
+    },
+    {
+      "login": "Mudrank",
+      "name": "Mudrank",
+      "avatar_url": "https://avatars.githubusercontent.com/u/70035508?v=4",
+      "profile": "https://github.com/Mudrank",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "benzend",
+      "name": "Ben",
+      "avatar_url": "https://avatars.githubusercontent.com/u/70179217?v=4",
+      "profile": "https://madeunlinked.com",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true
+}

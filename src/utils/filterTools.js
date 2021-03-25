@@ -1,18 +1,21 @@
+// utility functions for tools searching and filtering
 
+/* 
 
 {/* 
 for the _filterToolsByCategory_, it takes param tools and currCategory
 The [tools] reference the search space i.e the array of objects from which the tools have to be filtered
 The [currCategory] reference the category by which one want's to search a tool
 
-*/}
+*/
 
 
 function filterToolsByCategory(tools, currCategory) {
-    const toolsByCategory = currCategory === "All" 
-    ? tools // return all tools if category is all
-    : tools.filter(tool => tool.category === currCategory) // return tools that match the specified category
-    return toolsByCategory
+  const toolsByCategory =
+    currCategory === "All"
+      ? tools // return all tools if category is all
+      : tools.filter(tool => tool.category === currCategory); // return tools that match the specified category
+  return toolsByCategory;
 }
 
 {
@@ -37,4 +40,4 @@ function searchTools(searchQuery, searchSpace) {
     return toolsBySearch
 }
 
-export { filterToolsByCategory, searchTools }
+export { filterToolsByCategory, searchTools };
