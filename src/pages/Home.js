@@ -40,7 +40,7 @@ const Home = () => {
   useEffect(() => {
     db.collection("repos")
       .orderBy("date_added")
-      .limit(5)
+      .limit(8)
       .onSnapshot(snapshot => {
         let projects = [];
 
@@ -67,7 +67,7 @@ const Home = () => {
 
     db.collection("repos")
       .orderBy("date_added")
-      .limit(5)
+      .limit(8)
       .startAfter(lastDoc.date_added)
       .onSnapshot(snapshot => {
         let projects = [...list];
@@ -161,10 +161,11 @@ const Home = () => {
           <Loading message="repos" />
         ) : (
           <InfiniteScroll
-            dataLength={list.length} //This is important field to render the next data
+            className="tools"
+            dataLength={list.length}
             next={fetchMoreData}
             hasMore={true}
-            loader={<h4>Loading...</h4>}
+            loader={Loading}
             endMessage={
               <p style={{ textAlign: "center" }}>
                 <b>Yay! You have seen it all</b>
@@ -172,7 +173,11 @@ const Home = () => {
             }
           >
             {list.map((project, index) => (
-              <Link to={`/${project.owner}/${project.name}`} rel="noreferrer">
+              <Link
+                key={project.url}
+                to={`/${project.owner}/${project.name}`}
+                rel="noreferrer"
+              >
                 <div className="tool">
                   {project.fork === true && (
                     <div
