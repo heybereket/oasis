@@ -37,6 +37,8 @@ a {
   cursor: pointer;
 }
 
+
+
 /* header */
 .header-content {
   max-width: 600px;
@@ -113,8 +115,6 @@ a {
   text-align: center;
   align-items: center;
   justify-content: center;
-  width: 200%;
-  margin-left: -170px;
   margin-bottom: -35px;
 }
 
@@ -144,8 +144,8 @@ a {
   text-align: center;
 }
 
-/* tools */
-.tools {
+/* repos */
+.repos {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
@@ -157,10 +157,10 @@ a {
   max-width: 100%;
 }
 
-.tool {
+.repo {
   display: flex;
   flex-direction: column;
-  width: 415px;
+  width: 400px;
   border-radius: 3px;
   padding: 1.8rem;
   height: 335px;
@@ -179,13 +179,13 @@ a {
 }
 
 @media (max-width: 550px) {
-  .tool {
+  .repo {
     width: 330px;
     height: 380px;
   }
 }
 
-.tool:hover {
+.repo:hover {
   border: 1px solid #9ca3af;
   transition: all 0.15s ease;
   transform: translateY(-6px);
@@ -199,7 +199,7 @@ a {
   max-width: 100%;
 }
 
-.tool > p {
+.repo > p {
   text-align: left;
   font-weight: 800;
   line-height: 1.8;
@@ -207,7 +207,7 @@ a {
   color: var(--primary-colour-2);
 }
 
-.tool > small {
+.repo > small {
   margin-top: -20px;
   color: var(--secondary-colour-1);
   text-align: left;
@@ -253,7 +253,7 @@ a {
 
 button {
   border-radius: 5px;
-  background: #222428;
+  background: #24272D;
   border: 1px solid hsla(0, 0%, 100%, 0.2);
   padding: 5px 10px;
   color: var(--primary-colour-1);
@@ -266,7 +266,7 @@ button {
 }
 
 ::selection {
-  background-color: var(--primary-colour-1);
+  background-color: #fff;
   color: var(--primary-colour-1);
 }
 

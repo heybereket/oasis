@@ -15,7 +15,6 @@ const New = () => {
   const [error, setError] = useState("");
   const user = firebase.auth().currentUser;
   const [projectURL, setProjectURL] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
 
   const search = useLocation().search;
@@ -47,7 +46,6 @@ const New = () => {
         //     ...doc.data()
         //   });
 
-        setIsLoading(false);
         setList(projects);
       });
   }, []);
@@ -133,21 +131,6 @@ const New = () => {
           <div className="main-submit-wrapper">
             <header>
               <div className="header-content">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#fff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="8" x2="12" y2="16"></line>
-                  <line x1="8" y1="12" x2="16" y2="12"></line>
-                </svg>
                 <h1 className="heading">{window.location.pathname}</h1>
                 <p className="header-subtitle">{t('new.addRepoHeader')}</p>
               </div>
@@ -190,14 +173,12 @@ const New = () => {
             <br />
             <small>{user ? `Manage repositories you've submitted.` : ""}</small>
 
-            <div className="tools">
-              {isLoading ? (
-                <Loading message="submitted repos" />
-              ) : (
+            <div className="repos">
+              {(
                 list.map(
                   (project, index) =>
                     (user ? project.submitted_by === user.email : "") && (
-                      <div className="tool">
+                      <div className="repo">
                         <img
                           alt={`${project.owner.toLowerCase()}'s logo`}
                           className="display"
@@ -341,18 +322,18 @@ const New = () => {
             text-align: left;
           }
 
-          .tools {
+          .repos {
             max-width: 960px;
             margin-top: 20px;
           }
 
-          .tool {
+          .repo {
             width: 352.5px;
             height: 200px;
           }
 
           @media (max-width: 550px) {
-            .tool {
+            .repo {
               width: 320px;
             }
           }

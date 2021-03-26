@@ -9,11 +9,6 @@ Oasis is open to contributions, but we recommend creating an issue or replying i
 
 Please read [CONTRIBUTING.md](https://github.com/heybereket/oasis/blob/main/docs/CONTRIBUTING.md) for details on the project.
 
-
-## Code of Conduct
-
-Please read [CODE_OF_CONDUCT.md](https://github.com/heybereket/oasis/blob/main/docs/CODE_OF_CONDUCT.md) for details on our code of conduct.
-
 ## Author
 Bereket Semagn (<a href="https://twitter.com/heybereket">@heybereket</a>)
 
