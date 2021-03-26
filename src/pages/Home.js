@@ -5,7 +5,6 @@ import { Navbar, Footer, Loading } from "../components";
 import tools from "../data/tools.json";
 import _ from "lodash";
 import firebase from "../data/firebase";
-import 'firebase/functions';
 import logo from "../static/oasis-logo.png";
 import "../style/App.css";
 import { filterToolsByCategory } from "../utils/filterTools";
@@ -108,20 +107,11 @@ const Home = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function toggleLike(id){
-  // const increment = firebase.firestore.FieldValue.increment(1)
-  // const repoRef = db.collection("repos").doc(id)
+function addLike(id){
+  const increment = firebase.firestore.FieldValue.increment(1)
+  const repoRef = db.collection("repos").doc(id)
 
-  // repoRef.update({likes: increment})
-  console.log("LOADING...");
-  const toggleLike = firebase.functions().httpsCallable("toggleProjectLiked");
-
-  toggleLike({
-    projectId: id,
-  })
-    .then(response => console.log(response.data))
-    // .finally(() => console.log("END LOADING"))
-    .catch(console.error);
+  repoRef.update({likes: increment})
 }
 
   const Button = ({ category }) => {
@@ -321,7 +311,7 @@ function toggleLike(id){
                       </button>
 
                       
-                      <button className="like" style={{cursor: user ? 'cursor' : 'text'}} onClick={user ? () => toggleLike(project.id) : ''}>
+                      <button className="like" style={{cursor: user ? 'cursor' : 'text'}} onClick={user ? () => addLike(project.id) : ''}>
                       🧡 {project.likes}
                     </button>
                     </div>
