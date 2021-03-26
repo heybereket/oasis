@@ -173,12 +173,12 @@ const New = () => {
             <br />
             <small>{user ? `Manage repositories you've submitted.` : ""}</small>
 
-            <div className="tools">
+            <div className="repos">
               {(
                 list.map(
                   (project, index) =>
                     (user ? project.submitted_by === user.email : "") && (
-                      <div className="tool">
+                      <div className="repo">
                         <img
                           alt={`${project.owner.toLowerCase()}'s logo`}
                           className="display"
@@ -322,18 +322,18 @@ const New = () => {
             text-align: left;
           }
 
-          .tools {
+          .repos {
             max-width: 960px;
             margin-top: 20px;
           }
 
-          .tool {
+          .repo {
             width: 352.5px;
             height: 200px;
           }
 
           @media (max-width: 550px) {
-            .tool {
+            .repo {
               width: 320px;
             }
           }

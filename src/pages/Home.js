@@ -132,6 +132,7 @@ function addLike(id){
 
   return (
     <div>
+      
       <Navbar />
 
       <header>
@@ -185,7 +186,7 @@ function addLike(id){
         </center>
       )}
 
-      <div className="tools">
+      <div className="repos">
         {isLoading ? (
           <Loading message="repos" />
         ) : (
@@ -200,14 +201,14 @@ function addLike(id){
               </p>
             }
           >
-            <div className="tools">
+            <div className="repos">
               {list.map((project, index) => (
                 // <Link
                 //   key={project.url + index}
                 //   to={`/${project.owner}/${project.name}`}
                 //   rel="noreferrer"
                 // >
-                  <div className="tool">
+                  <div className="repo">
                     {project.fork === true && (
                       <div
                         className="fork-icon"
