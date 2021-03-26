@@ -29,6 +29,9 @@ Thanks you for contributing and making Oasis 1% better! ([emoji key](https://all
     <td align="center"><a href="https://github.com/Mudrank"><img src="https://avatars.githubusercontent.com/u/70035508?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mudrank</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=Mudrank" title="Documentation">📖</a></td>
     <td align="center"><a href="https://madeunlinked.com"><img src="https://avatars.githubusercontent.com/u/70179217?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ben</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=benzend" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://veix.tech"><img src="https://avatars.githubusercontent.com/u/30485301?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Carlos Eli Lopez Tellez</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=Serveix" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
