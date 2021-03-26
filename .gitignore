@@ -3,6 +3,7 @@
 .netlify
 debug.log
 yarn-error.log
+firebase-debug.log
 .env
 localConfig.js
 .next

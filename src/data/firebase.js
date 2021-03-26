@@ -13,7 +13,7 @@ const config = {
 };
 
 export function login(provider) {
-  return firebase.auth().signInWithRedirect(provider);
+  return firebase.auth().signInWithRedirect(provider)
 }
 
 export function loginGitHub() {

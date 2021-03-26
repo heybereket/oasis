@@ -9,7 +9,7 @@
 :root {
   --background-colour: #111111;
   --default-dark-colour: #131313;
-  --primary-colour-1: #fff;
+  --primary-colour-1: #dee3ea;
   --primary-colour-2: #eee;
   --secondary-colour-1: rgba(255, 255, 255, 0.7);
   --link-colour: #DEDEDE;
@@ -46,6 +46,7 @@ a {
   text-align: center;
   margin-bottom: 3rem;
   margin-top: 80px;
+  position: sticky;
 }
 
 .logo {
@@ -63,15 +64,6 @@ a {
   font-weight: 700;
   font-family: "Inter";
   font-size: 40px;
-}
-
-.header-subtitle {
-  max-width: 500px;
-  margin: 0 auto 2rem;
-  color: var(--secondary-colour-1);
-  font-size: 1.25rem;
-  font-weight: 400;
-  font-family: "Inter", sans-serif;
 }
 
 @media (max-width: 550px) {
@@ -172,6 +164,7 @@ a {
   transition: all 0.15s ease;
   position: relative;
   text-align: center;
+  cursor: pointer;
 }
 
 .center {
@@ -186,9 +179,7 @@ a {
 }
 
 .repo:hover {
-  border: 1px solid #9ca3af;
   transition: all 0.15s ease;
-  transform: translateY(-6px);
 }
 
 .display {

@@ -107,12 +107,6 @@ const Home = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function addLike(id){
-  const increment = firebase.firestore.FieldValue.increment(1)
-  const repoRef = db.collection("repos").doc(id)
-
-  repoRef.update({likes: increment})
-}
 
   const Button = ({ category }) => {
     return (
@@ -149,11 +143,8 @@ function addLike(id){
             />
           </Link>
 
-          <br />
-          <br />
-          <p className="header-subtitle">
-            Browse open source projects.{" "}
-          </p>
+          <br /> <br /> <br />
+          
           <div className="search-wrapper">
             <input
               className="search"
@@ -203,11 +194,11 @@ function addLike(id){
           >
             <div className="repos">
               {list.map((project, index) => (
-                // <Link
-                //   key={project.url + index}
-                //   to={`/${project.owner}/${project.name}`}
-                //   rel="noreferrer"
-                // >
+                <Link
+                  key={project.url + index}
+                  to={`/r/${project.owner}/${project.name}`}
+                  rel="noreferrer"
+                >
                   <div className="repo">
                     {project.fork === true && (
                       <div
@@ -309,16 +300,13 @@ function addLike(id){
                       <button className="stars">
                         ⭐ {formatNumber(project.stars)} stars
                       </button>
-
                       
-                      <button className="like" style={{cursor: user ? 'cursor' : 'text'}} onClick={user ? () => addLike(project.id) : ''}>
-                      🧡 {project.likes}
-                    </button>
+                      
                     </div>
                   </div>
-                
+                  </Link>
               ))}
-              {/* </Link> */}
+            
             </div>
           </InfiniteScroll>
         )}
