@@ -78,6 +78,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Serveix",
+      "name": "Carlos Eli Lopez Tellez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30485301?v=4",
+      "profile": "http://veix.tech",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
