@@ -97,7 +97,6 @@ const New = () => {
       archived: data.archived,
       fork: data.fork,
       submitted_by: user.email,
-      likes: 0,
       date_added: Date.now()
     };
 
