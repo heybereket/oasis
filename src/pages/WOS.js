@@ -132,7 +132,8 @@ const WOS = () => {
                 list.map(
                   (project, index) =>
                   
-                   <a href={project.url} target="_blank"  rel="noreferrer">
+                   <div className="sourcer">
+                     <a href={project.url} target="_blank"  rel="noreferrer">
                     <img 
                     key={index} 
                     className="open-sourcer" 
@@ -140,6 +141,7 @@ const WOS = () => {
                     title={`@${project.username}`}
                     src={project.avatar}/>
                    </a>
+                  </div>
 
                 )
               )}
@@ -269,9 +271,8 @@ const WOS = () => {
             margin-top: 20px;
           }
 
-          .repo {
-            width: 352.5px;
-            height: 200px;
+          .sourcer {
+            margin: -5px;
           }
 
           @media (max-width: 550px) {
