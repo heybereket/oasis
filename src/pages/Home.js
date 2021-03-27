@@ -185,12 +185,6 @@ const Home = () => {
             dataLength={list.length}
             next={fetchMoreData}
             hasMore={hasMoreRepos}
-            loader={<Loading message="more repos" />}
-            endMessage={
-              <p style={{ textAlign: "center", color: "white" }}>
-                <b>No more repositories</b>
-              </p>
-            }
           >
             <div className="repos">
               {list.map((project, index) => (
