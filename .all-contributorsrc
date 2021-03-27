@@ -87,6 +87,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "quackduck",
+      "name": "Ishan Goel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38882631?v=4",
+      "profile": "https://ishan.is-a.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

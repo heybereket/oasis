@@ -31,6 +31,7 @@ Thanks you for contributing and making Oasis 1% better! ([emoji key](https://all
   </tr>
   <tr>
     <td align="center"><a href="http://veix.tech"><img src="https://avatars.githubusercontent.com/u/30485301?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Carlos Eli Lopez Tellez</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=Serveix" title="Code">💻</a></td>
+    <td align="center"><a href="https://ishan.is-a.dev"><img src="https://avatars.githubusercontent.com/u/38882631?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ishan Goel</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=quackduck" title="Code">💻</a></td>
   </tr>
 </table>
 
