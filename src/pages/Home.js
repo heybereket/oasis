@@ -137,7 +137,7 @@ const Home = () => {
               alt={
                 user
                   ? user.displayName.toLowerCase() + "'s avatar"
-                  : "CodeTribute Logo"
+                  : "Oasis Logo"
               }
               className="logo"
               src={logo}
