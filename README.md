@@ -14,8 +14,16 @@ Please read [CONTRIBUTING.md](https://github.com/heybereket/oasis/blob/main/docs
 - [ ] Early Release: Soft Launch on Twitter + GitHub (mostly trying to fix and solve bugs)
 - [ ] Official Launch
 
-## 💙 Contributors
+## 🗺️ Roadmap
+We like to think long term ― check out our <a href="https://github.com/heybereket/oasis/projects/1">project board<a/> on GitHub. You can always check here if you're running out of ideas, don't know what to work on, or just want to have a sneak peek on what we're working on behind the scenes :)
 
+## 📄 License
+Oasis is open-source and is under the <a href="https://github.com/heybereket/oasis/blob/main/LICENSE">MIT License</a>. 
+
+## 💬 Get in touch
+Feel free to reach out via <a href="https://github.com/heybereket/oasis/discussions">GitHub Discussions</a> or contact the lead developer on Twitter <a href="https://twitter.com/heybereket">@heybereket<a/>.
+
+## ✨ Contributors
 Thanks you for contributing and making Oasis 1% better! ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
