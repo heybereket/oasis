@@ -1,36 +1,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import _ from "lodash";
 import firebase, { loginGitHub } from "../data/firebase";
-import { Navbar, Loading } from "../components";
+import { Navbar } from "../components";
 import { useLocation } from 'react-router-dom'
+import {BrowserView, MobileView} from 'react-device-detect';
 
-// import utility functions
-import { deleteRepo } from "../utils/controls";
-import { useTranslation } from "react-i18next";
-
-const New = () => {
+const WOS = () => {
   var db = firebase.firestore();
   const [list, setList] = useState([]);
   const [error, setError] = useState("");
+  const [sourcerName, setSourcerName] = useState("");
   const user = firebase.auth().currentUser;
-  const [projectURL, setProjectURL] = useState("");
-  const { t } = useTranslation();
 
   const search = useLocation().search;
-  const repo = new URLSearchParams(search).get('repo');
+  const username = new URLSearchParams(search).get('username');
 
 
-  const something = event => {
+  const enter = event => {
     if (event.keyCode === 13) {
       sendData();
     }
   };
 
   useEffect(() => {
-    db.collection("repos")
-      .get()
-      .then(snapshot => {
+    db.collection("open-sourcers")
+    .onSnapshot(snapshot => {
         let projects = [];
 
         snapshot.forEach(doc => {
@@ -39,86 +33,47 @@ const New = () => {
             ...doc.data()
           });
         });
-
-        // for (const doc of snapshot.docs)
-        //   projects = _.concat(projects, {
-        //     id: doc.id,
-        //     ...doc.data()
-        //   });
-
         setList(projects);
       });
   }, []);
 
   const sendData = async () => {
-    if (projectURL === "") {
-      setError("Repository URL can't be blank");
-      return;
-    } else if (
-      !/^(http[s]?:\/\/)(www\.)?github\.com\/[a-zA-Z0-9-]*\/[a-zA-Z0-9]*/.test(
-        projectURL
-      )
-    ) {
-      setError("Invalid GitHub Repository URL");
-      return;
-    }
 
-    const user = firebase.auth().currentUser;
-    setError("");
+    if (sourcerName === "") {
+        setError("Username can't be blank");
+        return;
+      } 
 
-    // slice the url
-    const url = new URL(projectURL);
-    const newURL = url.pathname + url.search;
-
-    const response = await fetch(`https://api.github.com/repos${newURL}`);
-
-    if (response.status === 404) {
-      setError(`Repository does not exist, or the URL is mistyped`);
-      return;
-    }
-
-    if (response.status >= 400) {
-      setError(`The server responded with a ${response.status}`);
-      return;
-    }
-
+    const response = await fetch(`https://api.github.com/users/${sourcerName}`);
     const data = await response.json();
 
+    if (response.status === 404) {
+        setError(`@${sourcerName} does not exist`);
+        return;
+      }
+  
+      if (response.status >= 400) {
+        setError(`The server responded with a ${response.status}`);
+        return;
+      }
+
     const repoData = {
-      name: data.name,
-      full_name: data.full_name,
-      owner: data.owner.login,
-      desc: data.description,
-      avatar: data.owner.avatar_url,
-      url: data.html_url,
-      language: data.language,
-      issues: data.open_issues_count,
-      stars: data.stargazers_count,
-      archived: data.archived,
-      fork: data.fork,
-      submitted_by: user.email,
-      date_added: new Date()
+        username: data.login,
+        avatar: data.avatar_url,
+        url: data.html_url,
+        type: data.type
     };
 
-    const projectRef = db
-      .collection("repos")
-      .doc(data.owner.login.toLowerCase() + "-" + data.name.toLowerCase());
+    const projectRef = db.collection("open-sourcers").doc(sourcerName)
     const project = await projectRef.get();
 
     if (project.exists) {
-      setError("Repository already added");
-      return;
-    } else if (data.archived) {
-      setError("Repository is archived");
-      return;
-    } else if (data.open_issues <= 5) {
-      setError("Repository has under 5 issues");
-      return;
+        setError("User already added");
+        return;
     } else {
-      await projectRef.set(repoData);
-    }
+        await projectRef.set(repoData);
+      }
 
-    window.location = "/";
   };
 
   return (
@@ -130,8 +85,14 @@ const New = () => {
           <div className="main-submit-wrapper">
             <header>
               <div className="header-content">
-                <h1 className="heading">{window.location.pathname}</h1>
-                <p className="header-subtitle">{t('new.addRepoHeader')}</p>
+                <BrowserView>
+                    <h1 className="heading">💙 Wall of Open Sourcers</h1>
+                </BrowserView>
+                <MobileView>
+                    <h1 className="heading">💙 Open Sourcers</h1>
+                </MobileView>
+               
+                <p className="header-subtitle">Add yourself to the wall!</p>
               </div>
             </header>
 
@@ -142,66 +103,48 @@ const New = () => {
                 </label>
               )}
               <input
-                placeholder={t('new.addRepoPlaceholder')}
-                value={repo}
-                onKeyDown={e => something(e)}
+                placeholder="github username (ex. heybereket)"
+                value={username}
+                onKeyDown={e => enter(e)}
                 onChange={change => {
-                  setProjectURL(change.target.value);
+                  setSourcerName(change.target.value);
                 }}
               />
 
+
               {user ? (
                 <button className="submit-repo" onClick={sendData}>
-                  {t('add Repo')}
+                   Add {sourcerName > '' ? '@' + sourcerName : ''} to the wall
                 </button>
               ) : (
                 <button className="submit-repo" onClick={loginGitHub}>
-                  {t('new.signInToSubmit')}
+                  Sign in to add {sourcerName > '' ? '@' + sourcerName : ''}
                 </button>
-              )}
+              )}        
+
             </div>
             <br />
 
-            <label className="submitted-label">
-              {user ? (
-                <strong>{user.displayName}'s Submitted Repositories:</strong>
-              ) : (
-                ""
-              )}
-            </label>
-            <br />
-            <small>{user ? `Manage repositories you've submitted.` : ""}</small>
+           
 
             <div className="repos">
               {(
                 list.map(
                   (project, index) =>
-                    (user ? project.submitted_by === user.email : "") && (
-                      <div className="repo">
-                        <img
-                          alt={`${project.owner.toLowerCase()}'s logo`}
-                          className="display"
-                          src={project.avatar}
-                        />
-                        <br />
-                        <p key={index}>
-                          <span className="owner">{project.owner}</span>/
-                          <span className="name">{project.name}</span>
-                        </p>
+                  
+                   <a href={project.url} target="_blank"  rel="noreferrer">
+                    <img 
+                    key={index} 
+                    className="open-sourcer" 
+                    alt={project.username}
+                    title={`@${project.username}`}
+                    src={project.avatar}/>
+                   </a>
 
-                        <div className="category-wrapper">
-                          <button
-                            className="popular"
-                            onClick={() => deleteRepo(project.id)}
-                          >
-                            ❌ Remove Repo
-                          </button>
-                        </div>
-                      </div>
-                    )
                 )
               )}
             </div>
+           
           </div>
         </div>
       }
@@ -322,7 +265,7 @@ const New = () => {
           }
 
           .repos {
-            max-width: 960px;
+            max-width: 800px;
             margin-top: 20px;
           }
 
@@ -335,6 +278,13 @@ const New = () => {
             .repo {
               width: 320px;
             }
+          }
+
+          .open-sourcer {
+              width: 55px;
+              height: 55px;
+              border-radius: 50%;
+              margin: -5px;
           }
 
           button {
@@ -363,4 +313,4 @@ const New = () => {
   );
 };
 
-export default New;
+export default WOS;

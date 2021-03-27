@@ -9,7 +9,6 @@ import logo from "../static/oasis-logo.png";
 import "../style/App.css";
 import { filterToolsByCategory } from "../utils/filterTools";
 import { colours } from "../lib/constants.js";
-import InfiniteScroll from "react-infinite-scroll-component";
 import BackToTop from "../components/BackToTop";
 
 const Home = () => {
@@ -36,13 +35,13 @@ const Home = () => {
   const changeSearch = event => {
     setSearchQuery(event.target.value);
   };
-
+  
+ 
   useEffect(() => {
     const getRepos = async () => {
       try {
         db.collection("repos")
-          .orderBy("date_added")
-          .limit(8)
+        .orderBy('stars')
           .onSnapshot(snapshot => {
             let projects = [];
 
@@ -69,40 +68,7 @@ const Home = () => {
     getRepos();
   }, []);
 
-  const fetchMoreData = async () => {
-    const lastDoc = list[list.length - 1];
 
-    try {
-      db.collection("repos")
-        .orderBy("date_added")
-        .limit(8)
-        .startAfter(lastDoc.date_added)
-        .onSnapshot(snapshot => {
-          let projects = [...list];
-
-          if (snapshot.docs.length) {
-            snapshot.forEach(doc => {
-              projects.push({
-                id: doc.id,
-                ...doc.data()
-              });
-            });
-
-            setList(projects);
-          } else {
-            setHasMoreRepos(false);
-          }
-
-          // for (const doc of snapshot.docs)
-          //   projects = _.concat(projects, {
-          //     id: doc.id,
-          //     ...doc.data()
-          //   });
-        });
-    } catch (err) {
-      console.err(err);
-    }
-  };
 
   function formatNumber(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -182,11 +148,6 @@ const Home = () => {
         {isLoading ? (
           <Loading message="repos" />
         ) : (
-          <InfiniteScroll
-            dataLength={list.length}
-            next={fetchMoreData}
-            hasMore={hasMoreRepos}
-          >
             <div className="repos">
               {list.map((project, index) => (
                 <Link
@@ -296,14 +257,13 @@ const Home = () => {
                         ⭐ {formatNumber(project.stars)} stars
                       </button>
                       
-                      
                     </div>
                   </div>
                   </Link>
               ))}
             
             </div>
-          </InfiniteScroll>
+        
         )}
       </div>
       <BackToTop />
