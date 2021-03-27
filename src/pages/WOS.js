@@ -281,10 +281,9 @@ const WOS = () => {
           }
 
           .open-sourcer {
-              width: 55px;
-              height: 55px;
-              border-radius: 50%;
-              margin: -5px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
           }
 
           button {
