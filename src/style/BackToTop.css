@@ -1,6 +1,6 @@
 .back-to-top__icon {
-  background-color: var(--background-colour);
-  border: 1px solid var(--primary-colour-1);
+  background-color: var(--primary-colour-1);
+  color: #111;
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -9,8 +9,4 @@
   align-items: center;
   cursor: pointer;
   transition: all 0.15s ease;
-}
-
-.back-to-top__icon:hover {
-  background-color: rgb(51, 57, 64);
 }
