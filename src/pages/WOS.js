@@ -271,13 +271,12 @@ const WOS = () => {
             margin-top: 20px;
           }
 
-          .sourcer {
-            margin: -5px;
-          }
-
           @media (max-width: 550px) {
             .repo {
               width: 320px;
+            }
+            .open-sourcer {
+              margin: 10px;
             }
           }
 
