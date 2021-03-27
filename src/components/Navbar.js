@@ -31,7 +31,7 @@ const Navbar = () => {
           )}
         </div>
         <a
-          href="https://github.com/heybereket/codetribute"
+          href="https://github.com/heybereket/oasis"
           target="_blank"
           rel="norefer"
         >
