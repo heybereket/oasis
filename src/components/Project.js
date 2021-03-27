@@ -39,7 +39,7 @@ function Project(props) {
         <div>
           <Helmet>
             <title>
-              codetribute: {project.owner}/{project.name}
+              Oasis: {project.owner}/{project.name}
             </title>
           </Helmet>
 
