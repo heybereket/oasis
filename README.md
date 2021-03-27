@@ -9,8 +9,10 @@ Oasis is open to contributions, but we recommend creating an issue or replying i
 
 Please read [CONTRIBUTING.md](https://github.com/heybereket/oasis/blob/main/docs/CONTRIBUTING.md) for details on the project.
 
-## Author
-Bereket Semagn (<a href="https://twitter.com/heybereket">@heybereket</a>)
+## ⌛ Status
+- [x] Development: Started building the project, almost ready to ship!
+- [ ] Early Release: Soft Launch on Twitter + GitHub (mostly trying to fix and solve bugs)
+- [ ] Official Launch
 
 ## 💙 Contributors
 
