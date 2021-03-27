@@ -6,7 +6,7 @@
 		"searchProjectsPlaceholder": "Buscar proyectos..."
 	},
 	"new": {
-		"addRepoHeader": "Agregar un nuevo repositorio a CodeTribute",
+		"addRepoHeader": "Agregar un nuevo repositorio a Oasis",
 		"addRepo": "Agregar repositorio",
 		"addRepoPlaceholder": "URL completa (ejemplo https://github.com/heybereket/oasis)",
 		"signInToSubmit": "Inicia sesión para hacer un envío"
