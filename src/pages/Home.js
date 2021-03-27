@@ -10,6 +10,7 @@ import "../style/App.css";
 import { filterToolsByCategory } from "../utils/filterTools";
 import { colours } from "../lib/constants.js";
 import InfiniteScroll from "react-infinite-scroll-component";
+import BackToTop from "../components/BackToTop";
 
 const Home = () => {
   // makes a list of just the categories of the tools
@@ -305,6 +306,7 @@ const Home = () => {
           </InfiniteScroll>
         )}
       </div>
+      <BackToTop />
       <Footer />
     </div>
   );
