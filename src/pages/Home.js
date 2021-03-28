@@ -1,16 +1,25 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar, Footer, Loading } from '../components'
-import tools from '../data/tools.json'
 import _ from 'lodash'
 import firebase from '../data/firebase'
 import logo from '../static/oasis-logo.png'
-
 import '../style/App.css'
-import { filterToolsByCategory } from '../utils/filterTools'
 import { colours } from '../lib/constants.js'
 import BackToTop from '../components/BackToTop'
 import { useTranslation, Trans } from 'react-i18next'
+
+const Button = ({ category, isActive, onClick }) => {
+  return (
+    <button
+      className={`filter-button ${isActive ? 'filter-active' : ''}`}
+      title={category}
+      onClick={() => onClick(category)}
+    >
+      {category}
+    </button>
+  )
+}
 
 const Home = () => {
   // makes a list of just the categories of the tools
@@ -18,7 +27,6 @@ const Home = () => {
   const { t } = useTranslation()
   const [list, setList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [hasMoreRepos, setHasMoreRepos] = useState(true)
 
   const allCategories = list
     .filter(project => project.language != null)
@@ -26,13 +34,16 @@ const Home = () => {
   const countCategories = _.countBy(allCategories)
   const [currCategory, setCurrCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
-  const [visibleTools, setVisibleTools] = useState(tools)
-  const user = firebase.auth().currentUser
 
-  // if searchQuery or currCategory changes, then update visibleTools
-  useEffect(() => {
-    setVisibleTools(filterToolsByCategory(tools, currCategory))
-  }, [searchQuery, currCategory])
+  const projectsFilteredByCategoryAndSearchQuery = list.filter(project => {
+    const projectFullname = project.owner + project.name
+    if (!projectFullname.includes(searchQuery)) return false
+    if (currCategory === 'All') return true
+    if (project.language === currCategory) return true
+    return false
+  })
+
+  const user = firebase.auth().currentUser
 
   const changeSearch = event => {
     setSearchQuery(event.target.value)
@@ -73,20 +84,6 @@ const Home = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
-  const Button = ({ category }) => {
-    return (
-      <button
-        className={`filter-button ${category === currCategory ? 'filter-active' : ''}`}
-        title={category}
-        onClick={() => {
-          setCurrCategory(category)
-        }}
-      >
-        {category}
-      </button>
-    )
-  }
-
   return (
     <div>
       <Navbar />
@@ -112,16 +109,27 @@ const Home = () => {
               onChange={changeSearch}
             />
             <div className="filter-wrapper">
-              <Button category="All" />
+              <Button
+                category="All"
+                onClick={category => setCurrCategory(category)}
+                isActive={currCategory === 'All'}
+              />
+
               {Object.keys(countCategories).map(category => (
-                <Button key={category} category={category} count={countCategories[category]} />
+                <Button
+                  key={category}
+                  category={category}
+                  isActive={category === currCategory}
+                  onClick={category => setCurrCategory(category)}
+                  count={countCategories[category]}
+                />
               ))}
             </div>
           </div>
         </div>
       </header>
 
-      {visibleTools.length === 0 && (
+      {projectsFilteredByCategoryAndSearchQuery.length === 0 && searchQuery.length > 0 && (
         <center>
           <span className="no-results">
             <Trans
@@ -139,7 +147,7 @@ const Home = () => {
           <Loading message="repos" />
         ) : (
           <div className="repos">
-            {list.map((project, index) => (
+            {projectsFilteredByCategoryAndSearchQuery.map((project, index) => (
               <Link
                 key={project.url + index}
                 to={`/r/${project.owner}/${project.name}`}
