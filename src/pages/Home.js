@@ -7,7 +7,7 @@ import logo from '../static/oasis-logo.png'
 import '../style/App.css'
 import { colours } from '../lib/constants.js'
 import BackToTop from '../components/BackToTop'
-import { useTranslation } from 'react-i18next'
+import { useTranslation, Trans } from 'react-i18next'
 
 const Button = ({ category, isActive, onClick }) => {
   return (
@@ -132,7 +132,12 @@ const Home = () => {
       {projectsFilteredByCategoryAndSearchQuery.length === 0 && searchQuery.length > 0 && (
         <center>
           <span className="no-results">
-            😥 No results found for <strong>{searchQuery}</strong>.
+            <Trans
+              t={t}
+              i18nKey="home.visibleToolsNoContent"
+              values={{ query: searchQuery }}
+              components={{ bold: <strong /> }}
+            />
           </span>
         </center>
       )}
@@ -176,7 +181,6 @@ const Home = () => {
                     src={project.avatar}
                     title={project.owner}
                   />
-
                   <p key={index}>
                     <span className="owner">{project.owner}</span>/
                     <span className="name">{project.name}</span>
