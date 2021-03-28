@@ -1,0 +1,26 @@
+{
+  "common": {},
+  "home": {
+    "browseProjects": "Plus de {{total}}+ projets open-source",
+    "all": "Tous",
+    "searchProjectsPlaceholder": "Rechercher un projet..."
+  },
+  "new": {
+    "addRepoHeader": "Ajouter un nouveau projet à Oasis",
+    "addRepo": "Ajouter un nouveau projet",
+    "addRepoPlaceholder": "L'url complète (exemple https://github.com/heybereket/oasis)",
+    "signInToSubmit": "Connectez vous pour soumettre un projet"
+  },
+  "header": {
+    "submit": "Ajouter un projet",
+    "signInUp": "Se connecter/S'enregistrer",
+    "signOut": "Se déconnecter"
+  },
+  "footer": {
+    "oasisBy": "créé par",
+    "followUsOn": "suivez nous sur",
+    "twitter": "twitter",
+    "openSourceOn": "contribuez sur",
+    "github": "github"
+  }
+}
