@@ -3,7 +3,8 @@
   "home": {
     "browseProjects": "Plus de {{total}}+ projets open-source",
     "all": "Tous",
-    "searchProjectsPlaceholder": "Rechercher un projet..."
+    "searchProjectsPlaceholder": "Rechercher un projet...",
+    "visibleToolsNoContent": "😥 Aucun contenu trouvé pour <bold>{{query}}</bold>."
   },
   "new": {
     "addRepoHeader": "Ajouter un nouveau projet à Oasis",

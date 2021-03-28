@@ -3,7 +3,8 @@
   "home": {
     "browseProjects": "Browse {{total}}+ open source projects.",
     "searchProjectsPlaceholder": "Search projects...",
-    "all": "All"
+    "all": "All",
+    "visibleToolsNoContent": "😥 No results found for <bold>{{query}}</bold>."
   },
   "new": {
     "addRepoHeader": "Add a new repo to Oasis",
@@ -12,7 +13,7 @@
     "signInToSubmit": "Sign In to Submit"
   },
   "header": {
-    "submit" : "Submit",
+    "submit": "Submit",
     "signInUp": "Sign in/up",
     "signOut": "Sign Out"
   },
