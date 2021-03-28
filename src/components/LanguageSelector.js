@@ -6,6 +6,7 @@ const LanguageSelector = () => {
   const languages = [
     { value: 'en', label: '🇺🇸 English' },
     { value: 'es', label: '🇨🇴 Español' },
+    { value: 'fr', label: '🇫🇷 Français' },
   ];
   const { i18n } = useTranslation();
 

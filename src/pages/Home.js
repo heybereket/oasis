@@ -10,10 +10,12 @@ import "../style/App.css";
 import { filterToolsByCategory } from "../utils/filterTools";
 import { colours } from "../lib/constants.js";
 import BackToTop from "../components/BackToTop";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   // makes a list of just the categories of the tools
   const db = firebase.firestore();
+  const { t } = useTranslation();
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasMoreRepos, setHasMoreRepos] = useState(true);
@@ -118,7 +120,7 @@ const Home = () => {
               type="text"
               autoComplete="off"
               spellCheck="false"
-              placeholder="Search projects..."
+              placeholder={t('home.searchProjectsPlaceholder')}
               value={searchQuery}
               onChange={changeSearch}
             />
