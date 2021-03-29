@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 require("dotenv").config();
-const githubUsername = require('github-username');
+const { Octokit } = require("@octokit/rest");
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -15,12 +15,16 @@ const config = {
 
 export function login(provider) {
     firebase.auth().signInWithPopup(provider).then(async (result) => {
-    
     const db = firebase.firestore();
-    const user = result.user
-    const username = await githubUsername(user.email)
-    const response = await fetch(`https://api.github.com/users/${username}`);
-    const data = await response.json();
+
+    var credential = result.credential;
+    var token = credential.accessToken;
+
+    const octokit = new Octokit({
+      auth: token,
+    });
+
+    const { data } = await octokit.request("/user");
 
     const today = new Date();
     const year = today.getFullYear(); 
@@ -39,7 +43,7 @@ export function login(provider) {
       const projectRef = db.collection("users").doc(data.login)
       projectRef.set(userData)
 
-      window.location.reload()
+      
   })
 }
 
