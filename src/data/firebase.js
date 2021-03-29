@@ -25,6 +25,7 @@ export function login(provider) {
       const userData = {
         username: data.login,
         name: data.name,
+        handle: data.name.replace(/ .*/,'').toLowerCase(),
         avatar: data.avatar_url,
         bio: data.bio,
         url: data.html_url,
