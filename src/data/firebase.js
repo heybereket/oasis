@@ -18,10 +18,13 @@ export function login(provider) {
     
     const db = firebase.firestore();
     const user = result.user
-    console.log(user)
     const username = await githubUsername(user.email)
     const response = await fetch(`https://api.github.com/users/${username}`);
     const data = await response.json();
+
+    const today = new Date();
+    const year = today.getFullYear(); 
+    const month = today.toLocaleString('default', { month: 'long' })
 
     const userData = {
       username: data.login,
@@ -30,6 +33,7 @@ export function login(provider) {
       bio: data.bio,
       url: data.html_url,
       location: data.location,
+      created: `${month} ${year}`
       };
     
       const projectRef = db.collection("users").doc(data.login)

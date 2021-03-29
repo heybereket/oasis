@@ -92,13 +92,13 @@ function User(props) {
 
             </header>
 
-<p className="recently-submitted"><strong>Recently submitted repos:</strong></p>
+		<p className="recently-submitted"><strong>Recently submitted repos:</strong></p>
 
 
 			{empty ? (
 					<div>
 					
-                      <small className="not-submitted"><strong>@{user.username}</strong> has not submitted any repos yet.</small>
+                      <small className="not-submitted"><strong className="handle-ns">@{user.username}</strong> has not submitted any repos yet.</small>
 					  </div>
                     ) : (
 						<div className="repos">
@@ -225,10 +225,10 @@ function User(props) {
 			<style jsx>
         {`
 		body {
-			background-color: #111418;
 			text-align: center; 
 			align-items: center;
 			justify-content: center;
+			overflow: hidden;
 		}
 
 		.avatar {
@@ -253,6 +253,10 @@ function User(props) {
 			background-color: #292d33;
 			border: none; 
 			font-family: monospace;
+			border-radius: 18px;
+			padding: 8px 12px;
+			font-size: 12px;
+			margin: 5px;
 		}
 
 		.location {
@@ -260,7 +264,11 @@ function User(props) {
 		}
 
 		.not-submitted {
-			color: lightgray;
+			color: #dee3ea;
+		}
+
+		.handle-ns {
+			color: #8b8f98;
 		}
 
 		.recently-submitted {
