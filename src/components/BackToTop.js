@@ -1,25 +1,30 @@
 import React from 'react';
 import { FaChevronUp } from 'react-icons/fa';
-import ScrollToTop from 'react-scroll-up';
-import propTypes from 'prop-types';
 import '../style/BackToTop.css';
 
-const BackToTop = ({ duration }) => {
+const BackToTop = (options) => {
+
+  window.onscroll = function (e) {
+    if (window.scrollY > options.showUnder) {
+      document.querySelector(".ScrollToTop").classList.add('open')
+    } else {
+      document.querySelector(".ScrollToTop").classList.remove('open')
+    }
+  };
+
+  const ScrollToTop = () => {
+    window.scrollTo({top: 100, behavior: 'smooth'})
+  }
+
   return (
-    <ScrollToTop duration={duration} style={{ zIndex: 9999 }} showUnder={500}>
-      <span className="back-to-top__icon">
+    <div className="ScrollToTop" onClick={ScrollToTop}>
         <FaChevronUp size={22}/>
-      </span>
-    </ScrollToTop>
+    </div>
   );
 }
 
-BackToTop.propTypes = {
-  duration: propTypes.number
-};
-
 BackToTop.defaultProps = {
-  duration: 500
+  showUnder: 500
 };
 
 export default BackToTop;
