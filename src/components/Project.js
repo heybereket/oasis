@@ -119,7 +119,7 @@ function Project(props) {
                   </button>
                 </div>
                 <div className="hyperlink">
-                  <button className="link"><a href={`https://github.com/${project.owner}/${project.name}`} target="__blank" ></a> Visit {project.name} </button>
+                  <a href={`https://github.com/${project.owner}/${project.name}`} target="__blank" ><button className="link">Visit {project.name} </button></a>
                 </div>
                 <span className="description">
                   {project.desc}
