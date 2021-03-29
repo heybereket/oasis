@@ -1,8 +1,7 @@
 .image-with-text {
-  position: relative;
   margin: 1em auto 0;
   width: 900px;
-  min-height: 387px;
+  min-height: 60rem;
   border-radius: 10px;
   height: 300px;
   overflow: hidden;
@@ -14,16 +13,31 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  padding: 0 1rem 0 1rem;
 }
 
 .data-wrapper {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin: 2rem 0rem 1rem 0rem;
   bottom: 0;
-  top: 35%;
-  position: absolute;
+  top: 60%;
+}
+
+.description {
+  font-size: 1rem;
+}
+
+.link {
+  padding: 2px 4px 2px 4px;
+}
+
+.logo {
+  border-radius: 50%;
+  top: 0;
+  margin: 1rem 0 2rem 0;
 }
 
 @media (max-width: 550px) {
@@ -34,9 +48,8 @@
 }
 
 .project-name-heading {
-  position: absolute;
   text-align: center;
   top: 32.5%;
   width: 100%;
-  margin: 0 auto;
+  margin: 2rem 0 0 0;
 }

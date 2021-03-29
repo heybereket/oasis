@@ -32,6 +32,10 @@ function Project(props) {
     }
   });
 
+  const formatNumber = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
     <div>
       {isLoading ? (
@@ -48,29 +52,45 @@ function Project(props) {
 
           <div class="image-with-text">
             <h1 className="project-name-heading">
+              <img src={project.avatar} className="logo" />
+              <br />
               {project.owner}/{project.name}
-            </h1>
-
-            <div className="data-wrappper">
-              <div className="language">
-                {project.language in colours && (
-                  <button className="language">
-                    <svg viewBox="0 0 80 80" width="10" height="10">
-                      <circle
-                        style={{ fill: colours[project.language] }}
-                        className="circle"
-                        cx="40"
-                        cy="40"
-                        r="38"
-                      />
-                    </svg>
+              <div className="data-wrappper">
+                <div className="language">
+                  {project.language in colours && (
+                    <button className="language">
+                      <svg viewBox="0 0 80 80" width="10" height="10">
+                        <circle
+                          style={{ fill: colours[project.language] }}
+                          className="circle"
+                          cx="40"
+                          cy="40"
+                          r="38"
+                        />
+                      </svg>
                           &nbsp;
-                    {project.language}
-                  </button>
-                )}
+                      {project.language}
+                    </button>
+                  )}
 
-                {!(project.language in colours) &&
-                  project.language != null && (
+                  {!(project.language in colours) &&
+                    project.language != null && (
+                      <button className="language">
+                        <svg viewBox="0 0 80 80" width="10" height="10">
+                          <circle
+                            style={{ fill: "#fff" }}
+                            className="circle"
+                            cx="40"
+                            cy="40"
+                            r="38"
+                          />
+                        </svg>
+                            &nbsp;
+                        {project.language}
+                      </button>
+                    )}
+
+                  {project.language === null && (
                     <button className="language">
                       <svg viewBox="0 0 80 80" width="10" height="10">
                         <circle
@@ -81,27 +101,32 @@ function Project(props) {
                           r="38"
                         />
                       </svg>
-                            &nbsp;
-                      {project.language}
+                          &nbsp; N/A
                     </button>
                   )}
+                  {
 
-                {project.language === null && (
-                  <button className="language">
-                    <svg viewBox="0 0 80 80" width="10" height="10">
-                      <circle
-                        style={{ fill: "#fff" }}
-                        className="circle"
-                        cx="40"
-                        cy="40"
-                        r="38"
-                      />
-                    </svg>
-                          &nbsp; N/A
+                    (project.issues > 1000) ? <button className="issues">
+                      🚨 1k+ issues
+                    </button> :
+
+                      <button className="issues">
+                        🚨 {project.issues} issues
+                      </button>
+                  }
+                  <button className="stars">
+                    ⭐ {formatNumber(project.stars)} stars
                   </button>
-                )}
+                </div>
+                <div className="hyperlink">
+                  <button className="link"><a href={`https://github.com/${project.owner}/${project.name}`} target="__blank" ></a> Visit {project.name} </button>
+                </div>
+                <span className="description">
+                  {project.desc}
+                </span>
               </div>
-            </div>
+            </h1>
+
           </div>
         </div>
       )}
