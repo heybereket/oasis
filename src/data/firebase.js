@@ -16,7 +16,6 @@ const config = {
 export function login(provider) {
     firebase.auth().signInWithPopup(provider).then(async (result) => {
     const db = firebase.firestore();
-
     var credential = result.credential;
     var token = credential.accessToken;
 
@@ -38,7 +37,7 @@ export function login(provider) {
       url: data.html_url,
       location: data.location,
       created: `${month} ${year}`
-      };
+    };
     
       const projectRef = db.collection("users").doc(data.login)
       projectRef.set(userData)

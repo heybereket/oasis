@@ -19,7 +19,18 @@ const New = () => {
 
   const search = useLocation().search;
   const repo = new URLSearchParams(search).get('repo');
-
+  
+  // Check if user is signed in
+  // useEffect(() => {
+  //   firebase.auth().onAuthStateChanged(function(user) {
+  //     if (user) {
+          
+  //     } else {
+  //         loginGitHub()
+  //     }
+  //   });
+  // }, []);
+ 
 
   const something = event => {
     if (event.keyCode === 13) {
