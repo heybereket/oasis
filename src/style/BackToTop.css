@@ -1,4 +1,9 @@
-.back-to-top__icon {
+.ScrollToTop {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  z-index: 9999;
+  opacity: 0;
   background-color: var(--primary-colour-1);
   color: #111;
   border-radius: 50%;
@@ -7,6 +12,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   transition: all 0.15s ease;
+  pointer-events: none;
 }
+
+.ScrollToTop.open {opacity: 1; pointer-events: all; cursor: pointer;}
