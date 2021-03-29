@@ -14,11 +14,10 @@ function User(props) {
   const [empty, setEmpty] = useState(true)
   const [isLoading, setIsLoading] = useState(true);
 
-  const handle = props.match.params.handle;
-  
+  const username = props.match.params.username;
   var docRef = db
     .collection("users")
-    .where("handle", "==", handle)
+    .where("username", "==", username)
 
   docRef.get().then(querySnapshot => {
     const empty = querySnapshot.empty;
@@ -35,7 +34,7 @@ function User(props) {
   });
 
   useEffect( () => {
-    db.collection('repos').where("submitted_by", "==", handle)
+    db.collection('repos').where("submitted_by", "==", username)
           .onSnapshot(snapshot => {
 
 			setEmpty(snapshot.empty)

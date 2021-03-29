@@ -18,21 +18,20 @@ export function login(provider) {
     
     const db = firebase.firestore();
     const user = result.user
+    console.log(user)
     const username = await githubUsername(user.email)
     const response = await fetch(`https://api.github.com/users/${username}`);
     const data = await response.json();
 
-      const userData = {
-        username: data.login,
-        name: data.name,
-        handle: data.name.replace(/ .*/,'').toLowerCase(),
-        avatar: data.avatar_url,
-        bio: data.bio,
-        url: data.html_url,
-        email: user.email,
-        location: data.location,
-        twitter: data.twitter_username,
-        profile: `https://oasis.sh/${data.login}`
+    const userData = {
+      username: data.login,
+      name: data.name,
+      avatar: data.avatar_url,
+      bio: data.bio,
+      url: data.html_url,
+      email: user.email,
+      location: data.location,
+      twitter: data.twitter_username
       };
     
       const projectRef = db.collection("users").doc(data.login)

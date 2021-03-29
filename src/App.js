@@ -16,7 +16,7 @@ function App() {
             <Route exact path="/new" component={New} />
             <Route exact path="/open-sourcers" component={WOC} />
             <Route exact path={`/r/:owner/:name`} component={Project} />
-            <Route exact path={`/u/:handle`} component={User} />
+            <Route exact path={`/u/:username`} component={User} />
             <Route path="*" component={InvalidPage} />
           </Switch>
         </div>
