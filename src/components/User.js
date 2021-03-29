@@ -80,6 +80,9 @@ function User(props) {
 				{user.bio != null && <p className="bio">{user.bio}</p>}
                 {user.bio === null && <p className="bio">No bio created.</p>}
 
+				
+				<small className="joined">🏆 Joined {user.created}</small> <br/>
+
 			  <div className="category-wrapper">
 			  <a href={`https://github.com/${user.username}`} target="_blank" rel="noreferrer">
 						<button className="github">👋🏻 @{user.username}</button>
@@ -245,8 +248,13 @@ function User(props) {
 
         .bio {
 			margin-top: 3px;
-			color: #dee3ea;
+			color: #cfd6e6;
 			padding: 0 15px;
+			margin-bottom: 5px;
+		}
+
+		.joined {
+			color: rgba(168,179,207,0.64);
 		}
 
 		.twitter, .github, .location {
@@ -257,6 +265,7 @@ function User(props) {
 			padding: 8px 12px;
 			font-size: 12px;
 			margin: 5px;
+			margin-top: -10px;
 		}
 
 		.location {
