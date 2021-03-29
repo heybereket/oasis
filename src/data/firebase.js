@@ -29,9 +29,7 @@ export function login(provider) {
       avatar: data.avatar_url,
       bio: data.bio,
       url: data.html_url,
-      email: user.email,
       location: data.location,
-      twitter: data.twitter_username
       };
     
       const projectRef = db.collection("users").doc(data.login)
