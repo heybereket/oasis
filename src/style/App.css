@@ -7,7 +7,7 @@
 }
 
 :root {
-  --background-colour: #111111;
+  --background-colour: #111;
   --default-dark-colour: #131313;
   --primary-colour-1: #dee3ea;
   --primary-colour-2: #eee;
@@ -158,7 +158,7 @@ a {
   height: 335px;
   border-radius: 10px;
   margin-bottom: 1rem;
-  border: 1px solid #5f6368;
+  border: 1px solid #5f6364;
   background-color: rgba(255, 255, 255, 0.04);
   opacity: 1;
   transition: all 0.15s ease;
@@ -254,11 +254,6 @@ button {
   transition: all 0.15s ease;
   margin-bottom: 10px;
   margin-right: 8px;
-}
-
-::selection {
-  background-color: #fff;
-  color: var(--primary-colour-1);
 }
 
 ::-webkit-scrollbar {

@@ -4,11 +4,11 @@ import _ from "lodash";
 import firebase, { loginGitHub } from "../data/firebase";
 import { Navbar, Loading } from "../components";
 import { useLocation } from 'react-router-dom'
-
 // import utility functions
 import { deleteRepo } from "../utils/controls";
 import { useTranslation } from "react-i18next";
 
+const githubUsername = require('github-username');
 const New = () => {
   var db = firebase.firestore();
   const [list, setList] = useState([]);
@@ -84,6 +84,10 @@ const New = () => {
 
     const data = await response.json();
 
+    const username = await githubUsername(user.email)
+    const response_data = await fetch(`https://api.github.com/users/${username}`);
+    const username_data = await response_data.json();
+
     const repoData = {
       name: data.name,
       full_name: data.full_name,
@@ -96,7 +100,7 @@ const New = () => {
       stars: data.stargazers_count,
       archived: data.archived,
       fork: data.fork,
-      submitted_by: user.email,
+      submitted_by: username_data.login,
       date_added: new Date()
     };
 

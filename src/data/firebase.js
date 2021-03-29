@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 require("dotenv").config();
+const githubUsername = require('github-username');
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -13,7 +14,30 @@ const config = {
 };
 
 export function login(provider) {
-  return firebase.auth().signInWithRedirect(provider)
+    firebase.auth().signInWithPopup(provider).then(async (result) => {
+    
+    const db = firebase.firestore();
+    const user = result.user
+    const username = await githubUsername(user.email)
+    const response = await fetch(`https://api.github.com/users/${username}`);
+    const data = await response.json();
+
+      const userData = {
+        username: data.login,
+        name: data.name,
+        avatar: data.avatar_url,
+        bio: data.bio,
+        url: data.html_url,
+        email: user.email,
+        location: data.location,
+        twitter: data.twitter_username,
+        profile: `https://oasis.sh/${data.login}`
+      };
+    
+      const projectRef = db.collection("users").doc(data.login)
+      projectRef.set(userData)
+  
+  })
 }
 
 export function loginGitHub() {
@@ -31,7 +55,6 @@ export function logout() {
     .then(() => {
       window.location.reload();
     })
-    .catch(error => {});
 }
 
 firebase.initializeApp(config);

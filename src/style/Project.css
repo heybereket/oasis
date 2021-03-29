@@ -1,29 +1,19 @@
-.image-with-text {
-  position: relative;
-  margin: 1em auto 0;
-  width: 900px;
-  min-height: 387px;
-  border-radius: 10px;
-  height: 300px;
-  overflow: hidden;
-  border: 1px solid #5f6368;
-  background-color: rgba(255, 255, 255, 0.04);
-  font-family: "Inter";
-  color: #fff;
-  font-size: 50px;
+.verified {
+	width: 18px;
 }
 
-@media (max-width: 550px) {
-  .image-with-text {
-    width: 350px;
-    height: 350px;
-  }
+.display-name {
+	margin-bottom: -0px; 
 }
 
-.project-name-heading {
-  position: absolute;
-  text-align: center;
-  top: 32.5%;
-  width: 100%;
-  margin: 0 auto;
+.bio {
+	margin-bottom: -5px;
+}
+
+.avatar {
+	border-radius: 50%;
+	width: 75px;
+	height: 75px;
+	margin-bottom: 5px;
+	margin-bottom: -10px;
 }

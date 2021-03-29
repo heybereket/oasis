@@ -45,11 +45,47 @@ function Project(props) {
 
           <Navbar />
 
-          <div class="image-with-text">
-            <h1 className="project-name-heading">
-              {project.owner}/{project.name}
-            </h1>
-          </div>
+          <div class="container">
+	<div class="innerwrap">
+		<section class="section1 clearfix">
+			<div>
+				<div class="row grid clearfix">
+					<div class="col2 first">
+						<img src="http://images.contactmusic.com/newsimages/david_beckham_1133321.jpg" alt=""/>
+						<h1>david beckham</h1>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+						<span>Follow</span>
+					</div>
+					<div class="col2 last">
+						<div class="grid clearfix">
+							<div class="col3 first">
+								<h1>694</h1>
+								<span>Following</span>
+							</div>
+							<div class="col3"><h1>452</h1>
+							<span>Likes</span></div>
+							<div class="col3 last"><h1>1207</h1>
+							<span>Bookmarks</span></div>
+						</div>
+					</div>
+				</div>
+				<div class="row clearfix">
+					<ul class="row2tab clearfix">
+						<li><i class="fa fa-list-alt"></i> My posts </li>
+						<li><i class="fa fa-heart"></i> My likes </li>
+						<li><i class="fa fa-check"></i> Following </li>
+						<li><i class="fa fa-thumbs-o-up "></i> Suggestions </li>
+					</ul>
+				</div>
+			</div>
+			<span class="smalltri">
+				
+			<i class="fa fa-star"></i>
+			</span>
+		</section>
+
+	</div>
+</div>	
         </div>
       )}
     </div>
