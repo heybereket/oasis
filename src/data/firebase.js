@@ -43,7 +43,7 @@ export function login(provider) {
       const projectRef = db.collection("users").doc(data.login)
       projectRef.set(userData)
 
-      
+      window.location.reload()
   })
 }
 
