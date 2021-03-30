@@ -29,6 +29,12 @@ export function login(provider) {
     const year = today.getFullYear(); 
     const month = today.toLocaleString('default', { month: 'long' })
 
+    const prefix = 'https://';
+    if (data.blog.substr(0, prefix.length) !== prefix)
+    {
+        data.blog = prefix + data.blog;
+    }
+
     const userData = {
       username: data.login,
       name: data.name,
@@ -36,13 +42,15 @@ export function login(provider) {
       bio: data.bio,
       url: data.html_url,
       location: data.location,
+      twitter: data.twitter_username,
+      link: data.blog,
       created: `${month} ${year}`
     };
     
       const projectRef = db.collection("users").doc(data.login)
       projectRef.set(userData)
 
-      window.location.reload()
+     
   })
 }
 

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { colours } from '../lib/constants'
 import Navbar from "./Navbar";
 import "../style/Project.css";
-import { Link } from 'react-router-dom' 
 import Loading from './Loading'
+import { FaGithub, FaTwitter, FaLink } from 'react-icons/fa';
 
 function User(props) {
   const db = firebase.firestore();
@@ -84,11 +84,22 @@ function User(props) {
 				<small className="joined">🏆 Joined {user.created}</small> <br/>
 
 			  <div className="category-wrapper">
-			  <a href={`https://github.com/${user.username}`} target="_blank" rel="noreferrer">
-						<button className="github">👋🏻 @{user.username}</button>
+			  <a className="social" href={`https://github.com/${user.username}`} target="_blank" rel="noreferrer">
+						<FaGithub size={25}/>
 			  </a>
 			  
-				<button className="location">🔥 {user.location}</button>
+			  {user.twitter != null && 
+			 <a className="social" href={`https://twitter.com/${user.twitter}`} target="_blank" rel="noreferrer">
+			 <FaTwitter size={25}/>
+   			</a>
+			  }
+
+			{user.link != null && 
+			 <a className="social" href={`${user.link}`} target="_blank" rel="noreferrer">
+			 <FaLink size={25}/>
+   			</a>
+			  }
+
                   </div>
 
               </div>
@@ -111,11 +122,6 @@ function User(props) {
 						  <div className="repos">
 							  
 							{list.map((project, index) => (
-							  <Link
-								key={project.url + index}
-								to={`/r/${project.owner}/${project.name}`}
-								rel="noreferrer"
-							  >
 								<div className="repo">
 								  {project.fork === true && (
 									<div
@@ -207,12 +213,9 @@ function User(props) {
 									) : (
 									  <button className="issues">🚨 {project.issues} issues</button>
 									)}
-				
-									<br />
 								   
 								  </div>
 								</div>
-							  </Link>
 							))}
 						  </div>
 						)}
@@ -257,19 +260,8 @@ function User(props) {
 			color: rgba(168,179,207,0.64);
 		}
 
-		.twitter, .github, .location {
-			background-color: #292d33;
-			border: none; 
-			font-family: monospace;
-			border-radius: 18px;
-			padding: 8px 12px;
-			font-size: 12px;
-			margin: 5px;
-			margin-top: -10px;
-		}
-
-		.location {
-			cursor: text;
+		.social {
+			margin: 8px;
 		}
 
 		.not-submitted {
