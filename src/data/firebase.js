@@ -3,6 +3,7 @@ import "firebase/firestore";
 import "firebase/auth";
 require("dotenv").config();
 const { Octokit } = require("@octokit/rest");
+const githubUsername = require('github-username');
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -16,39 +17,51 @@ const config = {
 export function login(provider) {
     firebase.auth().signInWithPopup(provider).then(async (result) => {
     const db = firebase.firestore();
-    var credential = result.credential;
-    var token = credential.accessToken;
 
-    const octokit = new Octokit({
-      auth: token,
+    const user = firebase.auth().currentUser;
+    const username = await githubUsername(user.email)
+    var docRef = db.collection("users").doc(username);
+
+    docRef.get().then(async (doc) => {
+      if (!doc.exists) {
+        const db = firebase.firestore();
+        var credential = result.credential;
+        var token = credential.accessToken;
+    
+        const octokit = new Octokit({
+          auth: token,
+        });
+    
+        const { data } = await octokit.request("/user");
+    
+        const today = new Date();
+        const year = today.getFullYear(); 
+        const month = today.toLocaleString('default', { month: 'long' })
+    
+        const prefix = 'https://';
+        if (data.blog.substr(0, prefix.length) !== prefix)
+        {
+            data.blog = prefix + data.blog;
+        }
+    
+        const userData = {
+          username: data.login,
+          name: data.name,
+          avatar: data.avatar_url,
+          bio: data.bio,
+          url: data.html_url,
+          location: data.location,
+          twitter: data.twitter_username,
+          link: data.blog,
+          created: `${month} ${year}`
+        };
+        
+          const projectRef = db.collection("users").doc(data.login)
+          projectRef.set(userData)
+      }
     });
 
-    const { data } = await octokit.request("/user");
-
-    const today = new Date();
-    const year = today.getFullYear(); 
-    const month = today.toLocaleString('default', { month: 'long' })
-
-    const prefix = 'https://';
-    if (data.blog.substr(0, prefix.length) !== prefix)
-    {
-        data.blog = prefix + data.blog;
-    }
-
-    const userData = {
-      username: data.login,
-      name: data.name,
-      avatar: data.avatar_url,
-      bio: data.bio,
-      url: data.html_url,
-      location: data.location,
-      twitter: data.twitter_username,
-      link: data.blog,
-      created: `${month} ${year}`
-    };
     
-      const projectRef = db.collection("users").doc(data.login)
-      projectRef.set(userData)
 
      
   })
