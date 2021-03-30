@@ -9,11 +9,20 @@ const Me = () => {
     firebase.auth().onAuthStateChanged(async function(user) {
       if (user) {
         const username = await githubUsername(user.email)
+        const db = firebase.firestore()
 
-        window.location = `/u/${username}`
-      } else {
-        loginGitHub()
-      }
+        var docRef = db.collection("users").doc(username);
+
+        docRef.get(username).then((doc) => {
+            if (doc.exists) {
+                window.location = `/u/${doc.data().username}`
+            } else {
+                loginGitHub()
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    }
     });
   }, []);
 
