@@ -19,14 +19,14 @@ const Navbar = () => {
           </div>
         </Link>
         <div className="navbar__item">
-          {" "}
+          
           {user ? (
             <span onClick={logout}>
-              {t('header.signOut')}
+              Sign Out
             </span>
           ) : (
             <span onClick={loginGitHub}>
-              {t('header.signInUp')}
+              Sign up/in
             </span>
           )}
         </div>

@@ -53,6 +53,7 @@ export function login(provider) {
           location: data.location,
           twitter: data.twitter_username,
           link: data.blog,
+          email: data.email,
           created: `${month} ${year}`
         };
         
@@ -61,8 +62,7 @@ export function login(provider) {
       }
     });
 
-    
-
+    window.location.reload()
      
   })
 }
