@@ -7,8 +7,8 @@ import { useLocation } from 'react-router-dom'
 // import utility functions
 import { deleteRepo } from "../utils/controls";
 import { useTranslation } from "react-i18next";
-
 const githubUsername = require('github-username');
+
 const New = () => {
   var db = firebase.firestore();
   const [list, setList] = useState([]);
@@ -16,6 +16,8 @@ const New = () => {
   const user = firebase.auth().currentUser;
   const [projectURL, setProjectURL] = useState("");
   const { t } = useTranslation();
+
+  const [repoData, setRepoData] = useState("")
 
   const search = useLocation().search;
   const repo = new URLSearchParams(search).get('repo');
@@ -96,42 +98,48 @@ const New = () => {
     const data = await response.json();
 
     const username = await githubUsername(user.email)
-    const response_data = await fetch(`https://api.github.com/users/${username}`);
-    const username_data = await response_data.json();
+    const db = firebase.firestore()
 
-    const repoData = {
-      name: data.name,
-      full_name: data.full_name,
-      owner: data.owner.login,
-      desc: data.description,
-      avatar: data.owner.avatar_url,
-      url: data.html_url,
-      language: data.language,
-      issues: data.open_issues_count,
-      stars: data.stargazers_count,
-      archived: data.archived,
-      fork: data.fork,
-      submitted_by: username_data.login,
-      date_added: new Date()
-    };
+    var docRef = db.collection("users").doc(username);
 
-    const projectRef = db
-      .collection("repos")
-      .doc(data.owner.login.toLowerCase() + "-" + data.name.toLowerCase());
-    const project = await projectRef.get();
+    docRef.get(username).then(async (doc) => {
+      if (doc.exists) {
 
-    if (project.exists) {
-      setError("Repository already added");
-      return;
-    } else if (data.archived) {
-      setError("Repository is archived");
-      return;
-    } else if (data.open_issues <= 5) {
-      setError("Repository has under 5 issues");
-      return;
-    } else {
-      await projectRef.set(repoData);
-    }
+      const repoData = {
+        name: data.name,
+        full_name: data.full_name,
+        owner: data.owner.login,
+        desc: data.description,
+        avatar: data.owner.avatar_url,
+        url: data.html_url,
+        language: data.language,
+        issues: data.open_issues_count,
+        stars: data.stargazers_count,
+        archived: data.archived,
+        fork: data.fork,
+        submitted_by: doc.data().username,
+        date_added: new Date()
+      };
+
+      setRepoData(repoData)
+         
+      const projectRef = db.collection("repos").doc(data.owner.login.toLowerCase() + "-" + data.name.toLowerCase());
+      const project = await projectRef.get();
+
+      if (project.exists) {
+        setError("Repository already added");
+        return;
+      } else if (data.archived) {
+        setError("Repository is archived");
+        return;
+      } else if (data.open_issues <= 5) {
+        setError("Repository has under 5 issues");
+        return;
+      } else {
+        await projectRef.set(repoData);
+      }
+      }
+    });
 
     window.location = "/";
   };
