@@ -1,0 +1,27 @@
+{
+  "common": {},
+  "home": {
+    "browseProjects": "Böngéssz {{total}}+ nyílt forráskódú projekt között.",
+    "searchProjectsPlaceholder": "Projektek keresése...",
+    "all": "Összes",
+    "visibleToolsNoContent": "😥 Nincs találat a következőre: <bold>{{query}}</bold>."
+  },
+  "new": {
+    "addRepoHeader": "Adj hozzá új forrást az Oasis-hoz",
+    "addRepo": "Forrás hozzáadása",
+    "addRepoPlaceholder": "teljes url (ex. https://github.com/heybereket/oasis)",
+    "signInToSubmit": "Jelentkezz be a beküldéshez"
+  },
+  "header": {
+    "submit": "Beküldés",
+    "signInUp": "Bejelentkezés",
+    "signOut": "Kijelentkezés"
+  },
+  "footer": {
+    "oasisBy": "Oasis by",
+    "followUsOn": "kövess minket",
+    "twitter": "twitteren",
+    "openSourceOn": "nyílt forráskódú",
+    "github": "githubon"
+  }
+}
