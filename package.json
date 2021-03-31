@@ -1,15 +1,32 @@
 {
-  "name": "oasis",
+  "name": "oasis-next",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:nolint": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "commit": "yarn run lint && git add . && git cz && git push"
   },
   "dependencies": {
+    "autoprefixer": "^10.2.5",
     "next": "10.1.2",
+    "postcss": "^8.2.9",
+    "prettier": "^2.2.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "tailwindcss": "^2.0.4"
+  },
+  "devDependencies": {
+    "cz": "^1.8.2",
+    "eslint": "^7.23.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.23.1"
   }
 }
