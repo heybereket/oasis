@@ -124,6 +124,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "Lucaskyy",
+      "name": "Sculas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22832313?v=4",
+      "profile": "https://sculas.xyz/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
