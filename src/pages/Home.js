@@ -4,11 +4,10 @@ import { Navbar, Footer, Loading } from '../components'
 import _ from 'lodash'
 import firebase from '../data/firebase'
 import logo from '../static/oasis-logo.png'
-import '../style/App.css'
-import { colours } from '../lib/constants.js'
 import BackToTop from '../components/BackToTop'
 import { useTranslation, Trans } from 'react-i18next'
 import RepositoryList from '../components/RepositoryList'
+import '../style/App.css'
 
 const Button = ({ category, isActive, onClick }) => {
   return (
@@ -23,15 +22,13 @@ const Button = ({ category, isActive, onClick }) => {
 }
 
 const Home = () => {
-  // makes a list of just the categories of the tools
   const db = firebase.firestore()
+  const user = firebase.auth().currentUser;
   const { t } = useTranslation()
   const [list, setList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const allCategories = list
-    .filter(project => project.language != null)
-    .map(project => project.language)
+  const allCategories = list.filter(project => project.language != null).map(project => project.language)
   const countCategories = _.countBy(allCategories)
   const [currCategory, setCurrCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
@@ -44,46 +41,27 @@ const Home = () => {
     return false
   })
 
-  const user = firebase.auth().currentUser
-
   const changeSearch = event => {
     setSearchQuery(event.target.value)
   }
 
   useEffect(() => {
-    const getRepos = async () => {
-      try {
-        db.collection('repos')
-          .orderBy('stars')
-          .onSnapshot(snapshot => {
-            let projects = []
+    db.collection('repos')
+      .orderBy('date_added')
+      .onSnapshot(snapshot => {
+        let projects = []
+        
+        snapshot.forEach(doc => {
+          projects.push({
+            id: doc.id,
+            ...doc.data(),
+        })
+      })
 
-            snapshot.forEach(doc => {
-              projects.push({
-                id: doc.id,
-                ...doc.data(),
-              })
-            })
-
-            // for (const doc of snapshot.docs)
-            //   projects = _.concat(projects, {
-            //     id: doc.id,
-            //     ...doc.data()
-            //   });
-
-            setList(projects)
-            setIsLoading(false)
-          })
-      } catch (err) {
-        console.error(err)
-      }
-    }
-    getRepos()
-  }, [])
-
-  function formatNumber(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  }
+      setList(projects)
+      setIsLoading(false)
+      })
+  })
 
   return (
     <div>
@@ -146,6 +124,7 @@ const Home = () => {
       <div className="repos">
         {isLoading ? <Loading message="repos" /> : <RepositoryList repositories={projectsFilteredByCategoryAndSearchQuery} className="repos"/>}
       </div>
+
       <BackToTop />
       <Footer />
     </div>
