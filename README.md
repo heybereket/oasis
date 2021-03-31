@@ -1,59 +1,34 @@
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Getting Started
 
----
+First, run the development server:
 
-## Contributions
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let me know what you are working on first that way we don't overwrite each other.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Please read [CONTRIBUTING.md](https://github.com/heybereket/oasis/blob/main/docs/CONTRIBUTING.md) for details on the project.
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## ⌛ Status
-- [x] Development: Started building the project, almost ready to ship!
-- [ ] Early Release: Soft Launch on Twitter + GitHub (mostly trying to fix and solve bugs)
-- [ ] Official Launch
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-## 🗺️ Roadmap
-We like to think long term ― check out our <a href="https://github.com/heybereket/oasis/projects/1">project board<a/> on GitHub. You can always check here if you're running out of ideas, don't know what to work on, or just want to have a sneak peek on what we're working on behind the scenes :)
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## 📄 License
-Oasis is open-source and is under the <a href="https://github.com/heybereket/oasis/blob/main/LICENSE">MIT License</a>. 
+## Learn More
 
-## 💬 Get in touch
-Feel free to reach out via <a href="https://github.com/heybereket/oasis/discussions">GitHub Discussions</a> or contact the lead developer on Twitter <a href="https://twitter.com/heybereket">@heybereket<a/>.
+To learn more about Next.js, take a look at the following resources:
 
-## ✨ Contributors
-Thanks you for contributing and making Oasis 1% better! ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/heybereket"><img src="https://avatars.githubusercontent.com/u/68391329?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bereket Semagn</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=heybereket" title="Code">💻</a> <a href="#design-heybereket" title="Design">🎨</a> <a href="https://github.com/heybereket/oasis/commits?author=heybereket" title="Documentation">📖</a> <a href="#ideas-heybereket" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-heybereket" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
-    <td align="center"><a href="https://github.com/TheLDB"><img src="https://avatars.githubusercontent.com/u/29960599?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Landon Boles</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=TheLDB" title="Code">💻</a></td>
-    <td align="center"><a href="https://josiasaurel.github.io/"><img src="https://avatars.githubusercontent.com/u/47951376?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Josias Aurel</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=JosiasAurel" title="Code">💻</a></td>
-    <td align="center"><a href="https://theweirddeveloper.dev/"><img src="https://avatars.githubusercontent.com/u/35224620?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kingsley Victor</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=kingsley-einstein" title="Code">💻</a> <a href="#content-kingsley-einstein" title="Content">🖋</a></td>
-    <td align="center"><a href="https://www.felipecespedes.co"><img src="https://avatars.githubusercontent.com/u/11846311?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felipe Céspedes</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=felipecespedes" title="Documentation">📖</a> <a href="https://github.com/heybereket/oasis/commits?author=felipecespedes" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/Mudrank"><img src="https://avatars.githubusercontent.com/u/70035508?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mudrank</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=Mudrank" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://madeunlinked.com"><img src="https://avatars.githubusercontent.com/u/70179217?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ben</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=benzend" title="Code">💻</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="http://veix.tech"><img src="https://avatars.githubusercontent.com/u/30485301?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Carlos Eli Lopez Tellez</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=Serveix" title="Code">💻</a></td>
-    <td align="center"><a href="https://ishan.is-a.dev"><img src="https://avatars.githubusercontent.com/u/38882631?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ishan Goel</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=quackduck" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/marques-kevin"><img src="https://avatars.githubusercontent.com/u/8655434?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marques Kevin</b></sub></a><br /><a href="#translation-marques-kevin" title="Translation">🌍</a> <a href="https://github.com/heybereket/oasis/commits?author=marques-kevin" title="Code">💻</a></td>
-    <td align="center"><a href="https://stackmind.com"><img src="https://avatars.githubusercontent.com/u/28285686?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Auderer</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=auderer" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://aalbert.tech"><img src="https://avatars.githubusercontent.com/u/53189968?v=4?s=100" width="100px;" alt=""/><br /><sub><b>skidoodle</b></sub></a><br /><a href="#translation-skidoodle" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://sculas.xyz/"><img src="https://avatars.githubusercontent.com/u/22832313?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sculas</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=Lucaskyy" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://hellojabo.me"><img src="https://avatars.githubusercontent.com/u/44330015?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jabo</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=jabo-bernardo" title="Code">💻</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/nickspaargaren"><img src="https://avatars.githubusercontent.com/u/20847106?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nick Spaargaren</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=nickspaargaren" title="Code">💻</a></td>
-  </tr>
-</table>
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
+## Deploy on Vercel
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
