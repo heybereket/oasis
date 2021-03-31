@@ -46,6 +46,7 @@ Thanks you for contributing and making Oasis 1% better! ([emoji key](https://all
     <td align="center"><a href="https://stackmind.com"><img src="https://avatars.githubusercontent.com/u/28285686?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Auderer</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=auderer" title="Documentation">📖</a></td>
     <td align="center"><a href="http://aalbert.tech"><img src="https://avatars.githubusercontent.com/u/53189968?v=4?s=100" width="100px;" alt=""/><br /><sub><b>skidoodle</b></sub></a><br /><a href="#translation-skidoodle" title="Translation">🌍</a></td>
     <td align="center"><a href="https://sculas.xyz/"><img src="https://avatars.githubusercontent.com/u/22832313?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sculas</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=Lucaskyy" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://hellojabo.me"><img src="https://avatars.githubusercontent.com/u/44330015?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jabo</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=jabo-bernardo" title="Code">💻</a></td>
   </tr>
 </table>
 
