@@ -106,6 +106,15 @@
         "translation",
         "code"
       ]
+    },
+    {
+      "login": "auderer",
+      "name": "Michael Auderer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28285686?v=4",
+      "profile": "https://stackmind.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
