@@ -17,7 +17,7 @@ const New = () => {
   const [projectURL, setProjectURL] = useState("");
   const { t } = useTranslation();
 
-  const [repoData, setRepoData] = useState("")
+  const [submittedBy, setSubmittedBy] = useState("")
 
   const search = useLocation().search;
   const repo = new URLSearchParams(search).get('repo');
@@ -52,12 +52,6 @@ const New = () => {
             ...doc.data()
           });
         });
-
-        // for (const doc of snapshot.docs)
-        //   projects = _.concat(projects, {
-        //     id: doc.id,
-        //     ...doc.data()
-        //   });
 
         setList(projects);
       });
@@ -103,43 +97,41 @@ const New = () => {
     var docRef = db.collection("users").doc(username);
 
     docRef.get(username).then(async (doc) => {
-      if (doc.exists) {
-
-      const repoData = {
-        name: data.name,
-        full_name: data.full_name,
-        owner: data.owner.login,
-        desc: data.description,
-        avatar: data.owner.avatar_url,
-        url: data.html_url,
-        language: data.language,
-        issues: data.open_issues_count,
-        stars: data.stargazers_count,
-        archived: data.archived,
-        fork: data.fork,
-        submitted_by: doc.data().username,
-        date_added: new Date()
-      };
-
-      setRepoData(repoData)
-         
-      const projectRef = db.collection("repos").doc(data.owner.login.toLowerCase() + "-" + data.name.toLowerCase());
-      const project = await projectRef.get();
-
-      if (project.exists) {
-        setError("Repository already added");
-        return;
-      } else if (data.archived) {
-        setError("Repository is archived");
-        return;
-      } else if (data.open_issues <= 5) {
-        setError("Repository has under 5 issues");
-        return;
-      } else {
-        await projectRef.set(repoData);
-      }
-      }
+      setSubmittedBy(doc.data().username)
     });
+
+    
+    const repoData = {
+      name: data.name,
+      full_name: data.full_name,
+      owner: data.owner.login,
+      desc: data.description,
+      avatar: data.owner.avatar_url,
+      url: data.html_url,
+      language: data.language,
+      issues: data.open_issues_count,
+      stars: data.stargazers_count,
+      archived: data.archived,
+      fork: data.fork,
+      submitted_by: user.email,
+      date_added: new Date()
+    };
+       
+    const projectRef = db.collection("repos").doc(data.owner.login.toLowerCase() + "-" + data.name.toLowerCase());
+    const project = await projectRef.get();
+
+    if (project.exists) {
+      setError("Repository already added");
+      return;
+    } else if (data.archived) {
+      setError("Repository is archived");
+      return;
+    } else if (data.open_issues <= 5) {
+      setError("Repository has under 5 issues");
+      return;
+    } else {
+      await projectRef.set(repoData);
+    }
 
     window.location = "/";
   };
