@@ -115,6 +115,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "skidoodle",
+      "name": "skidoodle",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53189968?v=4",
+      "profile": "http://aalbert.tech",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
