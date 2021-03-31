@@ -15,7 +15,7 @@
 **Getting started with OAuth:**
 1. Head over to your firebase console
 2. On the sidebar, click "Authentication" and go to the "Sign-in Method" tab
-3. Now scroll to where it says "GitHub and click it"
+3. Now scroll to where it says "GitHub" and click it
 4. If it's disabled click "enable", then go to <a href="https://github.com/settings/developers">GitHub's Developer Settings</a> and click "New OAuth App" at the top right
 5. Next make a OAuth App and fill in the fields, and get the ```Client ID + Client Secret```, go back to Firebase
 6. Make sure you have the credidentials copied, paste them into Firebase 
