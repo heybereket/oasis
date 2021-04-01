@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import _ from "lodash";
 import firebase, { loginGitHub } from "../data/firebase";
-import { Navbar, Loading } from "../components";
+import { Navbar } from "../components";
 import { useLocation } from 'react-router-dom'
 // import utility functions
 import { deleteRepo } from "../utils/controls";

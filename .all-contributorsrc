@@ -106,6 +106,51 @@
         "translation",
         "code"
       ]
+    },
+    {
+      "login": "auderer",
+      "name": "Michael Auderer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28285686?v=4",
+      "profile": "https://stackmind.com",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "skidoodle",
+      "name": "skidoodle",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53189968?v=4",
+      "profile": "http://aalbert.tech",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "Lucaskyy",
+      "name": "Sculas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22832313?v=4",
+      "profile": "https://sculas.xyz/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "jabo-bernardo",
+      "name": "Jabo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44330015?v=4",
+      "profile": "https://hellojabo.me",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "nickspaargaren",
+      "name": "Nick Spaargaren",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20847106?v=4",
+      "profile": "https://github.com/nickspaargaren",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
