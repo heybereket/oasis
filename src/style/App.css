@@ -155,7 +155,7 @@ a {
   width: 400px;
   border-radius: 3px;
   padding: 1.8rem;
-  height: 335px;
+  /* height: 335px; */
   border-radius: 10px;
   margin-bottom: 1rem;
   border: 1px solid #5f6364;
@@ -186,7 +186,7 @@ a {
   border-radius: 50%;
   width: 25px;
   height: 25px;
-  margin-bottom: -13px;
+  /* margin-bottom: -13px; */
   max-width: 100%;
 }
 
@@ -199,7 +199,7 @@ a {
 }
 
 .repo > small {
-  margin-top: -20px;
+  /* margin-top: -20px; */
   color: var(--secondary-colour-1);
   text-align: left;
   font-weight: 400;

@@ -1,27 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from "react";
-import _ from "lodash";
-import firebase, { loginGitHub } from "../data/firebase";
-import { Navbar } from "../components";
-import { useLocation } from 'react-router-dom'
-// import utility functions
-import { deleteRepo } from "../utils/controls";
-import { useTranslation } from "react-i18next";
+import { useState, useEffect } from 'react';
+import _ from 'lodash';
+import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+import firebase, { loginGitHub } from '../data/firebase';
+import { Navbar } from '../components';
+import { deleteRepo } from '../utils/controls';
+
 const githubUsername = require('github-username');
 
 const New = () => {
-  var db = firebase.firestore();
+  let db = firebase.firestore();
   const [list, setList] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const user = firebase.auth().currentUser;
-  const [projectURL, setProjectURL] = useState("");
+  const [projectURL, setProjectURL] = useState('');
   const { t } = useTranslation();
 
-  const [submittedBy, setSubmittedBy] = useState("")
+  const [submittedBy, setSubmittedBy] = useState('')
 
   const search = useLocation().search;
   const repo = new URLSearchParams(search).get('repo');
-  
+
   // Check if user is signed in
   // useEffect(() => {
   //   firebase.auth().onAuthStateChanged(function(user) {
@@ -32,19 +33,18 @@ const New = () => {
   //     }
   //   });
   // }, []);
- 
 
-  const something = event => {
+  const something = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.keyCode === 13) {
       sendData();
     }
   };
 
   useEffect(() => {
-    db.collection("repos")
+    db.collection('repos')
       .get()
       .then(snapshot => {
-        let projects = [];
+        let projects: any = [];
 
         snapshot.forEach(doc => {
           projects.push({
@@ -58,7 +58,7 @@ const New = () => {
   }, []);
 
   const sendData = async () => {
-    if (projectURL === "") {
+    if (projectURL === '') {
       setError("Repository URL can't be blank");
       return;
     } else if (
@@ -71,7 +71,7 @@ const New = () => {
     }
 
     const user = firebase.auth().currentUser;
-    setError("");
+    setError('');
 
     // slice the url
     const url = new URL(projectURL);
@@ -91,16 +91,15 @@ const New = () => {
 
     const data = await response.json();
 
-    const username = await githubUsername(user.email)
-    const db = firebase.firestore()
+    const username = await githubUsername(user?.email);
+    const db = firebase.firestore();
 
     var docRef = db.collection("users").doc(username);
 
-    docRef.get(username).then(async (doc) => {
+    /* docRef.get(username).then(async (doc) => {
       setSubmittedBy(doc.data().username)
-    });
+    }); */
 
-    
     const repoData = {
       name: data.name,
       full_name: data.full_name,
@@ -113,11 +112,11 @@ const New = () => {
       stars: data.stargazers_count,
       archived: data.archived,
       fork: data.fork,
-      submitted_by: user.email,
+      submitted_by: user?.email,
       date_added: new Date()
     };
-       
-    const projectRef = db.collection("repos").doc(data.owner.login.toLowerCase() + "-" + data.name.toLowerCase());
+
+    const projectRef = db.collection('repos').doc(`${data.owner.login.toLowerCase()}-${data.name.toLowerCase()}`);
     const project = await projectRef.get();
 
     if (project.exists) {
@@ -133,7 +132,7 @@ const New = () => {
       await projectRef.set(repoData);
     }
 
-    window.location = "/";
+    window.location.href = '/';
   };
 
   return (
@@ -158,8 +157,8 @@ const New = () => {
               )}
               <input
                 placeholder={t('new.addRepoPlaceholder')}
-                value={repo}
-                onKeyDown={e => something(e)}
+                value={repo as string}
+                onKeyDown={something}
                 onChange={change => {
                   setProjectURL(change.target.value);
                 }}
@@ -190,7 +189,7 @@ const New = () => {
             <div className="repos">
               {(
                 list.map(
-                  (project, index) =>
+                  (project: any, index: number) =>
                     (user ? project.submitted_by === user.email : "") && (
                       <div className="repo">
                         <img
@@ -220,160 +219,6 @@ const New = () => {
           </div>
         </div>
       }
-
-      <style jsx>
-        {`
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-
-          body {
-            text-align: center;
-            color: #fff;
-          }
-
-          .main-submit-wrapper {
-          }
-
-          .wrapper-submit {
-            padding: 2rem;
-            display: inline-block;
-            float: none;
-            max-width: 800px;
-            width: 100%;
-            margin: 0 auto;
-            margin-top: -50px;
-          }
-
-          .wrapper-submit label {
-            float: left;
-            margin-bottom: 10px;
-          }
-
-          .wrapper-submit input,
-          .wrapper-submit select,
-          .notice {
-            width: 100%;
-            color: #fff;
-            font-size: 10px;
-          }
-
-          .notice {
-            border: 1px solid #5f6368;
-            background-color: rgba(255, 255, 255, 0.04);
-            margin-bottom: 20px;
-            text-align: left;
-            padding: 1rem;
-            border-radius: 4px;
-          }
-
-          .notice h2 {
-            font-weight: 400;
-          }
-
-          .wrapper-submit input {
-            font-weight: 400;
-            font-size: 0.9rem;
-            font-family: "Inter";
-            border-radius: 4px;
-          }
-
-          .wrapper-submit input {
-            float: left;
-            padding: 0 1.25rem;
-            margin: 0 0 1.25rem;
-            line-height: 54px;
-            background: transparent;
-            border: 2px solid #fff;
-            outline: none;
-            -webkit-appearance: none;
-          }
-
-          table,
-          td,
-          th {
-            border: 1px solid #666;
-          }
-
-          .wrapper-submit textarea:focus,
-          .wrapper-submit textarea:active {
-            border-color: #fff;
-          }
-          .wrapper-submit input[type="submit"] {
-            float: left;
-            cursor: pointer;
-            margin: 0;
-            border: none;
-            font-weight: bold;
-            width: 100%;
-            background: #000;
-          }
-          .wrapper-submit input[type="submit"]:hover,
-          .wrapper-submit input[type="submit"]:focus {
-            opacity: 0.7;
-          }
-
-          input::placeholder {
-            color: lightgray;
-          }
-
-          .submit-repo {
-            width: 100%;
-            height: 50px;
-            font-family: "Inter";
-            font-weight: 700;
-            text-transform: uppercase;
-            border: 2px solid #5f6368;
-          }
-
-          .submit-repo:hover {
-            border: 2px solid #fff;
-          }
-
-          .submitted-label {
-            text-align: left;
-          }
-
-          .repos {
-            max-width: 960px;
-            margin-top: 20px;
-          }
-
-          .repo {
-            width: 352.5px;
-            height: 200px;
-          }
-
-          @media (max-width: 550px) {
-            .repo {
-              width: 320px;
-            }
-          }
-
-          button {
-            cursor: pointer;
-          }
-
-          ::-webkit-scrollbar {
-            background: transparent;
-          }
-
-          ::-webkit-scrollbar {
-            width: 7px;
-          }
-
-          ::-webkit-scrollbar-thumb {
-            background: transparent;
-            border-radius: 5px;
-          }
-
-          ::-webkit-scrollbar-track {
-            background: transparent;
-          }
-        `}
-      </style>
     </>
   );
 };
