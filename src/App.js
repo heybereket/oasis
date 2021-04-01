@@ -7,6 +7,7 @@ import WOC from './pages/WOS'
 import Me from './pages/Me'
 import Settings from './pages/Settings'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import './style/App.css';
 
 function App() {
   return (
