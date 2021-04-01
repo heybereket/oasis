@@ -36,7 +36,7 @@ const Home = () => {
   const [currCategory, setCurrCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
 
-  const projectsFilteredByCategoryAndSearchQuery = list.filter(project => {
+  let projectsFilteredByCategoryAndSearchQuery = list.filter(project => {
     const projectFullname = project.owner + project.name
     if (!projectFullname.includes(searchQuery)) return false
     if (currCategory === 'All') return true
@@ -64,12 +64,6 @@ const Home = () => {
                 ...doc.data(),
               })
             })
-
-            // for (const doc of snapshot.docs)
-            //   projects = _.concat(projects, {
-            //     id: doc.id,
-            //     ...doc.data()
-            //   });
 
             setList(projects)
             setIsLoading(false)

@@ -1,7 +1,10 @@
 import { colours } from '../lib/constants.js'
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
 
 export default function RepositoryCard({ project }) {
+
+  const [githubData, setGithubData] = useState(null);
 
 	const { 
 		url: reposUrl, 
@@ -14,6 +17,14 @@ export default function RepositoryCard({ project }) {
 		language: reposLanguage, 
 		issues: reposIssues, 
 		stars: reposStars } = project;
+
+  useEffect(() => {
+    const fetchFromGithub = async () => {
+      const githubResponse = await fetch(`https://api.github.com/repos/${project.full_name}`);
+      setGithubData(await githubResponse.json());
+    }
+    fetchFromGithub();
+  }, [project]);
 
 	return (
 		<Link
@@ -99,13 +110,9 @@ export default function RepositoryCard({ project }) {
               &nbsp; N/A
             </button>
           )}
-          {reposIssues > 1000 ? (
-            <button className="issues">🚨 1k+ issues</button>
-          ) : (
-            <button className="issues">🚨 {reposIssues} issues</button>
-          )}
+          <button className="issues">🚨 {githubData ? (githubData?.open_issues > 1000 ? "1k+" : githubData?.open_issues) : "..."} issues</button>
           <br />
-          <button className="stars">⭐ {formatNumber(reposStars)} stars</button>
+          <button className="stars">⭐ {githubData ? formatNumber(githubData.stargazers_count) : "..."} stars</button>
         </div>
       </div>
     </Link>
