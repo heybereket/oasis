@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
-import firebase, { loginGitHub } from "../data/firebase";
+import { useEffect } from 'react';
+
+import firebase, { loginGitHub } from '../data/firebase';
+// tslint:disable-next-line:no-var-requires
 const githubUsername = require('github-username');
 
 const Me = () => {
@@ -11,22 +13,23 @@ const Me = () => {
         const username = await githubUsername(user.email)
         const db = firebase.firestore()
 
-        var docRef = db.collection("users").doc(username);
+        let docRef = db.collection('users').doc(username);
 
         docRef.get(username).then((doc) => {
             if (doc.exists) {
-                window.location = `/u/${doc.data().username}`
+                window.location.href = `/u/${doc?.data()?.username}`;
             } else {
-                loginGitHub()
+                loginGitHub();
             }
         }).catch((error) => {
-            console.log("Error getting document:", error);
+            console.log('Error getting document:', error);
         });
     }
     });
   }, []);
 
-  return null
+  // tslint:disable-next-line:no-null-keyword
+  return null;
 };
 
 export default Me;
