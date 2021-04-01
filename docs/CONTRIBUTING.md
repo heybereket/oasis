@@ -43,6 +43,3 @@ There are tons and tons of languages on GitHub and when we recieve the data of s
 
 **Not sure on what to contribute?** Check out our <a href="https://github.com/heybereket/oasis/projects/1">project board</a>.
 
-### Code of Conduct: 
-Please make sure to read our [Contributor Code of Conduct](CODE_OF_CONDUCT.md) before contributing!
-
