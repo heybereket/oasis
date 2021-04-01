@@ -199,7 +199,6 @@ a {
 }
 
 .repo > small {
-  margin-top: -20px;
   color: var(--secondary-colour-1);
   text-align: left;
   font-weight: 400;

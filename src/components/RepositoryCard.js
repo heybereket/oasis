@@ -1,7 +1,11 @@
 import { colours } from '../lib/constants.js'
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import moment from 'moment';
 
 export default function RepositoryCard({ project }) {
+
+  const [githubData, setGithubData] = useState(null);
 
 	const { 
 		url: reposUrl, 
@@ -14,6 +18,14 @@ export default function RepositoryCard({ project }) {
 		language: reposLanguage, 
 		issues: reposIssues, 
 		stars: reposStars } = project;
+
+  useEffect(() => {
+    const fetchFromGithub = async () => {
+      const githubResponse = await fetch(`https://api.github.com/repos/${project.full_name}`);
+      setGithubData(await githubResponse.json());
+    }
+    fetchFromGithub();
+  }, [project]);
 
 	return (
 		<Link
@@ -52,8 +64,11 @@ export default function RepositoryCard({ project }) {
           <span className="owner">{reposOwner}</span>/
           <span className="name">{reposName}</span>
         </p>
-        {reposDescription != null && <small>{reposDescription}</small>}
+        {reposDescription != null && <small style={{ marginTop: "-20px" }}>{reposDescription}</small>}
         {reposDescription === null && <small>No description.</small>}
+
+        <small style={{ marginTop: "16px" }}>Last activity {githubData ? moment(githubData.pushed_at).fromNow() : "..." }</small>
+
         <div className="category-wrapper">
           {reposLanguage in colours && (
             <button className="language">
@@ -99,13 +114,9 @@ export default function RepositoryCard({ project }) {
               &nbsp; N/A
             </button>
           )}
-          {reposIssues > 1000 ? (
-            <button className="issues">🚨 1k+ issues</button>
-          ) : (
-            <button className="issues">🚨 {reposIssues} issues</button>
-          )}
+          <button className="issues">🚨 {githubData ? (githubData?.open_issues > 1000 ? "1k+" : githubData?.open_issues) : "..."} issues</button>
           <br />
-          <button className="stars">⭐ {formatNumber(reposStars)} stars</button>
+          <button className="stars">⭐ {githubData ? formatNumber(githubData.stargazers_count) : "..."} stars</button>
         </div>
       </div>
     </Link>

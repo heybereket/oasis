@@ -7,7 +7,6 @@ import logo from '../static/oasis-logo.png'
 import BackToTop from '../components/BackToTop'
 import { useTranslation, Trans } from 'react-i18next'
 import RepositoryList from '../components/RepositoryList'
-import '../style/App.css'
 
 const Button = ({ category, isActive, onClick }) => {
   return (
@@ -33,7 +32,7 @@ const Home = () => {
   const [currCategory, setCurrCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
 
-  const projectsFilteredByCategoryAndSearchQuery = list.filter(project => {
+  let projectsFilteredByCategoryAndSearchQuery = list.filter(project => {
     const projectFullname = project.owner + project.name
     if (!projectFullname.includes(searchQuery)) return false
     if (currCategory === 'All') return true
@@ -46,22 +45,33 @@ const Home = () => {
   }
 
   useEffect(() => {
-    db.collection('repos')
-      .orderBy('date_added')
-      .onSnapshot(snapshot => {
-        let projects = []
-        
-        snapshot.forEach(doc => {
-          projects.push({
-            id: doc.id,
-            ...doc.data(),
-        })
-      })
+    const getRepos = async () => {
+      try {
+        db.collection('repos')
+          .orderBy('stars')
+          .onSnapshot(snapshot => {
+            let projects = []
 
-      setList(projects)
-      setIsLoading(false)
-      })
-  })
+            snapshot.forEach(doc => {
+              projects.push({
+                id: doc.id,
+                ...doc.data(),
+              })
+            })
+
+            setList(projects)
+            setIsLoading(false)
+          })
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    getRepos()
+  }, [])
+
+  function formatNumber(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
 
   return (
     <div>
