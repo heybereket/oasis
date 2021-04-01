@@ -4,8 +4,6 @@ import { Navbar, Footer, Loading } from '../components'
 import _ from 'lodash'
 import firebase from '../data/firebase'
 import logo from '../static/oasis-logo.png'
-import '../style/App.css'
-import { colours } from '../lib/constants.js'
 import BackToTop from '../components/BackToTop'
 import { useTranslation, Trans } from 'react-i18next'
 import RepositoryList from '../components/RepositoryList'
@@ -23,15 +21,13 @@ const Button = ({ category, isActive, onClick }) => {
 }
 
 const Home = () => {
-  // makes a list of just the categories of the tools
   const db = firebase.firestore()
+  const user = firebase.auth().currentUser;
   const { t } = useTranslation()
   const [list, setList] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const allCategories = list
-    .filter(project => project.language != null)
-    .map(project => project.language)
+  const allCategories = list.filter(project => project.language != null).map(project => project.language)
   const countCategories = _.countBy(allCategories)
   const [currCategory, setCurrCategory] = useState('All')
   const [searchQuery, setSearchQuery] = useState('')
@@ -43,8 +39,6 @@ const Home = () => {
     if (project.language === currCategory) return true
     return false
   })
-
-  const user = firebase.auth().currentUser
 
   const changeSearch = event => {
     setSearchQuery(event.target.value)
@@ -140,6 +134,7 @@ const Home = () => {
       <div className="repos">
         {isLoading ? <Loading message="repos" /> : <RepositoryList repositories={projectsFilteredByCategoryAndSearchQuery} className="repos"/>}
       </div>
+
       <BackToTop />
       <Footer />
     </div>
