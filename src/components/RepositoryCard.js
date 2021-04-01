@@ -1,6 +1,7 @@
 import { colours } from '../lib/constants.js'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
+import moment from 'moment';
 
 export default function RepositoryCard({ project }) {
 
@@ -63,8 +64,11 @@ export default function RepositoryCard({ project }) {
           <span className="owner">{reposOwner}</span>/
           <span className="name">{reposName}</span>
         </p>
-        {reposDescription != null && <small>{reposDescription}</small>}
+        {reposDescription != null && <small style={{ marginTop: "-20px" }}>{reposDescription}</small>}
         {reposDescription === null && <small>No description.</small>}
+
+        <small style={{ marginTop: "16px" }}>Last activity {githubData ? moment(githubData.pushed_at).fromNow() : "..." }</small>
+
         <div className="category-wrapper">
           {reposLanguage in colours && (
             <button className="language">
