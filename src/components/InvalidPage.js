@@ -5,7 +5,6 @@ const InvalidPage = () => {
   return (
     <>
       <main className="container">
-        <div className="demo"></div>
         <span className="particle">4</span>
         <span className="particle">4</span>
         <span className="particle">4</span>
