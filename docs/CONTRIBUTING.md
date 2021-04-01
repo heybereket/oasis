@@ -25,6 +25,9 @@
 **Translations:** <br>
 If you would like to add a language to oasis, feel free todo so by editing <a href="https://github.com/heybereket/oasis/tree/main/public/locales">the languages folder</a>. We are always open to making Oasis more accessible by adding languages or by any other way! More parts of the site will be translated soon as well.
 
+**Language Colours:** <br>
+There are tons and tons of languages on GitHub and when we recieve the data of submitted repos, we try to match the language names with our own colours, if you would like to submit a language colour, feel free to by going to ```lib/constants.js``` and you will see the colours all there, it's a simple step to add a new one!
+
 **Uh oh, errors?**
 - <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">Forking a Repository</a>
 - <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository">Cloning a Repository</a>

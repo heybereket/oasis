@@ -10,6 +10,7 @@ import WOC from './pages/WOS';
 import Me from './pages/Me';
 import Settings from './pages/Settings';
 import { GlobalStyle } from './styledHelpers/GlobalStyle';
+import './style/App.css';
 
 const App: FC = () => {
     return (

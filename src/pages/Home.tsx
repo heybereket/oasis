@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from 'react';
+import React, { useState, useEffect, FC, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import _ from 'lodash';
@@ -43,22 +43,33 @@ const Home: FC = () => {
     };
 
     useEffect(() => {
-        db.collection('repos')
-            .orderBy('date_added')
-            .onSnapshot(snapshot => {
-                let projects: any = [];
+        const getRepos = async () => {
+            try {
+                db.collection('repos')
+                    .orderBy('stars')
+                    .onSnapshot(snapshot => {
+                        let projects:any = []
 
-                snapshot.forEach(doc => {
-                    projects.push({
-                        id: doc.id,
-                        ...doc.data()
+                        snapshot.forEach(doc => {
+                            projects.push({
+                                id: doc.id,
+                                ...doc.data()
+                            });
+                        });
+
+                        setList(projects);
+                        setIsLoading(false);
                     });
-                });
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        getRepos();
+    }, []);
 
-                setList(projects);
-                setIsLoading(false);
-            });
-    });
+    const formatNumber = useCallback((x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    }, []);
 
     return (
         <div>
