@@ -126,7 +126,7 @@ const New = () => {
       setError("Repository is archived");
       return;
     } else if (data.open_issues <= 5) {
-      setError("Repository has under 5 issues");
+      setError("Repository should have at least 5 issues so it is ready for contributions.");
       return;
     } else {
       await projectRef.set(repoData);
