@@ -37,4 +37,4 @@ export const colours = {
   "VBA": "#867db1",
   "Vim script": "#199f4b",
   "Vue": "#2c3e50"
-};
+} as any;
