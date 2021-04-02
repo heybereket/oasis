@@ -67,10 +67,6 @@ const Home: FC = () => {
         getRepos();
     }, []);
 
-    const formatNumber = useCallback((x) => {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-    }, []);
-
     return (
         <div>
             <Navbar />
@@ -129,8 +125,8 @@ const Home: FC = () => {
                 </Center>
             )}
 
-            <div className="repos">
-                {isLoading ? <Loading message="repos" /> : <RepositoryList repositories={projectsFilteredByCategoryAndSearchQuery} className="repos" />}
+            <div>
+                {isLoading ? <Loading message="repos" /> : <RepositoryList repositories={projectsFilteredByCategoryAndSearchQuery} />}
             </div>
 
             <BackToTop />

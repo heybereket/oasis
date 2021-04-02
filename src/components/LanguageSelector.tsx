@@ -10,8 +10,8 @@ const LanguageSelector = () => {
   ];
   const { i18n } = useTranslation();
 
-  const handleLanguageChanged = ({target: {value}}) => {
-    i18n.changeLanguage(value)
+  const handleLanguageChanged = ({target: {value}}: any) => {
+    i18n.changeLanguage(value);
   }
 
   return (

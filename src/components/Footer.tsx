@@ -1,8 +1,10 @@
-import "../style/footer.css";
-import { useTranslation } from "react-i18next";
-import LanguageSelector from "./LanguageSelector";
+import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
-const Footer = () => {
+import '../style/footer.css';
+import LanguageSelector from './LanguageSelector';
+
+const Footer: FC = () => {
   const { t } = useTranslation();
 
   return (

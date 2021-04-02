@@ -1,32 +1,37 @@
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { colours } from '../lib/constants.js';
+import { colours } from '../lib/constants';
+import { formatNumber } from '../utils/numbers';
 
-export default function RepositoryCard({ project }) {
+interface IRepositoryCardProps {
+    project: {
+        language: string;
+        url: any;
+        owner: any;
+        name: any;
+        fork: any;
+        full_name: any;
+        avatar: any;
+        desc: any;
+        issues: any;
+        stars: any;
+    };
+}
 
-    const {
-        url: reposUrl,
-        owner: reposOwner,
-        name: reposName,
-        fork: reposIsFork,
-        full_name: reposFullName,
-        avatar: reposAvatar,
-        desc: reposDescription,
-        language: reposLanguage,
-        issues: reposIssues,
-        stars: reposStars } = project;
+const RepositoryCard: FC<IRepositoryCardProps> = ({ project: {language, url, owner, name, fork, full_name, avatar, desc, issues, stars} }) => {
 
     return (
         <Link
-            key={reposUrl}
-            to={`/r/${reposFullName}`}
+            key={url}
+            to={`/r/${full_name}`}
             rel="noreferrer"
         >
             <div className="repo">
-                {reposIsFork === true && (
+                {fork === true && (
                     <div
                         className="fork-icon"
-                        title={`${reposFullName} is a forked repository`}
+                        title={`${full_name} is a forked repository`}
                     >
                         <svg
                             viewBox="0 0 16 16"
@@ -44,34 +49,35 @@ export default function RepositoryCard({ project }) {
                     </div>
                 )}
                 <img
-                    alt={`${reposOwner.toLowerCase()}'s logo`}
+                    alt={`${owner.toLowerCase()}'s logo`}
                     className="display"
-                    src={reposAvatar}
-                    title={reposOwner}
+                    src={avatar}
+                    title={owner}
                 />
-                <p key={reposUrl}>
-                    <span className="owner">{reposOwner}</span>/
-          <span className="name">{reposName}</span>
+                <p key={url}>
+                    <span className="owner">{owner}</span>/
+          <span className="name">{name}</span>
                 </p>
-                {reposDescription != null && <small>{reposDescription}</small>}
-                {reposDescription === null && <small>No description.</small>}
+                {desc !== null && <small>{desc}</small>}
+                {desc === null && <small>No description.</small>}
                 <div className="category-wrapper">
-                    {reposLanguage in colours && (
+                    {language in colours && (
                         <button className="language">
                             <svg viewBox="0 0 80 80" width="10" height="10">
                                 <circle
-                                    style={{ fill: colours[reposLanguage] }}
+                                    style={{ fill: colours[language] }}
                                     className="circle"
                                     cx="40"
                                     cy="40"
                                     r="38"
                                 />
                             </svg>
-              &nbsp;
-                            {reposLanguage}
+
+                            &nbsp;
+                            {language}
                         </button>
                     )}
-                    {!(reposLanguage in colours) && reposLanguage != null && (
+                    {!(language in colours) && language !== null && (
                         <button className="language">
                             <svg viewBox="0 0 80 80" width="10" height="10">
                                 <circle
@@ -83,10 +89,10 @@ export default function RepositoryCard({ project }) {
                                 />
                             </svg>
               &nbsp;
-                            {reposLanguage}
+                            {language}
                         </button>
                     )}
-                    {reposLanguage === null && (
+                    {language === null && (
                         <button className="language">
                             <svg viewBox="0 0 80 80" width="10" height="10">
                                 <circle
@@ -100,19 +106,17 @@ export default function RepositoryCard({ project }) {
               &nbsp; N/A
                         </button>
                     )}
-                    {reposIssues > 1000 ? (
+                    {issues > 1000 ? (
                         <button className="issues">🚨 1k+ issues</button>
                     ) : (
-                        <button className="issues">🚨 {reposIssues} issues</button>
+                        <button className="issues">🚨 {issues} issues</button>
                     )}
                     <br />
-                    <button className="stars">⭐ {formatNumber(reposStars)} stars</button>
+                    <button className="stars">⭐ {formatNumber(stars)} stars</button>
                 </div>
             </div>
         </Link>
     )
-}
+};
 
-function formatNumber(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-}
+export default RepositoryCard;
