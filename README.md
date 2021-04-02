@@ -50,6 +50,7 @@ Thanks you for contributing and making Oasis 1% better! ([emoji key](https://all
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/nickspaargaren"><img src="https://avatars.githubusercontent.com/u/20847106?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nick Spaargaren</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=nickspaargaren" title="Code">💻</a></td>
+    <td align="center"><a href="http://sowinski.me"><img src="https://avatars.githubusercontent.com/u/9249982?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mateusz Sowiński</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=SowinskiMateusz" title="Code">💻</a> <a href="#maintenance-SowinskiMateusz" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
