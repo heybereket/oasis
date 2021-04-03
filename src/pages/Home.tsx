@@ -4,13 +4,13 @@ import { useTranslation, Trans } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
 
-import { Loading } from '../components';
+import { Navbar, Footer, Loading } from '../components';
 import firebase from '../data/firebase';
 import logo from '../static/oasis-logo.png';
 import BackToTop from '../components/BackToTop';
 import RepositoryList from '../components/RepositoryList';
 import '../style/App.css';
-import { Button } from '../components/common/Buttons';
+import { Button } from '../components/common/Button';
 
 import { ISingleProject } from '../entities/ProjectEntity';
 
@@ -22,15 +22,15 @@ const Home: FC = () => {
     const db = firebase.firestore();
     const user = firebase.auth().currentUser;
     const { t } = useTranslation();
-    const [projectsList, setProjectsList] = useState<ISingleProject[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [list, setList] = useState<ISingleProject[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const allCategories = list.filter(project => project.language !== null).map(project => project.language);
+    const countCategories = _.countBy(allCategories);
     const [currCategory, setCurrCategory] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
 
-    const allCategories = projectsList.filter(project => project.language !== null).map(project => project.language);
-    const countCategories = _.countBy(allCategories);
-
-    const projectsFilteredByCategoryAndSearchQuery = projectsList.filter(project => {
+    const projectsFilteredByCategoryAndSearchQuery = list.filter(project => {
         const projectFullname = project.owner + project.name;
         if (!projectFullname.includes(searchQuery)) return false;
         if (currCategory === 'All') return true;
@@ -38,15 +38,17 @@ const Home: FC = () => {
         return false;
     });
 
-    const changeSearch = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const changeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(event.target.value);
-    }, []);
+    };
 
     useEffect(() => {
         const getRepos = async () => {
             try {
-                db.collection('repos').orderBy('stars').onSnapshot(snapshot => {
-                        let projects: any = [];
+                db.collection('repos')
+                    .orderBy('stars')
+                    .onSnapshot(snapshot => {
+                        let projects:any = []
 
                         snapshot.forEach(doc => {
                             projects.push({
@@ -55,18 +57,19 @@ const Home: FC = () => {
                             });
                         });
 
-                        setProjectsList(projects);
+                        setList(projects);
                         setIsLoading(false);
                     });
             } catch (err) {
                 console.error(err);
             }
-        };
+        }
         getRepos();
-    }, [db]);
+    }, []);
 
     return (
         <div>
+            <Navbar />
 
             <header>
                 <div className="header-content">
@@ -127,7 +130,7 @@ const Home: FC = () => {
             </div>
 
             <BackToTop />
-            
+            <Footer />
         </div>
     );
 };
