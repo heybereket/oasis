@@ -1,4 +1,6 @@
-import Project from './Project';
-import Loading from './Loading';
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import Project from "./Project";
+import Loading from "./Loading";
 
-export { Project, Loading };
+export { Navbar, Footer, Project, Loading };
