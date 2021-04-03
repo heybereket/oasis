@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import { colours } from '../lib/constants';
 import { formatNumber } from '../utils/numbers';
-import { Button } from '../components/common/Buttons';
 
 interface IRepositoryCardProps {
     project: {
@@ -63,7 +62,7 @@ const RepositoryCard: FC<IRepositoryCardProps> = ({ project: {language, url, own
                 {desc === null && <small>No description.</small>}
                 <div className="category-wrapper">
                     {language in colours && (
-                        <Button>
+                        <button className="language">
                             <svg viewBox="0 0 80 80" width="10" height="10">
                                 <circle
                                     style={{ fill: colours[language] }}
@@ -76,10 +75,10 @@ const RepositoryCard: FC<IRepositoryCardProps> = ({ project: {language, url, own
 
                             &nbsp;
                             {language}
-                        </Button>
+                        </button>
                     )}
                     {!(language in colours) && language !== null && (
-                        <Button>
+                        <button className="language">
                             <svg viewBox="0 0 80 80" width="10" height="10">
                                 <circle
                                     style={{ fill: '#fff' }}
@@ -91,10 +90,10 @@ const RepositoryCard: FC<IRepositoryCardProps> = ({ project: {language, url, own
                             </svg>
               &nbsp;
                             {language}
-                        </Button>
+                        </button>
                     )}
                     {language === null && (
-                        <Button>
+                        <button className="language">
                             <svg viewBox="0 0 80 80" width="10" height="10">
                                 <circle
                                     style={{ fill: '#fff' }}
@@ -105,15 +104,15 @@ const RepositoryCard: FC<IRepositoryCardProps> = ({ project: {language, url, own
                                 />
                             </svg>
               &nbsp; N/A
-                        </Button>
+                        </button>
                     )}
                     {issues > 1000 ? (
-                        <Button>🚨 1k+ issues</Button>
+                        <button className="issues">🚨 1k+ issues</button>
                     ) : (
-                        <Button>🚨 {issues} issues</Button>
+                        <button className="issues">🚨 {issues} issues</button>
                     )}
                     <br />
-                    <Button>⭐ {formatNumber(stars)} stars</Button>
+                    <button className="stars">⭐ {formatNumber(stars)} stars</button>
                 </div>
             </div>
         </Link>
