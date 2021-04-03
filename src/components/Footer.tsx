@@ -1,15 +1,26 @@
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 
-import '../style/footer.css';
 import LanguageSelector from './LanguageSelector';
 
-const Footer: FC = () => {
+const Wrapper = styled.div`
+  position: relative;
+    padding: 10px 0;
+    border-top: 2px solid hsla(0,0%,100%,.1);
+    background-color: transparent;
+    font-family: "Inter",sans-serif;
+    font-weight: 450;
+    font-size: 15px;
+    text-align: center;
+`;
+
+export const Footer: FC = () => {
   const { t } = useTranslation();
 
   return (
     <>
-      <div className="footer">
+      <Wrapper>
         {`${t('footer.oasisBy')} `}
         <a
           aria-label="Bereket's Twitter"
@@ -44,9 +55,8 @@ const Footer: FC = () => {
         <div className="footer__language-selector">
           <LanguageSelector />
         </div>
-      </div>
+      </Wrapper>
     </>
   );
 };
 
-export default Footer;
