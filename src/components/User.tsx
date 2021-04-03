@@ -1,10 +1,8 @@
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, useHistory } from 'react-router-dom';
 import { useState, useEffect, FC } from 'react';
 
 import firebase from '../data/firebase';
 import { colours } from '../lib/constants';
-import Navbar from './Navbar';
-import '../style/Project.css';
 import Loading from './Loading';
 import { FaGithub, FaTwitter, FaLink } from 'react-icons/fa';
 
@@ -12,6 +10,7 @@ type IUserProps = RouteComponentProps<{ username: string }>;
 
 const User: FC<IUserProps> = (props) => {
     const db = firebase.firestore();
+    const history = useHistory();
     const [user, setUser] = useState<any>();
     const [list, setList] = useState<any>([]);
     const [empty, setEmpty] = useState(true);
@@ -26,7 +25,7 @@ const User: FC<IUserProps> = (props) => {
         const empty = querySnapshot.empty;
 
         if (empty) {
-            window.location.href = `/`;
+            history.push('/');
         } else {
             querySnapshot.forEach(doc => {
                 const userData = doc.data();
@@ -52,7 +51,7 @@ const User: FC<IUserProps> = (props) => {
                 setList(projects);
                 setIsLoading(false);
             });
-    });
+    }, []);
 
     return (
         <div>
@@ -60,8 +59,6 @@ const User: FC<IUserProps> = (props) => {
                 <p className="center">fetching</p>
             ) : (
                 <div>
-
-                    <Navbar />
 
                     <div className="main-profile-wrapper">
                         <header>
