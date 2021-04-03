@@ -1,7 +1,10 @@
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=for-the-badge)](#contributors-)
+![Discord Link](https://img.shields.io/discord/826577772805095516?style=for-the-badge)
 
 ---
+
+## Project Structure
+Our [`main`](https://github.com/heybereket/oasis/tree/main) branch is made using `create-react-app`, and is the version currently in Production. The [`next`](https://github.com/heybereket/oasis/tree/next) branch is a re-write of the project using NextJS and TailwindCSS. This version is still under development, but is the main version to contribute to. **`main` will eventually be super-seeded by `next`, so please only work on `main` if you are fixing bugs/anything critical.**
 
 ## Contributions
 
@@ -10,7 +13,8 @@ Oasis is open to contributions, but we recommend creating an issue or replying i
 Please read [CONTRIBUTING.md](https://github.com/heybereket/oasis/blob/main/docs/CONTRIBUTING.md) for details on the project.
 
 ## ⌛ Status
-- [x] Development: Started building the project, almost ready to ship!
+- [x] Early Development: Started building the project, almost ready to ship!
+- [ ] Development: Movement/re-write using NextJS/TailwindCSS
 - [ ] Early Release: Soft Launch on Twitter + GitHub (mostly trying to fix and solve bugs)
 - [ ] Official Launch
 
