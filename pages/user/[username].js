@@ -1,12 +1,15 @@
 export default function User(props) {
   return (
-    <div
-      className={`m-4 rounded-md shadow-md w-80 h-32 flex px-4 items-center`}
-    >
-      <img className={`w-16 rounded-full`} src={props.data.avatar}></img>
-      <div className={`ml-2 flex flex-col`}>
-        <h1 className={`text-xl font-semibold`}>{props.data.username}</h1>
-        <h1 className={`text-xs text-gray-500 font-mono`}>{props.data.uid}</h1>
+    <div className={`w-screen h-screen flex items-center justify-center`}>
+      <div className={`m-4 rounded-md shadow-md h-32 flex px-4 items-center`}>
+        <img className={`w-20 rounded-full`} src={props.data.avatar}></img>
+        <div className={`ml-4 flex flex-col`}>
+          <h1 className={`text-xl font-semibold`}>{props.data.username}</h1>
+          <h1 className={`text-gray-700 mb-2`}>{props.data.bio}</h1>
+          <h1 className={`text-xs text-gray-500 font-mono`}>
+            User ID: {props.data.uid}
+          </h1>
+        </div>
       </div>
     </div>
   );
