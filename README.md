@@ -1,5 +1,4 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=for-the-badge)](#contributors-)
-![Discord Link](https://img.shields.io/discord/826577772805095516?style=for-the-badge)
 
 ---
 
