@@ -3,10 +3,10 @@ import { formatError, formatData } from "../../utils/apiFormatter";
 
 export default async function user(req, res) {
   if (req.method !== "POST")
-    return res.status(404).send(formatError("Error_NotFound"));
+    return res.status(404).send(formatError("Not Found"));
 
   if (!req.body.username)
-    return res.status(401).send(formatError("Error_MissingParams"));
+    return res.status(401).send(formatError("Missing Params"));
 
   var user = req.body.username;
   const admin = await getFirebaseAdmin();
@@ -19,10 +19,10 @@ export default async function user(req, res) {
     .get()
     .then(async (querySnapshot) => {
       if (querySnapshot.empty)
-        return res.status(404).send(formatError("Error_InvalidUsername"));
+        return res.status(404).send(formatError("Invalid Username"))
 
       querySnapshot.forEach(async (doc) => {
-        var data = await doc.data();
+        var data = doc.data();
         delete data.email;
         res.send(formatData(data));
       });

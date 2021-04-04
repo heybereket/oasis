@@ -16,5 +16,5 @@ export default async function user(req, res) {
     users.push(data.username);
   });
 
-  res.send(formatData(users));
+  res.status(200).send(formatData(users));
 }

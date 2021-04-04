@@ -19,10 +19,7 @@ async function signIn(token, gitToken, res) {
     .auth()
     .verifyIdToken(token)
     .then((decodedIdToken) => {
-      if (
-        new Date().getTime() / 1000 - decodedIdToken.auth_time <
-        expiresIn / 1000
-      ) {
+      if (new Date().getTime() / 1000 - decodedIdToken.auth_time <expiresIn / 1000) {
         // Create session cookie and set it.
         return admin.auth().createSessionCookie(token, { expiresIn });
       }
@@ -45,6 +42,17 @@ async function signIn(token, gitToken, res) {
     .verifySessionCookie(cookie)
     .then(async (decodedClaims) => {
       var db = admin.firestore();
+      const doc = await db.collection('users').doc('userId').get()
+      const docData = doc.data()
+
+      const today = new Date();
+      const year = today.getFullYear(); 
+      Date.shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      function shortMonthName(dt){ 
+        return Date.shortMonths[dt.getMonth()]; 
+      }
+      const day = today.getDate()
+
       var userData = {
         username: githubData.login,
         name: githubData.name,
@@ -54,6 +62,7 @@ async function signIn(token, gitToken, res) {
         email: decodedClaims.email,
         uid: decodedClaims.uid,
         created: admin.firestore.Timestamp.now(),
+        joined: `${shortMonthName(today)} ${day}, ${year}`
       };
 
       await db.collection("users").doc(decodedClaims.uid).set(userData);
