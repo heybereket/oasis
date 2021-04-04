@@ -1,6 +1,7 @@
 import { serialize } from "cookie";
 import getFirebaseAdmin from "../../utils/firebaseadmin";
 const { destroyCookie } = require("nookies");
+import { formatError, formatSuccess } from "../../utils/apiFormatter";
 
 var admin;
 
@@ -27,15 +28,11 @@ async function signIn(token, gitToken, res) {
       }
       // A user that was not recently signed in is trying to set a session cookie.
       // To guard against ID token theft, require re-authentication.
-      res
-        .status(401)
-        .send(JSON.stringify({ status: "error", error: "Error_OutdatedID" }));
+      res.status(401).send(formatError("Error_OutdatedID"));
     });
 
-  if (!cookie)
-    return res
-      .status(401)
-      .send(JSON.stringify({ status: "error", error: "Error_InvalidCookie" }));
+  if (!cookie) res.status(401).send(formatError("Error_InvalidCookie"));
+
   var githubData = await fetch("https://api.github.com/user", {
     method: "GET",
     headers: {
@@ -70,7 +67,7 @@ async function signIn(token, gitToken, res) {
   };
   res.setHeader("Set-Cookie", serialize("user", cookie, options));
 
-  res.status(200).send(JSON.stringify({ status: "success" }));
+  res.status(200).send(formatSuccess());
 }
 
 async function signOut(cookie, res) {
@@ -82,11 +79,9 @@ async function signOut(cookie, res) {
     })
     .then(() => {
       destroyCookie({ res }, "user");
-      res.status(200).end(JSON.stringify({ status: "success" }));
+      res.status(200).end(formatSuccess());
     })
     .catch(() => {
-      res
-        .status(500)
-        .end(JSON.stringify({ status: "error", error: "Error_Generic" }));
+      res.status(500).end(formatError("Error_Generic"));
     });
 }

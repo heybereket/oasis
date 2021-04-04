@@ -16,10 +16,11 @@ export async function getStaticProps(context) {
   return await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/user", {
     method: "POST",
     body: JSON.stringify({ username: context.params.username }),
+    headers: { "Content-Type": "application/json" },
   })
     .then((res) => res.json())
     .then((json) => {
-      return { props: { data: json.data }, revalidate: 30 };
+      return { props: { data: json }, revalidate: 15 };
     });
 }
 
@@ -28,7 +29,7 @@ export async function getStaticPaths() {
     .then((res) => res.json())
     .then((json) => {
       const paths = json.map((item) => ({
-        params: { username: item.username },
+        params: { username: item },
       }));
 
       return { paths, fallback: false };
