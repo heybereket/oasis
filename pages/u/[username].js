@@ -1,7 +1,7 @@
 export default function User(props) {
   return (
     <div className={`w-screen h-screen flex items-center justify-center`}>
-      <div className={`m-4 rounded-md shadow-md h-32 flex px-4 items-center`}>
+      <div className={`m-4 rounded-md shadow-md py-6 flex px-4 items-center`}>
         <img className={`w-20 rounded-full`} src={props.data.avatar}></img>
         <div className={`ml-4 flex flex-col`}>
           <h1 className={`text-xl font-semibold`}>{props.data.username}</h1>
