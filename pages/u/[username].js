@@ -2,25 +2,23 @@ import Head from 'next/head'
 
 export default function User(props) {
   return (
-    <div>
-
+    <div className={`w-screen h-screen flex items-center justify-center`}>
+      
       <Head>
       <link rel="shortcut icon" className={`w-20 rounded-full`} href={props.data.avatar} />
         <title>@{props.data.username} | Oasis</title>
       </Head>
 
-      <div className={`w-screen h-screen flex items-center justify-center`}>
-      <div className={`m-4 rounded-md shadow-md h-32 flex px-4 items-center`}>
+      <div className={`m-4 rounded-md shadow-md py-6 flex px-4 items-center`}>
         <img className={`w-20 rounded-full`} src={props.data.avatar}></img>
         <div className={`ml-4 flex flex-col`}>
-          <h1 className={`text-xl font-semibold`}>{props.data.name}</h1>
+          <h1 className={`text-xl font-semibold`}>{props.data.username}</h1>
           <h1 className={`text-gray-700 mb-2`}>{props.data.bio}</h1>
           <h1 className={`text-xs text-gray-500 font-mono`}>
             User ID: {props.data.uid}
           </h1>
         </div>
       </div>
-    </div>
     </div>
   );
 }
