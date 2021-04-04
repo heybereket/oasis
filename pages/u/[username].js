@@ -3,9 +3,8 @@ import Head from 'next/head'
 export default function User(props) {
   return (
     <div className={`w-screen h-screen flex items-center justify-center`}>
-      
       <Head>
-      <link rel="shortcut icon" className={`w-20 rounded-full`} href={props.data.avatar} />
+        <link rel="shortcut icon" className={`w-20 rounded-full`} href={props.data.avatar} />
         <title>@{props.data.username} | Oasis</title>
       </Head>
 
@@ -14,35 +13,33 @@ export default function User(props) {
         <div className={`ml-4 flex flex-col`}>
           <h1 className={`text-xl font-semibold`}>{props.data.username}</h1>
           <h1 className={`text-gray-700 mb-2`}>{props.data.bio}</h1>
-          <h1 className={`text-xs text-gray-500 font-mono`}>
-            User ID: {props.data.uid}
-          </h1>
+          <h1 className={`text-xs text-gray-500 font-mono`}>User ID: {props.data.uid}</h1>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export async function getStaticProps(context) {
-  return await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/user", {
-    method: "POST",
+  return await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/user', {
+    method: 'POST',
     body: JSON.stringify({ username: context.params.username }),
-    headers: { "Content-Type": "application/json" },
+    headers: { 'Content-Type': 'application/json' },
   })
-    .then((res) => res.json())
-    .then((json) => {
-      return { props: { data: json }, revalidate: 15 };
-    });
+    .then(res => res.json())
+    .then(json => {
+      return { props: { data: json }, revalidate: 15 }
+    })
 }
 
 export async function getStaticPaths() {
-  return await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/users")
-    .then((res) => res.json())
-    .then((json) => {
-      const paths = json.map((item) => ({
+  return await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/users')
+    .then(res => res.json())
+    .then(json => {
+      const paths = json.map(item => ({
         params: { username: item },
-      }));
+      }))
 
-      return { paths, fallback: false };
-    });
+      return { paths, fallback: false }
+    })
 }

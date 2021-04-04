@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 export default function Navbar() {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(false)
 
   const handleClick = () => {
-    setActive(!active);
-  };
+    setActive(!active)
+  }
 
   return (
     <>
       <nav className="flex items-center flex-wrap bg-black p-3 ">
         <a href="/" className="inline-flex items-center p-2 mr-4 ">
-          <img
-            src="static/oasis-logo.png"
-            className="fill-current text-white w-15 h-11 mr-2"
-          ></img>
+          <img src="static/oasis-logo.png" className="fill-current text-white w-15 h-11 mr-2"></img>
         </a>
         <button className=" inline-flex p-3 hover:bg-green-600 rounded lg:hidden text-white ml-auto hover:text-white outline-none">
           <svg
@@ -32,11 +29,7 @@ export default function Navbar() {
             />
           </svg>
         </button>
-        <div
-          className={`${
-            active ? "" : "hidden"
-          }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
-        >
+        <div className={`${active ? '' : 'hidden'}   w-full lg:inline-flex lg:flex-grow lg:w-auto`}>
           <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
             <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
               Submit
@@ -49,5 +42,5 @@ export default function Navbar() {
         </div>
       </nav>
     </>
-  );
+  )
 }

@@ -1,10 +1,8 @@
-import Particles from "react-particles-js";
+import Particles from 'react-particles-js'
 
 export default function Custom404() {
   return (
-    <div
-      className={`w-screen h-screen m-0 flex flex-col items-center justify-center bg-black`}
-    >
+    <div className={`w-screen h-screen m-0 flex flex-col items-center justify-center bg-black`}>
       <Particles
         params={{
           particles: {
@@ -19,7 +17,7 @@ export default function Custom404() {
             events: {
               onhover: {
                 enable: true,
-                mode: "repulse",
+                mode: 'repulse',
               },
             },
           },
@@ -42,5 +40,5 @@ export default function Custom404() {
         </a>
       </div>
     </div>
-  );
+  )
 }

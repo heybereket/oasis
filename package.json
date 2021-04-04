@@ -1,12 +1,26 @@
 {
-  "name": "oasis-next",
+  "name": "oasis",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heybereket/oasis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/heybereket/oasis/issues"
+  },
+  "homepage": "https://oasis.sh",
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
-    "commit": "git add . && git cz && git push"
+    "commit": "yarn prettier && git add . && git cz && git push",
+    "prettier": "prettier --config .prettierrc --write {.,components,lib,pages}/*.js {components,lib,pages}/**/*.js",
+    "contrib:add": "all-contributors add",
+    "contrib:build": "all-contributors generate"
   },
   "dependencies": {
     "@octokit/rest": "^18.5.2",
