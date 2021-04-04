@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import firebase, { loginGitHub, logout } from "../data/firebase";
 
 export default function Navbar() {
   const [active, setActive] = useState(false);
-  const user = firebase.auth().currentUser;
 
   const handleClick = () => {
     setActive(!active);
@@ -18,10 +16,7 @@ export default function Navbar() {
             className="fill-current text-white w-15 h-11 mr-2"
           ></img>
         </a>
-        <button
-          className=" inline-flex p-3 hover:bg-green-600 rounded lg:hidden text-white ml-auto hover:text-white outline-none"
-          onClick={handleClick}
-        >
+        <button className=" inline-flex p-3 hover:bg-green-600 rounded lg:hidden text-white ml-auto hover:text-white outline-none">
           <svg
             className="w-6 h-6"
             fill="none"
@@ -43,32 +38,13 @@ export default function Navbar() {
           }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
         >
           <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
-            <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white ">
-              Home
-            </a>
-
-            <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
-              About us
-            </a>
-
             <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
               Submit
             </a>
-            {user ? (
-              <a
-                className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded bg-green-600 text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-green-600"
-                onClick={logout}
-              >
-                Logout
-              </a>
-            ) : (
-              <a
-                className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded bg-green-600 text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-green-600"
-                onClick={loginGitHub}
-              >
-                Login
-              </a>
-            )}
+
+            <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded bg-green-600 text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-green-600">
+              Login
+            </a>
           </div>
         </div>
       </nav>
