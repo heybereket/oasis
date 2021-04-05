@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export default function User(props) {
   return (
-    <div className={`w-screen h-screen flex items-center justify-center`}>
+    <div className={`w-screen h-screen flex flex-col items-center justify-center`}>
       <Head>
         <link rel="shortcut icon" className={`w-20 rounded-full`} href={props.data.avatar} />
         <title>@{props.data.username} | Oasis</title>
