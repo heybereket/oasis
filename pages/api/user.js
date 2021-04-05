@@ -1,10 +1,10 @@
 import getFirebaseAdmin from '../../utils/firebaseadmin.js';
-import { formatError, formatData } from '../../utils/apiFormatter';
+import { formatData, sendStatus } from '../../utils/apiFormatter';
 
 export default async function user(req, res) {
-  if (req.method !== 'POST') return res.status(404).send(formatError('Not Found'));
+  if (req.method !== 'POST') return res.status(404).send(sendStatus(res, 'CannotMETHOD'));
 
-  if (!req.body.username) return res.status(401).send(formatError('Missing Params'));
+  if (!req.body.username) return res.status(401).send(sendStatus(res, 'InvalidParams'));
 
   var user = req.body.username;
   const admin = await getFirebaseAdmin();
@@ -16,7 +16,7 @@ export default async function user(req, res) {
     .limit(1)
     .get()
     .then(async querySnapshot => {
-      if (querySnapshot.empty) return res.status(404).send(formatError('Invalid Username'));
+      if (querySnapshot.empty) return res.status(404).send(sendStatus(res, 'InvalidParams'));
 
       querySnapshot.forEach(async doc => {
         var data = doc.data();

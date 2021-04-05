@@ -108,7 +108,7 @@ async function signOut(cookie, res) {
     })
     .then(() => {
       destroyCookie({ res }, 'user');
-      res.status(200).end(formatSuccess());
+      res.status(200).end(sendStatus(res, 'Success'));
     })
     .catch(() => {
       sendStatus(res, 'Generic');

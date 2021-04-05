@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 export default function Navbar() {
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false);
 
   const handleClick = () => {
-    setActive(!active)
-  }
+    setActive(!active);
+  };
 
   return (
     <>
@@ -42,5 +42,5 @@ export default function Navbar() {
         </div>
       </nav>
     </>
-  )
+  );
 }
