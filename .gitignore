@@ -21,8 +21,5 @@ yarn-error.log*
 .env.development
 .env.production
 
-# firebase
-serviceaccount.json
-
 # netlify
 .netlify
