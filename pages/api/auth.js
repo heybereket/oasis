@@ -1,7 +1,7 @@
 import { serialize } from 'cookie'
 import getFirebaseAdmin from '../../utils/firebaseadmin'
 const { destroyCookie } = require('nookies')
-import { formatError, formatSuccess } from '../../utils/apiFormatter'
+import { sendStatus } from '../../utils/apiFormatter'
 
 var admin
 
@@ -24,10 +24,10 @@ async function signIn(token, gitToken, res) {
       }
       // A user that was not recently signed in is trying to set a session cookie.
       // To guard against ID token theft, require re-authentication.
-      res.status(401).send(formatError('Error_OutdatedID'))
+      sendStatus(res, 'OutdatedID')
     })
 
-  if (!cookie) res.status(401).send(formatError('Error_InvalidCookie'))
+  if (!cookie) sendStatus(res, 'InvalidCookie')
 
   var githubData = await fetch('https://api.github.com/user', {
     method: 'GET',
@@ -78,10 +78,12 @@ async function signIn(token, gitToken, res) {
         .collection('users')
         .doc(decodedClaims.uid)
         .get()
-        .then(doc => (
-          !doc.exists ? 
-          (userData.created = admin.firestore.Timestamp.now()) && 
-          (userData.joined = shortMonthName(today) + ` ${day}, ${year}`) : null))
+        .then(doc =>
+          !doc.exists
+            ? (userData.created = admin.firestore.Timestamp.now()) &&
+              (userData.joined = shortMonthName(today) + ` ${day}, ${year}`)
+            : null
+        )
 
       await db.collection('users').doc(decodedClaims.uid).set(userData, { merge: true })
     })
@@ -109,6 +111,6 @@ async function signOut(cookie, res) {
       res.status(200).end(formatSuccess())
     })
     .catch(() => {
-      res.status(500).end(formatError('Error_Generic'))
+      sendStatus(res, 'Generic')
     })
 }

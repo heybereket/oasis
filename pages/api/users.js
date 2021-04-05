@@ -1,8 +1,8 @@
 import getFirebaseAdmin from '../../utils/firebaseadmin.js'
-import { formatError, formatData } from '../../utils/apiFormatter'
+import { sendStatus, formatData } from '../../utils/apiFormatter'
 
 export default async function user(req, res) {
-  if (req.method !== 'GET') return res.status(404).send(formatError('Error_NotFound'))
+  if (req.method !== 'GET') return sendStatus(res, 'CannotMETHOD')
 
   const admin = await getFirebaseAdmin()
   var db = admin.firestore()

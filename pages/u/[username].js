@@ -22,6 +22,9 @@ export default function User(props) {
           <h1 className={`text-xs text-gray-500 font-mono`}>
             Date Created: {new Date(props.data.created._seconds * 1000).toLocaleDateString()}
           </h1>
+          <h1 className={`text-xs text-gray-500 font-mono`}>
+            Date Created: {new Date(props.data.created._seconds * 1000).toLocaleDateString()}
+          </h1>
         </div>
       </div>
 
