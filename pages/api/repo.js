@@ -1,5 +1,5 @@
 import { parseCookies } from 'nookies';
-import { sendStatus } from '../../utils/apiFormatter';
+import { formatData, sendStatus } from '../../utils/apiFormatter';
 import verifyCookie from '../../utils/verifyCookie';
 
 export default async function repo(req, res) {
@@ -12,5 +12,7 @@ export default async function repo(req, res) {
 
   fetch('https://api.github.com/repos/' + req.body.repoName)
     .then(res => res.json())
-    .then(body => {});
+    .then(body => {
+      res.status(200).send(formatData(body));
+    });
 }
