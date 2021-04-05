@@ -78,7 +78,10 @@ async function signIn(token, gitToken, res) {
         .collection('users')
         .doc(decodedClaims.uid)
         .get()
-        .then(doc => (!doc.exists ? (userData.created = admin.firestore.Timestamp.now()) : null))
+        .then(doc => (
+          !doc.exists ? 
+          (userData.created = admin.firestore.Timestamp.now()) && 
+          (userData.joined = shortMonthName(today) + ` ${day}, ${year}`) : null))
 
       await db.collection('users').doc(decodedClaims.uid).set(userData, { merge: true })
     })
