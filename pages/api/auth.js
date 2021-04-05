@@ -73,11 +73,14 @@ async function signIn(token, gitToken, res) {
         url: githubData.html_url,
         email: decodedClaims.email,
         uid: decodedClaims.uid,
-        created: admin.firestore.Timestamp.now(),
-        joined: `${shortMonthName(today)} ${day}, ${year}`,
       }
+      await db
+        .collection('users')
+        .doc(decodedClaims.uid)
+        .get()
+        .then(doc => (!doc.exists ? (userData.created = admin.firestore.Timestamp.now()) : null))
 
-      await db.collection('users').doc(decodedClaims.uid).set(userData)
+      await db.collection('users').doc(decodedClaims.uid).set(userData, { merge: true })
     })
 
   const options = {

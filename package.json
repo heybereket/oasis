@@ -23,7 +23,6 @@
     "contrib:build": "all-contributors generate"
   },
   "dependencies": {
-    "@octokit/rest": "^18.5.2",
     "autoprefixer": "^10.2.5",
     "dotenv": "^8.2.0",
     "firebase": "^8.3.2",
