@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
 export default function User(props) {
   return (
@@ -33,7 +33,7 @@ export default function User(props) {
         Username, Creation Date, Bio, Name (only avaliable if set on GitHub), and your Github URL)
       </h1>
     </div>
-  )
+  );
 }
 
 export async function getStaticProps(context) {
@@ -44,8 +44,8 @@ export async function getStaticProps(context) {
   })
     .then(res => res.json())
     .then(json => {
-      return { props: { data: json }, revalidate: 15 }
-    })
+      return { props: { data: json }, revalidate: 15 };
+    });
 }
 
 export async function getStaticPaths() {
@@ -54,8 +54,8 @@ export async function getStaticPaths() {
     .then(json => {
       const paths = json.map(item => ({
         params: { username: item },
-      }))
+      }));
 
-      return { paths, fallback: false }
-    })
+      return { paths, fallback: false };
+    });
 }

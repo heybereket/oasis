@@ -1,18 +1,18 @@
-import { serialize } from 'cookie'
-import getFirebaseAdmin from '../../utils/firebaseadmin'
-const { destroyCookie } = require('nookies')
-import { sendStatus } from '../../utils/apiFormatter'
+import { serialize } from 'cookie';
+import getFirebaseAdmin from '../../utils/firebaseadmin';
+const { destroyCookie } = require('nookies');
+import { sendStatus } from '../../utils/apiFormatter';
 
-var admin
+var admin;
 
 export default async function auth(req, res) {
-  admin = await getFirebaseAdmin()
-  if (req.method === 'POST') return signIn(req.body.token, req.body.githubToken, res)
-  if (req.method === 'DELETE') return signOut(req.body.sessionCookie, res)
+  admin = await getFirebaseAdmin();
+  if (req.method === 'POST') return signIn(req.body.token, req.body.githubToken, res);
+  if (req.method === 'DELETE') return signOut(req.body.sessionCookie, res);
 }
 
 async function signIn(token, gitToken, res) {
-  const expiresIn = 15 * 60 * 1000 // 15 minutes
+  const expiresIn = 15 * 60 * 1000; // 15 minutes
 
   const cookie = await admin
     .auth()
@@ -20,32 +20,32 @@ async function signIn(token, gitToken, res) {
     .then(decodedIdToken => {
       if (new Date().getTime() / 1000 - decodedIdToken.auth_time < expiresIn / 1000) {
         // Create session cookie and set it.
-        return admin.auth().createSessionCookie(token, { expiresIn })
+        return admin.auth().createSessionCookie(token, { expiresIn });
       }
       // A user that was not recently signed in is trying to set a session cookie.
       // To guard against ID token theft, require re-authentication.
-      sendStatus(res, 'OutdatedID')
-    })
+      sendStatus(res, 'OutdatedID');
+    });
 
-  if (!cookie) sendStatus(res, 'InvalidCookie')
+  if (!cookie) sendStatus(res, 'InvalidCookie');
 
   var githubData = await fetch('https://api.github.com/user', {
     method: 'GET',
     headers: {
       Authorization: 'token ' + gitToken,
     },
-  })
-  githubData = await githubData.json()
+  });
+  githubData = await githubData.json();
   await admin
     .auth()
     .verifySessionCookie(cookie)
     .then(async decodedClaims => {
-      var db = admin.firestore()
-      const doc = await db.collection('users').doc('userId').get()
-      const docData = doc.data()
+      var db = admin.firestore();
+      const doc = await db.collection('users').doc('userId').get();
+      const docData = doc.data();
 
-      const today = new Date()
-      const year = today.getFullYear()
+      const today = new Date();
+      const year = today.getFullYear();
       Date.shortMonths = [
         'Jan',
         'Feb',
@@ -59,11 +59,11 @@ async function signIn(token, gitToken, res) {
         'Oct',
         'Nov',
         'Dec',
-      ]
+      ];
       function shortMonthName(dt) {
-        return Date.shortMonths[dt.getMonth()]
+        return Date.shortMonths[dt.getMonth()];
       }
-      const day = today.getDate()
+      const day = today.getDate();
 
       var userData = {
         username: githubData.login,
@@ -73,7 +73,7 @@ async function signIn(token, gitToken, res) {
         url: githubData.html_url,
         email: decodedClaims.email,
         uid: decodedClaims.uid,
-      }
+      };
       await db
         .collection('users')
         .doc(decodedClaims.uid)
@@ -83,20 +83,20 @@ async function signIn(token, gitToken, res) {
             ? (userData.created = admin.firestore.Timestamp.now()) &&
               (userData.joined = shortMonthName(today) + ` ${day}, ${year}`)
             : null
-        )
+        );
 
-      await db.collection('users').doc(decodedClaims.uid).set(userData, { merge: true })
-    })
+      await db.collection('users').doc(decodedClaims.uid).set(userData, { merge: true });
+    });
 
   const options = {
     maxAge: expiresIn,
     httpOnly: true,
     secure: process.env.SECURE_COOKIE,
     path: '/',
-  }
-  res.setHeader('Set-Cookie', serialize('user', cookie, options))
+  };
+  res.setHeader('Set-Cookie', serialize('user', cookie, options));
 
-  res.status(200).send(formatSuccess())
+  res.status(200).send(formatSuccess());
 }
 
 async function signOut(cookie, res) {
@@ -104,13 +104,13 @@ async function signOut(cookie, res) {
     .auth()
     .verifySessionCookie(cookie)
     .then(decodedClaims => {
-      return admin.auth().revokeRefreshTokens(decodedClaims.sub)
+      return admin.auth().revokeRefreshTokens(decodedClaims.sub);
     })
     .then(() => {
-      destroyCookie({ res }, 'user')
-      res.status(200).end(formatSuccess())
+      destroyCookie({ res }, 'user');
+      res.status(200).end(formatSuccess());
     })
     .catch(() => {
-      sendStatus(res, 'Generic')
-    })
+      sendStatus(res, 'Generic');
+    });
 }

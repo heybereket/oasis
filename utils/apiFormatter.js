@@ -1,36 +1,26 @@
-// Error Code Formatter
-export function formatError(errCode) {
-  return JSON.stringify({ status: 'error', error: errCode }, null, 3)
-}
-
 // Data Formatter
 export function formatData(data) {
-  return JSON.stringify(data, null, 3)
-}
-
-// Success Code Formatter
-export function formatSuccess() {
-  return JSON.stringify({ status: 'success' }, null, 3)
+  return JSON.stringify(data, null, 3);
 }
 
 export function sendStatus(res, statusCode) {
   var currentCode = statusCodes[statusCode]
     ? statusCodes[statusCode]
-    : { code: 200, msg: statusCode, status: 'other' }
+    : { code: 200, msg: statusCode, status: 'other' };
 
   switch (currentCode.status) {
     case 'error':
       res
         .status(currentCode.code)
-        .send(JSON.stringify({ status: 'error', error: currentCode.msg }, null, 3))
-      break
+        .send(JSON.stringify({ status: 'error', error: currentCode.msg }, null, 3));
+      break;
     case 'success':
-      res.status(currentCode.code).send(JSON.stringify({ status: 'success' }, null, 3))
-      break
+      res.status(currentCode.code).send(JSON.stringify({ status: 'success' }, null, 3));
+      break;
     case 'other':
       res
         .status(currentCode.code)
-        .send(JSON.stringify({ status: 'other', code: currentCode.msg }, null, 3))
+        .send(JSON.stringify({ status: 'other', code: currentCode.msg }, null, 3));
   }
 }
 
@@ -70,4 +60,4 @@ export const statusCodes = {
     msg: 'Success',
     status: 'success',
   },
-}
+};

@@ -1,23 +1,23 @@
-import { getFirebase } from "./firebase";
+import { getFirebase } from './firebase';
 const firebase = getFirebase();
-import "firebase/auth";
+import 'firebase/auth';
 
 export default async function signInWithGitHub() {
   var provider = new firebase.auth.GithubAuthProvider();
 
   provider.setCustomParameters({
-    allow_signup: "true",
+    allow_signup: 'true',
   });
   return await firebase
     .auth()
     .signInWithPopup(provider)
-    .then(async (response) => {
+    .then(async response => {
       if (!response && response.user) return;
 
-      return await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/auth", {
-        method: "POST",
+      return await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/auth', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           token: await response.user.getIdToken(),
@@ -28,10 +28,10 @@ export default async function signInWithGitHub() {
 }
 
 export async function signOut(cookie) {
-  return await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/auth", {
-    method: "DELETE",
+  return await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/auth', {
+    method: 'DELETE',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ sessionCookie: cookie }),
   });

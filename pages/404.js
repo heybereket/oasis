@@ -15,5 +15,5 @@ export default function Custom404() {
         </a>
       </div>
     </div>
-  )
+  );
 }
