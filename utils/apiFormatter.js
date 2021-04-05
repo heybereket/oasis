@@ -27,32 +27,32 @@ export function sendStatus(res, statusCode) {
 export const statusCodes = {
   Unauthorized: {
     code: 401,
-    msg: 'Error_Unauthorized',
+    msg: 'Please login to access this route.',
     status: 'error',
   },
   InvalidCookie: {
     code: 400,
-    msg: 'Error_InvalidCookie',
+    msg: 'The provided cookie is invalid.',
     status: 'error',
   },
-  OutdatedID: {
+  OutdatedCookie: {
     code: 400,
-    msg: 'Error_OutdatedID',
+    msg: 'The provided cookie is outdated.',
     status: 'error',
   },
   InvalidParams: {
     code: 400,
-    msg: 'Error_InvalidParams',
+    msg: 'The paramters provided are invalid.',
     status: 'error',
   },
   Generic: {
     code: 500,
-    msg: 'Error_Generic',
+    msg: 'A generic error occured.',
     status: 'error',
   },
   CannotMETHOD: {
     code: 405,
-    msg: 'Error_MethodNotAllowed',
+    msg: 'The method being requested is not available at this route.',
     status: 'error',
   },
   Success: {

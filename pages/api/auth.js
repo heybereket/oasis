@@ -24,7 +24,7 @@ async function signIn(token, gitToken, res) {
       }
       // A user that was not recently signed in is trying to set a session cookie.
       // To guard against ID token theft, require re-authentication.
-      sendStatus(res, 'OutdatedID');
+      sendStatus(res, 'OutdatedCookie');
     });
 
   if (!cookie) sendStatus(res, 'InvalidCookie');
