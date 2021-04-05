@@ -19,6 +19,9 @@ export default function User(props) {
           </a>
           <h1 className={`text-gray-700 mb-2`}>{props.data.bio}</h1>
           <h1 className={`text-xs text-gray-500 font-mono`}>User ID: {props.data.uid}</h1>
+          <h1 className={`text-xs text-gray-500 font-mono`}>
+            Date Created: {new Date(props.data.created._seconds * 1000).toLocaleDateString()}
+          </h1>
         </div>
       </div>
 
