@@ -96,7 +96,7 @@ async function signIn(token, gitToken, res) {
   };
   res.setHeader('Set-Cookie', serialize('user', cookie, options));
 
-  res.status(200).send(formatSuccess());
+  res.status(200).send(sendStatus(res, 'Success'));
 }
 
 async function signOut(cookie, res) {
