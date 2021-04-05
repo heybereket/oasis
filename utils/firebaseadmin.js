@@ -1,4 +1,4 @@
-var admin = require('firebase-admin')
+const admin = require('firebase-admin')
 
 export const serviceAccount = {
   type: 'service_account',
@@ -15,7 +15,7 @@ export const serviceAccount = {
 
 export default async function getFirebaseAdmin() {
   if (!admin.apps.length) {
-    await admin.initializeApp({
+    admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
     })
   }
