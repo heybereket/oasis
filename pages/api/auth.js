@@ -9,6 +9,7 @@ export default async function auth(req, res) {
   admin = await getFirebaseAdmin();
   if (req.method === 'POST') return signIn(req.body.token, req.body.githubToken, res);
   if (req.method === 'DELETE') return signOut(req.body.sessionCookie, res);
+  sendStatus(res, 'CannotMethod');
 }
 
 async function signIn(token, gitToken, res) {

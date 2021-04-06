@@ -207,11 +207,11 @@ export async function getStaticProps(context) {
   var data = { props: {}, revalidate: 30 };
 
   // Fetch user-data
-  await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/users')
+  await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + '/users')
     .then(res => res.json())
     .then(async json => {
       if (!json[0]) return (data.props.user = {});
-      await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/user', {
+      await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + '/user', {
         method: 'POST',
         body: JSON.stringify({ username: json[Math.floor(Math.random() * json.length)] }),
         headers: { 'Content-Type': 'application/json' },

@@ -1,5 +1,3 @@
-import Homepage from '../modules/homepage';
-
 export default function Home() {
-  return <Homepage />;
+  return <div></div>;
 }

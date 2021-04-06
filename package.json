@@ -14,7 +14,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "commit": "yarn prettier && git add . && git cz && git push",
