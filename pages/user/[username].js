@@ -42,7 +42,7 @@ export async function getStaticPaths() {
   var users = await Wrapper.users();
 
   const paths = users.map(item => ({
-    params: { username: item },
+    params: { username: item.username },
   }));
 
   return { paths, fallback: false };
