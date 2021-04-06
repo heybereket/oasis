@@ -86,7 +86,7 @@ async function signIn(token, gitToken, res) {
         );
 
       await db.collection('users').doc(decodedClaims.uid).set(userData, { merge: true });
-    });
+  });
 
   const options = {
     maxAge: expiresIn,

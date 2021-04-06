@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.2.5",
+    "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
     "firebase": "^8.3.2",
     "firebase-admin": "^9.6.0",
