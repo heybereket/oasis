@@ -1,9 +1,7 @@
-import Wrapper from '../../utils/apiWrapper';
-
-export default function User(props) {
-  return (
-    <div class="flex flex-col min-h-screen">
-        <div class="" style={{backgroundColor: "#151515"}}>
+export default function Profile() {
+    return (
+        <div class="flex flex-col min-h-screen">
+        <div class="" style={{backgroundColor: "#111"}}>
           <div class="p-5 border-b border-gray-700 flex items-center justify-between">
             
             <button class="border border-gray-600 text-gray-600 px-4 py-2 rounded-full inline-flex items-center hover:bg-gray-600 hover:text-white">
@@ -21,19 +19,19 @@ export default function User(props) {
       
       
               <a class="cursor-pointer w-8 h-8 rounded-full overflow-hidden">
-             <img src={props.user.avatar}/>
+             <img src="https://avatars.githubusercontent.com/u/68391329?s=460&u=b8ccbb6aa9dc812bbe80c87512556ff28f0e287e&v=4"/>
             </a>
             </div>
           </div>
           <div class="container mx-auto">
             <div class="flex flex-wrap py-8 flex-col sm:flex-row">
               <div class="w-32 h-32 rounded-full overflow-hidden flex-shrink-0 m-auto sm:m-0">
-                <img src={props.user.avatar} />
+                <img src="https://avatars.githubusercontent.com/u/68391329?s=460&u=b8ccbb6aa9dc812bbe80c87512556ff28f0e287e&v=4" />
               </div>
               <div class="sm:pl-10 sm:pt-4 flex-1">
                 <div class="flex sm:justify-between sm:flex-row sm:flex-no-wrap justify-center flex-wrap mb-6">
                   <div class="flex flex-wrap md:w-auto w-full md:mb-0 mb-4">
-                    <h2 class="text-white text-2xl w-full mb-3 text-center sm:text-left mt-4 sm:mt-0">{props.user.name}</h2>
+                    <h2 class="text-white text-2xl w-full mb-3 text-center sm:text-left mt-4 sm:mt-0">Bereket Semagn</h2>
                     <div class="flex sm:w-auto w-full sm:justify-start justify-center">
                       <span class="text-gray-600 mr-4 tracking-wider"><span class="text-gray-400">120</span> Followers</span>
                       <span class="text-gray-600 mr-4 tracking-wider"><span class="text-gray-400">45</span> Following</span>
@@ -55,13 +53,9 @@ export default function User(props) {
                 </button>
                   
                 </div>
-
-                <div class="flex sm:w-auto w-full sm:justify-start justify-center">
-                    <p class="text-gray-500 leading-normal px-4 sm:px-0">
-                      I make things.
-                    </p>
-                </div>
-               
+                <p class="text-gray-500 leading-normal px-4 sm:px-0">
+                  I make things.
+                </p>
               </div>
             </div>
           </div>
@@ -192,20 +186,5 @@ export default function User(props) {
           </div>
         </div>
       </div>
-  );
-}
-
-export async function getStaticProps(context) {
-  var user = await Wrapper.user(context.params.username);
-  return { props: { user }, revalidate: 15 };
-}
-
-export async function getStaticPaths() {
-  var users = await Wrapper.users();
-
-  const paths = users.map(item => ({
-    params: { username: item.username },
-  }));
-
-  return { paths, fallback: false };
-}
+    );
+  }
