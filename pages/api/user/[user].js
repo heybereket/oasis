@@ -1,12 +1,12 @@
-import getFirebaseAdmin from '../../utils/firebaseadmin.js';
-import { formatData, sendStatus } from '../../utils/apiFormatter';
+import getFirebaseAdmin from '../../../utils/firebaseadmin.js';
+import { formatData, sendStatus } from '../../../utils/apiFormatter';
 
 export default async function user(req, res) {
-  if (req.method !== 'POST') return res.status(404).send(sendStatus(res, 'CannotMETHOD'));
+  if (req.method !== 'GET') return res.status(404).send(sendStatus(res, 'CannotMETHOD'));
 
-  if (!req.body.username) return res.status(401).send(sendStatus(res, 'InvalidParams'));
+  if (!req.query.user) return res.status(401).send(sendStatus(res, 'InvalidParams'));
 
-  var user = req.body.username;
+  var user = req.query.user;
   const admin = await getFirebaseAdmin();
   var db = admin.firestore();
 
