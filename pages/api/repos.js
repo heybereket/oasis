@@ -15,6 +15,11 @@ export default async function user(req, res) {
   documents.forEach(doc => {
     var data = doc.data();
     delete data.submitted_by
+    delete data.archived
+    delete data.stars
+    delete data.avatar
+    delete data.fork
+    delete data.likes
     repositories.push(data);
   });
 
