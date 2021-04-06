@@ -14,7 +14,8 @@ export default async function user(req, res) {
   var repositories = [];
   documents.forEach(doc => {
     var data = doc.data();
-    repositories.push(data.full_name);
+    delete data.submitted_by
+    repositories.push(data);
   });
 
   res.status(200).send(formatData(repositories));
