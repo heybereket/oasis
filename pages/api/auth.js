@@ -9,6 +9,7 @@ export default async function auth(req, res) {
   admin = await getFirebaseAdmin();
   if (req.method === 'POST') return signIn(req.body.token, req.body.githubToken, res);
   if (req.method === 'DELETE') return signOut(req.body.sessionCookie, res);
+  sendStatus(res, 'CannotMethod');
 }
 
 async function signIn(token, gitToken, res) {
@@ -41,6 +42,8 @@ async function signIn(token, gitToken, res) {
     .verifySessionCookie(cookie)
     .then(async decodedClaims => {
       var db = admin.firestore();
+      const doc = await db.collection('users').doc('userId').get();
+      const docData = doc.data();
 
       const today = new Date();
       const year = today.getFullYear();

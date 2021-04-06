@@ -45,12 +45,22 @@ export const statusCodes = {
     msg: 'The paramters provided are invalid.',
     status: 'error',
   },
+  InvalidRepoName: {
+    code: 400,
+    msg: 'The repository name provided is invalid.',
+    status: 'error',
+  },
+  InvalidUserName: {
+    code: 400,
+    msg: 'The username provided is invalid.',
+    status: 'error',
+  },
   Generic: {
     code: 500,
     msg: 'A generic error occured.',
     status: 'error',
   },
-  CannotMETHOD: {
+  CannotMethod: {
     code: 405,
     msg: 'The method being requested is not available at this route.',
     status: 'error',
@@ -59,5 +69,26 @@ export const statusCodes = {
     code: 200,
     msg: 'Success',
     status: 'success',
+  },
+
+  RepoIsFork: {
+    code: 400,
+    msg: 'The repo provided is a fork.',
+    status: 'error',
+  },
+  RepoIsArchived: {
+    code: 400,
+    msg: 'The repo provided is archived.',
+    status: 'error',
+  },
+  RepoIsUnder5Issues: {
+    code: 400,
+    msg: 'The repo provided has under 5 issues.',
+    status: 'error',
+  },
+  RepoExists: {
+    code: 400,
+    msg: 'The repo provided already exists.',
+    status: 'error',
   },
 };
