@@ -41,8 +41,6 @@ async function signIn(token, gitToken, res) {
     .verifySessionCookie(cookie)
     .then(async decodedClaims => {
       var db = admin.firestore();
-      const doc = await db.collection('users').doc('userId').get();
-      const docData = doc.data();
 
       const today = new Date();
       const year = today.getFullYear();

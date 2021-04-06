@@ -4,16 +4,19 @@ import { sendStatus, formatData } from '../../utils/apiFormatter';
 export default async function user(req, res) {
   if (req.method !== 'GET') return sendStatus(res, 'CannotMETHOD');
 
+  const { limit } = req.query
+
   const admin = await getFirebaseAdmin();
   var db = admin.firestore();
-  const ref = db.collection('users');
+  const ref = db.collection('users').orderBy('uid').limit(parseInt(limit, 10) || 10);
   const documents = await ref.get();
 
-  var users = [];
+  var repositories = [];
   documents.forEach(doc => {
     var data = doc.data();
-    users.push(data.username);
+    delete data.email
+    repositories.push(data);
   });
 
-  res.status(200).send(formatData(users));
+  res.status(200).send(formatData(repositories));
 }
