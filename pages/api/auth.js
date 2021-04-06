@@ -74,19 +74,21 @@ async function signIn(token, gitToken, res) {
         email: decodedClaims.email,
         uid: decodedClaims.uid,
       };
+
       await db
         .collection('users')
         .doc(decodedClaims.uid)
         .get()
-        .then(doc =>
-          !doc.exists
-            ? (userData.created = admin.firestore.Timestamp.now()) &&
-              (userData.joined = shortMonthName(today) + ` ${day}, ${year}`)
-            : null
-        );
+        .then(doc => {
+          if (!doc.exists) {
+            userData.created = admin.firestore.Timestamp.now();
+            userData.joined = shortMonthName(today) + ` ${day}, ${year}`;
+            userData.verified = false;
+          }
+        });
 
       await db.collection('users').doc(decodedClaims.uid).set(userData, { merge: true });
-  });
+    });
 
   const options = {
     maxAge: expiresIn,

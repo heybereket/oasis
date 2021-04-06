@@ -1,4 +1,3 @@
-import Navbar from '../components/Navbar';
 export default function Homepage() {
   return (
     <div className={`w-screen h-screen flex flex-col items-center justify-center`}>
