@@ -8,7 +8,7 @@ export default async function user(req, res) {
 
   const admin = await getFirebaseAdmin();
   var db = admin.firestore();
-  const ref = db.collection('repos').limit(parseInt(limit, 10) || 10);
+  const ref = db.collection('repos').orderBy('name').limit(parseInt(limit, 10) || 10);
   const documents = await ref.get();
 
   var repositories = [];
