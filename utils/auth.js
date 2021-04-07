@@ -13,7 +13,7 @@ export default async function signInWithGitHub() {
     .signInWithPopup(provider)
     .then(async response => {
       if (!response && response.user) return;
-
+      console.log(response.credential.accessToken);
       return await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + '/auth', {
         method: 'POST',
         headers: {
