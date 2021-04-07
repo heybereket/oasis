@@ -15,10 +15,13 @@ export default function User(props) {
           <Avatar user={props.user} size="lg" />
           <div className={`flex flex-col ml-1 md:ml-4`}>
             <div className={`flex items-center text-dark-text`}>
+            <a href={`/user/${props.user.username}`} passHref={true}>
               <h1 className={`flex text-2xl leading-7 md:text-3xl font-bold`}>
                 {props.user.name ? props.user.name : `@${props.user.username}`}
               </h1>
+              </a>
             </div>
+            
             {props.user.bio != null ? (
               <h1 className={`text-gray-200 text-xs md:text-sm font-mono`}>{props.user.bio}</h1>
             ) : 
