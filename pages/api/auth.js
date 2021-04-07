@@ -71,7 +71,7 @@ async function signIn(token, gitToken, res) {
         name: githubData.name,
         avatar: decodedClaims.picture,
         bio: githubData.bio,
-        url: githubData.html_url,
+        twitter: githubData.twitter_username,
         email: decodedClaims.email,
         uid: decodedClaims.uid,
       };
