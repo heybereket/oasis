@@ -33,14 +33,14 @@ export default function User(props) {
                 />
               )}
               
-              <a href={`https://github.com/${props.user.username}`}>
+              <a href={`https://github.com/${props.user.username}`} target="_blank" rel="noopener">
                 <FontAwesomeIcon
                   icon={faGithub}
                   className={`color-current hover:text-white text-2xl transition duration-100 mr-2`}
                 />
               </a>
               {(props.user.twitter != null) && (
-                <a href={`https://twitter.com/${props.user.twitter}`}>
+                <a href={`https://twitter.com/${props.user.twitter}`} target="_blank" rel="noopener">
                 <FontAwesomeIcon
                   icon={faTwitter}
                   className={`color-current hover:text-white text-2xl transition duration-100 mr-2`}
@@ -48,7 +48,7 @@ export default function User(props) {
               </a>
               )}
               {(props.user.link != null) && (
-                <a href={`${props.user.link}`}>
+                <a href={`${props.user.link}`} target="_blank" rel="noopener">
                 <FontAwesomeIcon
                   icon={faLink}
                   className={`color-current hover:text-white text-2xl transition duration-100`}
