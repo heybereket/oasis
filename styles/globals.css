@@ -27,3 +27,31 @@ a {
 * {
   box-sizing: border-box;
 }
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --page-background: #2a2d32;
+  --background: #1d1f21;
+  --background-action: #8bfffa;
+  --background-secondary: #222428;
+  --background-tertiary: #2c3035;
+  --text: white;
+  --text-secondary: #f9f8ff;
+  --text-tertiary: #dedede;
+  --text-blue: #99a4b7;
+  --text-erased: #888888;
+  --link: #8ad6f1;
+  --x-text: black;
+  --x-text-secondary: #1c1c1c;
+  --x-text-tertiary: #b3b3b3y;
+  --light-blue-description: #99a9b5;
+  --accent: var(--background);
+  --accent-secondary: rgb(51, 57, 64);
+  --subtle-gray: #33343b;
+  --border-subtle-thin: 1px solid var(--subtle-gray);
+  --dark-blue-header: #b6bef1;
+  --variable-theme-color: var(--background);
+  --variable-theme-color-secondary: var(--background-tertiary);
+  --text-yellow: var(--yellow-400);
+  --text-red: var(--pink-500);
+}
