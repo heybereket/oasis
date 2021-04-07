@@ -13,7 +13,7 @@ export default async function auth(req, res) {
 }
 
 async function signIn(token, gitToken, res) {
-  const expiresIn = 15 * 60 * 1000; // 15 minutes
+  const expiresIn = 24 * 60 * 60 * 1000 * 5; // 5 days
 
   const cookie = await admin
     .auth()
@@ -67,8 +67,8 @@ async function signIn(token, gitToken, res) {
       const day = today.getDate();
 
       const prefix = 'https://';
-      if (githubData.blog.substr(0, prefix.length) !== prefix){
-            githubData.blog = prefix + githubData.blog;
+      if (githubData.blog.substr(0, prefix.length) !== prefix) {
+        githubData.blog = prefix + githubData.blog;
       }
 
       var userData = {
@@ -79,7 +79,7 @@ async function signIn(token, gitToken, res) {
         email: decodedClaims.email,
         bio: githubData.bio,
         twitter: githubData.twitter_username,
-        link: githubData.blog
+        link: githubData.blog,
       };
 
       await db
@@ -91,6 +91,7 @@ async function signIn(token, gitToken, res) {
             userData.created = admin.firestore.Timestamp.now();
             userData.joined = shortMonthName(today) + ` ${day}, ${year}`;
             userData.verified = false;
+            userData.feed = [];
           }
         });
 

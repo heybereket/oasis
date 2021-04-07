@@ -25,8 +25,8 @@ export async function getRepo(query, res) {
 
       querySnapshot.forEach(async doc => {
         var data = doc.data();
-        delete data.submitted_by
-        delete data.avatar
+        delete data.submitted_by;
+        delete data.avatar;
         res.send(formatData(data));
       });
     });
@@ -51,6 +51,8 @@ export async function addRepo(query, req, res) {
       const docRef = db.collection('repos').doc(`${body.id}`);
       const doc = await docRef.get();
 
+      const userRef = db.collection('users').doc(`${userData.uid}`);
+      const userDoc = await userRef.get();
       if (doc.exists) return sendStatus(res, 'RepoExists');
 
       var repoData = {
@@ -68,6 +70,24 @@ export async function addRepo(query, req, res) {
         language: body.language,
       };
       await docRef.set(repoData);
+
+      await userRef.set(
+        {
+          feed: [
+            {
+              type: 'add',
+              repo: {
+                id: body.id,
+                full_name: body.full_name,
+                name: body.name,
+                active: true,
+              },
+            },
+            ...userDoc.data().feed,
+          ],
+        },
+        { merge: true }
+      );
 
       sendStatus(res, 'Success');
     });

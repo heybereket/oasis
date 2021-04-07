@@ -1,6 +1,6 @@
 import Avatar from './Avatar';
 import Container from './Container';
-import Search from './icons/Search';
+import { SearchIcon } from '@primer/octicons-react';
 
 export default function Navbar(props) {
   return (
@@ -8,7 +8,7 @@ export default function Navbar(props) {
       <img className="w-12" src="/static/logo.svg" />
 
       <div className="inline-flex items-center text-white">
-        <Search className={`w-5 h-5`} />
+        <SearchIcon className={`w-5 h-5`} />
         <Avatar user={props.user} />
       </div>
     </Container>

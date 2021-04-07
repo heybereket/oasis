@@ -2,81 +2,76 @@ import Wrapper from '../../utils/apiWrapper';
 import Navbar from '../../components/Navbar';
 import Container from '../../components/Container';
 import Avatar from '../../components/Avatar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faCheckCircle, faLink } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link'
-
+import ActivityItem from '../../components/ActivityItem';
+import TwitterIcon from '../../components/icons/Twitter';
+import { MarkGithubIcon, CheckIcon, LinkIcon } from '@primer/octicons-react';
 export default function User(props) {
   return (
-      <div className="flex flex-col min-h-screen bg-dark-tertiary">
-          <Navbar user={props.user} />
-          <Container className={`mt-6 flex-col`}>
+    <div className="flex flex-col min-h-screen bg-dark-tertiary">
+      <Navbar user={props.user} />
+      <Container className={`mt-6 flex-col`}>
+        <div className={`px-2 py-5 shadow-xl bg-dark-lighter rounded-3xl flex items-center`}>
+          <div className={`ml-2 md:ml-4`}>
+            <Avatar user={props.user} size="lg" />
+          </div>
+          <div className={`flex flex-col ml-4`}>
+            <h1 className={`text-gray-100 flex text-2xl leading-7 md:text-3xl font-bold mb-1`}>
+              {props.user.name ? props.user.name : `@${props.user.username}`}
+            </h1>
+            {props.user.bio ? (
+              <h1 className={`text-gray-200 text-xs md:text-sm font-mono mb-0.5`}>
+                {props.user.bio}
+              </h1>
+            ) : null}
 
-          <div className={`px-2 py-4 shadow-xl bg-dark-lighter rounded-3xl flex items-center`}>
-          <Link href={props.user.username}>
-            <a>
-              <Avatar user={props.user} size="lg" />
-            </a>
-          </Link>
+            <h1 className={`text-gray-300 text-xs font-mono`}>Joined {props.user.joined}</h1>
 
-          <div className={`flex flex-col ml-1 md:ml-4`}>
-            <div className={`flex items-center text-dark-text`}>
-              <Link href={props.user.username}>
-                <a>
-                    <h1 className={`flex text-2xl leading-7 md:text-3xl font-bold`}>
-                        {props.user.name ? props.user.name : `@${props.user.username}`}
-                    </h1>
-                </a>
-              </Link>
-            </div>
-            
-            {props.user.bio != null ? (
-              <h1 className={`text-gray-200 text-xs md:text-sm font-mono`}>{props.user.bio}</h1>
-            ) : 
-            <h1 className={`text-gray-200 text-xs md:text-sm font-mono`}>This user does not have a bio set.</h1> 
-            }
+            <div className={`flex mt-2 text-gray-300 items-center`}>
+              {props.user.verified && <CheckIcon className={`color-current w-6 h-6 mr-2`} />}
 
-            <div className={`flex mt-2 text-gray-300`}>
-              {(props.user.verified) && (
-                <FontAwesomeIcon
-                  icon={faCheckCircle}
-                  className={`color-current text-2xl mr-2`}
-                />
-              )}
-              
               <a href={`https://github.com/${props.user.username}`} target="_blank" rel="noopener">
-                <FontAwesomeIcon
-                  icon={faGithub}
-                  className={`color-current hover:text-white text-2xl transition duration-100 mr-2`}
+                <MarkGithubIcon
+                  className={`color-current hover:text-white w-5 h-5 transition duration-100 mr-2`}
                 />
               </a>
-              {(props.user.twitter != null) && (
-                <a href={`https://twitter.com/${props.user.twitter}`} target="_blank" rel="noopener">
-                <FontAwesomeIcon
-                  icon={faTwitter}
-                  className={`color-current hover:text-white text-2xl transition duration-100 mr-2`}
-                />
-              </a>
+              {props.user.twitter != null && (
+                <a
+                  href={`https://twitter.com/${props.user.twitter}`}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <TwitterIcon
+                    className={`color-current hover:text-white w-5 h-5 transition duration-100 mr-2 `}
+                  />
+                </a>
               )}
-              {(props.user.link != null) && (
+              {props.user.link && (
                 <a href={`${props.user.link}`} target="_blank" rel="noopener">
-                <FontAwesomeIcon
-                  icon={faLink}
-                  className={`color-current hover:text-white text-2xl transition duration-100`}
-                />
-              </a>
+                  <LinkIcon
+                    className={`color-current hover:text-white w-5 h-5 transition duration-100`}
+                  />
+                </a>
               )}
             </div>
           </div>
         </div>
-        <div className={`flex mt-6 flex-col md:flex-row`}>
+        <div className={`mt-6 grid grid-cols-12`}>
           <div
-            className={`px-2 py-4 shadow-xl bg-dark-lighter rounded-3xl flex items-center flex-grow md:flex-grow-0 md:w-72 lg:w-96 md:mr-4 mb-2`}
+            className={`px-2 py-4 shadow-xl bg-dark-lighter rounded-3xl flex flex-col mb-2 col-span-12 md:col-span-6 md:mr-4 xl:col-span-7 2xl:col-span-8`}
           ></div>
           <div
-            className={`px-2 py-4 shadow-xl bg-dark-lighter rounded-3xl flex items-center flex-grow mb-2`}
-          ></div>
+            className={`px-10 py-6 shadow-xl bg-dark-lighter rounded-3xl flex flex-col mb-2 col-span-12 md:col-span-6 xl:col-span-5 2xl:col-span-4`}
+          >
+            <h1 className={` text-gray-300 font-mono font-semibold`}>Recent Activity</h1>
+            {props.feed.length > 0 ? (
+              props.feed.map(item => <ActivityItem event={item} />)
+            ) : (
+              <h1 className={`text-gray-200 font-mono font-semibold text-xl mt-2`}>
+                no Activity found in api (add some repos they count as Activity), this message will
+                be better later on.
+              </h1>
+            )}
+          </div>
         </div>
       </Container>
     </div>
@@ -85,11 +80,12 @@ export default function User(props) {
 
 export async function getStaticProps(context) {
   var user = await Wrapper.user(context.params.username);
-  return { props: { user }, revalidate: 15 };
+  var feed = await Wrapper.feed(context.params.username, 7);
+  return { props: { user, feed }, revalidate: 60 };
 }
 
 export async function getStaticPaths() {
-  var users = await Wrapper.users();
+  var users = await Wrapper.users('max');
 
   const paths = users.map(item => ({
     params: { username: item.username },

@@ -2,16 +2,20 @@ async function getUser(userName) {
   return await apiFetch('/users/' + userName);
 }
 
-async function getUsers() {
-  return await apiFetch('/users');
+async function getFeed(userName, limit = 10) {
+  return await apiFetch('/feeds/' + userName + '?limit=' + limit);
+}
+
+async function getUsers(limit = 10) {
+  return await apiFetch('/users?limit=' + limit);
 }
 
 async function getRepo(repoName) {
   return await apiFetch('/repos/' + repoName);
 }
 
-async function getRepos() {
-  return await apiFetch('/repos');
+async function getRepos(limit = 10) {
+  return await apiFetch('/repos?limit=' + limit);
 }
 
 async function apiFetch(route) {
@@ -27,6 +31,7 @@ const Wrapper = {
   users: getUsers,
   repo: getRepo,
   repos: getRepos,
+  feed: getFeed,
 };
 
 export default Wrapper;

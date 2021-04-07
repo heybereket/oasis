@@ -9,10 +9,10 @@ export default async function users(req, res) {
   const ref = db.collection('users');
 
   const { limit } = req.query;
-  const documents = await ref
-    .orderBy('username')
-    .limit(parseInt(limit, 10) || 10)
-    .get();
+
+  var docRef = await ref.orderBy('username');
+  if (limit !== 'max') docRef = docRef.limit(parseInt(limit, 10) || 10);
+  var documents = await docRef.get();
 
   var users = [];
   documents.forEach(doc => {
