@@ -5,19 +5,30 @@ import Avatar from '../../components/Avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faCheckCircle, faLink } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link'
 
 export default function User(props) {
   return (
-    <div className="flex flex-col min-h-screen bg-dark-tertiary">
-      <Navbar user={props.user} />
-      <Container className={`mt-6 flex-col`}>
-        <div className={`px-2 py-4 shadow-xl bg-dark-lighter rounded-3xl flex items-center`}>
-          <Avatar user={props.user} size="lg" />
+      <div className="flex flex-col min-h-screen bg-dark-tertiary">
+          <Navbar user={props.user} />
+          <Container className={`mt-6 flex-col`}>
+
+          <div className={`px-2 py-4 shadow-xl bg-dark-lighter rounded-3xl flex items-center`}>
+          <Link href={props.user.username}>
+            <a>
+              <Avatar user={props.user} size="lg" />
+            </a>
+          </Link>
+
           <div className={`flex flex-col ml-1 md:ml-4`}>
             <div className={`flex items-center text-dark-text`}>
-              <h1 className={`flex text-2xl leading-7 md:text-3xl font-bold`}>
-                {props.user.name ? props.user.name : `@${props.user.username}`}
-              </h1>
+              <Link href={props.user.username}>
+                <a>
+                    <h1 className={`flex text-2xl leading-7 md:text-3xl font-bold`}>
+                        {props.user.name ? props.user.name : `@${props.user.username}`}
+                    </h1>
+                </a>
+              </Link>
             </div>
             
             {props.user.bio != null ? (
