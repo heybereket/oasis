@@ -12,7 +12,6 @@ export default async function user(req, res) {
   let docRef = db.collection('users').where('username', '==', user);
 
   await docRef
-    .limit(1)
     .get()
     .then(async querySnapshot => {
       if (querySnapshot.empty) return res.status(404).send(sendStatus(res, 'InvalidUserName'));

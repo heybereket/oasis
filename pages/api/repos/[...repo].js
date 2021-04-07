@@ -11,7 +11,6 @@ export default async function repos(req, res) {
   if (req.method === 'GET') return getRepo(req.query, res);
   if (req.method === 'POST') return addRepo(req.query, req, res);
   sendStatus(res, 'CannotMethod');
-  // if (req.method === 'DELETE') return deleteRepo(req, res);
 }
 
 export async function getRepo(query, res) {
@@ -26,6 +25,8 @@ export async function getRepo(query, res) {
 
       querySnapshot.forEach(async doc => {
         var data = doc.data();
+        delete data.submitted_by
+        delete data.avatar
         res.send(formatData(data));
       });
     });
