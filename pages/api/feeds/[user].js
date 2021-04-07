@@ -18,11 +18,7 @@ export default async function user(req, res) {
     querySnapshot.forEach(async doc => {
       var data = doc.data();
       var username = data.username;
-      await fetch(`https://api.github.com/users/${username}/events/public?per_page=50`, {
-        headers: {
-          Authorization: 'token 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',
-        },
-      })
+      await fetch(`https://api.github.com/users/${username}/events/public`)
         .then(res => res.json())
         .then(async json => {
           if (json.message == 'Not Found') return sendStatus(res, 'InvalidUserName');
