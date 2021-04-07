@@ -4,33 +4,33 @@ export default function Avatar(allProps) {
   switch (size) {
     case 'lg':
       return (
-        <a
+        <div
           {...props}
-          className={`cursor-pointer mx-4 w-32 shadow-md rounded-3xl overflow-hidden ${props.className}`}
+          className={`mx-4 w-32 shadow-md rounded-3xl overflow-hidden ${props.className}`}
           href={`/user/${user.username}`}
         >
           <img src={user.avatar} />
-        </a>
+        </div>
       );
     case 'sm':
       return (
-        <a
+        <div
           {...props}
-          className={`cursor-pointer mx-4 w-8 shadow-md rounded-lg overflow-hidden ${props.className}`}
+          className={`mx-4 w-8 shadow-md rounded-lg overflow-hidden ${props.className}`}
           href={`/user/${user.username}`}
         >
           <img src={user.avatar} />
-        </a>
+        </div>
       );
     default:
       return (
-        <a
+        <div
           {...props}
-          className={`cursor-pointer mx-4 w-8 shadow-md rounded-lg overflow-hidden ${props.className}`}
+          className={`mx-4 w-8 shadow-md rounded-lg overflow-hidden ${props.className}`}
           href={`/user/${user.username}`}
         >
           <img src={user.avatar} />
-        </a>
+        </div>
       );
   }
 }
