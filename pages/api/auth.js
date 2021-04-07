@@ -66,14 +66,20 @@ async function signIn(token, gitToken, res) {
       }
       const day = today.getDate();
 
+      const prefix = 'https://';
+      if (githubData.blog.substr(0, prefix.length) !== prefix){
+            githubData.blog = prefix + githubData.blog;
+      }
+
       var userData = {
+        uid: decodedClaims.uid,
+        avatar: decodedClaims.picture,
         username: githubData.login,
         name: githubData.name,
-        avatar: decodedClaims.picture,
+        email: decodedClaims.email,
         bio: githubData.bio,
         twitter: githubData.twitter_username,
-        email: decodedClaims.email,
-        uid: decodedClaims.uid,
+        link: githubData.blog
       };
 
       await db

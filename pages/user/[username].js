@@ -4,7 +4,8 @@ import Container from '../../components/Container';
 import Avatar from '../../components/Avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faLink } from '@fortawesome/free-solid-svg-icons';
+
 export default function User(props) {
   return (
     <div className="flex flex-col min-h-screen bg-dark-tertiary">
@@ -23,24 +24,34 @@ export default function User(props) {
             ) : 
             <h1 className={`text-gray-200 text-xs md:text-sm font-mono`}>This user does not have a bio set.</h1> 
             }
-            <div className={`flex mt-2`}>
+
+            <div className={`flex mt-2 text-gray-300`}>
               {(props.user.verified) && (
                 <FontAwesomeIcon
                   icon={faCheckCircle}
-                  className={`text-gray-300 color-current text-2xl mr-2`}
+                  className={`color-current text-2xl mr-2`}
                 />
               )}
+              
               <a href={`https://github.com/${props.user.username}`}>
                 <FontAwesomeIcon
                   icon={faGithub}
-                  className={`text-gray-300 color-current hover:text-white text-2xl transition duration-100 mr-2`}
+                  className={`color-current hover:text-white text-2xl transition duration-100 mr-2`}
                 />
               </a>
               {(props.user.twitter != null) && (
                 <a href={`https://twitter.com/${props.user.twitter}`}>
                 <FontAwesomeIcon
                   icon={faTwitter}
-                  className={`text-gray-300 color-current hover:text-white text-2xl transition duration-100`}
+                  className={`color-current hover:text-white text-2xl transition duration-100 mr-2`}
+                />
+              </a>
+              )}
+              {(props.user.link != null) && (
+                <a href={`${props.user.link}`}>
+                <FontAwesomeIcon
+                  icon={faLink}
+                  className={`color-current hover:text-white text-2xl transition duration-100`}
                 />
               </a>
               )}
