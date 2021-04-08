@@ -20,8 +20,10 @@ export default function User(props) {
 
       <Navbar swrAuth={data} swrError={error} />
       <Container className={`mt-6 flex-col`}>
-        <div className={`px-2 py-5 shadow-xl bg-dark-lighter rounded-3xl flex items-center`}>
-          <div className={`ml-2 md:ml-4`}>
+        <div
+          className={`px-2 py-5 shadow-xl bg-dark-lighter rounded-3xl flex flex-col md:flex-row md:items-center`}
+        >
+          <div className={`mb-2 md:mb-0 ml-4`}>
             <Avatar user={props.user} size="lg" />
           </div>
           <div className={`flex flex-col ml-4`}>

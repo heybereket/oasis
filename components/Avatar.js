@@ -8,7 +8,7 @@ export default function Avatar(allProps) {
 
   switch (size) {
     case 'lg':
-      sizeClasses = 'w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 rounded-xl md:rounded-3xl';
+      sizeClasses = 'w-24 h-24 md:w-32 md:h-32 rounded-2xl md:rounded-3xl';
       break;
     default:
       sizeClasses = 'w-8 h-8 rounded-lg';

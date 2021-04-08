@@ -12,7 +12,37 @@ export default function NavProfile({ swrError, swrAuth }) {
     ); // Loading
 
   if (!swrError && swrAuth.authState == 'authenticated')
-    return <Avatar user={swrAuth} className={`mx-4`} />; // Logged In
+    return (
+      <div class="relative inline-block text-left">
+        <Avatar user={swrAuth} className={`ml-4`} />
+        {/* <div
+          class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-xl bg-dark ring-opacity-5 focus:outline-none"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="options-menu"
+        >
+          <div class="py-1" role="none">
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-dark-text hover:bg-gray-100 hover:text-gray-900"
+              role="menuitem"
+            >
+              My profile
+            </a>
+
+            <form method="POST" action="#" role="none">
+              <button
+                type="submit"
+                class="block w-full text-left px-4 py-2 text-sm text-dark-text hover:bg-gray-100 hover:text-gray-900"
+                role="menuitem"
+              >
+                Sign out
+              </button>
+            </form>
+          </div>
+        </div> */}
+      </div>
+    ); // Logged In
   if (!swrError && swrAuth.authState == 'unauthenticated')
     return (
       <button
