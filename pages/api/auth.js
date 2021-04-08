@@ -91,7 +91,7 @@ async function signIn(token, gitToken, res) {
             userData.created = admin.firestore.Timestamp.now();
             userData.joined = shortMonthName(today) + ` ${day}, ${year}`;
             userData.verified = false;
-            userData.feed = [];
+            userData.activity = [];
           }
         });
 

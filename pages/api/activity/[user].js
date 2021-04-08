@@ -18,9 +18,9 @@ export default async function user(req, res) {
 
     querySnapshot.forEach(async doc => {
       var data = doc.data();
-      var feed = data.feed;
-      if (limit !== 'max') feed = feed.slice(0, limit);
-      res.send(formatData(feed));
+      var activity = data.activity;
+      if (limit !== 'max') activity = activity.slice(0, limit);
+      res.send(formatData(activity));
     });
   });
 }

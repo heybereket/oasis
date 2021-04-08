@@ -73,7 +73,7 @@ export async function addRepo(query, req, res) {
 
       await userRef.set(
         {
-          feed: [
+          activity: [
             {
               type: 'add',
               repo: {
@@ -83,7 +83,7 @@ export async function addRepo(query, req, res) {
                 active: true,
               },
             },
-            ...userDoc.data().feed,
+            ...userDoc.data().activity,
           ],
         },
         { merge: true }

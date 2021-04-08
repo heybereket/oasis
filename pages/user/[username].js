@@ -70,8 +70,8 @@ export default function User(props) {
             className={`px-10 py-6 shadow-xl bg-dark-lighter rounded-3xl flex flex-col mb-2 col-span-12 md:col-span-6 xl:col-span-5 2xl:col-span-4`}
           >
             <h1 className={` text-gray-300 font-mono font-semibold`}>Recent Activity</h1>
-            {props.feed.length > 0 ? (
-              props.feed.map(item => <ActivityItem event={item} />)
+            {props.activity.length > 0 ? (
+              props.activity.map(item => <ActivityItem event={item} />)
             ) : (
               <h1 className={`text-gray-200 font-mono font-semibold text-md mt-2`}>
                 <strong>@{props.user.username}</strong> has no activity yet.
@@ -86,8 +86,8 @@ export default function User(props) {
 
 export async function getStaticProps(context) {
   var user = await Wrapper.user(context.params.username);
-  var feed = await Wrapper.feed(context.params.username, 7);
-  return { props: { user, feed }, revalidate: 60 };
+  var activity = await Wrapper.activity(context.params.username, 7);
+  return { props: { user, activity }, revalidate: 60 };
 }
 
 export async function getStaticPaths() {

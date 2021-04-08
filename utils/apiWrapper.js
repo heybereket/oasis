@@ -3,7 +3,7 @@ async function getUser(userName) {
 }
 
 async function getFeed(userName, limit = 10) {
-  return await apiFetch('/feeds/' + userName + '?limit=' + limit);
+  return await apiFetch('/activity/' + userName + '?limit=' + limit);
 }
 
 async function getUsers(limit = 10) {
@@ -31,7 +31,7 @@ const Wrapper = {
   users: getUsers,
   repo: getRepo,
   repos: getRepos,
-  feed: getFeed,
+  activity: getFeed,
 };
 
 export default Wrapper;
