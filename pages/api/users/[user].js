@@ -1,6 +1,7 @@
 import getFirebaseAdmin from '../../../utils/firebaseadmin.js';
 import { formatData, sendStatus } from '../../../utils/apiFormatter';
 import rateLimit from '../../../utils/rate-limit'
+import publicIp from 'public-ip'
 
 const limiter = rateLimit({
   interval: 3600000, // 1 hour 
@@ -25,12 +26,15 @@ export default async function user(req, res) {
       querySnapshot.forEach(async doc => {
         var data = doc.data();
         delete data.email;
+      
         try {
-          await limiter.check(res, 1000, 'CACHE_TOKEN') // 1000 requests per hour
+          await limiter.check(res, 3000, 'CACHE_TOKEN') // 1000 requests per hour
           res.status(200).send(formatData(data));
         } catch {
-          res.status(429).json({ error: 'Rate limit exceeded' })
+          const ip = await publicIp.v4()
+          res.status(429).json({ error: `Uh oh! Rate limit exceeded for IP: ${ip} for 1 hour.` })
         }
+
       });
     });
 }

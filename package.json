@@ -39,6 +39,7 @@
     "nookies": "^2.5.2",
     "postcss": "^8.2.9",
     "prettier": "^2.2.1",
+    "public-ip": "^4.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-particles-js": "^3.4.1",
