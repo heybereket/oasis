@@ -7,7 +7,7 @@ import TwitterIcon from '../../components/icons/Twitter';
 import { MarkGithubIcon, CheckIcon, LinkIcon } from '@primer/octicons-react';
 import SEO from '../../components/SEO';
 import useSWR from 'swr';
-const fetcher = url => fetch(url).then(r => r.json());
+const fetcher = url => fetch(url).then(data => data.json());
 
 export default function User(props) {
   var { data, error } = useSWR('/api/auth', fetcher);
