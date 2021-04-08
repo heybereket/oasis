@@ -15,7 +15,11 @@ export default function User(props) {
   return (
     <div className="flex flex-col min-h-screen bg-dark-tertiary">
       <SEO
-        title={`${props.user.name ? `${props.user.name} (@${props.user.username}) / oasis.sh` : `@${props.user.username} / oasis.sh`}`}
+        title={`${
+          props.user.name
+            ? `${props.user.name} (@${props.user.username}) / oasis.sh`
+            : `@${props.user.username} / oasis.sh`
+        }`}
       />
 
       <Navbar swrAuth={data} swrError={error} />
