@@ -17,8 +17,10 @@ export default function NavProfile({ swrError, swrAuth }) {
     return (
       <button
         className={`bg-gray-600 text-dark-text font-semibold hover:bg-gray-500 transition duration-100 px-3 py-1 rounded-lg mx-4`}
-        onClick={() => {
-          signInWithGitHub();
+        onClick={async () => {
+          var login = await signInWithGitHub();
+          login = await login.json();
+          if (login.status === 'success') window.location.reload();
         }}
       >
         Login
