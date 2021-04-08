@@ -1,15 +1,40 @@
 import { serialize } from 'cookie';
 import getFirebaseAdmin from '../../utils/firebaseadmin';
-const { destroyCookie } = require('nookies');
-import { sendStatus } from '../../utils/apiFormatter';
+const { destroyCookie, parseCookies } = require('nookies');
+import { formatData, sendStatus } from '../../utils/apiFormatter';
 
 var admin;
 
 export default async function auth(req, res) {
   admin = await getFirebaseAdmin();
+  if (req.method === 'GET') return getCurrentAuth(req, res);
   if (req.method === 'POST') return signIn(req.body.token, req.body.githubToken, res);
   if (req.method === 'DELETE') return signOut(req.body.sessionCookie, res);
   sendStatus(res, 'CannotMethod');
+}
+
+async function getCurrentAuth(req, res) {
+  var cookies = parseCookies(res);
+  if (!cookies.user)
+    return res.status(401).send(formatData({ hasAuth: false, authState: 'unauthenticated' }, res));
+  await admin
+    .auth()
+    .verifySessionCookie(cookies.user)
+    .then(async decodedClaims => {
+      var db = admin.firestore();
+      var doc = await db.collection('users').doc(decodedClaims.uid);
+      doc = await doc.get();
+      const docData = doc.data();
+      delete docData.activity;
+      res
+        .status(200)
+        .send(
+          formatData(
+            { hasAuth: true, authState: 'authenticated', ...decodedClaims, ...docData },
+            res
+          )
+        );
+    });
 }
 
 async function signIn(token, gitToken, res) {
@@ -42,8 +67,6 @@ async function signIn(token, gitToken, res) {
     .verifySessionCookie(cookie)
     .then(async decodedClaims => {
       var db = admin.firestore();
-      const doc = await db.collection('users').doc('userId').get();
-      const docData = doc.data();
 
       const today = new Date();
       const year = today.getFullYear();

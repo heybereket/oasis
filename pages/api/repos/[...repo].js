@@ -1,4 +1,3 @@
-import { parseCookies } from 'nookies';
 import getFirebaseAdmin from '../../../utils/firebaseadmin';
 import { formatData, sendStatus } from '../../../utils/apiFormatter';
 import verifyCookie from '../../../utils/verifyCookie';
@@ -35,8 +34,7 @@ export async function getRepo(query, res) {
 export async function addRepo(query, req, res) {
   var repoName = `${query.repo[0]}/${query.repo[1]}`;
 
-  var cookies = parseCookies({ req });
-  var userData = await verifyCookie(cookies.user);
+  var userData = await verifyCookie(req);
   if (!query.repo[0] || !query.repo[1]) return sendStatus(res, 'InvalidRepoName');
   if (!repoName.match(/^.+\/.+$/gm)) return sendStatus(res, 'InvalidRepoName');
   if (!userData.hasAuth) return sendStatus(res, 'Unauthorized');

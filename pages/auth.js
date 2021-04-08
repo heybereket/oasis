@@ -1,14 +1,11 @@
-import { parseCookies } from 'nookies';
 import { Component } from 'react';
 
 import signInWithGitHub, { signOut } from '../utils/auth';
 import verifyCookie from '../utils/verifyCookie';
 
 export async function getServerSideProps(context) {
-  const cookies = parseCookies(context);
-  if (!cookies.user) return { props: { auth: { hasAuth: false } } };
-  var cookieAuth = await verifyCookie(cookies.user);
-  return { props: { auth: cookieAuth, cookie: cookies.user } };
+  var auth = await verifyCookie(context);
+  return { props: { auth } };
 }
 
 class Dashboard extends Component {
@@ -36,7 +33,7 @@ class Dashboard extends Component {
               </h1>
               <button
                 onClick={async () => {
-                  var signOutReq = await signOut(this.props.cookie);
+                  var signOutReq = await signOut(this.props.auth.cookie);
                   signOutReq = await signOutReq.json();
                   if (signOutReq.status == 'success') this.setState({ auth: false });
                 }}

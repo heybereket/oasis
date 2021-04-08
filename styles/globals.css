@@ -28,6 +28,11 @@ a {
   box-sizing: border-box;
 }
 
+button:focus {
+  @apply outline-none shadow-outline;
+}
+
+/* 
 [data-theme='dark'] {
   color-scheme: dark;
   --page-background: #2a2d32;
@@ -54,4 +59,4 @@ a {
   --variable-theme-color-secondary: var(--background-tertiary);
   --text-yellow: var(--yellow-400);
   --text-red: var(--pink-500);
-}
+} */

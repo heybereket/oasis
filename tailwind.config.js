@@ -15,6 +15,9 @@ module.exports = {
         'dark-text': '#f9f8ff',
         'dark-link': '#8ad6f1',
       },
+      boxShadow: {
+        outline: '0 0 0.5pt 0.5pt white',
+      },
     },
   },
   variants: {

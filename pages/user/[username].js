@@ -5,17 +5,20 @@ import Avatar from '../../components/Avatar';
 import ActivityItem from '../../components/ActivityItem';
 import TwitterIcon from '../../components/icons/Twitter';
 import { MarkGithubIcon, CheckIcon, LinkIcon } from '@primer/octicons-react';
-import SEO from '../../components/SEO'
+import SEO from '../../components/SEO';
+import useSWR from 'swr';
+const fetcher = url => fetch(url).then(r => r.json());
 
 export default function User(props) {
+  var { data, error } = useSWR('/api/auth', fetcher);
+
   return (
     <div className="flex flex-col min-h-screen bg-dark-tertiary">
-
-      <SEO 
-      title={`${props.user.name ? props.user.name : ''} (@${props.user.username}) / oasis.sh`} 
+      <SEO
+        title={`${props.user.name ? props.user.name : ''} (@${props.user.username}) / oasis.sh`}
       />
 
-      <Navbar user={props.user} />
+      <Navbar swrAuth={data} swrError={error} />
       <Container className={`mt-6 flex-col`}>
         <div className={`px-2 py-5 shadow-xl bg-dark-lighter rounded-3xl flex items-center`}>
           <div className={`ml-2 md:ml-4`}>
@@ -71,7 +74,9 @@ export default function User(props) {
           >
             <h1 className={` text-gray-300 font-mono font-semibold`}>Recent Activity</h1>
             {props.activity.length > 0 ? (
-              props.activity.map(item => <ActivityItem event={item} />)
+              props.activity.map(item => (
+                <ActivityItem key={`${item.type}:${item.repo.full_name}`} event={item} />
+              ))
             ) : (
               <h1 className={`text-gray-200 font-mono font-semibold text-md mt-2`}>
                 <strong>@{props.user.username}</strong> has no activity yet.
@@ -87,6 +92,7 @@ export default function User(props) {
 export async function getStaticProps(context) {
   var user = await Wrapper.user(context.params.username);
   var activity = await Wrapper.activity(context.params.username, 7);
+
   return { props: { user, activity }, revalidate: 60 };
 }
 

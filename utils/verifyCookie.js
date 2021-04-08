@@ -1,7 +1,10 @@
 import 'firebase/auth';
 import getFirebaseAdmin from './firebaseadmin';
+import { parseCookies } from 'nookies';
 
-async function verifyCookie(cookie) {
+export default async function verifyCookie(context) {
+  const contextCookies = parseCookies(context);
+  var cookie = contextCookies.user;
   const admin = await getFirebaseAdmin();
   if (!admin) return null;
   if (!cookie) cookie = 'CookieNotFound';
@@ -18,6 +21,7 @@ async function verifyCookie(cookie) {
         userdata = {
           ...data,
           created: data.created.toDate().toDateString(),
+          cookie,
           ...decodedClaims,
         };
         userdata.hasAuth = true;
@@ -26,5 +30,3 @@ async function verifyCookie(cookie) {
     .catch(() => (userdata = { hasAuth: false }));
   return userdata;
 }
-
-export default verifyCookie;

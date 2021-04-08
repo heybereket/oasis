@@ -3,62 +3,35 @@ import React from 'react';
 
 export default function Avatar(allProps) {
   const { user, size, ...props } = { ...allProps };
-  const [showImg, setShowImg] = React.useState(true);
+  const [isError, setIsError] = React.useState(false);
+  var sizeClasses;
 
   switch (size) {
     case 'lg':
-      return (
-        <div
-          {...props}
-          className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl md:w-32 md:h-32 md:rounded-3xl bg-gray-600 shadow-md overflow-hidden ${props.className} flex items-center justify-center`}
-        >
-          <PersonIcon className={`color-current text-white`} size="large" />
-          {showImg ? (
-            <img
-              className={`absolute z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-xl md:w-32 md:h-32 md:rounded-3xl ${props.className}`}
-              src={user.avatar}
-              onError={e => {
-                setShowImg(false);
-              }}
-            />
-          ) : null}
-        </div>
-      );
-    case 'sm':
-      return (
-        <div
-          {...props}
-          className={`mx-4 w-8 h-8 bg-gray-600 shadow-md rounded-lg overflow-hidden ${props.className} flex items-center justify-center`}
-        >
-          <PersonIcon className={`color-current text-white`} size="small" />
-          {showImg ? (
-            <img
-              className={`absolute z-10 w-8 h-8 rounded-lg`}
-              src={user.avatar}
-              onError={e => {
-                setShowImg(false);
-              }}
-            />
-          ) : null}
-        </div>
-      );
+      sizeClasses = 'w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32 rounded-xl md:rounded-3xl';
+      break;
     default:
-      return (
-        <div
-          {...props}
-          className={`mx-4 w-8 h-8 bg-gray-600 shadow-md rounded-lg overflow-hidden ${props.className} flex items-center justify-center`}
-        >
-          <PersonIcon className={`color-current text-white`} size="small" />
-          {showImg ? (
-            <img
-              className={`absolute z-10 w-8 h-8 rounded-lg`}
-              src={user.avatar}
-              onError={e => {
-                setShowImg(false);
-              }}
-            />
-          ) : null}
-        </div>
-      );
+      sizeClasses = 'w-8 h-8 rounded-lg';
   }
+
+  return (
+    <div
+      {...props}
+      className={`${sizeClasses} bg-gray-600 shadow-md overflow-hidden flex items-center justify-center ${props.className}`}
+    >
+      {!isError ? (
+        <img
+          src={user.avatar}
+          onError={e => {
+            setIsError(true);
+          }}
+        />
+      ) : (
+        <PersonIcon
+          className={`color-current text-white`}
+          size={size == 'lg' ? 'large' : 'small'}
+        />
+      )}
+    </div>
+  );
 }
