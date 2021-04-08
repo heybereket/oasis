@@ -71,7 +71,7 @@ export default function User(props) {
             </div>
           </div>
         </div>
-        <div className={`mt-6 grid grid-cols-12`}>
+        <div className={`mt-2 grid grid-cols-12`}>
           <div
             className={`px-2 py-4 shadow-xl bg-dark-lighter rounded-3xl flex flex-col mb-2 col-span-12 md:col-span-6 md:mr-4 xl:col-span-7 2xl:col-span-8`}
           ></div>
