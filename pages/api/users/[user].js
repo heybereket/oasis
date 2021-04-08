@@ -3,7 +3,7 @@ import { formatData, sendStatus } from '../../../utils/apiFormatter';
 import rateLimit from '../../../utils/rate-limit'
 
 const limiter = rateLimit({
-  interval: 1 * 1000, // 1 second 
+  interval: 3600000, // 1 hour 
   uniqueTokenPerInterval: 500, // Max 500 users per second
 })
 
@@ -26,7 +26,7 @@ export default async function user(req, res) {
         var data = doc.data();
         delete data.email;
         try {
-          await limiter.check(res, 100, 'CACHE_TOKEN') // 100 requests per second
+          await limiter.check(res, 1000, 'CACHE_TOKEN') // 100 requests per second
           res.status(200).send(formatData(data));
         } catch {
           res.status(429).json({ error: 'Rate limit exceeded' })
