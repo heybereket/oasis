@@ -1,4 +1,4 @@
-import { ThumbsupIcon, ZapIcon } from '@primer/octicons-react';
+import { PlusIcon, HeartIcon, CommentIcon } from '@primer/octicons-react';
 
 export default function ActivityItem(props) {
   switch (props.event.type) {
@@ -8,7 +8,7 @@ export default function ActivityItem(props) {
           <div
             className={`bg-gray-600 shadow-md rounded-lg w-8 h-8 flex items-center justify-center text-gray-100`}
           >
-            <ZapIcon size="small" />
+            <PlusIcon size="small" />
           </div>
           <p className={`text-sm font-mono text-gray-200 ml-2`}>
             Added{' '}
@@ -27,7 +27,7 @@ export default function ActivityItem(props) {
           <div
             className={`bg-gray-600 shadow-md rounded-lg w-8 h-8 flex items-center justify-center text-gray-100`}
           >
-            <ThumbsupIcon size="small" />
+            <HeartIcon size="small" />
           </div>
           <p className={`text-sm font-mono text-gray-200 ml-2`}>
             Liked{' '}
@@ -40,5 +40,24 @@ export default function ActivityItem(props) {
           </p>
         </div>
       );
+    case 'comment':
+        return (
+          <div className={`flex mt-2 items-center`}>
+            <div
+              className={`bg-gray-600 shadow-md rounded-lg w-8 h-8 flex items-center justify-center text-gray-100`}
+            >
+              <CommentIcon size="small" />
+            </div>
+            <p className={`text-sm font-mono text-gray-200 ml-2`}>
+              Commented on{' '}
+              <a
+                className={`hover:text-dark-link transition duration-100`}
+                href={`/r/${props.event.repo.full_name}`}
+              >
+                {props.event.repo.full_name}
+              </a>
+            </p>
+          </div>
+        );
   }
 }
