@@ -5,9 +5,16 @@ import Avatar from '../../components/Avatar';
 import ActivityItem from '../../components/ActivityItem';
 import TwitterIcon from '../../components/icons/Twitter';
 import { MarkGithubIcon, CheckIcon, LinkIcon } from '@primer/octicons-react';
+import SEO from '../../components/SEO'
+
 export default function User(props) {
   return (
     <div className="flex flex-col min-h-screen bg-dark-tertiary">
+
+      <SEO 
+      title={`${props.user.name ? props.user.name : ''} (@${props.user.username}) / oasis.sh`} 
+      />
+
       <Navbar user={props.user} />
       <Container className={`mt-6 flex-col`}>
         <div className={`px-2 py-5 shadow-xl bg-dark-lighter rounded-3xl flex items-center`}>
