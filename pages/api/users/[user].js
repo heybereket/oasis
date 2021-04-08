@@ -26,7 +26,7 @@ export default async function user(req, res) {
         var data = doc.data();
         delete data.email;
         try {
-          await limiter.check(res, 1000, 'CACHE_TOKEN') // 100 requests per second
+          await limiter.check(res, 1000, 'CACHE_TOKEN') // 1000 requests per hour
           res.status(200).send(formatData(data));
         } catch {
           res.status(429).json({ error: 'Rate limit exceeded' })
