@@ -40,7 +40,7 @@ export default function User(props) {
               </h1>
             ) : null}
 
-            <h1 className={`text-gray-300 text-xs font-mono`}>👋🏻 Joined {props.user.joined}</h1>
+            <h1 className={`text-gray-400 text-xs font-mono`}>👋🏻 Joined {props.user.joined}</h1>
 
             <div className={`flex mt-2 text-gray-300 items-center`}>
               {props.user.verified && <CheckIcon className={`color-current w-6 h-6 mr-2`} />}
