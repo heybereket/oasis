@@ -1,20 +1,22 @@
-async function getUser(userName) {
+import useSWR from 'swr';
+
+export async function user(userName) {
   return await apiFetch('/users/' + userName);
 }
 
-async function getFeed(userName, limit = 10) {
+export async function activity(userName, limit = 10) {
   return await apiFetch('/activity/' + userName + '?limit=' + limit);
 }
 
-async function getUsers(limit = 10) {
+export async function users(limit = 10) {
   return await apiFetch('/users?limit=' + limit);
 }
 
-async function getRepo(repoName) {
+export async function repo(repoName) {
   return await apiFetch('/repos/' + repoName);
 }
 
-async function getRepos(limit = 10) {
+export async function repos(limit = 10) {
   return await apiFetch('/repos?limit=' + limit);
 }
 
@@ -26,12 +28,7 @@ async function apiFetch(route) {
     });
 }
 
-const Wrapper = {
-  user: getUser,
-  users: getUsers,
-  repo: getRepo,
-  repos: getRepos,
-  activity: getFeed,
-};
-
-export default Wrapper;
+export function SWR(path) {
+  const fetcher = url => fetch(url).then(data => data.json());
+  return useSWR('/api/' + path, fetcher);
+}
