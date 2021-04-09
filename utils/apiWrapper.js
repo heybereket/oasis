@@ -28,7 +28,14 @@ async function apiFetch(route) {
     });
 }
 
+export function FetchJSON(url) {
+  return fetch(url).then(data => data.json());
+}
+
+export function Fetch(url) {
+  return fetch(url).then(data => data.text());
+}
+
 export function SWR(path) {
-  const fetcher = url => fetch(url).then(data => data.json());
-  return useSWR('/api/' + path, fetcher);
+  return useSWR('/api/' + path, FetchJSON);
 }

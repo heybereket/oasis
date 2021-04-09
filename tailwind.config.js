@@ -18,6 +18,15 @@ module.exports = {
       boxShadow: {
         outline: '0 0 0.5pt 0.5pt white',
       },
+      maxWidth: {
+        '3/4': '75%',
+      },
+      screens: {
+        '3xl': '1792px',
+      },
+      spacing: {
+        128: '32rem',
+      },
     },
   },
   variants: {

@@ -16,23 +16,26 @@ export default async function user(req, res) {
   const admin = await getFirebaseAdmin();
   var db = admin.firestore();
 
-  let docRef = db.collection('users').where('username', '==', user);
+  let snapshotByName = await db.collection('users').where('username', '==', user).get();
+  let snapshotByID = await db.collection('users').where('uid', '==', user).get();
 
-  await docRef.get().then(async querySnapshot => {
-    if (querySnapshot.empty) return res.status(404).send(sendStatus(res, 'InvalidUserName'));
+  if (snapshotByName.empty && snapshotByID.empty)
+    return res.status(404).send(sendStatus(res, 'InvalidUserName'));
 
-    querySnapshot.forEach(async doc => {
-      var data = doc.data();
-      delete data.email;
-      delete data.activity;
+  var snapshot = snapshotByName;
+  if (snapshotByName.empty) snapshot = snapshotByID;
 
-      try {
-        await limiter.check(res, 3000, 'CACHE_TOKEN'); // 1000 requests per hour
-        res.status(200).send(formatData(data));
-      } catch {
-        const ip = await publicIp.v4();
-        res.status(429).json({ error: `Uh oh! Rate limit exceeded for IP: ${ip} for 1 hour.` });
-      }
-    });
+  snapshot.forEach(async doc => {
+    var data = doc.data();
+    delete data.email;
+    delete data.activity;
+
+    try {
+      await limiter.check(res, 3000, 'CACHE_TOKEN'); // 1000 requests per hour
+      res.status(200).send(formatData(data));
+    } catch {
+      const ip = await publicIp.v4();
+      res.status(429).json({ error: `Uh oh! Rate limit exceeded for IP: ${ip} for 1 hour.` });
+    }
   });
 }
