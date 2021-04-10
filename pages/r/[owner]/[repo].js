@@ -30,7 +30,7 @@ export default function User(props) {
                 <h1 className={`text-gray-500 text-xs font-mono`}>
                   Added by{' '}
                   <a
-                    href={`/user/${props.repo.added_by.username}`}
+                    href={`/u/${props.repo.added_by.username}`}
                     className={`text-gray-400 hover:text-dark-link transition duration-100`}
                   >
                     {props.repo.added_by.name
