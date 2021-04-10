@@ -11,6 +11,18 @@ Oasis is open to contributions, but we recommend creating an issue or replying i
 
 Please read [CONTRIBUTING.md](https://github.com/heybereket/oasis/blob/main/docs/CONTRIBUTING.md) for details on the project.
 
+## Running Locally
+```bash
+# Install dependencies
+$ yarn install
+ 
+# Start dev-server at port 3000
+$ yarn dev
+ 
+# Run linters
+$ yarn run test
+```
+
 ## ⌛ Status
 - [x] Early Development: Started building the project, almost ready to ship!
 - [ ] Development: Movement/re-write using NextJS/TailwindCSS
