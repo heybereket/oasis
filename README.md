@@ -17,8 +17,8 @@ $ yarn install
 # Start dev-server at port 3000
 $ yarn dev
  
-# Run linters
-$ yarn run test
+# Run prettier
+$ yarn run prettier
 ```
 
 ## ⌛ Status
