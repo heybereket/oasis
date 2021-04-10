@@ -1,30 +1,36 @@
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=for-the-badge)](#contributors-)
-
 ---
 
-## Project Structure
-Our [`main`](https://github.com/heybereket/oasis/tree/main) branch is made using `create-react-app`, and is the version currently in Production. The [`next`](https://github.com/heybereket/oasis/tree/next) branch is a re-write of the project using NextJS and TailwindCSS. This version is still under development, but is the main version to contribute to. **`main` will eventually be super-seeded by `next`, so please only work on `main` if you are fixing bugs/anything critical.**
+## 🌴 Branches
+- ```main:``` production
+- ```dev:``` testing
 
-## Contributions
+## 🚀 Contributions
 
-Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let me know what you are working on first that way we don't overwrite each other.
-
+Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let me know what you are working on first that way we don't overwrite each other. <br/><br/>
 Please read [CONTRIBUTING.md](https://github.com/heybereket/oasis/blob/main/docs/CONTRIBUTING.md) for details on the project.
+
+## 🔨 Running Locally
+```bash
+# Install dependencies
+$ yarn install
+ 
+# Start dev-server at port 3000
+$ yarn dev
+ 
+# Run linters
+$ yarn run test
+```
 
 ## ⌛ Status
 - [x] Early Development: Started building the project, almost ready to ship!
-- [ ] Development: Movement/re-write using NextJS/TailwindCSS
-- [ ] Early Release: Soft Launch on Twitter + GitHub (mostly trying to fix and solve bugs)
+- [x] Development: Movement/re-write using NextJS/TailwindCSS
+- [ ] Migration Completion: Finished the migration!
+- [ ] Alpha/Beta Testing (mostly trying to fix and solve bugs)
+- [ ] Early Release: Soft Launch on Twitter
 - [ ] Official Launch
-
-## 🗺️ Roadmap
-We like to think long term ― check out our <a href="https://github.com/heybereket/oasis/projects/1">project board<a/> on GitHub. You can always check here if you're running out of ideas, don't know what to work on, or just want to have a sneak peek on what we're working on behind the scenes :)
 
 ## 📄 License
 Oasis is open-source and is under the <a href="https://github.com/heybereket/oasis/blob/main/LICENSE">MIT License</a>. 
-
-## 💬 Get in touch
-Feel free to reach out via <a href="https://github.com/heybereket/oasis/discussions">GitHub Discussions</a> or contact the lead developer on Twitter <a href="https://twitter.com/heybereket">@heybereket<a/>.
 
 ## ✨ Contributors
 Thanks you for contributing and making Oasis 1% better! ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -54,6 +60,7 @@ Thanks you for contributing and making Oasis 1% better! ([emoji key](https://all
   <tr>
     <td align="center"><a href="https://github.com/nickspaargaren"><img src="https://avatars.githubusercontent.com/u/20847106?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nick Spaargaren</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=nickspaargaren" title="Code">💻</a></td>
     <td align="center"><a href="http://sowinski.me"><img src="https://avatars.githubusercontent.com/u/9249982?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mateusz Sowiński</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=SowinskiMateusz" title="Code">💻</a> <a href="#maintenance-SowinskiMateusz" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://fishystuff.cf"><img src="https://avatars.githubusercontent.com/u/56125930?v=4?s=100" width="100px;" alt=""/><br /><sub><b>vishy-dev</b></sub></a><br /><a href="https://github.com/heybereket/oasis/commits?author=vishy-dev" title="Code">💻</a> <a href="https://github.com/heybereket/oasis/issues?q=author%3Avishy-dev" title="Bug reports">🐛</a> <a href="#content-vishy-dev" title="Content">🖋</a> <a href="#design-vishy-dev" title="Design">🎨</a> <a href="#infra-vishy-dev" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
 </table>
 
