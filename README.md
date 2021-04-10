@@ -3,6 +3,7 @@
 ## 🌴 Branches
 - ```main:``` production
 - ```dev:``` testing
+- ```old:``` v1 of oasis (no longer used)
 
 ## 🚀 Contributions
 
