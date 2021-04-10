@@ -7,7 +7,7 @@
 
 ## 🚀 Contributions
 
-Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let me know what you are working on first that way we don't overwrite each other. <br/><br/>
+Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let me know what you are working on first that way we don't overwrite each other. <br/>
 Please read [CONTRIBUTING.md](https://github.com/heybereket/oasis/blob/main/docs/CONTRIBUTING.md) for details on the project.
 
 ## 🔨 Running Locally
