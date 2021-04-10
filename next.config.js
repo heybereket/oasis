@@ -5,13 +5,13 @@ module.exports = {
     async redirects() {
       return [
         {
-          source: '/u/:username',
-          destination: '/user/:username',
+          source: '/user/:username',
+          destination: '/u/:username',
           permanent: true,
         },
         {
-          source: '/r/:repo*',
-          destination: '/repo/:repo*',
+          source: '/repo/:repo*',
+          destination: '/r/:repo*',
           permanent: true,
         },
       ];

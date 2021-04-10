@@ -1,11 +1,11 @@
-import * as Wrapper from '../../utils/apiWrapper';
-import Navbar from '../../components/Navbar';
-import Container from '../../components/Container';
-import Avatar from '../../components/Avatar';
-import ActivityItem from '../../components/ActivityItem';
-import TwitterIcon from '../../components/icons/Twitter';
+import * as Wrapper from '../../../utils/apiWrapper';
+import Navbar from '../../../components/Navbar';
+import Container from '../../../components/Container';
+import Avatar from '../../../components/Avatar';
+import ActivityItem from '../../../components/ActivityItem';
+import TwitterIcon from '../../../components/icons/Twitter';
 import { MarkGithubIcon, CheckCircleFillIcon, LinkIcon } from '@primer/octicons-react';
-import SEO from '../../components/SEO';
+import SEO from '../../../components/SEO';
 
 export default function User(props) {
   var { data, error } = Wrapper.SWR('auth');
