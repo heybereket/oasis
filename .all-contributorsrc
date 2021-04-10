@@ -161,6 +161,19 @@
         "code",
         "maintenance"
       ]
+    },
+    {
+      "login": "vishy-dev",
+      "name": "vishy-dev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56125930?v=4",
+      "profile": "https://fishystuff.cf",
+      "contributions": [
+        "code",
+        "bug",
+        "content",
+        "design",
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
