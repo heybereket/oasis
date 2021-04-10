@@ -120,7 +120,7 @@ async function signIn(token, gitToken, res) {
                 joined: {
                   date: shortMonthName(today) + ` ${day}, ${year}`,
                 },
-              }
+              },
             ];
           }
         });

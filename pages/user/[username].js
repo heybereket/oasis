@@ -41,7 +41,9 @@ export default function User(props) {
             <h1 className={`text-gray-400 text-xs font-mono`}>👋🏻 Joined {props.user.joined}</h1>
 
             <div className={`flex mt-2 text-gray-300 items-center`}>
-              {props.user.verified && <CheckCircleFillIcon className={`color-current w-5 h-5 mr-2`} />}
+              {props.user.verified && (
+                <CheckCircleFillIcon className={`color-current w-5 h-5 mr-2`} />
+              )}
 
               <a href={`https://github.com/${props.user.username}`} target="_blank" rel="noopener">
                 <MarkGithubIcon
@@ -79,7 +81,10 @@ export default function User(props) {
             <h1 className={` text-gray-300 font-mono font-semibold`}>Recent Activity</h1>
             {props.activity.length > 0 ? (
               props.activity.map(item => (
-                <ActivityItem key={`${item.type}:${item.repo ? item.repo.full_name : item.joined.date}`} event={item} />
+                <ActivityItem
+                  key={`${item.type}:${item.repo ? item.repo.full_name : item.joined.date}`}
+                  event={item}
+                />
               ))
             ) : (
               <h1 className={`text-gray-200 font-mono font-semibold text-md mt-2`}>

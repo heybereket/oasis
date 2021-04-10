@@ -49,8 +49,7 @@ export default function ActivityItem(props) {
             <RocketIcon size="small" />
           </div>
           <p className={`text-sm font-mono text-gray-200 ml-2`}>
-            Joined on {' '}
-              {props.event.joined.date}
+            Joined on {props.event.joined.date}
           </p>
         </div>
       );
