@@ -13,6 +13,10 @@ export const serviceAccount = {
   client_x509_cert_url: process.env.CLIENT_X509_CERT_URL,
 };
 
+if (process.env.PRIVATE_KEY === undefined) {
+  throw new Error('PRIVATE_KEY is undefined')
+}
+
 export default async function getFirebaseAdmin() {
   if (!admin.apps.length) {
     admin.initializeApp({
