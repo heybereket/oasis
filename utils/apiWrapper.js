@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 
 export async function user(userName) {
-   return await apiFetch('/users/' + userName);
+  return await apiFetch('/users/' + userName);
 }
 
 export async function activity(userName, limit = 10) {
