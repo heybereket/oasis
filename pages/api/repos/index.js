@@ -10,11 +10,11 @@ export default async function user(req, res) {
 
   const { limit } = req.query;
 
-  var docRef = await ref.orderBy('name');
+  var docRef = ref.orderBy('name');
   if (limit !== 'max') docRef = docRef.limit(parseInt(limit, 10) || 10);
   var documents = await docRef.get();
 
-  var repos = [];
+  var repositories = [];
   documents.forEach(doc => {
     var data = doc.data();
     var repoData = {
@@ -24,8 +24,8 @@ export default async function user(req, res) {
       stars: data.stars,
       language: data.language,
     };
-    repos.push(repoData);
+    repositories.push(repoData);
   });
 
-  res.status(200).send(formatData(repos));
+  res.status(200).send(formatData(repositories));
 }
