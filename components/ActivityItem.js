@@ -1,4 +1,4 @@
-import { PlusCircleIcon, HeartIcon, CommentIcon } from '@primer/octicons-react';
+import { PlusCircleIcon, HeartIcon, RocketIcon } from '@primer/octicons-react';
 
 export default function ActivityItem(props) {
   switch (props.event.type) {
@@ -40,22 +40,17 @@ export default function ActivityItem(props) {
           </p>
         </div>
       );
-    case 'comment':
+    case 'event':
       return (
         <div className={`flex mt-2 items-center`}>
           <div
             className={`bg-gray-600 shadow-md rounded-lg w-8 h-8 flex items-center justify-center text-gray-100`}
           >
-            <CommentIcon size="small" />
+            <RocketIcon size="small" />
           </div>
           <p className={`text-sm font-mono text-gray-200 ml-2`}>
-            Commented on{' '}
-            <a
-              className={`hover:text-dark-link transition duration-100`}
-              href={`/r/${props.event.repo.full_name}`}
-            >
-              {props.event.repo.full_name}
-            </a>
+            Joined on {' '}
+              {props.event.joined.date}
           </p>
         </div>
       );

@@ -114,7 +114,14 @@ async function signIn(token, gitToken, res) {
             userData.created = admin.firestore.Timestamp.now();
             userData.joined = shortMonthName(today) + ` ${day}, ${year}`;
             userData.verified = false;
-            userData.activity = [];
+            userData.activity = [
+              {
+                type: 'event',
+                joined: {
+                  date: shortMonthName(today) + ` ${day}, ${year}`,
+                },
+              }
+            ];
           }
         });
 
