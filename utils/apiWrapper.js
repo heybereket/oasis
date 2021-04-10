@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 
 export async function user(userName) {
-//   return await apiFetch('/users/' + userName);
+ //   return await apiFetch('/users/' + userName);
   return {
    "created": {
       "_seconds": 1617891559,
