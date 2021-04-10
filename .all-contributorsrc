@@ -6,7 +6,7 @@
   "files": [
     "README.md"
   ],
-  "imageSize": 100,
+  "imageSize": 75,
   "commit": false,
   "commitConvention": "none",
   "contributors": [
@@ -21,6 +21,17 @@
         "doc",
         "ideas",
         "infra"
+      ]
+    },
+    {
+      "login": "vishy-dev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56125930?v=4",
+      "profile": "https://github.com/vishy-dev",
+      "contributions": [
+        "code",
+        "design",
+        "doc",
+        "ideas",
       ]
     },
     {
