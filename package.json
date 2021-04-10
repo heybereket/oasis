@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "cz": "^1.8.2",
-    "eslint": "^7.23.0",
+    "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
