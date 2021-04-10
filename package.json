@@ -11,7 +11,7 @@
   },
   "homepage": "https://oasis.sh",
   "engines": {
-    "node": ">=15"
+    "node": ">=14"
   },
   "scripts": {
     "dev": "next dev",
