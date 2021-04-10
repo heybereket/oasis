@@ -21,6 +21,7 @@ export async function repos(limit = 10) {
 }
 
 async function apiFetch(route) {
+  console.log(process.env.NEXT_PUBLIC_BASE_API_URL + '/api' +  route);
   return await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + '/api' +  route)
     .then(res => res.json())
     .then(json => {
