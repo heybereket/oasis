@@ -50,7 +50,7 @@
     "remark-parse": "^9.0.0",
     "remark-react": "^8.0.0",
     "swr": "^0.5.5",
-    "tailwindcss": "^2.0.4",
+    "tailwindcss": "2.1.0",
     "unified": "^9.2.1"
   },
   "devDependencies": {
