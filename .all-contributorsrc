@@ -1,6 +1,6 @@
 {
   "projectName": "oasis",
-  "projectOwner": "heybereket",
+  "projectOwner": "oasis-sh",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -173,6 +173,15 @@
         "content",
         "design",
         "infra"
+      ]
+    },
+    {
+      "login": "coderinblack08",
+      "name": "coderinblack",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41022901?v=4",
+      "profile": "https://coderinblack.now.sh",
+      "contributions": [
+        "code"
       ]
     }
   ],
