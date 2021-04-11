@@ -1,12 +1,22 @@
 import { AppProps } from 'next/app';
-import React from 'react';
-import 'styles/globals.css';
+import '../styles/globals.css';
 import { getFirebase } from '../lib/firebase';
+import Head from 'next/head'
 
 getFirebase();
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <div>
+      <Head>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=0"
+      />
+    </Head>
+    <Component {...pageProps} />
+    </div>
+  );
 }
 
-export default MyApp;
+export default App;
