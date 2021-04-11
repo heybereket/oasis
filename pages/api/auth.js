@@ -3,7 +3,7 @@ import getFirebaseAdmin from '../../utils/firebaseadmin';
 const { destroyCookie, parseCookies } = require('nookies');
 import { formatData, sendStatus } from '../../utils/apiFormatter';
 
-var admin;
+let admin;
 
 export default async function auth(req, res) {
   admin = await getFirebaseAdmin();
@@ -14,27 +14,15 @@ export default async function auth(req, res) {
 }
 
 async function getCurrentAuth(req, res) {
-  var cookies = parseCookies(res);
-  if (!cookies.user)
-    return res.status(401).send(formatData({ hasAuth: false, authState: 'unauthenticated' }, res));
-  await admin
-    .auth()
-    .verifySessionCookie(cookies.user)
-    .then(async decodedClaims => {
-      var db = admin.firestore();
-      var doc = await db.collection('users').doc(decodedClaims.uid);
-      doc = await doc.get();
-      const docData = doc.data();
-      delete docData.activity;
-      res
-        .status(200)
-        .send(
-          formatData(
-            { hasAuth: true, authState: 'authenticated', ...decodedClaims, ...docData },
-            res
-          )
-        );
-    });
+  let cookies = parseCookies(res);
+  if (!cookies.user) return res.status(401).send(formatData({ hasAuth: false, authState: 'unauthenticated' }, res));
+  const decodedClaims = await admin.auth().verifySessionCookie(cookies.user);
+  let db = admin.firestore();
+  let doc = await db.collection('users').doc(decodedClaims.uid);
+  doc = await doc.get();
+  const docData = doc.data();
+  delete docData.activity;
+  res.status(200).send(formatData({ hasAuth: true, authState: 'authenticated', ...decodedClaims, ...docData }, res));
 }
 
 async function signIn(token, gitToken, res) {
@@ -55,71 +43,62 @@ async function signIn(token, gitToken, res) {
 
   if (!cookie) sendStatus(res, 'InvalidCookie');
 
-  var githubData = await fetch('https://api.github.com/user', {
+  let githubData = await fetch('https://api.github.com/user', {
     method: 'GET',
     headers: {
       Authorization: 'token ' + gitToken,
     },
   });
   githubData = await githubData.json();
-  await admin
-    .auth()
-    .verifySessionCookie(cookie)
-    .then(async decodedClaims => {
-      var db = admin.firestore();
 
-      const today = new Date();
-      const year = today.getFullYear();
-      Date.shortMonths = [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
-      ];
-      function shortMonthName(dt) {
-        return Date.shortMonths[dt.getMonth()];
-      }
-      const day = today.getDate();
+  const { uid, picture: avatar, email } = await admin.auth().verifySessionCookie(cookie);
+  const { login: username, name, bio, twitter_username: twitter, blog: link } = githubData;
 
-      const prefix = 'https://';
-      if (githubData.blog.substr(0, prefix.length) !== prefix) {
-        githubData.blog = prefix + githubData.blog;
-      }
+  let db = admin.firestore();
 
-      var userData = {
-        uid: decodedClaims.uid,
-        avatar: decodedClaims.picture,
-        username: githubData.login,
-        name: githubData.name,
-        email: decodedClaims.email,
-        bio: githubData.bio,
-        twitter: githubData.twitter_username,
-        link: githubData.blog,
-      };
+  const today = new Date();
+  const year = today.getFullYear();
+  Date.shortMonths = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  function shortMonthName(dt) {
+    return Date.shortMonths[dt.getMonth()];
+  }
+  const day = today.getDate();
+  const prefix = 'https://';
+  if (githubData.blog.substr(0, prefix.length) !== prefix) {
+    githubData.blog = prefix + githubData.blog;
+  }
+  let userData = {
+    uid,
+    avatar,
+    username,
+    name,
+    email,
+    bio,
+    twitter,
+    link,
+  };
 
-      await db
-        .collection('users')
-        .doc(decodedClaims.uid)
-        .get()
-        .then(doc => {
-          if (!doc.exists) {
-            userData.created = admin.firestore.Timestamp.now();
-            userData.joined = shortMonthName(today) + ` ${day}, ${year}`;
-            userData.verified = false;
-            userData.activity = [];
-          }
-        });
-
-      await db.collection('users').doc(decodedClaims.uid).set(userData, { merge: true });
-    });
+  const userDoc = await db.collection('users').doc(uid).get();
+  if (!userDoc.exists) {
+    userData.created = admin.firestore.Timestamp.now();
+    userData.joined = shortMonthName(today) + ` ${day}, ${year}`;
+    userData.verified = false;
+    userData.activity = [];
+  }
+  await db.collection('users').doc(uid).set(userData, { merge: true });
 
   const options = {
     maxAge: expiresIn,

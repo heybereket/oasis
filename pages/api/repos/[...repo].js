@@ -2,7 +2,7 @@ import getFirebaseAdmin from '../../../utils/firebaseadmin';
 import { formatData, sendStatus } from '../../../utils/apiFormatter';
 import verifyCookie from '../../../utils/verifyCookie';
 
-var admin, db;
+let admin, db;
 export default async function repos(req, res) {
   admin = await getFirebaseAdmin();
   db = admin.firestore();
@@ -13,80 +13,97 @@ export default async function repos(req, res) {
 }
 
 export async function getRepo(query, res) {
-  var repoName = `${query.repo[0]}/${query.repo[1]}`;
-  let docRef = db.collection('repos').where('full_name', '==', repoName);
+  const [repoUser, repoName] = query.repo;
+  let repoFullName = `${repoUser}/${repoName}`;
+  let docRef = db.collection('repos').where('full_name', '==', repoFullName);
 
-  await docRef
-    .limit(1)
-    .get()
-    .then(async querySnapshot => {
-      if (querySnapshot.empty) return res.status(404).send(sendStatus(res, 'InvalidRepoName'));
+  const querySnapshot = await docRef.limit(1).get();
 
-      querySnapshot.forEach(async doc => {
-        var data = doc.data();
-        delete data.submitted_by;
-        delete data.avatar;
-        res.send(formatData(data));
-      });
-    });
+  if (querySnapshot.empty) return res.status(404).send(sendStatus(res, 'InvalidRepoName'));
+
+  querySnapshot.forEach(async doc => {
+    let data = doc.data();
+    delete data.submitted_by;
+    delete data.avatar;
+    res.send(formatData(data));
+  });
 }
 
 export async function addRepo(query, req, res) {
-  var repoName = `${query.repo[0]}/${query.repo[1]}`;
+  const [repoUser, repoName] = query.repo;
+  let repoFullName = `${repoUser}/${repoName}`;
 
-  var userData = await verifyCookie(req);
-  if (!query.repo[0] || !query.repo[1]) return sendStatus(res, 'InvalidRepoName');
-  if (!repoName.match(/^.+\/.+$/gm)) return sendStatus(res, 'InvalidRepoName');
+  let userData = await verifyCookie(req);
+  if (!repoUser || !repoName) return sendStatus(res, 'InvalidRepoName');
+  if (!repoFullName.match(/^.+\/.+$/gm)) return sendStatus(res, 'InvalidRepoName');
   if (!userData.hasAuth) return sendStatus(res, 'Unauthorized');
 
-  await fetch('https://api.github.com/repos/' + repoName)
-    .then(res => res.json())
-    .then(async body => {
-      if (body.message == 'Not Found') return sendStatus(res, 'InvalidRepoName');
-      if (body.archived) return sendStatus(res, 'RepoIsArchived');
-      if (body.fork) return sendStatus(res, 'RepoIsFork');
-      if (body.open_issues_count < 5) return sendStatus(res, 'RepoIsUnder5Issues');
-      const docRef = db.collection('repos').doc(`${body.id}`);
-      const doc = await docRef.get();
+  let githubResponse = await fetch('https://api.github.com/repos/' + repoFullName);
+  githubResponse = await githubResponse.json();
 
-      const userRef = db.collection('users').doc(`${userData.uid}`);
-      const userDoc = await userRef.get();
-      if (doc.exists) return sendStatus(res, 'RepoExists');
+  const { 
+    message, 
+    archived, 
+    fork, 
+    open_issues_count,
+    id,
+    full_name,
+    name,
+    description: desc,
+    stargazers_count: stars,
+    open_issues: issues,
+    html_url: url,
+    language
+  } = githubResponse;
 
-      var repoData = {
-        github_owner: body.owner.login,
-        added_by: userData.uid,
-        date_added: admin.firestore.Timestamp.now(),
-        desc: body.description,
-        active: true,
-        full_name: body.full_name,
-        name: body.name,
-        stars: body.stargazers_count,
-        issues: body.open_issues,
-        url: body.html_url,
-        id: body.id,
-        language: body.language,
-      };
-      await docRef.set(repoData);
+  const {
+    login: github_owner
+  } = githubResponse.owner;
 
-      await userRef.set(
+  if (message == 'Not Found') return sendStatus(res, 'InvalidRepoName');
+  if (archived) return sendStatus(res, 'RepoIsArchived');
+  if (fork) return sendStatus(res, 'RepoIsFork');
+  if (open_issues_count < 5) return sendStatus(res, 'RepoIsUnder5Issues');
+  
+  const docRef = db.collection('repos').doc(`${id}`);
+  const doc = await docRef.get();
+  const userRef = db.collection('users').doc(`${userData.uid}`);
+  const userDoc = await userRef.get();
+
+  if (doc.exists) return sendStatus(res, 'RepoExists');
+
+  let repoData = {
+    added_by: userData.uid,
+    date_added: admin.firestore.Timestamp.now(),
+    active: true,
+    github_owner,
+    desc,
+    full_name,
+    name,
+    stars,
+    issues,
+    url,
+    id,
+    language,
+  };
+
+  await docRef.set(repoData);
+  await userRef.set(
+    {
+      activity: [
         {
-          activity: [
-            {
-              type: 'add',
-              repo: {
-                id: body.id,
-                full_name: body.full_name,
-                name: body.name,
-                active: true,
-              },
-            },
-            ...userDoc.data().activity,
-          ],
+          type: 'add',
+          repo: {
+            id: githubResponse.id,
+            full_name: githubResponse.full_name,
+            name: githubResponse.name,
+            active: true,
+          },
         },
-        { merge: true }
-      );
-
-      sendStatus(res, 'Success');
-    });
+        ...userDoc.data().activity,
+      ],
+    },
+    { merge: true }
+  );
+  sendStatus(res, 'Success');
 }
