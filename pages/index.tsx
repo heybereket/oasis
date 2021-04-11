@@ -1,7 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import { useAuthState } from "react-firebase-hooks/auth";
+import firebase from "firebase";
 
 const Home: React.FC = () => {
+  const [user, loading, error] = useAuthState(firebase.auth());
+
   return (
     <>
       <div className="max-w-5xl mx-auto px-8">
@@ -28,7 +32,10 @@ const Home: React.FC = () => {
           <div className="space-x-4 mt-9">
             <button
               className="bg-primary text-white px-6 py-2.5 rounded-md font-bold"
-              onClick={async () => {}}
+              onClick={async () => {
+                const provider = new firebase.auth.GithubAuthProvider();
+                await firebase.auth().signInWithPopup(provider);
+              }}
             >
               Login with GitHub
             </button>
