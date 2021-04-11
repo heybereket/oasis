@@ -1,19 +1,26 @@
 module.exports = {
-    future: {
-      webpack5: true,
-    },
-    async redirects() {
-      return [
-        {
-          source: '/user/:username',
-          destination: '/u/:username',
-          permanent: true,
-        },
-        {
-          source: '/repo/:repo*',
-          destination: '/r/:repo*',
-          permanent: true,
-        },
-      ];
+  async redirects() {
+    return [
+      {
+        source: '/u/:username',
+        destination: '/user/:username',
+        permanent: true,
+      },
+      {
+        source: '/r/:repo*',
+        destination: '/repo/:repo*',
+        permanent: true,
+      },
+    ];
+  },
+  webpack: (config, { isServer }) => {
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.node = {
+        fs: 'empty',
+      };
     }
-  };
+
+    return config;
+  },
+};

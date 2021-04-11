@@ -2,6 +2,9 @@ import { serialize } from 'cookie';
 import getFirebaseAdmin from '../../utils/firebaseadmin';
 const { destroyCookie, parseCookies } = require('nookies');
 import { formatData, sendStatus } from '../../utils/apiFormatter';
+import dateDiff from '../../utils/dateDiff';
+import verifyCookie from '../../utils/verifyCookie';
+import github from 'remark-github';
 
 var admin;
 
@@ -14,31 +17,13 @@ export default async function auth(req, res) {
 }
 
 async function getCurrentAuth(req, res) {
-  var cookies = parseCookies(res);
-  if (!cookies.user)
-    return res.status(401).send(formatData({ hasAuth: false, authState: 'unauthenticated' }, res));
-  await admin
-    .auth()
-    .verifySessionCookie(cookies.user)
-    .then(async decodedClaims => {
-      var db = admin.firestore();
-      var doc = await db.collection('users').doc(decodedClaims.uid);
-      doc = await doc.get();
-      const docData = doc.data();
-      delete docData.activity;
-      res
-        .status(200)
-        .send(
-          formatData(
-            { hasAuth: true, authState: 'authenticated', ...decodedClaims, ...docData },
-            res
-          )
-        );
-    });
+  var cookieData = await verifyCookie(res);
+  delete cookieData.activity;
+  return res.status(200).send(formatData(cookieData));
 }
 
 async function signIn(token, gitToken, res) {
-  const expiresIn = 24 * 60 * 60 * 1000 * 5; // 5 days
+  const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days in seconds
 
   const cookie = await admin
     .auth()
@@ -68,32 +53,6 @@ async function signIn(token, gitToken, res) {
     .then(async decodedClaims => {
       var db = admin.firestore();
 
-      const today = new Date();
-      const year = today.getFullYear();
-      Date.shortMonths = [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
-      ];
-      function shortMonthName(dt) {
-        return Date.shortMonths[dt.getMonth()];
-      }
-      const day = today.getDate();
-
-      const prefix = 'https://';
-      if (githubData.blog.substr(0, prefix.length) !== prefix) {
-        githubData.blog = prefix + githubData.blog;
-      }
-
       var userData = {
         uid: decodedClaims.uid,
         avatar: decodedClaims.picture,
@@ -102,8 +61,9 @@ async function signIn(token, gitToken, res) {
         email: decodedClaims.email,
         bio: githubData.bio,
         twitter: githubData.twitter_username,
-        link: githubData.blog,
       };
+
+      if (githubData.blog) userData.link = githubData.blog;
 
       await db
         .collection('users')
@@ -112,7 +72,6 @@ async function signIn(token, gitToken, res) {
         .then(doc => {
           if (!doc.exists) {
             userData.created = admin.firestore.Timestamp.now();
-            userData.joined = shortMonthName(today) + ` ${day}, ${year}`;
             userData.verified = false;
             userData.activity = [
               {

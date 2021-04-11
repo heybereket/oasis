@@ -34,7 +34,8 @@ export async function getRepo(query, res) {
 export async function addRepo(query, req, res) {
   var repoName = `${query.repo[0]}/${query.repo[1]}`;
 
-  var userData = await verifyCookie(req);
+  var userData = await verifyCookie(res);
+
   if (!query.repo[0] || !query.repo[1]) return sendStatus(res, 'InvalidRepoName');
   if (!repoName.match(/^.+\/.+$/gm)) return sendStatus(res, 'InvalidRepoName');
   if (!userData.hasAuth) return sendStatus(res, 'Unauthorized');
@@ -45,7 +46,7 @@ export async function addRepo(query, req, res) {
       if (body.message == 'Not Found') return sendStatus(res, 'InvalidRepoName');
       if (body.archived) return sendStatus(res, 'RepoIsArchived');
       if (body.fork) return sendStatus(res, 'RepoIsFork');
-      if (body.open_issues_count < 5) return sendStatus(res, 'RepoIsUnder5Issues');
+      // if (body.open_issues_count < 5) return sendStatus(res, 'RepoIsUnder5Issues');
       const docRef = db.collection('repos').doc(`${body.id}`);
       const doc = await docRef.get();
 

@@ -3,13 +3,14 @@ import getFirebaseAdmin from './firebaseadmin';
 import { parseCookies } from 'nookies';
 
 export default async function verifyCookie(context) {
-  const contextCookies = parseCookies(context);
+  const contextCookies = await parseCookies(context);
   var cookie = contextCookies.user;
   const admin = await getFirebaseAdmin();
   if (!admin) return null;
   if (!cookie) cookie = 'CookieNotFound';
 
   var userdata;
+
   await admin
     .auth()
     .verifySessionCookie(cookie, true /** checkRevoked */)
@@ -23,10 +24,11 @@ export default async function verifyCookie(context) {
           created: data.created.toDate().toDateString(),
           cookie,
           ...decodedClaims,
+          hasAuth: true,
+          authState: 'authenticated',
         };
-        userdata.hasAuth = true;
       });
     })
-    .catch(() => (userdata = { hasAuth: false }));
+    .catch(e => (userdata = { hasAuth: false, authState: 'unauthenticated' }));
   return userdata;
 }

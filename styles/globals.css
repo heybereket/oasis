@@ -32,6 +32,14 @@ button:focus {
   @apply outline-none shadow-outline;
 }
 
+input[type='checkbox'] {
+  @apply mr-2;
+}
+
+/* .ignore-css * {
+  all: revert;
+} */
+
 /* 
 [data-theme='dark'] {
   color-scheme: dark;
