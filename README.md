@@ -1,9 +1,9 @@
 ---
 
 ## 🌴 Branches
-- ```main:``` production
-- ```dev:``` testing
-- ```old:``` old version of oasis (no longer used)
+- ```prod:``` dont touch, production code
+- ```staging:``` testing/development; do changes here here
+- ```old:``` v1.0 of oasis (no longer used)
 
 ## 🚀 Contributions
 
