@@ -1,10 +1,16 @@
-import React from "react";
-import Image from "next/image";
-import { useAuthState } from "react-firebase-hooks/auth";
-import firebase from "firebase";
+import React, { useEffect } from 'react';
+import Image from 'next/image';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import firebase from 'firebase';
 
 const Home: React.FC = () => {
   const [user, loading, error] = useAuthState(firebase.auth());
+
+  useEffect(() => {
+    if (user) {
+      console.log('Logged in');
+    }
+  }, []);
 
   return (
     <>
@@ -22,9 +28,9 @@ const Home: React.FC = () => {
         </nav>
         <div className="mt-24">
           <h1 className="leading-tight md:leading-snug text-3xl sm:text-4xl md:text-5xl font-black">
-            <span className="text-primary-light">A Developer Social Media</span>{" "}
+            <span className="text-primary-light">A Developer Social Media</span>{' '}
             <br />
-            Find Trending Open-Source Projects{" "}
+            Find Trending Open-Source Projects{' '}
           </h1>
           <p className="text-gray-300 text-base sm:text-lg md:text-xl mt-3">
             Discuss and discover open-source and coding using Oasis
