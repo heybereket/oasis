@@ -19,8 +19,7 @@ export default async function user(req, res) {
   let snapshotByName = await db.collection('users').where('username', '==', user).get();
   let snapshotByID = await db.collection('users').where('uid', '==', user).get();
 
-  if (snapshotByName.empty && snapshotByID.empty)
-    return res.status(404).send(sendStatus(res, 'InvalidUserName'));
+  if (snapshotByName.empty && snapshotByID.empty) return res.status(404).send(sendStatus(res, 'InvalidUserName'));
 
   var snapshot = snapshotByName;
   if (snapshotByName.empty) snapshot = snapshotByID;

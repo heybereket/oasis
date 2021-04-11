@@ -6,7 +6,7 @@ import dateDiff from '../../utils/dateDiff';
 import verifyCookie from '../../utils/verifyCookie';
 import github from 'remark-github';
 
-var admin;
+let admin;
 
 export default async function auth(req, res) {
   admin = await getFirebaseAdmin();
@@ -40,19 +40,15 @@ async function signIn(token, gitToken, res) {
 
   if (!cookie) sendStatus(res, 'InvalidCookie');
 
-  var githubData = await fetch('https://api.github.com/user', {
+  let githubData = await fetch('https://api.github.com/user', {
     method: 'GET',
     headers: {
       Authorization: 'token ' + gitToken,
     },
   });
   githubData = await githubData.json();
-  await admin
-    .auth()
-    .verifySessionCookie(cookie)
-    .then(async decodedClaims => {
-      var db = admin.firestore();
 
+<<<<<<< HEAD
       var userData = {
         uid: decodedClaims.uid,
         avatar: decodedClaims.picture,
@@ -83,9 +79,56 @@ async function signIn(token, gitToken, res) {
             ];
           }
         });
+=======
+  const { uid, picture: avatar, email } = await admin.auth().verifySessionCookie(cookie);
+  const { login: username, name, bio, twitter_username: twitter, blog: link } = githubData;
 
-      await db.collection('users').doc(decodedClaims.uid).set(userData, { merge: true });
-    });
+  let db = admin.firestore();
+
+  const today = new Date();
+  const year = today.getFullYear();
+  Date.shortMonths = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  function shortMonthName(dt) {
+    return Date.shortMonths[dt.getMonth()];
+  }
+  const day = today.getDate();
+  const prefix = 'https://';
+  if (githubData.blog.substr(0, prefix.length) !== prefix) {
+    githubData.blog = prefix + githubData.blog;
+  }
+  let userData = {
+    uid,
+    avatar,
+    username,
+    name,
+    email,
+    bio,
+    twitter,
+    link,
+  };
+>>>>>>> next
+
+  const userDoc = await db.collection('users').doc(uid).get();
+  if (!userDoc.exists) {
+    userData.created = admin.firestore.Timestamp.now();
+    userData.joined = shortMonthName(today) + ` ${day}, ${year}`;
+    userData.verified = false;
+    userData.activity = [];
+  }
+  await db.collection('users').doc(uid).set(userData, { merge: true });
 
   const options = {
     maxAge: expiresIn,
