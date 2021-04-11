@@ -8,9 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "firebase": "^8.3.3",
     "next": "latest",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-firebase-hooks": "^3.0.3"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",
