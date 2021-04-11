@@ -13,18 +13,18 @@ export default function NavProfile({ swrError, swrAuth }) {
 
   if (!swrError && swrAuth.authState == 'authenticated')
     return (
-      <div class="relative inline-block text-left">
+      <div className="relative inline-block text-left">
         <Avatar user={swrAuth} className={`ml-4`} />
         {/* <div
-          class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-xl bg-dark ring-opacity-5 focus:outline-none"
+          className="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-xl bg-dark ring-opacity-5 focus:outline-none"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="options-menu"
         >
-          <div class="py-1" role="none">
+          <div className="py-1" role="none">
             <a
               href="#"
-              class="block px-4 py-2 text-sm text-dark-text hover:bg-gray-100 hover:text-gray-900"
+              className="block px-4 py-2 text-sm text-dark-text hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
               My profile
@@ -33,7 +33,7 @@ export default function NavProfile({ swrError, swrAuth }) {
             <form method="POST" action="#" role="none">
               <button
                 type="submit"
-                class="block w-full text-left px-4 py-2 text-sm text-dark-text hover:bg-gray-100 hover:text-gray-900"
+                className="block w-full text-left px-4 py-2 text-sm text-dark-text hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
               >
                 Sign out
