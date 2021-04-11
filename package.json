@@ -1,6 +1,6 @@
 {
   "name": "oasis",
-  "version": "0.1.0",
+  "version": "1.4.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,7 +17,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "commit": "yarn prettier && git add . && git cz && git push",
     "prettier": "prettier --config .prettierrc --write {.,components,lib,pages}/*.js {components,lib,pages}/**/*.js",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate"
@@ -29,7 +28,6 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@primer/octicons-react": "^13.0.0",
     "autoprefixer": "^10.2.5",
-    "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
     "firebase": "^8.3.2",
     "firebase-admin": "^9.6.0",
@@ -43,12 +41,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^5.0.3",
-    "react-particles-js": "^3.4.1",
     "react-router-dom": "^5.2.0",
-    "remark": "^13.0.0",
     "remark-gfm": "^1.0.0",
-    "remark-parse": "^9.0.0",
-    "remark-react": "^8.0.0",
     "swr": "^0.5.5",
     "tailwindcss": "^2.0.4",
     "unified": "^9.2.1"
