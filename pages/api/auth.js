@@ -48,38 +48,6 @@ async function signIn(token, gitToken, res) {
   });
   githubData = await githubData.json();
 
-<<<<<<< HEAD
-      var userData = {
-        uid: decodedClaims.uid,
-        avatar: decodedClaims.picture,
-        username: githubData.login,
-        name: githubData.name,
-        email: decodedClaims.email,
-        bio: githubData.bio,
-        twitter: githubData.twitter_username,
-      };
-
-      if (githubData.blog) userData.link = githubData.blog;
-
-      await db
-        .collection('users')
-        .doc(decodedClaims.uid)
-        .get()
-        .then(doc => {
-          if (!doc.exists) {
-            userData.created = admin.firestore.Timestamp.now();
-            userData.verified = false;
-            userData.activity = [
-              {
-                type: 'event',
-                joined: {
-                  date: shortMonthName(today) + ` ${day}, ${year}`,
-                },
-              },
-            ];
-          }
-        });
-=======
   const { uid, picture: avatar, email } = await admin.auth().verifySessionCookie(cookie);
   const { login: username, name, bio, twitter_username: twitter, blog: link } = githubData;
 
@@ -119,7 +87,6 @@ async function signIn(token, gitToken, res) {
     twitter,
     link,
   };
->>>>>>> next
 
   const userDoc = await db.collection('users').doc(uid).get();
   if (!userDoc.exists) {
