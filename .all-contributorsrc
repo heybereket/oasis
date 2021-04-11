@@ -1,6 +1,6 @@
 {
   "projectName": "oasis",
-  "projectOwner": "heybereket",
+  "projectOwner": "oasis-sh",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -148,6 +148,38 @@
       "name": "Nick Spaargaren",
       "avatar_url": "https://avatars.githubusercontent.com/u/20847106?v=4",
       "profile": "https://github.com/nickspaargaren",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "SowinskiMateusz",
+      "name": "Mateusz Sowiński",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9249982?v=4",
+      "profile": "http://sowinski.me",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "vishy-dev",
+      "name": "vishy-dev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56125930?v=4",
+      "profile": "https://fishystuff.cf",
+      "contributions": [
+        "code",
+        "bug",
+        "content",
+        "design",
+        "infra"
+      ]
+    },
+    {
+      "login": "coderinblack08",
+      "name": "coderinblack",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41022901?v=4",
+      "profile": "https://coderinblack.now.sh",
       "contributions": [
         "code"
       ]
