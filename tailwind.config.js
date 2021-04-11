@@ -28,10 +28,10 @@ module.exports = {
         700: 'var(--color-gray-700)',
         800: 'var(--color-gray-800)',
       },
-      accent: {
-        DEFAULT: 'var(--color-accent)',
-        hover: 'var(--color-accent-hover)',
-        disabled: 'var(--color-accent-disabled)',
+      primary: {
+        DEFAULT: 'var(--color-primary)',
+        light: 'var(--color-primary-light)',
+        lighter: 'var(--color-primary-lighter)',
       },
     },
   },

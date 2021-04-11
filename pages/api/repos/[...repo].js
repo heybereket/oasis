@@ -33,23 +33,6 @@ export async function addRepo(query, req, res) {
   const [repoUser, repoName] = query.repo;
   let repoFullName = `${repoUser}/${repoName}`;
 
-<<<<<<< HEAD
-  var userData = await verifyCookie(res);
-
-  if (!query.repo[0] || !query.repo[1]) return sendStatus(res, 'InvalidRepoName');
-  if (!repoName.match(/^.+\/.+$/gm)) return sendStatus(res, 'InvalidRepoName');
-  if (!userData.hasAuth) return sendStatus(res, 'Unauthorized');
-
-  await fetch('https://api.github.com/repos/' + repoName)
-    .then(res => res.json())
-    .then(async body => {
-      if (body.message == 'Not Found') return sendStatus(res, 'InvalidRepoName');
-      if (body.archived) return sendStatus(res, 'RepoIsArchived');
-      if (body.fork) return sendStatus(res, 'RepoIsFork');
-      // if (body.open_issues_count < 5) return sendStatus(res, 'RepoIsUnder5Issues');
-      const docRef = db.collection('repos').doc(`${body.id}`);
-      const doc = await docRef.get();
-=======
   let userData = await verifyCookie(req);
   if (!repoUser || !repoName) return sendStatus(res, 'InvalidRepoName');
   if (!repoFullName.match(/^.+\/.+$/gm)) return sendStatus(res, 'InvalidRepoName');
@@ -58,10 +41,10 @@ export async function addRepo(query, req, res) {
   let githubResponse = await fetch('https://api.github.com/repos/' + repoFullName);
   githubResponse = await githubResponse.json();
 
-  const { 
-    message, 
-    archived, 
-    fork, 
+  const {
+    message,
+    archived,
+    fork,
     open_issues_count,
     id,
     full_name,
@@ -70,19 +53,16 @@ export async function addRepo(query, req, res) {
     stargazers_count: stars,
     open_issues: issues,
     html_url: url,
-    language
+    language,
   } = githubResponse;
 
-  const {
-    login: github_owner
-  } = githubResponse.owner;
->>>>>>> next
+  const { login: github_owner } = githubResponse.owner;
 
   if (message == 'Not Found') return sendStatus(res, 'InvalidRepoName');
   if (archived) return sendStatus(res, 'RepoIsArchived');
   if (fork) return sendStatus(res, 'RepoIsFork');
   if (open_issues_count < 5) return sendStatus(res, 'RepoIsUnder5Issues');
-  
+
   const docRef = db.collection('repos').doc(`${id}`);
   const doc = await docRef.get();
   const userRef = db.collection('users').doc(`${userData.uid}`);

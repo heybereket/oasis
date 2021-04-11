@@ -13,7 +13,7 @@ export default async function signInWithGitHub() {
     .signInWithPopup(provider)
     .then(async response => {
       if (!response && response.user) return;
-      return await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + '/auth', {
+      return await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + 'auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export default async function signInWithGitHub() {
 }
 
 export async function signOut(cookie) {
-  return await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + '/auth', {
+  return await fetch(process.env.NEXT_PUBLIC_BASE_API_URL + 'auth', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
