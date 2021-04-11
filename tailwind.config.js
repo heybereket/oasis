@@ -1,32 +1,37 @@
 module.exports = {
-  mode: 'jit',
-  purge: [
-    './**/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './modules/**/*.{js,ts,jsx,tsx}',
-  ],
-  darkMode: 'media', // dark mode enabled
+  // mode: "jit",
+  purge: ['./**/**/*.{js,ts,jsx,tsx}'],
+  darkMode: false,
   theme: {
-    extend: {
-      colors: {
-        dark: '#1d1f21',
-        'dark-secondary': '#222428',
-        'dark-tertiary': '#2c3035',
-        'dark-lighter': 'rgba(105, 100, 119, 0.175)',
-        'dark-text': '#f9f8ff',
-        'dark-link': '#8ad6f1',
+    fontFamily: {
+      sans: [
+        'Inter',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Segoe UI',
+        'Roboto',
+        'Helvetica',
+        'Arial',
+        'sans-serif',
+      ],
+    },
+    colors: {
+      transparent: 'transparent',
+      white: 'var(--color-white)',
+      gray: {
+        100: 'var(--color-gray-100)',
+        200: 'var(--color-gray-200)',
+        300: 'var(--color-gray-300)',
+        400: 'var(--color-gray-400)',
+        500: 'var(--color-gray-500)',
+        600: 'var(--color-gray-600)',
+        700: 'var(--color-gray-700)',
+        800: 'var(--color-gray-800)',
       },
-      boxShadow: {
-        outline: '0 0 0.5pt 0.5pt white',
-      },
-      maxWidth: {
-        '3/4': '75%',
-      },
-      screens: {
-        '3xl': '1792px',
-      },
-      spacing: {
-        128: '32rem',
+      accent: {
+        DEFAULT: 'var(--color-accent)',
+        hover: 'var(--color-accent-hover)',
+        disabled: 'var(--color-accent-disabled)',
       },
     },
   },
