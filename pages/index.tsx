@@ -28,16 +28,16 @@ const Home: React.FC = () => {
         </nav>
         <div className="mt-24">
           <h1 className="leading-tight md:leading-snug text-3xl sm:text-4xl md:text-5xl font-black">
-            <span className="text-primary-light">A Developer Social Media</span>{' '}
+            <span className="text-primary-light">Discuss and Discover.</span>{' '}
             <br />
-            Find Trending Open-Source Projects{' '}
+            The newest home for developers.{' '}
           </h1>
           <p className="text-gray-300 text-base sm:text-lg md:text-xl mt-3">
-            Discuss and discover open-source and coding using Oasis
+            <span>Introducing Oasis</span> — your developer corner of the internet.
           </p>
           <div className="space-x-4 mt-9">
             <button
-              className="bg-primary text-white px-6 py-2.5 rounded-md font-bold"
+              className="bg-primary text-white px-6 py-2.5 rounded-md font-bold focus:outline-none"
               onClick={async () => {
                 const provider = new firebase.auth.GithubAuthProvider();
                 await firebase.auth().signInWithPopup(provider);
@@ -45,8 +45,8 @@ const Home: React.FC = () => {
             >
               Login with GitHub
             </button>
-            <button className="bg-gray-600 text-white px-6 py-2.5 rounded-md font-bold">
-              Learn More
+            <button className="bg-gray-600 text-white px-6 py-2.5 rounded-md font-bold focus:outline-none">
+              Join Anonymously 
             </button>
           </div>
         </div>
