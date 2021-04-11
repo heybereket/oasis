@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import firebase from 'firebase';
 import { Button } from '../components/Button';
+import { MarkGithubIcon } from '@primer/octicons-react'
 
 const Home: React.FC = () => {
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -45,9 +46,9 @@ const Home: React.FC = () => {
                 await firebase.auth().signInWithPopup(provider);
               }}
             >
-              Login with GitHub
+              <MarkGithubIcon/> &nbsp; Login with GitHub
             </Button>
-            <Button color="gray">Join Anonymously</Button>
+            <Button color="gray">Join as a Guest</Button>
           </div>
         </div>
       </div>
