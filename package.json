@@ -44,7 +44,7 @@
     "react-router-dom": "^5.2.0",
     "remark-gfm": "^1.0.0",
     "swr": "^0.5.5",
-    "tailwindcss": "^2.0.4",
+    "tailwindcss": "2.1.0",
     "unified": "^9.2.1"
   },
   "devDependencies": {
