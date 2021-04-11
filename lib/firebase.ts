@@ -1,5 +1,4 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
+import firebase from 'firebase/app';
 
 export const config = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
