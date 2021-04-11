@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import firebase from 'firebase';
+import { Button } from '../components/Button';
 
 const Home: React.FC = () => {
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -28,26 +29,25 @@ const Home: React.FC = () => {
         </nav>
         <div className="mt-24">
           <h1 className="leading-tight md:leading-snug text-3xl sm:text-4xl md:text-5xl font-black">
-            <span className="text-primary-light">Discuss and Discover.</span>{' '}
+            <span className="text-primary-light">
+              Discuss and Discover.
+            </span>
             <br />
-            The newest home for developers.{' '}
+            The newest home for developers.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg md:text-xl mt-3">
             <span>Introducing Oasis</span> — your developer corner of the internet.
           </p>
           <div className="space-x-4 mt-9">
-            <button
-              className="bg-primary text-white px-6 py-2.5 rounded-md font-bold focus:outline-none"
+            <Button
               onClick={async () => {
                 const provider = new firebase.auth.GithubAuthProvider();
                 await firebase.auth().signInWithPopup(provider);
               }}
             >
               Login with GitHub
-            </button>
-            <button className="bg-gray-600 text-white px-6 py-2.5 rounded-md font-bold focus:outline-none">
-              Join Anonymously 
-            </button>
+            </Button>
+            <Button color="gray">Join Anonymously</Button>
           </div>
         </div>
       </div>
