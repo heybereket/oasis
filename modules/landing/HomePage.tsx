@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from '../../components/Button';
 import { Navbar } from './Navbar';
+import Link from 'next/link'
 
 export const HomePage: React.FC = () => {
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -42,8 +43,7 @@ export const HomePage: React.FC = () => {
           </div>
 
           <p className="text-gray-300 text-base sm:text-xs md:text-xs mt-3">
-            By logging in, you accept our Privacy Policy and Terms of Service.{' '}
-          </p>
+            By logging in, you accept our <span className="text-primary-light hover:underline"><Link href="/privacy">Privacy Policy</Link></span> and <span className="text-primary-light hover:underline"><Link href="/terms">Terms of Service</Link></span>.{' '} </p>
         </div>
       </div>
       <div className="hidden md:flex absolute bottom-0 w-full justify-center">
