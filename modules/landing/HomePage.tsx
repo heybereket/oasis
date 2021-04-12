@@ -21,7 +21,7 @@ export const HomePage: React.FC = () => {
         <Navbar />
         <div className="mt-24">
           <h1 className="leading-tight md:leading-snug text-3xl sm:text-4xl md:text-5xl font-black">
-            <span className="text-primary-light">Discuss and Discover.</span>
+            <span className="text-primary-light">Discover and Discuss.</span>
             <br />
             The newest home for developers.
           </h1>
@@ -38,7 +38,7 @@ export const HomePage: React.FC = () => {
             >
               <MarkGithubIcon /> &nbsp; Log in with GitHub
             </Button>
-            <Button color="gray">Login Anonymously</Button>
+            <Button color="gray">Log in Anonymously</Button>
           </div>
         </div>
       </div>
