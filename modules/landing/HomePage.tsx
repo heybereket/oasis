@@ -4,7 +4,8 @@ import Image from 'next/image';
 import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from '../../components/Button';
-import { Navbar } from './Navbar';
+import { Navbar } from '../../components/Navbar';
+import { Footer } from '../../components/Footer'
 import Link from 'next/link'
 
 export const HomePage: React.FC = () => {
