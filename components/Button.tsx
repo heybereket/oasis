@@ -16,7 +16,7 @@ const colors = {
 
 const sizes = {
   md: 'py-2.5 px-6 rounded-md',
-  sm: 'py-1 px-2 rounded-md',
+  sm: 'py-2 px-5 rounded-md text-base',
 };
 
 export const Button: React.FC<ButtonProps> = ({

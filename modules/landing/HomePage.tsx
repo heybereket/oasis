@@ -20,7 +20,7 @@ export const HomePage: React.FC = () => {
     <>
       <div className="max-w-5xl mx-auto px-8">
         <Navbar />
-        <div className="mt-24">
+        <div className="relative z-10 mt-24">
           <h1 className="leading-tight md:leading-snug text-3xl sm:text-4xl md:text-5xl font-black">
             <span className="text-primary-light">Discover and Discuss.</span>
             <br />
@@ -35,7 +35,32 @@ export const HomePage: React.FC = () => {
               className="hover:bg-[#5C91FC]"
               onClick={async () => {
                 const provider = new firebase.auth.GithubAuthProvider();
-                await firebase.auth().signInWithPopup(provider);
+                provider.setCustomParameters({
+                  allow_signup: 'true',
+                });
+
+                const login = await firebase.auth().signInWithPopup(provider);
+                
+                let githubData;
+                if (login.additionalUserInfo?.isNewUser) {
+                  githubData = await fetch('https://api.github.com/user', {
+                    method: 'GET',
+                    headers: {
+                      Authorization: 'token ' + (login.credential as any).accessToken,
+                    },
+                  });
+                  githubData = await githubData.json();
+                  await firebase.firestore().collection("users").add({
+                    username: githubData.login,
+                    location: githubData.location,
+                    email: githubData.email,
+                    twitter: githubData.twitter_username,
+                    name: login.user?.displayName,
+                    photoURL: login.user?.photoURL,
+                    createdAt: firebase.firestore.Timestamp.now(),
+                    posts: [],
+                  });
+                }
               }}
             >
               <MarkGithubIcon /> &nbsp; Log in with GitHub
@@ -43,11 +68,11 @@ export const HomePage: React.FC = () => {
             <Button className="hover:bg-gray-500" color="gray">Log in Anonymously</Button>
           </div>
 
-          <p className="text-gray-300 text-base sm:text-xs md:text-xs mt-3">
+          <p className="text-gray-300 text-base sm:text-xs md:small mt-3">
             By logging in, you accept our <span className="text-primary-light hover:underline"><Link href="/privacy">Privacy Policy</Link></span> and <span className="text-primary-light hover:underline"><Link href="/terms">Terms of Service</Link></span>.{' '} </p>
         </div>
       </div>
-      <div className="hidden md:flex absolute bottom-0 w-full justify-center">
+      <div className="hidden md:flex absolute bottom-0 z-0 w-full justify-center">
         <Image
           width={425}
           height={425}
