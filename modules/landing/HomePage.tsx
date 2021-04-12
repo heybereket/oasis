@@ -4,7 +4,8 @@ import Image from 'next/image';
 import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from '../../components/Button';
-import { Navbar } from './Navbar';
+import { Navbar } from '../../components/Navbar';
+import { Footer } from '../../components/Footer'
 import Link from 'next/link'
 
 export const HomePage: React.FC = () => {
@@ -47,16 +48,7 @@ export const HomePage: React.FC = () => {
             By logging in, you accept our <span className="text-primary-light hover:underline"><Link href="/privacy">Privacy Policy</Link></span> and <span className="text-primary-light hover:underline"><Link href="/terms">Terms of Service</Link></span>.{' '} </p>
         </div>
       </div>
-      <div className="hidden md:flex absolute bottom-0 w-full justify-center">
-        <Image
-          width={425}
-          height={425}
-          src="/static/vr-illustration.png"
-          alt="Vr Illustration"
-          quality={100}
-          priority
-        />
-      </div>
+      <Footer/>
     </>
   );
 };
