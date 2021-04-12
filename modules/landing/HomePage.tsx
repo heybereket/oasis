@@ -5,6 +5,7 @@ import firebase from 'firebase';
 import { Button } from '../../components/Button';
 import { MarkGithubIcon } from '@primer/octicons-react';
 import { Input } from '../../components/Input';
+import { Navbar } from './Navbar'
 
 export const HomePage: React.FC = () => {
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -18,17 +19,7 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <div className="max-w-5xl mx-auto px-8">
-        <nav className="flex items-center justify-between py-8">
-          <img src="/static/oasis-logo.png" alt="Oasis Logo" className="w-32" />
-          <ul className="flex items-center space-x-6 md:space-x-10 text-lg">
-            <li>
-              <a href="#">GitHub</a>
-            </li>
-            <li>
-              <a href="#">Discord</a>
-            </li>
-          </ul>
-        </nav>
+      <Navbar/>
         <div className="mt-24">
           <h1 className="leading-tight md:leading-snug text-3xl sm:text-4xl md:text-5xl font-black">
             <span className="text-primary-light">Discuss and Discover.</span>
