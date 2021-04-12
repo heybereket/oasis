@@ -28,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`font-bold focus:outline-none ${colors[color]} ${sizes[size]} ${className}`}
+      className={`font-bold focus:outline-none focus:ring ${colors[color]} ${sizes[size]} ${className}`}
       {...props}
     >
       {children}
