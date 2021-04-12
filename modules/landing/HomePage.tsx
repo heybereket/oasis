@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
-import Image from 'next/image';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import firebase from 'firebase';
-import { Button } from '../../components/Button';
 import { MarkGithubIcon } from '@primer/octicons-react';
-import { Input } from '../../components/Input';
-import { Navbar } from './Navbar'
+import firebase from 'firebase';
+import Image from 'next/image';
+import React, { useEffect } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Button } from '../../components/Button';
+import { Navbar } from './Navbar';
 
 export const HomePage: React.FC = () => {
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -19,7 +18,7 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <div className="max-w-5xl mx-auto px-8">
-      <Navbar/>
+        <Navbar />
         <div className="mt-24">
           <h1 className="leading-tight md:leading-snug text-3xl sm:text-4xl md:text-5xl font-black">
             <span className="text-primary-light">Discuss and Discover.</span>
@@ -30,7 +29,7 @@ export const HomePage: React.FC = () => {
             <span className="text-gray-200 font-medium">Introducing Oasis</span>{' '}
             — your developer corner of the internet.
           </p>
-          <div className="space-x-4 mt-9">
+          <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-9">
             <Button
               onClick={async () => {
                 const provider = new firebase.auth.GithubAuthProvider();
@@ -45,8 +44,8 @@ export const HomePage: React.FC = () => {
       </div>
       <div className="hidden md:flex absolute bottom-0 w-full justify-center">
         <Image
-          width={475}
-          height={475}
+          width={425}
+          height={425}
           src="/static/vr-illustration.png"
           alt="Vr Illustration"
           quality={100}
