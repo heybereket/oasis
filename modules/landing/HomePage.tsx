@@ -36,7 +36,7 @@ export const HomePage: React.FC = () => {
             The newest home for developers.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg md:text-xl mt-3">
-            <span className="text-gray-100 font-medium">Introducing Oasis</span>{' '}
+            <span className="text-gray-200 font-medium">Introducing Oasis</span>{' '}
             — your developer corner of the internet.
           </p>
           <div className="space-x-4 mt-9">
