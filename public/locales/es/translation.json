@@ -4,7 +4,7 @@
     "browseProjects": "Más de {{total}}+ proyectos de código abierto.",
     "all": "Todos",
     "searchProjectsPlaceholder": "Buscar proyectos...",
-    "visibleToolsNoContent": "😥 No resultados encontrada para <bold>{{query}}</bold>"
+    "visibleToolsNoContent": "😥 No hay resultados para <bold>{{query}}</bold>"
   },
   "new": {
     "addRepoHeader": "Agregar un nuevo repositorio a Oasis",
