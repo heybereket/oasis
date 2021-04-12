@@ -20,8 +20,29 @@ const PostPage: React.FC = () => {
         </p>
         <form
           onSubmit={(e) => {
-            console.log(form);
             e.preventDefault();
+            const messageLength = form.message
+              .trim()
+              .split(' ')
+              .filter((x) => x !== '').length;
+            if (messageLength > 200) {
+              console.error('Message too long');
+            }
+            if (messageLength < 1) {
+              console.error('Message too short');
+            }
+            const topics = form.topics
+              .trim()
+              .split(',')
+              .filter((x) => x !== '');
+
+            if (topics.length < 1) {
+              console.error('Add a topic');
+            }
+            if (topics.length > 4) {
+              console.error('You may have at most 4 topics');
+            }
+            console.log(form);
           }}
         >
           <Input
@@ -38,7 +59,13 @@ const PostPage: React.FC = () => {
             textarea
           />
           <label htmlFor="" className="block text-gray-300 mt-2">
-            {form.message.split(' ').length - 1}/200 Words
+            {
+              form.message
+                .trim()
+                .split(' ')
+                .filter((x) => x !== '').length
+            }
+            /200 Words
           </label>
           <Button className="block mt-10">Send Post</Button>
         </form>
