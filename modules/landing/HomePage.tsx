@@ -40,6 +40,11 @@ export const HomePage: React.FC = () => {
             </Button>
             <Button color="gray">Log in Anonymously</Button>
           </div>
+
+          <p className="text-gray-300 text-base sm:text-xs md:text-xs mt-3">
+            By logging in, you accept our Privacy Policy and Terms of Service.{' '}
+          </p>
+
         </div>
       </div>
       <div className="hidden md:flex absolute bottom-0 w-full justify-center">
