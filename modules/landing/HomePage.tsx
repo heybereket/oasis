@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import firebase from 'firebase';
 import { Button } from '../../components/Button';
-import { MarkGithubIcon } from '@primer/octicons-react'
+import { MarkGithubIcon } from '@primer/octicons-react';
 
 export const HomePage: React.FC = () => {
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -30,14 +30,13 @@ export const HomePage: React.FC = () => {
         </nav>
         <div className="mt-24">
           <h1 className="leading-tight md:leading-snug text-3xl sm:text-4xl md:text-5xl font-black">
-            <span className="text-primary-light">
-              Discuss and Discover.
-            </span>
+            <span className="text-primary-light">Discuss and Discover.</span>
             <br />
             The newest home for developers.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg md:text-xl mt-3">
-            <span>Introducing Oasis</span> — your developer corner of the internet.
+            <span className="text-gray-100">Introducing Oasis</span> — your
+            developer corner of the internet.
           </p>
           <div className="space-x-4 mt-9">
             <Button
@@ -46,7 +45,7 @@ export const HomePage: React.FC = () => {
                 await firebase.auth().signInWithPopup(provider);
               }}
             >
-              <MarkGithubIcon/> &nbsp; Login with GitHub
+              <MarkGithubIcon /> &nbsp; Login with GitHub
             </Button>
             <Button color="gray">Join as a Guest</Button>
           </div>
