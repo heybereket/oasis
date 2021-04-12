@@ -30,6 +30,13 @@ $ yarn run prettier
 - [ ] Early Release: Soft Launch on Twitter
 - [ ] Official Launch
 
+## 😎 Reviewers 
+People helping with solving issues, merging pull requests, and overall maintenance. 
+- <a href="https://github.com/heybereket">@heybereket</a> - Code
+- <a href="https://github.com/vishy-dev">@vishy-dev</a> - Code
+- <a href="https://github.com/coderinblack08">@coderinblack08</a> - Design
+- <a href="https://github.com/amitojsingh366">@amitojsingh366</a> - Desktop 
+
 ## 📄 License
 Oasis is open-source and is under the <a href="https://github.com/heybereket/oasis/blob/main/LICENSE">MIT License</a>. 
 
