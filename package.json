@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prettier": "prettier --config .prettierrc --write {.,components,modules,pages}/*.tsx {components,modules,pages}/**/*.tsx",
+    "eslint": "yarn run eslint"
   },
   "dependencies": {
     "@primer/octicons-react": "^13.0.0",
@@ -24,6 +26,7 @@
     "eslint": "^7.24.0",
     "eslint-config-google": "^0.14.0",
     "postcss": "^8.1.10",
+    "prettier": "2.2.1",
     "tailwindcss": "^2.1.1",
     "typescript": "^4.2.4"
   }
