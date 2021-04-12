@@ -1,14 +1,14 @@
-import firebase from "firebase/app";
-import "firebase/auth";
-import React, { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Navbar } from "../../components/AuthNavbar";
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Navbar } from '../../components/AuthNavbar';
+import { Button } from '../../components/Button';
+import { Input } from '../../components/Input';
 
 const PostPage: React.FC = () => {
   const [user] = useAuthState(firebase.auth());
-  const [form, setForm] = useState({ topics: "", message: "" });
+  const [form, setForm] = useState({ topics: '', message: '' });
 
   return (
     <div>
@@ -38,7 +38,7 @@ const PostPage: React.FC = () => {
             textarea
           />
           <label htmlFor="" className="block text-gray-300 mt-2">
-            {form.message.split(" ").length - 1}/200 Words
+            {form.message.split(' ').length - 1}/200 Words
           </label>
           <Button className="block mt-10">Send Post</Button>
         </form>
