@@ -32,6 +32,7 @@ export const HomePage: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-9">
             <Button
+              className="hover:bg-[#5C91FC]"
               onClick={async () => {
                 const provider = new firebase.auth.GithubAuthProvider();
                 await firebase.auth().signInWithPopup(provider);
@@ -39,7 +40,7 @@ export const HomePage: React.FC = () => {
             >
               <MarkGithubIcon /> &nbsp; Log in with GitHub
             </Button>
-            <Button color="gray">Log in Anonymously</Button>
+            <Button className="hover:bg-gray-500" color="gray">Log in Anonymously</Button>
           </div>
 
           <p className="text-gray-300 text-base sm:text-xs md:text-xs mt-3">
