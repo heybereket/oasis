@@ -36,9 +36,9 @@ export const HomePage: React.FC = () => {
                 await firebase.auth().signInWithPopup(provider);
               }}
             >
-              <MarkGithubIcon /> &nbsp; Login with GitHub
+              <MarkGithubIcon /> &nbsp; Log in with GitHub
             </Button>
-            <Button color="gray">Join as a Guest</Button>
+            <Button color="gray">Login Anonymously</Button>
           </div>
         </div>
       </div>
