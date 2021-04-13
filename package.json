@@ -13,5 +13,10 @@
     },
     "devDependencies": {
         "husky": "^6.0.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run test:no-watch"
+        }
     }
 }
