@@ -3747,6 +3747,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"husky@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "husky@npm:6.0.0"
+  bin:
+    husky: lib/bin.js
+  checksum: 61e1f7f53f3c969d361c2a1d4ed8018b9447406ea6cd644a2526d18b76877d135001d8cbd48a1d201fc1614d96995e691ecd2b82a8d8513a6b4a313da1188ccd
+  languageName: node
+  linkType: hard
+
 "iconv-corefoundation@npm:^1.1.5":
   version: 1.1.5
   resolution: "iconv-corefoundation@npm:1.1.5"
@@ -5068,6 +5077,8 @@ fsevents@~2.3.1:
 "oasis@workspace:.":
   version: 0.0.0-use.local
   resolution: "oasis@workspace:."
+  dependencies:
+    husky: ^6.0.0
   languageName: unknown
   linkType: soft
 
