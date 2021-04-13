@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from 'firebase';
 
 export const login = async () => {
   const provider = new firebase.auth.GithubAuthProvider();
@@ -9,10 +9,9 @@ export const login = async () => {
   });
 
   const login = await firebase.auth().signInWithPopup(provider);
-  
+
   let githubData;
   if (login.additionalUserInfo?.isNewUser) {
-    
     githubData = await fetch('https://api.github.com/user', {
       method: 'GET',
       headers: {
@@ -22,7 +21,7 @@ export const login = async () => {
 
     githubData = await githubData.json();
 
-    let userData = {
+    const userData = {
       username: githubData.login,
       location: githubData.location,
       email: githubData.email,
@@ -31,8 +30,8 @@ export const login = async () => {
       photoURL: login.user?.photoURL,
       createdAt: firebase.firestore.Timestamp.now(),
       posts: [],
-    }
+    };
 
-    await db.collection('users').doc(userData.username).set(userData);
+    await db.collection('users').doc(login.user?.uid).set(userData);
   }
-}
+};
