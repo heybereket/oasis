@@ -26,8 +26,8 @@ jobs:
         id: yarn-cache
         with:
           path: |
-            .yarn/cache
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            desktop/.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('desktop/**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Install deps
@@ -56,7 +56,6 @@ jobs:
           # mac_certs_password: ${{ secrets.mac_certs_password }}
           # this is executed before the default `electron-builder` script
           # build_script_name: delete:artifacts
-          build_script_name: cdtodesktop
           package_root: desktop
           github_token: ${{ secrets.github_token }}
           release: true
