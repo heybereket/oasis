@@ -7,8 +7,6 @@
             "web",
             "api"
         ],
-        "nohoist": [
-            "**"
-        ]
+        "nohoist": ["**"]
     }
 }

@@ -6,3 +6,4 @@
 !.yarn/versions
 
 /node_modules
+.next
