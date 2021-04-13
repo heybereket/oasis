@@ -1,9 +1,10 @@
 ---
 
 ## 🌴 Branches
-- ```prod:``` dont touch, production code
-- ```staging:``` testing/development; do changes here here
-- ```old:``` v1.0 of oasis (no longer used)
+
+- `prod:` dont touch, production code
+- `staging:` testing/development; do changes here here
+- `old:` v1.0 of oasis (no longer used)
 
 ## 🚀 Contributions
 
@@ -11,18 +12,20 @@ Oasis is open to contributions, but we recommend creating an issue or replying i
 Please read [CONTRIBUTING.md](https://github.com/heybereket/oasis/blob/main/docs/CONTRIBUTING.md) for details on the project.
 
 ## 🔨 Running Locally
+
 ```bash
 # Install dependencies
 $ yarn install
- 
+
 # Start dev-server at port 3000
 $ yarn dev
- 
+
 # Run linters
 $ yarn test
 ```
 
 ## ⌛ Status
+
 - [x] Early Development: Started building the project, almost ready to ship!
 - [x] Development: Movement/re-write using NextJS/TailwindCSS
 - [ ] Migration Completion: Finished the migration!
@@ -30,17 +33,21 @@ $ yarn test
 - [ ] Early Release: Soft Launch on Twitter
 - [ ] Official Launch
 
-## 😎 Reviewers 
-People helping with solving issues, merging pull requests, and overall maintenance. 
+## 😎 Reviewers
+
+People helping with solving issues, merging pull requests, and overall maintenance.
+
 - <a href="https://github.com/heybereket">@heybereket</a> - Code
 - <a href="https://github.com/vishy-dev">@vishy-dev</a> - Code
-- <a href="https://github.com/coderinblack08">@coderinblack08</a> - Design
-- <a href="https://github.com/amitojsingh366">@amitojsingh366</a> - Desktop 
+- <a href="https://github.com/coderinblack08">@coderinblack08</a> - Code, Design
+- <a href="https://github.com/amitojsingh366">@amitojsingh366</a> - Desktop
 
 ## 📄 License
-Oasis is open-source and is under the <a href="https://github.com/heybereket/oasis/blob/main/LICENSE">MIT License</a>. 
+
+Oasis is open-source and is under the <a href="https://github.com/heybereket/oasis/blob/main/LICENSE">MIT License</a>.
 
 ## ✨ Contributors
+
 Thanks you for contributing and making Oasis 1% better! ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
