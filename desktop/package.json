@@ -9,10 +9,7 @@
     "start": "yarn compile && electron ./dist/index.js",
     "build:mac": "yarn compile && electron-builder --mac",
     "build:win": "yarn compile && electron-builder --win",
-    "build:linux": "yarn compile && electron-builder --linux",
-    "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "build:linux": "yarn compile && electron-builder --linux"
   },
   "repository": {
     "type": "git",

@@ -1,16 +1,11 @@
 {
     "name": "oasis",
     "private": true,
-    "workspaces": {
-        "packages": [
-            "desktop",
-            "web",
-            "api"
-        ],
-        "nohoist": [
-            "**"
-        ]
-    },
+    "workspaces": [
+        "desktop",
+        "api",
+        "web"
+    ],
     "devDependencies": {
         "husky": "^6.0.0"
     },
