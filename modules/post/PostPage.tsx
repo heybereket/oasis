@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Navbar } from '../../components/AuthNavbar';
+import { Navbar } from '../../components/MainNavbar';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 

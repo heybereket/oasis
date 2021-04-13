@@ -1,6 +1,7 @@
 import React from 'react';
 
 export const NotFoundPage: React.FC = () => {
+
   return (
     <div className="flex flex-col items-center text-center mt-80 h-screen">
       <h1>404</h1>
@@ -9,4 +10,5 @@ export const NotFoundPage: React.FC = () => {
       </p>
     </div>
   );
+
 };
