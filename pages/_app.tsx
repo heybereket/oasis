@@ -7,7 +7,7 @@ getFirebase();
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <>
       <Head>
         <meta
           name="viewport"
@@ -15,7 +15,7 @@ function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Component {...pageProps} />
-    </div>
+    </>
   );
 }
 
