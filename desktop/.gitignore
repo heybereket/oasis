@@ -6,3 +6,5 @@
 !.yarn/versions
 
 /node_modules
+/builds
+/dist
