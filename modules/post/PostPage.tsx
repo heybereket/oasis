@@ -7,6 +7,7 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 
 const PostPage: React.FC = () => {
+  const db = firebase.firestore();
   const [user] = useAuthState(firebase.auth());
   const [form, setForm] = useState({ topics: '', message: '' });
 
@@ -19,17 +20,17 @@ const PostPage: React.FC = () => {
           Fill in the following fields to post your message
         </p>
         <form
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
             const messageLength = form.message
               .trim()
               .split(' ')
               .filter((x) => x !== '').length;
             if (messageLength > 200) {
-              console.error('Message too long');
+              return console.error('Message too long');
             }
             if (messageLength < 1) {
-              console.error('Message too short');
+              return console.error('Message too short');
             }
             const topics = form.topics
               .trim()
@@ -37,12 +38,23 @@ const PostPage: React.FC = () => {
               .filter((x) => x !== '');
 
             if (topics.length < 1) {
-              console.error('Add a topic');
+              return console.error('Add a topic');
             }
             if (topics.length > 4) {
-              console.error('You may have at most 4 topics');
+              return console.error('You may have at most 4 topics');
             }
-            console.log(form);
+
+            const post = await db
+              .collection('posts')
+              .add({ ...form, likes: [] });
+
+            console.log(post);
+
+            db.collection('users')
+              .doc(user?.uid)
+              .update({
+                posts: firebase.firestore.FieldValue.arrayUnion(post.id),
+              });
           }}
         >
           <Input
