@@ -13,5 +13,8 @@
         "hooks": {
             "pre-commit": "npm run test:no-watch"
         }
+    },
+    "scripts": {
+        "cdtodesktop": "cd desktop"
     }
 }
