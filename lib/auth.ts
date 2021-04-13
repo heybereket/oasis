@@ -8,7 +8,7 @@ export const login = async () => {
     allow_signup: 'true',
   });
 
-  const login = await firebase.auth().signInWithRedirect(provider);
+  const login = await firebase.auth().signInWithPopup(provider);
 
   let githubData;
   if (login.additionalUserInfo?.isNewUser) {
