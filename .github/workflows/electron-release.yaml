@@ -31,8 +31,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Install deps
+        working-directory: desktop
         run: yarn
       - name: Compile Typescript
+        working-directory: desktop
         run: yarn compile
       # - name: Prepare for app notarization
       #   if: startsWith(matrix.os, 'macos')
