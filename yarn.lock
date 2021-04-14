@@ -1138,6 +1138,8 @@ __metadata:
   resolution: "@oasis/web@workspace:web"
   dependencies:
     "@primer/octicons-react": ^13.0.0
+    "@sentry/react": ^6.2.5
+    "@sentry/tracing": ^6.2.5
     "@types/node": ^14.14.37
     "@types/react": ^17.0.3
     "@typescript-eslint/eslint-plugin": ^4.21.0
@@ -3968,6 +3970,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fromentries@npm:^1.3.2":
+  version: 1.3.2
+  resolution: "fromentries@npm:1.3.2"
+  checksum: 5cc722e4e3fd333ba75f31dd3ef80b4a6c405d8814e86e343b4676c1483c00f4f29b39aca462d268e918b3316a4fb03cea8022458fd8ad965f251362a129783f
+  languageName: node
+  linkType: hard
+
 "fs-extra@npm:^9.1.0":
   version: 9.1.0
   resolution: "fs-extra@npm:9.1.0"
@@ -6631,10 +6640,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "oasis@workspace:."
   dependencies:
-    "@sentry/react": ^6.2.5
-    "@sentry/tracing": ^6.2.5
     husky: ^6.0.0
     jest: ^26.6.3
+    pinst: ^2.1.6
   languageName: unknown
   linkType: soft
 
@@ -6981,6 +6989,17 @@ __metadata:
   version: 2.2.3
   resolution: "picomatch@npm:2.2.3"
   checksum: f8c9323bc3b21ff448e81dd32277135d781abae5d53a1415d69a4ce6317a2c11404d449c550110b8fa402c07d5e80ff0e2657f263a312517cc809e9010d25791
+  languageName: node
+  linkType: hard
+
+"pinst@npm:^2.1.6":
+  version: 2.1.6
+  resolution: "pinst@npm:2.1.6"
+  dependencies:
+    fromentries: ^1.3.2
+  bin:
+    pinst: bin.js
+  checksum: ac950620de58cec8a2d601b79186e04f7a166c3df82a7a25fe2ca3c1ea38710fa881640e788fa8f81f13b17f38f646d17360c8266f12ae7682bf0ae420786b61
   languageName: node
   linkType: hard
 
