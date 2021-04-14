@@ -20,6 +20,9 @@ then
   # Push all changes to GitHub
   git push origin prod --force
 
+  # Commit build
+  git commit -m "build"
+
   # Go back to staging
   git checkout staging 
 fi
