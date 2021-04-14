@@ -6,7 +6,8 @@
         "web"
     ],
     "scripts": {
-        "trigger": "sh scripts/build.sh"
+        "trigger": "sh scripts/build.sh",
+        "test": "jest"
     },
     "devDependencies": {
         "husky": "^6.0.0",
