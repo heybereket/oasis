@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prettier": "prettier --config .prettierrc --write {.,components,modules,pages}/*.tsx {components,modules,pages}/**/*.tsx",
-    "eslint": "yarn run eslint"
+    "test": "yarn run eslint && prettier --config .prettierrc --write {.,components,modules,pages}/*.tsx {components,modules,pages}/**/*.tsx"
   },
   "dependencies": {
     "@primer/octicons-react": "^13.0.0",
