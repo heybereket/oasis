@@ -1,0 +1,17 @@
+{
+  "projectName": "oasis",
+  "projectOwner": "oasis-sh",
+  "files": [
+    "CONTRIBUTORS.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    
+  ],
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "contributorsPerLine": 7,
+  "commitConvention": "none",
+  "skipCi": true
+}
