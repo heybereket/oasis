@@ -19,7 +19,7 @@ $ yarn install
 $ yarn dev
  
 # Run all linters
-$ yarn test
+$ yarn lint
 ```
 
 ## ⌛ Status
