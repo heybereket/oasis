@@ -28,8 +28,6 @@ There are tons and tons of languages on GitHub and when we recieve the data of s
 
 **Not sure on what to contribute?** Check out our <a href="https://github.com/heybereket/oasis/projects/1">project board</a>.
 
-### Final Notes
-
 **Uh oh, errors?**
 - <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">Forking a Repository</a>
 - <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository">Cloning a Repository</a>
@@ -42,3 +40,6 @@ There are tons and tons of languages on GitHub and when we recieve the data of s
 - Everytime you change the .env file, you need to restart the server
 - We are using Yarn as our package manager, please do not commit your ```package-lock.json``` files from NPM
 - Make sure you are upto date by doing ```git pull``` here and there.
+
+### 👀 What's next?
+Make sure to add yourself to our `CONTRIBUTORS.md` file by running `yarn contrib:add` in your terminal, we use all-contributors to manage all this, it will ask you a couple of questions about your github username + contribution and it will automatically add you to the list and display you in the `CONTRIBUTORS.md` file!
