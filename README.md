@@ -25,7 +25,9 @@ $ yarn run prettier
 ## ⌛ Status
 - [x] Early Development: Started building the project, almost ready to ship!
 - [x] Development: Movement/re-write using NextJS/TailwindCSS
-- [ ] Migration Completion: Finished the migration!
+- [x] Migration Completion: Finished the migration!
+- [x] TypeScript: Converted codebase from JS > TS
+- [ ] Redesign/write: 3rd site rewrite/implementation of the new redesign
 - [ ] Alpha/Beta Testing (mostly trying to fix and solve bugs)
 - [ ] Early Release: Soft Launch on Twitter
 - [ ] Official Launch
