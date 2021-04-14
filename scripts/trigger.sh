@@ -3,8 +3,8 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   # Git pull from staging
-  git pull
-
+  git pull origin staging
+  
   # Add all files 
   git add -A
 
@@ -15,11 +15,11 @@ then
   git checkout prod
 
   # Merge staging into prod
-  git merge staging
+  git merge staging --force
 
   # Push all changes to GitHub
-  git push origin prod
+  git push origin prod --force
 
   # Go back to staging
-  git checkout staging
+  git checkout staging 
 fi
