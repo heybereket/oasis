@@ -6,7 +6,7 @@
         "web"
     ],
     "scripts": {
-        "trigger": "sh scripts/build.sh",
+        "trigger": "sh scripts/trigger.sh",
         "test": "jest"
     },
     "devDependencies": {
