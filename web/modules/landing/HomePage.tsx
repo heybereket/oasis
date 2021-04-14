@@ -11,7 +11,7 @@ import { Navbar } from '../../components/Navbar';
 import { login } from '../../lib/auth';
 
 export const HomePage: React.FC = () => {
-  const [user, loading, error] = useAuthState(firebase.auth());
+  const [user] = useAuthState(firebase.auth());
 
   useEffect(() => {
     if (user) {
