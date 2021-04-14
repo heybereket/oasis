@@ -2,6 +2,9 @@ read -p "Deploy to production (y/n)? " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+  # Git pull from staging
+  git pull origin staging
+  
   # Add all files 
   git add -A
 
