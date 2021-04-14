@@ -1,8 +1,8 @@
 //React import
 import React from 'react';
-import { Button } from '../../test-components/Button';
-import { Navbar } from '../../test-components/MainNavbar';
-import { ProfilePost } from '../../test-components/ProfilePost';
+import { Button } from '../../components/Button';
+import { Navbar } from '../../components/MainNavbar';
+import { ProfilePost } from '../../components/ProfilePost';
 
 export const ProfilePage: React.FC = () => {
   return (

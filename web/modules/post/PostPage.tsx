@@ -2,9 +2,9 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Navbar } from '../../test-components/MainNavbar';
-import { Button } from '../../test-components/Button';
-import { Input } from '../../test-components/Input';
+import { Navbar } from '../../components/MainNavbar';
+import { Button } from '../../components/Button';
+import { Input } from '../../components/Input';
 
 const PostPage: React.FC = () => {
   const db = firebase.firestore();
