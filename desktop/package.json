@@ -1,5 +1,5 @@
 {
-  "name": "@oasis/desktop",
+  "name": "oasis-desktop",
   "version": "1.0.0",
   "description": "Desktop app for oasis.sh",
   "main": "dist/index.js",
