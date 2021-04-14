@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oasis-sh/desktop.git"
+    "url": "git+https://github.com/oasis-sh/oasis.git"
   },
   "keywords": [
     "Electron",
@@ -23,9 +23,9 @@
   "author": "Amitoj Singh <amitoj@amitoj.net>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/oasis-sh/desktop/issues"
+    "url": "https://github.com/oasis-sh/oasis/issues"
   },
-  "homepage": "https://github.com/oasis-sh/desktop#readme",
+  "homepage": "https://github.com/oasis-sh/oasis/desktop#readme",
   "build": {
     "appId": "sh.oasis.desktop",
     "productName": "Oasis",
