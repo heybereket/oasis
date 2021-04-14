@@ -5,8 +5,12 @@
         "api",
         "web"
     ],
+    "scripts": {
+        "trigger": "sh scripts/build.sh"
+    },
     "devDependencies": {
-        "husky": "^6.0.0"
+        "husky": "^6.0.0",
+        "jest": "^26.6.3"
     },
     "husky": {
         "hooks": {
