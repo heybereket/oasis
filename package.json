@@ -7,7 +7,8 @@
     ],
     "scripts": {
         "trigger": "sh scripts/trigger.sh",
-        "test": "jest"
+        "test": "jest",
+        "prepare": "husky install"
     },
     "devDependencies": {
         "husky": "^6.0.0",
