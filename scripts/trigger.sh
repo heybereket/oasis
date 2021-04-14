@@ -3,8 +3,8 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   # Git pull from staging
-  git pull origin staging
-  
+  git pull
+
   # Add all files 
   git add -A
 
