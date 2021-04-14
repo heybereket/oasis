@@ -23,7 +23,7 @@ $ yarn lint
 ```
 
 ## ⌛ Status
-- [x] Early Development: Started building the project!
+- [x] Early Development: Started building the project.
 - [x] Development: Movement/re-write using NextJS/TailwindCSS
 - [x] Migration Completion: Finished the migration!
 - [x] TypeScript: Converted codebase from JS > TS
