@@ -1,11 +1,11 @@
 # ✨ Contributing to Oasis 
 
-### Getting Started:
+### Initial Steps:
 1. Fork this repository and clone it to your local machine
 2. Make sure you have `yarn` installed. If you don't, run ```npm install -g yarn```
 3. Install all packages with the `yarn` command in the project root.
 
-### Getting started with the database:
+### Firebase: Getting Started
 
 1. Head over to [Firebase](https://firebase.google.com) and create a project, enable **firestore database**, and then, get your credentials. [Click here if you don't know how!](https://clemfournier.medium.com/how-to-get-my-firebase-service-account-key-file-f0ec97a21620) From there, just copy and paste the values into the `.env` file, see below.
 2. Go to the `.env.example` file where you can update the boilerplate text, as well as rename `.env.example` to `.env`
