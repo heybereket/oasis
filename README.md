@@ -9,10 +9,10 @@
 
 | Code                             |      Description      |
 | :-------------------             | :-------------------: |
-| [web](/packages/web)             |   Next.js Frontend    |
-| [desktop](desktop)               |    Electron Wrapper   |
-| [api](/packages/api)             |     GraphQL API       |
-| [puppeteer](/packages/puppeteer) |   Puppeteer Testing   |
+| [`web`](/packages/web)             |   Next.js Frontend    |
+| [`desktop`](desktop)               |    Electron Wrapper   |
+| [`api`](/packages/api)             |     GraphQL API       |
+| [`puppeteer`](/packages/puppeteer) |   Puppeteer Testing   |
 
 ## 🚀 Contributions
 
