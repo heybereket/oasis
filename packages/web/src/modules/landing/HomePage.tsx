@@ -8,18 +8,18 @@ import React, { useEffect } from 'react';
 import { Button } from '../../components/Button';
 import { Navbar } from '../../components/Navbar';
 import { login } from '../../lib/auth';
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 
 export const HomePage: React.FC = () => {
-  const { push } = useRouter();
+  // const { push } = useRouter();
 
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(async function(user) {
-      if (user) {
-        push('/post')
-    }
-    });
-  });
+  // useEffect(() => {
+  //   firebase.auth().onAuthStateChanged(async function(user) {
+  //     if (user) {
+  //       push('/post')
+  //   }
+  //   });
+  // });
 
   return (
     <>
