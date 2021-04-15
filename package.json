@@ -2,8 +2,9 @@
     "name": "oasis",
     "private": true,
     "workspaces": [
-        "api",
-        "web"
+        "packages/api",
+        "packages/web",
+        "packages/puppeteer-test"
     ],
     "devDependencies": {
         "@commitlint/cli": "^12.1.1",
