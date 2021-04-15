@@ -1337,6 +1337,7 @@ __metadata:
     react-firebase-hooks: ^3.0.3
     tailwindcss: ^2.1.1
     typescript: ^4.2.4
+    zustand: ^3.4.1
   languageName: unknown
   linkType: soft
 
@@ -10654,5 +10655,14 @@ typescript@^4.2.4:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 096c3b40beb2804659539be1605a35c58eb0c85285f94b77b3e924f42ee265c1a40bf9f4153770039517146b469a964d51742395f35ca8135fc9f7e4982b785d
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "zustand@npm:3.4.1"
+  peerDependencies:
+    react: ">=16.8"
+  checksum: d86719ad9fcfc9f9ab601957507a5f18b2cdba0710dcf77497765ba4cf0f70197cb3744e1aa6c9a062ceb187b987faae623c9635ebd4f154c67a8e64e1810e78
   languageName: node
   linkType: hard
