@@ -1,25 +1,15 @@
 import { MarkGithubIcon } from '@primer/octicons-react';
-import firebase from 'firebase/app';
+// import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Button } from '../../components/Button';
 import { Navbar } from '../../components/Navbar';
 import { login } from '../../lib/auth';
-// import { useRouter } from 'next/router'
 
 export const HomePage: React.FC = () => {
-  // const { push } = useRouter();
-
-  // useEffect(() => {
-  //   firebase.auth().onAuthStateChanged(async function(user) {
-  //     if (user) {
-  //       push('/post')
-  //   }
-  //   });
-  // });
 
   return (
     <>
