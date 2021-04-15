@@ -12,7 +12,6 @@ import { login } from '../../lib/auth';
 import { useRouter } from 'next/router'
 
 export const HomePage: React.FC = () => {
-  const [user] = useAuthState(firebase.auth());
   const { push } = useRouter();
 
   useEffect(() => {
