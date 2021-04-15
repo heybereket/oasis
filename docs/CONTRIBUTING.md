@@ -7,8 +7,8 @@
 
 ### Firebase: Getting Started
 
-1. Head over to [Firebase](https://firebase.google.com) and create a project, enable **firestore database**, and then, get your credentials. [Don't know how?](https://www.c-sharpcorner.com/article/how-to-create-firebase-web-app-get/) From there, just copy and paste the values into the `.env` file, see below.
-2. Go to the `.env.example` file where you can update the boilerplate text, as well as rename `.env.example` to `.env`
+1. Head over to [Firebase](https://firebase.google.com) and create a project, enable **firestore database**, and then, get your credentials. [Don't know how?](https://www.c-sharpcorner.com/article/how-to-create-firebase-web-app-get/) 
+2. Copy and paste the values into the `.env.example` file where you can update the boilerplate text, as well as rename `.env.example` to `.env`.
 
 ### Getting started with OAuth:
 
