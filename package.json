@@ -29,7 +29,6 @@
         }
     },
     "scripts": {
-        "trigger": "sh scripts/push.sh",
         "prepare": "husky install",
         "commit": "cz",
         "contrib:add": "all-contributors add",
