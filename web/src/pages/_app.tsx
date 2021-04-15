@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app';
-import 'styles/globals.css';
+import '../styles/globals.css';
 import { getFirebase } from '../lib/firebase';
 import Head from 'next/head';
 import * as Sentry from '@sentry/react';
