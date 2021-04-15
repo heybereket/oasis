@@ -9,15 +9,19 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from '../../components/Button';
 import { Navbar } from '../../components/Navbar';
 import { login } from '../../lib/auth';
+import { useRouter } from 'next/router'
 
 export const HomePage: React.FC = () => {
   const [user] = useAuthState(firebase.auth());
+  const { push } = useRouter();
 
   useEffect(() => {
-    if (user) {
-      console.log('Logged in');
+    firebase.auth().onAuthStateChanged(async function(user) {
+      if (user) {
+        push('/post')
     }
-  }, []);
+    });
+  });
 
   return (
     <>
