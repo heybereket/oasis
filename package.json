@@ -29,7 +29,7 @@
         }
     },
     "scripts": {
-        "trigger": "sh scripts/trigger.sh",
+        "trigger": "sh scripts/push.sh && sh scripts/electron.sh",
         "prepare": "husky install",
         "commit": "cz",
         "contrib:add": "all-contributors add",
