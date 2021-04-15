@@ -22,7 +22,6 @@
 8. Click "Save", and you will be good to go!
 
 ## Next Steps + Reminders:
-Once you have Firebase setup, you're ready to contribute to Oasis!
 
 - You can start the development server using `yarn dev`
 - Make your changes!
