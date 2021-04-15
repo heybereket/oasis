@@ -49,9 +49,10 @@ export const ProfilePage: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <div className="sm:block sm:max-w-2xl sm:w-full sm:mx-auto">
-        <h4 className="mb-8">Posts</h4>
+      
+    <div className="flex justify-center sm:block sm:max-w-2xl sm:w-full mx-auto">
+      <div className="ml-8 mr-8 sm:ml-0 sm:mr-0">
+        <h4 className="mb-8">Posts</h4>  
         <ProfilePost
           avatarUrl="https://cdn.discordapp.com/avatars/688469813261238400/69b0be635133edd248750c754fb73661.png?size=128"
           name="Kevy Devy"
@@ -70,6 +71,7 @@ export const ProfilePage: React.FC = () => {
           replies="32"
           message="What’s poppin everyone!!! @Oasis is the bomb!"
         />
+      </div>
       </div>
     </>
   );
