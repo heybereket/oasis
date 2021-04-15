@@ -6,7 +6,7 @@ interface ButtonProps
     HTMLButtonElement
   > {
   color?: 'primary' | 'gray';
-  size?: 'sm' | 'md';
+  size?: 'sm' | 'md' | 'xs';
 }
 
 const colors = {
@@ -15,8 +15,9 @@ const colors = {
 };
 
 const sizes = {
-  md: 'py-2.5 px-6 rounded-md',
-  sm: 'py-2 px-5 rounded-md text-base',
+  xs: 'py-1.5 px-5 rounded-lg',
+  md: 'py-2.5 px-6 rounded-lg',
+  sm: 'py-2 px-5 rounded-lg text-base',
 };
 
 export const Button: React.FC<ButtonProps> = ({

@@ -9,12 +9,12 @@
         "@commitlint/cli": "^12.1.1",
         "@commitlint/config-conventional": "^12.1.1",
         "@types/jest": "^26.0.22",
+        "all-contributors-cli": "^6.20.0",
         "commitizen": "^4.2.3",
         "cz-conventional-changelog": "^3.3.0",
         "husky": "^6.0.0",
         "ts-jest": "^26.5.4",
-        "typescript": "^4.2.4",
-        "all-contributors-cli": "^6.20.0"
+        "typescript": "^4.2.4"
     },
     "husky": {
         "hooks": {
