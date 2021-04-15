@@ -1,10 +1,12 @@
 import firebase from 'firebase';
+import { useRouter } from 'next/dist/client/router';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from './Button';
 
 export const Navbar: React.FC = () => {
   const [user] = useAuthState(firebase.auth());
+  const router = useRouter();
 
   return (
     <nav className="max-w-5xl mx-auto flex items-center justify-between py-8">
@@ -21,7 +23,14 @@ export const Navbar: React.FC = () => {
           </a>
         </li>
         <li>
-          <a href="#" className="hover:text-gray-200">
+          <a
+            onClick={() => {
+              firebase.auth().signOut();
+              router.push('/');
+            }}
+            href="#"
+            className="hover:text-gray-200"
+          >
             Logout
           </a>
         </li>
