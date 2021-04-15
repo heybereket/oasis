@@ -16,7 +16,8 @@
     "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-firebase-hooks": "^3.0.3"
+    "react-firebase-hooks": "^3.0.3",
+    "zustand": "^3.4.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",
