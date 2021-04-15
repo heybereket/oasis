@@ -1,11 +1,9 @@
 import React from 'react';
 
 interface ProfilePostProps {
-  avatar_url: string;
+  avatarUrl: string;
   name: string;
   atTag: string;
-  //So these are strings instead of numbers as when we get to the thousands, we will abbreviate them to 1.2k for example.
-  //hence, i dont want numbers to get involved
   quotes: string;
   likes: string;
   replies: string;
@@ -13,37 +11,33 @@ interface ProfilePostProps {
 }
 
 export const ProfilePost: React.FC<ProfilePostProps> = ({
-  avatar_url,
+  avatarUrl,
   name,
   atTag,
   quotes,
   likes,
   replies,
   message,
-}: ProfilePostProps) => {
+}) => {
   return (
     <div className="mb-8">
       <div className="flex items-center mb-4">
         <img
           className="w-12 h-12 rounded-full mr-4"
-          src={avatar_url}
+          src={avatarUrl}
           alt={name}
         />
         <div>
           <p className="font-bold ">{name}</p>
-          <p className="text-gray-300">{'@' + atTag}</p>
+          <p className="text-gray-300">@{atTag}</p>
         </div>
       </div>
-      <div className="flex mb-2.5 text-gray-300">
-        <p>{quotes} Quotes</p>
-        {/*cool separator effect that looks like |*/}
-        <div className="w-4 mr-4 border-r border-gray-500 rotate-90" />
-        <p>{likes} likes</p>
-        {/*cool separator effect that looks like |*/}
-        <div className="w-4 mr-4 border-r border-gray-500 rotate-90" />
-        <p>{replies} replies</p>
+      <div className="flex mb-4 text-gray-300 divide-x divide-gray-500">
+        <p className="pr-4 leading-none">{quotes} Quotes</p>
+        <p className="px-4 leading-none">{likes} likes</p>
+        <p className="pl-4 leading-none">{replies} replies</p>
       </div>
-      <p>{message}</p>
+      <p className="text-gray-200">{message}</p>
     </div>
   );
 };

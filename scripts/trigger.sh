@@ -9,7 +9,7 @@ then
   git add -A
 
   # Make a commit
-  git commit -m "trigger build"
+  git commit -m "build"
 
   # Change branch to prod
   git checkout prod
