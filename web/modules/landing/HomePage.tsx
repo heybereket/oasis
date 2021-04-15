@@ -5,7 +5,6 @@ import 'firebase/firestore';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from '../../components/Button';
 import { Navbar } from '../../components/Navbar';
 import { login } from '../../lib/auth';
