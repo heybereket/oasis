@@ -5,13 +5,12 @@
   "main": "index.js",
   "scripts": {
     "compile": "tsc",
-    "start": "yarn compile && node dist/index.js"
+    "start": "ts-node src/index.ts"
   },
   "keywords": [
-    "tests",
     "oasis"
   ],
-  "author": "Amitoj Singh <amitoj@amitoj.net>",
+  "author": "",
   "license": "MIT",
   "dependencies": {
     "puppeteer": "^8.0.0"
@@ -19,6 +18,7 @@
   "devDependencies": {
     "@types/node": "^14.14.41",
     "@types/puppeteer": "^5.4.3",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "ts-node": "^9.1.1"
   }
 }
