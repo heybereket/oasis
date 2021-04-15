@@ -28,7 +28,7 @@ $ yarn lint
 - [x] Migration Completion: Finished the migration!
 - [x] TypeScript: Converted codebase from JS > TS
 - [ ] Public API: Work on releasing the Oasis API publicly 
-- [ ] Redesign/write: 3rd site rewrite/implementation of the new redesign
+- [ ] Redesign/write: 2nd site rewrite/implementation of the new redesign
 - [ ] Alpha/Beta Testing (mostly trying to fix and solve bugs)
 - [ ] Early Release: Soft Launch on Twitter
 - [ ] Official Launch
