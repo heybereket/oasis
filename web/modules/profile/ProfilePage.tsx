@@ -11,9 +11,10 @@ export const ProfilePage: React.FC = () => {
     <>
       <Navbar />
       <div className="grid justify-items-center mt-12">
-        <div className="flex">
+          
+        <div className="sm:flex">
           <img
-            className="w-20 h-20 rounded-full"
+            className="w-20 h-20 rounded-full mx-auto mb-4"
             src="https://cdn.discordapp.com/avatars/688469813261238400/69b0be635133edd248750c754fb73661.png?size=128"
             alt="user-pfp"
           />
@@ -48,9 +49,10 @@ export const ProfilePage: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <div className="max-w-2xl w-full mx-auto">
-        <h4 className="mb-8">Posts</h4>
+      
+    <div className="flex justify-center sm:block sm:max-w-2xl sm:w-full mx-auto">
+      <div className="ml-8 mr-8 sm:ml-0 sm:mr-0">
+        <h4 className="mb-8">Posts</h4>  
         <ProfilePost
           avatarUrl="https://cdn.discordapp.com/avatars/688469813261238400/69b0be635133edd248750c754fb73661.png?size=128"
           name="Kevy Devy"
@@ -69,6 +71,7 @@ export const ProfilePage: React.FC = () => {
           replies="32"
           message="What’s poppin everyone!!! @Oasis is the bomb!"
         />
+      </div>
       </div>
     </>
   );
