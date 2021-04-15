@@ -48,7 +48,7 @@ function createMainWindow() {
   if (!__prod__) {
     mainWindow.webContents.openDevTools();
   }
-  mainWindow.loadURL(__prod__ ? `https://oasis.sh/` : "http://localhost:3000");
+  mainWindow.loadURL(!__prod__ ? `https://oasis.sh/` : "http://localhost:3000");
 
   mainWindow.once("ready-to-show", () => {
     shouldShowWindow = true;
