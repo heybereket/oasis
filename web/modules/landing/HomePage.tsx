@@ -34,12 +34,10 @@ export const HomePage: React.FC = () => {
             — your developer corner of the internet.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-9">
-            <Button className="hover:bg-[#5C91FC]" onClick={login}>
+            <Button onClick={login}>
               <MarkGithubIcon /> &nbsp; Log in with GitHub
             </Button>
-            <Button className="hover:bg-gray-500" color="gray">
-              Log in Anonymously
-            </Button>
+            <Button color="gray">Log in Anonymously</Button>
           </div>
           <p className="text-gray-300 text-base sm:text-xs md:small mt-3">
             By logging in, you accept our{' '}

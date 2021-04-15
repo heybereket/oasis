@@ -1,4 +1,6 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
 export const login = async () => {
   const provider = new firebase.auth.GithubAuthProvider();
@@ -29,6 +31,8 @@ export const login = async () => {
       name: login.user?.displayName,
       photoURL: login.user?.photoURL,
       createdAt: firebase.firestore.Timestamp.now(),
+      followers: [],
+      following: [],
       posts: [],
     };
 
