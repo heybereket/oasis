@@ -1,3 +1,6 @@
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import { GetServerSideProps } from 'next';
 import React from 'react';
 import { Button } from '../../components/Button';
 import { Navbar } from '../../components/MainNavbar';
@@ -70,4 +73,13 @@ export const ProfilePage: React.FC = () => {
       </div>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  let user;
+  if (typeof query.username === 'string') {
+    const db = firebase.firestore();
+    user = db.collection('users').where('username', '==', query.username).get();
+  }
+  return { props: { user } };
 };

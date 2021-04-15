@@ -10,8 +10,8 @@ interface ButtonProps
 }
 
 const colors = {
-  primary: 'bg-primary text-white',
-  gray: 'bg-gray-600 text-white',
+  primary: 'bg-primary hover:bg-primary-light text-white',
+  gray: 'bg-gray-600 hover:bg-gray-500 text-white',
 };
 
 const sizes = {
