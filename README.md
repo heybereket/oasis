@@ -5,6 +5,15 @@
 - ```staging:``` testing/development; do changes here here
 - ```old:``` v1.0 of oasis (no longer used)
 
+## 🧱 Structure
+
+| Code                             |      Description      |
+| :-------------------             | :-------------------: |
+| [`web`](/packages/web)             |   Next.js Frontend    |
+| [`desktop`](desktop)               |    Electron Wrapper   |
+| [`api`](/packages/api)             |     GraphQL API       |
+| [`puppeteer`](/packages/puppeteer) |   Puppeteer Testing   |
+
 ## 🚀 Contributions
 
 Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let me know what you are working on first that way we don't overwrite each other. <br/>

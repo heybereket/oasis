@@ -2,8 +2,9 @@
     "name": "oasis",
     "private": true,
     "workspaces": [
-        "api",
-        "web"
+        "packages/api",
+        "packages/web",
+        "packages/puppeteer"
     ],
     "devDependencies": {
         "@commitlint/cli": "^12.1.1",
@@ -29,7 +30,6 @@
         }
     },
     "scripts": {
-        "trigger": "sh scripts/push.sh",
         "prepare": "husky install",
         "commit": "cz",
         "contrib:add": "all-contributors add",
