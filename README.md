@@ -76,7 +76,7 @@ $ yarn build
 - 🟨 Official Launch
 
 ## ✍🏻 Code of Conduct
-Read the Oasis [Code of Conduct](/github/CODE_OF_CONDUCT.md) for more details. 
+Read the Oasis [Code of Conduct](/.github/CODE_OF_CONDUCT.md) for more details. 
 
 ## 📄 License
 Oasis is open-source and is under the [MIT License](LICENSE). 
