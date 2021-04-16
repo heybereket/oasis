@@ -32,10 +32,10 @@ $ yarn lint
 ```
 
 ## 👋🏻 Maintainers 
-- **Web:** [heybereket](https://github.com/heybereket), [goldyydev](https://github.com/goldyydev), [MattLawz](https://github.com/MattLawz)
+- **Web:** [heybereket](https://github.com/heybereket), [goldyydev](https://github.com/goldyydev), and [MattLawz](https://github.com/MattLawz)
 - **Desktop:** [amitojsingh366](https://github.com/amitojsingh366)
 - **Design:** [coderinblack08](https://github.com/coderinblack08)
-- **API:** [vishy-dev](https://github.com/vishy-dev)
+- **API:** [vishy-dev](https://github.com/vishy-dev), and [Ongshu777](https://github.com/Ongshu777)
 
 ## ⌛ Status
 - [x] Early Development: Started building the project.
