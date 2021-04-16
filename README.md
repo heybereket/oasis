@@ -65,15 +65,15 @@ $ yarn build
 - **API:** [vishy-dev](https://github.com/vishy-dev), and [Ongshu777](https://github.com/Ongshu777)
 
 ## ⌛ Status
-- 🟩 Early Development: Started building the project.
-- 🟩 Development: Movement/re-write using NextJS/TailwindCSS
-- 🟩 Migration Completion: Finished the migration!
-- 🟩 TypeScript: Converted codebase from JS > TS
-- 🟨 Public API: Work on releasing the Oasis API publicly 
-- 🟨 Redesign/write: 2nd site rewrite/implementation of the new redesign
-- 🟨 Alpha/Beta Testing (mostly trying to fix and solve bugs)
-- 🟨 Early Release: Soft Launch on Twitter
-- 🟨 Official Launch
+🟩 Early Development: Started building the project. <br>
+🟩 Development: Movement/re-write using NextJS/TailwindCSS <br>
+🟩 Migration Completion: Finished the migration! <br>
+🟩 TypeScript: Converted codebase from JS > TS <br>
+🟨 GraphQL API: Work on releasing the Oasis API publicly <br>
+🟨 Redesign/write: 2nd site rewrite/implementation of the new redesign <br>
+🟨 Alpha/Beta Testing (mostly trying to fix and solve bugs) <br>
+🟨 Early Release: Soft Launch on Twitter <br>
+🟨 Official Launch <br>
 
 ## ✍🏻 Code of Conduct
 Read the Oasis [Code of Conduct](/.github/CODE_OF_CONDUCT.md) for more details. 
