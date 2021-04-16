@@ -76,19 +76,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oasis/desktop@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@oasis/desktop@workspace:."
-  dependencies:
-    electron: ^12.0.2
-    electron-builder: ^22.10.5
-    electron-log: ^4.3.4
-    electron-updater: ^4.3.8
-    pinst: ^2.0.0
-    typescript: ^4.2.4
-  languageName: unknown
-  linkType: soft
-
 "@sindresorhus/is@npm:^0.14.0":
   version: 0.14.0
   resolution: "@sindresorhus/is@npm:0.14.0"
@@ -155,9 +142,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:^14.6.2":
-  version: 14.14.37
-  resolution: "@types/node@npm:14.14.37"
-  checksum: 5e2d9baf7594ebacaf016716515f30de0765169412787f981481c2fb8b468923149bb9e2e3219ee672399811672ceddc339a7372a61cf15bc656836a5494d991
+  version: 14.14.39
+  resolution: "@types/node@npm:14.14.39"
+  checksum: b4d729f65ae350b9c49a5a5eaa5fd2e73913bb69cad7a9e3802e9d94574228436b74deb1fa415b147bd0b6e31ce5d2da601e9fdf497542c11e304fb0b60c38b3
   languageName: node
   linkType: hard
 
@@ -1099,15 +1086,15 @@ __metadata:
   linkType: hard
 
 "electron@npm:^12.0.2":
-  version: 12.0.3
-  resolution: "electron@npm:12.0.3"
+  version: 12.0.4
+  resolution: "electron@npm:12.0.4"
   dependencies:
     "@electron/get": ^1.0.1
     "@types/node": ^14.6.2
     extract-zip: ^1.0.3
   bin:
     electron: cli.js
-  checksum: 243cca079a485e993612750b6cdd476549337e573d5603e082473ea9cd57f56d9d0b4f41dd5c88ec2c4c797ad5f3ec89383ee28ca0ee905e25052ee9bccd1ac0
+  checksum: 262f2408951afda1923d85c85a1c1e7dbe3ea94b8f1c57cb17677732b797f117c3ef9c70606b4ef759a4db20f4cfe9077482a605c5a7c6dce5f463065cfe84ce
   languageName: node
   linkType: hard
 
@@ -1786,13 +1773,13 @@ __metadata:
   linkType: hard
 
 "js-yaml@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "js-yaml@npm:4.0.0"
+  version: 4.1.0
+  resolution: "js-yaml@npm:4.1.0"
   dependencies:
     argparse: ^2.0.1
   bin:
     js-yaml: bin/js-yaml.js
-  checksum: ee9b16cdbba690ec70f46d61737b28b35e26e6d51606c466de7fa876d3517de0cfdffd2e1ef21263d5ca3b32659d2e4c65255f50d6e236f022305bce72242d46
+  checksum: 8973cf4296c944cc2551d1e3d3d064e7de0d0a6db3f7bafe40339ee9e5e0329560b52c4b8492b9b22365404c9be0822b62340ab49884e1dedfcc7ff80158abe0
   languageName: node
   linkType: hard
 
@@ -2186,6 +2173,19 @@ __metadata:
   checksum: 42251b2653a16f8b47639d93c3b646fff295a4582a6b3a2fc51a651d4511427c247629709063d19befbceb8a3db1a8e9f17016b3a207291e79e4bd1413032918
   languageName: node
   linkType: hard
+
+"oasis-desktop@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "oasis-desktop@workspace:."
+  dependencies:
+    electron: ^12.0.2
+    electron-builder: ^22.10.5
+    electron-log: ^4.3.4
+    electron-updater: ^4.3.8
+    pinst: ^2.0.0
+    typescript: ^4.2.4
+  languageName: unknown
+  linkType: soft
 
 "object-assign@npm:^4.1.0":
   version: 4.1.1

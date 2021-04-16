@@ -21,6 +21,10 @@
     --color-primary-light: #5c91fc;
     --color-primary-lighter: #a3c1ff;
   }
+  
+  * {
+    user-select: none;
+  }
 
   html,
   body,
