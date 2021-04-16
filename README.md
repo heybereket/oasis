@@ -50,4 +50,4 @@ $ yarn lint
 - [ ] Official Launch
 
 ## 📄 License
-Oasis is open-source and is under the <a href="https://github.com/heybereket/oasis/blob/main/LICENSE">MIT License</a>. 
+Oasis is open-source and is under the [MIT License](LICENSE). 
