@@ -4,10 +4,10 @@ interface SEOProps {
   title: string;
 }
 
-export const SEO: React.FC<SEOProps> = ({title}) => {
+export const SEO: React.FC<SEOProps> = ({ title }) => {
   return (
     <Head>
       <title>{title}</title>
     </Head>
   );
-}
+};

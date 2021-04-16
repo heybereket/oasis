@@ -8,13 +8,12 @@ import React from 'react';
 import { Button } from '../../components/Button';
 import { Navbar } from '../../components/Navbar';
 import { login } from '../../lib/auth';
-import { SEO } from '../../components/SEO'
+import { SEO } from '../../components/SEO';
 
 export const HomePage: React.FC = () => {
-
   return (
     <>
-      <SEO title="Oasis - Discover and Discuss"/>
+      <SEO title="Oasis - Discover and Discuss" />
       <div className="max-w-5xl mx-auto px-8">
         <Navbar />
         <div className="relative z-10 mt-24">
