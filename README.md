@@ -47,9 +47,9 @@ $ cd desktop
 # Run the application
 $ yarn start
 
-# Run on Windows: yarn run build:win
-# Run on macOS: yarn run build:mac
-# Run on Linux: yarn run build:lin
+# Build on Windows: yarn run build:win
+# Build on macOS: yarn run build:mac
+# Build on Linux: yarn run build:linux
 ```
 
 ## 👋🏻 Maintainers 
