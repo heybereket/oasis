@@ -20,16 +20,35 @@ Oasis is open to contributions, but we recommend creating an issue or replying i
 
 Interested in contributing? Read [CONTRIBUTING.md](/docs/CONTRIBUTING.md) for details on how to get started.
 
-## 🔨 Running Locally
+## 🔨 Oasis Web
 ```bash
 # Install dependencies
-$ yarn install
+$ yarn
  
 # Start dev-server at port 3000
 $ yarn dev
  
 # Run all linters
 $ yarn lint
+```
+
+## 💻 Oasis Desktop
+Oasis uses ElectronJS for our desktop application. It's currently avaliable on all Windows, macOS, and Linux. <br/>
+**Latest releases:** https://github.com/oasis-sh/oasis/releases/latest
+
+```bash
+# Install dependencies
+$ yarn
+
+# Change directories 
+$ cd desktop 
+ 
+# Run the application
+$ yarn start
+
+# Run on Windows: yarn run build:win
+# Run on macOS: yarn run build:mac
+# Run on Linux: yarn run build:lin
 ```
 
 ## 👋🏻 Maintainers 
