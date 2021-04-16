@@ -40,9 +40,6 @@ Oasis uses ElectronJS for our desktop application. It's currently avaliable on a
 ```bash
 # Install dependencies
 $ yarn
-
-# Change directories 
-$ cd desktop 
  
 # Run the application
 $ yarn start
@@ -50,6 +47,15 @@ $ yarn start
 # Build on Windows: yarn run build:win
 # Build on macOS: yarn run build:mac
 # Build on Linux: yarn run build:linux
+```
+
+## 🤖 Oasis API
+```bash
+# Install dependencies
+$ yarn
+ 
+# Run the API
+$ yarn build
 ```
 
 ## 👋🏻 Maintainers 
