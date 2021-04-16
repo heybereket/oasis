@@ -32,7 +32,7 @@ $ yarn lint
 ```
 
 ## 👋🏻 Maintainers 
-- **Web:** [heybereket](https://github.com/heybereket), [goldyydev](https://github.com/goldyydev)
+- **Web:** [heybereket](https://github.com/heybereket), [goldyydev](https://github.com/goldyydev), [MattLawz](https://github.com/MattLawz)
 - **Desktop:** [amitojsingh366](https://github.com/amitojsingh366)
 - **Design:** [coderinblack08](https://github.com/coderinblack08)
 - **API:** [vishy-dev](https://github.com/vishy-dev)
