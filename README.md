@@ -31,6 +31,12 @@ $ yarn dev
 $ yarn lint
 ```
 
+## 👋🏻 Maintainers 
+- `Web:`[heybereket](https://github.com/heybereket), [goldyydev](https://github.com/goldyydev)
+- `Desktop:` [amitojsingh366](https://github.com/amitojsingh366)
+- `Design:` [coderinblack08](https://github.com/coderinblack08)
+- `API:` [vishy-dev](https://github.com/vishy-dev)
+
 ## ⌛ Status
 - [x] Early Development: Started building the project.
 - [x] Development: Movement/re-write using NextJS/TailwindCSS
