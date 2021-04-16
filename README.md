@@ -7,8 +7,9 @@
 
 ## 🧱 Structure
 
-| Code                             |      Description      |
-| :-------------------             | :-------------------: |
+| Folder                             |      Description      |
+| :----------------------------------| :-------------------: |
+| [`docs`](/docs)                    |     Documentation     |
 | [`web`](/packages/web)             |   Next.js Frontend    |
 | [`desktop`](desktop)               |    Electron Wrapper   |
 | [`api`](/packages/api)             |     GraphQL API       |
