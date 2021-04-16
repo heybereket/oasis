@@ -65,15 +65,18 @@ $ yarn build
 - **API:** [vishy-dev](https://github.com/vishy-dev), and [Ongshu777](https://github.com/Ongshu777)
 
 ## ⌛ Status
-- [x] Early Development: Started building the project.
-- [x] Development: Movement/re-write using NextJS/TailwindCSS
-- [x] Migration Completion: Finished the migration!
-- [x] TypeScript: Converted codebase from JS > TS
-- [ ] Public API: Work on releasing the Oasis API publicly 
-- [ ] Redesign/write: 2nd site rewrite/implementation of the new redesign
-- [ ] Alpha/Beta Testing (mostly trying to fix and solve bugs)
-- [ ] Early Release: Soft Launch on Twitter
-- [ ] Official Launch
+- 🟩 Early Development: Started building the project.
+- 🟩 Development: Movement/re-write using NextJS/TailwindCSS
+- 🟩 Migration Completion: Finished the migration!
+- 🟩 TypeScript: Converted codebase from JS > TS
+- 🟨 Public API: Work on releasing the Oasis API publicly 
+- 🟨 Redesign/write: 2nd site rewrite/implementation of the new redesign
+- 🟨 Alpha/Beta Testing (mostly trying to fix and solve bugs)
+- 🟨 Early Release: Soft Launch on Twitter
+- 🟨 Official Launch
+
+## ✍🏻 Code of Conduct
+Read the Oasis [Code of Conduct](/github/CODE_OF_CONDUCT.md) for more details. 
 
 ## 📄 License
 Oasis is open-source and is under the [MIT License](LICENSE). 
