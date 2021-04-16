@@ -1,7 +1,7 @@
 {
-  "name": "@oasis/puppeteer-test",
+  "name": "@oasis/puppeteer",
   "version": "1.0.0",
-  "description": "testing for oasis",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "compile": "tsc",
