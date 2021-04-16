@@ -9,13 +9,11 @@
     "lint": "yarn run eslint && prettier --config .prettierrc --write src/{.,components,modules,pages}/*.tsx src/{components,modules,pages}/**/*.tsx"
   },
   "dependencies": {
+    "@oasis/api": "0.1.0",
     "@primer/octicons-react": "^13.0.0",
     "@sentry/react": "^6.2.5",
     "@sentry/tracing": "^6.2.5",
-    "apollo-server-micro": "^2.23.0",
     "firebase": "^8.3.3",
-    "firebase-admin": "^9.6.0",
-    "graphql": "^15.5.0",
     "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
