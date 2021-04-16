@@ -4,6 +4,8 @@
 1. Fork this repository and clone it to your local machine
 2. Make sure you have `yarn` installed. If you don't, run ```npm install -g yarn```
 3. Install all packages with the `yarn` command in the project root.
+- If you are working on the web, run `cd packages/web`, then `yarn dev` to get the server running. 
+- If you are working on the web, run `cd desktop`, then `yarn start` to get the server running.
 
 ### Firebase: Getting Started
 
