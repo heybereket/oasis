@@ -25,10 +25,21 @@
 //   comments: [Comment]
 // }
 
-import { join } from 'path';
-import { loadFilesSync } from '@graphql-tools/load-files';
-import { mergeTypeDefs } from '@graphql-tools/merge';
+import { join } from "path";
+import { writeFileSync } from "fs";
+import { loadFilesSync } from "@graphql-tools/load-files";
+import { mergeTypeDefs } from "@graphql-tools/merge";
+import { print } from "graphql";
 
-const typesArray = loadFilesSync(join(__dirname, './modules'), { extensions: ['graphql', 'gql'] });
+const typesArray = loadFilesSync(join(__dirname, "../src/modules/**/*.gql"));
 
-export default mergeTypeDefs(typesArray);
+const typeDefs = mergeTypeDefs(typesArray);
+export default typeDefs;
+
+// Save Type Defs for the "client-gql" package
+
+const printedTypeDefs = print(typeDefs);
+
+console.log(join(__dirname, "./modules/**/*.gql"), typesArray, printedTypeDefs);
+
+writeFileSync(join(__dirname, "../../client-gql/schema.gql"), printedTypeDefs);
