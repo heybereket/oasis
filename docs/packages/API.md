@@ -1,9 +1,9 @@
-## Documentation on the `api` package
+## Documentation on how to get started with the `api` package
 
-## The `api` package is built to be used in `web`
+**The `api` package is the Oasis GraphQL API**.<br>
+The `api` package is designed to be a part of the `web` (web frontend) package. You can run the API on it's own, but in production, it is deployed together!
 
-**The `api` package is the Oasis GraphQL API**. It is built to be integrated into the `web` package. `web` has `@oasis/api` as a dependency.
-The scripts below are to be used before running `web`.
+### Scripts
 
 ### The `build` script
 
