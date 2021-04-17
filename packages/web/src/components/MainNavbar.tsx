@@ -63,8 +63,8 @@ export const Navbar: React.FC = () => {
 }} className="w-10 h-10 flex items-center justify-center text-xl" color="gray">☰</Button>
 </div>
 
-<div className={isOn ? "rounded-lg animate-fade-in-down bg-gray-700 float-right px-6 py-2":"opacity-0 rounded-lg animate-fade-out-up bg-gray-700 max-w-md float-right px-6 py-2"}>
-<ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
+<div className={isOn ? "max-w-md flex rounded-lg justify-end animate-fade-in-down bg-gray-700 float-right px-6 py-2":"opacity-0 flex rounded-lg animate-fade-out-up bg-gray-700 max-w-md float-right px-6 py-2 justify-end"}>
+<ul className="flex items-center space-x-6 md:space-x-10 text-base text-gray-300">
   <li>
     <a href="#" className="hover:text-gray-200">
       Feed
