@@ -35,7 +35,7 @@ $ yarn lint
 
 ## 💻 Oasis Desktop
 Oasis uses ElectronJS for our desktop application. It's currently avaliable on all Windows, macOS, and Linux. <br/>
-**Latest releases:** https://github.com/oasis-sh/oasis/releases/latest
+**Latest release:** https://github.com/oasis-sh/oasis/releases/latest
 
 ```bash
 # Install dependencies
