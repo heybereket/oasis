@@ -4,8 +4,8 @@
 
 **Overall Guidelines**
 
-- [`CONTRIBUTING.md`](CONTRIBUTING.md) - Our standards for contributing, here on Github and anywhere else!
-- [`GETTING_STARTED.md`](GETTING_STARTED.md) - How to get up and running, so that you can contribute to Oasis!
+- [`CONTRIBUTING.md`](guidelines/CONTRIBUTING.md) - Our standards for contributing, here on Github and anywhere else!
+- [`DESIGN_GUDELINES.md`](guidelines/DESIGN_GUDELINES.md) - Our guidelines for the new Oasis front-end design!
 
 **Package Documentation**
 <br>_Read these to get started with running/developing for individual parts of Oasis._
