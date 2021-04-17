@@ -6,3 +6,4 @@ trigger build
 trigger buildtrigger build
 trigger build
 trigger build
+trigger build

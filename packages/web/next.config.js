@@ -23,4 +23,7 @@ module.exports = {
 
     return config;
   },
+  env: {
+    ROOT: __dirname,
+  },
 };

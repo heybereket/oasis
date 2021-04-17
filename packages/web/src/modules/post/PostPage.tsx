@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Navbar } from '../../components/MainNavbar';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
+import { Footer } from 'src/components/Footer';
 
 const PostPage: React.FC = () => {
   const db = firebase.firestore();
@@ -82,6 +83,7 @@ const PostPage: React.FC = () => {
           <Button className="block mt-10">Send Post</Button>
         </form>
       </div>
+      <Footer />
     </div>
   );
 };

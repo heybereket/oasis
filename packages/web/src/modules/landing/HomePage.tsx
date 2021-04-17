@@ -5,15 +5,14 @@ import 'firebase/firestore';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { Footer } from 'src/components/Footer';
 import { Button } from '../../components/Button';
 import { Navbar } from '../../components/Navbar';
 import { login } from '../../lib/auth';
-import { SEO } from '../../components/SEO';
 
 export const HomePage: React.FC = () => {
   return (
     <>
-      <SEO title="Oasis - Discover and Discuss" />
       <div className="max-w-5xl mx-auto px-8">
         <Navbar />
         <div className="relative z-10 mt-24">
@@ -48,7 +47,7 @@ export const HomePage: React.FC = () => {
           </p>
         </div>
       </div>
-      <div className="hidden md:flex absolute bottom-0 z-0 w-full justify-center">
+      <div className="hidden md:flex z-0 w-full justify-center mb-4">
         <Image
           width={425}
           height={425}
@@ -58,6 +57,7 @@ export const HomePage: React.FC = () => {
           priority
         />
       </div>
+      <Footer />
     </>
   );
 };

@@ -1,17 +1,7 @@
-import { IResolvers } from 'graphql-tools';
-import getFirebaseAdmin from './firebase-admin';
+import { join } from 'path';
+import { mergeResolvers } from '@graphql-tools/merge';
+import { loadFilesSync } from '@graphql-tools/load-files';
 
-export const resolvers: IResolvers = {
-  Query: {
-    getUsers: async () => {
-      const db = await admindb();
-      const users = await db.collection('users').get();
-      return users.docs.map((doc) => doc.data());
-    },
-  },
-};
+const resolversArray = loadFilesSync(join(__dirname, './modules'), { extensions: ['js'] });
 
-async function admindb(): Promise<FirebaseFirestore.Firestore> {
-  const admin = await getFirebaseAdmin();
-  return admin.firestore();
-}
+export default mergeResolvers(resolversArray);
