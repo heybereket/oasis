@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "yarn run eslint && prettier --config .prettierrc --write src/{.,components,modules,pages}/*.tsx src/{components,modules,pages}/**/*.tsx"
+    "lint": "yarn run eslint && prettier --config .prettierrc --write src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx"
   },
   "dependencies": {
     "@oasis/api": "0.1.0",
