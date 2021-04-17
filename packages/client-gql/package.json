@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "gen:build": "graphql-codegen",
-    "gen:watch": "graphql-codegen -watch",
+    "gen:watch": "graphql-codegen -w",
     "tsc:build": "tsc",
     "tsc:watch": "tsc --watch",
     "build": "yarn gen:build && yarn tsc:build",
