@@ -6,13 +6,16 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "start": "node dist/start",
+    "dev": "nodemon dist/start"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "graphql": "^15.5.0",
+    "nodemon": "^2.0.7",
     "typescript": "^4.2.4"
   },
   "dependencies": {
