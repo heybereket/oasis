@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'src/components/Button';
 import Link from 'next/link';
 import { Navbar } from 'src/components/Navbar';
+import { Footer } from 'src/components/Footer';
 
 export const NotFoundPage: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ export const NotFoundPage: React.FC = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
