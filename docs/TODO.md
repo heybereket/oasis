@@ -16,15 +16,23 @@
   - [ ] Import Navbar Component 
   - [ ] Import Footer Component
   - [ ] Recent Activity Sidebar
-- [ ] **Logo:**
-  - [ ] Svg Logo Version
-
-### Desktop
-- [ ] Titlebars (include only logo, minimize, maximize, and close icons)  
-- [ ] Discord RPC
 
 ### API
 - [ ] Ability to `POST` and `GET` data
 - [ ] Possibly keep GQL Playground in Production  
 - [ ] Connect Firebase to API
 - [ ] **Idea:** API Keys to access API 
+
+### Design
+- [ ] **User Profile**
+  - [ ] About Tab 
+  - [ ] Replies Tab
+  - [ ] Likes Tab
+  - [ ] Projects Tab
+- [ ] **Logo**
+  - [ ] Svg Logo Version
+
+### Desktop
+- [ ] **General**
+  - [ ] Titlebars (include only logo, minimize, maximize, and close icons)  
+  - [ ] Discord RPC
