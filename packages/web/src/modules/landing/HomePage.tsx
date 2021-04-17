@@ -48,7 +48,7 @@ export const HomePage: React.FC = () => {
           </p>
         </div>
       </div>
-      <div className="hidden md:flex absolute bottom-0 z-0 w-full justify-center">
+      <div className="hidden md:flex z-0 w-full justify-center">
         <Image
           width={425}
           height={425}
