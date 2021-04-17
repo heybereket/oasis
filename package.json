@@ -28,6 +28,7 @@
     }
   },
   "scripts": {
+    "start": "yarn workspace @oasis/api run build && yarn workspace @oasis/web run dev",
     "prepare": "husky install",
     "commit": "cz",
     "contrib:add": "all-contributors add",
