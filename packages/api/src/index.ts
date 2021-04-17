@@ -1,12 +1,6 @@
 import { ApolloServer } from 'apollo-server-micro';
-import { typeDefs } from './schema';
-import { resolvers } from './resolvers';
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+import typeDefs from './typeDefs';
+import resolvers from './resolvers';
 
 export const apolloServer = new ApolloServer({
   typeDefs,
