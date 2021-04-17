@@ -30,12 +30,11 @@ import { writeFileSync } from "fs";
 import { loadFilesSync } from "@graphql-tools/load-files";
 import { mergeTypeDefs } from "@graphql-tools/merge";
 import { print } from "graphql";
+import dirname from "./utils/dirname";
 
-const dirname = process.env.ROOT
-  ? join(process.env.ROOT, "../api/dist")
-  : __dirname;
-
-const typesArray = loadFilesSync(join(dirname, "../src/modules/**/*.gql"));
+const typesArray = loadFilesSync(
+  join(dirname(), "../api/src/modules/**/*.gql")
+);
 
 const typeDefs = mergeTypeDefs(typesArray);
 export default typeDefs;
@@ -44,4 +43,4 @@ export default typeDefs;
 
 const printedTypeDefs = print(typeDefs);
 
-writeFileSync(join(dirname, "../../client-gql/schema.gql"), printedTypeDefs);
+writeFileSync(join(dirname(), "../client-gql/schema.gql"), printedTypeDefs);

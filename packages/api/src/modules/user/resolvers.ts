@@ -1,10 +1,10 @@
 import { IResolvers } from "graphql-tools";
-import { admindb } from "../../admindb";
+import { adminDB } from "../../utils/admin-db";
 
 const resolvers: IResolvers = {
   Query: {
     allUsers: async () => {
-      const db = await admindb();
+      const db = await adminDB();
       const users = await db.collection("users").get();
       return users.docs.map((doc) => doc.data());
     },

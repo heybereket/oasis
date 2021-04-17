@@ -31,10 +31,16 @@
     "prepare": "husky install",
     "commit": "cz",
     "contrib:add": "all-contributors add",
-    "contrib:build": "all-contributors generate"
+    "contrib:build": "all-contributors generate",
+    "dev:web": "yarn workspace @oasis/web dev",
+    "dev:api": "yarn workspace @oasis/api watch",
+    "dev:gql:tsc": "yarn workspace client-gql tsc:watch",
+    "dev:gql:gen": "yarn workspace client-gql gen:watch",
+    "dev": "concurrently -p \" {name} \" -n \"Web,API,GQL,GQL\" -c \"bgBlue,bgCyan,bgGreen,bgGreen\" \"yarn:dev:web\" \"yarn:dev:api\" \"yarn:dev:gql:gen\" \"yarn:dev:gql:tsc\""
   },
   "dependencies": {
     "apollo-server-micro": "^2.23.0",
+    "concurrently": "^6.0.2",
     "firebase-admin": "^9.6.0"
   }
 }
