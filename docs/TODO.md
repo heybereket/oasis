@@ -8,7 +8,6 @@
 
 ### Web:
 - [ ] [Figma Design](https://www.figma.com/file/XDsIu9yvWZY5MwIm8C46JQ/Oasis-%E2%80%94-Joshua-%F0%9F%8F%9D%EF%B8%8F?node-id=2%3A19) to Components 
-- [ ] Navbar Responsivness + Possible Redo 
 - [ ] Footer 
 - [ ] SVG Oasis Logo
 - [ ] Add Navbar to 404 page
