@@ -1,12 +1,6 @@
 ## 🕐 Oasis Todo
 
-### GitHub:
-- [ ] Fix/Close Issues (also add tags for issues)
-- [ ] Review Pull Requests
-- [ ] Update Project Board 
-- [ ] Organize Discussions
-
-### Web:
+### Web
 - [ ] **Authentication**
   - [ ] GitHub 
   - [ ] Twitter 
@@ -25,16 +19,12 @@
 - [ ] **Logo:**
 - [ ] Svg Logo Version
 
-### Desktop:
+### Desktop
 - [ ] Titlebars (include only logo, minimize, maximize, and close icons)  
 - [ ] Discord RPC
 
-### API:
+### API
 - [ ] Ability to `POST` and `GET` data
 - [ ] Possibly keep GQL Playground in Production  
 - [ ] Connect Firebase to API
-- [ ] **Idea:** API Keys to access API
-
-### Design:
-- [ ] User Profile Pages
-- [ ] Post Popup  
+- [ ] **Idea:** API Keys to access API 
