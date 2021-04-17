@@ -6,9 +6,8 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "watch": "tsc --watch",
-    "start": "node dist/start",
-    "dev": "nodemon dist/start"
+    "watch": "concurrently -p \" {name} \" -c bgRed -n \"dev,tsc\" \"nodemon dist/start\" \"tsc --watch --preserveWatchOutput\"",
+    "watch:tsc": "tsc --watch --preserveWatchOutput"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +21,7 @@
     "@graphql-tools/load-files": "^6.3.2",
     "@graphql-tools/merge": "^6.2.12",
     "apollo-server-micro": "^2.23.0",
+    "concurrently": "^6.0.2",
     "dotenv": "^8.2.0",
     "firebase-admin": "^9.6.0"
   }

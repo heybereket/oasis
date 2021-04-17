@@ -49,8 +49,6 @@ const PostPage: React.FC = () => {
               .collection('posts')
               .add({ ...form, likes: [] });
 
-            console.log(post);
-
             db.collection('users')
               .doc(user?.uid)
               .update({

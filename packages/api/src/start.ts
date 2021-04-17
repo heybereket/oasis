@@ -9,6 +9,6 @@ const server = createServer(
 
 server.listen(PORT, () =>
   console.log(
-    `The server started on port: ${PORT}\nGo to http://localhost:${PORT}/api/graphql for the playground!`
+    `🚀 The GraphQL Playground is now running at http://localhost:${PORT}/api/graphql`
   )
 );

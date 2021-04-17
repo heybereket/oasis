@@ -1,20 +1,13 @@
 import { join } from "path";
 import { mergeResolvers } from "@graphql-tools/merge";
-import { loadFiles } from "@graphql-tools/load-files";
-import dirname from "./utils/dirname";
-import { IResolvers } from "apollo-server-micro";
+import { loadFilesSync } from "@graphql-tools/load-files";
 
-export default async function getResolvers(): Promise<IResolvers> {
-  const resolversArray = await loadFiles(
-    join(dirname(), "../api/src/modules"),
-    {
-      ignoreIndex: true,
-      requireMethod: async (path) => {
-        console.log(path);
-        return await import(join(dirname(), path));
-      },
-    }
-  );
+const dirname = process.env.PROJECT_ROOT;
+const resolversArray = loadFilesSync(
+  join(dirname, "/packages/api/dist/modules"),
+  {
+    extensions: ["js"],
+  }
+);
 
-  return mergeResolvers(resolversArray);
-}
+export default mergeResolvers(resolversArray);

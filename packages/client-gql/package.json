@@ -5,12 +5,8 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "gen:build": "graphql-codegen",
-    "gen:watch": "graphql-codegen -w",
-    "tsc:build": "tsc",
-    "tsc:watch": "tsc --watch",
-    "build": "yarn gen:build && yarn tsc:build",
-    "watch": "concurrently \"yarn:gen:watch\" \"yarn:tsc:watch\""
+    "build": "graphql-codegen && tsc",
+    "watch": "concurrently -p \" {name} \" -c bgBlue -n \"gen,tsc\" \"graphql-codegen -w\" \"tsc --watch --preserveWatchOutput\""
   },
   "keywords": [],
   "author": "Bedanta Mukhopadhay (Angshu31)",

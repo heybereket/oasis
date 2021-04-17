@@ -1,13 +1,13 @@
 import { config } from "dotenv";
-config();
+import { join, dirname } from "path";
+
+config({ path: join(dirname(process.cwd()), "/api/.env") });
+
 import { ApolloServer } from "apollo-server-micro";
 import typeDefs from "./typeDefs";
-import getResolvers from "./resolvers";
+import resolvers from "./resolvers";
 
-export async function getApolloServer(): Promise<ApolloServer> {
-  var resolvers = await getResolvers;
-  return new ApolloServer({
-    typeDefs,
-    resolvers,
-  });
-}
+export const apolloServer = new ApolloServer({
+  typeDefs,
+  resolvers,
+});

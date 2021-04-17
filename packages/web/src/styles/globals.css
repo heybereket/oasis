@@ -22,7 +22,9 @@
     --color-primary-lighter: #a3c1ff;
   }
   
-  * {
+  
+
+  img{
     user-select: none;
   }
 
