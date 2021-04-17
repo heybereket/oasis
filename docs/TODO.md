@@ -17,7 +17,7 @@
   - [ ] Import Footer Component
   - [ ] Recent Activity Sidebar
 - [ ] **Logo:**
-- [ ] Svg Logo Version
+  - [ ] Svg Logo Version
 
 ### Desktop
 - [ ] Titlebars (include only logo, minimize, maximize, and close icons)  
