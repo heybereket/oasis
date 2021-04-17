@@ -7,6 +7,10 @@
 - [ ] Organize Discussions
 
 ### Web:
+- [ ] **Authentication**
+  - [ ] GitHub 
+  - [ ] Twitter 
+  - [ ] Discord or Google 
 - [ ] **User Profile**
   - [ ] Banner Component 
   - [ ] Display Name, Username, Description Component
@@ -14,14 +18,12 @@
   - [ ] Responsivness 
   - [ ] Follow + Message Buttons
   - [ ] Posts
-- [ ] Footer 
-- [ ] SVG Oasis Logo
-- [ ] Add Navbar to 404 page
-- [ ] Post Tags
-- [ ] Be able to edit a post after submitted 
-- [ ] GitHub, Twitter, and possibly either Google/Discord OAuth
-- [ ] Ability to create moderator accounts to delete posts, and have moderation powers
-- [ ] **Idea:** Send requests to API to get information 
+- [ ] **404 Page**
+  - [ ] Import Navbar Component 
+  - [ ] Import Footer Component
+  - [ ] Recent Activity Sidebar
+- [ ] **Logo:**
+- [ ] Svg Logo Version
 
 ### Desktop:
 - [ ] Titlebars (include only logo, minimize, maximize, and close icons)  
