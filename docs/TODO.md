@@ -30,7 +30,7 @@
   - [ ] Likes Tab
   - [ ] Projects Tab
 - [ ] **Logo**
-  - [ ] Svg Logo Version
+  - [ ] SVG Logo Version
 
 ### Desktop
 - [ ] **General**
