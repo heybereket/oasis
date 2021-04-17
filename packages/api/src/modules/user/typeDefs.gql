@@ -9,9 +9,9 @@ type User {
   bioLink: String
   name: String
   twitterLink: String
-  posts: [Post]!
+  # posts: [Post]!
   repos: [Repo]!
-  activity: [ActivityEvent]!
+  # activity: [ActivityEvent]!
 }
 
 type Query {
