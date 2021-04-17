@@ -59,7 +59,7 @@ $ yarn build
 ```
 
 ## 👋🏻 Maintainers 
-- **Web:** [heybereket](https://github.com/heybereket), [goldyydev](https://github.com/goldyydev), [samarmohan](https://github.com/samarmohan), and [MattLawz](https://github.com/MattLawz)
+- **Web:** [heybereket](https://github.com/heybereket), [goldyydev](https://github.com/goldyydev), [samarmohan](https://github.com/samarmohan), and [notnickdev](https://github.com/notnickdev)
 - **Desktop:** [amitojsingh366](https://github.com/amitojsingh366)
 - **Design:** [coderinblack08](https://github.com/coderinblack08)
 - **API:** [vishy-dev](https://github.com/vishy-dev), and [Ongshu777](https://github.com/Ongshu777)
