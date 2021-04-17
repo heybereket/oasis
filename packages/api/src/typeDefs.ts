@@ -42,6 +42,8 @@ export default typeDefs;
 
 // Save Type Defs for the "client-gql" package
 
-const printedTypeDefs = print(typeDefs);
+if (process.env.NODE_ENV === "development") {
+  const printedTypeDefs = print(typeDefs);
 
-writeFileSync(join(dirname, "../../client-gql/schema.gql"), printedTypeDefs);
+  writeFileSync(join(dirname, "../../client-gql/schema.gql"), printedTypeDefs);
+}
