@@ -14,8 +14,9 @@
 - [ ] Add Navbar to 404 page
 - [ ] Post Tags
 - [ ] Be able to edit a post after submitted 
-- [ ] **Idea:** Send requests to API to get information 
 - [ ] GitHub, Twitter, and possibly either Google/Discord OAuth
+- [ ] Ability to create moderator accounts to delete posts, and have moderation powers
+- [ ] **Idea:** Send requests to API to get information 
 
 ### Desktop:
 - [ ] Titlebars (include only logo, minimize, maximize, and close icons)  
