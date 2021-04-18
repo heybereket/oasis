@@ -26,35 +26,43 @@
 // }
 
 import { join } from "path";
-import { writeFileSync } from "fs";
+import { writeFileSync, readFileSync } from "fs";
 import { loadFilesSync } from "@graphql-tools/load-files";
 import { mergeTypeDefs } from "@graphql-tools/merge";
-import { print } from "graphql";
+import { DocumentNode, print } from "graphql";
+import { gql } from "apollo-server-core";
+
+let typeDefs: DocumentNode;
 
 const dirname = process.env.PROJECT_ROOT;
 
-const typesArray = loadFilesSync(
-  join(dirname, "/packages/api/src/modules/**/*.gql")
-);
-
-const typeDefs = mergeTypeDefs(typesArray);
-
-console.log({
-  projectRoot: dirname,
-  dirname: __dirname,
-  typesArray,
-  typeDefs,
-});
-
-export default typeDefs;
-
-// Save Type Defs for the "client-gql" package
+console.log({ dirname });
 
 if (process.env.NODE_ENV === "development") {
+  const typesArray = loadFilesSync(
+    join(dirname, "/packages/api/src/modules/**/*.gql")
+  );
+
+  typeDefs = mergeTypeDefs(typesArray);
+
+  console.log({
+    projectRoot: dirname,
+    dirname: __dirname,
+    typesArray,
+    typeDefs,
+  });
+
+  // Save Type Defs for the "client-gql" package
+
   const printedTypeDefs = print(typeDefs);
 
-  writeFileSync(
-    join(dirname, "/packages/client-gql/schema.gql"),
-    printedTypeDefs
-  );
+  writeFileSync(join(dirname, "/packages/api/schema.gql"), printedTypeDefs);
+} else {
+  const str = readFileSync(
+    join(dirname, "/packages/api/schema.gql")
+  ).toString();
+
+  typeDefs = gql(str);
 }
+
+export default typeDefs;

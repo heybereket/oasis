@@ -1,7 +1,6 @@
 import { config } from "dotenv";
-import { join } from "path";
 
-config({ path: join(process.env.PROJECT_ROOT, "/packages/api/.env") });
+config();
 
 import { ApolloServer } from "apollo-server-micro";
 import typeDefs from "./typeDefs";
