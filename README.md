@@ -7,13 +7,14 @@
 
 ## 🧱 Structure
 
-| Folder                             |      Description      |
-| :----------------------------------| :-------------------: |
-| [`docs`](/docs)                    |     Documentation     |
-| [`web`](/packages/web)             |   Next.js Frontend    |
-| [`desktop`](desktop)               |    Electron Wrapper   |
-| [`api`](/packages/api)             |     GraphQL API       |
-| [`puppeteer`](/packages/puppeteer) |   Puppeteer Testing   |
+| Folder                               |      Description       |
+| :----------------------------------: | :-------------------:  |
+| [`docs`](/docs)                      |     Documentation      |
+| [`web`](/packages/web)               |   Next.js Frontend     |
+| [`desktop`](desktop)                 |    Electron Wrapper    |
+| [`api`](/packages/api)               |     GraphQL API        |
+| [`client-gql`](/packages/client-gql) |  Client Side GQL Hooks |
+| [`puppeteer`](/packages/puppeteer)   |   Puppeteer Testing    |
 
 ## 🚀 Contributions
 
