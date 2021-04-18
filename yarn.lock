@@ -1858,19 +1858,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-tools/load-files@npm:^6.3.2":
-  version: 6.3.2
-  resolution: "@graphql-tools/load-files@npm:6.3.2"
-  dependencies:
-    globby: 11.0.3
-    tslib: ~2.1.0
-    unixify: 1.0.0
-  peerDependencies:
-    graphql: ^14.0.0 || ^15.0.0
-  checksum: 19f4b31498d80ffa27df493a89e83d063b161724a8ddea6cdb9cac9c0d77214014d1d78b5da8b028a8438b2e0b9271c13f0f9b8d50100bf78d5de637fbafb721
-  languageName: node
-  linkType: hard
-
 "@graphql-tools/load@npm:^6, @graphql-tools/load@npm:^6.0.0":
   version: 6.2.8
   resolution: "@graphql-tools/load@npm:6.2.8"
@@ -2413,7 +2400,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@oasis/api@workspace:packages/api"
   dependencies:
-    "@graphql-tools/load-files": ^6.3.2
     "@graphql-tools/merge": ^6.2.12
     apollo-server-micro: ^2.23.0
     concurrently: ^6.0.2
