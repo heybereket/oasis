@@ -2425,6 +2425,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@oasis/client-gql@workspace:packages/client-gql":
+  version: 0.0.0-use.local
+  resolution: "@oasis/client-gql@workspace:packages/client-gql"
+  dependencies:
+    "@apollo/client": ^3.3.15
+    "@graphql-codegen/cli": ^1.21.3
+    "@graphql-codegen/typescript": ^1.21.1
+    "@graphql-codegen/typescript-operations": ^1.17.15
+    "@graphql-codegen/typescript-react-apollo": ^2.2.3
+    concurrently: ^6.0.2
+  languageName: unknown
+  linkType: soft
+
 "@oasis/puppeteer@workspace:packages/puppeteer":
   version: 0.0.0-use.local
   resolution: "@oasis/puppeteer@workspace:packages/puppeteer"
@@ -5005,19 +5018,6 @@ __metadata:
   checksum: 6e5bc71774e202bfd3782d0be56eacee9462bfc7dc4a601dad10636163ab9c8abe625e760b0f28e590f9044bc23df3927ee3406f8c961fd2e4a51ef3f67fab2f
   languageName: node
   linkType: hard
-
-"client-gql@workspace:packages/client-gql":
-  version: 0.0.0-use.local
-  resolution: "client-gql@workspace:packages/client-gql"
-  dependencies:
-    "@apollo/client": ^3.3.15
-    "@graphql-codegen/cli": ^1.21.3
-    "@graphql-codegen/typescript": ^1.21.1
-    "@graphql-codegen/typescript-operations": ^1.17.15
-    "@graphql-codegen/typescript-react-apollo": ^2.2.3
-    concurrently: ^6.0.2
-  languageName: unknown
-  linkType: soft
 
 "cliui@npm:^6.0.0":
   version: 6.0.0
