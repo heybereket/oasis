@@ -40,10 +40,10 @@ const typesArray = loadFilesSync(
 const typeDefs = mergeTypeDefs(typesArray);
 
 console.log({
+  projectRoot: dirname,
   dirname: __dirname,
   typesArray,
   typeDefs,
-  env: process.env,
 });
 
 export default typeDefs;
