@@ -6,8 +6,8 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "watch": "concurrently -p \" {name} \" -c bgRed -n \"dev,tsc\" \"nodemon dist/start\" \"tsc --watch --preserveWatchOutput\"",
-    "watch:tsc": "tsc --watch --preserveWatchOutput"
+    "watch:tsc": "tsc --watch --preserveWatchOutput",
+    "dev": "concurrently -p \" {name} \" -c bgRed -n \"dev,tsc\" \"nodemon dist/start\" \"tsc --watch --preserveWatchOutput\""
   },
   "keywords": [],
   "author": "",
