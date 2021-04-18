@@ -56,11 +56,9 @@ if (process.env.NODE_ENV === "development") {
 
   const printedTypeDefs = print(typeDefs);
 
-  writeFileSync(join(dirname, "/packages/api/schema.gql"), printedTypeDefs);
+  writeFileSync(join(dirname, "../schema.gql"), printedTypeDefs);
 } else {
-  const str = readFileSync(
-    join(dirname, "/packages/api/schema.gql")
-  ).toString();
+  const str = readFileSync("../schema.gql").toString();
 
   typeDefs = gql(str);
 }
