@@ -33,7 +33,7 @@ import { print } from "graphql";
 
 const dirname = process.env.PROJECT_ROOT;
 
-console.log(dirname);
+console.log("PROJECT ROOT", dirname);
 const typesArray = loadFilesSync(
   join(dirname, "/packages/api/src/modules/**/*.gql")
 );
@@ -43,8 +43,12 @@ export default typeDefs;
 
 // Save Type Defs for the "client-gql" package
 
+console.log("NODE ENV", process.env.NODE_ENV);
+
 if (process.env.NODE_ENV === "development") {
   const printedTypeDefs = print(typeDefs);
+
+  console.log("PRINTED TYPE DEFS", printedTypeDefs);
 
   writeFileSync(
     join(dirname, "/packages/client-gql/schema.gql"),
