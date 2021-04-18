@@ -36,6 +36,7 @@
     "dev:api": "yarn workspace @oasis/api watch:tsc",
     "dev:api:server": "yarn workspace @oasis/api watch",
     "dev:gql": "yarn workspace @oasis/client-gql watch",
+    "build": "yarn workspace @oasis/api run build && yarn workspace @oasis/client-gql run build && yarn workspace @oasis/web run build",
     "dev": "echo \"🚀 Starting development servers for all workspaces!\" && concurrently -p \" {name} \" -c bgCyan \"yarn:dev:web\" \"yarn:dev:api\" \"yarn:dev:gql\""
   },
   "dependencies": {
