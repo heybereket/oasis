@@ -1,6 +1,9 @@
----
+# Oasis.sh
+
+🏆 Discuss and Discover. The newest home for developers. 
 
 ## 🌴 Branches
+
 - ```prod:``` dont touch, production code
 - ```staging:``` testing/development; do changes here here
 - ```old:``` v1.0 of oasis (no longer used)
@@ -18,11 +21,12 @@
 
 ## 🚀 Contributions
 
-Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let us know what you are working on first that way we don't overwrite each other or have many people adding the same feature/solving the same issue. <br/>
+Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let us know what you are working on first that way we don't overwrite each other or have many people adding the same feature/solving the same issue.
 
 Interested in contributing? Read [CONTRIBUTING.md](/docs/CONTRIBUTING.md) for details on how to get started.
 
 ## 🔨 Running Locally
+
 ```bash
 # Install dependencies
 $ yarn
@@ -37,25 +41,38 @@ $ yarn dev:web
 $ yarn dev:gql
 ```
 
-## 👋🏻 Maintainers 
+## 👋🏻 Maintainers
+
 - **Web:** [heybereket](https://github.com/heybereket), [goldyydev](https://github.com/goldyydev), [samarmohan](https://github.com/samarmohan), and [notnickdev](https://github.com/notnickdev)
 - **Desktop:** [amitojsingh366](https://github.com/amitojsingh366)
 - **Design:** [coderinblack08](https://github.com/coderinblack08)
 - **API:** [vishy-dev](https://github.com/vishy-dev), and [Ongshu777](https://github.com/Ongshu777)
 
 ## ⌛ Status
-🟩 Early Development: Started building the project. <br>
-🟩 Development: Movement/re-write using NextJS/TailwindCSS <br>
-🟩 Migration Completion: Finished the migration! <br>
-🟩 TypeScript: Converted codebase from JS > TS <br>
-🟨 GraphQL API: Work on releasing the Oasis API publicly <br>
-🟨 Redesign/write: 2nd site rewrite/implementation of the new redesign <br>
-🟨 Alpha/Beta Testing (mostly trying to fix and solve bugs) <br>
-🟨 Early Release: Soft Launch on Twitter <br>
-🟨 Official Launch <br>
+
+🟩 Early Development: Started building the project.
+
+🟩 Development: Movement/re-write using NextJS/TailwindCSS
+
+🟩 Migration Completion: Finished the migration!
+
+🟩 TypeScript: Converted codebase from JS > TS
+
+🟨 GraphQL API: Work on releasing the Oasis API publicly
+
+🟨 Redesign/write: 2nd site rewrite/implementation of the new redesign
+
+🟨 Alpha/Beta Testing (mostly trying to fix and solve bugs)
+
+🟨 Early Release: Soft Launch on Twitter
+
+🟨 Official Launch
+
 
 ## ✍🏻 Code of Conduct
-Read the Oasis [Code of Conduct](/.github/CODE_OF_CONDUCT.md) for more details. 
+
+Read the Oasis [Code of Conduct](/.github/CODE_OF_CONDUCT.md) for more details.
 
 ## 📄 License
-Oasis is open-source and is under the [MIT License](LICENSE). 
+
+Oasis is open-source and is under the [MIT License](LICENSE).
