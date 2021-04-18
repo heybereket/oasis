@@ -9,6 +9,8 @@ const typeDefsArray = loadFilesSync(
   join(dirname, "/packages/api/dist/modules/**/typeDefs.js")
 );
 
+console.log(typeDefsArray);
+
 const typeDefs = mergeTypeDefs(typeDefsArray);
 export default typeDefs;
 

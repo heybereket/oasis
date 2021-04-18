@@ -7,4 +7,6 @@ const resolversArray = loadFilesSync(
   join(dirname, "/packages/api/dist/modules/**/resolvers.js")
 );
 
+console.log(resolversArray);
+
 export default mergeResolvers(resolversArray);
