@@ -1,6 +1,11 @@
 ## 🕐 Oasis Todo
 
 ### Web
+- [ ] Site Features
+  - [ ] Commenting
+  - [ ] Liking
+  - [ ] Posting
+  - [ ] Adding 
 - [ ] **Authentication**
   - [ ] GitHub 
   - [ ] Twitter 
