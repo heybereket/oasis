@@ -1,4 +1,4 @@
-schema: schema.gql
+schema: ../api/schema.gql
 documents: ./src/**/*.gql
 generates:
   generated/index.ts:

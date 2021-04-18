@@ -1,13 +1,8 @@
-import { join } from "path";
 import { mergeResolvers } from "@graphql-tools/merge";
-import { loadFilesSync } from "@graphql-tools/load-files";
 
-const dirname = process.env.PROJECT_ROOT;
-const resolversArray = loadFilesSync(
-  join(dirname, "/packages/api/dist/modules"),
-  {
-    extensions: ["js"],
-  }
-);
+import repo from "./modules/repo/resolvers";
+import user from "./modules/user/resolvers";
+
+const resolversArray = [repo, user];
 
 export default mergeResolvers(resolversArray);

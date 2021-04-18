@@ -1,13 +1,13 @@
 import { config } from "dotenv";
-import { join } from "path";
-
-config({ path: join(process.env.PROJECT_ROOT, "/packages/api/.env") });
+config();
 
 import { ApolloServer } from "apollo-server-micro";
-import typeDefs from "./typeDefs";
 import resolvers from "./resolvers";
+import typeDefs from "./typeDefs";
 
 export const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
+  playground: true,
+  introspection: true,
 });
