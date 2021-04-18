@@ -1,7 +1,7 @@
 ## 🕐 Oasis Todo
 
 ### Web
-- [ ] Site Features
+- [ ] **Site Features**
   - [ ] Commenting
   - [ ] Liking
   - [ ] Posting
