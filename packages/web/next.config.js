@@ -1,3 +1,5 @@
+const { join } = require('path');
+
 module.exports = {
   async redirects() {
     return [
@@ -22,5 +24,8 @@ module.exports = {
     }
 
     return config;
+  },
+  env: {
+    PROJECT_ROOT: join(__dirname, '../..'),
   },
 };
