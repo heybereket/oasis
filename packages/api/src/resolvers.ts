@@ -4,10 +4,7 @@ import { loadFilesSync } from "@graphql-tools/load-files";
 
 const dirname = process.env.PROJECT_ROOT;
 const resolversArray = loadFilesSync(
-  join(dirname, "/packages/api/dist/modules"),
-  {
-    extensions: ["js"],
-  }
+  join(dirname, "/packages/api/dist/modules/**/resolvers.js")
 );
 
 export default mergeResolvers(resolversArray);
