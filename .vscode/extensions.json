@@ -3,6 +3,7 @@
       "EditorConfig.EditorConfig",
       "dbaeumer.vscode-eslint",
       "esbenp.prettier-vscode",
-      "graphql.vscode-graphql"
+      "graphql.vscode-graphql",
+      "davidanson.vscode-markdownlint"
     ]
   }
