@@ -5,8 +5,3 @@ updates:
   schedule:
     interval: daily
   target-branch: staging
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10

@@ -4,6 +4,7 @@ import { autoUpdater } from "electron-updater";
 export const isMac = process.platform === "darwin";
 export const isLinux =
   process.platform !== "darwin" && process.platform !== "win32";
+export const isWin = process.platform === "win32";
 
 const REPO_URL = "https://github.com/oasis-sh/desktop/";
 const DISCUSSION_URL = "https://github.com/oasis-sh/desktop/discussions";
@@ -14,21 +15,21 @@ export const ALLOWED_HOSTS = ["oasis.sh", "github.com", "localhost"];
 export const MENU_TEMPLATE: any = [
   ...(isMac
     ? [
-        {
-          label: app.name,
-          submenu: [
-            { role: "about" },
-            { type: "separator" },
-            { role: "services" },
-            { type: "separator" },
-            { role: "hide" },
-            { role: "hideothers" },
-            { role: "unhide" },
-            { type: "separator" },
-            { role: "quit" },
-          ],
-        },
-      ]
+      {
+        label: app.name,
+        submenu: [
+          { role: "about" },
+          { type: "separator" },
+          { role: "services" },
+          { type: "separator" },
+          { role: "hide" },
+          { role: "hideothers" },
+          { role: "unhide" },
+          { type: "separator" },
+          { role: "quit" },
+        ],
+      },
+    ]
     : []),
   {
     label: "File",
@@ -45,15 +46,15 @@ export const MENU_TEMPLATE: any = [
       { role: "paste" },
       ...(isMac
         ? [
-            { role: "pasteAndMatchStyle" },
-            { role: "delete" },
-            { role: "selectAll" },
-            { type: "separator" },
-            {
-              label: "Speech",
-              submenu: [{ role: "startSpeaking" }, { role: "stopSpeaking" }],
-            },
-          ]
+          { role: "pasteAndMatchStyle" },
+          { role: "delete" },
+          { role: "selectAll" },
+          { type: "separator" },
+          {
+            label: "Speech",
+            submenu: [{ role: "startSpeaking" }, { role: "stopSpeaking" }],
+          },
+        ]
         : [{ role: "delete" }, { type: "separator" }, { role: "selectAll" }]),
     ],
   },
@@ -78,11 +79,11 @@ export const MENU_TEMPLATE: any = [
       { role: "zoom" },
       ...(isMac
         ? [
-            { type: "separator" },
-            { role: "front" },
-            { type: "separator" },
-            { role: "window" },
-          ]
+          { type: "separator" },
+          { role: "front" },
+          { type: "separator" },
+          { role: "window" },
+        ]
         : [{ role: "close" }]),
     ],
   },
