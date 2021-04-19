@@ -5,7 +5,8 @@ import 'firebase/firestore';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { ElectronHeader } from 'src/components/ElecronHeader';
+// Uncomment this too later on
+// import { ElectronHeader } from 'src/components/ElecronHeader';
 import { Footer } from 'src/components/Footer';
 import { Button } from '../../components/Button';
 import { Navbar } from '../../components/Navbar';
