@@ -4,8 +4,10 @@ import { print } from "graphql";
 
 import repo from "./modules/repo/typeDefs";
 import user from "./modules/user/typeDefs";
+import posts from "./modules/posts/typeDefs";
+import comments from "./modules/comments/typeDefs";
 
-const typeDefsArray = [repo, user];
+const typeDefsArray = [repo, user, posts, comments];
 
 const typeDefs = mergeTypeDefs(typeDefsArray);
 export default typeDefs;
