@@ -18,6 +18,12 @@ const getUser = async (id: string): Promise<FirebaseFirestore.DocumentData> => {
 };
 
 const resolvers: IResolvers = {
+  Post: {
+    author: ({ author }) => getUser(author),
+  },
+  Comment: {
+    author: ({ author }) => getUser(author),
+  },
   Query: {
     allUsers: async () => {
       const collection = await getUsersCollection();
