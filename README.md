@@ -41,10 +41,10 @@ $ yarn dev:gql
 ```
 
 ## 👋🏻 Maintainers 
-- **Web:** [heybereket](https://github.com/heybereket), [goldyydev](https://github.com/goldyydev), [samarmohan](https://github.com/samarmohan), and [notnickdev](https://github.com/notnickdev)
+- **Web:** [heybereket](https://github.com/heybereket), [samarmohan](https://github.com/samarmohan), and [goldyydev](https://github.com/goldyydev)
 - **Desktop:** [amitojsingh366](https://github.com/amitojsingh366)
 - **Design:** [coderinblack08](https://github.com/coderinblack08)
-- **API:** [vishy-dev](https://github.com/vishy-dev), and [Ongshu777](https://github.com/Ongshu777)
+- **API:** [Ongshu777](https://github.com/Ongshu777), [vishy-dev](https://github.com/vishy-dev), and [mrbros35](https://github.com/mrbros35)
 
 ## ⌛ Status
 🟩 Early Development: Started building the project. <br>
