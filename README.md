@@ -36,6 +36,9 @@ $ yarn dev
  
 # Run Next.js Frontend
 $ yarn dev:web
+
+# Run GraphQL API
+$ yarn dev:api
  
 # Run client-side GQL Hooks
 $ yarn dev:gql

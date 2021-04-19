@@ -4,6 +4,10 @@ import { getFirebase } from '../lib/firebase';
 import Head from 'next/head';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
+import { useEffect } from 'react';
+import isElectron from 'is-electron';
+import { useHostStore } from '../global-stores/useHostStore';
+
 getFirebase();
 
 Sentry.init({
@@ -14,6 +18,22 @@ Sentry.init({
 });
 
 function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    if (isElectron()) {
+      const ipcRenderer = window.require('electron').ipcRenderer;
+      ipcRenderer.send('@app/hostPlatform');
+      ipcRenderer.on(
+        '@app/hostPlatform',
+        (
+          event: any,
+          platform: { isLinux: boolean; isWin: boolean; isMac: boolean }
+        ) => {
+          useHostStore.getState().setData(platform);
+        }
+      );
+    }
+    console.log(useHostStore.getState());
+  }, []);
   return (
     <>
       <Head>

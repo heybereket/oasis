@@ -6,7 +6,9 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "graphql-codegen && tsc",
-    "watch": "concurrently -p \" {name} \" -c bgBlue -n \"gen,tsc\" \"graphql-codegen -w\" \"tsc --watch --preserveWatchOutput\""
+    "watch:gen": "graphql-codegen -w",
+    "watch:tsc": "tsc --watch --preserveWatchOutput",
+    "dev": "run-p \"watch:gen\" \"watch:tsc\""
   },
   "keywords": [],
   "author": "Bedanta Mukhopadhay (Angshu31)",
@@ -16,10 +18,10 @@
     "@graphql-codegen/typescript": "^1.21.1",
     "@graphql-codegen/typescript-operations": "^1.17.15",
     "@graphql-codegen/typescript-react-apollo": "^2.2.3",
-    "concurrently": "^6.0.2",
-    "typescript": "^4.2.4"
+    "npm-run-all": "^4.1.5"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.15"
+    "@apollo/client": "^3.3.15",
+    "typescript": "^4.2.4"
   }
 }
