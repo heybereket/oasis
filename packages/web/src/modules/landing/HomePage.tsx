@@ -10,7 +10,7 @@ import React from 'react';
 import { Footer } from '@components/Footer';
 import { Button } from '@components/Button';
 import { Navbar } from '@components/Navbar';
-import { login } from '@lib/auth';
+import { Login } from '../../lib/auth';
 
 export const HomePage: React.FC = () => {
   return (
@@ -30,7 +30,7 @@ export const HomePage: React.FC = () => {
             — your developer corner of the internet.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-9">
-            <Button onClick={login}>
+            <Button onClick={Login}>
               <MarkGithubIcon /> &nbsp; Log in with GitHub
             </Button>
             <Button color="gray">Log in Anonymously</Button>
