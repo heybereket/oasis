@@ -3,22 +3,22 @@ import { gql } from "apollo-server-micro";
 export default gql`
   type User {
     id: ID!
-    joined: String!
-    verified: Boolean!
+    createdAt: String!
+    verified: Boolean
     username: String!
-    avatar_url: String!
+    photoURL: String!
     bio: String
     email: String
     bioLink: String
     name: String
-    twitterLink: String
-    # posts: [Post]!
+    twitter: String
+    posts: [Post]!
     repos: [Repo]!
     # activity: [ActivityEvent]!
   }
 
   type Query {
     allUsers: [User]!
-    getUser(username: String!): User!
+    getUser(id: ID!): User
   }
 `;
