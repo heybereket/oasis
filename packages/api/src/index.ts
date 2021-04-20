@@ -5,12 +5,14 @@ import { ApolloError, ApolloServer } from "apollo-server-micro";
 import resolvers from "./resolvers";
 import typeDefs from "./typeDefs";
 import { IncomingMessage } from "http";
+import depthLimit from "graphql-depth-limit";
 
 const accessDeniedMsg = "Damn. You kinda don't have access to this api";
 
 export const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
+  validationRules: [depthLimit(3)],
   context({ req }: { req: IncomingMessage }) {
     const header = req.headers.authorization || "";
     const [, token] = header.split(" ");
