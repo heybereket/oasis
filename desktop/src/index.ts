@@ -10,7 +10,7 @@ import {
 } from "electron";
 import { autoUpdater } from "electron-updater";
 import path from "path";
-import { ALLOWED_HOSTS, isLinux, MENU_TEMPLATE } from "./constants";
+import { ALLOWED_HOSTS, isLinux, MENU_TEMPLATE, isMac, isWin } from "./constants";
 import electronLogger from "electron-log";
 
 let mainWindow: BrowserWindow;
@@ -48,7 +48,7 @@ function createMainWindow() {
   if (!__prod__) {
     mainWindow.webContents.openDevTools();
   }
-  mainWindow.loadURL(!__prod__ ? `https://oasis.sh/` : "http://localhost:3000");
+  mainWindow.loadURL(__prod__ ? `https://oasis.sh/` : "http://localhost:3000");
 
   mainWindow.once("ready-to-show", () => {
     shouldShowWindow = true;
@@ -84,6 +84,39 @@ function createMainWindow() {
   ipcMain.on("@app/version", (event, args) => {
     event.sender.send("@app/version", app.getVersion());
   });
+
+  ipcMain.on("@app/hostPlatform", (event, args) => {
+    event.sender.send("@app/hostPlatform", {
+      isLinux,
+      isMac,
+      isWin,
+    });
+  });
+
+  ipcMain.on("@app/quit", (event, args) => {
+    mainWindow.close();
+  });
+  ipcMain.on("@app/maximize", (event, args) => {
+    if (isMac) {
+      if (mainWindow.isFullScreenable()) {
+        mainWindow.setFullScreen(!mainWindow.isFullScreen());
+      }
+    } else {
+      if (mainWindow.maximizable) {
+        if (mainWindow.isMaximized()) {
+          mainWindow.unmaximize();
+        } else {
+          mainWindow.maximize();
+        }
+      }
+    }
+  });
+  ipcMain.on("@app/minimize", (event, args) => {
+    if (mainWindow.minimizable) {
+      mainWindow.minimize();
+    }
+  });
+
 }
 
 function createSpalshWindow() {

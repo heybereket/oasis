@@ -1,13 +1,36 @@
 import { IResolvers } from "graphql-tools";
 import { adminDB } from "../../utils/admin-db";
 
+let collection: FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>;
+
+const getUsersCollection = async () => {
+  if (collection) return collection;
+
+  const db = await adminDB();
+  return (collection = db.collection("users"));
+};
+
+const getUser = async (id: string): Promise<FirebaseFirestore.DocumentData> => {
+  const collection = await getUsersCollection();
+  const snap = await collection.doc(id).get();
+  const data = snap.data();
+  return data && { id, ...data };
+};
+
 const resolvers: IResolvers = {
+  Post: {
+    author: ({ author }) => getUser(author),
+  },
+  Comment: {
+    author: ({ author }) => getUser(author),
+  },
   Query: {
     allUsers: async () => {
-      const db = await adminDB();
-      const users = await db.collection("users").get();
-      return users.docs.map((doc) => doc.data());
+      const collection = await getUsersCollection();
+      const users = await collection.get();
+      return users.docs.map((doc) => getUser(doc.id));
     },
+    getUser: async (_, { id }: { id: string }) => getUser(id),
   },
 };
 
