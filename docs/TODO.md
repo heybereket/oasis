@@ -26,7 +26,6 @@
 - [ ] Ability to `POST` and `GET` data
 - [ ] Possibly keep GQL Playground in Production  
 - [ ] Connect Firebase to API
-- [ ] **Idea:** API Keys to access API 
 
 ### Design
 - [ ] **User Profile**
