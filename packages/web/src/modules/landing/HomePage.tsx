@@ -15,7 +15,7 @@ import { Login } from '../../lib/auth';
 export const HomePage: React.FC = () => {
   return (
     <>
-      {/* Uncomment this later on
+      {/* Uncomment this 
       <ElectronHeader /> */}
       <div className="max-w-5xl mx-auto px-8">
         <Navbar />
