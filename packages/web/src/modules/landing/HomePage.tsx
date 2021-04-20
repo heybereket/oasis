@@ -5,14 +5,18 @@ import 'firebase/firestore';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { Footer } from 'src/components/Footer';
-import { Button } from '../../components/Button';
-import { Navbar } from '../../components/Navbar';
-import { login } from '../../lib/auth';
+// Uncomment this too later on
+// import { ElectronHeader } from 'src/components/ElecronHeader';
+import { Footer } from '@components/Footer';
+import { Button } from '@components/Button';
+import { Navbar } from '@components/Navbar';
+import { Login } from '../../lib/auth';
 
 export const HomePage: React.FC = () => {
   return (
     <>
+      {/* Uncomment this later on
+      <ElectronHeader /> */}
       <div className="max-w-5xl mx-auto px-8">
         <Navbar />
         <div className="relative z-10 mt-24">
@@ -26,7 +30,7 @@ export const HomePage: React.FC = () => {
             — your developer corner of the internet.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-9">
-            <Button onClick={login}>
+            <Button onClick={Login}>
               <MarkGithubIcon /> &nbsp; Log in with GitHub
             </Button>
             <Button color="gray">Log in Anonymously</Button>

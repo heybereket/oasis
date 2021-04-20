@@ -1,8 +1,8 @@
-import admin, { ServiceAccount, app } from 'firebase-admin';
+import admin, { ServiceAccount, app } from "firebase-admin";
 
 export const serviceAccount: ServiceAccount = {
-  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-  privateKey: process.env.PRIVATE_KEY?.replace(/\\n/g, '\n'),
+  projectId: process.env.PROJECT_ID,
+  privateKey: process.env.PRIVATE_KEY?.replace(/\\n/g, "\n"),
   clientEmail: process.env.CLIENT_EMAIL,
   /* type: 'service_account',
   private_key_id: process.env.PRIVATE_KEY_ID,

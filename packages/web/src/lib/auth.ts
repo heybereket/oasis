@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-export const login = async () => {
+export const Login = async () => {
   const provider = new firebase.auth.GithubAuthProvider();
   let db = firebase.firestore();
 

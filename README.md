@@ -7,13 +7,14 @@
 
 ## 🧱 Structure
 
-| Folder                             |      Description      |
-| :----------------------------------| :-------------------: |
-| [`docs`](/docs)                    |     Documentation     |
-| [`web`](/packages/web)             |   Next.js Frontend    |
-| [`desktop`](desktop)               |    Electron Wrapper   |
-| [`api`](/packages/api)             |     GraphQL API       |
-| [`puppeteer`](/packages/puppeteer) |   Puppeteer Testing   |
+| Folder                               |      Description       |
+| :----------------------------------: | :-------------------:  |
+| [docs](/docs)                      |     Documentation      |
+| [web](/packages/web)               |   Next.js Frontend     |
+| [desktop](desktop)                 |    Electron Wrapper    |
+| [api](/packages/api)               |     GraphQL API        |
+| [client-gql](/packages/client-gql) |  Client Side GQL Hooks |
+| [puppeteer](/packages/puppeteer)   |   Puppeteer Testing    |
 
 ## 🚀 Contributions
 
@@ -21,48 +22,29 @@ Oasis is open to contributions, but we recommend creating an issue or replying i
 
 Interested in contributing? Read [CONTRIBUTING.md](/docs/CONTRIBUTING.md) for details on how to get started.
 
-## 🔨 Oasis Web
+## 🔨 Running Locally
 ```bash
 # Install dependencies
 $ yarn
- 
-# Start dev-server at port 3000
+
+# Run all workspaces
 $ yarn dev
  
-# Run all linters
-$ yarn lint
-```
+# Run Next.js Frontend
+$ yarn dev:web
 
-## 💻 Oasis Desktop
-Oasis uses ElectronJS for our desktop application. It's currently avaliable on all Windows, macOS, and Linux. <br/>
-**Latest release:** https://github.com/oasis-sh/oasis/releases/latest
-
-```bash
-# Install dependencies
-$ yarn
+# Run GraphQL API
+$ yarn dev:api
  
-# Run the application
-$ yarn start
-
-# Build on Windows: yarn run build:win
-# Build on macOS: yarn run build:mac
-# Build on Linux: yarn run build:linux
-```
-
-## 🤖 Oasis API
-```bash
-# Install dependencies
-$ yarn
- 
-# Run the API
-$ yarn build
+# Run client-side GQL Hooks
+$ yarn dev:gql
 ```
 
 ## 👋🏻 Maintainers 
-- **Web:** [heybereket](https://github.com/heybereket), [goldyydev](https://github.com/goldyydev), [samarmohan](https://github.com/samarmohan), and [notnickdev](https://github.com/notnickdev)
+- **Web:** [heybereket](https://github.com/heybereket), [samarmohan](https://github.com/samarmohan), and [goldyydev](https://github.com/goldyydev)
 - **Desktop:** [amitojsingh366](https://github.com/amitojsingh366)
 - **Design:** [coderinblack08](https://github.com/coderinblack08)
-- **API:** [vishy-dev](https://github.com/vishy-dev), and [Ongshu777](https://github.com/Ongshu777)
+- **API:** [Ongshu777](https://github.com/Ongshu777), [vishy-dev](https://github.com/vishy-dev), and [mrbros35](https://github.com/mrbros35)
 
 ## ⌛ Status
 🟩 Early Development: Started building the project. <br>

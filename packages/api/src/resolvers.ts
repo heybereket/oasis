@@ -1,7 +1,10 @@
-import { join } from 'path';
-import { mergeResolvers } from '@graphql-tools/merge';
-import { loadFilesSync } from '@graphql-tools/load-files';
+import { mergeResolvers } from "@graphql-tools/merge";
 
-const resolversArray = loadFilesSync(join(__dirname, './modules'), { extensions: ['js'] });
+import repo from "./modules/repo/resolvers";
+import user from "./modules/user/resolvers";
+import posts from "./modules/posts/resolvers";
+import comments from "./modules/comments/resolvers";
+
+const resolversArray = [repo, user, posts, comments];
 
 export default mergeResolvers(resolversArray);

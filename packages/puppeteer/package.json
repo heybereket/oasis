@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "tsc",
+    "build": "tsc",
     "start": "ts-node src/index.ts"
   },
   "keywords": [
