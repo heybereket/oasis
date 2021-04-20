@@ -2,9 +2,9 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import { GetServerSideProps } from 'next';
 import React from 'react';
-import { Button } from '../../components/Button';
-import { Navbar } from '../../components/MainNavbar';
-import { ProfilePost } from '../../components/ProfilePost';
+import { Button } from '@components/Button';
+import { Navbar } from '@components/MainNavbar';
+import { ProfilePost } from '@components/ProfilePost';
 
 export const ProfilePage: React.FC = () => {
   return (

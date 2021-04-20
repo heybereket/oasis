@@ -2018,7 +2018,6 @@ __metadata:
     firebase: ^8.3.3
     is-electron: ^2.2.0
     next: latest
-    next-secure-headers: ^2.2.0
     postcss: ^8.1.10
     prettier: 2.2.1
     react: ^17.0.1
@@ -7956,13 +7955,6 @@ fsevents@~2.3.1:
   version: 1.4.0
   resolution: "natural-compare@npm:1.4.0"
   checksum: 2daf93d9bb516eddb06e2e80657a605af2e494d47c65d090ba43691aaffbc41f520840f1c9d3b7b641977af950217a4ab6ffb85bafcd5dfa8ba6fe4e68c43b53
-  languageName: node
-  linkType: hard
-
-"next-secure-headers@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "next-secure-headers@npm:2.2.0"
-  checksum: 83cb6a8306e435bcfa1ca816cead83117dcfffbb04b9493ef324ef1780fb04407959a4add39438fb055f30b5e669a44b9bf0480961b66ac1f24a280c1356c4e8
   languageName: node
   linkType: hard
 

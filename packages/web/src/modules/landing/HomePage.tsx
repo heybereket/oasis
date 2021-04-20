@@ -7,10 +7,10 @@ import Link from 'next/link';
 import React from 'react';
 // Uncomment this too later on
 // import { ElectronHeader } from 'src/components/ElecronHeader';
-import { Footer } from 'src/components/Footer';
-import { Button } from '../../components/Button';
-import { Navbar } from '../../components/Navbar';
-import { login } from '../../lib/auth';
+import { Footer } from '@components/Footer';
+import { Button } from '@components/Button';
+import { Navbar } from '@components/Navbar';
+import { login } from '@lib/auth';
 
 export const HomePage: React.FC = () => {
   return (
