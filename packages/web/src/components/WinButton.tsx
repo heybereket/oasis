@@ -2,7 +2,7 @@ import React, {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
   ReactNode,
-} from "react";
+} from 'react';
 
 export type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -14,7 +14,7 @@ export type ButtonProps = DetailedHTMLProps<
 export const WinButton: React.FC<ButtonProps> = ({
   children,
   icon,
-  className = "",
+  className = '',
   ...props
 }) => {
   return (
