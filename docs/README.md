@@ -5,6 +5,7 @@
 
 - [`CONTRIBUTING.md`](guidelines/CONTRIBUTING.md) - Our standards for contributing, here on Github and anywhere else!
 - [`DESIGN_GUDELINES.md`](guidelines/DESIGN_GUDELINES.md) - Our guidelines for the new Oasis front-end design!
+- [`CODE_OF_CONDUCT.md`](guidelines/CODE_OF_CONDUCT.md) - Our guidelines for the new Oasis front-end design!
 
 **Package Documentation**
 <br>_Get started on running/developing for individual parts of Oasis._
@@ -15,4 +16,7 @@
 
 **Other**
 
-- [`TODO.md`](TODO.md) - Our general to-do list for Oasis **(A great place for new contributors to start)!**
+- [`API_TODO.md`](todo-lists/API_TODO.md) - The to-do list for the GraphQL backend API.
+- [`WEB_TODO.md`](todo-lists/WEB_TODO.md) - The to-do list for the Next.JS frontend.
+- [`DESIGN_TODO.md`](todo-lists/DESIGN_TODO.md) - The to-do list for the frontend redesign.
+- [`DESKTOP_TODO.md`](todo-lists/DESKTOP_TODO.md) - The to-do list for the Electron desktop app.

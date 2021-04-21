@@ -1,23 +1,14 @@
-## Documentation on how to get started with the `api` package
+## Documentation on how to get started with the `@oasis/api` package
 
-**The `api` package is the Oasis GraphQL API**.<br>
-The `api` package is designed to be a part of the `web` (web frontend) package. You can run the API on it's own, but in production, it is deployed together!
+**The `@oasis/api` package is Oasis's GraphQL Backend (API)**.<br>
+The `@oasis/api` package is designed to be a part of the `@oasis/web` (web frontend) package. You can run the API on it's own, but in production, it is deployed together!
 
-### Scripts
+### Package Scripts
 
-### The `build` script
-
-The `build` script runs the typescript compiler which generates the types and the javascript output of the `api` package. **This is ideal when you just need to run `web` and want to avoid touching the `api` package**
-
-### The `watch` script
-
-The `watch` script uses the typescript compiler in watch mode. This means every time a change is made to a file inside `api`, a new build is generated.
-**This is ideal while developing, editing or debugging `api`.**
-
-## The `start` script
-
-The `start` script runs the api package on its own, meaning that you don't need to run `web` to run `api`. **This is ideal when you want to test `api`.**
-
-## The `dev` script
-
-The `dev` script is like `start` but listens for changes. **This is ideal when developing `api`.**
+- `build` - This script runs the typescript compiler, which transpiles the TS code into JS.
+- `watch` scripts
+  - `watch:tsc` - This script runs the typescript compiler in real-time (watch) mode, which compiles the TS code into JS on every file change.
+  - `watch:dev` - This script runs the standalone API server, this is for when you want to run the API without running `@oasis/web`
+- `dev` scripts
+  - `dev:server` - This script runs both the `watch:tsc` and `watch:dev` scripts at once, making a standalone development server for the API.
+  - `dev` - This script is ran when running the API along-side `@oasis/web` _(hence there being no standalone API server, only the compiler)._
