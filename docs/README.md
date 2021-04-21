@@ -16,5 +16,7 @@
 
 **Other**
 
-- [`TODO.md`](todo-lists/TODO.md) - Our general to-do list for Oasis **(A great place for new contributors to start)!**
 - [`API_TODO.md`](todo-lists/API_TODO.md) - The to-do list for the GraphQL backend API.
+- [`WEB_TODO.md`](todo-lists/WEB_TODO.md) - The to-do list for the Next.JS frontend.
+- [`DESIGN_TODO.md`](todo-lists/DESIGN_TODO.md) - The to-do list for the frontend redesign.
+- [`DESKTOP_TODO.md`](todo-lists/DESKTOP_TODO.md) - The to-do list for the Electron desktop app.
