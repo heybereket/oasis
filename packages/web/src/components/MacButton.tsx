@@ -2,12 +2,12 @@ import React, {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
   ReactNode,
-} from "react";
+} from 'react';
 
 const colorClassnames = {
-  green: "text-button green-mac-button",
-  yellow: "text-button yellow-mac-button",
-  red: "text-button red-mac-button",
+  green: 'text-button green-mac-button',
+  yellow: 'text-button yellow-mac-button',
+  red: 'text-button red-mac-button',
 };
 
 export type ButtonProps = DetailedHTMLProps<
@@ -20,9 +20,9 @@ export type ButtonProps = DetailedHTMLProps<
 
 export const MacButton: React.FC<ButtonProps> = ({
   children,
-  color = "green",
+  color = 'green',
   icon,
-  className = "",
+  className = '',
   ...props
 }) => {
   return (
