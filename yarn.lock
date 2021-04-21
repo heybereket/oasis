@@ -2801,6 +2801,7 @@ __metadata:
     react-dom: ^17.0.1
     react-firebase-hooks: ^3.0.3
     tailwindcss: ^2.1.1
+    tslint: ^6.1.3
     typescript: ^4.2.4
     zustand: ^3.4.1
   languageName: unknown
@@ -4812,6 +4813,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"builtin-modules@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "builtin-modules@npm:1.1.1"
+  checksum: 777c3ea2966e005cd14617d13668a592c98a3e668a2af7ff192be731c570c4df067ab55272ea14f9f83f614fcef7d2737f9898888a13233f13c439ad4a21ad55
+  languageName: node
+  linkType: hard
+
 "builtin-modules@npm:^3.1.0":
   version: 3.2.0
   resolution: "builtin-modules@npm:3.2.0"
@@ -4958,7 +4966,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:2.4.2, chalk@npm:^2.0.0, chalk@npm:^2.4.1, chalk@npm:^2.4.2":
+"chalk@npm:2.4.2, chalk@npm:^2.0.0, chalk@npm:^2.3.0, chalk@npm:^2.4.1, chalk@npm:^2.4.2":
   version: 2.4.2
   resolution: "chalk@npm:2.4.2"
   dependencies:
@@ -5299,7 +5307,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^2.20.0, commander@npm:^2.20.3":
+"commander@npm:^2.12.1, commander@npm:^2.20.0, commander@npm:^2.20.3":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
   checksum: b73428e97de7624323f81ba13f8ed9271de487017432d18b4da3f07cfc528ad754bbd199004bd5d14e0ccd67d1fdfe0ec8dbbd4c438b401df3c4cc387bfd1daa
@@ -9093,6 +9101,17 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"mkdirp@npm:^0.5.3":
+  version: 0.5.5
+  resolution: "mkdirp@npm:0.5.5"
+  dependencies:
+    minimist: ^1.2.5
+  bin:
+    mkdirp: bin/cmd.js
+  checksum: 9dd9792e891927b14ca02226dbe1daeb717b9517a001620d5e2658bbc72c5e4f06887b6cbcbb60595fa5a56e701073cf250f1ed69c1988a6b89faf9fd6a4d049
+  languageName: node
+  linkType: hard
+
 "modern-normalize@npm:^1.0.0":
   version: 1.0.0
   resolution: "modern-normalize@npm:1.0.0"
@@ -10769,7 +10788,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"resolve@^1.10.0, resolve@^1.14.2, resolve@^1.19.0, resolve@^1.20.0":
+"resolve@^1.10.0, resolve@^1.14.2, resolve@^1.19.0, resolve@^1.20.0, resolve@^1.3.2":
   version: 1.20.0
   resolution: "resolve@npm:1.20.0"
   dependencies:
@@ -10779,7 +10798,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.10.0#builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#builtin<compat/resolve>":
+"resolve@patch:resolve@^1.10.0#builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#builtin<compat/resolve>, resolve@patch:resolve@^1.3.2#builtin<compat/resolve>":
   version: 1.20.0
   resolution: "resolve@patch:resolve@npm%3A1.20.0#builtin<compat/resolve>::version=1.20.0&hash=3388aa"
   dependencies:
@@ -10995,7 +11014,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.5.0, semver@npm:^5.6.0, semver@npm:^5.7.1":
+"semver@npm:2 || 3 || 4 || 5, semver@npm:^5.3.0, semver@npm:^5.5.0, semver@npm:^5.6.0, semver@npm:^5.7.1":
   version: 5.7.1
   resolution: "semver@npm:5.7.1"
   bin:
@@ -12116,7 +12135,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"tslib@npm:^1.10.0, tslib@npm:^1.11.1, tslib@npm:^1.8.1, tslib@npm:^1.9.0, tslib@npm:^1.9.3":
+"tslib@npm:^1.10.0, tslib@npm:^1.11.1, tslib@npm:^1.13.0, tslib@npm:^1.8.1, tslib@npm:^1.9.0, tslib@npm:^1.9.3":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: f44fe7f216946b17d3e3074df3746372703cf24e9127b4c045511456e8e4bf25515fb0a1bb3937676cc305651c5d4fcb6377b0588a4c6a957e748c4c28905d17
@@ -12141,6 +12160,42 @@ fsevents@~2.3.1:
   version: 2.1.0
   resolution: "tslib@npm:2.1.0"
   checksum: d8f5bdd067611651c6b846c2388f4dc8ba1f5af124e66105f5263d1ad56da17f4b8c6566887ca2f205c5a9758451871ceca87d5d06087af2dca1699c5e33db69
+  languageName: node
+  linkType: hard
+
+"tslint@npm:^6.1.3":
+  version: 6.1.3
+  resolution: "tslint@npm:6.1.3"
+  dependencies:
+    "@babel/code-frame": ^7.0.0
+    builtin-modules: ^1.1.1
+    chalk: ^2.3.0
+    commander: ^2.12.1
+    diff: ^4.0.1
+    glob: ^7.1.1
+    js-yaml: ^3.13.1
+    minimatch: ^3.0.4
+    mkdirp: ^0.5.3
+    resolve: ^1.3.2
+    semver: ^5.3.0
+    tslib: ^1.13.0
+    tsutils: ^2.29.0
+  peerDependencies:
+    typescript: ">=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >=3.0.0-dev || >= 3.1.0-dev || >= 3.2.0-dev || >= 4.0.0-dev"
+  bin:
+    tslint: bin/tslint
+  checksum: 5c844627322890b33c6864256fb356f3dd2f0e660ac44935a2d3964747487163db2e5b8069c72502de2bc6dd73b3cc8e24011ed5d99782d8f1678dd10a088d8a
+  languageName: node
+  linkType: hard
+
+"tsutils@npm:^2.29.0":
+  version: 2.29.0
+  resolution: "tsutils@npm:2.29.0"
+  dependencies:
+    tslib: ^1.8.1
+  peerDependencies:
+    typescript: ">=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 3.0.0-dev || >= 3.1.0-dev"
+  checksum: 8d0cb4f4689629a68238e794c05ffdfda0ff6823dd6de6ab5300d47fba1bfc07262a144f34f22651fd9685a31f7606cb0262aeeb78343805ccb53d56b0a4bb71
   languageName: node
   linkType: hard
 
