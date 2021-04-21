@@ -1383,7 +1383,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.7.6":
+"@babel/runtime@npm:^7.0.0":
   version: 7.13.10
   resolution: "@babel/runtime@npm:7.13.10"
   dependencies:
@@ -3876,26 +3876,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"all-contributors-cli@npm:^6.20.0":
-  version: 6.20.0
-  resolution: "all-contributors-cli@npm:6.20.0"
-  dependencies:
-    "@babel/runtime": ^7.7.6
-    async: ^3.0.1
-    chalk: ^4.0.0
-    didyoumean: ^1.2.1
-    inquirer: ^7.0.4
-    json-fixer: ^1.5.1
-    lodash: ^4.11.2
-    node-fetch: ^2.6.0
-    pify: ^5.0.0
-    yargs: ^15.0.1
-  bin:
-    all-contributors: dist/cli.js
-  checksum: bf98e46a7b2d39f4371baf06d23f788bf025f9c87eb160f5e074269497b5b72c7fe4d0c83e409192115d2482ef1f32c30bda82430ec8cc7cdd5ec35f48073d36
-  languageName: node
-  linkType: hard
-
 "anser@npm:1.4.9":
   version: 1.4.9
   resolution: "anser@npm:1.4.9"
@@ -4372,13 +4352,6 @@ __metadata:
   dependencies:
     retry: 0.12.0
   checksum: 20d5747abf89055b0b5d2a1d33e29d62f1a7539bc4a236035abef2b3c75fa7423e89fc2b0aeee01057bd080076095f8ab570afb337aa24fc6dd6b5860933d3f0
-  languageName: node
-  linkType: hard
-
-"async@npm:^3.0.1":
-  version: 3.2.0
-  resolution: "async@npm:3.2.0"
-  checksum: 5c7913c08496877a9896dc6670d3a6c64f02d350e74b9e9191194959c473414a0732539ebdfec0fd2f34c20f439714773a30c20e0e68eb27bd8ee5ec9d8ff5ba
   languageName: node
   linkType: hard
 
@@ -7689,7 +7662,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"inquirer@npm:^7.0.4, inquirer@npm:^7.3.3":
+"inquirer@npm:^7.3.3":
   version: 7.3.3
   resolution: "inquirer@npm:7.3.3"
   dependencies:
@@ -8322,17 +8295,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"json-fixer@npm:^1.5.1":
-  version: 1.6.8
-  resolution: "json-fixer@npm:1.6.8"
-  dependencies:
-    "@babel/runtime": ^7.12.5
-    chalk: ^4.1.0
-    pegjs: ^0.10.0
-  checksum: e5d881d50bf15eb243580ce9dd39aa7a290d6a5a1597d7288bf15e32ba3811ad6a4a910762b502551d50e941af43ca02f3ac46025e2695c4fafe090d70b31144
-  languageName: node
-  linkType: hard
-
 "json-parse-better-errors@npm:^1.0.1":
   version: 1.0.2
   resolution: "json-parse-better-errors@npm:1.0.2"
@@ -8743,7 +8705,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.x, lodash@npm:^4.11.2, lodash@npm:^4.17.13, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:~4.17.20":
+"lodash@npm:4.x, lodash@npm:^4.17.13, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:~4.17.20":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 4983720b9abca930a4a46f18db163d7dad8dd00dbed6db0cc7b499b33b717cce69f80928b27bbb1ff2cbd3b19d251ee90669a8b5ea466072ca81c2ebe91e7468
@@ -9313,7 +9275,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:2.6.1, node-fetch@npm:^2.1.2, node-fetch@npm:^2.2.0, node-fetch@npm:^2.3.0, node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.1":
+"node-fetch@npm:2.6.1, node-fetch@npm:^2.1.2, node-fetch@npm:^2.2.0, node-fetch@npm:^2.3.0, node-fetch@npm:^2.6.1":
   version: 2.6.1
   resolution: "node-fetch@npm:2.6.1"
   checksum: cbb171635e538162b977eac5dfe7a1e07a9a02e991924377a6435502291e2f823d306b95aabc455caebf4a118ccf836868462bc70ccc3095af02bb9da61fda37
@@ -9537,7 +9499,6 @@ fsevents@~2.3.1:
   resolution: "oasis@workspace:."
   dependencies:
     "@types/jest": ^26.0.22
-    all-contributors-cli: ^6.20.0
     apollo-server-micro: ^2.23.0
     firebase-admin: ^9.6.0
     npm-run-all: ^4.1.5
@@ -9962,15 +9923,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"pegjs@npm:^0.10.0":
-  version: 0.10.0
-  resolution: "pegjs@npm:0.10.0"
-  bin:
-    pegjs: bin/pegjs
-  checksum: 3d3c011257f35f33357185489f12e99150b25d1f6bd9fcc62d2cee62ece97749d46549dead090b4e16e1173a1ce3264989d56cb4454ae9045512debfdd66d09e
-  languageName: node
-  linkType: hard
-
 "pend@npm:~1.2.0":
   version: 1.2.0
   resolution: "pend@npm:1.2.0"
@@ -10012,13 +9964,6 @@ fsevents@~2.3.1:
   version: 4.0.1
   resolution: "pify@npm:4.0.1"
   checksum: 786486a8c94a7e1980ea56c59dcc05ebf0793740b71df9b9f273e48032e6301c5ecc5cc237c5a9ff45b13db27678b4d71aa37a2777bc11473c1310718b648e98
-  languageName: node
-  linkType: hard
-
-"pify@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "pify@npm:5.0.0"
-  checksum: 4c28d29597a49bbf320c0c6526fac7858d53b8398a46bfa6ed1a120a922773c7ef50bea166e27952bbc476bce1c72cf3e7d648462ac82e704e62431bdec95cec
   languageName: node
   linkType: hard
 
@@ -13150,7 +13095,7 @@ typescript@^4.2.4:
   languageName: node
   linkType: hard
 
-"yargs@npm:^15.0.1, yargs@npm:^15.3.1":
+"yargs@npm:^15.3.1":
   version: 15.4.1
   resolution: "yargs@npm:15.4.1"
   dependencies:
