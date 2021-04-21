@@ -29,7 +29,6 @@
     "@typescript-eslint/parser": "^4.21.0",
     "autoprefixer": "^10.0.4",
     "eslint": "^7.24.0",
-    "eslint-config-google": "^0.14.0",
     "next-secure-headers": "^2.2.0",
     "postcss": "^8.1.10",
     "prettier": "2.2.1",
