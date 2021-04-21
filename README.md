@@ -25,7 +25,7 @@ Interested in contributing? Read [CONTRIBUTING.md](/docs/guidelines/CONTRIBUTING
 
 ## 🔨 Getting Started
 
-Checkout our [Documentation](/docs) for more information on how to get started with contributing/running parts of oasis!
+Take a look at our [Documentation](/docs) for more information on how to get started with contributing/running parts of oasis!
 
 ## 👋🏻 Maintainers
 
