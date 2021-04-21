@@ -1,4 +1,4 @@
-## Documentation on how to get started with the `@oasis/client-gql` package
+## Documentation on how to get started with the `@oasis/web` package
 
 **The `@oasis/web` package is Oasis's Next.JS Frontend**.<br>
 `@oasis/web` is our React-based frontend, built using [TailwindCSS](http://tailwindcss.com/), [Next.JS](https://nextjs.org) and [TypeScript](https://www.typescriptlang.org)
