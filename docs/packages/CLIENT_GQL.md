@@ -1,23 +1,12 @@
-# Documentation on `client-gql`
+## Documentation on how to get started with the `@oasis/client-gql` package
 
-I will not go over the `gen:build`, `gen:watch`, `tsc:build` or `tsc:watch` scripts.
-Please check the `package.json` file for `client-gql` and learn TypeScript and GraphQL Codegen.
-You may find that these scripts are self-explanatory.
+**The `@oasis/client-gql` package is Oasis's GraphQL Client-side GraphQL Hooks**.<br>
+`@oasis/client-gql` is an auto-generated set of [React Hooks](https://reactjs.org/docs/hooks-intro.html) for communicating with the GraphQL backend.
 
-## The `build` script
+### Package Scripts
 
-The build script runs the typescript compiler which generates the types and the javascript output of the api package.
-**This is ideal when you just need to run `web` and want to avoid touching `client-gql`'s source code**
-
-## The `watch` script
-
-The `watch` script uses the typescript compiler in watch mode. This means every time a change is made to a file inside `api`, a new build is generated.
-**This is ideal while developing, editing or debugging `client-gql`**. A common use case would be when developing `web` and you might need to edit or create graphql queries.
-
-## How it works
-
-The `build` script works as follows:
-  1. GraphQL Codegen generates a typescript file with all the utilities.
-  2. The TypeScript compiler takes that typescript file and generates JS code and TS definitions
-
-The `watch` script follows the same procedure as `build` but redoes it when a file is changed.
+- `build` - This script runs the typescript compiler, which transpiles the TS code into JS, as well as the GraphQL code generator, which auto-generates the hooks based on the GraphQL API Schema
+- `watch` scripts
+  - `watch:tsc` - This script runs the typescript compiler in real-time (watch) mode, which compiles the TS code into JS on every file change.
+  - `watch:gen` - This script runs the GraphQL code generator, which auto-generates the hook code, based on the GraphQL API Schema.
+- `dev` - This script is ran along-side `@oasis/web`, and all it does it run both watch scripts at once. This is so if changes are made to the Schema, the code for the hooks is automatically updated during development.
