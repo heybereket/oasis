@@ -34,8 +34,6 @@ Checkout our [Documentation](/docs) for more information on how to get started w
 - **Design:** [coderinblack08](https://github.com/coderinblack08)
 - **API:** [Ongshu777](https://github.com/Ongshu777), [vishy-dev](https://github.com/vishy-dev), and [mrbros35](https://github.com/mrbros35)
 
-_You can see our list of contributors in [`CONTRIBUTORS.md`](/docs/CONTRIBUTORS.md)_
-
 ## ⌛ Status
 
 ✅ Early Development: Started building the project. <br>
