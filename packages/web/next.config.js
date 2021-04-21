@@ -1,14 +1,7 @@
 const { createSecureHeaders } = require("next-secure-headers");
-const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
 
-module.exports = withPWA({
+module.exports = ({
   reactStrictMode: true,
-  pwa: {
-    dest: "public",
-    register: false,
-    runtimeCaching,
-  },
   async headers() {
     return [{ source: "/(.*)", headers: createSecureHeaders() }];
   },
