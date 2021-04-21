@@ -47,15 +47,16 @@ $ yarn dev:gql
 - **API:** [Ongshu777](https://github.com/Ongshu777), [vishy-dev](https://github.com/vishy-dev), and [mrbros35](https://github.com/mrbros35)
 
 ## ⌛ Status
-🟩 Early Development: Started building the project. <br>
-🟩 Development: Movement/re-write using NextJS/TailwindCSS <br>
-🟩 Migration Completion: Finished the migration! <br>
-🟩 TypeScript: Converted codebase from JS > TS <br>
-🟨 GraphQL API: Work on releasing the Oasis API publicly <br>
-🟨 Redesign/write: 2nd site rewrite/implementation of the new redesign <br>
-🟨 Alpha/Beta Testing (mostly trying to fix and solve bugs) <br>
-🟨 Early Release: Soft Launch on Twitter <br>
-🟨 Official Launch <br>
+✅ Early Development: Started building the project. <br>
+✅ Development: Movement/re-write using NextJS/TailwindCSS <br>
+✅ Migration Completion: Finished the migration! <br>
+✅ TypeScript: Converted codebase from JS > TS <br>
+⌛️ GraphQL API: Work on releasing the Oasis API publicly <br>
+⌛️ Redesign/write: 2nd site rewrite/implementation of the new redesign <br>
+⌛️ Alpha/Beta Testing (mostly trying to fix and solve bugs) <br>
+⌛️ Early Release: Soft Launch on Twitter <br>
+⌛️ Official Launch <br>
+*`⌛️ = In Progress`, `✅  = Done`*
 
 ## ✍🏻 Code of Conduct
 Read the Oasis [Code of Conduct](/.github/CODE_OF_CONDUCT.md) for more details. 
