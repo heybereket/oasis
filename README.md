@@ -55,8 +55,8 @@ $ yarn dev:gql
 ⌛️ Redesign/write: 2nd site rewrite/implementation of the new redesign <br>
 ⌛️ Alpha/Beta Testing (mostly trying to fix and solve bugs) <br>
 ⌛️ Early Release: Soft Launch on Twitter <br>
-⌛️ Official Launch <br>
-*`⌛️ = In Progress`, `✅  = Done`*
+⌛️ Official Launch <br><br>
+*Key:* `⌛️ In Progress`, `✅  Done`
 
 ## ✍🏻 Code of Conduct
 Read the Oasis [Code of Conduct](/.github/CODE_OF_CONDUCT.md) for more details. 
