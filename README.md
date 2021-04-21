@@ -53,10 +53,10 @@ $ yarn dev:gql
 ✅ TypeScript: Converted codebase from JS > TS <br>
 ⌛️ GraphQL API: Work on releasing the Oasis API publicly <br>
 ⌛️ Redesign/write: 2nd site rewrite/implementation of the new redesign <br>
-⌛️ Alpha/Beta Testing (mostly trying to fix and solve bugs) <br>
-⌛️ Early Release: Soft Launch on Twitter <br>
-⌛️ Official Launch <br><br>
-*Key:* `⌛️ In Progress`, `✅  Done`
+⛔︎ Alpha/Beta Testing (mostly trying to fix and solve bugs) <br>
+⛔︎ Early Release: Soft Launch on Twitter <br>
+⛔︎ Official Launch <br><br>
+*Key:* `⌛️ In Progress`, `✅  Done`, `⛔︎ TODO`
 
 ## ✍🏻 Code of Conduct
 Read the Oasis [Code of Conduct](/.github/CODE_OF_CONDUCT.md) for more details. 
