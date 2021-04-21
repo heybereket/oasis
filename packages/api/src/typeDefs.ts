@@ -13,5 +13,5 @@ const typeDefs = mergeTypeDefs(typeDefsArray);
 export default typeDefs;
 
 if (process.env.NODE_ENV === "development") {
-  writeFileSync("../schema.gql", print(typeDefs));
+  writeFileSync("../api/schema.gql", print(typeDefs));
 }
