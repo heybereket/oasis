@@ -10,7 +10,7 @@ I felt that people needed to see exactly what's planned for the api, so that the
   - [x] Connect the 2 with GraphQL
   - [ ] Change code to work with Firebase Database References
 - [ ] Add queries for `user` and `repos`
-  - [x] Add `allUsers`, `getUser`, `allRepos`, `getRepos` queries
+  - [x] Add `allUsers`, `getUser`, `allRepos`, `getRepo` queries
   - [ ] Connect the 2 with GraphQL (directly with Firebase DB Refs this time)
 - [ ] Add rate limiting
 - [ ] Add mutations
