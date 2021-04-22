@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@public/*": ["public"],
+      "@public/*": ["public/*"],
       "@components/*": ["src/components/*"],
       "@lib/*": ["src/lib/*"],
       "@modules/*": ["src/modules"],
