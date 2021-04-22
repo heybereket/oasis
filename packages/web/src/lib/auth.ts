@@ -4,7 +4,7 @@ import 'firebase/auth';
 
 export const Login = async () => {
   const provider = new firebase.auth.GithubAuthProvider();
-  let db = firebase.firestore();
+  const db = firebase.firestore();
 
   provider.setCustomParameters({
     allow_signup: 'true',

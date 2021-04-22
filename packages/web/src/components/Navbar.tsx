@@ -12,7 +12,10 @@ export const Navbar: React.FC = () => {
       </Link>
       <ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
         <li>
-          <a href="https://github.com/oasis-sh/oasis" className="hover:text-gray-200">
+          <a
+            href="https://github.com/oasis-sh/oasis"
+            className="hover:text-gray-200"
+          >
             <MarkGithubIcon className="w-8 h-8 text-white" />
           </a>
         </li>

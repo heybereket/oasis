@@ -1,13 +1,10 @@
-Summary
-<!---
-Provide a general overview/summary of your pull request.
-Ideas on what to include: 
-- Is it a feature? What does it do?
-- Does it fix something? What does it fix and how? 
+**Description:**
+<!--- Provide a summary on your changes in detail -->
+
+**Related Issue (if applicable):**
+<!--- If there is an issue you have solved with this Pull Request, link it! 
+If not, that is fine, new features are always welcomed! 
 -->
 
-Screenshots
-<!--- Attach a screenshot (if applicable) -->
-
-Related Issue
-<!--- Link the issue you are trying to solve (if applicable) -->
+**Screenshots:**
+<!--- If you had a visual screenshot on the changes you have made, that would be awesome! -->

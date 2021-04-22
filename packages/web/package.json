@@ -6,13 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "yarn run eslint && prettier --config .prettierrc --write src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx"
+    "prettify": "prettier --config .prettierrc --write src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
+    "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
   },
   "dependencies": {
     "@oasis/api": "0.1.0",
     "@primer/octicons-react": "^13.0.0",
-    "@sentry/react": "^6.2.5",
-    "@sentry/tracing": "^6.2.5",
     "firebase": "^8.3.3",
     "is-electron": "^2.2.0",
     "next": "latest",
@@ -28,9 +27,10 @@
     "@types/react": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^4.21.0",
     "@typescript-eslint/parser": "^4.21.0",
+    "eslint-plugin-react": "^7.23.2",
     "autoprefixer": "^10.0.4",
     "eslint": "^7.24.0",
-    "eslint-config-google": "^0.14.0",
+    "next-secure-headers": "^2.2.0",
     "postcss": "^8.1.10",
     "prettier": "2.2.1",
     "tailwindcss": "^2.1.1",

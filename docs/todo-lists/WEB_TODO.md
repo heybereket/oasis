@@ -1,0 +1,22 @@
+## 🕐 Oasis Todo: Next.JS Frontend _(`@oasis/web`)_
+
+- [ ] **Site Features**
+  - [ ] Commenting
+  - [ ] Liking
+  - [ ] Posting
+  - [ ] Adding
+- [ ] **Authentication**
+  - [ ] GitHub
+  - [ ] Twitter
+  - [ ] Discord or Google
+- [ ] **User Profile**
+  - [ ] Banner Component
+  - [ ] Display Name, Username, Description Component
+  - [ ] Recent Activity Sidebar
+  - [ ] Responsivness
+  - [ ] Follow + Message Buttons
+  - [ ] Posts
+- [ ] **404 Page**
+  - [ ] Import Navbar Component
+  - [ ] Import Footer Component
+  - [ ] Recent Activity Sidebar
