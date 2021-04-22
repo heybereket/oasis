@@ -16,21 +16,45 @@ type Query {
   allRepos: [Repo]
   getRepo(full_name: String!): Repo!
   allUsers: [User]!
-  getUser(username: String!): User!
+  getUser(id: ID!): User
+  allPosts: [Post!]!
+  getPost(id: ID!): Post
+  allComments: [Comment!]!
+  getComment(id: ID!): Comment
 }
 
 type User {
   id: ID!
-  joined: String!
-  verified: Boolean!
+  createdAt: String!
+  verified: Boolean
   username: String!
-  avatar_url: String!
+  photoURL: String!
   bio: String
   email: String
   bioLink: String
   name: String
-  twitterLink: String
+  twitter: String
+  posts: [Post]!
   repos: [Repo]!
+}
+
+type Post {
+  id: ID!
+  title: String!
+  message: String!
+  topics: [String!]!
+  comments: [Comment!]!
+  likes: [String!]!
+  author: User!
+}
+
+type Comment {
+  id: ID!
+  post: Post!
+  author: User!
+  content: String!
+  likes: Int!
+  dislikes: Int!
 }
 
 schema {
