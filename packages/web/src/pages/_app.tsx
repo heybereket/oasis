@@ -6,7 +6,7 @@ import Head from 'next/head';
 
 getFirebase();
 
-function App({ Component, pageProps }: AppProps) {
+export function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -28,5 +28,3 @@ function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
-
-export default App;
