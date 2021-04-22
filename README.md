@@ -29,10 +29,11 @@ Take a look at our [Documentation](/docs) for more information on how to get sta
 
 ## 👋🏻 Maintainers
 
-- **Web:** [heybereket](https://github.com/heybereket), [samarmohan](https://github.com/samarmohan), and [goldyydev](https://github.com/goldyydev)
+- **Documentation:** [heybereket](https://github.com/heybereket) and [vishy-dev](https://github.com/vishy-dev)
+- **Web:** [heybereket](https://github.com/heybereket), [vishy-dev](https://github.com/vishy-dev), and [samarmohan](https://github.com/samarmohan)
 - **Desktop:** [amitojsingh366](https://github.com/amitojsingh366)
-- **Design:** [coderinblack08](https://github.com/coderinblack08)
-- **API:** [Ongshu777](https://github.com/Ongshu777), [vishy-dev](https://github.com/vishy-dev), and [mrbros35](https://github.com/mrbros35)
+- **Design:** [coderinblack08](https://github.com/coderinblack08) and [SamJakob](https://github.com/SamJakob)
+- **API:** [Ongshu777](https://github.com/Ongshu777) and [vishy-dev](https://github.com/vishy-dev)
 
 ## ⌛ Status
 
