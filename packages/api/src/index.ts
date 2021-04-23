@@ -16,6 +16,7 @@ export const createApolloServer = async () => {
 
   const server = new ApolloServer({
     schema,
+    playground: true,
   });
 
   return server;
