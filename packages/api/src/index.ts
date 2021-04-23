@@ -4,6 +4,7 @@ config();
 import { ApolloServer } from "apollo-server-micro";
 import { buildSchema } from "type-graphql";
 import { getResolvers } from "./resolvers";
+import depthLimit from "graphql-depth-limit";
 
 export const createApolloServer = async () => {
   const resolvers: any = await getResolvers();
@@ -16,6 +17,7 @@ export const createApolloServer = async () => {
 
   const server = new ApolloServer({
     schema,
+    validationRules: [depthLimit(3)],
     playground: true,
     introspection: true,
   });
