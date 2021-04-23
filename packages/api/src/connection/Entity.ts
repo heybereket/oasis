@@ -1,5 +1,4 @@
 import { adminDB } from "../utils/admin-db";
-import { DocFieldData, doc_fields_data } from "./DocField";
 
 export const entity_data = Symbol("__Entity_Data__");
 
@@ -8,7 +7,7 @@ export type FirebaseCollection = FirebaseFirestore.CollectionReference<FirebaseF
 export interface EntityData {
   name: string;
   collection: FirebaseCollection;
-  fields: DocFieldData[];
+  // fields: DocFieldData[];
 }
 
 export const allEntities: EntityData[] = [];
@@ -21,12 +20,10 @@ export const Entity = (collectionName: string) => <
 >(
   Constructor: T
 ) => {
-  const fields = Reflect.getMetadata(doc_fields_data, Constructor) || [];
-
   const data: EntityData = {
     name: Constructor.name,
     collection: adminDB.collection(collectionName),
-    fields,
+    // fields,
   };
 
   allEntities.push(data);
