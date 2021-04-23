@@ -12,7 +12,7 @@
 | :--------------------------------: | :-----------------------: |
 |           [docs](/docs)            |       Documentation       |
 |        [web](/packages/web)        |     Next.js Frontend      |
-|        [api](/packages/api)        |        TypeGraphQL API    |
+|        [api](/packages/api)        |        GraphQL API        |
 | [client-gql](/packages/client-gql) | Client Side GraphQL Hooks |
 |  [puppeteer](/packages/puppeteer)  |     Puppeteer Testing     |
 
