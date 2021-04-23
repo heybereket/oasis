@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node dist/build.js",
     "watch:tsc": "tsc --watch --preserveWatchOutput",
     "watch:dev": "nodemon dist/start",
     "dev:server": "run-p \"watch:dev\" \"watch:tsc\"",
@@ -23,9 +23,12 @@
   "dependencies": {
     "@graphql-tools/merge": "^6.2.13",
     "apollo-server-micro": "^2.23.0",
+    "class-validator": "^0.13.1",
     "dotenv": "^8.2.0",
     "firebase-admin": "^9.6.0",
     "graphql-depth-limit": "^1.1.0",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1",
     "typescript": "^4.2.4"
   }
 }
