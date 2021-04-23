@@ -6,9 +6,4 @@ export default class AllUsersResolver {
   async allUsers() {
     return "Hello World";
   }
-
-  // @Query(() => [String])
-  // async hello(): Promise<string[]> {
-  //   return ["Hello", "world"];
-  // }
 }
