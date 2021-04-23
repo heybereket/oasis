@@ -5,6 +5,10 @@
     "target": "es2018",
     "module": "commonjs",
     "lib": ["ESNext", "DOM"],
+    "baseUrl": ".",
+    "paths": {
+      "@entity/*": ["src/entity/*"]
+    },
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
