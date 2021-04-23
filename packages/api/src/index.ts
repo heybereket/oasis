@@ -1,34 +1,22 @@
+import "reflect-metadata";
 import { config } from "dotenv";
 config();
+import { ApolloServer } from "apollo-server-micro";
+import { buildSchema } from "type-graphql";
+import { getResolvers } from "./resolvers";
 
-import { ApolloError, ApolloServer } from "apollo-server-micro";
-import resolvers from "./resolvers";
-import typeDefs from "./typeDefs";
-import { IncomingMessage } from "http";
-import depthLimit from "graphql-depth-limit";
+export const createApolloServer = async () => {
+  const resolvers: any = await getResolvers();
 
-const accessDeniedMsg = "Damn. You kinda don't have access to this api";
+  const schema = await buildSchema({
+    resolvers,
+    emitSchemaFile:
+      process.env.NODE_ENV === "development" ? "./schema.gql" : false,
+  });
 
-export const apolloServer = new ApolloServer({
-  typeDefs,
-  resolvers,
-  validationRules: [depthLimit(3)],
-  context({ req }: { req: IncomingMessage }) {
-    const header = req.headers.authorization || "";
-    const [, token] = header.split(" ");
+  const server = new ApolloServer({
+    schema,
+  });
 
-    if (token !== process.env.API_ACCESS_TOKEN) {
-      throw new ApolloError(accessDeniedMsg);
-    }
-
-    return {};
-  },
-  formatError(err) {
-    if (err.message.includes(accessDeniedMsg)) {
-      return new Error(accessDeniedMsg);
-    }
-    return err;
-  },
-  playground: true,
-  introspection: true,
-});
+  return server;
+};
