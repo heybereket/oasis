@@ -2055,12 +2055,14 @@ __metadata:
   dependencies:
     "@graphql-tools/merge": ^6.2.13
     "@types/graphql-depth-limit": ^1
+    "@types/module-alias": ^2
     apollo-server-micro: ^2.23.0
     class-validator: ^0.13.1
     dotenv: ^8.2.0
     firebase-admin: ^9.6.0
     graphql: ^15.5.0
     graphql-depth-limit: ^1.1.0
+    module-alias: ^2.2.2
     nodemon: ^2.0.7
     npm-run-all: ^4.1.5
     reflect-metadata: ^0.1.13
@@ -2112,6 +2114,7 @@ __metadata:
     eslint: ^7.24.0
     eslint-plugin-react: ^7.23.2
     firebase: ^8.3.3
+    firebase-admin: ^9.6.0
     is-electron: ^2.2.0
     next: latest
     next-secure-headers: ^2.2.0
@@ -2523,6 +2526,13 @@ __metadata:
   version: 3.0.4
   resolution: "@types/minimatch@npm:3.0.4"
   checksum: abbe7031d8a6144c36f1803c5c1914885c2349d5d73fc45aae44807c12c4c803b8acfb134c71c7eff75c462c218697f982b96633f8fdf71b83ec50eba36122a6
+  languageName: node
+  linkType: hard
+
+"@types/module-alias@npm:^2":
+  version: 2.0.0
+  resolution: "@types/module-alias@npm:2.0.0"
+  checksum: d25152dbe86a70c32844bfa3ef882b4c6e2456c016486596c0ffa8e541b095791c95042e3e06b44a91e6306c5d75232c317d12a71771e4767d69f2e5f8c1df80
   languageName: node
   linkType: hard
 
@@ -8012,6 +8022,13 @@ fsevents@~2.3.1:
   version: 1.0.0
   resolution: "modern-normalize@npm:1.0.0"
   checksum: 013c442ba2a58ce79cf790ffa8ac461ac67b1f3904ba7bf4ff0a83a5e443500730c1dd1d1af66d2066f8f1500ba8e150aa32518c6a294e0ab0c93692a59b77ee
+  languageName: node
+  linkType: hard
+
+"module-alias@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "module-alias@npm:2.2.2"
+  checksum: 1b37943df4fbe56799688eb3496f5113f7f1e18ff7a53bd3543e93fd4ee6c4b04e1548fc0cb49ae73e086b18ee712ab3321f6d7f5444cf413c638914decb8918
   languageName: node
   linkType: hard
 
