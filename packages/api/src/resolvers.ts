@@ -1,5 +1,6 @@
 import { glob } from "glob";
 import { join } from "path";
+import { resolversPattern } from "./globPatterns";
 
 export const getResolvers = (): Promise<Function[]> | Function[] => {
   if (process.env.NODE_ENV === "development" && !process.env.IS_NEXT) {
@@ -8,7 +9,7 @@ export const getResolvers = (): Promise<Function[]> | Function[] => {
       : __dirname;
 
     return new Promise((resolve) => {
-      glob(join(ROOT, "./modules/**/resolvers/*.js"), (err, absolutes) => {
+      glob(join(ROOT, resolversPattern), (err, absolutes) => {
         if (err) console.error("Error while glob! ", err);
 
         const filenames = absolutes.map(
