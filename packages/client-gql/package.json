@@ -11,7 +11,7 @@
     "dev": "run-p \"watch:gen\" \"watch:tsc\""
   },
   "keywords": [],
-  "author": "Bedanta Mukhopadhay (Angshu31)",
+  "author": "",
   "license": "MIT",
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.3",
