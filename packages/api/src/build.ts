@@ -1,8 +1,9 @@
 import { glob } from "glob";
 import { join } from "path";
 import { writeFileSync } from "fs";
+import { resolversPattern } from "./globPatterns";
 
-glob(join(__dirname, "./modules/**/resolvers/*.js"), (err, absolutes) => {
+glob(join(__dirname, resolversPattern), (err, absolutes) => {
   if (err) console.error("Error while glob! ", err);
 
   const filenames = absolutes.map(
