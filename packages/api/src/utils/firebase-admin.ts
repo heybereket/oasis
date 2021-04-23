@@ -13,7 +13,7 @@ export const serviceAccount: ServiceAccount = {
   client_x509_cert_url: process.env.CLIENT_X509_CERT_URL, */
 };
 
-export default async function getFirebaseAdmin(): Promise<app.App> {
+export default function getFirebaseAdmin(): app.App {
   if (!admin.apps.length) {
     return admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),

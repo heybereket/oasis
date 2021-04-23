@@ -1,14 +1,16 @@
-import { apolloServer } from ".";
+import { createApolloServer } from ".";
 import { createServer } from "http";
 
-const PORT = process.env.PORT || 4000;
+(async () => {
+  const apolloServer = await createApolloServer();
 
-const server = createServer(
-  apolloServer.createHandler({ path: "/api/graphql" })
-);
+  const httpServer = createServer(
+    apolloServer.createHandler({ path: "/api/graphql" })
+  );
 
-server.listen(PORT, () =>
-  console.log(
-    `🚀 The GraphQL Playground is now running at http://localhost:${PORT}/api/graphql`
-  )
-);
+  const PORT = process.env.PORT || 4000;
+
+  httpServer.listen(PORT, () =>
+    console.log(`Server started on http://localhost:${PORT}/api/graphql`)
+  );
+})();

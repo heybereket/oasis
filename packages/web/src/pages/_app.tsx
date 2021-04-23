@@ -1,4 +1,3 @@
-import React from 'react'
 import { AppProps } from 'next/app';
 import '../styles/globals.css';
 import { getFirebase } from '../lib/firebase';
@@ -6,7 +5,7 @@ import Head from 'next/head';
 
 getFirebase();
 
-function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -28,5 +27,3 @@ function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
-
-export default App;
