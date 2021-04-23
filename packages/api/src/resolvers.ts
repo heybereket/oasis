@@ -1,10 +1,26 @@
-import { mergeResolvers } from "@graphql-tools/merge";
+import { glob } from "glob";
+import { join } from "path";
+import { resolversPattern } from "./globPatterns";
 
-import repo from "./modules/repo/resolvers";
-import user from "./modules/user/resolvers";
-import posts from "./modules/posts/resolvers";
-import comments from "./modules/comments/resolvers";
+export const getResolvers = (): Promise<Function[]> | Function[] => {
+  if (process.env.NODE_ENV === "development" && !process.env.IS_NEXT) {
+    const ROOT = process.env.PROJECT_ROOT
+      ? join(process.env.PROJECT_ROOT, "./packages/api/dist")
+      : __dirname;
 
-const resolversArray = [repo, user, posts, comments];
+    return new Promise((resolve) => {
+      glob(join(ROOT, resolversPattern), (err, absolutes) => {
+        if (err) console.error("Error while glob! ", err);
 
-export default mergeResolvers(resolversArray);
+        const filenames = absolutes.map(
+          (filename) => "." + filename.slice(ROOT.length)
+        );
+
+        resolve(filenames.map((filename) => require(filename).default));
+      });
+    });
+  }
+
+  // In a Next.js environment, just give the js file
+  return require("./__resolvers");
+};

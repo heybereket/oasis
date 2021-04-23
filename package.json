@@ -5,14 +5,12 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@types/eslint": "^7",
     "@types/jest": "^26.0.22",
-    "all-contributors-cli": "^6.20.0",
     "ts-jest": "^26.5.5",
     "typescript": "^4.2.4"
   },
   "scripts": {
-    "contrib:add": "all-contributors add",
-    "contrib:build": "all-contributors generate",
     "dev:web": "yarn workspace @oasis/web dev",
     "dev:api": "yarn workspace @oasis/api dev",
     "dev:gql": "yarn workspace @oasis/client-gql dev",

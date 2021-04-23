@@ -1,4 +1,11 @@
+const { createSecureHeaders } = require('next-secure-headers');
+const { join } = require('path');
+
 module.exports = {
+  reactStrictMode: true,
+  async headers() {
+    return [{ source: '/(.*)', headers: createSecureHeaders() }];
+  },
   async redirects() {
     return [
       {
@@ -22,5 +29,9 @@ module.exports = {
     }
 
     return config;
+  },
+  env: {
+    PROJECT_ROOT: join(__dirname, '../../..'),
+    IS_NEXT: true,
   },
 };

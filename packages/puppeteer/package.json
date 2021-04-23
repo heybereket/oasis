@@ -13,7 +13,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "puppeteer": "^8.0.0"
+    "puppeteer": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.41",
