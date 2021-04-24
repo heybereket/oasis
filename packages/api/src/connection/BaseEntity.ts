@@ -1,3 +1,4 @@
+import { getRefData } from "src/utils/getRefData";
 import { allEntities, EntityData } from "./Entity";
 
 type Constructor<T> = { new (): T };
@@ -16,10 +17,9 @@ export class BaseEntity {
     this: Constructor<T>,
     id: string
   ): Promise<T> {
-    const snap = await (this as any).entity.collection.doc(id).get();
-    const data = snap.data();
-
-    return { id, ...data };
+    const entity: EntityData = (this as any).entity;
+    const snap = entity.collection.doc(id);
+    return getRefData(snap) as any;
   }
 
   static async find<T extends BaseEntity>(this: Constructor<T>): Promise<T[]> {
