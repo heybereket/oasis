@@ -11,6 +11,7 @@ type Comment {
 
 type Post {
   author: User!
+  comments: [Comment!]!
   dislikes: Int!
   id: String!
   likes: Int!

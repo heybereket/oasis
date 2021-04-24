@@ -1,6 +1,7 @@
 import { BaseEntity, Entity } from "../connection";
 import { Field, Int, ObjectType, Root } from "type-graphql";
 import User from "./User";
+import Comment from "./Comment";
 import { getRefData } from "../utils/getRefData";
 
 @ObjectType()
@@ -16,9 +17,17 @@ export default class Post extends BaseEntity {
   dislikes: number;
 
   _author: FirebaseFirestore.DocumentReference;
+  _comments: FirebaseFirestore.DocumentReference[];
 
   @Field(() => User)
   async author(@Root() parent: Post) {
     return getRefData(parent._author);
+  }
+
+  @Field(() => [Comment])
+  async comments(@Root() parent: Post) {
+    return parent._comments
+      ? Promise.all(parent._comments.map(getRefData))
+      : [];
   }
 }
