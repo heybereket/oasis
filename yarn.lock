@@ -2114,6 +2114,7 @@ __metadata:
     eslint: ^7.24.0
     eslint-plugin-react: ^7.23.2
     firebase: ^8.3.3
+    firebase-admin: ^9.6.0
     is-electron: ^2.2.0
     next: latest
     next-secure-headers: ^2.2.0
