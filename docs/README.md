@@ -16,7 +16,7 @@
 
 **Other**
 
-- [`API_TODO.md`](todo-lists/API_TODO.md) - The to-do list for the GraphQL backend API.
-- [`WEB_TODO.md`](todo-lists/WEB_TODO.md) - The to-do list for the Next.JS frontend.
-- [`DESIGN_TODO.md`](todo-lists/DESIGN_TODO.md) - The to-do list for the frontend redesign.
-- [`DESKTOP_TODO.md`](todo-lists/DESKTOP_TODO.md) - The to-do list for the Electron desktop app.
+- [`API_TODO.md`](todo/API_TODO.md) - The to-do list for the GraphQL backend API.
+- [`WEB_TODO.md`](todo/WEB_TODO.md) - The to-do list for the Next.JS frontend.
+- [`DESIGN_TODO.md`](todo/DESIGN_TODO.md) - The to-do list for the frontend redesign.
+- [`DESKTOP_TODO.md`](todo/DESKTOP_TODO.md) - The to-do list for the Electron desktop app.
