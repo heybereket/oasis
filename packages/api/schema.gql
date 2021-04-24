@@ -3,6 +3,12 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type Comment {
+  dislikes: Int!
+  id: String!
+  likes: Int!
+}
+
 type Post {
   dislikes: Int!
   id: String!
@@ -10,6 +16,7 @@ type Post {
 }
 
 type Query {
+  allComments: [Comment!]!
   allPosts: [Post!]!
   allRepos: [Repo!]!
   allUsers: [User!]!
