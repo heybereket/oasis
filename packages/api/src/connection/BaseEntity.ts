@@ -27,6 +27,7 @@ export class BaseEntity {
     const all = await entity.collection.get();
     return all.docs.map((doc) => {
       var data = doc.data();
+      if (data.email) delete data.email;
       const obj: any = {
         id: doc.id,
         ...data,

@@ -15,7 +15,6 @@ import depthLimit from "graphql-depth-limit";
 
 export const createApolloServer = async () => {
   const resolvers: any = await getResolvers();
-
   const schema = await buildSchema({
     resolvers,
     emitSchemaFile:
