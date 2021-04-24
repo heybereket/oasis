@@ -12,7 +12,7 @@ export const createApolloServer = async () => {
   const schema = await buildSchema({
     resolvers,
     emitSchemaFile:
-      process.env.NODE_ENV === "development" ? "./schema.gql" : false,
+      process.env.NODE_ENV === "development" ? "../api/schema.gql" : false,
   });
 
   const server = new ApolloServer({
