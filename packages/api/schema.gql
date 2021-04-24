@@ -3,7 +3,14 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type Post {
+  dislikes: Int!
+  id: String!
+  likes: Int!
+}
+
 type Query {
+  allPosts: [Post!]!
   allRepos: [Repo!]!
   allUsers: [User!]!
 }
