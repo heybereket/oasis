@@ -1,13 +1,12 @@
 ## 🕐 Oasis Todo: GraphQL Backend API _(`@oasis/api`)_
 
-- [x] Create a boilerplate GraphQL API with `apollo-server-micro`
-- [ ] Add queries for `posts` and `comments`
+- [x] Create a boilerplate GraphQL API with `apollo-server-micro` and TypeGraphQL
+- [x] Add queries for `posts` and `comments`
   - [x] Basic Implementation
-  - [x] Connect the 2 with GraphQL
-  - [ ] Change code to work with Firebase Database References
-- [ ] Add queries for `user` and `repos`
+  - [x] Connect the 2 with GraphQL and Firebase DB Refs
+- [x] Add queries for `user` and `repos`
   - [x] Add `allUsers`, `getUser`, `allRepos`, `getRepo` queries
-  - [ ] Connect the 2 with GraphQL (directly with Firebase DB Refs this time)
+  - [x] Connect the 2 with GraphQL and Firebase DB Refs
 - [ ] Add rate limiting
 - [ ] Add mutations
   - [ ] Posts
