@@ -1,5 +1,6 @@
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType, Root } from "type-graphql";
 import { BaseEntity, Entity } from "../connection";
+import Repo from "./Repo";
 
 @ObjectType()
 @Entity("users")
@@ -15,4 +16,18 @@ export default class User extends BaseEntity {
 
   @Field({ nullable: true })
   username: string;
+
+  _repos: FirebaseFirestore.DocumentReference[];
+
+  @Field(() => [Repo], { nullable: true })
+  async repos(@Root() parent: User) {
+    if (!parent._repos) return;
+
+    return Promise.all(
+      parent._repos.map(async (ref) => {
+        const snap = await ref.get();
+        return { id: snap.id, ...snap.data() };
+      })
+    );
+  }
 }
