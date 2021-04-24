@@ -1,7 +1,6 @@
 query AllUsers {
   allUsers {
     id
-    name
     email
   }
 }
