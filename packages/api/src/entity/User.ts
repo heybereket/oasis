@@ -1,3 +1,4 @@
+import { getRefData } from "src/utils/getRefData";
 import { Field, ID, ObjectType, Root } from "type-graphql";
 import { BaseEntity, Entity } from "../connection";
 import Repo from "./Repo";
@@ -23,11 +24,6 @@ export default class User extends BaseEntity {
   async repos(@Root() parent: User) {
     if (!parent._repos) return;
 
-    return Promise.all(
-      parent._repos.map(async (ref) => {
-        const snap = await ref.get();
-        return { id: snap.id, ...snap.data() };
-      })
-    );
+    return Promise.all(parent._repos.map(getRefData));
   }
 }
