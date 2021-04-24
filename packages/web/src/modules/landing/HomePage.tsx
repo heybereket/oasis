@@ -39,15 +39,16 @@ export const HomePage: React.FC = () => {
             By logging in, you accept our{' '}
             <Link href="/privacy">
               <a className="text-primary-light hover:underline">
-                Privacy Policy{' '}
+                Privacy Policy
               </a>
             </Link>
-            and{' '}
+            {' '}and{' '}
             <Link href="/terms">
               <a className="text-primary-light hover:underline">
                 Terms of Service
               </a>
             </Link>
+            {'.'}
           </p>
         </div>
       </div>
