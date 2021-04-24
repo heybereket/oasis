@@ -33,6 +33,7 @@ type User {
   createdAt: String!
   email: String
   id: ID!
+  posts: [Post!]
   repos: [Repo!]
   username: String
 }
