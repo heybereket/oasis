@@ -1,4 +1,4 @@
-import { getRefData } from "src/utils/getRefData";
+import { getRefData } from "../utils/getRefData";
 import { Field, ID, ObjectType, Root } from "type-graphql";
 import { BaseEntity, Entity } from "../connection";
 import Repo from "./Repo";
