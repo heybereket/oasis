@@ -10,6 +10,7 @@ type Comment {
 }
 
 type Post {
+  author: User!
   dislikes: Int!
   id: String!
   likes: Int!
@@ -33,7 +34,7 @@ type User {
   createdAt: String!
   email: String
   id: ID!
-  posts: [Post!]
+  posts: [Post!]!
   repos: [Repo!]
   username: String
 }
