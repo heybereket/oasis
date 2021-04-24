@@ -24,17 +24,11 @@ export default class User extends BaseEntity {
 
   @Field(() => [Repo], { nullable: true })
   async repos(@Root() parent: User) {
-    if (!parent._repos) return;
-
-    return Promise.all(parent._repos.map(getRefData));
+    return parent._repos ? Promise.all(parent._repos.map(getRefData)) : [];
   }
 
-  @Field(() => [Post], { nullable: true })
+  @Field(() => [Post])
   async posts(@Root() parent: User) {
-    console.log(parent);
-
-    if (!parent._posts) return;
-
-    return Promise.all(parent._posts.map(getRefData));
+    return parent._posts ? Promise.all(parent._posts.map(getRefData)) : [];
   }
 }
