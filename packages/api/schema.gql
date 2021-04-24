@@ -4,9 +4,11 @@
 # -----------------------------------------------
 
 type Comment {
+  author: User!
   dislikes: Int!
   id: String!
   likes: Int!
+  post: Post!
 }
 
 type Post {
