@@ -4,15 +4,7 @@
 # -----------------------------------------------
 
 type Query {
-  allRepos: [Repo!]!
   allUsers: [User!]!
-}
-
-type Repo {
-  createdAt: String!
-  id: ID!
-  name: String
-  owner: User!
 }
 
 type User {
