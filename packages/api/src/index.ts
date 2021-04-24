@@ -1,6 +1,13 @@
 import "reflect-metadata";
 import { config } from "dotenv";
-config();
+import { join, dirname } from "path";
+
+const ROOT = process.env.PROJECT_ROOT
+  ? join(process.env.PROJECT_ROOT, "./packages/api")
+  : dirname(__dirname);
+
+config({ path: ROOT + "/.env" });
+
 import { ApolloServer } from "apollo-server-micro";
 import { buildSchema } from "type-graphql";
 import { getResolvers } from "./resolvers";

@@ -31,7 +31,7 @@ module.exports = {
     return config;
   },
   env: {
-    PROJECT_ROOT: join(__dirname, '../../..'),
+    PROJECT_ROOT: join(__dirname, '../..'),
     IS_NEXT: true,
   },
 };

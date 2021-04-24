@@ -18,6 +18,7 @@ export class BaseEntity {
   ): Promise<T> {
     const snap = await (this as any).entity.collection.doc(id).get();
     const data = snap.data();
+
     return { id, ...data };
   }
 
@@ -25,9 +26,10 @@ export class BaseEntity {
     const entity: EntityData = (this as any).entity;
     const all = await entity.collection.get();
     return all.docs.map((doc) => {
+      var data = doc.data();
       const obj: any = {
         id: doc.id,
-        ...doc.data(),
+        ...data,
       };
       return obj as T;
     });
