@@ -2,12 +2,19 @@ import { AppProps } from 'next/app';
 import '../styles/globals.css';
 import { getFirebase } from '../lib/firebase';
 import Head from 'next/head';
+import { ApolloProvider } from '@apollo/client';
+import { useApollo } from '@lib/apolloClient';
 
 getFirebase();
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps,
+}: AppProps): React.ReactNode {
+  const client = useApollo(pageProps.initialApolloState);
+
   return (
-    <>
+    <ApolloProvider client={client}>
       <Head>
         <title>Oasis - Discover and Discuss</title>
         <meta
@@ -24,6 +31,6 @@ export default function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Component {...pageProps} />
-    </>
+    </ApolloProvider>
   );
 }

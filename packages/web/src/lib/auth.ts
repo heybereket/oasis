@@ -1,10 +1,10 @@
-import firebase from 'firebase/app';
+import { getFirebase } from './firebase';
 import 'firebase/auth';
-import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 import { AuthDocument } from '@oasis/client-gql';
-import BaseURL from './base-url';
+import { apolloClient } from './apolloClient';
 
 export const Login = async (): Promise<void> => {
+  const firebase = getFirebase();
   const provider = new firebase.auth.GithubAuthProvider();
 
   provider.setCustomParameters({
@@ -12,13 +12,8 @@ export const Login = async (): Promise<void> => {
   });
 
   const login = await firebase.auth().signInWithPopup(provider);
-  const client = new ApolloClient({
-    uri: BaseURL(),
-    cache: new InMemoryCache(),
-    defaultOptions: { mutate: { fetchPolicy: 'no-cache' } },
-  });
 
-  const response = await client.mutate({
+  const response = await apolloClient.mutate({
     mutation: AuthDocument,
     variables: { idToken: await login.user?.getIdToken() },
   });

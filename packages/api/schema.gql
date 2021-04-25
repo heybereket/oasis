@@ -12,7 +12,7 @@ type Comment {
 }
 
 type Mutation {
-  authenticate(idToken: String!): String!
+  authenticate(idToken: String!): Boolean!
 }
 
 type Post {
