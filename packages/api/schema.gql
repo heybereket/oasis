@@ -11,10 +11,6 @@ type Comment {
   post: Post!
 }
 
-type Mutation {
-  authenticate(idToken: String!): Boolean!
-}
-
 type Post {
   author: User!
   comments: [Comment!]!

@@ -16,6 +16,7 @@ export default function App({
   return (
     <ApolloProvider client={client}>
       <Head>
+        <noscript dangerouslySetInnerHTML={{__html: `<h1>JavaScript is not supported.</h1>`}} />
         <title>Oasis - Discover and Discuss</title>
         <meta
           name="viewport"
