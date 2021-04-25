@@ -6,7 +6,7 @@ import { apolloClient } from './apolloClient';
 export const Login = async (): Promise<void> => {
   const firebase = getFirebase();
   const provider = new firebase.auth.GithubAuthProvider();
-
+  
   provider.setCustomParameters({
     allow_signup: 'true',
   });
