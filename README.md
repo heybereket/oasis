@@ -24,9 +24,8 @@ Take a look at our [Documentation](/docs) for more information on how to get sta
 
 ## 👋🏻 Maintainers
 
-- **Documentation:** [heybereket](https://github.com/heybereket) and [f1shy-dev](https://github.com/f1shy-dev)
+- **Documentation:** [heybereket](https://github.com/heybereket)
 - **Web:** [heybereket](https://github.com/heybereket), [f1shy-dev](https://github.com/f1shy-dev)
-- **Desktop:** [amitojsingh366](https://github.com/amitojsingh366)
 - **Design:** [coderinblack08](https://github.com/coderinblack08) and [SamJakob](https://github.com/SamJakob)
 - **API:** [Ongshu777](https://github.com/Ongshu777), [f1shy-dev](https://github.com/f1shy-dev), and [samarmohan](https://github.com/samarmohan)
 
