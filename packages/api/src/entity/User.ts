@@ -14,7 +14,7 @@ export default class User extends BaseEntity {
   createdAt: string;
 
   @Field({ nullable: true })
-  email: string;
+  email?: string;
 
   @Field({ nullable: true })
   username: string;
