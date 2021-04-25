@@ -20,9 +20,11 @@ export default class AuthenticateResolver {
       const doc = await docRef.get();
 
       const docData: FirebaseFirestore.DocumentData = {
-        email: decodedToken,
-        posts: [],
-        repos: [],
+        email: decodedToken.email,
+        // To avoid variable naming conflicts in the entities,
+        // we use an "_" before any relational data fields
+        _posts: [],
+        _repos: [],
         username: githubData.login,
       };
 
@@ -33,10 +35,8 @@ export default class AuthenticateResolver {
 
       return true;
     } catch (e) {
-      console.error(e);
-      throw new ApolloError(
-        "Internal server error, please notify a maintainer of this API!"
-      );
+      console.log(e);
+      throw new ApolloError(e.message);
     }
   }
 }
