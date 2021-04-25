@@ -1,45 +1,42 @@
-import getFirebaseAdmin from "../../../utils/firebase-admin";
+import { adminDB } from "../../../utils/admin-db";
+import admin from "../../../utils/firebase-admin";
 import firebaseAdmin from "firebase-admin";
 import { Arg, Mutation, Resolver } from "type-graphql";
+import { ApolloError } from "apollo-server-errors";
 
 @Resolver()
 export default class AuthenticateResolver {
-  @Mutation(() => String)
+  @Mutation(() => Boolean!)
   async authenticate(@Arg("idToken") idToken: string) {
-    const admin = await getFirebaseAdmin();
-    const db = await admin.firestore();
+    try {
+      const decodedToken = await admin.auth().verifyIdToken(idToken);
 
-    return admin
-      .auth()
-      .verifyIdToken(idToken)
-      .then(async (decodedToken) => {
-        return await fetch(
-          `https://api.github.com/user/${decodedToken.firebase.identities["github.com"][0]}`
-        )
-          .then((res) => res.json())
-          .then(async (githubData) => {
-            const docRef = db.doc(`users/${decodedToken.uid}`);
-            const doc = await docRef.get();
+      const res = await fetch(
+        `https://api.github.com/user/${decodedToken.firebase.identities["github.com"][0]}`
+      );
+      const githubData = await res.json();
 
-            let docData: any = {
-              email: decodedToken.email,
-              posts: [],
-              repos: [],
-              username: githubData.login,
-            };
+      const docRef = adminDB.doc(`users/${decodedToken.uid}`);
+      const doc = await docRef.get();
 
-            if (!doc.exists)
-              docData.createdAt = firebaseAdmin.firestore.Timestamp.now();
-            await docRef.set(docData, { merge: true });
+      const docData: FirebaseFirestore.DocumentData = {
+        email: decodedToken,
+        posts: [],
+        repos: [],
+        username: githubData.login,
+      };
 
-            return "success";
-          })
-          .catch((err) => {
-            throw err;
-          });
-      })
-      .catch((error) => {
-        throw error;
-      });
+      if (!doc.exists)
+        docData.createdAt = firebaseAdmin.firestore.Timestamp.now();
+
+      await docRef.set(docData, { merge: true });
+
+      return true;
+    } catch (e) {
+      console.error(e);
+      throw new ApolloError(
+        "Internal server error, please notify a maintainer of this API!"
+      );
+    }
   }
 }
