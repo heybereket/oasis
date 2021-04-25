@@ -4,8 +4,14 @@ import { BaseEntity, Entity } from "../connection";
 import Repo from "./Repo";
 import Post from "./Post";
 
+const formatter = (orig: any) => ({
+  ...orig,
+  ...orig.sensitiveData,
+  ...orig.extraData,
+});
+
 @ObjectType()
-@Entity("users")
+@Entity("users", { formatter })
 export default class User extends BaseEntity {
   @Field(() => ID)
   id: string;
