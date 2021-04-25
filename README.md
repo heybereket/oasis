@@ -2,8 +2,8 @@
 
 ## 🌴 Branches
 
-- `prod` - dont touch, production code
-- `staging` - testing/development; do changes here here
+- `prod` - production ready code
+- `staging` - testing/development
 - `old` - v1.0 of oasis (no longer used)
 
 ## 🧱 Structure
@@ -24,11 +24,10 @@ Take a look at our [Documentation](/docs) for more information on how to get sta
 
 ## 👋🏻 Maintainers
 
-- **Documentation:** [heybereket](https://github.com/heybereket) and [f1shy-dev](https://github.com/f1shy-dev)
-- **Web:** [heybereket](https://github.com/heybereket), [f1shy-dev](https://github.com/f1shy-dev), and [samarmohan](https://github.com/samarmohan)
-- **Desktop:** [amitojsingh366](https://github.com/amitojsingh366)
+- **Documentation:** [heybereket](https://github.com/heybereket)
+- **Web:** [heybereket](https://github.com/heybereket) and [f1shy-dev](https://github.com/f1shy-dev)
 - **Design:** [coderinblack08](https://github.com/coderinblack08) and [SamJakob](https://github.com/SamJakob)
-- **API:** [Ongshu777](https://github.com/Ongshu777) and [f1shy-dev](https://github.com/f1shy-dev)
+- **API:** [Ongshu777](https://github.com/Ongshu777), [f1shy-dev](https://github.com/f1shy-dev), and [samarmohan](https://github.com/samarmohan)
 
 ## ⌛ Status
 

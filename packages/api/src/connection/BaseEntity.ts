@@ -6,6 +6,11 @@ type Constructor<T> = { new (): T };
 export class BaseEntity {
   static _entity: EntityData;
 
+  static format(orig: any) {
+    const formatter = this.entity.options?.formatter;
+    return formatter ? formatter(orig) : orig;
+  }
+
   static get entity() {
     return (
       this._entity ||
@@ -19,14 +24,14 @@ export class BaseEntity {
   ): Promise<T> {
     const entity: EntityData = (this as any).entity;
     const snap = entity.collection.doc(id);
-    return getRefData(snap) as any;
+    return (this as any).format(getRefData(snap) as any);
   }
 
   static async find<T extends BaseEntity>(this: Constructor<T>): Promise<T[]> {
     const entity: EntityData = (this as any).entity;
     const all = await entity.collection.get();
     return all.docs.map((doc) => {
-      var data = doc.data();
+      var data = (this as any).format(doc.data());
       if (data.email) delete data.email;
       const obj: any = {
         id: doc.id,
