@@ -2,8 +2,8 @@
 
 ## 🌴 Branches
 
-- `prod` - dont touch, production code
-- `staging` - testing/development; do changes here here
+- `prod` - production ready code
+- `staging` - testing/development
 - `old` - v1.0 of oasis (no longer used)
 
 ## 🧱 Structure
