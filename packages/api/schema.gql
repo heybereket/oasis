@@ -11,6 +11,10 @@ type Comment {
   post: Post!
 }
 
+type Mutation {
+  authenticate(idToken: String!): Boolean!
+}
+
 type Post {
   author: User!
   comments: [Comment!]!
@@ -24,6 +28,10 @@ type Query {
   allPosts: [Post!]!
   allRepos: [Repo!]!
   allUsers: [User!]!
+  getComment(id: String!): Comment
+  getPost(id: String!): Post
+  getRepo(id: String!): Repo
+  getUser(id: String!): User
 }
 
 type Repo {
