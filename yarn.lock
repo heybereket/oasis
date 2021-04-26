@@ -5103,6 +5103,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-react-hooks@npm:latest":
+  version: 4.2.0
+  resolution: "eslint-plugin-react-hooks@npm:4.2.0"
+  peerDependencies:
+    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
+  checksum: 5378d16b5a56431a7a77b56d61464dbbfa343e8607da87b851a6caee44b96e08847147321f5f38de30d20668418691d859f69d9c5262dfb5308856382252096c
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-react@npm:^7.23.2":
   version: 7.23.2
   resolution: "eslint-plugin-react@npm:7.23.2"
@@ -8298,6 +8307,7 @@ fsevents@~2.3.1:
     "@types/eslint": ^7
     "@types/jest": ^26.0.22
     apollo-server-micro: ^2.23.0
+    eslint-plugin-react-hooks: latest
     firebase-admin: ^9.6.0
     npm-run-all: ^4.1.5
     ts-jest: ^26.5.5

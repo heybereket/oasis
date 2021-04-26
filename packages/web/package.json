@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "prettify": "prettier --config .prettierrc --write src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
-    "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
+    "eslint": "yarn run eslint . --ext ts --ext tsx --ext js"
   },
   "dependencies": {
     "@oasis/api": "0.1.0",
@@ -26,6 +26,7 @@
     "@types/node": "^14.14.37",
     "@types/react": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "eslint-plugin-react-hooks": "latest",
     "@typescript-eslint/parser": "^4.21.0",
     "autoprefixer": "^10.0.4",
     "eslint": "^7.24.0",
