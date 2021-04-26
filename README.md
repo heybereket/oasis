@@ -1,9 +1,8 @@
-# Oasis
-#### 😆  A community made by developers, for developers!
+# oasis-sh/oasis
 <p align='left'>
-<img src='https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge' >
-<img src='https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Foasis-sh%2Foasis%2Fbadge%3Fref%3Dstaging&style=for-the-badge' >
-<img src='https://img.shields.io/github/deployments/oasis-sh/oasis/production?logo=vercel&label=build%20status&style=for-the-badge' >
+<img src='https://img.shields.io/badge/License-MIT-blue.svg' >
+<img src='https://github.com/oasis-sh/oasis/actions/workflows/codeql-analysis.yml/badge.svg' >
+<img src='https://img.shields.io/github/deployments/oasis-sh/oasis/production?logo=vercel&label=build%20status' >
 </p>
 
 ## 🌴 Branches
