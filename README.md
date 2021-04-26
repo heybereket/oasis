@@ -1,4 +1,5 @@
-# oasis-sh/oasis
+# Oasis
+#### 😆  A community made by developers, for developers!
 <p align='left'>
 <img src='https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge' >
 <img src='https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Foasis-sh%2Foasis%2Fbadge%3Fref%3Dstaging&style=for-the-badge' >
