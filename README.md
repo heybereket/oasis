@@ -2,8 +2,7 @@
 <p align='left'>
 <img src='https://img.shields.io/badge/License-MIT-blue.svg' >
 <img src='https://github.com/oasis-sh/oasis/actions/workflows/codeql-analysis.yml/badge.svg' >
-<img src='https://img.shields.io/github/license/oasis-sh/oasis' >
-<a href='https://tinyurl.com/mfc7sxtb' > <img src='https://img.shields.io/twitter/url/http/shields.io.svg?style=social' > </a>
+<img src='https://img.shields.io/github/deployments/oasis-sh/oasis/production?logo=vercel&label=build%20status' >
 </p>
 
 ## 🌴 Branches
