@@ -27,7 +27,7 @@ Take a look at our [Documentation](/docs) for more information on how to get sta
 - **Documentation:** [heybereket](https://github.com/heybereket) and [NotReeceHarris](https://github.com/NotReeceHarris)
 - **Web:** [heybereket](https://github.com/heybereket) and [f1shy-dev](https://github.com/f1shy-dev)
 - **Design:** [coderinblack08](https://github.com/coderinblack08) and [SamJakob](https://github.com/SamJakob)
-- **API:** [Ongshu777](https://github.com/Ongshu777), [f1shy-dev](https://github.com/f1shy-dev), [samarmohan](https://github.com/samarmohan), and [NotReeceHarris](https://github.com/NotReeceHarris)
+- **API:** [Ongshu777](https://github.com/Ongshu777), [f1shy-dev](https://github.com/f1shy-dev), [samarmohan](https://github.com/samarmohan), [NotReeceHarris](https://github.com/NotReeceHarris), and [aaronTheZinc](https://github.com/aaronTheZinc)
 
 ## ⌛ Status
 
