@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
+    "gen": "graphql-codegen",
     "build": "graphql-codegen && tsc",
     "watch:gen": "graphql-codegen -w",
     "watch:tsc": "tsc --watch --preserveWatchOutput",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.3",
     "@graphql-codegen/typescript": "^1.22.0",
+    "@graphql-codegen/typescript-document-nodes": "^1.17.11",
     "@graphql-codegen/typescript-operations": "^1.17.15",
     "@graphql-codegen/typescript-react-apollo": "^2.2.4",
     "npm-run-all": "^4.1.5"

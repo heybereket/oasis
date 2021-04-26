@@ -1465,6 +1465,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graphql-codegen/typescript-document-nodes@npm:^1.17.11":
+  version: 1.17.11
+  resolution: "@graphql-codegen/typescript-document-nodes@npm:1.17.11"
+  dependencies:
+    "@graphql-codegen/plugin-helpers": ^1.18.5
+    "@graphql-codegen/visitor-plugin-common": ^1.20.0
+    auto-bind: ~4.0.0
+    tslib: ~2.2.0
+  peerDependencies:
+    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
+  checksum: f2b3211cd85223a9da7f45bc2a09b6fa215ab015b3d7a64fa09b078d4f7b0e69aac179e680c0c1cc9bdd54275e205424caec3f51680e36a3ccfe94ab12170a66
+  languageName: node
+  linkType: hard
+
 "@graphql-codegen/typescript-operations@npm:^1.17.15":
   version: 1.17.15
   resolution: "@graphql-codegen/typescript-operations@npm:1.17.15"
@@ -2076,6 +2090,7 @@ __metadata:
     "@apollo/client": ^3.3.15
     "@graphql-codegen/cli": ^1.21.3
     "@graphql-codegen/typescript": ^1.22.0
+    "@graphql-codegen/typescript-document-nodes": ^1.17.11
     "@graphql-codegen/typescript-operations": ^1.17.15
     "@graphql-codegen/typescript-react-apollo": ^2.2.4
     graphql: ^15.5.0
