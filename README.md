@@ -4,10 +4,7 @@
 <img src='https://github.com/oasis-sh/oasis/actions/workflows/codeql-analysis.yml/badge.svg' >
 <img src='https://img.shields.io/github/license/oasis-sh/oasis' >
 <a href='https://tinyurl.com/mfc7sxtb' > <img src='https://img.shields.io/twitter/url/http/shields.io.svg?style=social' > </a>
-
 </p>
-
----
 
 ## 🌴 Branches
 
