@@ -1,5 +1,5 @@
 <p align='center'>
-<img src='https://i.imgur.com/zDt2hhN.png' > <br>
+<img src='https://user-images.githubusercontent.com/68391329/116074315-89dd0780-a65f-11eb-8dd9-ae40f2fbf0b3.png' > <br> <br>
 <img src='https://img.shields.io/badge/License-MIT-blue.svg' >
 <img src='https://github.com/oasis-sh/oasis/actions/workflows/codeql-analysis.yml/badge.svg' >
 <img src='https://img.shields.io/github/license/oasis-sh/oasis' >
