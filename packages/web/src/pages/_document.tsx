@@ -5,7 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en-GB">
         <Head>
-          <meta name="theme-color" content="#673ab7" />
+          <meta name="theme-color" content="#5C91FC" />
           <meta
             name="Description"
             content="an example of NextJS app with 100% accessible lighthouse score"
