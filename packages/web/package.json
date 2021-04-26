@@ -12,7 +12,7 @@
   "dependencies": {
     "@oasis/api": "0.1.0",
     "@primer/octicons-react": "^13.0.0",
-    "firebase": "^8.3.3",
+    "firebase": "^8.4.2",
     "is-electron": "^2.2.0",
     "next": "latest",
     "react": "^17.0.1",
