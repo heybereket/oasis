@@ -1,4 +1,6 @@
-# oasis-sh/oasis
+# Oasis
+<strong>😆  A community made by developers, for developers!</strong>
+
 <p align='left'>
 <img src='https://img.shields.io/badge/License-MIT-blue.svg' >
 <img src='https://github.com/oasis-sh/oasis/actions/workflows/codeql-analysis.yml/badge.svg' >
@@ -7,9 +9,9 @@
 
 ## 🌴 Branches
 
-- `prod` - production ready code
-- `staging` - testing/development
-- `old` - v1.0 of oasis (no longer used)
+- [`prod`](https://github.com/oasis-sh/oasis/tree/prod) - production ready code
+- [`staging`](https://github.com/oasis-sh/oasis/tree/staging) - testing/development
+- [`old`](https://github.com/oasis-sh/oasis/tree/old) - v1.0 of oasis (no longer used)
 
 ## 🧱 Structure
 
