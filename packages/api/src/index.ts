@@ -9,17 +9,13 @@ const ROOT = process.env.PROJECT_ROOT
 config({ path: ROOT + "/.env" });
 
 import { ApolloServer } from "apollo-server-micro";
-import { buildSchema } from "type-graphql";
-import { getResolvers } from "./resolvers";
 import depthLimit from "graphql-depth-limit";
+import { getSchema } from "./utils/getSchema";
+
+export { getSchema };
 
 export const createApolloServer = async () => {
-  const resolvers: any = await getResolvers();
-  const schema = await buildSchema({
-    resolvers,
-    emitSchemaFile:
-      process.env.NODE_ENV === "development" ? "../api/schema.gql" : false,
-  });
+  const schema = await getSchema();
 
   const server = new ApolloServer({
     schema,
