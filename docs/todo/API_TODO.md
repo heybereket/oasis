@@ -14,4 +14,3 @@
   - [ ] Repos
   - [ ] Users
 - [ ] Pagination for the `all(...)` fields, I'm choosing to do this after they have already been implemented
-- [ ] Possibly keep GQL Playground in Production
