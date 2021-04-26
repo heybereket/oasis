@@ -2,7 +2,7 @@
 <img src='https://i.imgur.com/zDt2hhN.png' > <br>
 <img src='https://img.shields.io/badge/License-MIT-blue.svg' >
 <img src='https://github.com/oasis-sh/oasis/actions/workflows/codeql-analysis.yml/badge.svg' >
-<img src='https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg' >
+<img src='https://img.shields.io/github/license/oasis-sh/oasis' >
 <a href='https://tinyurl.com/mfc7sxtb' > <img src='https://img.shields.io/twitter/url/http/shields.io.svg?style=social' > </a>
 
 </p>
