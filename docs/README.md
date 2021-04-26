@@ -4,7 +4,7 @@
 <br>_First time contributing to Oasis? Look no further! :)_
 
 - [`CONTRIBUTING.md`](guidelines/CONTRIBUTING.md) - Our standards for contributing, here on Github and anywhere else!
-- [`DESIGN_GUDELINES.md`](guidelines/DESIGN_GUDELINES.md) - Our guidelines for the new Oasis front-end design!
+- [`DESIGN_GUDELINES.md`](guidelines/DESIGN_GUIDELINES.md) - Our guidelines for the new Oasis front-end design!
 - [`CODE_OF_CONDUCT.md`](guidelines/CODE_OF_CONDUCT.md) - Our guidelines for the new Oasis front-end design!
 
 **Package Documentation**
