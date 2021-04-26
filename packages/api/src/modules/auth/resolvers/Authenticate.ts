@@ -1,7 +1,7 @@
 import { adminDB } from "../../../utils/admin-db";
 import admin from "../../../utils/firebase-admin";
 import firebaseAdmin from "firebase-admin";
-import { Arg, Mutation, Resolver } from "type-graphql";
+import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { ApolloError } from "apollo-server-errors";
 
 @Resolver()
@@ -38,5 +38,11 @@ export default class AuthenticateResolver {
       console.log(e);
       throw new ApolloError(e.message);
     }
+  }
+
+  // Hello World Query
+  @Query(() => String)
+  helloWorld() {
+    return "Hello World!";
   }
 }
