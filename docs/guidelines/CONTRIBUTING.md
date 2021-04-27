@@ -8,9 +8,9 @@
 
 Once you are setup, you can head to the indivdual docs for the section of Oasis that you're working on!
 
-- [`WEB.md`](packages/WEB.md) - How to get started with running/building the Next.JS frontend.
-- [`API.md`](packages/API.md) - How to get started with running/building the GraphQL backend.
-- [`CLIENT_GQL.md`](packages/CLIENT_GQL.md) - How to get started with running/building the client-side GraphQL hooks.
+- [`WEB.md`](/docs/packages/WEB.md) - How to get started with running/building the Next.JS frontend.
+- [`API.md`](/docs/packages/API.md) - How to get started with running/building the GraphQL backend.
+- [`CLIENT_GQL.md`](/docs/packages/CLIENT_GQL.md) - How to get started with running/building the client-side GraphQL hooks.
 
 ## Next Steps + Useful Info:
 
