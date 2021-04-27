@@ -18,13 +18,13 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-firebase-hooks": "^3.0.4",
-    "zustand": "^3.4.1"
+    "zustand": "^3.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
     "@babel/eslint-parser": "^7.13.14",
-    "@types/node": "^15.0.0",
-    "@types/react": "^17.0.3",
+    "@types/node": "^14.14.37",
+    "@types/react": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^4.21.0",
     "@typescript-eslint/parser": "^4.21.0",
     "autoprefixer": "^10.0.4",
