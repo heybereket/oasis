@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function MacCloseIcon(props: React.SVGProps<SVGSVGElement>) {
+export function MacCloseIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="273"
@@ -18,11 +18,11 @@ function MacCloseIcon(props: React.SVGProps<SVGSVGElement>) {
         cy="59.5"
         r="26.5"
         stroke="currentColor"
-        stroke-width="10"
+        strokeWidth="10"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M7.2 58.426L9.4125 60.4871C11.625 62.5483 16.05 66.6706 20.475 68.2165C24.9 69.7623 29.325 68.7318 33.75 65.64C38.175 62.5483 42.6 57.3954 47.025 56.8801C51.45 56.3648 56.2102 58.426 58.4227 60.4871L60.3 64.6094L50.7348 80.2448L54.6682 79.0081C52.4557 79.0081 51.45 83.1599 47.025 83.1599C42.6 83.1599 38.175 87.4 33.75 87.4C29.325 87.4 24.9 83.1599 20.475 83.1599C16.05 83.1599 11.625 79.0081 9.4125 79.0081L14.5303 83.1599L7.2 72.118V58.426Z"
         fill="currentColor"
       />
