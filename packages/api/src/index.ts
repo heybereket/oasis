@@ -1,6 +1,12 @@
 import "reflect-metadata";
 import { config } from "dotenv";
 import { join, dirname } from "path";
+import { NextApiRequest } from "next";
+
+import {
+  GraphQLRequestContext,
+  GraphQLRequestListener,
+} from "apollo-server-plugin-base";
 
 const ROOT = process.env.PROJECT_ROOT
   ? join(process.env.PROJECT_ROOT, "./packages/api")
@@ -9,23 +15,28 @@ const ROOT = process.env.PROJECT_ROOT
 config({ path: ROOT + "/.env" });
 
 import { ApolloServer } from "apollo-server-micro";
-import depthLimit from "graphql-depth-limit";
 import { getSchema } from "./utils/getSchema";
 
 export { getSchema };
 
-export const createApolloServer = async () => {
+export const createApolloServer = async (req: NextApiRequest) => {
   const schema = await getSchema();
 
   const server = new ApolloServer({
     schema,
-    context: ({ req }) => {
-      return { epic: "gamer" };
-    },
-    validationRules: [
-      (context) => {
-        console.log(context);
-        return depthLimit(3);
+    // context: (c: any) => ({
+    //   ...c,
+    //   cool: "world",
+    // }),
+    plugins: [
+      {
+        requestDidStart(context: GraphQLRequestContext) {
+          return {
+            didResolveOperation(context: GraphQLRequestContext) {
+              console.log(context + "hello");
+            },
+          };
+        },
       },
     ],
     playground: true,

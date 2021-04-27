@@ -1756,7 +1756,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@grpc/grpc-js@npm:^1.0.0, @grpc/grpc-js@npm:~1.2.0":
+"@grpc/grpc-js@npm:^1.0.0":
+  version: 1.3.0
+  resolution: "@grpc/grpc-js@npm:1.3.0"
+  dependencies:
+    "@types/node": ">=12.12.47"
+  checksum: fee412cf8ea4d92ee021eef6ed85e7546536488afcbebfd13978632b39f518b3dd7a5f550b6b4f988c5b4b11437a2bfa51e05aa04cb8848d9766e80e4b902714
+  languageName: node
+  linkType: hard
+
+"@grpc/grpc-js@npm:~1.2.0":
   version: 1.2.12
   resolution: "@grpc/grpc-js@npm:1.2.12"
   dependencies:
@@ -1986,7 +1995,7 @@ __metadata:
     postcss: ^8.1.10
     prettier: 2.2.1
     react: ^17.0.1
-    react-dom: ^17.0.1
+    react-dom: ^17.0.2
     react-firebase-hooks: ^3.0.4
     tailwindcss: ^2.1.2
     typescript: ^4.2.4
@@ -2415,30 +2424,30 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:>=12.12.47, @types/node@npm:^15.0.0":
-  version: 15.0.0
-  resolution: "@types/node@npm:15.0.0"
-  checksum: 9d3ced65feb73444056941cc7bcbbc4885b60fb22ba3c38e1ad26c96909dd914e1d87fa4c22a5dbada8588606c56116bbd6d42569e87513866919b801e314d2e
+  version: 15.0.1
+  resolution: "@types/node@npm:15.0.1"
+  checksum: 4e4fb69394efb224272ad7c6b6dc16a381b97e46a8f3c21d33fec51ef13a4d635f571b446d127eae333ea6a763f304b787f4b3f73e24e1f3b05a21b481900dfb
   languageName: node
   linkType: hard
 
 "@types/node@npm:^10.1.0, @types/node@npm:^10.10.0":
-  version: 10.17.58
-  resolution: "@types/node@npm:10.17.58"
-  checksum: 48412811a6c4f8d2d59a5e299b1600cdb3bdc5011db01f1cdf149f8f5a2f6fa5273370c1ce5eebbad1348a49251e88c680b008cfe09da6bfbb9a16d9aec3ff5a
+  version: 10.17.59
+  resolution: "@types/node@npm:10.17.59"
+  checksum: 558c0e23405e34103c517bdf352f89519001bf0de6f0e14f46ceba77e920c534e67174f309659cf804ccde1cbfdb55c07cdcc6087183f0afb416d0f4815834fb
   languageName: node
   linkType: hard
 
 "@types/node@npm:^13.7.0":
-  version: 13.13.50
-  resolution: "@types/node@npm:13.13.50"
-  checksum: 794a9377f624bba147cd2945daeef42dfca2138e850acaad28cd0ea447ad7cab8686285305708d7e9d1aee28aa8c148183ca2e31cd8d2153d40c85b04d13c57d
+  version: 13.13.51
+  resolution: "@types/node@npm:13.13.51"
+  checksum: 8aef4eb0faf0c4d2139e31efde9f61e5308408071fa77bba8532a73d11f071d8d16b04a1f8c3a1554769f0e6f07b03284a71f197f08f588cc95a7eb3aff6072a
   languageName: node
   linkType: hard
 
 "@types/node@npm:^14.14.37":
-  version: 14.14.42
-  resolution: "@types/node@npm:14.14.42"
-  checksum: a9803d904badfd32fd2efe6efc40e5838a44dc0cb8b415762f890308581167a74f5d8f3e4074720d81490aad6a86ad130661cd9ecb79591aad9b5ee41fca7ad2
+  version: 14.14.43
+  resolution: "@types/node@npm:14.14.43"
+  checksum: b7a9e6df7c2a6f90e783bfe6ef358cc2c3ff4e1dfcea56b83349cd3feefd02a9b6fa54b443983694b4398a06257d871c947abeae03bd0d39fd71981161d61765
   languageName: node
   linkType: hard
 
@@ -2812,14 +2821,14 @@ __metadata:
   linkType: hard
 
 "ajv@npm:^8.0.1":
-  version: 8.1.0
-  resolution: "ajv@npm:8.1.0"
+  version: 8.2.0
+  resolution: "ajv@npm:8.2.0"
   dependencies:
     fast-deep-equal: ^3.1.1
     json-schema-traverse: ^1.0.0
     require-from-string: ^2.0.2
     uri-js: ^4.2.2
-  checksum: d946a17d0f44418863d23282868ce79c51ba3a3ca9cca4eb9a0e66151c9f8cf790febb4a1ffe5a831a52d21639d3e140586736406cdde177a804aebacd45f2ca
+  checksum: 949f891686134c49c9c98c401d29ccd9e0cbd5d2c76163edd21c3c6bea694a4f7e5108fdc0c55b4cc90de85c93a9356fc30b3a7fab222721db3e38c585c61053
   languageName: node
   linkType: hard
 
@@ -8238,6 +8247,7 @@ fsevents@~2.3.1:
     "@types/eslint": ^7
     "@types/jest": ^26.0.23
     apollo-server-micro: ^2.23.0
+    apollo-server-plugin-base: ^0.11.0
     firebase-admin: ^9.6.0
     npm-run-all: ^4.1.5
     ts-jest: ^26.5.5
@@ -9211,7 +9221,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.1":
+"react-dom@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
   dependencies:

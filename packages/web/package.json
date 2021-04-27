@@ -16,7 +16,7 @@
     "is-electron": "^2.2.0",
     "next": "latest",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react-dom": "^17.0.2",
     "react-firebase-hooks": "^3.0.4",
     "zustand": "^3.4.2"
   },
