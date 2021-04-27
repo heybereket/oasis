@@ -34,7 +34,7 @@ fs.readdirSync(join(__dirname, "../public/locales")).forEach((locale) => {
     prettier.format(JSON.stringify(data), {
       parser: "json",
       useTabs: true,
-      config,
+      // config,
     })
   );
 });
