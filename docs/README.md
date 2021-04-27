@@ -6,6 +6,7 @@
 - [`CONTRIBUTING.md`](guidelines/CONTRIBUTING.md) - Our standards for contributing, here on Github and anywhere else!
 - [`DESIGN_GUDELINES.md`](guidelines/DESIGN_GUIDELINES.md) - Our guidelines for the new Oasis front-end design!
 - [`CODE_OF_CONDUCT.md`](guidelines/CODE_OF_CONDUCT.md) - Our guidelines for the new Oasis front-end design!
+- [`SECURITY.md`](guidelines/SECURITY.md) - Our standards for security at Oasis.
 
 **Package Documentation**
 <br>_Get started on running/developing for individual parts of Oasis._
