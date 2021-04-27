@@ -1,6 +1,5 @@
 # Oasis
-
-<strong>😆 A community made by developers, for developers!</strong>
+**💻 The social platform for developers**
 
 <p align='left'>
 <img src='https://img.shields.io/badge/License-MIT-blue.svg' >
