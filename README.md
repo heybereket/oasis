@@ -18,10 +18,10 @@
 
 |               Folder               |        Description        |
 | :--------------------------------: | :-----------------------: |
-|        [web](/packages/web)        |     Next.js Frontend      |
+|        [web](/packages/web)        |      Next.js Frontend     |
 |        [api](/packages/api)        |        GraphQL API        |
 | [client-gql](/packages/client-gql) | Client Side GraphQL Hooks |
-|  [playwright](/packags/playwright) |       Browser Testing     |
+| [playwright](/packages/playwright) |       Browser Testing     |
 
 ## 🚀 Contributions
 
@@ -39,14 +39,12 @@ Take a look at our [Documentation](/docs) for more information on how to get sta
 
 ## ⌛ Status
 
-✅ Early Development: Started building the project. <br>
-✅ Development: Movement/re-write using NextJS/TailwindCSS <br>
-✅ Migration Completion: Finished the migration! <br>
-✅ TypeScript: Converted codebase from JS > TS <br>
+✅ Early Development: Start building a barebones version of the project. <br>
+✅ Migration: Migration to Next.JS and TailwindCSS <br>
+✅ TypeScript: Converted codebase from JS to TS<br>
 ⌛️ GraphQL API: Work on releasing the Oasis API publicly <br>
-⌛️ Redesign/write: 2nd site rewrite/implementation of the new redesign <br>
-⛔︎ Alpha/Beta Testing (mostly trying to fix and solve bugs) <br>
-⛔︎ Early Release: Soft Launch on Twitter <br>
+⌛️ Redesign/write: Implementation of the 2nd re-design, as well as the new path for the project. <br>
+⛔︎ Alpha/Beta Testing: Fixing bugs and testing before the launch <br>
 ⛔︎ Official Launch <br><br>
 
 ## ✍🏻 Code of Conduct
