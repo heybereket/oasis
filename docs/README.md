@@ -13,9 +13,3 @@
 - [`WEB.md`](packages/WEB.md) - How to get started with running/building the Next.JS frontend.
 - [`API.md`](packages/API.md) - How to get started with running/building the GraphQL backend.
 - [`CLIENT_GQL.md`](packages/CLIENT_GQL.md) - How to get started with running/building the client-side GraphQL hooks.
-
-**Other**
-
-- [`API_TODO.md`](todo/API_TODO.md) - The to-do list for the GraphQL backend API.
-- [`WEB_TODO.md`](todo/WEB_TODO.md) - The to-do list for the Next.JS frontend.
-- [`DESKTOP_TODO.md`](todo/DESKTOP_TODO.md) - The to-do list for the Electron desktop app.
