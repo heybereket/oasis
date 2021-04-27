@@ -18,7 +18,6 @@
 
 |               Folder               |        Description        |
 | :--------------------------------: | :-----------------------: |
-|           [docs](/docs)            |       Documentation       |
 |        [web](/packages/web)        |     Next.js Frontend      |
 |        [api](/packages/api)        |        GraphQL API        |
 | [client-gql](/packages/client-gql) | Client Side GraphQL Hooks |
