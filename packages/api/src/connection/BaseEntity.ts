@@ -27,12 +27,30 @@ export class BaseEntity {
     return (this as any).format(getRefData(snap) as any);
   }
 
+  static async paginate<T extends BaseEntity>(
+    this: Constructor<T>,
+    offset: number,
+    limit: number
+  ): Promise<T[]> {
+    const entity: EntityData = (this as any).entity;
+    const all = await entity.collection.get();
+    return all.docs.slice(offset, limit + offset).map((doc) => {
+      var data = (this as any).format(doc.data());
+
+      const obj: any = {
+        id: doc.id,
+        ...data,
+      };
+      return obj as T;
+    });
+  }
+
   static async find<T extends BaseEntity>(this: Constructor<T>): Promise<T[]> {
     const entity: EntityData = (this as any).entity;
     const all = await entity.collection.get();
     return all.docs.map((doc) => {
       var data = (this as any).format(doc.data());
-      if (data.email) delete data.email;
+
       const obj: any = {
         id: doc.id,
         ...data,
