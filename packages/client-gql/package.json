@@ -8,7 +8,7 @@
     "gen": "graphql-codegen",
     "build": "graphql-codegen && tsc",
     "watch:gen": "graphql-codegen -w",
-    "watch:tsc": "tsc --watch --preserveWatchOutput",
+    "watch:tsc": "tsc --watch",
     "dev": "run-p \"watch:gen\" \"watch:tsc\""
   },
   "keywords": [],

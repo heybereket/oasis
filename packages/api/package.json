@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc && node dist/build.js",
-    "watch:tsc": "tsc --watch --preserveWatchOutput",
+    "watch:tsc": "tsc --watch",
     "watch:dev": "nodemon dist/start",
     "dev:server": "run-p \"watch:dev\" \"watch:tsc\"",
     "dev": "yarn run watch:tsc"
