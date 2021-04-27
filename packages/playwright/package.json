@@ -1,7 +1,7 @@
 {
   "name": "@oasis/playwright",
   "version": "1.0.0",
-  "description": "",
+  "description": "Oasis's testing suite.",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
