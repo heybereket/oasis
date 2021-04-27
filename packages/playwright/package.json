@@ -7,7 +7,6 @@
     "build": "tsc",
     "start": "ts-node src/index.ts"
   },
-  "author": "",
   "license": "MIT",
   "dependencies": {
     "playwright": "^1.10.0"
