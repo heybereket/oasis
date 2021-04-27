@@ -1,7 +1,6 @@
 import "reflect-metadata";
 import { config } from "dotenv";
 import { join, dirname } from "path";
-import { NextApiRequest } from "next";
 
 import {
   GraphQLRequestContext,
@@ -19,7 +18,7 @@ import { getSchema } from "./utils/getSchema";
 
 export { getSchema };
 
-export const createApolloServer = async (req: NextApiRequest) => {
+export const createApolloServer = async () => {
   const schema = await getSchema();
 
   const server = new ApolloServer({
@@ -30,7 +29,7 @@ export const createApolloServer = async (req: NextApiRequest) => {
     // }),
     plugins: [
       {
-        requestDidStart(context: GraphQLRequestContext) {
+        requestDidStart() {
           return {
             didResolveOperation(context: GraphQLRequestContext) {
               console.log(context + "hello");
