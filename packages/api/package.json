@@ -29,6 +29,7 @@
     "graphql-depth-limit": "^1.1.0",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "apollo-server-plugin-base": "^0.11.0"
   }
 }
