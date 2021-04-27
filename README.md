@@ -1,5 +1,6 @@
 # Oasis
-<strong>😆  A community made by developers, for developers!</strong>
+
+<strong>😆 A community made by developers, for developers!</strong>
 
 <p align='left'>
 <img src='https://img.shields.io/badge/License-MIT-blue.svg' >
@@ -47,7 +48,6 @@ Take a look at our [Documentation](/docs) for more information on how to get sta
 ⛔︎ Alpha/Beta Testing (mostly trying to fix and solve bugs) <br>
 ⛔︎ Early Release: Soft Launch on Twitter <br>
 ⛔︎ Official Launch <br><br>
-_Key:_ `⌛️ In Progress`, `✅ Done`, `⛔︎ TODO`
 
 ## ✍🏻 Code of Conduct
 
