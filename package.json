@@ -29,6 +29,8 @@
     }
   },
   "lint-staged": {
-    "*": "git add ."
+    "*.{ts,js,tsx}": [
+      "git add ."
+    ]
   }
 }
