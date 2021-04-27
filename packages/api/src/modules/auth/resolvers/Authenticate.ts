@@ -35,7 +35,6 @@ export default class AuthenticateResolver {
 
       return true;
     } catch (e) {
-      console.log(e);
       throw new ApolloError(e.message);
     }
   }

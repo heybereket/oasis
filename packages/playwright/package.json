@@ -1,13 +1,12 @@
 {
   "name": "@oasis/playwright",
   "version": "1.0.0",
-  "description": "",
+  "description": "Oasis's testing suite.",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts"
   },
-  "author": "",
   "license": "MIT",
   "dependencies": {
     "playwright": "^1.10.0"

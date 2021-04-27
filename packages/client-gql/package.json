@@ -1,7 +1,7 @@
 {
   "name": "@oasis/client-gql",
   "version": "1.0.0",
-  "description": "",
+  "description": "Client-Side GraphQL API Hooks for Oasis",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
@@ -11,8 +11,6 @@
     "watch:tsc": "tsc --watch",
     "dev": "run-p \"watch:gen\" \"watch:tsc\""
   },
-  "keywords": [],
-  "author": "",
   "license": "MIT",
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.3",
