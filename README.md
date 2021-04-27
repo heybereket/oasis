@@ -1,5 +1,4 @@
-![image](https://user-images.githubusercontent.com/68391329/116323101-539ca680-a78b-11eb-8661-31e3ff379934.png)
-
+<img width="350" src="https://user-images.githubusercontent.com/68391329/116323101-539ca680-a78b-11eb-8661-31e3ff379934.png"
 
 <p align='left'>
 <img src='https://img.shields.io/badge/License-MIT-blue.svg' >
