@@ -28,13 +28,13 @@ Take a look at our [Documentation](/docs) for more information on how to get sta
 
 ## ⌛ Status
 
-✅ Early Development: Start building a barebones version of the project. <br>
-✅ Migration: Migration to Next.JS and TailwindCSS <br>
-✅ TypeScript: Converted codebase from JS to TS<br>
-⌛️ GraphQL API: Work on releasing the Oasis API publicly <br>
-⌛️ Redesign/write: Implementation of the 2nd re-design, as well as the new path for the project. <br>
-⛔︎ Alpha/Beta Testing: Fixing bugs and testing before the launch <br>
-⛔︎ Official Launch <br><br>
+✅ **Early Development:** Start building a barebones version of the project. <br>
+✅ **Migration:** Migration to Next.JS and TailwindCSS <br>
+✅ **TypeScript:** Converted codebase from JS to TS<br>
+⌛️ **GraphQL API:** Work on releasing the Oasis API publicly <br>
+⌛️ **Redesign/write:** Implementation of the 2nd re-design, as well as the new path for the project. <br>
+⛔︎ **Alpha/Beta Testing:** Fixing bugs and testing before the launch <br>
+⛔︎ **Official Launch:** Releasing the production-ready version of Oasis to the public! <br><br>
 
 ## ✍🏻 Code of Conduct
 
