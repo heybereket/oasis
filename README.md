@@ -21,7 +21,7 @@
 |        [web](/packages/web)        |     Next.js Frontend      |
 |        [api](/packages/api)        |        GraphQL API        |
 | [client-gql](/packages/client-gql) | Client Side GraphQL Hooks |
-|       [playwright](/playwright)    |       Testing       |
+|       [playwright](/playwright)    |       Browser Testing     |
 
 ## 🚀 Contributions
 
