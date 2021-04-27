@@ -2,10 +2,7 @@ import "reflect-metadata";
 import { config } from "dotenv";
 import { join, dirname } from "path";
 
-import {
-  GraphQLRequestContext,
-  GraphQLRequestListener,
-} from "apollo-server-plugin-base";
+import { GraphQLRequestContext } from "apollo-server-plugin-base";
 
 const ROOT = process.env.PROJECT_ROOT
   ? join(process.env.PROJECT_ROOT, "./packages/api")
@@ -23,10 +20,6 @@ export const createApolloServer = async () => {
 
   const server = new ApolloServer({
     schema,
-    // context: (c: any) => ({
-    //   ...c,
-    //   cool: "world",
-    // }),
     plugins: [
       {
         requestDidStart() {
