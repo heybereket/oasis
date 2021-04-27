@@ -1,7 +1,7 @@
 {
   "name": "@oasis/api",
   "version": "0.1.0",
-  "description": "",
+  "description": "Oasis's GraphQL API",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
@@ -11,8 +11,6 @@
     "dev:server": "run-p \"watch:dev\" \"watch:tsc\"",
     "dev": "yarn run watch:tsc"
   },
-  "keywords": [],
-  "author": "",
   "license": "MIT",
   "devDependencies": {
     "@types/graphql-depth-limit": "^1",
