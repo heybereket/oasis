@@ -19,7 +19,15 @@ export const createApolloServer = async () => {
 
   const server = new ApolloServer({
     schema,
-    validationRules: [depthLimit(3)],
+    context: ({ req }) => {
+      return { epic: "gamer" };
+    },
+    validationRules: [
+      (context) => {
+        console.log(context);
+        return depthLimit(3);
+      },
+    ],
     playground: true,
     introspection: true,
   });

@@ -3,6 +3,7 @@
     "rootDir": "generated",
     "outDir": "dist",
     "esModuleInterop": true,
-    "declaration": true
+    "declaration": true,
+    "preserveWatchOutput": true
   }
 }
