@@ -33,6 +33,10 @@ type Query {
   getRepo(id: String!): Repo
   getUser(id: String!): User
   helloWorld: String!
+  paginateComments(limit: Float!, offset: Float!): [Comment!]!
+  paginatePosts(limit: Float!, offset: Float!): [Post!]!
+  paginateRepos(limit: Float!, offset: Float!): [Repo!]!
+  paginateUsers(limit: Float!, offset: Float!): [User!]!
 }
 
 type Repo {

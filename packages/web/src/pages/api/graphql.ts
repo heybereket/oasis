@@ -11,7 +11,7 @@ let realHandler: NextApiHandler;
 
 const handlerWrapper: NextApiHandler = async (req, res) => {
   if (!realHandler) {
-    realHandler = (await createApolloServer(req)).createHandler({
+    realHandler = (await createApolloServer()).createHandler({
       path: '/api/graphql',
     });
   }

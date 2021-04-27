@@ -1,12 +1,11 @@
 import "reflect-metadata";
 import { config } from "dotenv";
 import { join, dirname } from "path";
-import { NextApiRequest } from "next";
 
 import { GraphQLRequestContext } from "apollo-server-plugin-base";
 import { ApolloServer } from "apollo-server-micro";
 import admin from "./utils/firebase-admin";
-
+import { NextApiRequest } from "next";
 const ROOT = process.env.PROJECT_ROOT
   ? join(process.env.PROJECT_ROOT, "./packages/api")
   : dirname(__dirname);
@@ -17,35 +16,39 @@ import { getSchema } from "./utils/getSchema";
 
 export { getSchema };
 
-export const createApolloServer = async (req: NextApiRequest) => {
+export const createApolloServer = async () => {
   const schema = await getSchema();
 
   const server = new ApolloServer({
     schema,
-    context: async (context: any) => {
+    context: async ({ req }: { req: NextApiRequest }) => {
       const authHeader = req.headers.authorization;
-      let data = {
-        ...context,
-      };
+      const socketInfo = req.socket.address();
 
-      if (authHeader && authHeader.startsWith("Bearer ")) {
-        const token = authHeader.substring(7, authHeader.length);
-        data.auth = await admin
-          .auth()
-          .verifyIdToken(token)
-          .catch((e) => {});
+      if (!authHeader || !authHeader.startsWith("Bearer "))
+        return { hasAuth: false, socketInfo };
 
-        console.log(data.auth);
-      }
-
-      return data;
+      const token = authHeader.substring(7, authHeader.length);
+      return await admin
+        .auth()
+        .verifyIdToken(token)
+        .then((data) => {
+          return { hasAuth: true, ...data, socketInfo };
+        })
+        .catch(() => {
+          return { hasAuth: false, socketInfo };
+        });
     },
     plugins: [
       {
-        requestDidStart(context: GraphQLRequestContext) {
+        requestDidStart() {
           return {
             didResolveOperation(context: GraphQLRequestContext) {
-              // console.log(context);
+              const reqData = context.context;
+              /* {
+               hasAuth: false,
+               socketInfo: { address: '127.0.0.1', family: 'IPv4', port: 3000 },
+              } */
             },
           };
         },
