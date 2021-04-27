@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function MacCloseIcon(props: React.SVGProps<SVGSVGElement>) {
+export default function MacCloseIcon(): any {
   return (
     <svg
       width="273"
@@ -29,5 +29,3 @@ export function MacCloseIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-
-export default MacCloseIcon;
