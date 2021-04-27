@@ -12,15 +12,6 @@
 - [`staging`](https://github.com/oasis-sh/oasis/tree/staging) - testing/development
 - [`old`](https://github.com/oasis-sh/oasis/tree/old) - v1.0 of oasis (no longer used)
 
-## 🧱 Structure
-
-|               Folder               |        Description        |
-| :--------------------------------: | :-----------------------: |
-|        [web](/packages/web)        |      Next.js Frontend     |
-|        [api](/packages/api)        |        GraphQL API        |
-| [client-gql](/packages/client-gql) | Client Side GraphQL Hooks |
-| [playwright](/packages/playwright) |       Browser Testing     |
-
 ## 🚀 Contributions
 
 Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let us know what you are working on first that way we don't overwrite each other or have many people adding the same feature/solving the same issue. <br/>
