@@ -18,6 +18,7 @@ export const Navbar: React.FC = () => {
         <li>
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://github.com/oasis-sh/oasis"
             className="hover:text-gray-200"
           >
@@ -27,6 +28,7 @@ export const Navbar: React.FC = () => {
         <li>
           <a
             target="_blank"
+            rel="noreferrer"
             href="https://discord.com/invite/qamstHxeAW"
             className="hover:text-gray-200 flex items-center"
           >
