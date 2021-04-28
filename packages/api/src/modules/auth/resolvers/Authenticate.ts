@@ -28,7 +28,6 @@ export default class AuthenticateResolver {
         email: decodedToken.email,
         avatar: decodedToken.picture,
         name: githubData.name,
-        tag: generatedTag,
         bio: null,
         // To avoid variable naming conflicts in the entities,
         // we use an "_" before any relational data fields
@@ -45,6 +44,7 @@ export default class AuthenticateResolver {
       if (!doc.exists)
         userData.createdAt = firebaseAdmin.firestore.Timestamp.now();
         userData.verified = false;
+        userData.tag = generatedTag;
 
       await docRef.set(userData, { merge: true });
 
