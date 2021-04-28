@@ -12,6 +12,7 @@ export default class AuthenticateResolver {
     try {
       const decodedToken = await admin.auth().verifyIdToken(idToken);
 
+      // Fetching GitHub API 
       const res = await fetch(
         `https://api.github.com/user/${decodedToken.firebase.identities["github.com"][0]}`
       );
@@ -20,11 +21,13 @@ export default class AuthenticateResolver {
       const docRef = adminDB.doc(`users/${decodedToken.uid}`);
       const doc = await docRef.get();
 
+      // Generate random number (# of digits is customizable)
       const generatedNumber = (n = 10) => {
         let multiplier = Math.pow(10, n - 1)
         return Math.floor(1 * multiplier + Math.random() * 9 * multiplier);
       }
 
+      // Get GitHub User Data and store in Firebase
       const userData: FirebaseFirestore.DocumentData = {
         uid: decodedToken.uid,
         email: decodedToken.email,
@@ -37,12 +40,14 @@ export default class AuthenticateResolver {
         _activity: [],
       };
 
+      // Check if username contains a bad word
       if (badWords.includes(githubData.login)){
         userData.username = `${githubData.login}${generatedNumber(6)}`
       } else {
         userData.username = `${githubData.login}`
       }
 
+      // Add specific fields only if not already existed
       if (!doc.exists)
         userData.createdAt = firebaseAdmin.firestore.Timestamp.now();
         userData.verified = false;
