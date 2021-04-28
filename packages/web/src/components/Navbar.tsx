@@ -7,7 +7,7 @@ export const Navbar: React.FC = () => {
     <nav className="flex items-center justify-between py-8">
       <Link href="/">
         <img
-          src="/static/oasis-logo.png"
+          src="/static/oasis-logo.svg"
           alt="Oasis Logo"
           className="w-60"
           width="210"
