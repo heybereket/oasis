@@ -33,7 +33,7 @@ export const createApolloServer = async () => {
       const token = authHeader.substring(7, authHeader.length);
 
       try {
-        const data = admin.auth().verifyIdToken(token);
+        const data = await admin.auth().verifyIdToken(token);
         return { hasAuth: true, ...data, socketInfo };
       } catch (e) {
         return { hasAuth: false, socketInfo };
