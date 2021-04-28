@@ -9,6 +9,11 @@ export interface EntityOptions {
    * Deserialize the firebase document data for the entity
    */
   deserialize?: (orig: any) => any;
+
+  /**
+   * Serialize the firebase document data for the entity
+   */
+  serialize?: (orig: any) => any;
 }
 
 export interface EntityData {
