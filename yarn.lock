@@ -4346,12 +4346,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"colors@npm:~0.6.0-1":
+  version: 0.6.2
+  resolution: "colors@npm:0.6.2"
+  checksum: aff80ae334d8cb84c48b24696d55e0d18199abdc1a6f814191de28733c6b3cbd5bd3f66a9154bae049c4e5c84edf2c1d6cca16981d588e0a6cf0fd72e69d0c36
+  languageName: node
+  linkType: hard
+
 "combined-stream@npm:^1.0.8":
   version: 1.0.8
   resolution: "combined-stream@npm:1.0.8"
   dependencies:
     delayed-stream: ~1.0.0
   checksum: 5791ce7944530f0db74a97e77ea28b6fdbf89afcf038e41d6b4195019c4c803cd19ed2905a54959e5b3830d50bd5d6f93c681c6d3aaea8614ad43b48e62e9d65
+  languageName: node
+  linkType: hard
+
+"commander@npm:2.9.0":
+  version: 2.9.0
+  resolution: "commander@npm:2.9.0"
+  dependencies:
+    graceful-readlink: ">= 1.0.0"
+  checksum: 9b1fe7000d68e718b0b97b9f09626645cf833a5d8e5f29d409e731892170db201b71af6e7ff307d4dc327cd3cf26eb335cecf867ef91a9df91e61923511d8ebd
   languageName: node
   linkType: hard
 
@@ -4366,6 +4382,13 @@ __metadata:
   version: 6.2.1
   resolution: "commander@npm:6.2.1"
   checksum: 47856aae6f194404122e359d8463e5e1a18f7cbab26722ce69f1379be8514bd49a160ef81a983d3d2091e3240022643354101d1276c797dcdd0b5bfc3c3f04a3
+  languageName: node
+  linkType: hard
+
+"commander@npm:~2.1.0":
+  version: 2.1.0
+  resolution: "commander@npm:2.1.0"
+  checksum: 1ebea955cd86e27127906fca80e1b54193938617a4bb0e8f040a6aec3cbfceab718b0d54039d3fab9989c1cdf6a6148cfa51cac27522e7a2bb0340625a68aea7
   languageName: node
   linkType: hard
 
@@ -5880,6 +5903,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"findup@npm:0.1.5":
+  version: 0.1.5
+  resolution: "findup@npm:0.1.5"
+  dependencies:
+    colors: ~0.6.0-1
+    commander: ~2.1.0
+  bin:
+    findup: bin/findup.js
+  checksum: 9bb521caafc2833648b14c8567d323371e2b9de764e165b39baeaf225e6b11437226657f132442360daa8130a61111c1479f27cb94a8c46bcd1ab63e56219739
+  languageName: node
+  linkType: hard
+
 "firebase-admin@npm:^9.7.0":
   version: 9.7.0
   resolution: "firebase-admin@npm:9.7.0"
@@ -6215,6 +6250,20 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"ghooks@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "ghooks@npm:2.0.4"
+  dependencies:
+    findup: 0.1.5
+    lodash.clone: 4.5.0
+    manage-path: 2.0.0
+    opt-cli: 1.5.1
+    path-exists: 3.0.0
+    spawn-command: 0.0.2
+  checksum: 3240659c774c18608e36529578516e2e8f52048cf03d49a7682a771ec37b9bd644a0ce4a9527e77b543e0574d8c8d4ecb87d3722f66b7d6f41190fa3608589be
+  languageName: node
+  linkType: hard
+
 "glob-base@npm:^0.3.0":
   version: 0.3.0
   resolution: "glob-base@npm:0.3.0"
@@ -6448,6 +6497,13 @@ fsevents@~2.3.1:
   version: 4.2.6
   resolution: "graceful-fs@npm:4.2.6"
   checksum: 84d39c7756892553da990a9db7e45f844b3309b37b5a00174cbb4748476f2250c54f24594d4d252f64f085c65c2fdac7c809419bf6d55f0e6e42eb07ac0f5bf2
+  languageName: node
+  linkType: hard
+
+"graceful-readlink@npm:>= 1.0.0":
+  version: 1.0.1
+  resolution: "graceful-readlink@npm:1.0.1"
+  checksum: a0675771561e8f8401ce4f8feddcc5bc3fc7370d7cc95c9dab3fff8e4bb6f69316072267075e2e54ecaeb2ba72019cf9bd334732cdb1582b5a0642dd33b5b0e0
   languageName: node
   linkType: hard
 
@@ -6898,15 +6954,6 @@ fsevents@~2.3.1:
   dependencies:
     ms: ^2.0.0
   checksum: 4a08769434132a229a6153e77c869a9fe7132dc003d90119d54958e7b75feb65a3c4eca19fb18921568878ac455b6f399013279ad33248d94bd61a25def1fdda
-  languageName: node
-  linkType: hard
-
-"husky@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "husky@npm:6.0.0"
-  bin:
-    husky: lib/bin.js
-  checksum: 61e1f7f53f3c969d361c2a1d4ed8018b9447406ea6cd644a2526d18b76877d135001d8cbd48a1d201fc1614d96995e691ecd2b82a8d8513a6b4a313da1188ccd
   languageName: node
   linkType: hard
 
@@ -8194,10 +8241,33 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"lodash._baseclone@npm:~4.5.0":
+  version: 4.5.7
+  resolution: "lodash._baseclone@npm:4.5.7"
+  checksum: aab5ec7e60af5bf87deb7fffc14664ec3a54dcc7eb1221fe4fc3a7af9dc3ffce261ef93dde2086c5d64025fd24eaa1cc4f236a471dbed3eed8e2ae3ab2cbca05
+  languageName: node
+  linkType: hard
+
 "lodash.camelcase@npm:^4.3.0":
   version: 4.3.0
   resolution: "lodash.camelcase@npm:4.3.0"
   checksum: 3cb674ed3b37bb698f2ec5a1c3f607d157279f3015877132e8be5c22cf8048988cb9bf1e61c90dbefea3895a459c095773cc266a5b1a9f4202bcd062b3983e37
+  languageName: node
+  linkType: hard
+
+"lodash.clone@npm:4.3.2":
+  version: 4.3.2
+  resolution: "lodash.clone@npm:4.3.2"
+  dependencies:
+    lodash._baseclone: ~4.5.0
+  checksum: 1958c44994a75a4225caf3637444e0f06e93db946eb41296d1a847e3ccc18532c45c73998249f1618b59d6d614ecb7f309318f46bc3dd321bcaa8c52c55cd126
+  languageName: node
+  linkType: hard
+
+"lodash.clone@npm:4.5.0":
+  version: 4.5.0
+  resolution: "lodash.clone@npm:4.5.0"
+  checksum: c506ed9675f21cccf0107068c411fa1deffe3756b1ffd91f00093268ddf494fd9b442bd28114844d33374da959986de3c97f3c125ff636510e1bad694bbf73be
   languageName: node
   linkType: hard
 
@@ -8464,6 +8534,13 @@ fsevents@~2.3.1:
     socks-proxy-agent: ^5.0.0
     ssri: ^8.0.0
   checksum: 0847aca9a33544ffe153346343756edfb8065ee6497675c50e99a8b8252bbce4a574b5a2d008e8004de5f1c235205e9c7f2889adc68a8d2019691b4b66f223f4
+  languageName: node
+  linkType: hard
+
+"manage-path@npm:2.0.0":
+  version: 2.0.0
+  resolution: "manage-path@npm:2.0.0"
+  checksum: eceb7720a9a042f66eb40cf984790435b0c6779dc20df48d7522ccc9a7ce367397f73199ccfd63cd52b9efbaadbfd7cd79508c1e6d58af1b38b4c23e46dea1b8
   languageName: node
   linkType: hard
 
@@ -9172,7 +9249,7 @@ fsevents@~2.3.1:
     "@types/jest": ^26.0.23
     commitizen: ^4.2.3
     cz-conventional-changelog: 3.3.0
-    husky: ^6.0.0
+    ghooks: ^2.0.4
     lint-staged: ^10.5.4
     npm-run-all: ^4.1.5
     ts-jest: ^26.5.5
@@ -9337,6 +9414,20 @@ fsevents@~2.3.1:
   dependencies:
     mimic-fn: ^2.1.0
   checksum: e425f6caeb20cf2598ffece94be5663932e34d074f1631b682b13d5f01cc1e0712a7dc711eff1706bb5a5aaab8a52e37bd5edcf560334e3222219d7e8b09c21c
+  languageName: node
+  linkType: hard
+
+"opt-cli@npm:1.5.1":
+  version: 1.5.1
+  resolution: "opt-cli@npm:1.5.1"
+  dependencies:
+    commander: 2.9.0
+    lodash.clone: 4.3.2
+    manage-path: 2.0.0
+    spawn-command: 0.0.2-1
+  bin:
+    opt: bin/index.js
+  checksum: 251f14198ab34e1c973819bc91e55f8194ab45f1417968ea89b187568837e0af0af84c1f4e704f983b3c074781f16dfacfaa42acf24a9c2e48785b0a365b2ab3
   languageName: node
   linkType: hard
 
@@ -9585,6 +9676,13 @@ fsevents@~2.3.1:
     dot-case: ^3.0.4
     tslib: ^2.0.3
   checksum: 4f4a2ac7f621e70a531c7ece246a410ce000f0cd279086f3cbaa9d28fb912f36fb4b4e9f524a535bf1975b6a404a35851c7b463d0453de4b5e0ecf69d4b8aed3
+  languageName: node
+  linkType: hard
+
+"path-exists@npm:3.0.0":
+  version: 3.0.0
+  resolution: "path-exists@npm:3.0.0"
+  checksum: 09683e92bafb5657838217cce04e4f2f0530c274bc357c995c3231461030566e9f322b9a8bcc1ea810996e250d9a293ca36dd78dbdd6bfbee42e85a94772d6d5
   languageName: node
   linkType: hard
 
@@ -11076,6 +11174,20 @@ resolve@^2.0.0-next.3:
   version: 0.6.1
   resolution: "source-map@npm:0.6.1"
   checksum: 8647829a0611724114022be455ca1c8a2c8ae61df81c5b3667d9b398207226a1e21174fb7bbf0b4dbeb27ac358222afb5a14f1c74a62a62b8883b012e5eb1270
+  languageName: node
+  linkType: hard
+
+"spawn-command@npm:0.0.2":
+  version: 0.0.2
+  resolution: "spawn-command@npm:0.0.2"
+  checksum: 961fb1551f2d5848509ec661f639c515e582034b010724fcaad6949148e21c50226e30889dd710a70dce25c4ba43437665aad621fc37c0f8a75fa9ec3e46a69f
+  languageName: node
+  linkType: hard
+
+"spawn-command@npm:0.0.2-1":
+  version: 0.0.2-1
+  resolution: "spawn-command@npm:0.0.2-1"
+  checksum: 9e039aadec9c3ca3a1469827664f2e223711dc2fd7fe01458e4b1bdc2ca710fe87d1b1dae8f6798380211fffe9a1619dedf12d983abe57554148395a9e2062a5
   languageName: node
   linkType: hard
 
