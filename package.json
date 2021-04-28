@@ -9,7 +9,7 @@
     "dev:api": "yarn workspace @oasis/api dev",
     "dev:api:server": "yarn workspace @oasis/api dev:server",
     "dev:gql": "yarn workspace @oasis/client-gql dev",
-    "build": "yarn plugin import workspace-tools && yarn workspaces foreach -p run build",
+    "build": "yarn plugin import workspace-tools && yarn workspaces foreach --exclude @oasis/playwright -p run build",
     "dev": "run-p -l \"dev:web\" \"dev:api\" \"dev:gql\"",
     "commit": "git add . && cz && git push"
   },
