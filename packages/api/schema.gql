@@ -21,6 +21,9 @@ type Post {
   dislikes: Int!
   id: String!
   likes: Int!
+  message: String!
+  title: String!
+  topics: [String!]!
 }
 
 type Query {
