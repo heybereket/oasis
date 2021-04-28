@@ -1,8 +1,9 @@
 import { adminDB } from "../../../utils/admin-db";
 import admin from "../../../utils/firebase-admin";
 import firebaseAdmin from "firebase-admin";
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Mutation, Resolver } from "type-graphql";
 import { ApolloError } from "apollo-server-errors";
+var badWords = require('badwords/array');
 
 @Resolver()
 export default class AuthenticateResolver {
@@ -23,7 +24,6 @@ export default class AuthenticateResolver {
         uid: decodedToken.uid,
         email: decodedToken.email,
         avatar: decodedToken.picture,
-        username: githubData.login,
         name: githubData.name,
         bio: null,
         // To avoid variable naming conflicts in the entities,
@@ -31,6 +31,12 @@ export default class AuthenticateResolver {
         _posts: [],
         _activity: [],
       };
+
+      if (badWords.includes(githubData.login)){
+        userData.username = `${githubData.login}1234`
+      } else {
+        userData.username = githubData.login
+      }
 
       if (!doc.exists)
         userData.createdAt = firebaseAdmin.firestore.Timestamp.now();

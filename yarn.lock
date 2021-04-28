@@ -1976,6 +1976,7 @@ __metadata:
     "@types/graphql-depth-limit": ^1
     apollo-server-micro: ^2.23.0
     apollo-server-plugin-base: ^0.11.0
+    badwords: ^1.0.0
     class-validator: ^0.13.1
     dotenv: ^8.2.0
     firebase-admin: ^9.7.0
@@ -3522,6 +3523,13 @@ __metadata:
   version: 1.0.2
   resolution: "backo2@npm:1.0.2"
   checksum: 72f19a0fd2b573f5504adf1f2e74e7658eec000e7732ebd5f622b6b1d520187277a5e8310787906455d02fcf915f35c5c48e54c997bed1a60b95355db8f2ccab
+  languageName: node
+  linkType: hard
+
+"badwords@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "badwords@npm:1.0.0"
+  checksum: 807a8bc9de15163f66f02c82bb48166fa72f9f2d016f89ce510d36c14e189e644272a89f64231c2bbb39801409b29f8e2bf7a9cecd5f52405cf75a1aae8cf7f4
   languageName: node
   linkType: hard
 
