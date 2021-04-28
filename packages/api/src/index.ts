@@ -1,16 +1,18 @@
-import "reflect-metadata";
-import { config } from "dotenv";
 import { join, dirname } from "path";
+import { config } from "dotenv";
 
-import { GraphQLRequestContext } from "apollo-server-plugin-base";
-import { ApolloServer } from "apollo-server-micro";
-import admin from "./utils/firebase-admin";
-import { NextApiRequest } from "next";
 const ROOT = process.env.PROJECT_ROOT
   ? join(process.env.PROJECT_ROOT, "./packages/api")
   : dirname(__dirname);
 
 config({ path: ROOT + "/.env" });
+
+import "reflect-metadata";
+
+import { GraphQLRequestContext } from "apollo-server-plugin-base";
+import { ApolloServer } from "apollo-server-micro";
+import admin from "./utils/firebase-admin";
+import { NextApiRequest } from "next";
 
 import { getSchema } from "./utils/getSchema";
 
