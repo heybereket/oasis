@@ -7,7 +7,7 @@ export class BaseEntity {
   static _entity: EntityData;
 
   static deserialize(orig: any) {
-    const formatter = this.entity.options?.formatter;
+    const formatter = this.entity.options?.deserialize;
     return formatter ? formatter(orig) : orig;
   }
 

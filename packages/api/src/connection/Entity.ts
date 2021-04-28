@@ -8,7 +8,7 @@ export interface EntityOptions {
   /**
    * Format the firebase document data for the entity
    */
-  formatter?: (orig: any) => any;
+  deserialize?: (orig: any) => any;
 }
 
 export interface EntityData {
