@@ -21,12 +21,11 @@ export default class AuthenticateResolver {
 
       const userData: FirebaseFirestore.DocumentData = {
         uid: decodedToken.uid,
+        email: decodedToken.email,
         avatar: decodedToken.picture,
         username: githubData.login,
         name: githubData.name,
-        bio: githubData.bio,
-        twitter: githubData.twitter_username,
-        link: githubData.blog,
+        bio: null,
         // To avoid variable naming conflicts in the entities,
         // we use an "_" before any relational data fields
         _posts: [],
