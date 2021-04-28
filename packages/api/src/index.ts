@@ -65,9 +65,8 @@ export const createApolloServer = async () => {
                 query: context.document,
               });
 
-              getDepth(validationContext, (depths) => {});
-              // console.log(depths)
-              // console.log(`Complexity: ${complexity}`);
+              getDepth(validationContext, (depths) => console.log(depths));
+              console.log(`Complexity: ${complexity}`);
             },
           };
         },
