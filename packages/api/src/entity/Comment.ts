@@ -10,6 +10,9 @@ export default class Comment extends BaseEntity {
   @Field()
   id: string;
 
+  @Field()
+  content: string;
+
   @Field(() => Int)
   likes: number;
 
