@@ -40,10 +40,22 @@ type Query {
 }
 
 type Repo {
-  createdAt: String!
+  active: Boolean!
+
+  """
+  Time when the repo was added (the number of milliseconds passed since Unix epoch 1970-01-01T00:00:00Z)
+  """
+  date_added: String!
+  desc: String!
+  full_name: String!
+  github_owner: String!
   id: ID!
-  name: String
+  issues: Float!
+  language: String!
+  name: String!
   owner: User
+  stars: Float!
+  url: String!
 }
 
 type User {
