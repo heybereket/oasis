@@ -38,10 +38,4 @@ export default class AuthenticateResolver {
       throw new ApolloError(e.message);
     }
   }
-
-  // Hello World Query
-  @Query(() => String)
-  helloWorld() {
-    return "Hello World!";
-  }
 }
