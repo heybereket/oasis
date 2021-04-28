@@ -4,14 +4,14 @@ import { BaseEntity, Entity } from "../connection";
 import Repo from "./Repo";
 import Post from "./Post";
 
-const formatter = (orig: any) => ({
+const deserialize = (orig: any) => ({
   ...orig,
   ...orig.sensitiveData,
   ...orig.extraData,
 });
 
 @ObjectType()
-@Entity("users", { formatter })
+@Entity("users", { deserialize })
 export default class User extends BaseEntity {
   @Field(() => ID)
   id: string;

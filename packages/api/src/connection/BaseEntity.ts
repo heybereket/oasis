@@ -6,8 +6,8 @@ type Constructor<T> = { new (): T };
 export class BaseEntity {
   static _entity: EntityData;
 
-  static format(orig: any) {
-    const formatter = this.entity.options?.formatter;
+  static deserialize(orig: any) {
+    const formatter = this.entity.options?.deserialize;
     return formatter ? formatter(orig) : orig;
   }
 
@@ -24,7 +24,7 @@ export class BaseEntity {
   ): Promise<T> {
     const entity: EntityData = (this as any).entity;
     const snap = entity.collection.doc(id);
-    return (this as any).format(getRefData(snap) as any);
+    return (this as any).deserialize(getRefData(snap) as any);
   }
 
   static async paginate<T extends BaseEntity>(
@@ -35,7 +35,7 @@ export class BaseEntity {
     const entity: EntityData = (this as any).entity;
     const all = await entity.collection.get();
     return all.docs.slice(offset, limit + offset).map((doc) => {
-      var data = (this as any).format(doc.data());
+      var data = (this as any).deserialize(doc.data());
 
       const obj: any = {
         id: doc.id,
@@ -49,7 +49,7 @@ export class BaseEntity {
     const entity: EntityData = (this as any).entity;
     const all = await entity.collection.get();
     return all.docs.map((doc) => {
-      var data = (this as any).format(doc.data());
+      var data = (this as any).deserialize(doc.data());
 
       const obj: any = {
         id: doc.id,
