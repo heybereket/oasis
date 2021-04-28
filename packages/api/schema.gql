@@ -5,6 +5,7 @@
 
 type Comment {
   author: User!
+  content: String!
   dislikes: Int!
   id: String!
   likes: Int!
