@@ -1982,6 +1982,7 @@ __metadata:
     firebase-admin: ^9.7.0
     graphql: ^15.5.0
     graphql-depth-limit: ^1.1.0
+    graphql-query-complexity: ^0.8.0
     nodemon: ^2.0.7
     npm-run-all: ^4.1.5
     reflect-metadata: ^0.1.13
@@ -2035,7 +2036,8 @@ __metadata:
     eslint-plugin-react: ^7.23.2
     eslint-plugin-react-hooks: latest
     firebase: ^8.4.2
-    next: ^10.2.0
+    graphql-cost-analysis: ^1.0.3
+    next: latest
     next-secure-headers: ^2.2.0
     postcss: ^8.1.10
     prettier: 2.2.1
@@ -3659,6 +3661,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"brackets2dots@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "brackets2dots@npm:1.1.0"
+  checksum: da2c52ab93d76cf3d4a4df7b40af66f7943f88beed0ae9471da35a4babb68ce6278c326ee070bcca244450d9c8fc669b1776431cff36834822969114c9bb0b74
+  languageName: node
+  linkType: hard
+
 "brorand@npm:^1.0.1, brorand@npm:^1.1.0":
   version: 1.1.0
   resolution: "brorand@npm:1.1.0"
@@ -4740,6 +4749,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"curry2@npm:^1.0.0":
+  version: 1.0.3
+  resolution: "curry2@npm:1.0.3"
+  dependencies:
+    fast-bind: ^1.0.0
+  checksum: 612ac89ad49b43d4254761a219fbcd1f1a8ed215c32c8804d173a9ed96d632f668ab7b6b9fcca90bfd6a448adee92dcb4871da162dcec2b8fa89c62b94090391
+  languageName: node
+  linkType: hard
+
 "cz-conventional-changelog@npm:3.2.0":
   version: 3.2.0
   resolution: "cz-conventional-changelog@npm:3.2.0"
@@ -4811,7 +4829,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:2, debug@npm:^2.2.0, debug@npm:^2.3.3":
+"debug@npm:2, debug@npm:^2.2.0, debug@npm:^2.3.3, debug@npm:^2.5.2":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
   dependencies:
@@ -5134,6 +5152,13 @@ __metadata:
   version: 8.2.0
   resolution: "dotenv@npm:8.2.0"
   checksum: 16cb89cbd7b98b053899b8aba8c5044c8fb61a2db8a81fe70360b75035fce5fed53bd7a34d772be717d0880c0321122a4c09423f518025e1b52d96791521b1a7
+  languageName: node
+  linkType: hard
+
+"dotsplit.js@npm:^1.0.3":
+  version: 1.1.0
+  resolution: "dotsplit.js@npm:1.1.0"
+  checksum: ff714abaccd03dbd6d32ff3c60b245b090059699dac1e583ee6e68c0860205e9504128f1253238585504566a78df498c7934891c71947d8cd8ab698bdd23484b
   languageName: node
   linkType: hard
 
@@ -5659,6 +5684,13 @@ __metadata:
   bin:
     extract-zip: cli.js
   checksum: 1217e48d659bf589a7ffaf6fa01fd868d619d1be46ef3dd6526cd17614a2d3a7d1bd5d5ebef81461000cd86fb32a0c9827b466650e98d55efc1fb5ee85f4716a
+  languageName: node
+  linkType: hard
+
+"fast-bind@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "fast-bind@npm:1.0.0"
+  checksum: 5fba0923dc9f8c64a66947995fac45e9ed9ca03665971a1fab233cf55db130c8d01af972bcb4e209260d74e89893a4b1d1301f050bd0fffb7713f64920670519
   languageName: node
   linkType: hard
 
@@ -6456,6 +6488,17 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"graphql-cost-analysis@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "graphql-cost-analysis@npm:1.0.3"
+  dependencies:
+    selectn: ^1.1.2
+  peerDependencies:
+    graphql: ">=0.11.7"
+  checksum: 910c8dd35505ec42b61963f35e0b223a94c398c5f245f2b297520874e3fcb6cc6032713055b82f0bf23188393afecebe0898e649a29958ba0eeae9f0a60ff557
+  languageName: node
+  linkType: hard
+
 "graphql-depth-limit@npm:^1.1.0":
   version: 1.1.0
   resolution: "graphql-depth-limit@npm:1.1.0"
@@ -6488,6 +6531,17 @@ fsevents@~2.3.1:
   peerDependencies:
     graphql: ^0.13.0 || ^14.0.0 || ^15.0.0
   checksum: dfde1b07aefbc8747d1f6556ad9ff4c9dbd636b10c798c5bb82fbdc80ea1f89674960ed955724b80e8b92f521242375812324dbaf6379db996b2c3dfce285ddf
+  languageName: node
+  linkType: hard
+
+"graphql-query-complexity@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "graphql-query-complexity@npm:0.8.0"
+  dependencies:
+    lodash.get: ^4.4.2
+  peerDependencies:
+    graphql: ^0.13.0 || ^14.0.0 || ^15.0.0
+  checksum: 10f01503bf34dfa25745b3b8b8c5fab377c80c4aae16c399a93884c12b99bd04f3df2c7b0de25bd2a0f0b1cd90d4c056bbc64daeafeb9c7c07297617964a3f1a
   languageName: node
   linkType: hard
 
@@ -8724,7 +8778,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"next@npm:^10.2.0":
+"next@npm:latest":
   version: 10.2.0
   resolution: "next@npm:10.2.0"
   dependencies:
@@ -10555,6 +10609,18 @@ resolve@^2.0.0-next.3:
   version: 1.1.0
   resolution: "scuid@npm:1.1.0"
   checksum: 04c2383a8e9c88dbe27382ab46e580f6dcfe7b73080a57373597cca324f72ae31808e9f0f9b1c62f18be204ce1bfd55270125b4e88ae2b840bf3517b2f1b6b50
+  languageName: node
+  linkType: hard
+
+"selectn@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "selectn@npm:1.1.2"
+  dependencies:
+    brackets2dots: ^1.1.0
+    curry2: ^1.0.0
+    debug: ^2.5.2
+    dotsplit.js: ^1.0.3
+  checksum: 52804d05434b042e9204b16087793fe5708ab19362f1c48092a33348ebc0c480f02f663a3911701294eaba3d16de21eefcb1ca8a7d7fff05fe15bf00aa054b60
   languageName: node
   linkType: hard
 

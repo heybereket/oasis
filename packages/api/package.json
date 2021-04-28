@@ -27,6 +27,7 @@
     "dotenv": "^8.2.0",
     "firebase-admin": "^9.7.0",
     "graphql-depth-limit": "^1.1.0",
+    "graphql-query-complexity": "^0.8.0",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1",
     "typescript": "^4.2.4"
