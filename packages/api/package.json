@@ -24,7 +24,7 @@
     "apollo-server-plugin-base": "^0.11.0",
     "class-validator": "^0.13.1",
     "dotenv": "^8.2.0",
-    "firebase-admin": "^9.6.0",
+    "firebase-admin": "^9.7.0",
     "graphql-depth-limit": "^1.1.0",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1",
