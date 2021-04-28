@@ -20,12 +20,17 @@ export default class AuthenticateResolver {
       const doc = await docRef.get();
 
       const userData: FirebaseFirestore.DocumentData = {
-        email: decodedToken.email,
+        uid: decodedToken.uid,
+        avatar: decodedToken.picture,
+        username: githubData.login,
+        name: githubData.name,
+        bio: githubData.bio,
+        twitter: githubData.twitter_username,
+        link: githubData.blog,
         // To avoid variable naming conflicts in the entities,
         // we use an "_" before any relational data fields
         _posts: [],
         _activity: [],
-        username: githubData.login,
       };
 
       if (!doc.exists)
