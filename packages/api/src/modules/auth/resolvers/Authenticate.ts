@@ -20,11 +20,15 @@ export default class AuthenticateResolver {
       const docRef = adminDB.doc(`users/${decodedToken.uid}`);
       const doc = await docRef.get();
 
+      const generatedTag = Math.floor(1000 + Math.random() * 9999);
+      const generatedNumbers = Math.floor(1000 + Math.random() * 1000000);
+
       const userData: FirebaseFirestore.DocumentData = {
         uid: decodedToken.uid,
         email: decodedToken.email,
         avatar: decodedToken.picture,
         name: githubData.name,
+        tag: generatedTag,
         bio: null,
         // To avoid variable naming conflicts in the entities,
         // we use an "_" before any relational data fields
@@ -33,9 +37,9 @@ export default class AuthenticateResolver {
       };
 
       if (badWords.includes(githubData.login)){
-        userData.username = `${githubData.login}1234`
+        userData.username = `${githubData.login}${generatedNumbers}`
       } else {
-        userData.username = githubData.login
+        userData.username = `${githubData.login}`
       }
 
       if (!doc.exists)
