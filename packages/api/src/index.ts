@@ -29,15 +29,13 @@ export const createApolloServer = async () => {
         return { hasAuth: false, socketInfo };
 
       const token = authHeader.substring(7, authHeader.length);
-      return await admin
-        .auth()
-        .verifyIdToken(token)
-        .then((data) => {
-          return { hasAuth: true, ...data, socketInfo };
-        })
-        .catch(() => {
-          return { hasAuth: false, socketInfo };
-        });
+
+      try {
+        const data = admin.auth().verifyIdToken(token);
+        return { hasAuth: true, ...data, socketInfo };
+      } catch (e) {
+        return { hasAuth: false, socketInfo };
+      }
     },
     plugins: [
       {
