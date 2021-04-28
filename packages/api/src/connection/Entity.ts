@@ -6,7 +6,7 @@ export type FirebaseCollection = FirebaseFirestore.CollectionReference<FirebaseF
 
 export interface EntityOptions {
   /**
-   * Format the firebase document data for the entity
+   * Deserialize the firebase document data for the entity
    */
   deserialize?: (orig: any) => any;
 }
