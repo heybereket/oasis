@@ -3,7 +3,7 @@ import admin from "../../../utils/firebase-admin";
 import firebaseAdmin from "firebase-admin";
 import { Arg, Mutation, Resolver } from "type-graphql";
 import { ApolloError } from "apollo-server-errors";
-var badWords = require('badwords/array');
+const badWords = require('badwords/array');
 
 @Resolver()
 export default class AuthenticateResolver {
@@ -20,8 +20,10 @@ export default class AuthenticateResolver {
       const docRef = adminDB.doc(`users/${decodedToken.uid}`);
       const doc = await docRef.get();
 
-      const generatedTag = Math.floor(1000 + Math.random() * 9999);
-      const generatedNumbers = Math.floor(1000 + Math.random() * 1000000);
+      const generatedNumber = (n = 10) => {
+        let multiplier = Math.pow(10, n - 1)
+        return Math.floor(1 * multiplier + Math.random() * 9 * multiplier);
+      }
 
       const userData: FirebaseFirestore.DocumentData = {
         uid: decodedToken.uid,
@@ -36,7 +38,7 @@ export default class AuthenticateResolver {
       };
 
       if (badWords.includes(githubData.login)){
-        userData.username = `${githubData.login}${generatedNumbers}`
+        userData.username = `${githubData.login}${generatedNumber(6)}`
       } else {
         userData.username = `${githubData.login}`
       }
@@ -44,7 +46,7 @@ export default class AuthenticateResolver {
       if (!doc.exists)
         userData.createdAt = firebaseAdmin.firestore.Timestamp.now();
         userData.verified = false;
-        userData.tag = generatedTag;
+        userData.tag = generatedNumber(4);
 
       await docRef.set(userData, { merge: true });
 
