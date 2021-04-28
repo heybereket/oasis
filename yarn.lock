@@ -1983,6 +1983,7 @@ __metadata:
     "@primer/octicons-react": ^13.0.0
     "@types/node": ^14.14.37
     "@types/react": ^17.0.4
+    "@types/react-dom": ^17
     "@typescript-eslint/eslint-plugin": ^4.21.0
     "@typescript-eslint/parser": ^4.21.0
     autoprefixer: ^10.0.4
@@ -2479,7 +2480,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17.0.4":
+"@types/react-dom@npm:^17":
+  version: 17.0.3
+  resolution: "@types/react-dom@npm:17.0.3"
+  dependencies:
+    "@types/react": "*"
+  checksum: 9314c91a985f153591e1e74aef3d63d8b22e098069773f32745bf0733740a49802731761a46da8788a7d3dd2c21346036f12c2c24627630e5a6210b120a650e6
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*, @types/react@npm:^17.0.4":
   version: 17.0.4
   resolution: "@types/react@npm:17.0.4"
   dependencies:
@@ -8375,7 +8385,6 @@ fsevents@~2.3.1:
   dependencies:
     "@types/eslint": ^7
     "@types/jest": ^26.0.23
-    "@types/react": ^17.0.4
     husky: ^6.0.0
     lint-staged: ^10.5.4
     npm-run-all: ^4.1.5
