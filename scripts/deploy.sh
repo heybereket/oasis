@@ -18,7 +18,7 @@ then
   git merge staging
 
   # Push all changes to GitHub
-  git push origin prod
+  git push origin prod --force
 
   # Go back to staging
   git checkout staging

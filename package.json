@@ -4,14 +4,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "devDependencies": {
-    "@types/eslint": "^7",
-    "@types/jest": "^26.0.23",
-    "commitizen": "^4.2.3",
-    "cz-conventional-changelog": "3.3.0",
-    "npm-run-all": "^4.1.5",
-    "ts-jest": "^26.5.5"
-  },
   "scripts": {
     "dev:web": "yarn workspace @oasis/web dev",
     "dev:api": "yarn workspace @oasis/api dev",
@@ -20,6 +12,14 @@
     "build": "yarn plugin import workspace-tools && yarn workspaces foreach --exclude @oasis/playwright -p run build",
     "dev": "run-p -l \"dev:web\" \"dev:api\" \"dev:gql\"",
     "commit": "git add . && cz && git push"
+  },
+  "devDependencies": {
+    "@types/eslint": "^7",
+    "@types/jest": "^26.0.23",
+    "commitizen": "^4.2.3",
+    "cz-conventional-changelog": "3.3.0",
+    "npm-run-all": "^4.1.5",
+    "ts-jest": "^26.5.5"
   },
   "dependencies": {
     "typescript": "^4.2.4"

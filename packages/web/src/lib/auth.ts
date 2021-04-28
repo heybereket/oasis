@@ -18,6 +18,11 @@ export const Login = async (): Promise<void> => {
     variables: { idToken: token },
   });
 
-  if (response.errors) alert('there was a login error :(');
-  if (response.data.authenticate == 'success') alert("woah you're logged in!");
+  if (response.errors){
+    console.log("Error while trying to login.")
+  }
+
+  if (response.data.authenticate == 'success'){
+    console.log("Successfully logged in!")
+  }
 };
