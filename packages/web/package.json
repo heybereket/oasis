@@ -13,8 +13,12 @@
     "@oasis/api": "0.1.0",
     "@primer/octicons-react": "^13.0.0",
     "firebase": "^8.4.2",
+<<<<<<< HEAD
     "graphql-cost-analysis": "^1.0.3",
     "next": "latest",
+=======
+    "next": "^10.2.0",
+>>>>>>> 5f7a84a38ed10082dab750b1cd492bfc667394ab
     "react": "^17.0.1",
     "react-dom": "^17.0.2",
     "react-firebase-hooks": "^3.0.4",

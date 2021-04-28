@@ -19,29 +19,28 @@ export default class AuthenticateResolver {
       const docRef = adminDB.doc(`users/${decodedToken.uid}`);
       const doc = await docRef.get();
 
-      const docData: FirebaseFirestore.DocumentData = {
+      const userData: FirebaseFirestore.DocumentData = {
+        uid: decodedToken.uid,
         email: decodedToken.email,
+        avatar: decodedToken.picture,
+        username: githubData.login,
+        name: githubData.name,
+        bio: null,
         // To avoid variable naming conflicts in the entities,
         // we use an "_" before any relational data fields
         _posts: [],
-        _repos: [],
-        username: githubData.login,
+        _activity: [],
       };
 
       if (!doc.exists)
-        docData.createdAt = firebaseAdmin.firestore.Timestamp.now();
+        userData.createdAt = firebaseAdmin.firestore.Timestamp.now();
+        userData.verified = false;
 
-      await docRef.set(docData, { merge: true });
+      await docRef.set(userData, { merge: true });
 
       return true;
     } catch (e) {
       throw new ApolloError(e.message);
     }
-  }
-
-  // Hello World Query
-  @Query(() => String)
-  helloWorld() {
-    return "Hello World!";
   }
 }

@@ -5,6 +5,7 @@
 
 type Comment {
   author: User!
+  content: String!
   dislikes: Int!
   id: String!
   likes: Int!
@@ -21,6 +22,9 @@ type Post {
   dislikes: Int!
   id: String!
   likes: Int!
+  message: String!
+  title: String!
+  topics: [String!]!
 }
 
 type Query {
@@ -32,7 +36,6 @@ type Query {
   getPost(id: String!): Post
   getRepo(id: String!): Repo
   getUser(id: String!): User
-  helloWorld: String!
   paginateComments(limit: Float!, offset: Float!): [Comment!]!
   paginatePosts(limit: Float!, offset: Float!): [Post!]!
   paginateRepos(limit: Float!, offset: Float!): [Repo!]!
@@ -40,10 +43,22 @@ type Query {
 }
 
 type Repo {
-  createdAt: String!
+  active: Boolean!
+
+  """
+  Time when the repo was added (the number of milliseconds passed since Unix epoch 1970-01-01T00:00:00Z)
+  """
+  date_added: String!
+  desc: String!
+  full_name: String!
+  github_owner: String!
   id: ID!
-  name: String
+  issues: Float!
+  language: String!
+  name: String!
   owner: User
+  stars: Float!
+  url: String!
 }
 
 type User {

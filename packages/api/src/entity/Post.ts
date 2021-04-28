@@ -10,11 +10,20 @@ export default class Post extends BaseEntity {
   @Field()
   id: string;
 
+  @Field()
+  title: string;
+
+  @Field()
+  message: string;
+
   @Field(() => Int)
   likes: number;
 
   @Field(() => Int)
   dislikes: number;
+
+  @Field(() => [String])
+  topics: string[];
 
   _author: FirebaseFirestore.DocumentReference;
   _comments: FirebaseFirestore.DocumentReference[];
