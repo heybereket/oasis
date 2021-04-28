@@ -41,8 +41,8 @@ export const HomePage: React.FC = () => {
               <a className="text-primary-light hover:underline">
                 Privacy Policy
               </a>
-            </Link>
-            {' '}and{' '}
+            </Link>{' '}
+            and{' '}
             <Link href="/terms">
               <a className="text-primary-light hover:underline">
                 Terms of Service

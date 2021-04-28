@@ -6,5 +6,7 @@ generates:
       - typescript
       - typescript-operations
       - typescript-react-apollo
+      - typescript-document-nodes
     config:
       withHooks: true
+      noGraphQLTag: true

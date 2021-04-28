@@ -9,7 +9,7 @@ export const config = {
   appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
-export const getFirebase = () => {
+export const getFirebase = (): typeof firebase => {
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
   }

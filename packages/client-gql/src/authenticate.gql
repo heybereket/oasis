@@ -1,0 +1,3 @@
+mutation Auth($idToken: String!) {
+  authenticate(idToken: $idToken)
+}

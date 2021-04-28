@@ -1,4 +1,5 @@
-import { Field, ID, ObjectType } from "type-graphql";
+import { getRefData } from "../utils/getRefData";
+import { Field, ID, ObjectType, Root } from "type-graphql";
 import { BaseEntity, Entity } from "../connection";
 import User from "./User";
 
@@ -14,6 +15,10 @@ export default class Repo extends BaseEntity {
   @Field({ nullable: true })
   name: string;
 
-  @Field()
-  owner: User;
+  _owner: FirebaseFirestore.DocumentReference;
+
+  @Field(() => User, { nullable: true })
+  async owner(@Root() parent: Repo) {
+    return parent._owner ? getRefData(parent._owner) : null;
+  }
 }

@@ -3,21 +3,54 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type Comment {
+  author: User!
+  dislikes: Int!
+  id: String!
+  likes: Int!
+  post: Post!
+}
+
+type Mutation {
+  authenticate(idToken: String!): Boolean!
+}
+
+type Post {
+  author: User!
+  comments: [Comment!]!
+  dislikes: Int!
+  id: String!
+  likes: Int!
+}
+
 type Query {
+  allComments: [Comment!]!
+  allPosts: [Post!]!
   allRepos: [Repo!]!
   allUsers: [User!]!
+  getComment(id: String!): Comment
+  getPost(id: String!): Post
+  getRepo(id: String!): Repo
+  getUser(id: String!): User
+  helloWorld: String!
+  paginateComments(limit: Float!, offset: Float!): [Comment!]!
+  paginatePosts(limit: Float!, offset: Float!): [Post!]!
+  paginateRepos(limit: Float!, offset: Float!): [Repo!]!
+  paginateUsers(limit: Float!, offset: Float!): [User!]!
 }
 
 type Repo {
   createdAt: String!
   id: ID!
   name: String
-  owner: User!
+  owner: User
 }
 
 type User {
   createdAt: String!
   email: String
   id: ID!
+  posts: [Post!]!
+  repos: [Repo!]
   username: String
 }

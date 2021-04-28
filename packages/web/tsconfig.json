@@ -7,7 +7,7 @@
       "@lib/*": ["src/lib/*"],
       "@modules/*": ["src/modules"],
       "@styles/*": ["src/styles"],
-      "@icons/*": ["src/icons/*"],
+      "@icons/*": ["src/icons/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -21,7 +21,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "preserveWatchOutput": true
   },
   "exclude": ["node_modules", ".next", "out"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"]

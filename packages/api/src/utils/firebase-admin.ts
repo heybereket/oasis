@@ -1,4 +1,4 @@
-import admin, { ServiceAccount, app } from "firebase-admin";
+import admin, { ServiceAccount } from "firebase-admin";
 
 export const serviceAccount: ServiceAccount = {
   projectId: process.env.PROJECT_ID,
@@ -13,11 +13,6 @@ export const serviceAccount: ServiceAccount = {
   client_x509_cert_url: process.env.CLIENT_X509_CERT_URL, */
 };
 
-export default function getFirebaseAdmin(): app.App {
-  if (!admin.apps.length) {
-    return admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-    });
-  }
-  return admin.app();
-}
+export default admin.apps.length
+  ? admin.app()
+  : admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
