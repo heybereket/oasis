@@ -19,7 +19,7 @@
     "dev:gql": "yarn workspace @oasis/client-gql dev",
     "build": "yarn plugin import workspace-tools && yarn workspaces foreach -p run build",
     "dev": "run-p -l \"dev:web\" \"dev:api\" \"dev:gql\"",
-    "commit": "cz"
+    "commit": "git add . && cz && git push"
   },
   "dependencies": {
     "typescript": "^4.2.4"
