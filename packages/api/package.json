@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && node dist/build.js",
+    "build": "tsc && node dist/globs/build.js",
     "watch:tsc": "tsc --watch",
-    "watch:dev": "nodemon dist/start",
-    "dev:server": "run-p \"watch:dev\" \"watch:tsc\"",
+    "watch:dev": "nodemon dist/start --ignore **/__globs.js",
+    "dev:server": "run-p \"watch:tsc\" \"watch:dev\"",
     "dev": "yarn run watch:tsc"
   },
   "license": "MIT",
