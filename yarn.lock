@@ -2036,7 +2036,7 @@ __metadata:
     eslint-plugin-react-hooks: latest
     firebase: ^8.4.2
     graphql-cost-analysis: ^1.0.3
-    next: ^10.2.0
+    next: latest
     next-secure-headers: ^2.2.0
     postcss: ^8.1.10
     prettier: 2.2.1
@@ -8770,7 +8770,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"next@npm:^10.2.0":
+"next@npm:latest":
   version: 10.2.0
   resolution: "next@npm:10.2.0"
   dependencies:
