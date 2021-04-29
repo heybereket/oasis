@@ -17,13 +17,13 @@ export default class User extends BaseEntity {
   id: string;
 
   @Field()
+  username: string;
+
+  @Field()
   createdAt: string;
 
-  @Field({ nullable: true })
-  email?: string;
-
-  @Field({ nullable: true })
-  username: string;
+  @Field()
+  verified: boolean;
 
   _repos: FirebaseFirestore.DocumentReference[];
   _posts: FirebaseFirestore.DocumentReference[];
