@@ -64,8 +64,8 @@ type Repo {
 type User {
   createdAt: String!
   id: ID!
-  posts: [Post!]!
-  repos: [Repo!]
+  posts: [Repo!]!
+  repos: [Repo!]!
   username: String!
   verified: Boolean!
 }
