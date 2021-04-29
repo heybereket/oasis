@@ -1,9 +1,9 @@
 import { adminDB } from "../../../utils/admin-db";
 import admin from "../../../utils/firebase-admin";
+import { generatedNumber } from "../../../utils/lib"
 import firebaseAdmin from "firebase-admin";
 import { Arg, Mutation, Resolver } from "type-graphql";
 import { ApolloError } from "apollo-server-errors";
-const badWords = require('badwords/array');
 
 @Resolver()
 export default class AuthenticateResolver {
@@ -12,7 +12,7 @@ export default class AuthenticateResolver {
     try {
       const decodedToken = await admin.auth().verifyIdToken(idToken);
 
-      // Fetching GitHub API 
+      // Fetching GitHub API
       const res = await fetch(
         `https://api.github.com/user/${decodedToken.firebase.identities["github.com"][0]}`
       );
@@ -21,11 +21,8 @@ export default class AuthenticateResolver {
       const docRef = adminDB.doc(`users/${decodedToken.uid}`);
       const doc = await docRef.get();
 
-      // Generate random number (# of digits is customizable)
-      const generatedNumber = (n = 10) => {
-        let multiplier = Math.pow(10, n - 1)
-        return Math.floor(1 * multiplier + Math.random() * 9 * multiplier);
-      }
+      const checkUsername = adminDB.collection('users').where("username", "==", githubData.login)
+      const usernameField = await checkUsername.get();
 
       // Get GitHub User Data and store in Firebase
       const userData: FirebaseFirestore.DocumentData = {
@@ -40,15 +37,15 @@ export default class AuthenticateResolver {
         _activity: [],
       };
 
-      // Check if username contains a bad word
-      if (badWords.includes(githubData.login)){
-        userData.username = `${githubData.login}${generatedNumber(6)}`
-      } else {
-        userData.username = `${githubData.login}`
-      }
-
       // Add specific fields only if not already existed
       if (!doc.exists)
+        // Check if username is available
+        if (usernameField.empty){
+          userData.username = `${githubData.login}`
+        } else {
+          // Add generated digits to end of username if already exists in database
+          userData.username = `${githubData.login}${generatedNumber(6)}`
+        }
         userData.createdAt = firebaseAdmin.firestore.Timestamp.now();
         userData.verified = false;
         userData.tag = generatedNumber(4);
