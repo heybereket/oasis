@@ -1,8 +1,8 @@
-import { getRefData } from "../utils/getRefData";
-import { Field, ID, ObjectType, Root } from "type-graphql";
+import { Field, ID, ObjectType } from "type-graphql";
 import { BaseEntity, Entity } from "../connection";
 import Repo from "./Repo";
 import Post from "./Post";
+import { Relation } from "../connection/Relation";
 
 const deserialize = (orig: any) => ({
   ...orig,
@@ -17,24 +17,19 @@ export default class User extends BaseEntity {
   id: string;
 
   @Field()
-  createdAt: string;
-
-  @Field({ nullable: true })
-  email?: string;
-
-  @Field({ nullable: true })
   username: string;
 
-  _repos: FirebaseFirestore.DocumentReference[];
-  _posts: FirebaseFirestore.DocumentReference[];
+  @Field()
+  createdAt: string;
 
-  @Field(() => [Repo], { nullable: true })
-  async repos(@Root() parent: User) {
-    return parent._repos ? Promise.all(parent._repos.map(getRefData)) : [];
-  }
+  @Field()
+  verified: boolean;
+
+  @Field(() => [Repo])
+  @Relation({ multi: true })
+  repos: any[];
 
   @Field(() => [Post])
-  async posts(@Root() parent: User) {
-    return parent._posts ? Promise.all(parent._posts.map(getRefData)) : [];
-  }
+  @Relation({ multi: true })
+  posts: any[];
 }

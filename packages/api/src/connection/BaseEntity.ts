@@ -8,7 +8,28 @@ export class BaseEntity {
 
   static deserialize(orig: any) {
     const formatter = this.entity.options?.deserialize;
-    return formatter ? formatter(orig) : orig;
+    const data = formatter ? formatter(orig) : { ...orig };
+
+    // The relations
+    for (const { name, multi } of this._entity.fields) {
+      if (multi) {
+        const refs = data[name] as FirebaseFirestore.DocumentReference[];
+
+        data[name] = refs.map((ref) => () => getRefData(ref));
+      } else {
+        const ref = data[name] as FirebaseFirestore.DocumentReference;
+
+        // Return a thenable that fetches the data
+        data[name] = {
+          then: async (cb: any) => {
+            const refData = ref ? await getRefData(ref) : null;
+            return cb(refData);
+          },
+        };
+      }
+    }
+
+    return data;
   }
 
   static get entity() {
@@ -35,7 +56,7 @@ export class BaseEntity {
     const entity: EntityData = (this as any).entity;
     const all = await entity.collection.get();
     return all.docs.slice(offset, limit + offset).map((doc) => {
-      var data = (this as any).deserialize(doc.data());
+      const data = (this as any).deserialize(doc.data());
 
       const obj: any = {
         id: doc.id,
@@ -49,7 +70,7 @@ export class BaseEntity {
     const entity: EntityData = (this as any).entity;
     const all = await entity.collection.get();
     return all.docs.map((doc) => {
-      var data = (this as any).deserialize(doc.data());
+      const data = (this as any).deserialize(doc.data());
 
       const obj: any = {
         id: doc.id,

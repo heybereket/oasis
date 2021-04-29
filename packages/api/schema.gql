@@ -56,16 +56,16 @@ type Repo {
   issues: Float!
   language: String!
   name: String!
-  owner: User
+  owner: User!
   stars: Float!
   url: String!
 }
 
 type User {
   createdAt: String!
-  email: String
   id: ID!
   posts: [Post!]!
-  repos: [Repo!]
-  username: String
+  repos: [Repo!]!
+  username: String!
+  verified: Boolean!
 }

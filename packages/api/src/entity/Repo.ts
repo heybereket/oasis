@@ -1,8 +1,7 @@
-import { getRefData } from "../utils/getRefData";
-import { Field, ID, ObjectType, Root } from "type-graphql";
+import { Field, ID, ObjectType } from "type-graphql";
 import { BaseEntity, Entity } from "../connection";
+import { Relation } from "../connection/Relation";
 import User from "./User";
-import { firestore } from "firebase-admin";
 
 @ObjectType()
 @Entity("repos", {
@@ -46,12 +45,9 @@ export default class Repo extends BaseEntity {
     description:
       "Time when the repo was added (the number of milliseconds passed since Unix epoch 1970-01-01T00:00:00Z)",
   })
-  date_added: firestore.Timestamp;
+  date_added: any;
 
-  _owner: firestore.DocumentReference;
-
-  @Field(() => User, { nullable: true })
-  async owner(@Root() parent: Repo) {
-    return parent._owner ? getRefData(parent._owner) : null;
-  }
+  @Field(() => User)
+  @Relation()
+  owner: any;
 }

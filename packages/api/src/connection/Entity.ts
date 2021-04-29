@@ -1,4 +1,5 @@
 import { adminDB } from "../utils/admin-db";
+import { FieldData, fields_data } from "./Relation";
 
 export const entity_data = Symbol("__Entity_Data__");
 
@@ -20,7 +21,7 @@ export interface EntityData {
   name: string;
   collection: FirebaseCollection;
   options?: EntityOptions;
-  // fields: DocFieldData[];
+  fields: FieldData[];
 }
 
 export const allEntities: EntityData[] = [];
@@ -33,11 +34,13 @@ export const Entity = (collectionName: string, options: EntityOptions = {}) => <
 >(
   Constructor: T
 ) => {
+  const fields = Reflect.getMetadata(fields_data, Constructor) || [];
+
   const data: EntityData = {
     name: Constructor.name,
     collection: adminDB.collection(collectionName),
     options,
-    // fields,
+    fields,
   };
 
   allEntities.push(data);

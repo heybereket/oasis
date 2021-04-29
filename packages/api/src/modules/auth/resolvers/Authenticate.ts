@@ -1,9 +1,9 @@
 import { adminDB } from "../../../utils/admin-db";
 import admin from "../../../utils/firebase-admin";
+import { generatedNumber } from "../../../utils/lib";
 import firebaseAdmin from "firebase-admin";
 import { Arg, Mutation, Resolver } from "type-graphql";
 import { ApolloError } from "apollo-server-errors";
-var badWords = require('badwords/array');
 
 @Resolver()
 export default class AuthenticateResolver {
@@ -12,6 +12,7 @@ export default class AuthenticateResolver {
     try {
       const decodedToken = await admin.auth().verifyIdToken(idToken);
 
+      // Fetching GitHub API
       const res = await fetch(
         `https://api.github.com/user/${decodedToken.firebase.identities["github.com"][0]}`
       );
@@ -20,31 +21,41 @@ export default class AuthenticateResolver {
       const docRef = adminDB.doc(`users/${decodedToken.uid}`);
       const doc = await docRef.get();
 
-      const generatedTag = Math.floor(1000 + Math.random() * 9999);
-      const generatedNumbers = Math.floor(1000 + Math.random() * 1000000);
+      const checkUsername = adminDB
+        .collection("users")
+        .where("username", "==", githubData.login);
+      const usernameField = await checkUsername.get();
 
+      // Get User Data and store in Firebase
       const userData: FirebaseFirestore.DocumentData = {
         uid: decodedToken.uid,
         email: decodedToken.email,
         avatar: decodedToken.picture,
         name: githubData.name,
-        tag: generatedTag,
         bio: null,
-        // To avoid variable naming conflicts in the entities,
-        // we use an "_" before any relational data fields
-        _posts: [],
-        _activity: [],
+        twitter: null,
+        url: null,
+        activity: [],
+        posts: [],
+        comments: [],
+        followers: [],
+        following: [],
       };
 
-      if (badWords.includes(githubData.login)){
-        userData.username = `${githubData.login}${generatedNumbers}`
-      } else {
-        userData.username = `${githubData.login}`
+      // Check if username is available
+      if (usernameField.empty && !doc.exists) {
+        userData.username = `${githubData.login}`;
+      } else if (!usernameField.empty && !doc.exists) {
+        // Add generated digits to end of username if already exists in database
+        userData.username = `${githubData.login}${generatedNumber(6)}`;
       }
 
+      // !doc.exists && !usernameField.empty
+
+      // Add specific fields only if not already existed
       if (!doc.exists)
         userData.createdAt = firebaseAdmin.firestore.Timestamp.now();
-        userData.verified = false;
+      userData.verified = false;
 
       await docRef.set(userData, { merge: true });
 
