@@ -56,7 +56,7 @@ type Repo {
   issues: Float!
   language: String!
   name: String!
-  owner: User
+  owner: User!
   stars: Float!
   url: String!
 }
