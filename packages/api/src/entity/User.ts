@@ -1,5 +1,4 @@
-import { getRefData } from "../utils/getRefData";
-import { Field, ID, ObjectType, Root } from "type-graphql";
+import { Field, ID, ObjectType } from "type-graphql";
 import { BaseEntity, Entity } from "../connection";
 import Repo from "./Repo";
 import Post from "./Post";
@@ -30,7 +29,7 @@ export default class User extends BaseEntity {
   @Relation({ multi: true })
   repos: any[];
 
-  @Field(() => [Repo])
+  @Field(() => [Post])
   @Relation({ multi: true })
   posts: any[];
 }

@@ -1,8 +1,7 @@
 import { BaseEntity, Entity } from "../connection";
-import { Field, Int, ObjectType, Root } from "type-graphql";
+import { Field, Int, ObjectType } from "type-graphql";
 import User from "./User";
 import Comment from "./Comment";
-import { getRefData } from "../utils/getRefData";
 import { Relation } from "../connection/Relation";
 
 @ObjectType()

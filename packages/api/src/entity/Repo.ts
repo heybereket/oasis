@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType, Root } from "type-graphql";
+import { Field, ID, ObjectType } from "type-graphql";
 import { BaseEntity, Entity } from "../connection";
 import { Relation } from "../connection/Relation";
 import User from "./User";
