@@ -42,18 +42,20 @@ export default class AuthenticateResolver {
         _following: []
       };
 
+      // Check if username is available
+      if (usernameField.empty && !doc.exists){
+        userData.username = `${githubData.login}`
+      } else if (!usernameField.empty && !doc.exists) {
+        // Add generated digits to end of username if already exists in database
+        userData.username = `${githubData.login}${generatedNumber(6)}`
+      }
+
+      // !doc.exists && !usernameField.empty
+
       // Add specific fields only if not already existed
       if (!doc.exists)
-        // Check if username is available
-        if (usernameField.empty){
-          userData.username = `${githubData.login}`
-        } else {
-          // Add generated digits to end of username if already exists in database
-          userData.username = `${githubData.login}${generatedNumber(6)}`
-        }
         userData.createdAt = firebaseAdmin.firestore.Timestamp.now();
         userData.verified = false;
-        userData.tag = generatedNumber(4);
 
       await docRef.set(userData, { merge: true });
 
