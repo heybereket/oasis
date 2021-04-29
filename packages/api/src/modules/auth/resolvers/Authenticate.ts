@@ -31,6 +31,8 @@ export default class AuthenticateResolver {
         avatar: decodedToken.picture,
         name: githubData.name,
         bio: null,
+        twitter: null,
+        url: null,
         // To avoid variable naming conflicts in the entities,
         // we use an "_" before any relational data fields
         _posts: [],
