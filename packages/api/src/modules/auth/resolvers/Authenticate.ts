@@ -24,7 +24,7 @@ export default class AuthenticateResolver {
       const checkUsername = adminDB.collection('users').where("username", "==", githubData.login)
       const usernameField = await checkUsername.get();
 
-      // Get GitHub User Data and store in Firebase
+      // Get User Data and store in Firebase
       const userData: FirebaseFirestore.DocumentData = {
         uid: decodedToken.uid,
         email: decodedToken.email,
