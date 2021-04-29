@@ -35,8 +35,11 @@ export default class AuthenticateResolver {
         url: null,
         // To avoid variable naming conflicts in the entities,
         // we use an "_" before any relational data fields
-        _posts: [],
         _activity: [],
+        _posts: [],
+        _comments: [],
+        _followers: [],
+        _following: []
       };
 
       // Add specific fields only if not already existed
