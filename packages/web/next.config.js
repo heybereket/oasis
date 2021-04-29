@@ -2,7 +2,6 @@ const { createSecureHeaders } = require('next-secure-headers');
 const { join } = require('path');
 
 module.exports = {
-  reactStrictMode: true,
   async headers() {
     return [{ source: '/(.*)', headers: createSecureHeaders() }];
   },

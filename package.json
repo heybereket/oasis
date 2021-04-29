@@ -4,6 +4,16 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "dev:web": "yarn workspace @oasis/web dev",
+    "dev:api": "yarn workspace @oasis/api dev",
+    "dev:api:server": "yarn workspace @oasis/api dev:server",
+    "dev:gql": "yarn workspace @oasis/client-gql dev",
+    "build": "yarn plugin import workspace-tools && yarn workspaces foreach --exclude @oasis/playwright -p run build",
+    "dev": "run-p -l \"dev:web\" \"dev:api\" \"dev:gql\"",
+    "commit": "git add . && cz && git push",
+    "deploy": "git pull origin staging && git add . && git commit -m \"chore(deploy): Merge staging -> prod\" && git checkout prod && git merge staging && git push origin prod --force && git checkout staging"
+  },
   "devDependencies": {
     "@types/eslint": "^7",
     "@types/jest": "^26.0.23",
@@ -11,15 +21,6 @@
     "cz-conventional-changelog": "3.3.0",
     "npm-run-all": "^4.1.5",
     "ts-jest": "^26.5.5"
-  },
-  "scripts": {
-    "dev:web": "yarn workspace @oasis/web dev",
-    "dev:api": "yarn workspace @oasis/api dev",
-    "dev:api:server": "yarn workspace @oasis/api dev:server",
-    "dev:gql": "yarn workspace @oasis/client-gql dev",
-    "build": "yarn plugin import workspace-tools && yarn workspaces foreach -p run build",
-    "dev": "run-p -l \"dev:web\" \"dev:api\" \"dev:gql\"",
-    "commit": "git add . && cz && git push"
   },
   "dependencies": {
     "typescript": "^4.2.4"

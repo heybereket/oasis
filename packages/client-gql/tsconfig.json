@@ -5,5 +5,6 @@
     "esModuleInterop": true,
     "declaration": true,
     "preserveWatchOutput": true
-  }
+  },
+  "include": ["generated/**/*.ts"]
 }

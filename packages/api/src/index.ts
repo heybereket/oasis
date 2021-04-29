@@ -14,7 +14,12 @@ import { ApolloServer } from "apollo-server-micro";
 import admin from "./utils/firebase-admin";
 import { NextApiRequest } from "next";
 
+import { getComplexity, simpleEstimator } from "graphql-query-complexity";
+import depthLimit from "graphql-depth-limit";
+
 import { getSchema } from "./utils/getSchema";
+import { TypeInfo, ValidationContext } from "graphql";
+import getDepth from "./utils/getDepth";
 
 export { getSchema };
 
@@ -33,7 +38,7 @@ export const createApolloServer = async () => {
       const token = authHeader.substring(7, authHeader.length);
 
       try {
-        const data = admin.auth().verifyIdToken(token);
+        const data = await admin.auth().verifyIdToken(token);
         return { hasAuth: true, ...data, socketInfo };
       } catch (e) {
         return { hasAuth: false, socketInfo };
@@ -45,10 +50,21 @@ export const createApolloServer = async () => {
           return {
             didResolveOperation(context: GraphQLRequestContext) {
               const reqData = context.context;
-              /* {
-               hasAuth: false,
-               socketInfo: { address: '127.0.0.1', family: 'IPv4', port: 3000 },
-              } */
+              const validationContext = new ValidationContext(
+                schema,
+                context.document,
+                new TypeInfo(schema),
+                () => null
+              );
+
+              const complexity = getComplexity({
+                estimators: [simpleEstimator({ defaultComplexity: 1 })],
+                schema,
+                query: context.document,
+              });
+
+              getDepth(validationContext, (depths) => console.log(depths));
+              console.log(`Complexity: ${complexity}`);
             },
           };
         },
