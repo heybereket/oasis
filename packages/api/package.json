@@ -9,7 +9,7 @@
     "watch:tsc": "tsc --watch",
     "watch:dev": "nodemon dist/start --ignore **/__globs.js",
     "dev:server": "run-p \"watch:tsc\" \"watch:dev\"",
-    "dev": "yarn run dev:server"
+    "dev": "yarn run watch:tsc"
   },
   "license": "MIT",
   "devDependencies": {

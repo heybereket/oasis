@@ -6,7 +6,6 @@ export default class GetUserByNameResolver {
   @Query(() => [User], { nullable: true })
   async getUserByName(@Arg("username") username: string) {
     const users = await User.query("username", username);
-    console.log(users);
     return users;
   }
 }

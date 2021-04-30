@@ -65,6 +65,7 @@ type Repo {
 type User {
   createdAt: String
   id: ID
+  name: String
   posts: [Post!]
   repos: [Repo!]
   username: String
