@@ -15,7 +15,7 @@
     "deploy": "git add . && git commit -m \"chore(deploy): Merge staging -> prod\" &&git pull origin staging  && git checkout prod && git merge staging && git push origin prod && git checkout staging"
   },
   "devDependencies": {
-    "@types/eslint": "^7",
+    "@types/eslint": "^7", 
     "@types/jest": "^26.0.23",
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "3.3.0",
