@@ -1,3 +1,3 @@
 export default {
-  resolvers: "./modules/**/resolvers/*.js",
+  resolvers: './modules/**/resolvers/*.js',
 };

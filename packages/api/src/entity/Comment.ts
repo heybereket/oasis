@@ -1,11 +1,11 @@
-import { BaseEntity, Entity } from "../connection";
-import { Field, Int, ObjectType, Root } from "type-graphql";
-import Post from "./Post";
-import { getRefData } from "../utils/getRefData";
-import User from "./User";
+import { BaseEntity, Entity } from '../connection';
+import { Field, Int, ObjectType } from 'type-graphql';
+import Post from './Post';
+import User from './User';
+import { Relation } from '../connection/Relation';
 
 @ObjectType()
-@Entity("comments")
+@Entity('comments')
 export default class Comment extends BaseEntity {
   @Field()
   id: string;
@@ -19,16 +19,11 @@ export default class Comment extends BaseEntity {
   @Field(() => Int)
   dislikes: number;
 
-  _post: FirebaseFirestore.DocumentReference;
-  _author: FirebaseFirestore.DocumentReference;
-
   @Field(() => Post)
-  async post(@Root() parent: Comment) {
-    return getRefData(parent._post);
-  }
+  @Relation()
+  post: any;
 
   @Field(() => User)
-  async author(@Root() parent: Post) {
-    return getRefData(parent._author);
-  }
+  @Relation()
+  author: any;
 }

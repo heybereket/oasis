@@ -1,11 +1,11 @@
-import { BaseEntity, Entity } from "../connection";
-import { Field, Int, ObjectType, Root } from "type-graphql";
-import User from "./User";
-import Comment from "./Comment";
-import { getRefData } from "../utils/getRefData";
+import { BaseEntity, Entity } from '../connection';
+import { Field, Int, ObjectType } from 'type-graphql';
+import User from './User';
+import Comment from './Comment';
+import { Relation } from '../connection/Relation';
 
 @ObjectType()
-@Entity("posts")
+@Entity('posts')
 export default class Post extends BaseEntity {
   @Field()
   id: string;
@@ -25,18 +25,11 @@ export default class Post extends BaseEntity {
   @Field(() => [String])
   topics: string[];
 
-  _author: FirebaseFirestore.DocumentReference;
-  _comments: FirebaseFirestore.DocumentReference[];
-
   @Field(() => User)
-  async author(@Root() parent: Post) {
-    return getRefData(parent._author);
-  }
+  @Relation()
+  author: any;
 
   @Field(() => [Comment])
-  async comments(@Root() parent: Post) {
-    return parent._comments
-      ? Promise.all(parent._comments.map(getRefData))
-      : [];
-  }
+  @Relation({ multi: true })
+  comments: any[];
 }
