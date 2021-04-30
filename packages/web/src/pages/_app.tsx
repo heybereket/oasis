@@ -18,7 +18,7 @@ export default function App({
       <Head>
         <noscript
           dangerouslySetInnerHTML={{
-            __html: `<h1>JavaScript is not supported.</h1>`,
+            __html: `<h1>JavaScript is not supported by your browser.</h1>`,
           }}
         />
         <title>Oasis - Discover and Discuss</title>
