@@ -10,13 +10,22 @@ export class BaseEntity {
     const formatter = this.entity.options?.deserialize;
     const data = formatter ? formatter(orig) : { ...orig };
 
-    // The relations
-    for (const { name, multi } of this._entity.fields) {
-      if (multi) {
-        const refs = data[name] as FirebaseFirestore.DocumentReference[];
+    console.log(data);
 
-        data[name] = refs.map((ref) => () => getRefData(ref));
-      } else {
+    // The relations
+    for (const { type, name, ...fieldData } of this._entity.fields) {
+      if (type === "deserializer" && "deserialize" in fieldData) {
+        data[name] = fieldData.deserialize(data[name]);
+      }
+
+      if (type === "relation") {
+        if ("multi" in fieldData && fieldData.multi) {
+          const refs = data[name] as FirebaseFirestore.DocumentReference[];
+
+          data[name] = refs.map((ref) => () => getRefData(ref));
+          continue;
+        }
+
         const ref = data[name] as FirebaseFirestore.DocumentReference;
 
         // Return a thenable that fetches the data
