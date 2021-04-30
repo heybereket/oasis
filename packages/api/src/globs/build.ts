@@ -2,7 +2,7 @@ import { resolveGlob } from "./resolve";
 import patterns from "./globPatterns";
 import { writeFileSync } from "fs";
 
-(async () => {
+export const buildGlobs = async () => {
   let output = "";
 
   for (const [key, pattern] of Object.entries(patterns)) {
@@ -14,4 +14,8 @@ import { writeFileSync } from "fs";
   }
 
   writeFileSync("./dist/globs/__globs.js", output);
-})();
+};
+
+if (require.main === module) {
+  buildGlobs();
+}

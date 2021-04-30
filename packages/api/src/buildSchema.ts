@@ -9,5 +9,8 @@ const ROOT = process.env.PROJECT_ROOT
 
 config({ path: ROOT + "/.env" });
 
-// The emitSchemaFile option inside that file will generate the schema for us
-getSchema().then(() => process.exit());
+export const buildSchema = () => getSchema();
+
+if (require.main === module) {
+  buildSchema();
+}
