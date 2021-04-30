@@ -1,4 +1,4 @@
-import Repo from "../../../entity/Repo";
-import { createBaseResolver } from "../../../utils/createResolver";
+import Repo from '../../../entity/Repo';
+import { createBaseResolver } from '../../../utils/createResolver';
 
-export default createBaseResolver("Repo", Repo);
+export default createBaseResolver('Repo', Repo);

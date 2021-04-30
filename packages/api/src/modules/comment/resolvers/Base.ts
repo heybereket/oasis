@@ -1,4 +1,4 @@
-import Comment from "../../../entity/Comment";
-import { createBaseResolver } from "../../../utils/createResolver";
+import Comment from '../../../entity/Comment';
+import { createBaseResolver } from '../../../utils/createResolver';
 
-export default createBaseResolver("Comment", Comment);
+export default createBaseResolver('Comment', Comment);

@@ -1,9 +1,9 @@
 // Modified version of stems/graphql-depth-limit
 
-import { ValidationContext } from "graphql";
+import { ValidationContext } from 'graphql';
 
-const { GraphQLError, Kind } = require("graphql");
-const arrify = require("arrify");
+const { GraphQLError, Kind } = require('graphql');
+const arrify = require('arrify');
 const getDepthWrapper = (
   context: ValidationContext,
   callback = (depths) => {}
@@ -51,7 +51,7 @@ function getFragments(definitions) {
 function getQueriesAndMutations(definitions) {
   return definitions.reduce((map, definition) => {
     if (definition.kind === Kind.OPERATION_DEFINITION) {
-      map[definition.name ? definition.name.value : ""] = definition;
+      map[definition.name ? definition.name.value : ''] = definition;
     }
     return map;
   }, {});
@@ -101,7 +101,7 @@ function determineDepth(node, fragments, depthSoFar, context, operationName) {
       );
     /* istanbul ignore next */
     default:
-      throw new Error("uh oh! depth crawler cannot handle: " + node.kind);
+      throw new Error('uh oh! depth crawler cannot handle: ' + node.kind);
   }
 }
 

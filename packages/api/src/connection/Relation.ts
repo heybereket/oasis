@@ -1,9 +1,9 @@
-import { FieldData } from "./types";
+import { FieldData } from './types';
 
-export const fields_data = "__Fields_Data__";
+export const fields_data = '__Fields_Data__';
 
 export interface RelationFieldData {
-  type: "relation";
+  type: 'relation';
   name: string;
   multi?: boolean;
 }
@@ -19,7 +19,7 @@ export const Relation = ({
     Reflect.getMetadata(fields_data, target.constructor) || [];
 
   const fieldData: RelationFieldData = {
-    type: "relation",
+    type: 'relation',
     name: String(propertyKey),
     multi,
   };

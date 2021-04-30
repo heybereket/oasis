@@ -1,4 +1,4 @@
-import User from "../../../entity/User";
-import { createBaseResolver } from "../../../utils/createResolver";
+import User from '../../../entity/User';
+import { createBaseResolver } from '../../../utils/createResolver';
 
-export default createBaseResolver("User", User);
+export default createBaseResolver('User', User);

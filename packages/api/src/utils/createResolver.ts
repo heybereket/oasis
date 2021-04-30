@@ -1,5 +1,5 @@
-import { Arg, Query, Resolver } from "type-graphql";
-import { BaseEntity } from "../connection";
+import { Arg, Query, Resolver } from 'type-graphql';
+import { BaseEntity } from '../connection';
 
 export const createBaseResolver = (
   suffix: string,
@@ -13,12 +13,12 @@ export const createBaseResolver = (
     }
 
     @Query(() => [entity], { name: `paginate${suffix}s` })
-    paginate(@Arg("limit") limit: number, @Arg("offset") offset: number) {
+    paginate(@Arg('limit') limit: number, @Arg('offset') offset: number) {
       return entity.paginate(limit, offset);
     }
 
     @Query(() => entity, { name: `get${suffix}` })
-    get(@Arg("id") id: string) {
+    get(@Arg('id') id: string) {
       return entity.findOne(id);
     }
   }

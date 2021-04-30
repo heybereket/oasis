@@ -1,5 +1,5 @@
-import { getRefData } from "../utils/getRefData";
-import { allEntities, EntityData } from "./Entity";
+import { getRefData } from '../utils/getRefData';
+import { allEntities, EntityData } from './Entity';
 
 type Constructor<T> = { new (): T };
 
@@ -103,7 +103,7 @@ export class BaseEntity {
   ): Promise<T[]> {
     const entity: EntityData = (this as any).entity;
     const collection = entity.collection;
-    const snap = await collection.where(fieldName, "==", value).get();
+    const snap = await collection.where(fieldName, '==', value).get();
     return snap.docs.map((doc) => (doc.data() as any) as T);
   }
 }

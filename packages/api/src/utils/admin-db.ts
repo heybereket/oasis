@@ -1,3 +1,3 @@
-import admin from "./firebase-admin";
+import admin from './firebase-admin';
 
 export const adminDB = admin.firestore();
