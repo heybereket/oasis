@@ -1,12 +1,57 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import { GetServerSideProps } from 'next';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@components/Button';
 import { Navbar } from '@components/MainNavbar';
 import { ProfilePost } from '@components/ProfilePost';
+import { useRouter } from 'next/dist/client/router';
+import 'firebase/auth';
+import firebase from 'firebase';
+import {
+  GetUserByNameDocument,
+  GetUserByNameQuery,
+  GetUserByNameQueryVariables,
+  GetUserDocument,
+  GetUserQuery,
+  GetUserQueryVariables,
+  User,
+} from '@oasis/client-gql';
+import { useQuery } from '@apollo/client';
 
 export const ProfilePage: React.FC = () => {
+  const router = useRouter();
+  const [user, setUser] = useState<User | undefined>(undefined);
+
+  let username = router.query.username;
+
+  // Looking  at someone elses profile
+  if (username !== undefined) {
+    if (typeof username !== 'string') {
+      username = username[0];
+    }
+    console.log(username);
+    const { data } = useQuery<GetUserByNameQuery, GetUserByNameQueryVariables>(
+      GetUserByNameDocument,
+      { variables: { username: username } }
+    );
+
+    useEffect(() => {
+      if (data?.getUserByName !== null && data?.getUserByName !== undefined)
+        setUser(data?.getUserByName[0] as User);
+    }, [data]);
+  }
+  // Looking at your own profile
+  else {
+    console.log('own');
+    const { data } = useQuery<GetUserQuery, GetUserQueryVariables>(
+      GetUserDocument,
+      { variables: { id: firebase.auth().currentUser?.uid ?? '' } }
+    );
+
+    useEffect(() => {
+      if (data?.getUser !== null && data?.getUser !== undefined)
+        setUser(data?.getUser as User);
+    }, [data]);
+  }
+
   return (
     <>
       <Navbar />
@@ -19,8 +64,8 @@ export const ProfilePage: React.FC = () => {
           />
           <div>
             <div className="flex ml-8">
-              <p className="text-lg font-bold mr-1.5">Kevy Devy</p>
-              <p className="text-gray-300">@coderinblack</p>
+              <p className="text-lg font-bold mr-1.5">{user?.name}</p>
+              <p className="text-gray-300">@{user?.username}</p>
             </div>
             <div className="flex mt-2.5 ml-8 space-x-4">
               <p className="text-gray-300">
@@ -74,13 +119,4 @@ export const ProfilePage: React.FC = () => {
       </div>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  let user;
-  if (typeof query.username === 'string') {
-    const db = firebase.firestore();
-    user = db.collection('users').where('username', '==', query.username).get();
-  }
-  return { props: { user } };
 };
