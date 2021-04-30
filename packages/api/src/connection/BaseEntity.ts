@@ -79,4 +79,25 @@ export class BaseEntity {
       return obj as T;
     });
   }
+
+  /**
+   * @description Filters by a field
+   * @param fieldName The name of the firebase field
+   * @param value Value of the field
+   */
+  static async query<T extends BaseEntity>(
+    this: Constructor<T>,
+    fieldName: string,
+    value: string
+  ): Promise<T[]> {
+    const entity: EntityData = (this as any).entity;
+    const collection = entity.collection;
+    const docs = await collection.where(fieldName, "==", value).get();
+    const retArray: T[] = [];
+    docs.forEach((doc) => {
+      retArray.push((doc.data() as any) as T);
+    });
+    console.log(retArray);
+    return retArray;
+  }
 }

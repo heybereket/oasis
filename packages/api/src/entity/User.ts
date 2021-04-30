@@ -13,23 +13,23 @@ const deserialize = (orig: any) => ({
 @ObjectType()
 @Entity("users", { deserialize })
 export default class User extends BaseEntity {
-  @Field(() => ID)
+  @Field(() => ID, { nullable: true })
   id: string;
 
-  @Field()
+  @Field({ nullable: true })
   username: string;
 
-  @Field()
+  @Field({ nullable: true })
   createdAt: string;
 
-  @Field()
+  @Field({ nullable: true })
   verified: boolean;
 
-  @Field(() => [Repo])
+  @Field(() => [Repo], { nullable: true })
   @Relation({ multi: true })
   repos: any[];
 
-  @Field(() => [Post])
+  @Field(() => [Post], { nullable: true })
   @Relation({ multi: true })
   posts: any[];
 }
