@@ -53,16 +53,9 @@ export default class AuthenticateResolver {
         userData.username = `${githubData.login}${generatedNumber(4)}}`;
       }
 
-      if (searchJSON(contributorData, githubData.login) == false){
-        userData.badges = [
-          {
-            type: 'repository',
-            badge: {
-              contributor: false
-            }
-          }
-        ];
-      } else {
+      // Searches JSON to see if user is a contributor in the repository
+      if (searchJSON(contributorData, githubData.login) != false){
+        // Creates a JSON Object as a badge if true
         userData.badges = [
           {
             type: 'repository',
