@@ -12,7 +12,7 @@
     "build": "yarn plugin import workspace-tools && yarn workspaces foreach --exclude @oasis/playwright -p run build",
     "dev": "run-p -l \"dev:web\" \"dev:api\" \"dev:gql\"",
     "commit": "git add . && cz && git push",
-    "deploy": "git pull origin staging && git add . && git commit -m \"chore(deploy): Merge staging -> prod\" && git checkout prod && git merge staging && git push origin prod --force && git checkout staging"
+    "deploy": "git add . && git commit -m \"chore(deploy): Merge staging -> prod\" &&git pull origin staging  && git checkout prod && git merge staging && git push origin prod --force && git checkout staging"
   },
   "devDependencies": {
     "@types/eslint": "^7",
