@@ -1,6 +1,5 @@
 import { adminDB } from "../../../utils/admin-db";
 import admin from "../../../utils/firebase-admin";
-import { generatedNumber } from "../../../utils/lib";
 import firebaseAdmin from "firebase-admin";
 import { Arg, Mutation, Resolver } from "type-graphql";
 import { ApolloError } from "apollo-server-errors";
@@ -28,7 +27,7 @@ export default class AuthenticateResolver {
 
       // Get User Data and store in Firebase
       const userData: FirebaseFirestore.DocumentData = {
-        uid: decodedToken.uid,
+        id: decodedToken.uid,
         email: decodedToken.email,
         avatar: decodedToken.picture,
         name: githubData.name,
@@ -47,7 +46,7 @@ export default class AuthenticateResolver {
         userData.username = `${githubData.login}`;
       } else if (!usernameField.empty && !doc.exists) {
         // Add generated digits to end of username if already exists in database
-        userData.username = `${githubData.login}${generatedNumber(6)}`;
+        userData.username = `${githubData.login}2}`;
       }
 
       // !doc.exists && !usernameField.empty

@@ -62,10 +62,11 @@ type Repo {
 }
 
 type User {
-  createdAt: String!
-  id: ID!
-  posts: [Post!]!
-  repos: [Repo!]!
-  username: String!
-  verified: Boolean!
+  createdAt: String
+  id: ID
+  name: String
+  posts: [Post!]
+  repos: [Repo!]
+  username: String
+  verified: Boolean
 }

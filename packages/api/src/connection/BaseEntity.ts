@@ -44,8 +44,10 @@ export class BaseEntity {
     id: string
   ): Promise<T> {
     const entity: EntityData = (this as any).entity;
-    const snap = entity.collection.doc(id);
-    return (this as any).deserialize(getRefData(snap) as any);
+    console.log(id);
+    const snap = entity.collection.doc(`${id}`);
+    // return (this as any).deserialize(getRefData(snap) as any);
+    return (await snap.get()).data() as T;
   }
 
   static async paginate<T extends BaseEntity>(
@@ -78,5 +80,25 @@ export class BaseEntity {
       };
       return obj as T;
     });
+  }
+
+  /**
+   * @description Filters by a field
+   * @param fieldName The name of the firebase field
+   * @param value Value of the field
+   */
+  static async query<T extends BaseEntity>(
+    this: Constructor<T>,
+    fieldName: string,
+    value: string
+  ): Promise<T[]> {
+    const entity: EntityData = (this as any).entity;
+    const collection = entity.collection;
+    const docs = await collection.where(fieldName, "==", value).get();
+    const retArray: T[] = [];
+    docs.forEach((doc) => {
+      retArray.push((doc.data() as any) as T);
+    });
+    return retArray;
   }
 }
