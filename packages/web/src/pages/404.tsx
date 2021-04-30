@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Navbar } from '@components/Navbar';
 import { Footer } from '@components/Footer';
 
-export const NotFoundPage: React.FC = () => {
+const NotFoundPage: React.FC = () => {
   return (
     <>
       <div className="max-w-5xl mx-auto px-8">
@@ -30,3 +30,5 @@ export const NotFoundPage: React.FC = () => {
     </>
   );
 };
+
+export default NotFoundPage;

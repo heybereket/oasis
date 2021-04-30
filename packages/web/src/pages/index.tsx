@@ -12,7 +12,7 @@ import { Button } from '@components/Button';
 import { Navbar } from '@components/Navbar';
 import { Login } from '@lib/auth';
 
-export const HomePage: React.FC = () => {
+const HomePage: React.FC = () => {
   return (
     <>
       {/* Uncomment this
@@ -66,3 +66,5 @@ export const HomePage: React.FC = () => {
     </>
   );
 };
+
+export default HomePage;
