@@ -5,7 +5,7 @@
 1. Fork this repository and clone it to your local machine
 2. Make sure you have `yarn` installed. If you don't, run `npm install -g yarn`
 3. Install all packages with the `yarn` command in the project root.
-4. Make a new firebase project. Add a web app to it in the project settings.
+4. Make a new firebase project. Get the credidentials :)
 5. Make a `.env` file in [`api`](/packages/api) and [`web`](/packages/web) based on [`api env.example`](/packages/api/.env.example) and [`web env.example`](/packages/web/.env.example) respectively
 
 Once you are setup, you can head to the indivdual docs for the section of Oasis that you're working on!
