@@ -16,7 +16,7 @@ import {
 } from '@oasis/client-gql';
 import { useQuery } from '@apollo/client';
 
-export const ProfilePage: React.FC = () => {
+const Profile: React.FC = () => {
   const router = useRouter();
   const [user, setUser] = useState<User | undefined>(undefined);
 
@@ -120,3 +120,5 @@ export const ProfilePage: React.FC = () => {
     </>
   );
 };
+
+export default Profile;

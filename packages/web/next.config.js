@@ -8,8 +8,8 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/user/:username',
-        destination: '/u/:username',
+        source: '/u/:username',
+        destination: '/user/:username',
         permanent: true,
       }
     ];
