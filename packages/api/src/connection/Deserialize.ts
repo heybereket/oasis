@@ -1,14 +1,14 @@
-import { fields_data } from "./Relation";
-import { FieldData } from "./types";
+import { fields_data } from './Relation';
+import { FieldData } from './types';
 
 export interface DeserializerFieldData {
-  type: "deserializer";
+  type: 'deserializer';
   name: string;
   deserialize: (origVal: any) => any | Promise<any>;
 }
 
 export const Deserializer = (
-  deserialize: DeserializerFieldData["deserialize"]
+  deserialize: DeserializerFieldData['deserialize']
 ): PropertyDecorator => (target, propertyKey) => {
   // Get all the data for fields from Reflect.getMetadata
 
@@ -18,7 +18,7 @@ export const Deserializer = (
   // Save the new field to it
 
   const fieldData: DeserializerFieldData = {
-    type: "deserializer",
+    type: 'deserializer',
     name: String(propertyKey),
     deserialize,
   };
