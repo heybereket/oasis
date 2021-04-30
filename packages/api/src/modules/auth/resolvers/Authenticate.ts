@@ -1,6 +1,6 @@
 import { adminDB } from '../../../utils/admin-db';
 import admin from '../../../utils/firebase-admin';
-import { generatedNumber } from '../../../utils/lib';
+import { generatedNumber, searchJSON } from '../../../utils/lib';
 import firebaseAdmin from 'firebase-admin';
 import { Arg, Mutation, Resolver } from 'type-graphql';
 import { ApolloError } from 'apollo-server-errors';
@@ -17,6 +17,9 @@ export default class AuthenticateResolver {
         `https://api.github.com/user/${decodedToken.firebase.identities['github.com'][0]}`
       );
       const githubData = await res.json();
+
+      const cRes = await fetch('https://api.github.com/repos/oasis-sh/oasis/contributors')
+      const contributorData = await cRes.json();
 
       const docRef = adminDB.doc(`users/${decodedToken.uid}`);
       const doc = await docRef.get();
@@ -50,10 +53,30 @@ export default class AuthenticateResolver {
         userData.username = `${githubData.login}${generatedNumber(4)}}`;
       }
 
+      if (searchJSON(contributorData, githubData.login) == false){
+        userData.badges = [
+          {
+            type: 'repository',
+            badge: {
+              contributor: false
+            }
+          }
+        ];
+      } else {
+        userData.badges = [
+          {
+            type: 'repository',
+            badge: {
+              contributor: true
+            }
+          }
+        ];
+      }
+
       // Add specific fields only if not already existed
       if (!doc.exists)
         userData.createdAt = firebaseAdmin.firestore.Timestamp.now();
-      userData.verified = false;
+        userData.verified = false;
 
       await docRef.set(userData, { merge: true });
 
