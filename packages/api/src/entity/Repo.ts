@@ -1,15 +1,11 @@
 import { Field, ID, ObjectType } from 'type-graphql';
 import { BaseEntity, Entity } from '../connection';
+import { Deserializer } from '../connection/Deserialize';
 import { Relation } from '../connection/Relation';
 import User from './User';
 
 @ObjectType()
-@Entity('repos', {
-  deserialize: (orig: Repo) => ({
-    ...orig,
-    date_added: orig.date_added.toMillis().toString(),
-  }),
-})
+@Entity('repos')
 export default class Repo extends BaseEntity {
   @Field(() => ID)
   id: string;
@@ -41,6 +37,9 @@ export default class Repo extends BaseEntity {
   @Field()
   url: string;
 
+  @Deserializer((timestamp: FirebaseFirestore.Timestamp) =>
+    timestamp.toMillis().toString()
+  )
   @Field(() => String, {
     description:
       'Time when the repo was added (the number of milliseconds passed since Unix epoch 1970-01-01T00:00:00Z)',
@@ -48,6 +47,6 @@ export default class Repo extends BaseEntity {
   date_added: any;
 
   @Field(() => User)
-  @Relation()
+  @Relation(User)
   owner: any;
 }

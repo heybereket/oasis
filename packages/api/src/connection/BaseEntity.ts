@@ -10,19 +10,39 @@ export class BaseEntity {
     const formatter = this.entity.options?.deserialize;
     const data = formatter ? formatter(orig) : { ...orig };
 
-    console.log(data);
-
     // The relations
     for (const { type, name, ...fieldData } of this._entity.fields) {
-      if (type === "deserializer" && "deserialize" in fieldData) {
-        data[name] = fieldData.deserialize(data[name]);
+      const deserializeVal =
+        'entity' in fieldData && fieldData.entity
+          ? fieldData.entity.deserialize.bind(this)
+          : (o: any) => o;
+
+      if (type === 'deserializer' && 'deserialize' in fieldData) {
+        const val = data[name];
+        data[name] = {
+          then: async (cb: any) => {
+            return cb(fieldData.deserialize(val));
+          },
+        };
       }
 
-      if (type === "relation") {
-        if ("multi" in fieldData && fieldData.multi) {
+      if (type === 'relation') {
+        if ('multi' in fieldData && fieldData.multi) {
           const refs = data[name] as FirebaseFirestore.DocumentReference[];
 
-          data[name] = refs.map((ref) => () => getRefData(ref));
+          // data[name] = refs.map((ref) => ({
+          //   then: (cb: any) => Promise.resolve(cb(getRefData(ref))),
+          // }));
+
+          data[name] = {
+            then: async (cb: any) => {
+              const all = await Promise.all(
+                refs.map((ref) => deserializeVal(getRefData(ref)))
+              );
+              return cb(all);
+            },
+          };
+
           continue;
         }
 
@@ -31,7 +51,7 @@ export class BaseEntity {
         // Return a thenable that fetches the data
         data[name] = {
           then: async (cb: any) => {
-            const refData = ref ? await getRefData(ref) : null;
+            const refData = ref ? deserializeVal(await getRefData(ref)) : null;
             return cb(refData);
           },
         };
