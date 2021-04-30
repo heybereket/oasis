@@ -94,11 +94,7 @@ export class BaseEntity {
   ): Promise<T[]> {
     const entity: EntityData = (this as any).entity;
     const collection = entity.collection;
-    const docs = await collection.where(fieldName, "==", value).get();
-    const retArray: T[] = [];
-    docs.forEach((doc) => {
-      retArray.push((doc.data() as any) as T);
-    });
-    return retArray;
+    const snap = await collection.where(fieldName, "==", value).get();
+    return snap.docs.map((doc) => (doc.data() as any) as T);
   }
 }
