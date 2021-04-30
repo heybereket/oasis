@@ -1,4 +1,4 @@
-import Post from "../../../entity/Post";
-import { createBaseResolver } from "../../../utils/createResolver";
+import Post from '../../../entity/Post';
+import { createBaseResolver } from '../../../utils/createResolver';
 
-export default createBaseResolver("Post", Post);
+export default createBaseResolver('Post', Post);

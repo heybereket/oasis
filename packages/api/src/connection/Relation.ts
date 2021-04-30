@@ -1,4 +1,4 @@
-export const fields_data = Symbol("C");
+export const fields_data = Symbol('C');
 
 export interface FieldData {
   name: string;

@@ -1,11 +1,11 @@
-import { BaseEntity, Entity } from "../connection";
-import { Field, Int, ObjectType } from "type-graphql";
-import Post from "./Post";
-import User from "./User";
-import { Relation } from "../connection/Relation";
+import { BaseEntity, Entity } from '../connection';
+import { Field, Int, ObjectType } from 'type-graphql';
+import Post from './Post';
+import User from './User';
+import { Relation } from '../connection/Relation';
 
 @ObjectType()
-@Entity("comments")
+@Entity('comments')
 export default class Comment extends BaseEntity {
   @Field()
   id: string;

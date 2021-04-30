@@ -10,14 +10,17 @@
     "watch:tsc": "tsc --watch",
     "watch:dev": "nodemon dist/start --ignore **/__globs.js",
     "dev:server": "run-p \"watch:tsc\" \"watch:dev\"",
-    "dev": "yarn run watch:tsc"
+    "dev": "yarn run watch:tsc",
+    "prettify": "prettier --config .prettierrc --write src/{.,connection,entity,globs,modules,utils}/*.ts src/{connection,entity,globs,modules,utils}/**/*.ts"
   },
   "license": "MIT",
   "devDependencies": {
     "@types/graphql-depth-limit": "^1",
+    "@types/prettier": "^2",
     "graphql": "^15.5.0",
     "nodemon": "^2.0.7",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1"
   },
   "dependencies": {
     "@graphql-tools/merge": "^6.2.13",

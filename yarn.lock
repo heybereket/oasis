@@ -2077,6 +2077,7 @@ __metadata:
   dependencies:
     "@graphql-tools/merge": ^6.2.13
     "@types/graphql-depth-limit": ^1
+    "@types/prettier": ^2
     apollo-server-micro: ^2.23.0
     apollo-server-plugin-base: ^0.11.0
     class-validator: ^0.13.1
@@ -2087,6 +2088,7 @@ __metadata:
     graphql-query-complexity: ^0.8.0
     nodemon: ^2.0.7
     npm-run-all: ^4.1.5
+    prettier: ^2.2.1
     reflect-metadata: ^0.1.13
     type-graphql: ^1.1.1
     typescript: ^4.2.4
@@ -2597,6 +2599,13 @@ __metadata:
   version: 4.0.0
   resolution: "@types/parse-json@npm:4.0.0"
   checksum: 4a8f720afac47b474d3f2eece312340e72bc31bc9561cda37b596ce2ed218c0099765d302625bb67d659a8452a1f93d514f4863c11c7ebaf65430428687dc426
+  languageName: node
+  linkType: hard
+
+"@types/prettier@npm:^2":
+  version: 2.2.3
+  resolution: "@types/prettier@npm:2.2.3"
+  checksum: b7e80288f9f776caca84391a7a217b8baac6b4fce00bb9701af69299d465cb8faf17466f0af0803970c74d2c191767ca729a6d21a2f7e2ce552d1ef6cc0d653a
   languageName: node
   linkType: hard
 
@@ -9878,7 +9887,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.2.1":
+"prettier@npm:2.2.1, prettier@npm:^2.2.1":
   version: 2.2.1
   resolution: "prettier@npm:2.2.1"
   bin:

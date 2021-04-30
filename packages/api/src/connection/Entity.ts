@@ -1,7 +1,7 @@
-import { adminDB } from "../utils/admin-db";
-import { FieldData, fields_data } from "./Relation";
+import { adminDB } from '../utils/admin-db';
+import { FieldData, fields_data } from './Relation';
 
-export const entity_data = Symbol("__Entity_Data__");
+export const entity_data = Symbol('__Entity_Data__');
 
 export type FirebaseCollection = FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>;
 
