@@ -20,6 +20,9 @@ export default class User extends BaseEntity {
   username: string;
 
   @Field({ nullable: true })
+  username_lower: string;
+
+  @Field({ nullable: true })
   name: string;
 
   @Field({ nullable: true })

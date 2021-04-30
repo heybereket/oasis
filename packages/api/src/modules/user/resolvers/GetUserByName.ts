@@ -5,7 +5,7 @@ import { Arg, Query, Resolver } from 'type-graphql';
 export default class GetUserByNameResolver {
   @Query(() => [User], { nullable: true })
   async getUserByName(@Arg('username') username: string) {
-    const users = await User.query('username', username);
+    const users = await User.query('username_lower', username.toLowerCase());
     return users;
   }
 }

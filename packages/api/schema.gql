@@ -69,5 +69,6 @@ type User {
   posts: [Post!]
   repos: [Repo!]
   username: String
+  username_lower: String
   verified: Boolean
 }

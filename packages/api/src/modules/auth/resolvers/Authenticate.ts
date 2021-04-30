@@ -18,7 +18,9 @@ export default class AuthenticateResolver {
       );
       const githubData = await res.json();
 
-      const cRes = await fetch('https://api.github.com/repos/oasis-sh/oasis/contributors')
+      const cRes = await fetch(
+        'https://api.github.com/repos/oasis-sh/oasis/contributors'
+      );
       const contributorData = await cRes.json();
 
       const docRef = adminDB.doc(`users/${decodedToken.uid}`);
@@ -48,28 +50,33 @@ export default class AuthenticateResolver {
       // Check if username is available
       if (usernameField.empty && !doc.exists) {
         userData.username = `${githubData.login}`;
+        // userData.username_lower = (githubData.login as string).toLowerCase();
       } else if (!usernameField.empty && !doc.exists) {
         // Add generated digits to end of username if already exists in database
         userData.username = `${githubData.login}${generatedNumber(4)}}`;
+      } else if (doc.exists && doc.data().username_lower == undefined) {
+        // if username_lower field doesnt exist, make one
+        userData.username_lower = doc.data().username.toLowerCase();
       }
 
       // Searches JSON to see if user is a contributor in the repository
-      if (searchJSON(contributorData, githubData.login) !== false){
+      if (searchJSON(contributorData, githubData.login) !== false) {
         // Creates a JSON Object as a badge if true
         userData.badges = [
           {
             type: 'repository',
             badge: {
-              contributor: true
-            }
-          }
+              contributor: true,
+            },
+          },
         ];
       }
 
       // Add specific fields only if not already existed
-      if (!doc.exists)
+      if (!doc.exists) {
         userData.createdAt = firebaseAdmin.firestore.Timestamp.now();
         userData.verified = false;
+      }
 
       await docRef.set(userData, { merge: true });
 
