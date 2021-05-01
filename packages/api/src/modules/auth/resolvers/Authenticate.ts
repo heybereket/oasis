@@ -51,14 +51,12 @@ export default class AuthenticateResolver {
 
       // Check if username is available
       if (usernameField.empty && !doc.exists) {
-        userData.username = `${githubData.login}`;
-        // userData.username_lower = (githubData.login as string).toLowerCase();
+        userData.username = `${githubData.login.toLowerCase()}`;
       } else if (!usernameField.empty && !doc.exists) {
         // Add generated digits to end of username if already exists in database
-        userData.username = `${githubData.login}${generatedNumber(4)}}`;
-      } else if (doc.exists && doc.data().username_lower == undefined) {
-        // if username_lower field doesnt exist, make one
-        userData.username_lower = doc.data().username.toLowerCase();
+        userData.username = `${githubData.login.toLowerCase()}${generatedNumber(
+          4
+        )}}`;
       }
 
       // Searches JSON to see if user is a contributor in the repository
