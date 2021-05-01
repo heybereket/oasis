@@ -1,18 +1,23 @@
 # ✨ Contributing to Oasis
 
-### Initial Steps:
+## Initial Steps:
 
 1. Fork this repository and clone it to your local machine
 2. Make sure you have `yarn` installed. If you don't, run `npm install -g yarn`
 3. Install all packages with the `yarn` command in the project root.
 4. Make a new firebase project. Get the credidentials :)
-5. Make a `.env` file in [`api`](/packages/api) and [`web`](/packages/web) based on [`api env.example`](/packages/api/.env.example) and [`web env.example`](/packages/web/.env.example) respectively
+5. Make a `.env` file in [`api`](/packages/api) and [`web`](/packages/web) based on [`api/env.example`](/packages/api/.env.example) and [`web/env.example`](/packages/web/.env.example) respectively
 
 Once you are setup, you can head to the indivdual docs for the section of Oasis that you're working on!
 
 - [`WEB.md`](/docs/packages/WEB.md) - How to get started with running/building the Next.JS frontend.
 - [`API.md`](/docs/packages/API.md) - How to get started with running/building the GraphQL backend.
 - [`CLIENT_GQL.md`](/docs/packages/CLIENT_GQL.md) - How to get started with running/building the client-side GraphQL hooks.
+
+### Want to avoid dependency hell chaos?
+
+* [Fire up an cloud dev environment in Gitpod](/docs/dev-env/gitpod.md) if you still in GitHub Codespaces waiting list.
+* Or, [deploy an Code Server instance](/docs/dev-env/code-server.md) in your Dockerfile-supported PaaS service or in Linode/Digital Ocean/any other VPS service.
 
 ## Next Steps + Useful Info:
 
