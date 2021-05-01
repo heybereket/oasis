@@ -1,10 +1,14 @@
+import { MouseEventHandler } from 'react';
+
 interface NavItemProps {
-  href: string;
   name: string;
+  mobile: boolean;
+  href?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
 export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
-  return (
+  return !props.mobile ? (
     <div className="flex justify-between">
       <img className="mr-3" src={`/static/${props.name}.svg`} />
       <a
@@ -14,5 +18,13 @@ export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
         {props.name}
       </a>
     </div>
+  ) : (
+    <a
+      href={props.href ? props.href : '#'}
+      onClick={props.onClick}
+      className="hover:text-gray-200"
+    >
+      {props.name}
+    </a>
   );
 };
