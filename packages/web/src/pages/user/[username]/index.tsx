@@ -18,12 +18,21 @@ const Profile: React.FC<ProfileProps> = (props) => {
       username: props.username,
     },
   }).data?.getUserByName;
-
   return (
     <>
       <Navbar />
-      {data?.name}
-      {data?.username}
+      <div className="flex w-screen flex-col">
+        <div
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #0C111B 100%), url(/static/mountain.jpeg) no-repeat center',
+            backgroundSize: 'cover',
+          }}
+          className="flex-grow h-64"
+        ></div>
+        {data?.name}
+        {data?.username}
+      </div>
     </>
   );
 };
