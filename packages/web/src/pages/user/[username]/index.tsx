@@ -17,7 +17,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
       username: props.username,
     },
   }).data?.getUserByName;
-
+  console.log(data);
   return <Navbar />;
 };
 
