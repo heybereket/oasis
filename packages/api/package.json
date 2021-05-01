@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "@graphql-tools/merge": "^6.2.13",
-    "apollo-server-micro": "^2.23.0",
-    "apollo-server-plugin-base": "^0.11.0",
+    "apollo-server-micro": "^2.24.0",
+    "apollo-server-plugin-base": "^0.12.0",
     "class-validator": "^0.13.1",
     "dotenv": "^8.2.0",
     "firebase-admin": "^9.7.0",
