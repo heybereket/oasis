@@ -1,32 +1,77 @@
-import { config } from "dotenv";
-config();
+import { join, dirname } from 'path';
+import { config } from 'dotenv';
 
-import { ApolloError, ApolloServer } from "apollo-server-micro";
-import resolvers from "./resolvers";
-import typeDefs from "./typeDefs";
-import { IncomingMessage } from "http";
+const ROOT = process.env.PROJECT_ROOT
+  ? join(process.env.PROJECT_ROOT, './packages/api')
+  : dirname(__dirname);
 
-const accessDeniedMsg = "Damn. You kinda don't have access to this api";
+config({ path: ROOT + '/.env' });
 
-export const apolloServer = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context({ req }: { req: IncomingMessage }) {
-    const header = req.headers.authorization || "";
-    const [, token] = header.split(" ");
+import 'reflect-metadata';
 
-    if (token !== process.env.API_ACCESS_TOKEN) {
-      throw new ApolloError(accessDeniedMsg);
-    }
+import { GraphQLRequestContext } from 'apollo-server-plugin-base';
+import { ApolloServer } from 'apollo-server-micro';
+import admin from './utils/firebase-admin';
+import { NextApiRequest } from 'next';
 
-    return {};
-  },
-  formatError(err) {
-    if (err.message.includes(accessDeniedMsg)) {
-      return new Error(accessDeniedMsg);
-    }
-    return err;
-  },
-  playground: true,
-  introspection: true,
-});
+import { getComplexity, simpleEstimator } from 'graphql-query-complexity';
+import depthLimit from 'graphql-depth-limit';
+
+import { getSchema } from './utils/getSchema';
+import { TypeInfo, ValidationContext } from 'graphql';
+import getDepth from './utils/getDepth';
+
+export { getSchema };
+
+export const createApolloServer = async () => {
+  const schema = await getSchema();
+
+  const server = new ApolloServer({
+    schema,
+    context: async ({ req }: { req: NextApiRequest }) => {
+      const authHeader = req.headers.authorization;
+      const socketInfo = req.socket.address();
+
+      if (!authHeader || !authHeader.startsWith('Bearer '))
+        return { hasAuth: false, socketInfo };
+
+      const token = authHeader.substring(7, authHeader.length);
+
+      try {
+        const data = await admin.auth().verifyIdToken(token);
+        return { hasAuth: true, ...data, socketInfo };
+      } catch (e) {
+        return { hasAuth: false, socketInfo };
+      }
+    },
+    plugins: [
+      {
+        requestDidStart() {
+          return {
+            didResolveOperation(context: GraphQLRequestContext) {
+              const reqData = context.context;
+              const validationContext = new ValidationContext(
+                schema,
+                context.document,
+                new TypeInfo(schema),
+                () => null
+              );
+
+              const complexity = getComplexity({
+                estimators: [simpleEstimator({ defaultComplexity: 1 })],
+                schema,
+                query: context.document,
+              });
+
+              getDepth(validationContext);
+            },
+          };
+        },
+      },
+    ],
+    playground: true,
+    introspection: true,
+  });
+
+  return server;
+};

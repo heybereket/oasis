@@ -2,41 +2,25 @@ import { AppProps } from 'next/app';
 import '../styles/globals.css';
 import { getFirebase } from '../lib/firebase';
 import Head from 'next/head';
-import * as Sentry from '@sentry/react';
-import { Integrations } from '@sentry/tracing';
-import { useEffect } from 'react';
-import isElectron from 'is-electron';
-import { useHostStore } from '../global-stores/useHostStore';
+import { ApolloProvider } from '@apollo/client';
+import { useApollo } from '@lib/apolloClient';
 
 getFirebase();
 
-Sentry.init({
-  dsn:
-    'https://071d49981fda48c7baa379bc1933a144@o571596.ingest.sentry.io/5720036',
-  integrations: [new Integrations.BrowserTracing()],
-  tracesSampleRate: 1.0,
-});
+export default function App({
+  Component,
+  pageProps,
+}: AppProps): React.ReactNode {
+  const client = useApollo(pageProps.initialApolloState);
 
-function App({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    if (isElectron()) {
-      const ipcRenderer = window.require('electron').ipcRenderer;
-      ipcRenderer.send('@app/hostPlatform');
-      ipcRenderer.on(
-        '@app/hostPlatform',
-        (
-          event: any,
-          platform: { isLinux: boolean; isWin: boolean; isMac: boolean }
-        ) => {
-          useHostStore.getState().setData(platform);
-        }
-      );
-    }
-    console.log(useHostStore.getState());
-  }, []);
   return (
-    <>
+    <ApolloProvider client={client}>
       <Head>
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<h1>JavaScript is not supported by your browser.</h1>`,
+          }}
+        />
         <title>Oasis - Discover and Discuss</title>
         <meta
           name="viewport"
@@ -50,10 +34,32 @@ function App({ Component, pageProps }: AppProps) {
           name="keywords"
           content="developers,ideas,discuss,fun,programming,graphql,typescript,nextjs,firebase,tailwindcss,react,apollo"
         />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/static/favicons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/static/favicons/favicon-16x16.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/static/favicons/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link
+          rel="mask-icon"
+          href="/static/favicons/safari-pinned-tab.svg"
+          color="#5bbad5"
+        />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
       <Component {...pageProps} />
-    </>
+    </ApolloProvider>
   );
 }
-
-export default App;

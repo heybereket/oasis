@@ -1,41 +1,28 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import { getFirebase } from './firebase';
 import 'firebase/auth';
+import { AuthDocument } from '@oasis/client-gql';
+import { apolloClient } from './apolloClient';
 
-export const login = async () => {
+export const Login = async (): Promise<void> => {
+  const firebase = getFirebase();
   const provider = new firebase.auth.GithubAuthProvider();
-  let db = firebase.firestore();
 
   provider.setCustomParameters({
     allow_signup: 'true',
   });
 
   const login = await firebase.auth().signInWithPopup(provider);
+  const token = await login.user?.getIdToken();
+  const response = await apolloClient.mutate({
+    mutation: AuthDocument,
+    variables: { idToken: token },
+  });
 
-  let githubData;
-  if (login.additionalUserInfo?.isNewUser) {
-    githubData = await fetch('https://api.github.com/user', {
-      method: 'GET',
-      headers: {
-        Authorization: 'token ' + (login.credential as any).accessToken,
-      },
-    });
+  if (response.errors){
+    console.log("Error while trying to login.")
+  }
 
-    githubData = await githubData.json();
-
-    const userData = {
-      username: githubData.login,
-      location: githubData.location,
-      email: githubData.email,
-      twitter: githubData.twitter_username,
-      name: login.user?.displayName,
-      photoURL: login.user?.photoURL,
-      createdAt: firebase.firestore.Timestamp.now(),
-      followers: [],
-      following: [],
-      posts: [],
-    };
-
-    await db.collection('users').doc(login.user?.uid).set(userData);
+  if (response.data.authenticate == 'success'){
+    console.log("Successfully logged in!")
   }
 };

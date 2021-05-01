@@ -2,7 +2,14 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
+    "target": "es2018",
+    "module": "commonjs",
+    "lib": ["ESNext", "DOM"],
     "esModuleInterop": true,
-    "declaration": true
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "preserveWatchOutput": true
   }
 }

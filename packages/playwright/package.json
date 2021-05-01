@@ -1,0 +1,19 @@
+{
+  "name": "@oasis/playwright",
+  "version": "1.0.0",
+  "description": "Oasis's testing suite.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  }
+}

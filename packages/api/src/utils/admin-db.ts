@@ -1,6 +1,3 @@
-import getFirebaseAdmin from "./firebase-admin";
+import admin from './firebase-admin';
 
-export async function adminDB(): Promise<FirebaseFirestore.Firestore> {
-  const admin = await getFirebaseAdmin();
-  return admin.firestore();
-}
+export const adminDB = admin.firestore();
