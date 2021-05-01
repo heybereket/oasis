@@ -1,4 +1,5 @@
 import { Login } from '@lib/auth';
+import { BellIcon } from '@components/SVG';
 import firebase from 'firebase';
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
@@ -29,7 +30,7 @@ export const Navbar: React.FC = () => {
               className="rounded-lg bg-gray-700 h-10 text-sm pl-11 text-gray-300 w-40 lg:w-80"
             />
           </div>
-          <img src="/static/Bell.svg" />
+          <BellIcon />
           {user && (
             <img
               src={user?.photoURL ?? undefined}
@@ -58,7 +59,7 @@ export const Navbar: React.FC = () => {
           <img src="/static/oasis-logo.png" alt="Oasis Logo" className="w-28" />
           <div className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
             <img src="/static/Search.svg" />
-            <img src="/static/Bell.svg" />
+            <BellIcon />
 
             {user ? (
               <img
