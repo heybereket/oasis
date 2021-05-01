@@ -75,6 +75,5 @@ type User {
   twitter: String
   url: String
   username: String!
-  username_lower: String!
   verified: Boolean!
 }

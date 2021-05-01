@@ -25,9 +25,6 @@ export default class User extends BaseEntity {
   @Field()
   username: string;
 
-  @Field()
-  username_lower: string;
-
   @Field({ nullable: true })
   name: string;
 
