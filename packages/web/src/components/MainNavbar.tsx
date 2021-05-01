@@ -13,7 +13,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="hidden sm:flex items-center justify-between p-8 bg-gray-800 ">
+      <nav className="hidden sm:flex items-center justify-between px-8 py-4 bg-gray-800 ">
         <div className="flex justify-items-start items-center space-x-5">
           <img src="/static/oasis-logo.png" alt="Oasis Logo" className="w-28" />
           <NavItem name="Home" href="#" mobile={false} />
@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
       </nav>
 
       {/*mobile navbar*/}
-      <nav className="max-w-full mx-auto p-8 sm:hidden">
+      <nav className="max-w-full mx-auto px-8 py-4 sm:hidden">
         <div className="flex items-center justify-between">
           <img src="/static/oasis-logo.png" alt="Oasis Logo" className="w-28" />
           <div className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
@@ -83,7 +83,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         <div
-          className={`flex rounded-lg justify-end bg-gray-700 float-right px-3 py-2 mt-2 max-w-md ${
+          className={`flex rounded-lg bg-gray-700 px-3 py-2 mt-2 max-w-md absolute right-0 mr-8 ${
             isOn ? 'animate-fade-in-down' : 'opacity-0 animate-fade-out-up'
           }`}
         >

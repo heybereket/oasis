@@ -5,7 +5,8 @@ import {
   User,
 } from '@oasis/client-gql';
 import { useQuery } from '@apollo/client';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 export function useGetCurrentUser(): User | undefined {

@@ -21,10 +21,8 @@
     --color-primary-light: #5c91fc;
     --color-primary-lighter: #a3c1ff;
   }
-  
-  
 
-  img{
+  img {
     user-select: none;
   }
 

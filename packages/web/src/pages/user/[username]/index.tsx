@@ -17,8 +17,21 @@ const Profile: React.FC<ProfileProps> = (props) => {
       username: props.username,
     },
   }).data?.getUserByName;
-  console.log(data);
-  return <Navbar />;
+  return (
+    <>
+      <Navbar />
+      <div className="flex w-screen">
+        <div
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #0C111B 100%), url(/static/mountain.jpeg) no-repeat center',
+            backgroundSize: 'cover',
+          }}
+          className="flex-grow h-64"
+        ></div>
+      </div>
+    </>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
