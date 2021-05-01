@@ -1,6 +1,8 @@
 query getUserByName($username: String!) {
   getUserByName(username: $username) {
     id
+    banner
+    avatar
     createdAt
     github
     twitter
