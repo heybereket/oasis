@@ -5,7 +5,6 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "build:schema": "tsc && node dist/buildSchema.js",
     "build": "tsc && node dist/build.js",
     "watch:tsc": "tsc --watch",
     "watch:dev": "nodemon dist/start --ignore **/__globs.js",
