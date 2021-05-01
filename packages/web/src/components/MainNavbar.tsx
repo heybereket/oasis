@@ -1,6 +1,7 @@
 import { Login } from '@lib/auth';
 import { BellIcon } from '@components/SVG';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
