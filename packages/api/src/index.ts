@@ -29,13 +29,14 @@ export const createApolloServer = async () => {
   const server = new ApolloServer({
     schema,
     context: async ({ req }: { req: NextApiRequest }) => {
-      const authHeader = req.headers.authorization;
+      const cookies = req.headers.cookie ?? '';
+      const cookiesArr = cookies.split('; ');
+      const cookieData = cookiesArr.find((row) => row.startsWith('token='));
+      const token = cookieData?.split('=')[1];
+
       const socketInfo = req.socket.address();
 
-      if (!authHeader || !authHeader.startsWith('Bearer '))
-        return { hasAuth: false, socketInfo };
-
-      const token = authHeader.substring(7, authHeader.length);
+      if (!token || token === '') return { hasAuth: false, socketInfo };
 
       return contextFromToken(token, socketInfo);
     },
