@@ -11,33 +11,67 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="hidden max-w-5xl mx-auto sm:flex items-center justify-between py-8">
-        <img src="/static/oasis-logo.png" alt="Oasis Logo" className="w-32" />
+      <nav className="hidden max-w-full mx-auto sm:flex items-center justify-between py-8 bg-gray-800">
+        <img
+          src="/static/oasis-logo.png"
+          alt="Oasis Logo"
+          className="w-32 ml-8"
+        />
         <ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
-          <li>
-            <a href="#" className="hover:text-gray-200">
-              Feed
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-gray-200">
-              Followers
-            </a>
-          </li>
-          <li>
+          <li className="flex justify-between">
+            <img src="/static/Home.svg" />
+            <div className="w-3.5" />
             <a
-              onClick={() => {
-                firebase.auth().signOut();
-                router.push('/');
-              }}
               href="#"
-              className="hover:text-gray-200"
+              className="font-extrabold text-white hover:text-gray-200"
             >
-              Logout
+              Home
             </a>
           </li>
+          <li className="flex justify-between">
+            <img src="/static/Topics.svg" />
+            <div className="w-3.5" />
+            <a
+              href="#"
+              className="font-extrabold text-white hover:text-gray-200"
+            >
+              Topics
+            </a>
+          </li>
+          <li className="flex justify-between">
+            <img src="/static/Friends.svg" />
+            <div className="w-3.5" />
+            <a
+              href="#"
+              className="font-extrabold text-white hover:text-gray-200"
+            >
+              Friends
+            </a>
+          </li>
+          <li className="flex justify-between">
+            <img src="/static/Saved.svg" />
+            <div className="w-3.5" />
+            <a
+              href="#"
+              className="font-extrabold text-white hover:text-gray-200"
+            >
+              Saved
+            </a>
+          </li>
+        </ul>
+        <ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
+          <li className="flex justify-left">
+            <img
+              src="/static/magnifying-glass.svg"
+              style={{ marginRight: '-25px', zIndex: 20 }}
+            />
+            <input
+              placeholder="Search for People, Posts, etc..."
+              className="rounded-lg w-80 bg-gray-700 h-10 text-sm pl-11"
+            />
+          </li>
           <li>
-            <Button size="sm">Post</Button>
+            <img src="/static/Bell.svg" />
           </li>
           <li>
             {user && (
@@ -47,6 +81,9 @@ export const Navbar: React.FC = () => {
                 className="w-12 h-12 rounded-full"
               />
             )}
+          </li>
+          <li>
+            <img src="/static/Down-Arrow.svg" className="mr-8" />
           </li>
         </ul>
       </nav>
