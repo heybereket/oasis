@@ -1,3 +1,4 @@
+import { Login } from '@lib/auth';
 import firebase from 'firebase';
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
@@ -39,7 +40,14 @@ export const Navbar: React.FC = () => {
           {user ? (
             <img src="/static/Down-Arrow.svg" />
           ) : (
-            <Button size="sm">Login</Button>
+            <Button
+              size="sm"
+              onClick={async () => {
+                await Login();
+              }}
+            >
+              Login
+            </Button>
           )}
         </div>
       </nav>
@@ -62,7 +70,14 @@ export const Navbar: React.FC = () => {
                 className="w-12 h-12 rounded-full"
               />
             ) : (
-              <Button size="sm">Login</Button>
+              <Button
+                size="sm"
+                onClick={async () => {
+                  await Login();
+                }}
+              >
+                Login
+              </Button>
             )}
           </div>
         </div>

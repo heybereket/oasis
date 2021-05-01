@@ -120,10 +120,10 @@ export class BaseEntity {
     this: Constructor<T>,
     fieldName: string,
     value: string
-  ): Promise<T[]> {
+  ): Promise<T> {
     const entity: EntityData = (this as any).entity;
     const collection = entity.collection;
     const snap = await collection.where(fieldName, '==', value).get();
-    return snap.docs.map((doc) => (doc.data() as any) as T);
+    return (snap.docs[0].data() as any) as T;
   }
 }
