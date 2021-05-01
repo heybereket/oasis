@@ -13,7 +13,7 @@
     "dev": "run-p -l \"dev:web\" \"dev:api\" \"dev:gql\"",
     "commit": "git add . && cz && git push",
     "deploy": "git add . && git commit -m \"chore(deploy): Merge staging -> prod\" &&git pull origin staging  && git checkout prod && git merge staging && git push origin prod && git checkout staging",
-    "format": "yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run format"
+    "format": "yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run prettify"
   },
   "devDependencies": {
     "@types/eslint": "^7",
