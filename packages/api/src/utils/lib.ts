@@ -5,10 +5,8 @@ export const generatedNumber = (n = 10) => {
 };
 
 // Search a JSON Object
-export const searchJSON = (json, value) => {
-  return json.filter(
-    function(data) {
-      return data.login == value
-    }
-  );
-}
+export const searchJSON = (json: any[], key: string | symbol, value: any) => {
+  // If index is -1 (not found), return false
+  // Otherwise return true
+  return json.findIndex((data) => data[key] === value) !== -1;
+};
