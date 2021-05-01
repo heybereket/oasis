@@ -12,51 +12,58 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <nav className="hidden max-w-full mx-auto sm:flex items-center justify-between py-8 bg-gray-800">
-        <img
-          src="/static/oasis-logo.png"
-          alt="Oasis Logo"
-          className="w-32 ml-8"
-        />
-        <ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
-          <li className="flex justify-between">
-            <img src="/static/Home.svg" />
-            <div className="w-3.5" />
-            <a
-              href="#"
-              className="font-extrabold text-white hover:text-gray-200"
-            >
-              Home
-            </a>
+        <ul className="flex justify-items-start items-center">
+          <li>
+            <img
+              src="/static/oasis-logo.png"
+              alt="Oasis Logo"
+              className="w-32 ml-8"
+            />
           </li>
-          <li className="flex justify-between">
-            <img src="/static/Topics.svg" />
-            <div className="w-3.5" />
-            <a
-              href="#"
-              className="font-extrabold text-white hover:text-gray-200"
-            >
-              Topics
-            </a>
-          </li>
-          <li className="flex justify-between">
-            <img src="/static/Friends.svg" />
-            <div className="w-3.5" />
-            <a
-              href="#"
-              className="font-extrabold text-white hover:text-gray-200"
-            >
-              Friends
-            </a>
-          </li>
-          <li className="flex justify-between">
-            <img src="/static/Saved.svg" />
-            <div className="w-3.5" />
-            <a
-              href="#"
-              className="font-extrabold text-white hover:text-gray-200"
-            >
-              Saved
-            </a>
+          <li className="w-5"></li>
+          <li>
+            <ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
+              <li className="flex justify-between">
+                <img src="/static/Home.svg" />
+                <div className="w-3.5" />
+                <a
+                  href="#"
+                  className="font-extrabold text-white hover:text-gray-200"
+                >
+                  Home
+                </a>
+              </li>
+              <li className="flex justify-between">
+                <img src="/static/Topics.svg" />
+                <div className="w-3.5" />
+                <a
+                  href="#"
+                  className="font-extrabold text-white hover:text-gray-200"
+                >
+                  Topics
+                </a>
+              </li>
+              <li className="flex justify-between">
+                <img src="/static/Friends.svg" />
+                <div className="w-3.5" />
+                <a
+                  href="#"
+                  className="font-extrabold text-white hover:text-gray-200"
+                >
+                  Friends
+                </a>
+              </li>
+              <li className="flex justify-between">
+                <img src="/static/Saved.svg" />
+                <div className="w-3.5" />
+                <a
+                  href="#"
+                  className="font-extrabold text-white hover:text-gray-200"
+                >
+                  Saved
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
         <ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
