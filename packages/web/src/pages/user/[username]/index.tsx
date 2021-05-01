@@ -5,6 +5,7 @@ import {
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/ssrRequest';
+import { contextFromToken } from '@oasis/api/dist/utils/contextFromToken';
 
 interface ProfileProps {
   initialApolloState: any;
@@ -17,17 +18,31 @@ const Profile: React.FC<ProfileProps> = (props) => {
       username: props.username,
     },
   }).data?.getUserByName;
-  console.log(data);
-  return <Navbar />;
+
+  return (
+    <>
+      <Navbar />
+      {data?.name}
+      {data?.username}
+    </>
+  );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  req,
+}) => {
+  const cookies = req.headers.cookie ?? '';
+  const cookiesArr = cookies.split('; ');
+  const cookieData = cookiesArr.find((row) => row.startsWith('token='));
+  const token = cookieData?.split('=')[1];
   return {
     props: {
       username: query.username,
       initialApolloState: await ssrRequest({
         document: GetUserByNameDocument,
         variables: { username: query.username },
+        context: contextFromToken(token ?? '', req.socket.address()),
       }),
     },
   };
