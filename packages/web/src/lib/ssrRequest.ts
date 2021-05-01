@@ -9,7 +9,11 @@ import { graphql, DocumentNode, print } from 'graphql';
 // TypeGraphQL and queries that. This method
 // increases performance
 
-type Query = { document: DocumentNode; variables?: { [key: string]: any } };
+type Query = {
+  document: DocumentNode;
+  variables?: { [key: string]: any };
+  context?: any;
+};
 
 export const ssrRequest = async (
   ...queries: Query[]
@@ -18,7 +22,7 @@ export const ssrRequest = async (
   const apolloClient = initializeApollo();
 
   // For every document, follow the steps below
-  for (const { document, variables = {} } of queries) {
+  for (const { document, variables = {}, context } of queries) {
     // Add a "__typename" field because Apollo's cache expects it
     // @todo Change how this is done (editing JSON directly may cause problems in the future)
     const DocumentForGql: DocumentNode = JSON.parse(
@@ -33,6 +37,7 @@ export const ssrRequest = async (
       schema,
       source: print(DocumentForGql),
       variableValues: variables,
+      contextValue: context,
     });
 
     // Write the query to the cache
