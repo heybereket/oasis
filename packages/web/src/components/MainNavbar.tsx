@@ -3,6 +3,7 @@ import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from './Button';
+import { NavItem } from './NavItem';
 
 export const Navbar: React.FC = () => {
   const [isOn, toggleIsOn] = useState(false);
@@ -11,120 +12,38 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="hidden max-w-full mx-auto sm:flex items-center justify-between py-8 bg-gray-800">
-        <ul className="flex justify-items-start items-center">
-          <li>
-            <img
-              src="/static/oasis-logo.png"
-              alt="Oasis Logo"
-              className="w-32 ml-8"
-            />
-          </li>
-          <li className="w-5"></li>
-          <li>
-            <ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
-              <li className="flex justify-between">
-                <img src="/static/Home.svg" />
-                <div className="w-3.5" />
-                <a
-                  href="#"
-                  className="font-extrabold text-white hover:text-gray-200"
-                >
-                  Home
-                </a>
-              </li>
-              <li className="flex justify-between">
-                <img src="/static/Topics.svg" />
-                <div className="w-3.5" />
-                <a
-                  href="#"
-                  className="font-extrabold text-white hover:text-gray-200"
-                >
-                  Topics
-                </a>
-              </li>
-              <li className="flex justify-between">
-                <img src="/static/Friends.svg" />
-                <div className="w-3.5" />
-                <a
-                  href="#"
-                  className="font-extrabold text-white hover:text-gray-200"
-                >
-                  Friends
-                </a>
-              </li>
-              <li className="flex justify-between">
-                <img src="/static/Saved.svg" />
-                <div className="w-3.5" />
-                <a
-                  href="#"
-                  className="font-extrabold text-white hover:text-gray-200"
-                >
-                  Saved
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
-          <li className="flex justify-left">
-            <img
-              src="/static/magnifying-glass.svg"
-              style={{ marginRight: '-25px', zIndex: 20 }}
-            />
+      <nav className="hidden sm:flex items-center justify-between p-8 bg-gray-800 ">
+        <div className="flex justify-items-start items-center space-x-5">
+          <img src="/static/oasis-logo.png" alt="Oasis Logo" className="w-28" />
+          <NavItem name="Home" href="#" />
+          <NavItem name="Topics" href="#" />
+          <NavItem name="Friends" href="#" />
+          <NavItem name="Saved" href="#" />
+        </div>
+        <div className="flex justify-items-start items-center space-x-6 ml-4">
+          <div className="flex items-center relative">
+            <img src="/static/magnifying-glass.svg" className="absolute ml-3" />
             <input
-              placeholder="Search for People, Posts, etc..."
-              className="rounded-lg w-80 bg-gray-700 h-10 text-sm pl-11"
+              placeholder="Search"
+              className="rounded-lg bg-gray-700 h-10 text-sm pl-11 text-gray-300 w-40 lg:w-80"
             />
-          </li>
-          <li className="flex justify-between">
-            <img src="/static/Saved.svg" />
-            <div className="w-3.5" />
-            <a
-              href="#"
-              className="font-extrabold text-white hover:text-gray-200"
-            >
-              Saved
-            </a>
-          </li>
-        </ul>
-        <ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
-          <li className="flex justify-left">
+          </div>
+          <img src="/static/Bell.svg" />
+          {user && (
             <img
-              src="/static/magnifying-glass.svg"
-              style={{ marginRight: '-25px', zIndex: 20 }}
+              src={user?.photoURL ?? undefined}
+              alt={user?.displayName ?? undefined}
+              className="w-12 h-12 rounded-full"
             />
-            <input
-              placeholder="Search for People, Posts, etc..."
-              className="rounded-lg w-80 bg-gray-700 h-10 text-sm pl-11"
-            />
-          </li>
-          <li>
-            <img src="/static/Bell.svg" />
-          </li>
-          <li>
-            {user && (
-              <img
-                src={user?.photoURL ?? undefined}
-                alt={user?.displayName ?? undefined}
-                className="w-12 h-12 rounded-full"
-              />
-            )}
-          </li>
-          <li>
-            <img src="/static/Down-Arrow.svg" className="mr-8" />
-          </li>
-        </ul>
+          )}
+          <img src="/static/Down-Arrow.svg" />
+        </div>
       </nav>
 
       {/*mobile navbar*/}
-      <nav className="sm:hidden max-w-full mx-auto py-8">
+      <nav className="max-w-full mx-auto p-8 sm:hidden">
         <div className="flex items-center justify-between">
-          <img
-            src="/static/oasis-logo.png"
-            alt="Oasis Logo"
-            className="w-32 ml-8"
-          />
+          <img src="/static/oasis-logo.png" alt="Oasis Logo" className="w-28" />
           <ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
             <li>
               <img src="/static/mobile-magnifying-glass.svg" />
