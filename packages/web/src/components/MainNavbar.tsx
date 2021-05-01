@@ -77,6 +77,28 @@ export const Navbar: React.FC = () => {
               className="rounded-lg w-80 bg-gray-700 h-10 text-sm pl-11"
             />
           </li>
+          <li className="flex justify-between">
+            <img src="/static/Saved.svg" />
+            <div className="w-3.5" />
+            <a
+              href="#"
+              className="font-extrabold text-white hover:text-gray-200"
+            >
+              Saved
+            </a>
+          </li>
+        </ul>
+        <ul className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
+          <li className="flex justify-left">
+            <img
+              src="/static/magnifying-glass.svg"
+              style={{ marginRight: '-25px', zIndex: 20 }}
+            />
+            <input
+              placeholder="Search for People, Posts, etc..."
+              className="rounded-lg w-80 bg-gray-700 h-10 text-sm pl-11"
+            />
+          </li>
           <li>
             <img src="/static/Bell.svg" />
           </li>
