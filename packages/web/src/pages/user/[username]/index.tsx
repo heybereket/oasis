@@ -16,6 +16,7 @@ import Link from 'next/link';
 const Profile: React.FC = () => {
   const router = useRouter();
   const [user, setUser] = useState<User | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   let username = router.query.username;
 
   // Looking  at someone elses profile
@@ -34,6 +35,7 @@ const Profile: React.FC = () => {
   useEffect(() => {
     if (data?.getUserByName !== null && data?.getUserByName !== undefined)
       setUser(data?.getUserByName[0] as User);
+      setIsLoading(false);
   }, [data]);
 
   // User exists
@@ -103,6 +105,12 @@ const Profile: React.FC = () => {
             />
           </div>
         </div>
+      </>
+    );
+  } else if (isLoading) {
+    return (
+      <>
+        <h1>Loading...</h1>
       </>
     );
   } else {

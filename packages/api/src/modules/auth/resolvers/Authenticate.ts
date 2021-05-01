@@ -54,7 +54,7 @@ export default class AuthenticateResolver {
         // userData.username_lower = (githubData.login as string).toLowerCase();
       } else if (!usernameField.empty && !doc.exists) {
         // Add generated digits to end of username if already exists in database
-        userData.username = `${githubData.login}${generatedNumber(4)}}`;
+        userData.username = `${githubData.login.toLowerCase()}${generatedNumber(4)}}`;
       } else if (doc.exists && doc.data().username_lower == undefined) {
         // if username_lower field doesnt exist, make one
         userData.username_lower = doc.data().username.toLowerCase();
