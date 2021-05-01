@@ -21,13 +21,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
   return <Navbar />;
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   return {
     props: {
-      username: context.query.username,
+      username: query.username,
       initialApolloState: await ssrRequest({
         document: GetUserByNameDocument,
-        variables: { username: context.query.username },
+        variables: { username: query.username },
       }),
     },
   };
