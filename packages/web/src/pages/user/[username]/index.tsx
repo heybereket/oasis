@@ -5,6 +5,7 @@ import {
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/ssrRequest';
+import { contextFromToken } from '@oasis/api/dist/utils/contextFromToken';
 
 interface ProfileProps {
   initialApolloState: any;
@@ -20,7 +21,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
   return (
     <>
       <Navbar />
-      <div className="flex w-screen">
+      <div className="flex w-screen flex-col">
         <div
           style={{
             background:
@@ -29,18 +30,28 @@ const Profile: React.FC<ProfileProps> = (props) => {
           }}
           className="flex-grow h-64"
         ></div>
+        {data?.name}
+        {data?.username}
       </div>
     </>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  req,
+}) => {
+  const cookies = req.headers.cookie ?? '';
+  const cookiesArr = cookies.split('; ');
+  const cookieData = cookiesArr.find((row) => row.startsWith('token='));
+  const token = cookieData?.split('=')[1];
   return {
     props: {
-      username: context.query.username,
+      username: query.username,
       initialApolloState: await ssrRequest({
         document: GetUserByNameDocument,
-        variables: { username: context.query.username },
+        variables: { username: query.username },
+        context: contextFromToken(token ?? '', req.socket.address()),
       }),
     },
   };

@@ -11,7 +11,6 @@ import 'reflect-metadata';
 
 import { GraphQLRequestContext } from 'apollo-server-plugin-base';
 import { ApolloServer } from 'apollo-server-micro';
-import admin from './utils/firebase-admin';
 import { NextApiRequest } from 'next';
 
 import { getComplexity, simpleEstimator } from 'graphql-query-complexity';
@@ -20,8 +19,9 @@ import depthLimit from 'graphql-depth-limit';
 import { getSchema } from './utils/getSchema';
 import { TypeInfo, ValidationContext } from 'graphql';
 import getDepth from './utils/getDepth';
+import { contextFromToken } from './utils/contextFromToken';
 
-export { getSchema };
+export { getSchema, contextFromToken };
 
 export const createApolloServer = async () => {
   const schema = await getSchema();
@@ -29,20 +29,16 @@ export const createApolloServer = async () => {
   const server = new ApolloServer({
     schema,
     context: async ({ req }: { req: NextApiRequest }) => {
-      const authHeader = req.headers.authorization;
+      const cookies = req.headers.cookie ?? '';
+      const cookiesArr = cookies.split('; ');
+      const cookieData = cookiesArr.find((row) => row.startsWith('token='));
+      const token = cookieData?.split('=')[1];
+
       const socketInfo = req.socket.address();
 
-      if (!authHeader || !authHeader.startsWith('Bearer '))
-        return { hasAuth: false, socketInfo };
+      if (!token || token === '') return { hasAuth: false, socketInfo };
 
-      const token = authHeader.substring(7, authHeader.length);
-
-      try {
-        const data = await admin.auth().verifyIdToken(token);
-        return { hasAuth: true, ...data, socketInfo };
-      } catch (e) {
-        return { hasAuth: false, socketInfo };
-      }
+      return contextFromToken(token, socketInfo);
     },
     plugins: [
       {
