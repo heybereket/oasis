@@ -24,8 +24,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
       <div className="flex w-screen flex-col">
         <div
           style={{
-            background:
-              `linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #0C111B 100%), url(${data?.banner || '/static/mountain.jpeg'}) no-repeat center`,
+            background: `linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #0C111B 100%), url(${
+              data?.banner || '/static/mountain.jpeg'
+            }) no-repeat center`,
             backgroundSize: 'cover',
           }}
           className="flex-grow h-64"
