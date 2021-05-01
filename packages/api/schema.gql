@@ -63,12 +63,18 @@ type Repo {
 }
 
 type User {
-  createdAt: String
-  id: ID
+  avatar: String!
+  banner: String
+  bio: String
+  createdAt: String!
+  github: String!
+  id: ID!
   name: String
   posts: [Post!]
   repos: [Repo!]
-  username: String
-  username_lower: String
-  verified: Boolean
+  twitter: String
+  url: String
+  username: String!
+  username_lower: String!
+  verified: Boolean!
 }

@@ -35,6 +35,7 @@ export default class AuthenticateResolver {
       const userData: FirebaseFirestore.DocumentData = {
         id: decodedToken.uid,
         email: decodedToken.email,
+        banner: null,
         avatar: decodedToken.picture,
         name: githubData.name,
         bio: null,

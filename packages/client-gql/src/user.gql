@@ -1,7 +1,10 @@
 query getUserByName($username: String!) {
   getUserByName(username: $username) {
-    createdAt
     id
+    createdAt
+    github
+    twitter
+    bio
     posts {
       author {
         createdAt
