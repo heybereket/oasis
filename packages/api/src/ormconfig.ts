@@ -1,5 +1,11 @@
-// export const ormconfig = {
+import { ConnectionOptions } from "typeorm";
+import { join } from "path";
 
-//   type: "postgres"
+export const isProd = process.env.NODE_ENV === "produnction";
 
-// };
+export const ormconfig: ConnectionOptions = {
+  type: "postgres",
+  url: process.env.DATABASE_URL,
+  synchronize: !isProd,
+  entities: [join(__dirname, "./entities/*.*")],
+};
