@@ -3,20 +3,27 @@ import React from 'react';
 
 interface SEOProps {
   title: string;
-  ogTitle?: string;
-  ogDescription?: string;
-  ogImage?: string;
+  metaTitle?: string;
+  metaDesc?: string;
+  metaImg?: string;
 }
 
-export const SEO: React.FC<SEOProps> = (props) => {
+export const SEO: React.FC<SEOProps> = ({
+  title,
+  metaTitle,
+  metaDesc,
+  metaImg,
+}) => {
   return (
     <Head>
-      <title>{props.title}</title>
-      {props.ogTitle && <meta name="og:title" content={props.ogTitle} />}
-      {props.ogDescription && (
-        <meta name="og:description" content={props.ogDescription} />
+      <title>{title}</title>
+      {metaTitle ? (
+        <meta name="og:title" content={metaTitle} />
+      ) : (
+        <meta name="og:title" content={title} />
       )}
-      {props.ogImage && <meta name="og:image" content={props.ogImage} />}
+      {metaDesc && <meta name="og:description" content={metaDesc} />}
+      {metaImg && <meta name="og:image" content={metaImg} />}
     </Head>
   );
 };

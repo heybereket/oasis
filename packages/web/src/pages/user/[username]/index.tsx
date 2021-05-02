@@ -48,32 +48,20 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
   return (
     <>
-      {/* User Exists */}
-      {data?.username !== undefined && (
-        <SEO
-          title={data?.name + ' — Oasis'}
-          ogTitle={data?.name + ' — Oasis'}
-          ogDescription={`@${data?.username} — ${data?.bio ?? ''}`}
-          ogImage={data?.avatar}
-        />
-      )}
-      {/* User does not exist */}
-      {data?.username === undefined && (
-        <SEO
-          title={'User Not Found — Oasis'}
-          ogTitle={'User Not Found — Oasis'}
-          ogDescription={`Sorry! We couldn't find this user.`}
-        />
-      )}
+      <SEO
+        title={data?.name + ' — Oasis'}
+        metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
+        metaImg={data?.avatar}
+      />
 
       <Navbar />
       <div className="flex w-screen flex-col">
         <div
           style={{
             background: `linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #0C111B 100%), url(${
-              data?.banner || '/static/mountain.jpeg'
-            }) no-repeat center`,
-            backgroundSize: 'cover',
+              data?.banner || '/static/default-banner.png'
+            }) no-repeat stretch`,
+            backgroundSize: '100%',
           }}
           className="flex-grow h-64"
         ></div>
