@@ -1,9 +1,6 @@
 import User from '../../../entity/User';
-import { Arg, Ctx, Mutation, Query, Resolver } from 'type-graphql';
+import { Arg, Ctx, Query, Resolver } from 'type-graphql';
 import { ContextType } from '../../../utils/contextFromToken';
-import { AuthenticationError } from 'apollo-server-errors';
-import { adminDB } from '../../../utils/common/admin-db';
-import { generateSafeUsername } from '../../../utils/generateSafeUsername';
 
 @Resolver()
 export default class UserResolver {

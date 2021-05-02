@@ -19,7 +19,6 @@ export default class UpdateProfileInput {
   name?: string;
 
   @Field({ nullable: false })
-  @IsOptional()
   @Length(0, 20)
   username?: string;
 

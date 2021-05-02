@@ -16,7 +16,7 @@ export default class UpdateProfile {
         .set({ banner: bannerUrl }, { merge: true });
       return true;
     } else {
-      return new AuthenticationError('Please login to change your banner.');
+      return new AuthenticationError('Unable to edit profile. Try logging in.');
     }
   }
 
