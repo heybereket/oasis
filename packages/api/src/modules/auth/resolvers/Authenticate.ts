@@ -1,6 +1,10 @@
 import { adminDB } from '../../../utils/common/admin-db';
 import admin from '../../../utils/common/firebase-admin';
-import { generatedNumber, searchJSON, getShortMonth } from '../../../utils/common/lib';
+import {
+  generatedNumber,
+  searchJSON,
+  getShortMonth,
+} from '../../../utils/common/lib';
 import firebaseAdmin from 'firebase-admin';
 import { Arg, Mutation, Resolver } from 'type-graphql';
 import { ApolloError } from 'apollo-server-errors';
@@ -13,15 +17,14 @@ export default class AuthenticateResolver {
       const decodedToken = await admin.auth().verifyIdToken(idToken);
 
       // Fetching GitHub API
-      const res = await fetch(
+      const githubData = await fetch(
         `https://api.github.com/user/${decodedToken.firebase.identities['github.com'][0]}`
-      );
-      const githubData = await res.json();
+      ).then((res) => res.json());
 
-      const cRes = await fetch(
+      // Fetching Oasis Contributors via GitHub API
+      const contributorData = await fetch(
         'https://api.github.com/repos/oasis-sh/oasis/contributors'
-      );
-      const contributorData = await cRes.json();
+      ).then((res) => res.json());
 
       const docRef = adminDB.doc(`users/${decodedToken.uid}`);
       const doc = await docRef.get();
