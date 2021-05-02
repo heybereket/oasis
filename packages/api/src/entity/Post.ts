@@ -26,10 +26,10 @@ export default class Post extends BaseEntity {
   topics: string[];
 
   @Field(() => User)
-  @Relation(User)
+  @Relation('User')
   author: any;
 
   @Field(() => [Comment])
-  @Relation(Comment, { multi: true })
+  @Relation('Comment')
   comments: any[];
 }

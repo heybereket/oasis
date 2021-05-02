@@ -1,4 +1,4 @@
-import { getFirebase } from './firebase';
+import { getFirebase } from './common/firebase';
 import 'firebase/auth';
 import { AuthDocument } from '@oasis/client-gql';
 import { apolloClient } from './apolloClient';

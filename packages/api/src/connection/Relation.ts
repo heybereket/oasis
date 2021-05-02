@@ -1,30 +1,25 @@
 import { BaseEntity } from './BaseEntity';
 import { FieldData } from './types';
-
-export const fields_data = '__Fields_Data__';
+import { fields_data } from './Deserialize';
 
 export interface RelationFieldData {
   type: 'relation';
-  name: string;
-  multi?: boolean;
-  entity: typeof BaseEntity;
+  fieldName: string;
+  entity: string;
 }
 
-export interface Options {
-  multi?: boolean;
-}
+export const Relation = (entity: string): PropertyDecorator => (
+  target,
+  propKey
+) => {
+  const fieldName = String(propKey);
 
-export const Relation = (
-  entity: typeof BaseEntity,
-  { multi = false }: Options = {}
-): PropertyDecorator => (target, propertyKey) => {
   const fields: FieldData[] =
     Reflect.getMetadata(fields_data, target.constructor) || [];
 
   const fieldData: RelationFieldData = {
     type: 'relation',
-    name: String(propertyKey),
-    multi,
+    fieldName,
     entity,
   };
 

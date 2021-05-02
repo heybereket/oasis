@@ -47,6 +47,6 @@ export default class Repo extends BaseEntity {
   date_added: any;
 
   @Field(() => User)
-  @Relation(User)
+  @Relation('User')
   owner: any;
 }

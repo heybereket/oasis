@@ -20,10 +20,10 @@ export default class Comment extends BaseEntity {
   dislikes: number;
 
   @Field(() => Post)
-  @Relation(Post)
+  @Relation('Post')
   post: any;
 
   @Field(() => User)
-  @Relation(User)
+  @Relation('User')
   author: any;
 }

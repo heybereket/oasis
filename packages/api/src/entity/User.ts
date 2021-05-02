@@ -47,10 +47,10 @@ export default class User extends BaseEntity {
   verified: boolean;
 
   @Field(() => [Repo], { nullable: true })
-  @Relation(Repo, { multi: true })
+  @Relation('Repo')
   repos: any[];
 
   @Field(() => [Post], { nullable: true })
-  @Relation(Post, { multi: true })
+  @Relation('Post')
   posts: any[];
 }

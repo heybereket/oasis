@@ -1,6 +1,6 @@
 import { AppProps } from 'next/app';
 import '../styles/globals.css';
-import { getFirebase } from '../lib/firebase';
+import { getFirebase } from '../lib/common/firebase';
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@lib/apolloClient';
