@@ -2,6 +2,7 @@ import { Field, ID, ObjectType } from 'type-graphql';
 import { BaseEntity, Entity } from '../connection';
 import Repo from './Repo';
 import Post from './Post';
+import { registerEntity, Relation } from '../connection/Relation';
 
 const deserialize = (orig: any) => ({
   ...orig,
@@ -46,8 +47,11 @@ export default class User extends BaseEntity {
   verified: boolean;
 
   @Field(() => [Repo], { nullable: true })
+  @Relation('Repo')
   repos: any[];
 
   @Field(() => [Post], { nullable: true })
   posts: any[];
 }
+
+registerEntity(User);

@@ -1,5 +1,6 @@
-import { allEntities, EntityData } from './Entity';
+import { EntityData } from './Entity';
 import { handleRelations } from './handleRelations';
+import { allEntities } from './Entity';
 
 type Constructor<T> = { new (): T };
 
@@ -10,16 +11,21 @@ export class BaseEntity {
     const formatter = this.entity.options?.deserialize;
     const data = formatter ? formatter(orig) : { ...orig };
 
-    for (const { name, deserialize } of this._entity.fields) {
-      const val = data[name];
-      data[name] = {
-        then: async (cb: any) => {
-          return cb(deserialize(val));
-        },
-      };
+    console.log(data);
+
+    for (const field of this._entity.fields) {
+      const val = data[field.fieldName];
+
+      if (field.type === 'deserializer') {
+        data[field.fieldName] = {
+          then: async (cb: any) => {
+            return cb(field.deserialize(val));
+          },
+        };
+      }
     }
 
-    handleRelations(data);
+    handleRelations(data, this.name);
 
     return data;
   }

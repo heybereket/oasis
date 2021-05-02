@@ -2,6 +2,7 @@ import { BaseEntity, Entity } from '../connection';
 import { Field, Int, ObjectType } from 'type-graphql';
 import Post from './Post';
 import User from './User';
+import { registerEntity, Relation } from '../connection/Relation';
 
 @ObjectType()
 @Entity('comments')
@@ -19,8 +20,12 @@ export default class Comment extends BaseEntity {
   dislikes: number;
 
   @Field(() => Post)
+  @Relation('Post')
   post: any;
 
   @Field(() => User)
+  @Relation('User')
   author: any;
 }
+
+registerEntity(Comment);

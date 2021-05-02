@@ -4,7 +4,7 @@ export const fields_data = Symbol('Fields_Data');
 
 export interface DeserializerFieldData {
   type: 'deserializer';
-  name: string;
+  fieldName: string;
   deserialize: (origVal: any) => any | Promise<any>;
 }
 
@@ -20,7 +20,7 @@ export const Deserializer = (
 
   const fieldData: DeserializerFieldData = {
     type: 'deserializer',
-    name: String(propertyKey),
+    fieldName: String(propertyKey),
     deserialize,
   };
   fields.push(fieldData);
