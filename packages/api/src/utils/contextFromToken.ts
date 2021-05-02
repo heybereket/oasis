@@ -1,4 +1,4 @@
-import admin from './firebase-admin';
+import admin from './common/firebase-admin';
 import { NextApiRequest } from 'next';
 
 type SocketInfo = ReturnType<NextApiRequest['socket']['address']>;

@@ -1,4 +1,4 @@
-import { adminDB } from '../utils/admin-db';
+import { adminDB } from '../utils/common/admin-db';
 import { fields_data } from './Relation';
 import { FieldData } from './types';
 

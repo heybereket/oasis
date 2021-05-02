@@ -1,6 +1,6 @@
-import { adminDB } from '../../../utils/admin-db';
-import admin from '../../../utils/firebase-admin';
-import { generatedNumber, searchJSON } from '../../../utils/lib';
+import { adminDB } from '../../../utils/common/admin-db';
+import admin from '../../../utils/common/firebase-admin';
+import { generatedNumber, searchJSON } from '../../../utils/common/lib';
 import firebaseAdmin from 'firebase-admin';
 import { Arg, Mutation, Resolver } from 'type-graphql';
 import { ApolloError } from 'apollo-server-errors';

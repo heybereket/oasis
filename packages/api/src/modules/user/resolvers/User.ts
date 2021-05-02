@@ -2,7 +2,7 @@ import User from '../../../entity/User';
 import { Arg, Ctx, Mutation, Query, Resolver } from 'type-graphql';
 import { ContextType } from '../../../utils/contextFromToken';
 import { AuthenticationError } from 'apollo-server-errors';
-import { adminDB } from '../../../utils/admin-db';
+import { adminDB } from '../../../utils/common/admin-db';
 
 @Resolver()
 export default class UserResolver {

@@ -16,9 +16,9 @@ import { NextApiRequest } from 'next';
 import { getComplexity, simpleEstimator } from 'graphql-query-complexity';
 import depthLimit from 'graphql-depth-limit';
 
-import { getSchema } from './utils/getSchema';
+import { getSchema } from './utils/get/getSchema';
 import { TypeInfo, ValidationContext } from 'graphql';
-import getDepth from './utils/getDepth';
+import getDepth from './utils/get/getDepth';
 import { contextFromToken } from './utils/contextFromToken';
 
 export { getSchema, contextFromToken };

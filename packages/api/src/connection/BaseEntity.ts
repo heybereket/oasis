@@ -1,4 +1,4 @@
-import { getRefData } from '../utils/getRefData';
+import { getRefData } from '../utils/get/getRefData';
 import { allEntities, EntityData } from './Entity';
 
 type Constructor<T> = { new (): T };

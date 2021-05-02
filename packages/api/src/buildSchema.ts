@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { join, dirname } from "path";
 import { config } from "dotenv";
-import { getSchema } from "./utils/getSchema";
+import { getSchema } from "./utils/get/getSchema";
 
 const ROOT = process.env.PROJECT_ROOT
   ? join(process.env.PROJECT_ROOT, "./packages/api")

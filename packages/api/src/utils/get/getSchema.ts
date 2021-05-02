@@ -1,5 +1,5 @@
 import { buildSchema } from 'type-graphql';
-import { importAll } from '../globs/importAll';
+import { importAll } from '../../globs/importAll';
 
 let schema: ReturnType<typeof buildSchema>;
 
