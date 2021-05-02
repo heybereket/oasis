@@ -12,10 +12,13 @@ export const createResolver = (
       return entity.find();
     }
 
-    // @Query(() => [entity], { name: `paginate${suffix}s` })
-    // paginate(@Arg("limit") limit: number, @Arg("offset") offset: number) {
-    //   return entity.
-    // }
+    @Query(() => [entity], { name: `paginate${suffix}s` })
+    paginate(@Arg("limit") limit: number, @Arg("offset") offset: number) {
+      return entity.find({
+        skip: offset,
+        take: limit,
+      });
+    }
 
     @Query(() => entity, { name: `get${suffix}` })
     get(@Arg("id") id: string) {
