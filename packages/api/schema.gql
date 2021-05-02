@@ -14,11 +14,6 @@ type Comment {
 
 type Mutation {
   authenticate(idToken: String!): Boolean!
-  changeAvatar(avatar: String!): Boolean!
-  changeBanner(bannerUrl: String!): Boolean!
-  changeBio(bio: String!): Boolean!
-  changeDisplayName(displayName: String!): Boolean!
-  changeUsername(username: String!): Boolean!
   updateProfile(data: UpdateProfileInput!): Boolean!
 }
 
