@@ -54,6 +54,6 @@ export default class User extends BaseEntity {
   @Relation('Post')
   posts: any[];
 
-  @Field()
+  @Field(() => [String])
   badges: string[];
 }

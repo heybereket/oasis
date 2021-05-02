@@ -73,6 +73,7 @@ input UpdateProfileInput {
 
 type User {
   avatar: String!
+  badges: [String!]!
   banner: String
   bio: String
   createdAt: String!
