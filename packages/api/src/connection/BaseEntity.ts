@@ -1,6 +1,5 @@
-import { EntityData } from './Entity';
+import { EntityData, allEntities } from './Entity';
 import { handleRelations } from './handleRelations';
-import { allEntities } from './Entity';
 
 type Constructor<T> = { new (): T };
 

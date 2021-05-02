@@ -1,7 +1,7 @@
 import { Field, ID, ObjectType } from 'type-graphql';
 import { BaseEntity, Entity } from '../connection';
 import { Deserializer } from '../connection/Deserialize';
-import { registerEntity, Relation } from '../connection/Relation';
+import { Relation } from '../connection/Relation';
 import User from './User';
 
 @ObjectType()
@@ -50,5 +50,3 @@ export default class Repo extends BaseEntity {
   @Relation('User')
   owner: any;
 }
-
-registerEntity(Repo);

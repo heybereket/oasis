@@ -1,4 +1,5 @@
 import { adminDB } from '../utils/admin-db';
+import { BaseEntity } from './BaseEntity';
 import { fields_data } from './Deserialize';
 import { FieldData } from './types';
 
@@ -25,13 +26,14 @@ export interface EntityData {
   fields: FieldData[];
 }
 
+export const entityMapping = new Map<string, typeof BaseEntity>();
 export const allEntities: EntityData[] = [];
 
 /**
  * @param collectionName The name of the firebase collection
  */
 export const Entity = (collectionName: string, options: EntityOptions = {}) => <
-  T extends { new (...args: any[]): any }
+  T extends typeof BaseEntity
 >(
   Constructor: T
 ) => {
@@ -45,6 +47,7 @@ export const Entity = (collectionName: string, options: EntityOptions = {}) => <
   };
 
   allEntities.push(data);
+  entityMapping.set(Constructor.name, Constructor);
 
   Reflect.defineMetadata(entity_data, data, Constructor);
 };

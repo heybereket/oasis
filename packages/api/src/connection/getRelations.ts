@@ -1,5 +1,6 @@
 // import { BaseEntity } from './BaseEntity';
-import { entityMapping, RelationFieldData } from './Relation';
+import { RelationFieldData } from './Relation';
+import { entityMapping } from './Entity';
 
 export const getRelations = (type: string) => {
   const allRels: RelationFieldData[] = entityMapping

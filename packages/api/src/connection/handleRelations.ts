@@ -1,7 +1,7 @@
 import { firestore } from 'firebase-admin';
 import { getRefData as _getRefData } from '../utils/getRefData';
 import { getRelations } from './getRelations';
-import { entityMapping } from './Relation';
+import { entityMapping } from './Entity';
 
 const getRefData = async (
   ref: firestore.DocumentReference<firestore.DocumentData>,

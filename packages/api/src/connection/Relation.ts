@@ -8,12 +8,6 @@ export interface RelationFieldData {
   entity: string;
 }
 
-export const entityMapping = new Map<string, typeof BaseEntity>();
-
-export const registerEntity = (entity: typeof BaseEntity) => {
-  entityMapping.set(entity.name, entity);
-};
-
 export const Relation = (entity: string): PropertyDecorator => (
   target,
   propKey
