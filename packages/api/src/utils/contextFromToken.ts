@@ -7,7 +7,6 @@ export const contextFromToken = async (
   token: string,
   socketInfo: SocketInfo
 ) => {
-  console.log('contextFromToken');
   try {
     const data = await admin.auth().verifyIdToken(token);
     return { hasAuth: true, ...data, socketInfo };
