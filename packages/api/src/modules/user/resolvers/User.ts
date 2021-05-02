@@ -3,6 +3,7 @@ import { Arg, Ctx, Mutation, Query, Resolver } from 'type-graphql';
 import { ContextType } from '../../../utils/contextFromToken';
 import { AuthenticationError } from 'apollo-server-errors';
 import { adminDB } from '../../../utils/admin-db';
+import { generateSafeUsername } from '../../../utils/generateSafeUsername';
 
 @Resolver()
 export default class UserResolver {
@@ -47,7 +48,10 @@ export default class UserResolver {
       adminDB
         .collection('users')
         .doc(ctx.uid)
-        .set({ username: newUsername.toLowerCase() }, { merge: true });
+        .set(
+          { username: await generateSafeUsername(newUsername.toLowerCase()) },
+          { merge: true }
+        );
       return true;
     } else {
       return new AuthenticationError('Please log in to change your username');
