@@ -20,8 +20,3 @@ export const getShortMonth = () => {
   return shortMonths[today.getMonth()] + ` ${day}, ${year}`;
 }
 
-// Fetch any URL
-export const request = (url: string) => {
-  return fetch(url);
-}
-
