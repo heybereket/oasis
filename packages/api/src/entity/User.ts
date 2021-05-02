@@ -51,5 +51,6 @@ export default class User extends BaseEntity {
   repos: any[];
 
   @Field(() => [Post], { nullable: true })
+  @Relation('Post')
   posts: any[];
 }
