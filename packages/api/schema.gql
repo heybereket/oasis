@@ -38,10 +38,10 @@ type Query {
   allPosts: [Post!]!
   allRepos: [Repo!]!
   allUsers: [User!]!
-  getComment(id: String!): Comment!
-  getPost(id: String!): Post!
-  getRepo(id: String!): Repo!
-  getUser(id: String!): User!
+  getComment(id: String!): Comment
+  getPost(id: String!): Post
+  getRepo(id: String!): Repo
+  getUser(id: String!): User
   getUserByName(username: String!): User
   paginateComments(limit: Float!, offset: Float!): [Comment!]!
   paginatePosts(limit: Float!, offset: Float!): [Post!]!
@@ -73,7 +73,7 @@ input UpdateProfileInput {
   banner: String
   bio: String
   name: String
-  username: String!
+  username: String
 }
 
 type User {
