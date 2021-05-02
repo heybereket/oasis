@@ -10,6 +10,7 @@ export const searchJSON = (json: any[], key: string | symbol, value: any) => {
   return json.findIndex((data) => data[key] === value) !== -1;
 };
 
+// Generate a short name of current month (ex. April > Apr)
 export const getShortMonth = () => {
   const shortMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const today = new Date();
