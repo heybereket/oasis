@@ -24,7 +24,7 @@ export default class UserResolver {
         .set({ banner: bannerUrl }, { merge: true });
       return true;
     } else {
-      return new AuthenticationError('Please log in');
+      return new AuthenticationError('Please login to change your banner.');
     }
   }
 }
