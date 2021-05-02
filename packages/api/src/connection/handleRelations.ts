@@ -1,5 +1,5 @@
 import { firestore } from 'firebase-admin';
-import { getRefData as _getRefData } from '../utils/getRefData';
+import { getRefData as _getRefData } from '../utils/get/getRefData';
 import { getRelations } from './getRelations';
 import { entityMapping } from './Entity';
 
