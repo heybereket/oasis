@@ -1,6 +1,6 @@
 import { adminDB } from '../../../utils/common/admin-db';
 import admin from '../../../utils/common/firebase-admin';
-import { generatedNumber, searchJSON } from '../../../utils/common/lib';
+import { generatedNumber, searchJSON, getShortMonth } from '../../../utils/common/lib';
 import firebaseAdmin from 'firebase-admin';
 import { Arg, Mutation, Resolver } from 'type-graphql';
 import { ApolloError } from 'apollo-server-errors';
@@ -75,6 +75,7 @@ export default class AuthenticateResolver {
       // Add specific fields only if not already existed
       if (!doc.exists) {
         userData.createdAt = firebaseAdmin.firestore.Timestamp.now();
+        userData.joined = getShortMonth();
         userData.verified = false;
       }
 

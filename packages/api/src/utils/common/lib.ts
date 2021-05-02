@@ -9,3 +9,12 @@ export const searchJSON = (json: any[], key: string | symbol, value: any) => {
   // If index is -1 (not found), return false, else return true
   return json.findIndex((data) => data[key] === value) !== -1;
 };
+
+export const getShortMonth = () => {
+  const shortMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const today = new Date();
+  const year = today.getFullYear();
+  const day = today.getDate();
+
+  return shortMonths[today.getMonth()] + ` ${day}, ${year}`;
+}
