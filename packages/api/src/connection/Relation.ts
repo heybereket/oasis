@@ -7,6 +7,11 @@ export interface RelationFieldData {
   entity: string;
 }
 
+/**
+ * Registers a relational field
+ *
+ * @param entity The name of the entity that represents the data on the other side of the relation
+ */
 export const Relation = (entity: string): PropertyDecorator => (
   target,
   propKey
