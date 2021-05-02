@@ -8,14 +8,10 @@ export const entity_data = Symbol('__Entity_Data__');
 export type FirebaseCollection = FirebaseFirestore.CollectionReference<FirebaseFirestore.DocumentData>;
 
 export interface EntityOptions {
-  /**
-   * Deserialize the firebase document data for the entity
-   */
+  // Deserialize the firebase document data for the entity
   deserialize?: (orig: any) => any;
 
-  /**
-   * Serialize the firebase document data for the entity
-   */
+  // Serialize the firebase document data for the entity
   serialize?: (orig: any) => any;
 }
 
@@ -30,8 +26,8 @@ export const entityMapping = new Map<string, typeof BaseEntity>();
 export const allEntities: EntityData[] = [];
 
 /**
- * @param collectionName The name of the firebase collection
- */
+// @param collectionName The name of the firebase collection
+*/
 export const Entity = (collectionName: string, options: EntityOptions = {}) => <
   T extends typeof BaseEntity
 >(
