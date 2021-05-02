@@ -10,8 +10,6 @@ export class BaseEntity {
     const formatter = this.entity.options?.deserialize;
     const data = formatter ? formatter(orig) : { ...orig };
 
-    console.log(data);
-
     for (const field of this._entity.fields) {
       const val = data[field.fieldName];
 

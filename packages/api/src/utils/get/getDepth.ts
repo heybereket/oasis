@@ -2,7 +2,7 @@
 
 import { ValidationContext } from 'graphql';
 
-const { GraphQLError, Kind } = require('graphql');
+const { Kind } = require('graphql');
 const arrify = require('arrify');
 
 const getDepthWrapper = (

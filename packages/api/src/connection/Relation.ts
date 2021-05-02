@@ -1,4 +1,3 @@
-import { BaseEntity } from './BaseEntity';
 import { FieldData } from './types';
 import { fields_data } from './Deserialize';
 
