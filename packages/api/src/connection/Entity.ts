@@ -1,5 +1,5 @@
 import { adminDB } from '../utils/admin-db';
-import { fields_data } from './Relation';
+import { fields_data } from './Deserialize';
 import { FieldData } from './types';
 
 export const entity_data = Symbol('__Entity_Data__');

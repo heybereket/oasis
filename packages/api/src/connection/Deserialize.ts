@@ -1,5 +1,6 @@
-import { fields_data } from './Relation';
 import { FieldData } from './types';
+
+export const fields_data = Symbol('Fields_Data');
 
 export interface DeserializerFieldData {
   type: 'deserializer';

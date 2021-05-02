@@ -1,5 +1,5 @@
-import { getRefData } from '../utils/getRefData';
 import { allEntities, EntityData } from './Entity';
+import { handleRelations } from './handleRelations';
 
 type Constructor<T> = { new (): T };
 
@@ -10,53 +10,16 @@ export class BaseEntity {
     const formatter = this.entity.options?.deserialize;
     const data = formatter ? formatter(orig) : { ...orig };
 
-    // The relations
-    for (const { type, name, ...fieldData } of this._entity.fields) {
-      const deserializeVal =
-        'entity' in fieldData && fieldData.entity
-          ? fieldData.entity.deserialize.bind(this)
-          : (o: any) => o;
-
-      if (type === 'deserializer' && 'deserialize' in fieldData) {
-        const val = data[name];
-        data[name] = {
-          then: async (cb: any) => {
-            return cb(fieldData.deserialize(val));
-          },
-        };
-      }
-
-      if (type === 'relation') {
-        if ('multi' in fieldData && fieldData.multi) {
-          const refs = data[name] as FirebaseFirestore.DocumentReference[];
-
-          // data[name] = refs.map((ref) => ({
-          //   then: (cb: any) => Promise.resolve(cb(getRefData(ref))),
-          // }));
-
-          data[name] = {
-            then: async (cb: any) => {
-              const all = await Promise.all(
-                refs.map((ref) => deserializeVal(getRefData(ref)))
-              );
-              return cb(all);
-            },
-          };
-
-          continue;
-        }
-
-        const ref = data[name] as FirebaseFirestore.DocumentReference;
-
-        // Return a thenable that fetches the data
-        data[name] = {
-          then: async (cb: any) => {
-            const refData = ref ? deserializeVal(await getRefData(ref)) : null;
-            return cb(refData);
-          },
-        };
-      }
+    for (const { name, deserialize } of this._entity.fields) {
+      const val = data[name];
+      data[name] = {
+        then: async (cb: any) => {
+          return cb(deserialize(val));
+        },
+      };
     }
+
+    handleRelations(data);
 
     return data;
   }
@@ -75,7 +38,10 @@ export class BaseEntity {
     const entity: EntityData = (this as any).entity;
     const snap = entity.collection.doc(`${id}`);
     // return (this as any).deserialize(getRefData(snap) as any);
-    return (await snap.get()).data() as T;
+
+    const data = (await snap.get()).data();
+
+    return (this as any).deserialize(data);
   }
 
   static async paginate<T extends BaseEntity>(
@@ -106,7 +72,7 @@ export class BaseEntity {
         id: doc.id,
         ...data,
       };
-      return obj as T;
+      return obj;
     });
   }
 
@@ -124,5 +90,17 @@ export class BaseEntity {
     const collection = entity.collection;
     const snap = await collection.where(fieldName, '==', value).get();
     return (snap.docs[0].data() as any) as T;
+  }
+
+  static mutate<T extends BaseEntity>(
+    this: Constructor<T>,
+    id: string,
+    data: Partial<T>,
+    options?: FirebaseFirestore.SetOptions
+  ): Promise<FirebaseFirestore.WriteResult> {
+    const entity: EntityData = (this as any).entity;
+    const collection = entity.collection;
+
+    return collection.doc(id).set(data, options);
   }
 }
