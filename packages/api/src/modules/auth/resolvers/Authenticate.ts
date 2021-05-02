@@ -64,7 +64,7 @@ export default class AuthenticateResolver {
         // Give the user a contributor badge if returns true
         userData.badges = [
           {
-            type: 'repository',
+            type: 'contribution',
             badge: {
               contributor: true,
             },
