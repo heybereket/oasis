@@ -6,7 +6,7 @@ import {
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/ssrRequest';
 import { contextFromToken } from '@oasis/api/dist/utils/contextFromToken';
-import { SEO } from '../../../components/page/SEO'
+import { SEO } from '../../../components/page/SEO';
 
 interface ProfileProps {
   initialApolloState: any;
