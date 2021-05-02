@@ -10,7 +10,6 @@
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
   },
   "dependencies": {
-    "@oasis/api": "0.1.0",
     "@primer/octicons-react": "^13.0.0",
     "firebase": "^8.4.3",
     "graphql-cost-analysis": "^1.0.3",
