@@ -73,7 +73,6 @@ export class BaseEntity {
     id: string
   ): Promise<T> {
     const entity: EntityData = (this as any).entity;
-    console.log(id);
     const snap = entity.collection.doc(`${id}`);
     // return (this as any).deserialize(getRefData(snap) as any);
     return (await snap.get()).data() as T;

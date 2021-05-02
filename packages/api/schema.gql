@@ -14,6 +14,7 @@ type Comment {
 
 type Mutation {
   authenticate(idToken: String!): Boolean!
+  changeBanner(bannerUrl: String!): Boolean!
 }
 
 type Post {
