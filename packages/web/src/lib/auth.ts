@@ -1,10 +1,10 @@
-import { getFirebase } from './common/firebase';
-import 'firebase/auth';
-import { AuthDocument } from '@oasis/client-gql';
-import { apolloClient } from './apolloClient';
+//import { getFirebase } from './common/firebase';
+//import 'firebase/auth';
+//import { AuthDocument } from '@oasis/client-gql';
+//import { apolloClient } from './apolloClient';
 
 export const Login = async (): Promise<void> => {
-  const firebase = getFirebase();
+  /*const firebase = getFirebase();
   const provider = new firebase.auth.GithubAuthProvider();
 
   provider.setCustomParameters({
@@ -24,5 +24,5 @@ export const Login = async (): Promise<void> => {
 
   if (response.data.authenticate == 'success') {
     console.log('Successfully logged in!');
-  }
+  }*/
 };

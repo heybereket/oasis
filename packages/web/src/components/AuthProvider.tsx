@@ -1,14 +1,15 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import { useState, useEffect, createContext } from 'react';
+//import firebase from 'firebase/app';
+//import 'firebase/auth';
+import { useState, createContext } from 'react';
 
-const AuthContext = createContext<{ user: firebase.User | null }>({
+const AuthContext = createContext<{ user: null }>({
   user: null,
 });
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState<firebase.User | null>(null);
+  const [user] = useState<null>(null);
 
+  /*
   // listen for token changes
   // call setUser and write new token as a cookie
   useEffect(() => {
@@ -34,6 +35,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     // clean up setInterval
     return () => clearInterval(handle);
   }, []);
+  */
 
   return (
     <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>

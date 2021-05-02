@@ -1,16 +1,17 @@
 import { Login } from '@lib/auth';
 import { BellIcon } from '@components/SVG';
-import firebase from 'firebase/app';
-import 'firebase/auth';
+//import firebase from 'firebase/app';
+//import 'firebase/auth';
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+//import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from './Button';
 import { NavItem } from './NavItem';
 
 export const Navbar: React.FC = () => {
   const [isOn, toggleIsOn] = useState(false);
-  const [user] = useAuthState(firebase.auth());
+  //const [user] = useAuthState(firebase.auth());
+  const user = {} as any;
   const router = useRouter();
 
   return (
@@ -96,7 +97,7 @@ export const Navbar: React.FC = () => {
             <NavItem
               name="Logout"
               onClick={() => {
-                firebase.auth().signOut();
+                // firebase.auth().signOut();
                 router.push('/');
               }}
               mobile={true}

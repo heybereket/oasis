@@ -1,12 +1,12 @@
 import { AppProps } from 'next/app';
 import '../styles/globals.css';
-import { getFirebase } from '../lib/common/firebase';
+//import { getFirebase } from '../lib/common/firebase';
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@lib/apolloClient';
 import { AuthProvider } from '@components/AuthProvider';
 
-getFirebase();
+//getFirebase();
 
 export default function App({
   Component,
@@ -34,7 +34,7 @@ export default function App({
           />
           <meta
             name="keywords"
-            content="developers,ideas,discuss,fun,programming,graphql,typescript,nextjs,firebase,tailwindcss,react,apollo"
+            content="developers,ideas,discuss,fun,programming,graphql,typescript,nextjs,tailwindcss,react,apollo"
           />
           <link
             rel="icon"

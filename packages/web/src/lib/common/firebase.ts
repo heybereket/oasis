@@ -9,9 +9,11 @@ export const config = {
   appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
-export const getFirebase = (): typeof firebase => {
+export const getFirebase = (): typeof firebase | undefined => {
+  return undefined;
+  /*
   if (!firebase.apps.length) {
     firebase.initializeApp(config);
   }
-  return firebase;
+  return firebase;*/
 };

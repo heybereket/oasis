@@ -68,7 +68,7 @@ input UpdateProfileInput {
   banner: String
   bio: String
   name: String
-  username: String!
+  username: String
 }
 
 type User {
