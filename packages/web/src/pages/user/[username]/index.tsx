@@ -23,6 +23,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
     },
   }).data?.getUserByName;
 
+  /* eslint-disable @typescript-eslint/no-unused-vars*/
   const updateProfile = (
     avatar: string,
     banner: string,
