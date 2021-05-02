@@ -47,12 +47,23 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
   return (
     <>
-      <SEO
-        title={data?.name + ' — Oasis'}
-        ogTitle={data?.name + ' — Oasis'}
-        ogDescription={`@${data?.username} — ${data?.bio ?? ''}`}
-        ogImage={data?.avatar}
-      />
+      {/* User Exists */}
+      {data?.username !== undefined && (
+        <SEO
+          title={data?.name + ' — Oasis'}
+          ogTitle={data?.name + ' — Oasis'}
+          ogDescription={`@${data?.username} — ${data?.bio ?? ''}`}
+          ogImage={data?.avatar}
+        />
+      )}
+      {/* User does not exist */}
+      {data?.username === undefined && (
+        <SEO
+          title={'User Not Found — Oasis'}
+          ogTitle={'User Not Found — Oasis'}
+          ogDescription={`Oasis user not found`}
+        />
+      )}
 
       <Navbar />
       <div className="flex w-screen flex-col">

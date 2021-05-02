@@ -12,9 +12,11 @@ export const SEO: React.FC<SEOProps> = (props) => {
   return (
     <Head>
       <title>{props.title}</title>
-      <meta name="og:title" content={props.ogTitle} />
-      <meta name="og:description" content={props.ogDescription} />
-      <meta name="og:image" content={props.ogImage} />
+      {props.ogTitle && <meta name="og:title" content={props.ogTitle} />}
+      {props.ogDescription && (
+        <meta name="og:description" content={props.ogDescription} />
+      )}
+      {props.ogImage && <meta name="og:image" content={props.ogImage} />}
     </Head>
   );
 };
