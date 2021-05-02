@@ -80,9 +80,9 @@ export default class AuthenticateResolver {
         userData.createdAt = firebaseAdmin.firestore.Timestamp.now();
         userData.joined = getShortMonth();
         userData.verified = false;
-      }
 
-      await docRef.set(userData, { merge: true });
+        await docRef.set(userData, { merge: true });
+      }
 
       return true;
     } catch (e) {
