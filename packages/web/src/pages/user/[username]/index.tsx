@@ -6,6 +6,7 @@ import {
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/ssrRequest';
 import { contextFromToken } from '@oasis/api/dist/utils/contextFromToken';
+import Head from 'next/head';
 
 interface ProfileProps {
   initialApolloState: any;
@@ -20,6 +21,15 @@ const Profile: React.FC<ProfileProps> = (props) => {
   }).data?.getUserByName;
   return (
     <>
+      <Head>
+        <title>{data?.name + ' — Oasis'}</title>
+        <meta name="og:title" content={data?.name + ' — Oasis'} />
+        <meta
+          name="og:description"
+          content={`@${data?.username} — ${data?.bio ?? ''}`}
+        />
+        <meta name="og:image" content={data?.avatar} />
+      </Head>
       <Navbar />
       <div className="flex w-screen flex-col">
         <div
