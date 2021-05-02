@@ -1,7 +1,7 @@
 import { AuthenticationError } from 'apollo-server-micro';
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import User from '../../../entity/User';
-import { adminDB } from '../../../utils/admin-db';
+import { adminDB } from '../../../utils/common/admin-db';
 import { generateSafeUsername } from '../../../utils/generateSafeUsername';
 import UpdateProfileInput from '../UpdateProfileInput';
 
