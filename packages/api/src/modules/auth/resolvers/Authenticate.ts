@@ -65,14 +65,7 @@ export default class AuthenticateResolver {
       // Searches JSON to see if user is a contributor in the repository
       if (searchJSON(contributorData, 'login', githubData.login)) {
         // Give the user a contributor badge if returns true
-        userData.badges = [
-          {
-            type: 'contribution',
-            badge: {
-              contributor: true,
-            },
-          },
-        ];
+        userData.badges = ['contributor'];
       }
 
       // Add specific fields only if not already existed
