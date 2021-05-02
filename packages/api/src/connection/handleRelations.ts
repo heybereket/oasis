@@ -12,8 +12,12 @@ const getRefData = async (
   return data;
 };
 
-export const handleRelations = (data: any, myType: string): any => {
-  const myRelations = getRelations(myType);
+/**
+ * @param data The raw firebase data
+ * @param entityName The name of the entity that represents this data
+ */
+export const handleRelations = (data: any, entityName: string): any => {
+  const myRelations = getRelations(entityName);
 
   for (const [key, value] of Object.entries(data)) {
     const valEntity = myRelations.get(key);
@@ -33,7 +37,7 @@ export const handleRelations = (data: any, myType: string): any => {
       continue;
     }
 
-    // If an array of document references, do the same thing as above, but for all of them.
+    // If an array of document references, replace the value with a thenable that resolves **all** the data
     if (
       Array.isArray(value) &&
       value[0] instanceof firestore.DocumentReference
