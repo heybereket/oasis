@@ -62,7 +62,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
         <SEO
           title={'User Not Found — Oasis'}
           ogTitle={'User Not Found — Oasis'}
-          ogDescription={`Oasis user not found`}
+          ogDescription={`Sorry! We couldn't find this user.`}
         />
       )}
 
