@@ -27,4 +27,61 @@ export default class UserResolver {
       return new AuthenticationError('Please login to change your banner.');
     }
   }
+
+  @Mutation(() => Boolean)
+  async changeBio(@Arg('bio') newBio: string, @Ctx() ctx: any) {
+    if (ctx.hasAuth) {
+      adminDB
+        .collection('users')
+        .doc(ctx.uid)
+        .set({ bio: newBio }, { merge: true });
+      return true;
+    } else {
+      return new AuthenticationError('Please log in to change your bio');
+    }
+  }
+
+  @Mutation(() => Boolean)
+  async changeUsername(@Arg('username') newUsername: string, @Ctx() ctx: any) {
+    if (ctx.hasAuth) {
+      adminDB
+        .collection('users')
+        .doc(ctx.uid)
+        .set({ username: newUsername.toLowerCase() }, { merge: true });
+      return true;
+    } else {
+      return new AuthenticationError('Please log in to change your username');
+    }
+  }
+
+  @Mutation(() => Boolean)
+  async changeDisplayName(
+    @Arg('displayName') newName: string,
+    @Ctx() ctx: any
+  ) {
+    if (ctx.hasAuth) {
+      adminDB
+        .collection('users')
+        .doc(ctx.uid)
+        .set({ name: newName }, { merge: true });
+      return true;
+    } else {
+      return new AuthenticationError(
+        'Please log in to change your display name'
+      );
+    }
+  }
+
+  @Mutation(() => Boolean)
+  async changeAvatar(@Arg('avatar') newAvatar: string, @Ctx() ctx: any) {
+    if (ctx.hasAuth) {
+      adminDB
+        .collection('users')
+        .doc(ctx.uid)
+        .set({ avatar: newAvatar }, { merge: true });
+      return true;
+    } else {
+      return new AuthenticationError('Please log in to change your avatar');
+    }
+  }
 }
