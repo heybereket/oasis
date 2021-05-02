@@ -142,3 +142,7 @@ query getUser($id: String!) {
     verified
   }
 }
+
+mutation updateProfile($data: UpdateProfileInput!) {
+  updateProfile(data: $data)
+}
