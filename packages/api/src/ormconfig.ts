@@ -9,3 +9,9 @@ export const ormconfig: ConnectionOptions = {
   synchronize: !isProd,
   entities: [join(__dirname, "./entities/*.*")],
 };
+
+for (const key in process.env) {
+  if (key.startsWith("DB_OPTION_")) {
+    ormconfig[key.slice("DB_OPTION_".length).toLowerCase()] = process.env[key];
+  }
+}
