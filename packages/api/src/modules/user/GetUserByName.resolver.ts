@@ -5,9 +5,13 @@ import User from "../../entities/User";
 export class GetUserByNameResolver {
   @Query(() => User, { nullable: true })
   async getUserByName(@Arg("username") username: string) {
-    const users: User[] = await getRepository(User).find({
-      username: username.toLowerCase(),
-    });
-    return users;
+    const repo = getRepository(User);
+    const user: User = await repo
+      .createQueryBuilder()
+      .where("LOWER(username) = :username", {
+        username: username.toLowerCase(),
+      })
+      .getOne();
+    return user;
   }
 }
