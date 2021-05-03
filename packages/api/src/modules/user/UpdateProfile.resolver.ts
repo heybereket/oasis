@@ -7,14 +7,6 @@ import UpdateProfileInput from "./UpdateProfileInput";
 
 @Resolver()
 export default class UserResolver {
-  @Query(() => User, { nullable: true })
-  async getUserByName(
-    @Arg('username') username: string
-  ) {
-    const users: User[] = await getRepository(User).find({ username: username.toLowerCase() });
-    return users;
-  }
-
   @Mutation(() => Boolean)
   @Authorized()
   async updateProfile(@Arg("data") data: UpdateProfileInput, @Ctx() ctx: any) {
