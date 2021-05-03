@@ -1,4 +1,5 @@
 import { Navbar } from '@components/MainNavbar';
+import { TabItem } from '@components/TabItem';
 import {
   GetUserByNameDocument,
   MutationUpdateProfileArgs,
@@ -10,7 +11,8 @@ import { contextFromToken } from '@oasis/api/dist/utils/contextFromToken';
 import { SEO } from '../../../components/page/SEO';
 import { apolloClient } from '@lib/apolloClient';
 import { UpdateProfileDocument } from '@oasis/client-gql';
-
+import { Button } from '@components/Button';
+import { TopicBadge } from '@components/TopicBadge';
 interface ProfileProps {
   initialApolloState: any;
   username: string;
@@ -49,7 +51,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
   return (
     <>
       <SEO
-        title={data?.name + ' — Oasis'}
+        title={data?.name ? data?.name : data?.username + ' — Oasis'}
         metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
         metaImg={data?.avatar}
       />
@@ -60,13 +62,76 @@ const Profile: React.FC<ProfileProps> = (props) => {
           style={{
             background: `linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #0C111B 100%), url(${
               data?.banner || '/static/default-banner.png'
-            }) no-repeat stretch`,
-            backgroundSize: '100%',
+            }) no-repeat center`,
+            backgroundSize: 'cover',
           }}
-          className="flex-grow h-64"
+          className="flex-grow h-60"
         ></div>
-        {data?.name}
-        {data?.username}
+        <div className="grid mx-36 grid-cols-12 transform -translate-y-12">
+          <div className="col-span-8 flex flex-col">
+            <div className="flex">
+              <img src={data?.avatar} className="rounded-full w-40"></img>
+              <div className="ml-8 flex flex-col justify-center">
+                {data?.name ? (
+                  <>
+                    <h1 className="leading-none">{data?.name}</h1>
+                    <h4 className="text-gray-400 font-bold">
+                      @{data?.username}
+                    </h4>
+                  </>
+                ) : (
+                  <h1>@{data?.username}</h1>
+                )}
+              </div>
+            </div>
+            {data?.bio && <h4 className="text-gray-300 mt-4">{data?.bio}</h4>}
+            <div className="flex flex-col mt-6">
+              <div className="flex">
+                <TabItem name="About" active={true} />
+                <TabItem name="Posts" active={false} />
+                <TabItem name="Likes" active={false} />
+                <TabItem name="Comments" active={false} />
+              </div>
+            </div>
+          </div>
+          <div className="col-span-4 transform translate-y-12 flex flex-col">
+            <div className="grid grid-cols-2 gap-2 ">
+              <Button color="gray" className="col-span-1 text-sm">
+                Send Message
+              </Button>
+              <Button color="primary" className="col-span-1 text-sm">
+                Follow {data?.name ? data?.name : '@' + data?.username}
+              </Button>
+            </div>
+            <div className="mt-6 flex bg-gray-700 rounded-2xl py-4 justify-center gap-12">
+              <div className="flex flex-col text-center leading-4">
+                <span className="text-2xl font-black">32</span>
+                <span className="font-extrabold text-sm">Followers</span>
+              </div>
+              <div className="flex flex-col text-center leading-4">
+                <span className="text-2xl font-black">22</span>
+                <span className="font-extrabold text-sm">Posts</span>
+              </div>
+              <div className="flex flex-col text-center leading-4">
+                <span className="text-2xl font-black">420</span>
+                <span className="font-extrabold text-sm">Following</span>
+              </div>
+            </div>
+            <div className="mt-6 flex flex-col bg-gray-700 rounded-2xl py-4 px-6">
+              <h4 className="font-black">
+                {data?.name ? data?.name : '@' + data?.username}&#39;s Favourite
+                Topics
+              </h4>
+              <div className="mt-2">
+                <TopicBadge content="Machine Learning" />
+                <TopicBadge content="Development" />
+                <TopicBadge content="JavaScript" />
+                <TopicBadge content="Python" />
+                <TopicBadge content="Next.JS" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
