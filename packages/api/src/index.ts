@@ -8,18 +8,19 @@ config({ path: join(rootPath, ".env") });
 import { createConnection } from "typeorm";
 import { ormconfig } from "./ormconfig";
 import { ApolloServer } from "apollo-server-micro";
-import { IncomingMessage } from "http";
-
+import express, { Request } from "express";
 import { getSchema } from "./utils/getSchema";
 import { contextFromToken } from "./utils/contextFromToken";
 export { getSchema };
 
-export const createApolloServer = async () => {
+export const createAPIHandler = async () => {
   await createConnection(ormconfig);
 
-  return new ApolloServer({
+  const app = express();
+
+  const apolloServer = new ApolloServer({
     schema: await getSchema(),
-    context: async ({ req }: { req: IncomingMessage }) => {
+    context: async ({ req }: { req: Request }) => {
       const cookies = req.headers.cookie ?? "";
       const cookiesArr = cookies.split("; ");
       const cookieData = cookiesArr.find((row) => row.startsWith("token="));
@@ -34,4 +35,8 @@ export const createApolloServer = async () => {
     playground: true,
     introspection: true,
   });
+
+  app.use(apolloServer.createHandler({ path: "/api/graphql" }));
+
+  return app;
 };

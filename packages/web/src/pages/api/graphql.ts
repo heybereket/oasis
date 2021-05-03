@@ -1,5 +1,4 @@
-import { createApolloServer } from '@oasis/api';
-import { NextApiHandler } from 'next';
+import { createAPIHandler } from '@oasis/api';
 
 export const config = {
   api: {
@@ -7,16 +6,4 @@ export const config = {
   },
 };
 
-let realHandler: NextApiHandler;
-
-const handlerWrapper: NextApiHandler = async (req, res) => {
-  if (!realHandler) {
-    realHandler = (await createApolloServer()).createHandler({
-      path: '/api/graphql',
-    });
-  }
-
-  return realHandler(req, res);
-};
-
-export default handlerWrapper;
+export default createAPIHandler();
