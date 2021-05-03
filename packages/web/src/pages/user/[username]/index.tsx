@@ -68,7 +68,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
           className="flex-grow h-60"
         ></div>
         <div className="grid mx-36 grid-cols-12 transform -translate-y-12">
-          <div className="col-span-8 flex flex-col">
+          <div className="col-span-7 flex flex-col">
             <div className="flex">
               <img src={data?.avatar} className="rounded-full w-40"></img>
               <div className="ml-8 flex flex-col justify-center">
@@ -84,7 +84,6 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 )}
               </div>
             </div>
-            {data?.bio && <h4 className="text-gray-300 mt-4">{data?.bio}</h4>}
             <div className="flex flex-col mt-6">
               <div className="flex">
                 <TabItem name="About" active={true} />
@@ -96,9 +95,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 <h4 className="font-extrabold">
                   About {data?.name ? data?.name : '@' + data?.username}
                 </h4>
+                {data?.bio && (
+                  <h5 className="text-gray-300 font-bold">{data?.bio}</h5>
+                )}
               </div>
             </div>
           </div>
+          <div className="col-span-1"></div>
           <div className="col-span-4 transform translate-y-12 flex flex-col">
             <div className="grid grid-cols-2 gap-2 ">
               <Button color="gray" className="col-span-1 text-sm">
