@@ -67,8 +67,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
           }}
           className="flex-grow h-60"
         ></div>
-        <div className="grid grid-cols-12 transform -translate-y-12 container mx-auto px-16">
-          <div className="col-span-7 flex flex-col">
+        <div className="hidden lg:grid grid-cols-12 transform -translate-y-12 lg:container mx-auto px-8 xl:px-16">
+          <div className="col-span-7  flex flex-col">
             <div className="flex">
               <img src={data?.avatar} className="rounded-full w-40"></img>
               <div className="ml-8 flex flex-col justify-center">
@@ -140,6 +140,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
             </div>
           </div>
         </div>
+        <div className="grid lg:hidden">[TODO: mobile/tablet design]</div>
       </div>
     </>
   );
