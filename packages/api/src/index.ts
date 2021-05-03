@@ -8,15 +8,13 @@ config({ path: join(rootPath, ".env") });
 import { createConnection } from "typeorm";
 import { ormconfig } from "./ormconfig";
 import { ApolloServer } from "apollo-server-micro";
-import express, { Request } from "express";
+import { Request } from "express";
 import { getSchema } from "./utils/getSchema";
 import { contextFromToken } from "./utils/contextFromToken";
 export { getSchema };
 
 export const createAPIHandler = async () => {
   await createConnection(ormconfig);
-
-  const app = express();
 
   const apolloServer = new ApolloServer({
     schema: await getSchema(),
@@ -36,7 +34,7 @@ export const createAPIHandler = async () => {
     introspection: true,
   });
 
-  app.use(apolloServer.createHandler({ path: "/api/graphql" }));
+  const apolloHandler = apolloServer.createHandler({ path: "/api/graphql" });
 
-  return app;
+  return apolloHandler;
 };
