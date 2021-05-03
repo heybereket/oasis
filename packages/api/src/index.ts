@@ -8,6 +8,12 @@ import { isProd, ormconfig } from "./ormconfig";
 import { createApolloServer } from "./apolloServer";
 import { authRouter } from "./modules/auth";
 import session from "express-session";
+import { createClient } from "redis";
+import connectRedis from "connect-redis";
+
+const RedisStore = connectRedis(session);
+
+const client = createClient(process.env.REDIS_URL);
 
 (async () => {
   await createConnection(ormconfig);
@@ -19,12 +25,14 @@ import session from "express-session";
 
   app.use(
     session({
+      store: new RedisStore({ client }),
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: true,
       cookie: { secure: isProd, maxAge: null },
     })
   );
+
   app.use("/api/auth", authRouter);
 
   apolloServer.applyMiddleware({ app });

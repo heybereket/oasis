@@ -15,6 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/concurrently": "^6",
+    "@types/connect-redis": "^0.0.16",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4",
     "@types/express-session": "^1",
@@ -30,6 +31,7 @@
   "dependencies": {
     "apollo-server-express": "^2.24.0",
     "class-validator": "^0.13.1",
+    "connect-redis": "^5.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
@@ -37,6 +39,7 @@
     "passport-discord": "^0.1.4",
     "passport-github2": "^0.1.12",
     "pg": "^8.6.0",
+    "redis": "^3.1.2",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1",
     "typeorm": "^0.2.32",
