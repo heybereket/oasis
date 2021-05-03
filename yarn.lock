@@ -2079,6 +2079,7 @@ __metadata:
     "@types/express": ^4
     "@types/passport": ^0
     "@types/passport-discord": ^0
+    "@types/passport-github2": ^1.2.4
     "@types/uuid": ^8.3.0
     apollo-server-express: ^2.24.0
     class-validator: ^0.13.1
@@ -2649,6 +2650,17 @@ __metadata:
     "@types/passport": "*"
     "@types/passport-oauth2": "*"
   checksum: ebc0df6cbc5fe347b9389e57b673cc41118bfa979c89e3f712b4be86e977f437f65dfa441805639eb2d741cab945cdc9df5b7bc5a3cc1262350b3be30dac4556
+  languageName: node
+  linkType: hard
+
+"@types/passport-github2@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "@types/passport-github2@npm:1.2.4"
+  dependencies:
+    "@types/express": "*"
+    "@types/passport": "*"
+    "@types/passport-oauth2": "*"
+  checksum: d67c18163d383ed9f526ba9001af3f4da16da4f86f32d68d70abb1175aa24644c90119a49fa2c5f74dc8e652857051e5cbdc278a6b8a51d765f053f48a9f51c6
   languageName: node
   linkType: hard
 

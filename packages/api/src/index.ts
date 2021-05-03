@@ -6,6 +6,7 @@ import express from "express";
 import { createConnection } from "typeorm";
 import { ormconfig } from "./ormconfig";
 import { createApolloServer } from "./apolloServer";
+import { authRouter } from "./modules/auth";
 
 (async () => {
   await createConnection(ormconfig);
@@ -14,6 +15,8 @@ import { createApolloServer } from "./apolloServer";
   const apolloServer = await createApolloServer();
 
   const PORT = process.env.PORT || 4000;
+
+  app.use("/api/auth", authRouter);
 
   apolloServer.applyMiddleware({ app });
 
