@@ -1,11 +1,14 @@
 import "reflect-metadata";
 import { config } from "dotenv";
-config();
+import { join } from "path";
+import { rootPath } from "./utils/rootPath";
+
+config({ path: join(rootPath, ".env") });
 
 import { createConnection } from "typeorm";
 import { ormconfig } from "./ormconfig";
 import { ApolloServer } from "apollo-server-micro";
-import { NextApiRequest } from 'next';
+import { IncomingMessage } from "http";
 
 import { getSchema } from "./utils/getSchema";
 import { contextFromToken } from "./utils/contextFromToken";
@@ -16,15 +19,15 @@ export const createApolloServer = async () => {
 
   return new ApolloServer({
     schema: await getSchema(),
-    context: async ({ req }: { req: NextApiRequest }) => {
-      const cookies = req.headers.cookie ?? '';
-      const cookiesArr = cookies.split('; ');
-      const cookieData = cookiesArr.find((row) => row.startsWith('token='));
-      const token = cookieData?.split('=')[1];
+    context: async ({ req }: { req: IncomingMessage }) => {
+      const cookies = req.headers.cookie ?? "";
+      const cookiesArr = cookies.split("; ");
+      const cookieData = cookiesArr.find((row) => row.startsWith("token="));
+      const token = cookieData?.split("=")[1];
 
       const socketInfo = req.socket.address();
 
-      if (!token || token === '') return { hasAuth: false, socketInfo };
+      if (!token || token === "") return { hasAuth: false, socketInfo };
 
       return contextFromToken(token, socketInfo);
     },

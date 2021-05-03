@@ -1,7 +1,7 @@
 // import admin from './common/firebase-admin';
-import { NextApiRequest } from 'next';
+import { IncomingMessage } from "http";
 
-type SocketInfo = ReturnType<NextApiRequest['socket']['address']>;
+type SocketInfo = ReturnType<IncomingMessage["socket"]["address"]>;
 
 export const contextFromToken = async (
   token: string,

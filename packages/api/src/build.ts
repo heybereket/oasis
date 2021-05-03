@@ -1,4 +1,8 @@
 import "reflect-metadata";
+import { buildGlobs } from "./globs/build";
 import { getSchema } from "./utils/getSchema";
 
-getSchema().then(() => process.exit());
+(async () => {
+  await buildGlobs();
+  await getSchema();
+})();

@@ -5,15 +5,19 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "node .",
+    "watch": "tsc --watch",
     "build": "tsc && node dist/build.js",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "yarn watch",
+    "dev:server": "concurrently \"yarn watch\" \"nodemon dist/start\""
   },
   "keywords": [],
   "author": "oasis.sh",
   "license": "MIT",
   "devDependencies": {
+    "@types/concurrently": "^6",
     "@types/dotenv": "^8.2.0",
     "@types/uuid": "^8.3.0",
+    "concurrently": "^6.0.2",
     "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.4"
