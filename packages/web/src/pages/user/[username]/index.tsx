@@ -92,6 +92,11 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 <TabItem name="Likes" active={false} />
                 <TabItem name="Comments" active={false} />
               </div>
+              <div className="mt-6 bg-gray-700 rounded-xl py-4 px-6">
+                <h4 className="font-extrabold">
+                  About {data?.name ? data?.name : '@' + data?.username}
+                </h4>
+              </div>
             </div>
           </div>
           <div className="col-span-4 transform translate-y-12 flex flex-col">
