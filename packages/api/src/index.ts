@@ -1,24 +1,22 @@
 import "reflect-metadata";
 import { config } from "dotenv";
-import { join } from "path";
-import { rootPath } from "./utils/rootPath";
 
-config({ path: join(rootPath, ".env") });
+config();
 
 import { createConnection } from "typeorm";
 import { ormconfig } from "./ormconfig";
-import { ApolloServer } from "apollo-server-micro";
-import { Request } from "express";
+import { ApolloServer } from "apollo-server";
+import { IncomingMessage } from "http";
 import { getSchema } from "./utils/getSchema";
 import { contextFromToken } from "./utils/contextFromToken";
 export { getSchema };
 
-export const createAPIHandler = async () => {
+(async () => {
   await createConnection(ormconfig);
 
   const apolloServer = new ApolloServer({
     schema: await getSchema(),
-    context: async ({ req }: { req: Request }) => {
+    context: async ({ req }: { req: IncomingMessage }) => {
       const cookies = req.headers.cookie ?? "";
       const cookiesArr = cookies.split("; ");
       const cookieData = cookiesArr.find((row) => row.startsWith("token="));
@@ -34,7 +32,9 @@ export const createAPIHandler = async () => {
     introspection: true,
   });
 
-  const apolloHandler = apolloServer.createHandler({ path: "/api/graphql" });
+  const PORT = process.env.PORT || 4000;
 
-  return apolloHandler;
-};
+  await apolloServer.listen(PORT);
+
+  console.log(`Server started on http://localhost:${PORT}/graphql`);
+})();

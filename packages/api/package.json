@@ -7,8 +7,8 @@
     "start": "node .",
     "watch": "tsc --watch",
     "build": "tsc && node dist/build.js",
-    "dev": "yarn watch",
-    "dev:server": "concurrently \"yarn watch\" \"nodemon dist/start\""
+    "dev:start": "nodemon dist/index.js --ignore src",
+    "dev": "concurrently \"yarn:watch\" \"yarn:dev:start\""
   },
   "keywords": [],
   "author": "oasis.sh",
@@ -23,7 +23,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "apollo-server-micro": "^2.24.0",
+    "apollo-server": "^2.24.0",
     "class-validator": "^0.13.1",
     "dotenv": "^8.2.0",
     "pg": "^8.6.0",
