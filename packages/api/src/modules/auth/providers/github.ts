@@ -18,7 +18,8 @@ passport.use(
       const id = String(profile.id);
 
       try {
-        const user = await User.findOne({ where: { github: id } });
+        const user =
+          (await User.findOne({ where: { github: id } })) || User.create();
 
         user.id = user.id || uuid();
         user.avatar = profile._json.avatar_url;
@@ -44,10 +45,15 @@ export default router;
 
 router.use(passport.initialize());
 
-router.get("/", passport.authenticate("github", { scope: ["user:email"] }));
+router.get(
+  "/",
+  passport.authenticate("github", { scope: ["user:email"], session: true })
+);
 
 router.get(
   "/callback",
-  passport.authenticate("github", { failureRedirect: "/login" }),
-  (_, res) => res.redirect("http://localhost:3000")
+  passport.authenticate("github", { failureRedirect: "/login", session: true }),
+  (_, res) => {
+    res.redirect("http://localhost:4000/graphql");
+  }
 );

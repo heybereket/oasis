@@ -3,7 +3,6 @@ import { Arg, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
 import { AuthenticationError } from "apollo-server-errors";
 import { generateSafeUsername } from "../../utils/generateSafeUsername";
 import UpdateProfileInput from "./UpdateProfileInput";
-import { ContextType } from "../../utils/contextFromToken";
 
 @Resolver()
 export default class UserResolver {

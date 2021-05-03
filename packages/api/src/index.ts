@@ -4,9 +4,10 @@ config();
 
 import express from "express";
 import { createConnection } from "typeorm";
-import { ormconfig } from "./ormconfig";
+import { isProd, ormconfig } from "./ormconfig";
 import { createApolloServer } from "./apolloServer";
 import { authRouter } from "./modules/auth";
+import session from "express-session";
 
 (async () => {
   await createConnection(ormconfig);
@@ -16,6 +17,14 @@ import { authRouter } from "./modules/auth";
 
   const PORT = process.env.PORT || 4000;
 
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: true,
+      cookie: { secure: isProd, maxAge: null },
+    })
+  );
   app.use("/api/auth", authRouter);
 
   apolloServer.applyMiddleware({ app });
