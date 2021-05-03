@@ -93,10 +93,14 @@ const Profile: React.FC<ProfileProps> = (props) => {
               </div>
               <div className="mt-6 bg-gray-700 rounded-xl py-4 px-6">
                 <h4 className="font-extrabold">
-                  About {data?.name ? data?.name : '@' + data?.username}
+                  About {`@${data?.username}`}
                 </h4>
-                {data?.bio && (
+                {data?.bio !== null && (
                   <h5 className="text-gray-300 font-bold">{data?.bio}</h5>
+                )}
+
+                {data?.bio === null && (
+                  <h5 className="text-gray-300 font-bold">@{data?.username} does not have a bio set, yet.</h5>
                 )}
               </div>
             </div>
