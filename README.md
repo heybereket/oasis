@@ -29,10 +29,10 @@ Take a look at our [Documentation](/docs) for more information on how to get sta
 ## ⌛ Status
 
 ✅ **Early Development:** Start building a barebones version of the project. <br>
-✅ **Migration:** Migration to Next.JS and TailwindCSS <br>
+✅ **Migration:** Migration to Next.js and TailwindCSS from CRA. <br>
 ✅ **TypeScript:** Converted codebase from JS to TS<br>
 ✅ **Redesign/write:** Implementation of the 2nd re-design, as well as the new path for the project. <br>
-✅ **Hosting/Database Switch:** Move from Vercel to AWS, and Firebase to PostgresSQL. <br>
+✅ **Hosting/Database Switch:** Move from Vercel to AWS and Firebase to PostgresSQL. <br>
 ⌛️ **GraphQL API:** Work on releasing the Oasis API publicly <br>
 ⌛️ **Design Implementation:** Finish working on implementing the new design using TailwindCSS <br>
 ⛔︎ **Alpha/Beta Testing:** Fixing bugs and testing before the launch <br>
