@@ -93,7 +93,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   <TabItem name="Likes" active={false} />
                   <TabItem name="Comments" active={false} />
                 </div>
-                <div className="mt-6 bg-gray-700 rounded-xl py-4 px-6">
+                <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6">
                   <h4 className="font-extrabold">
                     About {`@${data?.username}`}
                   </h4>
@@ -107,7 +107,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 </div>
               </div>
             </div>
-            <div className="col-span-4 transform translate-y-12 flex flex-col">
+            <div className="col-span-4 transform translate-y-16 flex flex-col">
               <div className="grid md:grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 gap-2 ">
                 <Button
                   color="gray"
@@ -122,7 +122,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   Follow {data?.name ? data?.name : '@' + data?.username}
                 </Button>
               </div>
-              <div className="mt-6 flex bg-gray-700 rounded-2xl py-4 justify-center gap-12">
+              <div className="mt-8 flex bg-gray-800 rounded-2xl py-4 justify-center gap-12">
                 <div className="flex flex-col text-center leading-4">
                   <span className="text-2xl font-black">32</span>
                   <span className="font-extrabold text-sm">Followers</span>
@@ -136,7 +136,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   <span className="font-extrabold text-sm">Following</span>
                 </div>
               </div>
-              <div className="mt-6 flex flex-col bg-gray-700 rounded-2xl py-4 px-6">
+              <div className="mt-8 flex flex-col bg-gray-800 rounded-2xl py-4 px-6">
                 <h4 className="font-black">
                   {data?.name ? data?.name : '@' + data?.username}&#39;s
                   Favourite Topics
