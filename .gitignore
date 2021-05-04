@@ -6,6 +6,7 @@
 !.yarn/versions
 
 node_modules/
+postgres_data/
 .next
 
 # macOS

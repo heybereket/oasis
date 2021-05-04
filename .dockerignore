@@ -1,0 +1,10 @@
+.github
+.husky
+.vscode
+# .yarn
+docs
+node_modules
+postgress_data
+.editorconfig
+.gitignore
+Dockerfile
