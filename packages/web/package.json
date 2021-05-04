@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "ts-node server.ts",
+    "dev": "tsc --esModuleInterop server.ts && node server.js",
     "build": "next build && tsc --esModuleInterop server.ts",
-    "start": "node server.js",
+    "start": "NODE_ENV=production node server.js",
     "prettify": "prettier --config .prettierrc --write src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
   },
