@@ -3,20 +3,21 @@ import { config } from "dotenv";
 config();
 
 import express from "express";
-import { createConnection } from "typeorm";
+import { Connection, createConnection } from "typeorm";
 import { createApolloServer } from "./apolloServer";
 import { authRouter } from "./modules/auth";
 import session from "express-session";
 import { createClient } from "redis";
-import connectRedis from "connect-redis";
+import connectRedis, { Client } from "connect-redis";
 import { ormconfig } from "./ormconfig";
 
 const RedisStore = connectRedis(session);
 
-const client = createClient(process.env.REDIS_URL);
+export const RedisClient = createClient(process.env.REDIS_URL);
+export let databaseConnection: Connection | undefined = undefined;
 
 (async () => {
-  await createConnection(ormconfig);
+  databaseConnection = await createConnection(ormconfig);
 
   const app = express();
   const apolloServer = await createApolloServer();
@@ -25,7 +26,7 @@ const client = createClient(process.env.REDIS_URL);
 
   app.use(
     session({
-      store: new RedisStore({ client }),
+      store: new RedisStore({ client: RedisClient }),
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: true,

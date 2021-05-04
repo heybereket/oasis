@@ -2079,7 +2079,7 @@ __metadata:
     "@types/dotenv": ^8.2.0
     "@types/express": ^4
     "@types/express-session": ^1
-    "@types/passport": ^0
+    "@types/passport": ^1.0.6
     "@types/passport-discord": ^0
     "@types/passport-github2": ^1.2.4
     "@types/uuid": ^8.3.0
@@ -2710,21 +2710,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/passport@npm:*":
+"@types/passport@npm:*, @types/passport@npm:^1.0.6":
   version: 1.0.6
   resolution: "@types/passport@npm:1.0.6"
   dependencies:
     "@types/express": "*"
   checksum: 6d6a404e3ad0014f4724e0c48f213f3a2df6fc95d68ffabdbe619203e866e475cc0e76776a6833345bb0801dacf3ef1b6d29ef40c9da6ed1ea60a566ffbc4b2d
-  languageName: node
-  linkType: hard
-
-"@types/passport@npm:^0":
-  version: 0.4.7
-  resolution: "@types/passport@npm:0.4.7"
-  dependencies:
-    "@types/express": "*"
-  checksum: 23009d2833528894a822b6ce8cdca185dd6ec4db311ff20eef80c638addaf9799b00a9a3a83abe221c3133c264c3094f6f5d977f73332b414ddce7a47098752c
   languageName: node
   linkType: hard
 

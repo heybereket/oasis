@@ -1,0 +1,67 @@
+version: "3.3"
+
+services:
+  site:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-web
+    container_name: site
+    hostname: site
+    restart: always
+    networks:
+      - db_network
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-api
+    container_name: api
+    hostname: api
+    restart: always
+    networks:
+      - db_network
+    expose:
+      - 4000
+    ports:
+      - "4000:4000"
+    environment:
+      - DATABSE_URL=postgresql://oasis:oasis@121.1.1.0:5432/oasis
+      - REDIS_URL=redis://redis:6379
+      - GITHUB_CLIENT_ID=9792f6d4760120168284
+      - GITHUB_CLIENT_SECRET=d4c847a8e1564f79f7a5c12e448eb16ce7a1c278
+      - SESSION_SECRET=sdgfdgd
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    hostname: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=oasis
+      - POSTGRES_PASSWORD=oasis
+      - POSTGRES_DB=oasis
+    networks:
+      - db_network
+    expose:
+      - 5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    networks:
+      - db_network
+    expose:
+      - 6379
+
+networks:
+  db_network:
+    driver: bridge
