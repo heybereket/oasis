@@ -26,6 +26,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Pull new changes
         run: |
+          cd /home/ec2-user/oasis
           git checkout staging
           git pull
 
