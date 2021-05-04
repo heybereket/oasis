@@ -15,24 +15,13 @@ module.exports = {
         'sans-serif',
       ],
     },
-    colors: {
-      transparent: 'transparent',
-      white: 'var(--color-white)',
-      gray: {
-        100: 'var(--color-gray-100)',
-        200: 'var(--color-gray-200)',
-        300: 'var(--color-gray-300)',
-        400: 'var(--color-gray-400)',
-        500: 'var(--color-gray-500)',
-        600: 'var(--color-gray-600)',
-        700: 'var(--color-gray-700)',
-        800: 'var(--color-gray-800)',
-      },
-      primary: {
-        DEFAULT: 'var(--color-primary)',
-        light: 'var(--color-primary-light)',
-        lighter: 'var(--color-primary-lighter)',
-      },
+    screens: {
+      mb: { min: '640px', max: '896px' },
+      // Mobile to Tablet Portrait
+      md: '897px',
+      // Tablet Portrait to Large Desktop
+      lg: '1281px',
+      // Anything bigger than Large Desktop (viewpoint is fixed at 1280, with indent on sides).
     },
     extend: {
       keyframes: {
@@ -62,9 +51,21 @@ module.exports = {
         'fade-in-down': 'fade-in-down 0.1s ease-out',
         'fade-out-up': 'fade-out-up 0.1s ease-out',
       },
-      theme: {
-        screens: {
-          'md.5': '800px',
+      colors: {
+        gray: {
+          100: 'var(--color-gray-100)',
+          200: 'var(--color-gray-200)',
+          300: 'var(--color-gray-300)',
+          400: 'var(--color-gray-400)',
+          500: 'var(--color-gray-500)',
+          600: 'var(--color-gray-600)',
+          700: 'var(--color-gray-700)',
+          800: 'var(--color-gray-800)',
+        },
+        primary: {
+          DEFAULT: 'var(--color-primary)',
+          light: 'var(--color-primary-light)',
+          lighter: 'var(--color-primary-lighter)',
         },
       },
     },

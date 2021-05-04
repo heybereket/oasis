@@ -73,3 +73,9 @@
     letter-spacing: 0.01em;
   }
 }
+
+@layer utilities {
+  .max-w-lg {
+    max-width: 1280px;
+  }
+}
