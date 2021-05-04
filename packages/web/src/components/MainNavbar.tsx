@@ -18,7 +18,11 @@ export const Navbar: React.FC = () => {
     <>
       <nav className="hidden sm:flex items-center justify-between px-8 py-4 bg-gray-800 ">
         <div className="flex justify-items-start items-center space-x-5">
-          <img src="/static/oasis-logo.png" alt="Oasis Logo" className="w-28" />
+          <img
+            src="/static/oasis-logo.png"
+            alt="Oasis Logo"
+            className="w-28 lg:mr-12"
+          />
           <NavItem name="Home" href="#" mobile={false} />
           <NavItem name="Topics" href="#" mobile={false} />
           <NavItem name="Friends" href="#" mobile={false} />
@@ -45,6 +49,7 @@ export const Navbar: React.FC = () => {
           ) : (
             <Button
               size="sm"
+              className="my-1"
               onClick={async () => {
                 await Login();
               }}

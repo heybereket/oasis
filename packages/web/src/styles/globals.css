@@ -16,7 +16,8 @@
     --color-gray-500: #535d73;
     --color-gray-600: #333b4d;
     --color-gray-700: #232936;
-    --color-gray-800: #0c111b;
+    --color-gray-800: #141923;
+    --color-gray-900: #0c111b;
     --color-primary: #306eea;
     --color-primary-light: #5c91fc;
     --color-primary-lighter: #a3c1ff;
@@ -30,7 +31,7 @@
   body,
   #__next {
     @apply antialiased;
-    background-color: var(--color-gray-800);
+    background-color: var(--color-gray-900);
     height: 100%;
     width: 100%;
   }
@@ -71,5 +72,11 @@
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.01em;
+  }
+}
+
+@layer utilities {
+  .max-w-lg {
+    max-width: 1280px;
   }
 }
