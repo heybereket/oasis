@@ -10,6 +10,8 @@ postgres_data/
 .next
 packages/api/src/ormconfig.ts
 packages/api/db.sqlite
+packages/web/db.sqlite
+packages/web/server.js
 
 # macOS
 .DS_Store

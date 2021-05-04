@@ -15,7 +15,8 @@
     "commit": "git add . && cz && git push",
     "deploy": "git add . && git commit -m \"chore(deploy): Merge staging -> prod\" &&git pull origin staging  && git checkout prod && git merge staging && git push origin prod && git checkout staging",
     "format": "yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run prettify",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "start": "yarn plugin import workspace-tools && yarn workspace @oasis/web run start"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.2",

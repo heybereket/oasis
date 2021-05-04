@@ -1,4 +1,4 @@
-import { getSchema } from '@oasis/api';
+import { getSchema } from '@oasis/api/src/utils/getSchema';
 import { NormalizedCacheObject } from '@apollo/client';
 import { initializeApollo } from './apolloClient';
 import { graphql, DocumentNode, print } from 'graphql';

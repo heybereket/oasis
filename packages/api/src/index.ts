@@ -11,11 +11,9 @@ import { createClient } from "redis";
 import connectRedis, { Client } from "connect-redis";
 import { ormconfig } from "./ormconfig";
 
-console.log(process.env.GITHUB_CLIENT_ID);
-
 const RedisStore = connectRedis(session);
 
-export const RedisClient = createClient(process.env.REDIS_URL);
+export const RedisClient = createClient(process.env.NEXT_REDIS_URL);
 export let databaseConnection: Connection | undefined = undefined;
 
 export const createApp = async () => {
@@ -27,7 +25,7 @@ export const createApp = async () => {
   app.use(
     session({
       store: new RedisStore({ client: RedisClient }),
-      secret: process.env.SESSION_SECRET,
+      secret: process.env.NEXT_SESSION_SECRET,
       resave: false,
       saveUninitialized: true,
       cookie: { secure: process.env.NODE_ENV === "production", maxAge: null },
