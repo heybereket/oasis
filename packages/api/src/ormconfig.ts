@@ -5,6 +5,7 @@ export const ormconfig: ConnectionOptions = {
   type: "postgres",
   url: process.env.DATABASE_URL,
   entities: [join(__dirname, "./entities/*.*")],
+  uuidExtension: "uuid-ossp",
 };
 
 export default ormconfig;
