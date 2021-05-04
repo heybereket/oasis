@@ -10,3 +10,5 @@ export const ormconfig: ConnectionOptions = {
   synchronize: true,
   entities: [join(__dirname, "./entities/*.*")],
 };
+
+export default ormconfig;
