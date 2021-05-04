@@ -2417,7 +2417,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express-session@npm:*, @types/express-session@npm:^1.17.3":
+"@types/express-session@npm:*, @types/express-session@npm:^1":
   version: 1.17.3
   resolution: "@types/express-session@npm:1.17.3"
   dependencies:
@@ -2426,7 +2426,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:*, @types/express@npm:4.17.11, @types/express@npm:^4.17.11":
+"@types/express@npm:*, @types/express@npm:4.17.11, @types/express@npm:^4":
   version: 4.17.11
   resolution: "@types/express@npm:4.17.11"
   dependencies:
@@ -2677,7 +2677,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/passport-discord@npm:^0.1.3":
+"@types/passport-discord@npm:^0":
   version: 0.1.3
   resolution: "@types/passport-discord@npm:0.1.3"
   dependencies:
