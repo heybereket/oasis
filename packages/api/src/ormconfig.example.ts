@@ -8,7 +8,7 @@ export const ormconfig: ConnectionOptions = {
   type: "sqlite",
   database: "<path-to-sqlite-file>",
   synchronize: true,
-  entities: [join(__dirname, "./entities/*.*")],
+  entities: [join(process.env.NEXT_SRC_PATH, "./entities/*.*")],
 };
 
 export default ormconfig;
