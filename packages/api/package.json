@@ -15,7 +15,7 @@
   "author": "oasis.sh",
   "license": "MIT",
   "devDependencies": {
-    "@types/concurrently": "^6",
+    "@types/concurrently": "^6.0.1",
     "@types/connect-redis": "^0.0.16",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4",
