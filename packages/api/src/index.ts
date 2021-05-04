@@ -11,18 +11,18 @@ import { createClient } from "redis";
 import connectRedis, { Client } from "connect-redis";
 import { ormconfig } from "./ormconfig";
 
+console.log(process.env.GITHUB_CLIENT_ID);
+
 const RedisStore = connectRedis(session);
 
 export const RedisClient = createClient(process.env.REDIS_URL);
 export let databaseConnection: Connection | undefined = undefined;
 
-(async () => {
+export const createApp = async () => {
   databaseConnection = await createConnection(ormconfig);
 
   const app = express();
   const apolloServer = await createApolloServer();
-
-  const PORT = process.env.PORT || 4000;
 
   app.use(
     session({
@@ -38,7 +38,9 @@ export let databaseConnection: Connection | undefined = undefined;
 
   apolloServer.applyMiddleware({ app });
 
-  app.listen(PORT, () =>
-    console.log(`Server started on http://localhost:${PORT}/graphql`)
-  );
-})();
+  return app;
+
+  // app.listen(PORT, () =>
+  //   console.log(`Server started on http://localhost:${PORT}/graphql`)
+  // );
+};
