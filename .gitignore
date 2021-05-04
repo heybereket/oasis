@@ -8,6 +8,8 @@
 node_modules/
 postgres_data/
 .next
+packages/api/src/ormconfig.ts
+packages/api/db.sqlite
 
 # macOS
 .DS_Store
