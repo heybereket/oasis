@@ -23,7 +23,7 @@ Take a look at our [Documentation](/docs) for more information on how to get sta
 
 - **Documentation:** [heybereket](https://github.com/heybereket) and [f1shy-dev](https://github.com/f1shy-dev)
 - **Web:** [heybereket](https://github.com/heybereket), [f1shy-dev](https://github.com/f1shy-dev), and [HenryLeC](https://github.com/HenryLeC)
-- **API:** [Ongshu777](https://github.com/Ongshu777), [heybereket](https://github.com/heybereket), and [HenryLeC](https://github.com/HenryLeC)
+- **API:** [Angshu31](https://github.com/Ongshu777), [heybereket](https://github.com/heybereket), and [HenryLeC](https://github.com/HenryLeC)
 - **Design:** [SamJakob](https://github.com/SamJakob)
 
 ## ⌛ Status
