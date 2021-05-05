@@ -16,8 +16,8 @@ module.exports = {
       ],
     },
     screens: {
-      // "xs" is anything below "mb" (mobile) (built into TailwindCSS)
-      mb: { min: '640px', max: '896px' },
+      // no prefix (e.g "") is anything below "mb" (mobile) (built into TailwindCSS)
+      mb: '640px',
       // Mobile to Tablet Portrait
       md: '897px',
       // Tablet Portrait to Large Desktop
