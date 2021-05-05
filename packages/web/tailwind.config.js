@@ -16,13 +16,13 @@ module.exports = {
       ],
     },
     screens: {
-      // no prefix (e.g "") is anything below "mb" (mobile) (built into TailwindCSS)
-      mb: '640px',
-      // Mobile to Tablet Portrait
+      // 0px to 640px (mobile design with bottom bar)
+      sm: '641px',
+      // 641px to 896px (desktop design with compact elements)
       md: '897px',
-      // Tablet Portrait to Large Desktop
+      // 897px to 1280px (full desktop design)
       lg: '1281px',
-      // Anything bigger than Large Desktop (viewpoint is fixed at 1280, with indent on sides).
+      // 1281px and over (max-width the webpage content to 1280px with container and center it)
     },
     extend: {
       keyframes: {

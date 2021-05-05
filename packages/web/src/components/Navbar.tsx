@@ -16,7 +16,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className="hidden sm:flex items-center justify-between px-8 py-4 bg-gray-800 ">
+      {/* <nav className="hidden sm:flex items-center justify-between px-8 py-4 bg-gray-800 ">
         <div className="flex justify-items-start items-center space-x-5">
           <img
             src="/static/oasis-logo.png"
@@ -58,10 +58,10 @@ export const Navbar: React.FC = () => {
             </Button>
           )}
         </div>
-      </nav>
+      </nav> */}
 
       {/*mobile navbar*/}
-      <nav className="max-w-full mx-auto px-8 py-4 sm:hidden">
+      <nav className="max-w-full mx-auto px-8 py-4 mb:hidden">
         <div className="flex items-center justify-between">
           <img src="/static/oasis-logo.png" alt="Oasis Logo" className="w-28" />
           <div className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
