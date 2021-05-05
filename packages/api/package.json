@@ -10,7 +10,7 @@
     "dev:start": "nodemon dist/index.js --ignore src",
     "dev": "concurrently \"yarn:watch\" \"yarn:dev:start\"",
     "typeorm:cli": "ts-node ../../node_modules/typeorm/cli -f ./src/ormconfig.ts",
-    "typeorm:generate_migration": "yarn typeorm:cli migration:generate -d ./migrations -n",
+    "typeorm:generate_migration": "yarn typeorm:cli migration:generate -d ./src/migrations -n",
     "typeorm:run_migrations": "yarn typeorm:cli migration:run"
   },
   "keywords": [],
