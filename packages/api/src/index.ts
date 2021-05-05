@@ -29,7 +29,11 @@ export const createApp = async () => {
       secret: process.env.OASIS_API_SESSION_SECRET,
       resave: false,
       saveUninitialized: true,
-      cookie: { secure: process.env.NODE_ENV === "production", maxAge: null },
+      cookie: {
+        domain: process.env.OASIS_API_PUBLIC_DOMAIN,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: null
+      },
     })
   );
 
