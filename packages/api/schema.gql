@@ -13,6 +13,8 @@ type Comment {
 }
 
 type Mutation {
+  authenticate(idToken: String!): Boolean!
+  newUserTest(data: UpdateProfileInput!): Boolean!
   updateProfile(data: UpdateProfileInput!): Boolean!
 }
 
