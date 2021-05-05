@@ -1,5 +1,5 @@
 ---
-name: Translation request
+name: "\U0001F4E3 Translation Request"
 about: Use this template to add a new translation request.
 title: "Translation: [LANGUAGE NAME]"
 labels: translation
