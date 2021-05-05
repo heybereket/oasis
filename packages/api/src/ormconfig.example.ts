@@ -20,7 +20,8 @@ export const ormconfig: ConnectionOptions = {
   username: "oasis",
   password: "oasis",
   uuidExtension: "uuid-ossp",
-  entities: [joinRoot("../dist/entities/*.*")]
+  entities: [joinRoot("../dist/entities/*.*")],
+  migrations: [join(process.env.OASIS_API_SRC_PATH, "../migrations/*.*")]
 };
 */
 
