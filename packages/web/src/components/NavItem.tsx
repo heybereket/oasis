@@ -21,10 +21,7 @@ export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
       </a>
     </div>
   ) : (
-    <a
-      href={props.href ? props.href : '#'}
-      onClick={props.onClick}
-    >
+    <a href={props.href ? props.href : '#'} onClick={props.onClick}>
       {props.name}
     </a>
   );

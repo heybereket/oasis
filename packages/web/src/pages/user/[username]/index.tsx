@@ -1,4 +1,4 @@
-import { Navbar } from '@components/MainNavbar';
+// import { Navbar } from '@components/Navbar';
 import { TabItem } from '@components/TabItem';
 import {
   GetUserByNameDocument,
@@ -29,7 +29,6 @@ const Profile: React.FC<ProfileProps> = (props) => {
         metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
         metaImg={data?.avatar}
       />
-      <Navbar />
       <div className="flex w-screen flex-col">
         <div
           style={{
@@ -91,7 +90,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   color="primary"
                   className="md:row-span-1 lg:col-span-1 text-sm"
                 >
-                  Follow {data?.name ? data?.name : '@' + data?.username}
+                  Follow @{data?.username}
                 </Button>
               </div>
               <div className="mt-8 flex bg-gray-800 rounded-2xl py-4 justify-center gap-12">

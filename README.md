@@ -2,7 +2,6 @@
 
 <p align='left'>
 <img src='https://img.shields.io/badge/License-MIT-blue.svg' >
-<img src='https://github.com/oasis-sh/oasis/actions/workflows/codeql-analysis.yml/badge.svg' >
 <img src='https://img.shields.io/github/deployments/oasis-sh/oasis/production?logo=vercel&label=build%20status' >
 </p>
 
