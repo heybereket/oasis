@@ -4,7 +4,8 @@
     "outDir": "dist",
     "esModuleInterop": true,
     "declaration": true,
-    "preserveWatchOutput": true
+    "preserveWatchOutput": true,
+    "skipLibCheck": true
   },
   "include": ["generated/**/*.ts"]
 }
