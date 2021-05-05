@@ -3,6 +3,7 @@ import passport from "passport";
 import { Strategy } from "passport-github2";
 import User from "../../../entities/User";
 import { v4 as uuid } from "uuid";
+import { generateSafeUsername } from "../../../utils/generateSafeUsername";
 
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));
@@ -21,12 +22,15 @@ passport.use(
         const user =
           (await User.findOne({ where: { github: id } })) || User.create();
 
+        // Generate username only if this is the user's first login
+        if (!user.id)
+          user.username = await generateSafeUsername(profile.username);
+
         user.id = user.id || uuid();
         user.avatar = profile._json.avatar_url;
         user.badges = [];
         user.createdAt = String(Date.now());
         user.github = id;
-        user.username = profile.username;
         user.name = profile.displayName || profile.username;
         user.verified = false;
 
