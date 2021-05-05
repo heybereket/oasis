@@ -9,5 +9,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "declaration": true,
+    "skipLibCheck": true
   }
 }
