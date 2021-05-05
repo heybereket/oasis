@@ -7,7 +7,7 @@ export const generateSafeUsername = async (
 ): Promise<string> => {
   const existingWithUsername = await getRepository(User)
     .createQueryBuilder('users')
-    .where('username = :username', { username })
+    .where('LOWER(username) = LOWER(:username)', { username })
     .getCount();
 
   if (existingWithUsername !== 0) {
