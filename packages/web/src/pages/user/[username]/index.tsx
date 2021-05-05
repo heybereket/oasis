@@ -1,3 +1,4 @@
+import { Navbar } from '@components/Navbar';
 import { TabItem } from '@components/TabItem';
 import {
   GetUserByNameDocument,
