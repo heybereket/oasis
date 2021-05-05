@@ -1,28 +1,18 @@
-//import { getFirebase } from './common/firebase';
-//import 'firebase/auth';
-//import { AuthDocument } from '@oasis/client-gql';
-//import { apolloClient } from './apolloClient';
+import { getAPIBaseURL } from "./base-url";
+import { setCurrentUser } from "./getCurrentUser";
 
 export const Login = async (): Promise<void> => {
-  /*const firebase = getFirebase();
-  const provider = new firebase.auth.GithubAuthProvider();
-
-  provider.setCustomParameters({
-    allow_signup: 'true',
-  });
-
-  const login = await firebase.auth().signInWithPopup(provider);
-  const token = await login.user?.getIdToken();
-  const response = await apolloClient.mutate({
-    mutation: AuthDocument,
-    variables: { idToken: token },
-  });
-
-  if (response.errors) {
-    console.log('Error while trying to login.');
-  }
-
-  if (response.data.authenticate == 'success') {
-    console.log('Successfully logged in!');
-  }*/
+  window.location.href = `${getAPIBaseURL()}/api/auth/github`;
 };
+
+export const Logout = async (): Promise<void> => {
+  const response = await (await fetch(`${getAPIBaseURL()}/api/auth/logout`, {
+      headers: {
+        'Accept': 'application/json'
+      }
+  })).json();
+
+  if (response.success) {
+    setCurrentUser(undefined);
+  }
+}

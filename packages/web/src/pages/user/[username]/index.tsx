@@ -6,7 +6,6 @@ import {
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/ssrRequest';
-// import { contextFromToken } from '@oasis/api/dist/utils/contextFromToken';
 import { SEO } from '../../../components/page/SEO';
 import { Button } from '@components/Button';
 import { TopicBadge } from '@components/TopicBadge';
@@ -22,6 +21,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
       username: props.username,
     },
   }).data?.getUserByName;
+
   return (
     <>
       <SEO

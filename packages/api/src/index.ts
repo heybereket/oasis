@@ -3,26 +3,28 @@ import { config } from "dotenv";
 config();
 
 import express from "express";
-import { Connection, createConnection } from "typeorm";
+import { createConnection } from "typeorm";
 import { createApolloServer } from "./apolloServer";
-import { authRouter } from "./modules/auth";
-import session from "express-session";
+import authRouter from "./modules/auth";
+import expressSession from "express-session";
 import { createClient } from "redis";
-import connectRedis, { Client } from "connect-redis";
+import connectRedis from "connect-redis";
 import { ormconfig } from "./ormconfig";
+import passport from "passport";
 
-const RedisStore = connectRedis(session);
+const RedisStore = connectRedis(expressSession);
 
 const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
 export const createApp = async () => {
-  await createConnection(ormconfig);
-
   const app = express();
+
+  await createConnection(ormconfig);
   const apolloServer = await createApolloServer();
 
+  /* Express-Session configuration */
   app.use(
-    session({
+    expressSession({
       store: new RedisStore({ client: redisClient }),
       secret: process.env.OASIS_API_SESSION_SECRET,
       resave: false,
@@ -31,8 +33,16 @@ export const createApp = async () => {
     })
   );
 
-  app.use("/api/auth", authRouter);
+  /* Passport configuration */
+  app.use(passport.initialize());
+  app.use(passport.session());
+  passport.serializeUser((user, done) => done(null, user));
+  passport.deserializeUser((user, done) => done(null, user));
 
+  /* Authentication API */
+  app.use("/api/auth", authRouter(passport));
+
+  /* Apollo GraphQL Server */
   apolloServer.applyMiddleware({ app });
 
   return app;

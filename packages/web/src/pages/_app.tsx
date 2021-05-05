@@ -1,12 +1,9 @@
 import { AppProps } from 'next/app';
 import '../styles/globals.css';
-//import { getFirebase } from '../lib/common/firebase';
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@lib/apolloClient';
 import { AuthProvider } from '@components/AuthProvider';
-
-//getFirebase();
 
 export default function App({
   Component,

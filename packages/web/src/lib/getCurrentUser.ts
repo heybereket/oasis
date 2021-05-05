@@ -1,25 +1,36 @@
 import {
-//  GetUserDocument,
-//  GetUserQuery,
-//  GetUserQueryVariables,
+  GetCurrentUserDocument,
+  GetCurrentUserQuery,
   User,
 } from '@oasis/client-gql';
-//import { useQuery } from '@apollo/client';
-//import firebase from 'firebase/app';
-//import 'firebase/auth';
-//import { useEffect, useState } from 'react';
+import { useQuery } from '@apollo/client';
+import { useEffect, useState } from 'react';
 
-export function useGetCurrentUser(): User | undefined {
-  return undefined;
-  /*const [user, setUser] = useState<User | undefined>();
-  const data = useQuery<GetUserQuery, GetUserQueryVariables>(GetUserDocument, {
-    variables: { id: firebase.auth().currentUser?.uid ?? '' },
-  }).data;
+interface LoadableCurrentUser {
+  user: User | undefined;
+  currentUserLoading: boolean;
+}
+
+let user, setUser: any;
+
+export function setCurrentUser(currentUser: User | undefined): any {
+  return setUser(currentUser);
+}
+
+export function useGetCurrentUser(): LoadableCurrentUser {
+  [user, setUser] = useState<User | undefined>();
+  const query = useQuery<GetCurrentUserQuery>(GetCurrentUserDocument);
+  const { data, loading } = query;
 
   useEffect(() => {
-    if (data?.getUser !== null && data?.getUser !== undefined)
-      setUser(data?.getUser as User);
+    if (data?.currentUser !== null && data?.currentUser !== undefined)
+      setUser(data?.currentUser as User);
+    else
+      setUser(undefined);
   }, [data]);
 
-  return user;*/
+  return {
+    user,
+    currentUserLoading: loading
+  };
 }

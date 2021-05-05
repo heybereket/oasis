@@ -1,41 +1,12 @@
-//import firebase from 'firebase/app';
-//import 'firebase/auth';
-import { useState, createContext } from 'react';
+import { User } from '@oasis/client-gql';
+import { createContext, useState } from 'react';
 
-const AuthContext = createContext<{ user: null }>({
-  user: null,
+const AuthContext = createContext<{ user: User | undefined }>({
+  user: undefined,
 });
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [user] = useState<null>(null);
-
-  /*
-  // listen for token changes
-  // call setUser and write new token as a cookie
-  useEffect(() => {
-    return firebase.auth().onIdTokenChanged(async (user) => {
-      if (!user) {
-        setUser(null);
-        document.cookie = `token=;samesite=strict;path=/`;
-      } else {
-        const token = await user.getIdToken();
-        setUser(user);
-        document.cookie = `token=${token};samesite=strict;path=/`;
-      }
-    });
-  }, []);
-
-  // force refresh the token every 10 minutes
-  useEffect(() => {
-    const handle = setInterval(async () => {
-      const user = firebase.auth().currentUser;
-      if (user) await user.getIdToken(true);
-    }, 10 * 60 * 1000);
-
-    // clean up setInterval
-    return () => clearInterval(handle);
-  }, []);
-  */
+  const [user] = useState<User | undefined>();
 
   return (
     <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>

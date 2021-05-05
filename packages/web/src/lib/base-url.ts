@@ -1,11 +1,7 @@
-export default function getAPIBaseURL(): string {
-  let baseUrl = '';
+export function getAPIBaseURL(): string {
+  return `http${process.env.NEXT_PUBLIC_SECURE_MODE === "true" ? 's' : ''}://${process.env.NEXT_PUBLIC_BASE_API_URL}`;
+}
 
-  process.env.NEXT_PUBLIC_SECURE_MODE == 'true'
-    ? (baseUrl += `https://`)
-    : (baseUrl += `http://`);
-  baseUrl += process.env.NEXT_PUBLIC_BASE_API_URL;
-  baseUrl += '/api/graphql';
-
-  return baseUrl;
+export function getGQLBaseURL(): string {
+  return `${getAPIBaseURL()}/graphql`;
 }

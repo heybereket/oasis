@@ -1,6 +1,23 @@
 import { Router } from "express";
-import github from "./providers/github";
+import { PassportStatic } from "passport";
+import GitHubAuth from "./providers/github";
 
-export const authRouter = Router();
+export default (passport: PassportStatic) : Router => {
+  const authRouter = Router();
 
-authRouter.use("/github", github);
+  /** Third party auth services */
+  authRouter.use("/github", GitHubAuth(passport));
+
+  /** Internal actions. */
+  authRouter.get('/logout', (req, res) => {
+    req.logout();
+
+    if (req.headers['accept']?.includes('text/html') ?? true) {
+      return res.redirect('/');
+    }
+
+    res.json({ success: true });
+  });
+
+  return authRouter;
+};

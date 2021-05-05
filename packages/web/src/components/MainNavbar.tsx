@@ -1,34 +1,32 @@
-import { Login } from '@lib/auth';
+import { Login, Logout } from '@lib/auth';
 import { BellIcon } from '@components/SVG';
-//import firebase from 'firebase/app';
-//import 'firebase/auth';
-import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
-//import { useAuthState } from 'react-firebase-hooks/auth';
 import { Button } from './Button';
 import { NavItem } from './NavItem';
+import { useGetCurrentUser } from '@lib/getCurrentUser';
 
 export const Navbar: React.FC = () => {
-  const [isOn, toggleIsOn] = useState(false);
-  //const [user] = useAuthState(firebase.auth());
-  const user = {} as any;
-  const router = useRouter();
+  const [isUserDropdownActive, setUserDropdownActive] = useState(false);
+  const { user, currentUserLoading } = useGetCurrentUser();
 
   return (
     <>
-      <nav className="hidden sm:flex items-center justify-between px-8 py-4 bg-gray-800 ">
+      <nav className="hidden md:flex items-center justify-between px-8 py-4 bg-gray-800">
         <div className="flex justify-items-start items-center space-x-5">
-          <img
-            src="/static/oasis-logo.png"
-            alt="Oasis Logo"
-            className="w-28 lg:mr-12"
-          />
+          <a href="/">
+            <img
+              src="/static/oasis-logo.png"
+              alt="Oasis Logo"
+              className="w-28 lg:mr-12"
+            />
+          </a>
+
           <NavItem name="Home" href="#" mobile={false} />
           <NavItem name="Topics" href="#" mobile={false} />
           <NavItem name="Friends" href="#" mobile={false} />
           <NavItem name="Saved" href="#" mobile={false} />
         </div>
-        <div className="flex justify-items-start items-center space-x-6 ml-4">
+        <div className="flex justify-items-start items-center space-x-8 ml-4">
           <div className="flex items-center relative">
             <img src="/static/magnifying-glass.svg" className="absolute ml-3" />
             <input
@@ -37,31 +35,62 @@ export const Navbar: React.FC = () => {
             />
           </div>
           <BellIcon />
-          {user && (
-            <img
-              src={user?.photoURL ?? undefined}
-              alt={user?.displayName ?? undefined}
-              className="w-12 h-12 rounded-full"
-            />
-          )}
-          {user ? (
-            <img src="/static/Down-Arrow.svg" />
+
+          {!currentUserLoading ? (
+            /* Only show user segment or login button if user is loaded! */
+            user ? (
+              <div
+                className="flex justify-items-start items-center space-x-5"
+                onClick={() => {
+                      setUserDropdownActive(!isUserDropdownActive);
+                  }}>
+                <img
+                  src={user.avatar ?? undefined}
+                  alt={user.name ?? undefined}
+                  className="w-12 h-12 rounded-full"
+                />
+
+                <img
+                  src="/static/Down-Arrow.svg"
+                />
+              </div>
+            ) : (
+              <Button
+                size="sm"
+                className="my-1"
+                onClick={async () => {
+                  await Login();
+                }}
+              >
+                Login
+              </Button>
+            )
           ) : (
-            <Button
-              size="sm"
-              className="my-1"
-              onClick={async () => {
-                await Login();
-              }}
-            >
-              Login
-            </Button>
+            <div className="w-20 mr-2 h-12"></div>
           )}
         </div>
       </nav>
 
+      {/* User dropdown menu */}
+        <div
+          className={`flex rounded-b-lg bg-gray-700 px-6 py-4 max-w-md absolute right-0 mr-6 ${
+            isUserDropdownActive ? 'animate-fade-in-down' : 'hidden'
+          }`}
+        >
+        <div className="flex flex-col justify-start items-start text-base text-gray-300">
+          <NavItem
+            name="Logout"
+            onClick={async () => {
+              await Logout();
+              setUserDropdownActive(false);
+            }}
+            mobile={false}
+          />
+        </div>
+      </div>
+
       {/*mobile navbar*/}
-      <nav className="max-w-full mx-auto px-8 py-4 sm:hidden">
+      <nav className="max-w-full mx-auto px-8 py-4 md:hidden">
         <div className="flex items-center justify-between">
           <img src="/static/oasis-logo.png" alt="Oasis Logo" className="w-28" />
           <div className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
@@ -70,11 +99,8 @@ export const Navbar: React.FC = () => {
 
             {user ? (
               <img
-                onClick={() => {
-                  toggleIsOn(!isOn);
-                }}
-                src={user?.photoURL ?? undefined}
-                alt={user?.displayName ?? undefined}
+                src={user?.avatar ?? undefined}
+                alt={user?.name ?? undefined}
                 className="w-12 h-12 rounded-full"
               />
             ) : (
@@ -87,28 +113,6 @@ export const Navbar: React.FC = () => {
                 Login
               </Button>
             )}
-          </div>
-        </div>
-
-        <div
-          className={`flex rounded-lg bg-gray-700 px-3 py-2 mt-2 max-w-md absolute right-0 mr-8 ${
-            isOn ? 'animate-fade-in-down' : 'opacity-0 animate-fade-out-up'
-          }`}
-        >
-          <div className="flex items-center space-x-6 md:space-x-10 text-base text-gray-300">
-            <NavItem name="Feed" href="#" mobile={true} />
-
-            <NavItem name="Followers" href="#" mobile={true} />
-            <NavItem
-              name="Logout"
-              onClick={() => {
-                // firebase.auth().signOut();
-                router.push('/');
-              }}
-              mobile={true}
-            />
-
-            <Button size="sm">Post</Button>
           </div>
         </div>
       </nav>

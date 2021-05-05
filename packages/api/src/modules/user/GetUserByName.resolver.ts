@@ -1,14 +1,12 @@
-import { Query, Arg } from "type-graphql";
+import { Query, Arg, Resolver } from "type-graphql";
 import User from "../../entities/User";
 
+@Resolver()
 export class GetUserByNameResolver {
   @Query(() => User, { nullable: true })
   async getUserByName(@Arg("username") username: string) {
-    const user: User = await User.createQueryBuilder()
-      .where("LOWER(username) = :username", {
-        username: username.toLowerCase(),
-      })
+    return await User.createQueryBuilder()
+      .where("LOWER(username) = LOWER(:username)", { username })
       .getOne();
-    return user;
   }
 }
