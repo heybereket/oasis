@@ -31,7 +31,9 @@ jobs:
           git pull
 
       - name: Build
-        run: yarn build
+        run: |
+          cd /home/ec2-user/oasis
+          yarn build
       
       - name: Restart
         run: sudo systemctl restart oasis-prod
