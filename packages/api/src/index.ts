@@ -18,6 +18,11 @@ const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
 export const createApp = async () => {
   const app = express();
+  app.disable('x-powered-by');
+
+  if (process.env.OASIS_API_TRUST_PROXY ?? false) {
+    app.set('trust proxy', 1);
+  }
 
   await createConnection(ormconfig);
   const apolloServer = await createApolloServer();
