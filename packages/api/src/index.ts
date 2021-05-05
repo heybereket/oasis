@@ -13,7 +13,7 @@ import { ormconfig } from "./ormconfig";
 
 const RedisStore = connectRedis(session);
 
-const redisClient = createClient(process.env.NEXT_REDIS_URL);
+const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
 export const createApp = async () => {
   await createConnection(ormconfig);
@@ -24,7 +24,7 @@ export const createApp = async () => {
   app.use(
     session({
       store: new RedisStore({ client: redisClient }),
-      secret: process.env.NEXT_SESSION_SECRET,
+      secret: process.env.OASIS_API_SESSION_SECRET,
       resave: false,
       saveUninitialized: true,
       cookie: { secure: process.env.NODE_ENV === "production", maxAge: null },

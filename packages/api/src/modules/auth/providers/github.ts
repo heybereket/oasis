@@ -11,9 +11,9 @@ passport.deserializeUser((user, done) => done(null, user));
 passport.use(
   new Strategy(
     {
-      clientID: process.env.NEXT_GITHUB_CLIENT_ID,
-      clientSecret: process.env.NEXT_GITHUB_CLIENT_SECRET,
-      callbackURL: "http://localhost:4000/api/auth/github/callback",
+      clientID: process.env.OASIS_API_GITHUB_CLIENT_ID,
+      clientSecret: process.env.OASIS_API_GITHUB_CLIENT_SECRET,
+      callbackURL: process.env.OASIS_API_GITHUB_CALLBACK_URL,
     },
     async (_, __, profile, cb) => {
       const id = String(profile.id);
@@ -58,6 +58,6 @@ router.get(
   "/callback",
   passport.authenticate("github", { failureRedirect: "/login", session: true }),
   (_, res) => {
-    res.redirect("http://localhost:4000/graphql");
+    res.redirect("http://localhost:3000/graphql");
   }
 );
