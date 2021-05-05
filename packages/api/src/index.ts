@@ -32,7 +32,9 @@ export const createApp = async () => {
       cookie: {
         domain: process.env.OASIS_API_PUBLIC_DOMAIN,
         secure: process.env.NODE_ENV === "production",
-        maxAge: null
+        maxAge: null,
+        signed: true,
+        sameSite: 'lax'
       },
     })
   );
