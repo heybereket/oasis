@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: |
           cd /home/ec2-user/oasis
-          yarn build
+          sudo yarn build
       
       - name: Restart
         run: sudo systemctl restart oasis-prod
