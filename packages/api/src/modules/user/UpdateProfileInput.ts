@@ -1,5 +1,5 @@
-import { IsOptional, IsUrl, Length } from 'class-validator';
-import { Field, InputType } from 'type-graphql';
+import { IsOptional, IsUrl, Length } from "class-validator";
+import { Field, InputType } from "type-graphql";
 
 @InputType()
 export default class UpdateProfileInput {
@@ -19,6 +19,7 @@ export default class UpdateProfileInput {
   name?: string;
 
   @Field({ nullable: true })
+  @IsOptional()
   @Length(0, 20)
   username?: string;
 

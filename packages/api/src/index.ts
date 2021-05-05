@@ -13,18 +13,17 @@ import { ormconfig } from "./ormconfig";
 
 const RedisStore = connectRedis(session);
 
-export const RedisClient = createClient(process.env.NEXT_REDIS_URL);
-export let databaseConnection: Connection | undefined = undefined;
+const redisClient = createClient(process.env.NEXT_REDIS_URL);
 
 export const createApp = async () => {
-  databaseConnection = await createConnection(ormconfig);
+  await createConnection(ormconfig);
 
   const app = express();
   const apolloServer = await createApolloServer();
 
   app.use(
     session({
-      store: new RedisStore({ client: RedisClient }),
+      store: new RedisStore({ client: redisClient }),
       secret: process.env.NEXT_SESSION_SECRET,
       resave: false,
       saveUninitialized: true,
@@ -37,8 +36,13 @@ export const createApp = async () => {
   apolloServer.applyMiddleware({ app });
 
   return app;
-
-  // app.listen(PORT, () =>
-  //   console.log(`Server started on http://localhost:${PORT}/graphql`)
-  // );
 };
+
+if (require.main === module) {
+  const PORT = process.env.PORT || 4000;
+  createApp().then((app) => {
+    app.listen(PORT, () =>
+      console.log(`Server started on http://localhost:${PORT}/graphql`)
+    );
+  });
+}
