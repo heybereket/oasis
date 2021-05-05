@@ -21,8 +21,10 @@ jobs:
       with:
         languages: ${{ matrix.language }}
 
+    # Run CodeQL Autobuild
     - name: Autobuild
       uses: github/codeql-action/autobuild@main
 
+    # Run CodeQL Analysis
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@main
