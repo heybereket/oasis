@@ -6,7 +6,10 @@ export const getSchema = () => {
     resolvers: [
       join(process.env.NEXT_SRC_PATH ?? "", "../dist/modules/**/*.resolver.js"),
     ],
-    emitSchemaFile: join(process.env.NEXT_SRC_PATH ?? "", "../schema.gql"),
+    emitSchemaFile:
+      process.env.NODE_ENV === "development"
+        ? join(process.env.NEXT_SRC_PATH ?? "", "../schema.gql")
+        : false,
     authChecker: ({ context }) => context.hasAuth,
   });
 };
