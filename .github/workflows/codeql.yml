@@ -1,6 +1,10 @@
 name: Code Scanning
 
 on:
+  push:
+    branches: [staging]
+  pull_request:
+    branches: [staging]
   schedule:
     - cron: "0 0 * * 0"
 
