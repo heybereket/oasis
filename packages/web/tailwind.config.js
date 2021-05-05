@@ -17,11 +17,11 @@ module.exports = {
     },
     screens: {
       // 0px to 640px (mobile design with bottom bar)
-      sm: '641px',
+      md: '641px',
       // 641px to 896px (desktop design with compact elements)
-      md: '897px',
+      lg: '897px',
       // 897px to 1280px (full desktop design)
-      lg: '1281px',
+      xl: '1281px',
       // 1281px and over (max-width the webpage content to 1280px with container and center it)
     },
     extend: {
