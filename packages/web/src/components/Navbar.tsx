@@ -61,19 +61,16 @@ export const Navbar: React.FC = () => {
       </nav> */}
 
       {/*mobile navbar*/}
-      <nav className="max-w-full mx-auto px-8 py-4 mb:hidden">
+      <nav className="px-8 py-4 md:hidden">
         <div className="flex items-center justify-between">
           <img src="/static/oasis-logo.png" alt="Oasis Logo" className="w-28" />
-          <div className="flex items-center space-x-6 md:space-x-10 text-lg text-gray-300">
+          <div className="flex items-center space-x-6">
             <img src="/static/Search.svg" />
             <BellIcon />
 
             {user ? (
               <img
-                onClick={() => {
-                  toggleIsOn(!isOn);
-                }}
-                src={user?.photoURL ?? undefined}
+                src={user?.photoURL ?? '/static/GenericUser.svg'}
                 alt={user?.displayName ?? undefined}
                 className="w-12 h-12 rounded-full"
               />
