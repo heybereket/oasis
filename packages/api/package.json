@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node .",
     "watch": "tsc --watch",
-    "build": "tsc && node dist/build.js",
+    "build": "tsc && NODE_ENV=development node dist/build.js",
     "dev:start": "nodemon dist/index.js --ignore src",
     "dev": "concurrently \"yarn:watch\" \"yarn:dev:start\"",
     "typeorm:cli": "ts-node ../../node_modules/typeorm/cli -f ./src/ormconfig.ts"
