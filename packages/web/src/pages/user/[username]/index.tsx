@@ -29,7 +29,6 @@ const Profile: React.FC<ProfileProps> = (props) => {
         metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
         metaImg={data?.avatar}
       />
-      <Navbar />
       <div className="flex w-screen flex-col">
         <div
           style={{
