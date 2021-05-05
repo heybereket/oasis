@@ -11,7 +11,8 @@
     "dev": "concurrently \"yarn:watch\" \"yarn:dev:start\"",
     "typeorm:cli": "ts-node ../../node_modules/typeorm/cli -f ./src/ormconfig.ts",
     "typeorm:generate_migration": "yarn typeorm:cli migration:generate -d ./src/migrations -n",
-    "typeorm:run_migrations": "yarn typeorm:cli migration:run"
+    "typeorm:run_migrations": "yarn typeorm:cli migration:run",
+    "clean": "rimraf dist/*"
   },
   "keywords": [],
   "author": "oasis.sh",

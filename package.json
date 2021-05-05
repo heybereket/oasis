@@ -15,17 +15,20 @@
     "dev:gql": "yarn workspace @oasis/client-gql dev",
     "build": "yarn workspace @oasis/api run build && yarn workspace @oasis/client-gql run build && yarn workspace @oasis/web run build",
     "dev": "yarn workspace @oasis/web dev",
-    "start": "yarn workspace @oasis/web run start"
+    "start": "yarn workspace @oasis/web run start",
+    "clean:all": "yarn workspace @oasis/api run clean && yarn workspace @oasis/client-gql run clean"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.2",
     "@commitlint/config-conventional": "^12.1.2",
     "@types/eslint": "^7.2.10",
     "@types/jest": "^26.0.23",
+    "@types/rimraf": "^3",
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^6.0.0",
     "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.5.5"
   },
   "dependencies": {
