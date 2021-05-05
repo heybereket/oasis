@@ -1,12 +1,11 @@
-import { Router } from "express";
-import { Strategy } from "passport-github2";
-import User from "../../../entities/User";
-import { v4 as uuid } from "uuid";
-import { generateSafeUsername } from "../../../utils/generateSafeUsername";
+import { Router } from 'express';
+import { Strategy } from 'passport-github2';
+import User from '../../../entities/User';
+import { v4 as uuid } from 'uuid';
+import { generateSafeUsername } from '../../../utils/generateSafeUsername';
 import { PassportStatic } from 'passport';
 
-export default (passport: PassportStatic) : Router => {
-
+export default (passport: PassportStatic): Router => {
   passport.use(
     new Strategy(
       {
@@ -46,22 +45,21 @@ export default (passport: PassportStatic) : Router => {
   const router = Router();
 
   router.get(
-    "/",
+    '/',
     passport.authenticate('github', {
-      scope: ["user:email"],
-      session: true
+      scope: ['user:email'],
+      session: true,
     })
   );
 
   router.get(
-    "/callback",
+    '/callback',
     passport.authenticate('github', {
       successReturnToOrRedirect: '/',
-      failureRedirect: "/login",
-      session: true
+      failureRedirect: '/login',
+      session: true,
     })
   );
 
   return router;
-
-}
+};

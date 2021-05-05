@@ -6,8 +6,7 @@ import { Footer } from '@components/Footer';
 const NotFoundPage: React.FC = () => {
   return (
     <>
-      <div className="max-w-5xl mx-auto px-8">
-      </div>
+      <div className="max-w-5xl mx-auto px-8"></div>
       <div
         className="flex h-full absolute"
         style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}

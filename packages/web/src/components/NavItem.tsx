@@ -11,7 +11,8 @@ export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
   return !props.mobile ? (
     <div
       className="flex justify-between hover:opacity-80 cursor-pointer px-2"
-      onClick={props.onClick ? props.onClick : undefined}>
+      onClick={props.onClick ? props.onClick : undefined}
+    >
       <img className="mr-3" src={`/static/${props.name}.svg`} />
       <a
         href={props.href ? props.href : '#'}
