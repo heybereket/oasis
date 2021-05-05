@@ -23,16 +23,18 @@ Take a look at our [Documentation](/docs) for more information on how to get sta
 
 - **Documentation:** [heybereket](https://github.com/heybereket) and [f1shy-dev](https://github.com/f1shy-dev)
 - **Web:** [heybereket](https://github.com/heybereket), [f1shy-dev](https://github.com/f1shy-dev), and [HenryLeC](https://github.com/HenryLeC)
-- **API:** [Ongshu777](https://github.com/Ongshu777), [f1shy-dev](https://github.com/f1shy-dev)
-- **Design:** [coderinblack08](https://github.com/coderinblack08) and [SamJakob](https://github.com/SamJakob)
+- **API:** [Angshu31](https://github.com/Ongshu777), [heybereket](https://github.com/heybereket), and [HenryLeC](https://github.com/HenryLeC)
+- **Design:** [SamJakob](https://github.com/SamJakob)
 
 ## ⌛ Status
 
 ✅ **Early Development:** Start building a barebones version of the project. <br>
-✅ **Migration:** Migration to Next.JS and TailwindCSS <br>
+✅ **Migration:** Migration to Next.js and TailwindCSS from CRA. <br>
 ✅ **TypeScript:** Converted codebase from JS to TS<br>
+✅ **Redesign/write:** Implementation of the 2nd re-design, as well as the new path for the project. <br>
+✅ **Hosting/Database Switch:** Move from Vercel to AWS and Firebase to PostgresSQL. <br>
 ⌛️ **GraphQL API:** Work on releasing the Oasis API publicly <br>
-⌛️ **Redesign/write:** Implementation of the 2nd re-design, as well as the new path for the project. <br>
+⌛️ **Design Implementation:** Finish working on implementing the new design using TailwindCSS <br>
 ⛔︎ **Alpha/Beta Testing:** Fixing bugs and testing before the launch <br>
 ⛔︎ **Official Launch:** Releasing the production-ready version of Oasis to the public! <br><br>
 

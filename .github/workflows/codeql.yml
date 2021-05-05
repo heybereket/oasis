@@ -1,0 +1,35 @@
+name: Code Scanning
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['typescript', 'javascript]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@main
+
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@main
+      with:
+        languages: ${{ matrix.language }}
+
+    # Run CodeQL Autobuild
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@main
+
+    # Run CodeQL Analysis
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@main

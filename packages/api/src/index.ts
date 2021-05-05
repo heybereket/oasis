@@ -9,7 +9,7 @@ import { authRouter } from "./modules/auth";
 import session from "express-session";
 import { createClient } from "redis";
 import connectRedis, { Client } from "connect-redis";
-import { ormconfig } from "./ormconfig";
+import { ormconfig } from "./ormconfig.example";
 
 const RedisStore = connectRedis(session);
 
