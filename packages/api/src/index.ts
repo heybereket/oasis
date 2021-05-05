@@ -18,6 +18,11 @@ const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
 export const createApp = async () => {
   const app = express();
+  app.disable('x-powered-by');
+
+  if (process.env.OASIS_API_TRUST_PROXY === "true") {
+    app.set('trust proxy', 1);
+  }
 
   await createConnection(ormconfig);
   const apolloServer = await createApolloServer();
@@ -29,7 +34,13 @@ export const createApp = async () => {
       secret: process.env.OASIS_API_SESSION_SECRET,
       resave: false,
       saveUninitialized: true,
-      cookie: { secure: process.env.NODE_ENV === "production", maxAge: null },
+      cookie: {
+        domain: process.env.OASIS_API_PUBLIC_DOMAIN,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: null,
+        signed: true,
+        sameSite: 'lax'
+      },
     })
   );
 

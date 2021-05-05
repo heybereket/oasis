@@ -3,4 +3,5 @@
     "git.ignoreLimitWarning": true,
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
+    "prettier.singleQuote": true
 }

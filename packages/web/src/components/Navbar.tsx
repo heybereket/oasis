@@ -42,17 +42,16 @@ export const Navbar: React.FC = () => {
               <div
                 className="flex justify-items-start items-center space-x-5"
                 onClick={() => {
-                      setUserDropdownActive(!isUserDropdownActive);
-                  }}>
+                  setUserDropdownActive(!isUserDropdownActive);
+                }}
+              >
                 <img
                   src={user.avatar ?? undefined}
                   alt={user.name ?? undefined}
                   className="w-12 h-12 rounded-full"
                 />
 
-                <img
-                  src="/static/Down-Arrow.svg"
-                />
+                <img src="/static/Down-Arrow.svg" />
               </div>
             ) : (
               <Button
@@ -72,11 +71,11 @@ export const Navbar: React.FC = () => {
       </nav>
 
       {/* User dropdown menu */}
-        <div
-          className={`flex rounded-b-lg bg-gray-700 px-6 py-4 max-w-md absolute right-0 mr-6 ${
-            isUserDropdownActive ? 'animate-fade-in-down' : 'hidden'
-          }`}
-        >
+      <div
+        className={`flex rounded-b-lg bg-gray-700 px-6 py-4 max-w-md absolute right-0 mr-6 ${
+          isUserDropdownActive ? 'animate-fade-in-down' : 'hidden'
+        }`}
+      >
         <div className="flex flex-col justify-start items-start text-base text-gray-300">
           <NavItem
             name="Logout"

@@ -35,6 +35,7 @@ type Query {
   allRepos: [Repo!]!
   allUsers: [User!]!
   currentUser: User
+  getAvailableUsername(username: String!): String!
   getComment(id: String!): Comment!
   getPost(id: String!): Post!
   getRepo(id: String!): Repo!
