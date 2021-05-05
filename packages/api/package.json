@@ -34,7 +34,7 @@
     "apollo-server-express": "^2.24.0",
     "class-validator": "^0.13.1",
     "connect-redis": "^5.2.0",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.5.1",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "passport": "^0.4.1",
