@@ -11,6 +11,8 @@ import { SEOProvider } from '../../../components/common/SEOProvider';
 import { Button } from '@components/common/Button';
 import { TopicBadge } from '@components/profile/TopicBadge';
 import { Container } from '@components/common/Container';
+import { About, Comments, Like, Posts } from '@components/icons';
+import { Navbar } from '@components/navbar/Navbar';
 interface ProfileProps {
   initialApolloState: any;
   username: string;
@@ -30,6 +32,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
         metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
         metaImg={data?.avatar}
       />
+      <Navbar />
       <div className="flex w-screen flex-col">
         <div
           style={{
@@ -60,10 +63,10 @@ const Profile: React.FC<ProfileProps> = (props) => {
               </div>
               <div className="flex flex-col mt-6">
                 <div className="flex">
-                  <TabItem name="About" active={true} />
-                  <TabItem name="Posts" active={false} />
-                  <TabItem name="Likes" active={false} />
-                  <TabItem name="Comments" active={false} />
+                  <TabItem name="About" active={true} icon={About} />
+                  <TabItem name="Posts" active={false} icon={Posts} />
+                  <TabItem name="Likes" active={false} icon={Like} />
+                  <TabItem name="Comments" active={false} icon={Comments} />
                 </div>
                 <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6">
                   <h4 className="font-extrabold">
@@ -73,7 +76,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
                     <h5 className="text-gray-300 font-bold">{data?.bio}</h5>
                   ) : (
                     <h5 className="text-gray-300 font-bold">
-                      @{data?.username} does not have a bio set, yet.
+                      Hmm, it seems like @{data?.username} does not have a bio
+                      set.
                     </h5>
                   )}
                 </div>

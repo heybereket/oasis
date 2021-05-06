@@ -3,8 +3,8 @@ import { MouseEventHandler } from 'react';
 interface NavItemProps {
   name: string;
   active: boolean;
-  icon?: boolean;
   onClick?: MouseEventHandler<HTMLDivElement>;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
 export const TabItem: React.FC<NavItemProps> = (props: NavItemProps) => {
@@ -15,10 +15,7 @@ export const TabItem: React.FC<NavItemProps> = (props: NavItemProps) => {
       }`}
       onClick={props.onClick}
     >
-      <img
-        src={`/static/${props.icon ? props.icon : props.name}.svg`}
-        className="w-6 mr-2"
-      ></img>
+      <props.icon className="w-6 mr-2" />
       {props.name}
     </div>
   );
