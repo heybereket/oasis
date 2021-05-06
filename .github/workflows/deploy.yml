@@ -34,10 +34,10 @@ jobs:
       # Prepare to deploy
       - name: Prepare for deploy
         run: |
-          mkdir -p ~/.ssh
-          printf "${{ secrets.SSH_DEPLOY_KEY }}" > ~/.ssh/id_rsa
-          printf "${{ secrets.SSH_DEPLOY_CONFIG }}" > ~/.ssh/config
-          chmod 0600 ~/.ssh/id_rsa
+          mkdir -p /home/runner/.ssh
+          echo ${{ secrets.SSH_DEPLOY_CONFIG }} > /home/runner/.ssh/config
+          echo ${{ secrets.SSH_DEPLOY_KEY }} > /home/runner/.ssh/id_rsa
+          chmod 0600 /home/runner/.ssh/id_rsa
     
       # Check out the repository to $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
@@ -47,4 +47,3 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           pm2 deploy production update
-
