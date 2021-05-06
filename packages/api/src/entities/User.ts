@@ -25,8 +25,8 @@ export default class User extends BaseEntity {
   @Field({ nullable: true })
   banner: string;
 
-  @Column()
-  @Field()
+  @Column({ nullable: true })
+  @Field({ nullable: true })
   username: string;
 
   @Column({ nullable: true })
@@ -58,13 +58,12 @@ export default class User extends BaseEntity {
   verified: boolean;
 
   @Field(() => [Repo], { nullable: true })
-  @OneToMany(() => Repo, (repo) => repo.owner, { eager: true })
-  repos: Repo[];
+  @OneToMany(() => Repo, (repo) => repo.owner)
+  repos: Promise<Repo[]>;
 
   @Field(() => [Post], { nullable: true })
-  @OneToMany(() => Post, (post) => post.author, { eager: true })
-  @JoinColumn()
-  posts: Post[];
+  @OneToMany(() => Post, (post) => post.author)
+  posts: Promise<Post[]>;
 
   @Column('simple-array')
   @Field(() => [String])

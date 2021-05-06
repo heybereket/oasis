@@ -40,9 +40,9 @@ export default class Post extends BaseEntity {
 
   @Field(() => User)
   @ManyToOne(() => User, (user) => user.posts)
-  author: User;
+  author: Promise<User>;
 
   @Field(() => [Comment])
   @OneToMany(() => Comment, (comment) => comment.post)
-  comments: Comment[];
+  comments: Promise<Comment[]>;
 }

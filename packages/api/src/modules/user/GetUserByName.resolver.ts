@@ -8,7 +8,6 @@ export class GetUserByNameResolver {
   async getUserByName(@Arg('username') username: string) {
     return await User.createQueryBuilder('user')
       .where('LOWER(user.username) = LOWER(:username)', { username })
-      .leftJoinAndSelect('user.posts', 'post')
       .getOne();
   }
 }
