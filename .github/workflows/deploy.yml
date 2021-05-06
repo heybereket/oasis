@@ -26,13 +26,18 @@ jobs:
         with:
           node-version: '14'
       
+      # Install node dependencies
+      - name: Install node dependencies
+        run: |
+          npm install pm2 -g
+      
       # Prepare to deploy
       - name: Prepare for deploy
         run: |
-          npm install pm2 -g
+          mkdir -p ~/.ssh
           echo ${{ secrets.SSH_DEPLOY_KEY }} > ~/.ssh/id_rsa
-          chmod 0600 ~/.ssh/id_rsa
           echo ${{ secrets.SSH_DEPLOY_CONFIG }} > ~/.ssh/config
+          chmod 0600 ~/.ssh/id_rsa
     
       # Check out the repository to $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
