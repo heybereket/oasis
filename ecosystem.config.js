@@ -15,9 +15,9 @@ module.exports = {
   deploy: {
     staging: {
       user: 'ci-runner',
-      host: 'oasis',
+      host: 'oasis-deploy',
       ref: 'origin/staging',
-      repo: 'git@github.com:oasis-sh/oasis.git',
+      repo: 'https://github.com/oasis-sh/oasis.git',
       path: '/opt/oasis/staging',
       'pre-deploy-local': '',
       'post-deploy' : 'yarn && yarn build && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem.config.js --env production',
@@ -26,9 +26,9 @@ module.exports = {
 
     production: {
       user: 'ci-runner',
-      host: 'oasis',
+      host: 'oasis-deploy',
       ref: 'origin/prod',
-      repo: 'git@github.com:oasis-sh/oasis.git',
+      repo: 'https://github.com/oasis-sh/oasis.git',
       path: '/opt/oasis/production',
       'pre-deploy-local': '',
       'post-deploy' : 'yarn && yarn build && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem.config.js --env production',
