@@ -30,9 +30,9 @@ jobs:
       - name: Prepare for deploy
         run: |
           npm install pm2 -g
-          echo ${{ SSH_DEPLOY_KEY }} > ~/.ssh/id_rsa
+          echo ${{ secrets.SSH_DEPLOY_KEY }} > ~/.ssh/id_rsa
           chmod 0600 ~/.ssh/id_rsa
-          echo ${{ SSH_DEPLOY_CONFIG }} > ~/.ssh/config
+          echo ${{ secrets.SSH_DEPLOY_CONFIG }} > ~/.ssh/config
     
       # Check out the repository to $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
