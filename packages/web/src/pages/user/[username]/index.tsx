@@ -7,7 +7,7 @@ import {
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/ssrRequest';
-import { SEOProvider } from '../../../components/common/SEOProvider';
+import { SEOProvider } from '@components/common/SEOProvider';
 import { Button } from '@components/common/Button';
 import { TopicBadge } from '@components/profile/TopicBadge';
 import { Container } from '@components/common/Container';
