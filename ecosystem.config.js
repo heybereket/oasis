@@ -1,16 +1,18 @@
 module.exports = {
-  apps: [{
-    name: 'oasis',
-    script: 'yarn',
-    args: 'start',
-    interpreter: 'none',
-    env: {
-      NODE_ENV: 'development'
+  apps: [
+    {
+      name: 'oasis',
+      script: 'yarn',
+      args: 'start',
+      interpreter: 'none',
+      env: {
+        NODE_ENV: 'development',
+      },
+      env_production: {
+        NODE_ENV: 'production',
+      },
     },
-    env_production: {
-      NODE_ENV: 'production'
-    }
-  }],
+  ],
 
   deploy: {
     staging: {
@@ -19,22 +21,24 @@ module.exports = {
       ref: 'origin/staging',
       repo: 'https://github.com/oasis-sh/oasis.git',
       path: '/opt/oasis/staging',
-      ssh_options: "StrictHostKeyChecking=no",
+      ssh_options: 'StrictHostKeyChecking=no',
       'pre-deploy-local': '',
-      'post-deploy' : 'yarn && yarn build && yarn workspace @oasis/api typeorm:run_migrations && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem.config.js --env production',
-      'pre-setup': ''
+      'post-deploy':
+        'yarn && yarn build && yarn workspace @oasis/api typeorm:run_migrations && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem.config.js --env production',
+      'pre-setup': '',
     },
 
     production: {
       user: 'ci-runner',
       host: 'oasis-deploy',
-      ref: 'origin/staging', // For now, production will track staging branches
+      ref: 'origin/prod',
       repo: 'https://github.com/oasis-sh/oasis.git',
       path: '/opt/oasis/production',
-      ssh_options: "StrictHostKeyChecking=no",
+      ssh_options: 'StrictHostKeyChecking=no',
       'pre-deploy-local': '',
-      'post-deploy' : 'yarn && yarn build && yarn workspace @oasis/api typeorm:run_migrations && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem.config.js --env production',
-      'pre-setup': ''
-    }
-  }
+      'post-deploy':
+        'yarn && yarn build && yarn workspace @oasis/api typeorm:run_migrations && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem.config.js --env production',
+      'pre-setup': '',
+    },
+  },
 };
