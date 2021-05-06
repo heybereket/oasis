@@ -14,7 +14,14 @@ export class CurrentUser {
     const newPost = Post.create();
     Post.merge(newPost, data);
 
-    newPost.author = getUser();
+    // Even though getUser returns a Promise<User> it does not work with lazy loading for some reason.
+    // For lazy loading relationships you need to call Promsie.resolve with the entity for the relationship
+    // for example
+    //  newPost.author = getUser(); does not work
+    // while
+    //  newPost.author = Promise.resolve(await getUser()); does work
+
+    newPost.author = Promise.resolve(await getUser());
     newPost.save();
     return true;
   }
