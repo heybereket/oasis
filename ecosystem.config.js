@@ -21,7 +21,7 @@ module.exports = {
       path: '/opt/oasis/staging',
       ssh_options: "StrictHostKeyChecking=no",
       'pre-deploy-local': '',
-      'post-deploy' : 'yarn && yarn build && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem.config.js --env production',
+      'post-deploy' : 'yarn && yarn build && yarn workspace @oasis/api typeorm:run_migrations && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
     },
 
@@ -33,7 +33,7 @@ module.exports = {
       path: '/opt/oasis/production',
       ssh_options: "StrictHostKeyChecking=no",
       'pre-deploy-local': '',
-      'post-deploy' : 'yarn && yarn build && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem.config.js --env production',
+      'post-deploy' : 'yarn && yarn build && yarn workspace @oasis/api typeorm:run_migrations && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
     }
   }
