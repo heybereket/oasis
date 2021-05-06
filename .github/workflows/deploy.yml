@@ -1,0 +1,45 @@
+# For now, production will track the staging branches.
+# At some point, this file will be copied to implement staging deployments and this file will be updated to track the production branches.
+name: Deploy Production
+
+on:
+  # Triggers the workflow on push or pull request events but only for the staging branch
+  push:
+    branches: [ staging ]
+  pull_request:
+    types: [ closed ]
+    branches: [ staging ]
+
+  # Allows running this workflow manually from the Actions tab
+  # workflow_dispatch:
+
+jobs:
+  deploy:
+    # Run the deploy if and only if, the event was push, or a merged pull request.
+    if: github.event_name == "push" || (github.event_name == "pull_request" && github.event.pull_request.merged)
+    runs-on: ubuntu-latest
+
+    steps:
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      
+      # Prepare to deploy
+      - name: Prepare for deploy
+        run: |
+          npm install pm2 -g
+          echo ${{ secrets.SSH_DEPLOY_KEY }} > ~/.ssh/id_rsa
+          chmod 0600 ~/.ssh/id_rsa
+          echo ${{ secrets.SSH_DEPLOY_CONFIG }} > ~/.ssh/config
+    
+      # Check out the repository to $GITHUB_WORKSPACE
+      - uses: actions/checkout@v2
+      
+      # Run the deployment
+      - name: Run deployment
+        run: |
+          cd $GITHUB_WORKSPACE
+          pm2 deploy production update
+

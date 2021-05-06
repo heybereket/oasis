@@ -6,8 +6,8 @@ export const BellIcon: React.FC<React.SVGProps<SVGElement>> = (
 ) => {
   return (
     <svg
-      width="19"
-      height="20"
+      width="18"
+      height="18"
       viewBox="0 0 19 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
