@@ -13,7 +13,16 @@ type Comment {
 }
 
 type Mutation {
+  authenticate(idToken: String!): Boolean!
+  createPost(data: NewPostInput!): Boolean!
+  newUserTest(data: UpdateProfileInput!): Boolean!
   updateProfile(data: UpdateProfileInput!): Boolean!
+}
+
+input NewPostInput {
+  message: String!
+  title: String!
+  topics: [String!]!
 }
 
 type Post {
@@ -33,6 +42,7 @@ type Query {
   allRepos: [Repo!]!
   allUsers: [User!]!
   currentUser: User
+  getAvailableUsername(username: String!): String!
   getComment(id: String!): Comment!
   getPost(id: String!): Post!
   getRepo(id: String!): Repo!

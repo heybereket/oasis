@@ -1,17 +1,17 @@
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from 'type-graphql';
 import {
   BaseEntity,
   Column,
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
-} from "typeorm";
-import User from "./User";
+} from 'typeorm';
+import User from './User';
 
 @ObjectType()
 @Entity()
 export default class Repo extends BaseEntity {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
   id: string;
 
@@ -42,6 +42,7 @@ export default class Repo extends BaseEntity {
   @Column()
   @Field()
   language: string;
+
   @Column()
   @Field()
   stars: number;
@@ -53,11 +54,11 @@ export default class Repo extends BaseEntity {
   @Column()
   @Field(() => String, {
     description:
-      "Time when the repo was added (the number of milliseconds passed since Unix epoch 1970-01-01T00:00:00Z)",
+      'Time when the repo was added (the number of milliseconds passed since Unix epoch 1970-01-01T00:00:00Z)',
   })
   date_added: string;
 
   @Field(() => User)
   @ManyToOne(() => User, (user) => user.posts)
-  owner: User;
+  owner: Promise<User>;
 }

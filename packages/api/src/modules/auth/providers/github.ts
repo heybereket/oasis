@@ -1,12 +1,11 @@
-import { Router } from "express";
-import { Strategy } from "passport-github2";
-import User from "../../../entities/User";
-import { v4 as uuid } from "uuid";
-import { generateSafeUsername } from "../../../utils/generateSafeUsername";
+import { Router } from 'express';
+import { Strategy } from 'passport-github2';
+import User from '../../../entities/User';
+import { v4 as uuid } from 'uuid';
+import { generateSafeUsername } from '../../../utils/generateSafeUsername';
 import { PassportStatic } from 'passport';
 
-export default (passport: PassportStatic) : Router => {
-
+export default (passport: PassportStatic): Router => {
   passport.use(
     new Strategy(
       {
@@ -22,16 +21,17 @@ export default (passport: PassportStatic) : Router => {
             (await User.findOne({ where: { github: id } })) || User.create();
 
           // Generate username only if this is the user's first login
-          if (!user.id)
+          if (!user.id) {
+            user.id = uuid();
+            user.badges = [];
+            user.github = id;
             user.username = await generateSafeUsername(profile.username);
+            user.verified = false;
+            user.createdAt = String(Date.now());
+          }
 
-          user.id = user.id || uuid();
           user.avatar = profile._json.avatar_url;
-          user.badges = [];
-          user.createdAt = String(Date.now());
-          user.github = id;
-          user.name = profile.displayName || profile.username;
-          user.verified = false;
+          user.name = profile.displayName;
 
           await user.save();
 
@@ -46,22 +46,21 @@ export default (passport: PassportStatic) : Router => {
   const router = Router();
 
   router.get(
-    "/",
+    '/',
     passport.authenticate('github', {
-      scope: ["user:email"],
-      session: true
+      scope: ['user:email'],
+      session: true,
     })
   );
 
   router.get(
-    "/callback",
+    '/callback',
     passport.authenticate('github', {
       successReturnToOrRedirect: '/',
-      failureRedirect: "/login",
-      session: true
+      failureRedirect: '/login',
+      session: true,
     })
   );
 
   return router;
-
-}
+};

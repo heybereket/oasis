@@ -9,7 +9,8 @@
     "build": "graphql-codegen && tsc",
     "watch:gen": "graphql-codegen -w",
     "watch:tsc": "tsc --watch",
-    "dev": "run-p \"watch:gen\" \"watch:tsc\""
+    "dev": "run-p \"watch:gen\" \"watch:tsc\"",
+    "clean": "rimraf dist/*"
   },
   "license": "MIT",
   "devDependencies": {
