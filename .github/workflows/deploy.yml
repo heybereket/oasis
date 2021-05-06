@@ -35,8 +35,8 @@ jobs:
       - name: Prepare for deploy
         run: |
           mkdir -p /home/runner/.ssh
-          echo ${{ secrets.SSH_DEPLOY_CONFIG }} > /home/runner/.ssh/config
-          echo ${{ secrets.SSH_DEPLOY_KEY }} > /home/runner/.ssh/id_rsa
+          echo "${{ secrets.SSH_DEPLOY_CONFIG }}" > /home/runner/.ssh/config
+          echo "${{ secrets.SSH_DEPLOY_KEY }}" > /home/runner/.ssh/id_rsa
           chmod 0600 /home/runner/.ssh/id_rsa
     
       # Check out the repository to $GITHUB_WORKSPACE
