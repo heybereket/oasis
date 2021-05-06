@@ -1,12 +1,13 @@
-import { Query, Arg, Resolver } from "type-graphql";
-import User from "../../entities/User";
+import { Query, Arg, Resolver } from 'type-graphql';
+import { getRepository } from 'typeorm';
+import User from '../../entities/User';
 
 @Resolver()
 export class GetUserByNameResolver {
   @Query(() => User, { nullable: true })
-  async getUserByName(@Arg("username") username: string) {
-    return await User.createQueryBuilder()
-      .where("LOWER(username) = LOWER(:username)", { username })
+  async getUserByName(@Arg('username') username: string) {
+    return await User.createQueryBuilder('user')
+      .where('LOWER(user.username) = LOWER(:username)', { username })
       .getOne();
   }
 }

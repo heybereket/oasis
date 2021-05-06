@@ -11,7 +11,8 @@
     "dev": "concurrently \"yarn:watch\" \"yarn:dev:start\"",
     "typeorm:cli": "ts-node ../../node_modules/typeorm/cli -f ./src/ormconfig.ts",
     "typeorm:generate_migration": "yarn typeorm:cli migration:generate -d ./src/migrations -n",
-    "typeorm:run_migrations": "yarn typeorm:cli migration:run"
+    "typeorm:run_migrations": "yarn typeorm:cli migration:run",
+    "clean": "rimraf dist/*"
   },
   "keywords": [],
   "author": "oasis.sh",
@@ -36,7 +37,7 @@
     "apollo-server-express": "^2.24.0",
     "class-validator": "^0.13.1",
     "connect-redis": "^5.2.0",
-    "dotenv": "^8.5.1",
+    "dotenv": "^9.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "passport": "^0.4.1",
