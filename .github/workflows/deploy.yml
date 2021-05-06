@@ -16,7 +16,7 @@ on:
 jobs:
   deploy:
     # Run the deploy if and only if, the event was push, or a merged pull request.
-    if: github.event_name == "push" || (github.event_name == "pull_request" && github.event.pull_request.merged)
+    if: ${{ (github.event_name == 'push') || (github.event_name == 'pull_request' && github.event.pull_request.merged) }}
     runs-on: ubuntu-latest
 
     steps:
@@ -26,13 +26,18 @@ jobs:
         with:
           node-version: '14'
       
+      # Install node dependencies
+      - name: Install node dependencies
+        run: |
+          npm install pm2 -g
+      
       # Prepare to deploy
       - name: Prepare for deploy
         run: |
-          npm install pm2 -g
-          echo ${{ secrets.SSH_DEPLOY_KEY }} > ~/.ssh/id_rsa
-          chmod 0600 ~/.ssh/id_rsa
-          echo ${{ secrets.SSH_DEPLOY_CONFIG }} > ~/.ssh/config
+          mkdir -p /home/runner/.ssh
+          echo "${{ secrets.SSH_DEPLOY_CONFIG }}" > /home/runner/.ssh/config
+          echo "${{ secrets.SSH_DEPLOY_KEY }}" > /home/runner/.ssh/id_rsa
+          chmod 0600 /home/runner/.ssh/id_rsa
     
       # Check out the repository to $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
@@ -42,4 +47,3 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           pm2 deploy production update
-
