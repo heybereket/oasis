@@ -20,18 +20,17 @@ export default (passport: PassportStatic): Router => {
           const user =
             (await User.findOne({ where: { github: id } })) || User.create();
 
-          // Generate username only if this is the user's first login
+          // Store data from GitHub only on user's first login
           if (!user.id) {
             user.id = uuid();
+            user.avatar = profile._json.avatar_url;
+            user.name = profile.displayName;
+            user.username = await generateSafeUsername(profile.username);
             user.badges = [];
             user.github = id;
-            user.username = await generateSafeUsername(profile.username);
             user.verified = false;
             user.createdAt = String(Date.now());
           }
-
-          user.avatar = profile._json.avatar_url;
-          user.name = profile.displayName;
 
           await user.save();
 
