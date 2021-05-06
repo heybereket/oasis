@@ -27,7 +27,7 @@ module.exports = {
     production: {
       user: 'ci-runner',
       host: 'oasis-deploy',
-      ref: 'origin/prod',
+      ref: 'origin/staging', // For now, production will track staging branches
       repo: 'https://github.com/oasis-sh/oasis.git',
       path: '/opt/oasis/production',
       'pre-deploy-local': '',
