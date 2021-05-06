@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Twitter: React.FC<React.SVGProps<SVGElement>> = (
+export const DownArrow: React.FC<React.SVGProps<SVGElement>> = (
   { children: _ },
   props
 ) => {
