@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const BellIcon: React.FC<React.SVGProps<SVGElement>> = (
+export const Bell: React.FC<React.SVGProps<SVGElement>> = (
   { children: _ },
   props
 ) => {

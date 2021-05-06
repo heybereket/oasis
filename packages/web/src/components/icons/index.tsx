@@ -1,2 +1,2 @@
-export { BellIcon } from './BellIcon';
+export { Bell } from './Bell';
 export { MagnifyingGlass } from './MagnifyingGlass';
