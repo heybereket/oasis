@@ -94,6 +94,6 @@ type User {
   repos: [Repo!]
   twitter: String
   url: String
-  username: String!
+  username: String
   verified: Boolean!
 }
