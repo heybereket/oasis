@@ -6,8 +6,7 @@ import User from '../../entities/User';
 export class GetUserByNameResolver {
   @Query(() => User, { nullable: true })
   async getUserByName(@Arg('username') username: string) {
-    return await getRepository(User)
-      .createQueryBuilder('user')
+    return await User.createQueryBuilder('user')
       .where('LOWER(user.username) = LOWER(:username)', { username })
       .leftJoinAndSelect('user.posts', 'post')
       .getOne();
