@@ -1,7 +1,6 @@
 import React from 'react';
 
-export const MagnifyingGlass: React.FC<React.SVGProps<SVGElement>> = (
-  { children: _ },
+export const MagnifyingGlass: React.FC<React.SVGProps<SVGSVGElement>> = (
   props
 ) => {
   return (

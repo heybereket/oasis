@@ -1,9 +1,6 @@
 import React from 'react';
 
-export const Posts: React.FC<React.SVGProps<SVGElement>> = (
-  { children: _ },
-  props
-) => {
+export const Posts: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -1,9 +1,6 @@
 import React from 'react';
 
-export const Topics: React.FC<React.SVGProps<SVGElement>> = (
-  { children: _ },
-  props
-) => {
+export const Topics: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       width="21"

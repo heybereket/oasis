@@ -1,9 +1,6 @@
 import React from 'react';
 
-export const Twitter: React.FC<React.SVGProps<SVGElement>> = (
-  { children: _ },
-  props
-) => {
+export const Twitter: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       width="14"
