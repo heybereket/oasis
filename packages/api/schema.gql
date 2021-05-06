@@ -13,9 +13,14 @@ type Comment {
 }
 
 type Mutation {
-  authenticate(idToken: String!): Boolean!
-  newUserTest(data: UpdateProfileInput!): Boolean!
+  createPost(data: NewPostInput!): Boolean!
   updateProfile(data: UpdateProfileInput!): Boolean!
+}
+
+input NewPostInput {
+  message: String!
+  title: String!
+  topics: [String!]!
 }
 
 type Post {

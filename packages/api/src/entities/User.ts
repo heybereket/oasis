@@ -1,18 +1,19 @@
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from 'type-graphql';
 import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   OneToMany,
   PrimaryGeneratedColumn,
-} from "typeorm";
-import Repo from "./Repo";
-import Post from "./Post";
+} from 'typeorm';
+import Repo from './Repo';
+import Post from './Post';
 
 @ObjectType()
 @Entity()
 export default class User extends BaseEntity {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
   id: string;
 
@@ -57,14 +58,15 @@ export default class User extends BaseEntity {
   verified: boolean;
 
   @Field(() => [Repo], { nullable: true })
-  @OneToMany(() => Repo, (repo) => repo.owner)
+  @OneToMany(() => Repo, (repo) => repo.owner, { eager: true })
   repos: Repo[];
 
   @Field(() => [Post], { nullable: true })
-  @OneToMany(() => Post, (post) => post.author)
+  @OneToMany(() => Post, (post) => post.author, { eager: true })
+  @JoinColumn()
   posts: Post[];
 
-  @Column("simple-array")
+  @Column('simple-array')
   @Field(() => [String])
   badges: string[];
 }

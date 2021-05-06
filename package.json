@@ -13,6 +13,7 @@
     "dev:web": "yarn workspace @oasis/web dev",
     "dev:api": "yarn workspace @oasis/api dev",
     "dev:gql": "yarn workspace @oasis/client-gql dev",
+    "build:gql": "yarn workspace @oasis/api run build && yarn workspace @oasis/client-gql run build",
     "build": "yarn workspace @oasis/api run build && yarn workspace @oasis/client-gql run build && yarn workspace @oasis/web run build",
     "dev": "yarn workspace @oasis/web dev",
     "start": "yarn workspace @oasis/web run start",
