@@ -12,11 +12,10 @@ export class CurrentUser {
     @Arg('data') data: NewPostInput,
     @Ctx() { getUser }: ContextType
   ) {
-    const user = await getUser();
     const newPost = Post.create();
     Post.merge(newPost, data);
 
-    newPost.author = user;
+    newPost.author = getUser();
     newPost.save();
     return true;
   }
