@@ -1,7 +1,6 @@
 {
   "name": "oasis",
   "private": true,
-  "version": "4.0.0",
   "workspaces": [
     "packages/*"
   ],
@@ -11,7 +10,6 @@
     "commit": "cz",
     "deploy": "git add . && git commit -m \"chore(deploy): Merge staging -> prod\" &&git pull origin staging  && git checkout prod && git merge staging && git push origin prod && git checkout staging",
     "lint": "yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run prettify",
-    "release": "release major",
     "dev:web": "yarn workspace @oasis/web dev",
     "dev:api": "yarn workspace @oasis/api dev",
     "dev:gql": "yarn workspace @oasis/client-gql dev",
@@ -35,7 +33,6 @@
     "ts-jest": "^26.5.6"
   },
   "dependencies": {
-    "release": "^6.3.0",
     "typeorm": "^0.2.32",
     "typescript": "^4.2.4"
   },
