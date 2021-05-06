@@ -79,4 +79,7 @@
   .max-w-lg {
     max-width: 1280px;
   }
+  .animate-fill-forwards {
+    animation-fill-mode: forwards;
+  }
 }

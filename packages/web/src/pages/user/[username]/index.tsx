@@ -1,12 +1,13 @@
+// import { Navbar } from '@components/Navbar';
 import { TabItem } from '@components/TabItem';
+
 import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/ssrRequest';
-// import { contextFromToken } from '@oasis/api/dist/utils/contextFromToken';
-import { SEO } from '../../../components/page/SEO';
+import { SEOProvider } from '../../../components/SEOProvider';
 import { Button } from '@components/Button';
 import { TopicBadge } from '@components/TopicBadge';
 import { Container } from '@components/Container';
@@ -21,9 +22,10 @@ const Profile: React.FC<ProfileProps> = (props) => {
       username: props.username,
     },
   }).data?.getUserByName;
+
   return (
     <>
-      <SEO
+      <SEOProvider
         title={data?.name ? data?.name : data?.username + ' — Oasis'}
         metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
         metaImg={data?.avatar}

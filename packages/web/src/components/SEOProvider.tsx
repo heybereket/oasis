@@ -8,7 +8,7 @@ interface SEOProps {
   metaImg?: string;
 }
 
-export const SEO: React.FC<SEOProps> = ({
+export const SEOProvider: React.FC<SEOProps> = ({
   title,
   metaTitle,
   metaDesc,
