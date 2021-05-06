@@ -21,22 +21,22 @@ export default (passport: PassportStatic): Router => {
             (await User.findOne({ where: { github: id } })) || User.create();
 
           // Generate username only if this is the user's first login
-          if (!user.id)
+          if (!user.id){
+            user.id = uuid();
             user.username = await generateSafeUsername(profile.username);
+            user.name = profile.displayName;
+            user.verified = false;
+            user.createdAt = String(Date.now());
+          } else {
+            user.avatar = profile._json.avatar_url;
+            user.badges = [];
+            user.github = id;
 
-          user.id = user.id || uuid();
-          user.avatar = profile._json.avatar_url;
-          user.badges = [];
-          user.createdAt = String(Date.now());
-          user.github = id;
-          user.name = profile.displayName || profile.username;
-          user.verified = false;
+            await user.save();
 
-          await user.save();
-
-          return done(null, { id: user.id });
-        } catch (e) {
-          return done(e, null);
+            return done(null, { id: user.id });
+        }} catch (e) {
+           return done(e, null);
         }
       }
     )
