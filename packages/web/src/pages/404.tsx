@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from '@components/Button';
+import { Button } from '@components/common/Button';
 import Link from 'next/link';
-import { Footer } from '@components/Footer';
+import { Footer } from '@components/common/Footer';
 
 const NotFoundPage: React.FC = () => {
   return (

@@ -1,5 +1,5 @@
 // import { Navbar } from '@components/Navbar';
-import { TabItem } from '@components/TabItem';
+import { TabItem } from '@components/profile/TabItem';
 
 import {
   GetUserByNameDocument,
@@ -7,10 +7,10 @@ import {
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/ssrRequest';
-import { SEOProvider } from '../../../components/SEOProvider';
-import { Button } from '@components/Button';
-import { TopicBadge } from '@components/TopicBadge';
-import { Container } from '@components/Container';
+import { SEOProvider } from '../../../components/common/SEOProvider';
+import { Button } from '@components/common/Button';
+import { TopicBadge } from '@components/profile/TopicBadge';
+import { Container } from '@components/common/Container';
 interface ProfileProps {
   initialApolloState: any;
   username: string;

@@ -11,9 +11,9 @@ import {
   Logout as LogoutIcon,
 } from '@components/icons';
 import React, { useEffect, useRef, useState } from 'react';
-import { Button } from './Button';
+import { Button } from '../common/Button';
 import { NavItem } from './NavItem';
-import { DropdownItem } from './DropdownItem';
+import { DropdownItem } from '../common/DropdownItem';
 import { useGetCurrentUser } from '@lib/getCurrentUser';
 
 export const Navbar: React.FC = () => {
