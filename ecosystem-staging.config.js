@@ -5,9 +5,9 @@ module.exports = {
       script: 'yarn',
       args: 'start',
       interpreter: 'none',
-      env_staging: {
+      env: {
         NODE_ENV: 'development',
-        PORT: 3001,
+        PORT: 4001,
       },
     },
   ],
