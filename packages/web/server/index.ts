@@ -21,10 +21,12 @@ const handle = app.getRequestHandler();
 
     try {
       server.listen(PORT, () =>
-        console.log(`> Ready on http://localhost:${PORT} \n> API: http://localhost:${PORT}/graphql`)
+        console.log(
+          `> Ready on http://localhost:${PORT} \n> API: http://localhost:${PORT}/graphql`
+        )
       );
     } catch (err) {
-      if (err) throw err
+      if (err) throw err;
     }
   });
 })();
