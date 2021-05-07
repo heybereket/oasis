@@ -1,4 +1,4 @@
-import { getAPIBaseURL } from "./base-url";
+import { getAPIBaseURL } from "./constants";
 import { setCurrentUser } from "./getCurrentUser";
 
 export const Login = async (): Promise<void> => {
