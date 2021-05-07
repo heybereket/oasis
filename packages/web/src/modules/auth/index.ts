@@ -1,5 +1,5 @@
-import { baseURL } from "./constants";
-import { setCurrentUser } from "./getCurrentUser";
+import { baseURL } from "../../lib/constants";
+import { setCurrentUser } from "../user/getCurrentUser";
 
 export const GitHubLogin = async (): Promise<void> => {
   window.location.href = `${baseURL}/api/auth/github`;
