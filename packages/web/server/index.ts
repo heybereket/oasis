@@ -1,8 +1,6 @@
-// import next from 'next';
 import { config } from 'dotenv';
 import { join } from 'path';
 config({ path: join(__dirname, '../../api/.env') });
-import { parse } from 'url';
 import next from 'next';
 import { createApp } from '@oasis/api';
 
@@ -15,14 +13,10 @@ const handle = app.getRequestHandler();
 
   app.prepare().then(() => {
     server.all('*', (req, res) => {
-      // Be sure to pass `true` as the second argument to `url.parse`.
-      // This tells it to parse the query portion of the URL.
-      const parsedUrl = parse(req.url ?? '', true);
-      //const { pathname, query } = parsedUrl;
-      handle(req, res, parsedUrl);
-    });
+      return handle(req, res)
+  });
 
-    const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+    const PORT = parseInt(process.env.PORT as string, 10) || 3000;
 
     try {
       server.listen(PORT, () =>
