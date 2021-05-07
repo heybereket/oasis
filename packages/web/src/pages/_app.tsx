@@ -2,7 +2,7 @@ import { AppProps } from 'next/app';
 import '../styles/globals.css';
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
-import { useApollo } from '@lib/apolloClient';
+import { useApollo } from '@lib/common/apolloClient';
 import { AuthProvider } from '@components/AuthProvider';
 
 export default function App({

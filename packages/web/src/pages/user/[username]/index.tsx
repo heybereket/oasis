@@ -6,7 +6,7 @@ import {
   useGetUserByNameQuery,
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
-import { ssrRequest } from '@lib/ssrRequest';
+import { ssrRequest } from '@lib/common/ssrRequest';
 import { SEOProvider } from '@components/common/SEOProvider';
 import { Button } from '@components/common/Button';
 import { TopicBadge } from '@components/profile/TopicBadge';

@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "tsc --esModuleInterop server.ts && node server.js",
-    "build": "next build && tsc --esModuleInterop server.ts",
-    "start": "NODE_ENV=production node server.js",
-    "prettify": "prettier --config .prettierrc --write src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
+    "dev": "tsc --esModuleInterop server/index.ts && node server/index.js",
+    "build": "next build && tsc --esModuleInterop server/index.ts",
+    "start": "NODE_ENV=production node server/index.js",
+    "prettify": "prettier --config .prettierrc --write server/index.ts src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
   },
   "dependencies": {
