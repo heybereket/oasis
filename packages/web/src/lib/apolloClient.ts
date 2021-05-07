@@ -9,7 +9,7 @@ export let apolloClient: ClientType;
 function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined', // set to true for SSR
-    uri: getGQLBaseURL(),
+    uri: getGQLBaseURL,
     cache: new InMemoryCache(),
     defaultOptions: { mutate: { fetchPolicy: 'no-cache' } },
   });
