@@ -8,7 +8,7 @@ export const ormconfig: ConnectionOptions = {
   type: 'sqlite',
   /* Be sure to change this to the location you'd like the sqlite file to be saved. */
   database: '<path-to-sqlite-file>',
-  entities: [joinRoot('../dist/entities/*.*')],
+  entities: [joinRoot('./entities/*.*')],
   synchronize: true,
 };
 
@@ -20,6 +20,6 @@ export const ormconfig: ConnectionOptions = {
 //   username: "oasis",
 //   password: "oasis",
 //   uuidExtension: "uuid-ossp",
-//   entities: [joinRoot("../dist/entities/*.*")],
-//   migrations: [join(process.env.OASIS_API_SRC_PATH, "../dist/migrations/*.*")]
+//   entities: [joinRoot("./entities/*.*")],
+//   migrations: [joinRoot("./migrations/*.*")]
 // };
