@@ -2,7 +2,7 @@ import { getAPIBaseURL } from "./base-url";
 import { setCurrentUser } from "./getCurrentUser";
 
 export const Login = async (): Promise<void> => {
-  window.location.href = `/api/auth/github`;
+  window.location.href = `${getAPIBaseURL()}/api/auth/github`;
 };
 
 export const Logout = async (): Promise<void> => {
