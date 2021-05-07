@@ -20,9 +20,11 @@ const handle = app.getRequestHandler();
     const PORT = parseInt(process.env.PORT as string, 10) || 3000;
 
     try {
-      server.listen(PORT);
+      server.listen(PORT, () =>
+        console.log(`> Ready on http://localhost:${PORT} \n> API: http://localhost:${PORT}/graphql`)
+      );
     } catch (err) {
-      console.error(err.message);
+      if (err) throw err
     }
   });
 })();
