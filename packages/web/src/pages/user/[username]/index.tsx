@@ -41,13 +41,16 @@ const Profile: React.FC<ProfileProps> = (props) => {
             }) no-repeat center`,
             backgroundSize: 'cover',
           }}
-          className="flex-grow h-60"
+          className="flex-grow h-52 md:h-60"
         ></div>
         <Container>
-          <div className="hidden md:grid grid-cols-12 transform -translate-y-12 px-8">
+          <div className="hidden md-50:grid grid-cols-12 transform -translate-y-12 px-8">
             <div className="col-span-8 flex flex-col mr-8">
               <div className="flex">
-                <img src={data?.avatar} className="rounded-full w-40"></img>
+                <img
+                  src={data?.avatar}
+                  className="rounded-full w-50 h-40"
+                ></img>
                 <div className="ml-8 flex flex-col justify-center">
                   {data?.name ? (
                     <>
@@ -98,7 +101,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   Follow @{data?.username}
                 </Button>
               </div>
-              <div className="mt-8 flex bg-gray-800 rounded-2xl py-4 justify-center gap-12">
+              <div className="mt-8 flex bg-gray-800 rounded-2xl py-4 justify-center gap-8">
                 <div className="flex flex-col text-center leading-4">
                   <span className="text-2xl font-black">32</span>
                   <span className="font-extrabold text-sm">Followers</span>
@@ -128,7 +131,70 @@ const Profile: React.FC<ProfileProps> = (props) => {
             </div>
           </div>
         </Container>
-        <div className="grid md:hidden">[TODO: mobile/tablet design]</div>
+        <div className="flex flex-col md-50:hidden transform -translate-y-20 md:-translate-y-32 items-center mx-6 sm-50:mx-8">
+          <div className="flex flex-col md:flex-row items-center">
+            <img
+              src={data?.avatar}
+              className="rounded-full w-32 h-32 md:w-36 md:h-36"
+            ></img>
+            <div className="mt-4 md:mt-6 text-center md:ml-6">
+              {data?.name ? (
+                <>
+                  <h2 className="leading-none md:text-5xl">{data?.name}</h2>
+                  <h5 className="text-gray-400 font-bold mt-1 md:text-xl">
+                    @{data?.username}
+                  </h5>
+                </>
+              ) : (
+                <h1>@{data?.username}</h1>
+              )}
+            </div>
+          </div>
+          <div className="mt-6 flex justify-center gap-12 md:hidden">
+            <div className="flex flex-col text-center leading-4">
+              <span className="text-2xl font-black">32</span>
+              <span className="font-extrabold text-sm">Followers</span>
+            </div>
+            <div className="flex flex-col text-center leading-4">
+              <span className="text-2xl font-black">22</span>
+              <span className="font-extrabold text-sm">Posts</span>
+            </div>
+            <div className="flex flex-col text-center leading-4">
+              <span className="text-2xl font-black">420</span>
+              <span className="font-extrabold text-sm">Following</span>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 mt-6 w-full max-w-sm gap-1 md:gap-2">
+            <Button color="gray" className="col-span-2 md:col-span-1 text-sm">
+              Send Message
+            </Button>
+            <Button
+              color="primary"
+              className="col-span-2 md:col-span-1 text-sm"
+            >
+              Follow @{data?.username}
+            </Button>
+          </div>
+
+          <div className="flex flex-col mt-8">
+            <div className="flex justify-center space-x-2 sm-50:space-x-4">
+              <TabItem name="About" active={true} icon={About} />
+              <TabItem name="Posts" active={false} icon={Posts} />
+              <TabItem name="Likes" active={false} icon={Like} />
+              <TabItem name="Comments" active={false} icon={Comments} />
+            </div>
+            <div className="mt-4 bg-gray-800 rounded-xl py-6 px-6">
+              <h4 className="font-extrabold">About {`@${data?.username}`}</h4>
+              {data?.bio !== null ? (
+                <h5 className="text-gray-300 font-bold">{data?.bio}</h5>
+              ) : (
+                <h5 className="text-gray-300 font-bold">
+                  Hmm, it seems like @{data?.username} does not have a bio set.
+                </h5>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

@@ -10,13 +10,13 @@ interface NavItemProps {
 export const TabItem: React.FC<NavItemProps> = (props: NavItemProps) => {
   return (
     <div
-      className={`mr-4 px-5 rounded-lg py-2 font-bold text-lg flex ${
+      className={`px-5 rounded-lg py-2 font-bold text-lg flex ${
         props.active && 'bg-gray-700'
       }`}
       onClick={props.onClick}
     >
-      <props.icon className="w-6 mr-2" />
-      {props.name}
+      <props.icon className="w-6 md:mr-2" />
+      <div className="hidden md:block">{props.name}</div>
     </div>
   );
 };
