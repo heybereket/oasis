@@ -55,8 +55,12 @@ export const Navbar: React.FC = () => {
           <div className="hidden md:flex space-x-3">
             <NavItem name="Home" href="#" icon={Home} />
             <NavItem name="Topics" href="#" icon={Topics} />
-            <NavItem name="Friends" href="#" icon={Friends} />
-            <NavItem name="Saved" href="#" icon={Saved} />
+            {user && (
+              <>
+                <NavItem name="Friends" href="#" icon={Friends} />
+                <NavItem name="Saved" href="#" icon={Saved} />
+              </>
+            )}
           </div>
         </div>
         <div className="flex justify-items-start items-center space-x-8 ml-4">
