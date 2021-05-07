@@ -5,7 +5,7 @@ module.exports = {
       script: 'yarn',
       args: 'start',
       interpreter: 'none',
-      env: {
+      env_staging: {
         NODE_ENV: 'development',
       },
     },
@@ -21,7 +21,7 @@ module.exports = {
       ssh_options: 'StrictHostKeyChecking=no',
       'pre-deploy-local': '',
       'post-deploy':
-        'yarn && yarn build && yarn workspace @oasis/api typeorm:run_migrations && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem.config.js --env production',
+        'yarn && yarn build && yarn workspace @oasis/api typeorm:run_migrations && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem-staging.config.js --env staging',
       'pre-setup': '',
     },
   },
