@@ -24,10 +24,15 @@ const handle = app.getRequestHandler();
 
     const PORT = process.env.PORT || 3000;
 
-    server.listen(PORT, () =>
-      console.log(
+     try {
+        server.listen(PORT, () =>
+        console.log(
         `Server started on http://localhost:${PORT}/ \nIf you want the API: http://localhost:${PORT}/graphql`
       )
     );
+    }
+    catch (err) {
+        console.error(err.message);
+    }
   });
 })();
