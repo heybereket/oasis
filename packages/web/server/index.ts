@@ -16,14 +16,14 @@ const handle = app.getRequestHandler();
       return handle(req, res)
   });
 
-    const PORT = parseInt(process.env.PORT as string, 10) || 3000;
+  const PORT = parseInt(process.env.PORT as string, 10) || 3000;
 
-    try {
-      server.listen(PORT, () =>
-      console.log(`Server started on http://localhost:${PORT}/ \nIf you want the API: http://localhost:${PORT}/graphql`));
-    }
-    catch (err) {
-      console.error(err.message);
-    }
-  });
+  try {
+    server.listen(PORT, () =>
+    console.log(`Server started on http://localhost:${PORT}/ \nIf you want the API: http://localhost:${PORT}/graphql`));
+  }
+  catch (err) {
+    console.error(err.message);
+  }
+});
 })();
