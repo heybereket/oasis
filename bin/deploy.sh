@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 read -p "Deploy to production (y/N)?" -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
