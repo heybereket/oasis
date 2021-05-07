@@ -44,4 +44,4 @@ jobs:
       - name: Run deployment
         run: |
           cd $GITHUB_WORKSPACE
-          pm2 deploy staging update
+          pm2 deploy ecosystem-staging.config.js staging update
