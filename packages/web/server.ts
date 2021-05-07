@@ -26,7 +26,7 @@ const handle = app.getRequestHandler();
 
     server.listen(PORT, () =>
       console.log(
-        `Server started on http://localhost:${PORT}/ \nIf you want the api: http://localhost:${PORT}/graphql`
+        `Server started on http://localhost:${PORT}/ \nIf you want the API: http://localhost:${PORT}/graphql`
       )
     );
   });
