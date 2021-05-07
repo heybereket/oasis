@@ -1,8 +1,9 @@
 import { config } from 'dotenv';
 import { join } from 'path';
-config({ path: join(__dirname, '../../api/.env') });
 import next from 'next';
 import { createApp } from '@oasis/api';
+
+config({ path: join(__dirname, '../../api/.env') });
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, conf: require('../next.config.js') });
