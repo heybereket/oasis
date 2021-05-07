@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { getGQLBaseURL } from './constants';
+import { apiBaseURL } from './constants';
 
 type ClientType = ReturnType<typeof createApolloClient>;
 
@@ -9,7 +9,7 @@ export let apolloClient: ClientType;
 function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined', // set to true for SSR
-    uri: getGQLBaseURL,
+    uri: apiBaseURL,
     cache: new InMemoryCache(),
     defaultOptions: { mutate: { fetchPolicy: 'no-cache' } },
   });

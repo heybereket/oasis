@@ -1,2 +1,2 @@
-export const getAPIBaseURL = process.env.NEXT_PUBLIC_BASE_API_URL;
-export const getGQLBaseURL = `${getAPIBaseURL}/graphql`
+export const baseURL = process.env.NEXT_PUBLIC_BASE_API_URL;
+export const apiBaseURL = `${baseURL}/graphql`
