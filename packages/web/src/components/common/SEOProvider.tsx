@@ -3,6 +3,7 @@ import React from 'react';
 
 interface SEOProps {
   title: string;
+  description: string;
   metaTitle?: string;
   metaDesc?: string;
   metaImg?: string;
@@ -10,6 +11,7 @@ interface SEOProps {
 
 export const SEOProvider: React.FC<SEOProps> = ({
   title,
+  description,
   metaTitle,
   metaDesc,
   metaImg,
@@ -17,6 +19,7 @@ export const SEOProvider: React.FC<SEOProps> = ({
   return (
     <Head>
       <title>{title}</title>
+      <meta name="description" content={description} />
       {metaTitle ? (
         <meta name="og:title" content={metaTitle} />
       ) : (

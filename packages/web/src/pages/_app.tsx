@@ -20,7 +20,6 @@ export default function App({
               __html: `<h1>JavaScript is not supported by your browser.</h1>`,
             }}
           />
-          <title>Oasis - Discover and Discuss</title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=0"
