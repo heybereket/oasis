@@ -7,6 +7,7 @@ module.exports = {
       interpreter: 'none',
       env_staging: {
         NODE_ENV: 'development',
+        PORT: 3001,
       },
     },
   ],
