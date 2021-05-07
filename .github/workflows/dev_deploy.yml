@@ -1,14 +1,12 @@
-# For now, production will track the staging branches.
-# At some point, this file will be copied to implement staging deployments and this file will be updated to track the production branches.
-name: Deploy Production
+name: Deploy Staging
 
 on:
   # Triggers the workflow on push or pull request events but only for the staging branch
   push:
-    branches: [ staging ]
+    branches: [staging]
   pull_request:
-    types: [ closed ]
-    branches: [ staging ]
+    types: [closed]
+    branches: [staging]
 
   # Allows running this workflow manually from the Actions tab
   # workflow_dispatch:
@@ -25,12 +23,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      
+
       # Install node dependencies
       - name: Install node dependencies
         run: |
           npm install pm2 -g
-      
+
       # Prepare to deploy
       - name: Prepare for deploy
         run: |
@@ -38,12 +36,12 @@ jobs:
           echo "${{ secrets.SSH_DEPLOY_CONFIG }}" > /home/runner/.ssh/config
           echo "${{ secrets.SSH_DEPLOY_KEY }}" > /home/runner/.ssh/id_rsa
           chmod 0600 /home/runner/.ssh/id_rsa
-    
+
       # Check out the repository to $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
-      
+
       # Run the deployment
       - name: Run deployment
         run: |
           cd $GITHUB_WORKSPACE
-          pm2 deploy production update
+          pm2 deploy ecosystem-staging.config.js staging update
