@@ -32,7 +32,7 @@ const handle = app.getRequestHandler();
     );
     }
     catch (err) {
-        console.error(err.message);
+      console.error(err.message);
     }
   });
 })();
