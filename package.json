@@ -7,7 +7,7 @@
   "scripts": {
     "reinstall": "yarn clean && yarn install",
     "prepare": "husky install",
-    "commit": "cz",
+    "commit": "git add . &&",
     "deploy": "git add . && git commit -m \"chore(deploy): Merge staging -> prod\" &&git pull origin staging  && git checkout prod && git merge staging && git push origin prod && git checkout staging",
     "lint": "yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run prettify",
     "dev:web": "yarn workspace @oasis/web dev",
