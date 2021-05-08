@@ -10,37 +10,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  test_build:
-    if: ${{ (github.event_name == 'push') || (github.event_name == 'pull_request' && github.event.pull_request.merged) }}
-    runs-on: ubuntu-latest
-
-    steps:
-      # Setup Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - uses: actions/checkout@v2
-
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Install packages
-        run: yarn install
-
-      - name: Build
-        run: yarn build
-
-      - name: Run Tests
-        run: echo "Tests not defined"
-
   deploy:
     # Run the deploy if and only if, the event was push, or a merged pull request.
     if: ${{ (github.event_name == 'push') || (github.event_name == 'pull_request' && github.event.pull_request.merged) }}
-    needs: test_build
     runs-on: ubuntu-latest
 
     steps:
@@ -49,6 +21,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+
+      # Check out the repository to $GITHUB_WORKSPACE
+      - uses: actions/checkout@v2
+
+      - uses: mstachniuk/ci-skip@v1
+        with:
+          fail-fast: true
 
       # Install node dependencies
       - name: Install node dependencies
@@ -62,9 +41,6 @@ jobs:
           echo "${{ secrets.SSH_DEPLOY_CONFIG }}" > /home/runner/.ssh/config
           echo "${{ secrets.SSH_DEPLOY_KEY }}" > /home/runner/.ssh/id_rsa
           chmod 0600 /home/runner/.ssh/id_rsa
-
-      # Check out the repository to $GITHUB_WORKSPACE
-      - uses: actions/checkout@v2
 
       # Run the deployment
       - name: Run deployment
