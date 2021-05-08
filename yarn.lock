@@ -1945,6 +1945,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@oasis-sh/bot@workspace:packages/bot":
+  version: 0.0.0-use.local
+  resolution: "@oasis-sh/bot@workspace:packages/bot"
+  bin:
+    bot: src/index.ts
+  languageName: unknown
+  linkType: soft
+
 "@oasis/api@workspace:packages/api":
   version: 0.0.0-use.local
   resolution: "@oasis/api@workspace:packages/api"
