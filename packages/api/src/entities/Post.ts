@@ -34,6 +34,14 @@ export default class Post extends BaseEntity {
   @Field(() => Int)
   dislikes: number = 0;
 
+  @Column()
+  @Field()
+  createdAt: string;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  lastEdited: string;
+
   @Column('simple-array')
   @Field(() => [String])
   topics: string[];
