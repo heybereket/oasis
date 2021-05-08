@@ -1,10 +1,6 @@
 # Oasis
 
-<p align='left'>
-<img src='https://img.shields.io/badge/License-MIT-blue.svg' >
-[![Deploy Production](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml)
-[![Deploy Staging](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml)
-</p>
+<img src='https://img.shields.io/badge/License-MIT-blue.svg' > [![Deploy Production](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml) [![Deploy Staging](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml)
 
 ## 🌴 Branches
 
