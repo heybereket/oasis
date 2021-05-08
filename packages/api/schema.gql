@@ -3,6 +3,15 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type Badge {
+  createdAt: String!
+  description: String!
+  id: ID!
+  imagePath: String!
+  level: Float!
+  name: String!
+}
+
 type Comment {
   author: User!
   content: String!
@@ -10,6 +19,13 @@ type Comment {
   id: ID!
   likes: Int!
   post: Post!
+}
+
+input MakeBadgeInput {
+  description: String!
+  imagePath: String!
+  level: Float!
+  name: String!
 }
 
 type Mutation {
@@ -37,17 +53,20 @@ type Post {
 }
 
 type Query {
+  allBadges: [Badge!]!
   allComments: [Comment!]!
   allPosts: [Post!]!
   allRepos: [Repo!]!
   allUsers: [User!]!
   currentUser: User
   getAvailableUsername(username: String!): String!
+  getBadge(id: String!): Badge!
   getComment(id: String!): Comment!
   getPost(id: String!): Post!
   getRepo(id: String!): Repo!
   getUser(id: String!): User!
   getUserByName(username: String!): User
+  paginateBadges(limit: Float!, offset: Float!): [Badge!]!
   paginateComments(limit: Float!, offset: Float!): [Comment!]!
   paginatePosts(limit: Float!, offset: Float!): [Post!]!
   paginateRepos(limit: Float!, offset: Float!): [Repo!]!
@@ -89,7 +108,7 @@ input UpdateProfileInput {
 
 type User {
   avatar: String!
-  badges: [String!]!
+  badges: [Badge!]
   banner: String
   bio: String
   createdAt: String!
