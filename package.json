@@ -1,6 +1,5 @@
 {
   "name": "oasis",
-  "private": true,
   "workspaces": [
     "packages/*"
   ],
