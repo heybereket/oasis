@@ -47,10 +47,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
           <div className="hidden md-50:grid grid-cols-12 transform -translate-y-12 px-8">
             <div className="col-span-8 flex flex-col mr-8">
               <div className="flex">
-                <img
-                  src={data?.avatar}
-                  className="rounded-full w-50 h-40"
-                ></img>
+                <a href={`/user/${data?.username}`}>
+                  <img
+                    src={data?.avatar}
+                    className="rounded-full w-50 h-40"
+                  ></img>
+                </a>
                 <div className="ml-8 flex flex-col justify-center">
                   {data?.name ? (
                     <>
