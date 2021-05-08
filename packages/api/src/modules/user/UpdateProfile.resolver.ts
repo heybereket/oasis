@@ -1,6 +1,6 @@
 import User from '../../entities/User';
 import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from 'type-graphql';
-import { generateSafeUsername } from '../../utils/generateSafeUsername';
+import { generateSafeUsername } from '../../utils/auth/generateSafeUsername';
 import UpdateProfileInput from './UpdateProfileInput';
 import { ContextType } from '../../apolloServer';
 import { ApolloError } from 'apollo-server-errors';

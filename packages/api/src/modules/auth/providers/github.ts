@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { Strategy } from 'passport-github2';
 import User from '../../../entities/User';
 import { v4 as uuid } from 'uuid';
-import { generateSafeUsername } from '../../../utils/generateSafeUsername';
+import { generateSafeUsername } from '../../../utils/auth/generateSafeUsername';
 import { PassportStatic } from 'passport';
 
 export default (passport: PassportStatic): Router => {
