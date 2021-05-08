@@ -7,9 +7,7 @@ on:
   pull_request:
     types: [closed]
     branches: [staging]
-
-  # Allows running this workflow manually from the Actions tab
-  # workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -24,6 +22,9 @@ jobs:
         with:
           node-version: '14'
 
+      # Check out the repository to $GITHUB_WORKSPACE
+      - uses: actions/checkout@v2
+
       # Install node dependencies
       - name: Install node dependencies
         run: |
@@ -36,9 +37,6 @@ jobs:
           echo "${{ secrets.SSH_DEPLOY_CONFIG }}" > /home/runner/.ssh/config
           echo "${{ secrets.SSH_DEPLOY_KEY }}" > /home/runner/.ssh/id_rsa
           chmod 0600 /home/runner/.ssh/id_rsa
-
-      # Check out the repository to $GITHUB_WORKSPACE
-      - uses: actions/checkout@v2
 
       # Run the deployment
       - name: Run deployment

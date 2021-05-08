@@ -1,7 +1,7 @@
-import { ApolloServer } from "apollo-server-express";
-import type { Request } from "express";
-import User from "./entities/User";
-import { getSchema } from "./utils/getSchema";
+import { ApolloServer } from 'apollo-server-express';
+import type { Request } from 'express';
+import User from './entities/User';
+import { getSchema } from './utils/getSchema';
 
 export type ContextType = {
   hasAuth: boolean;

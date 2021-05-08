@@ -26,7 +26,6 @@ export default (passport: PassportStatic): Router => {
             user.avatar = profile._json.avatar_url;
             user.name = profile.displayName;
             user.username = await generateSafeUsername(profile.username);
-            user.badges = [];
             user.github = id;
             user.verified = false;
             user.createdAt = String(Date.now());

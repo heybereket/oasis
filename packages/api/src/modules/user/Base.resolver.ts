@@ -1,4 +1,4 @@
-import User from "../../entities/User";
-import { createResolver } from "../../utils/createResolver";
+import User from '../../entities/User';
+import { createResolver } from '../../utils/createResolver';
 
-export default createResolver("User", User);
+export default createResolver('User', User);

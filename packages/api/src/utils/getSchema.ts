@@ -1,6 +1,7 @@
 import { buildSchema } from 'type-graphql';
 import { join } from 'path';
 import { joinRoot } from './rootPath';
+import { customAuthChecker } from './authChecker';
 
 export const getSchema = () => {
   return buildSchema({
@@ -9,6 +10,6 @@ export const getSchema = () => {
       process.env.NODE_ENV === 'development'
         ? join(process.env.OASIS_API_SRC_PATH ?? '', '../schema.gql')
         : false,
-    authChecker: ({ context }) => context.hasAuth,
+    authChecker: customAuthChecker,
   });
 };
