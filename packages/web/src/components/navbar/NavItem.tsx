@@ -11,7 +11,7 @@ export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
   const Icon = props.icon;
   return (
     <div
-      className="flex justify-between hover:opacity-80 cursor-pointer px-2 space-x-3"
+      className="flex items-center justify-between hover:opacity-80 cursor-pointer px-2 space-x-3"
       onClick={props.onClick ? props.onClick : undefined}
     >
       <Icon />

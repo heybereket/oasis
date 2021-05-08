@@ -47,7 +47,7 @@ export const Navbar: React.FC = () => {
               <img
                 src="/static/OasisLogo.png"
                 alt="Oasis Logo"
-                className="w-28"
+                className="w-28 mr-8 pb-1"
               />
             </a>
           </div>
