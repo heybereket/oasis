@@ -10,6 +10,7 @@ import {
 import Repo from './Repo';
 import Post from './Post';
 import Badge from './Badge';
+import { Role } from '../modules/user/Roles';
 
 @ObjectType()
 @Entity()
@@ -59,8 +60,8 @@ export default class User extends BaseEntity {
   verified: boolean;
 
   @Column('simple-array')
-  @Field(() => [String])
-  roles: string[] = [];
+  @Field(() => [Role])
+  roles: Role[] = [];
 
   @Field(() => [Repo], { nullable: true })
   @OneToMany(() => Repo, (repo) => repo.owner)

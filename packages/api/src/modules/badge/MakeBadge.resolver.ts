@@ -1,11 +1,12 @@
 import { Arg, Authorized, Mutation, Resolver } from 'type-graphql';
 import MakeBadgeInput from './MakeBadgeInput';
 import Badge from '../../entities/Badge';
+import { Role } from '../user/Roles';
 
 @Resolver()
 export default class MakeBadgeResolver {
   @Mutation(() => Boolean)
-  @Authorized('ADMIN')
+  @Authorized(Role.Admin)
   async makeBadge(@Arg('data') data: MakeBadgeInput) {
     const badge = Badge.create();
 

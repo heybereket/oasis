@@ -30,6 +30,7 @@ input MakeBadgeInput {
 
 type Mutation {
   createPost(data: NewPostInput!): Boolean!
+  makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   updateProfile(data: UpdateProfileInput!): Boolean!
 }
@@ -91,12 +92,17 @@ type Repo {
   url: String!
 }
 
+enum Role {
+  Admin
+  Moderator
+  SuperAdmin
+}
+
 input UpdateProfileInput {
   avatar: String
   banner: String
   bio: String
   name: String
-  roles: [String!]
   username: String
 }
 
@@ -111,7 +117,7 @@ type User {
   name: String
   posts: [Post!]
   repos: [Repo!]
-  roles: [String!]!
+  roles: [Role!]!
   twitter: String
   url: String
   username: String
