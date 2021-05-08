@@ -4,7 +4,7 @@ read -p "Publish package @oasis-sh/bot (y/n)? " -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  cd packages/bot-wrapper
+  cd packages/api-client
   yarn publish
   cd ../
 fi
