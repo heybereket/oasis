@@ -1,16 +1,16 @@
-import "reflect-metadata";
-import { config } from "dotenv";
+import 'reflect-metadata';
+import { config } from 'dotenv';
 config();
 
-import express from "express";
-import { createConnection } from "typeorm";
-import { createApolloServer } from "./apolloServer";
-import authRouter from "./modules/auth";
-import expressSession from "express-session";
-import { createClient } from "redis";
-import connectRedis from "connect-redis";
-import { ormconfig } from "./ormconfig";
-import passport from "passport";
+import express from 'express';
+import { createConnection } from 'typeorm';
+import { createApolloServer } from './apolloServer';
+import authRouter from './modules/auth';
+import expressSession from 'express-session';
+import { createClient } from 'redis';
+import connectRedis from 'connect-redis';
+import { ormconfig } from './ormconfig';
+import passport from 'passport';
 
 const RedisStore = connectRedis(expressSession);
 
@@ -20,7 +20,7 @@ export const createApp = async () => {
   const app = express();
   app.disable('x-powered-by');
 
-  if (process.env.OASIS_API_TRUST_PROXY === "true") {
+  if (process.env.OASIS_API_TRUST_PROXY === 'true') {
     app.set('trust proxy', 1);
   }
 
@@ -36,10 +36,10 @@ export const createApp = async () => {
       saveUninitialized: true,
       cookie: {
         domain: process.env.OASIS_API_PUBLIC_DOMAIN,
-        secure: process.env.NODE_ENV === "production",
+        secure: process.env.NODE_ENV === 'production',
         maxAge: null,
         signed: true,
-        sameSite: 'lax'
+        sameSite: 'lax',
       },
     })
   );
@@ -51,7 +51,7 @@ export const createApp = async () => {
   passport.deserializeUser((user, done) => done(null, user));
 
   /* Authentication API */
-  app.use("/api/auth", authRouter(passport));
+  app.use('/api/auth', authRouter(passport));
 
   /* Apollo GraphQL Server */
   apolloServer.applyMiddleware({ app });
