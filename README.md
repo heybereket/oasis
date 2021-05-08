@@ -2,7 +2,8 @@
 
 <p align='left'>
 <img src='https://img.shields.io/badge/License-MIT-blue.svg' >
-<img src='https://img.shields.io/github/deployments/oasis-sh/oasis/production?logo=vercel&label=build%20status' >
+[![Deploy Production](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml)
+[![Deploy Staging](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml)
 </p>
 
 ## 🌴 Branches
