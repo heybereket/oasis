@@ -72,11 +72,6 @@ type Post {
 }
 
 type Query {
-  allBadges: [Badge!]!
-  allComments: [Comment!]!
-  allPosts: [Post!]!
-  allRepos: [Repo!]!
-  allUsers: [User!]!
   currentUser: User
   getAvailableUsername(username: String!): String!
   getBadge(id: String!): Badge!
