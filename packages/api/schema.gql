@@ -21,6 +21,12 @@ type Comment {
   post: Post!
 }
 
+input EditPostInput {
+  message: String
+  title: String
+  topics: [String!]
+}
+
 input MakeBadgeInput {
   description: String!
   imagePath: String!
@@ -30,6 +36,7 @@ input MakeBadgeInput {
 
 type Mutation {
   createPost(data: NewPostInput!): Boolean!
+  editPost(data: EditPostInput!, postId: String!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   updateProfile(data: UpdateProfileInput!): Boolean!
@@ -44,8 +51,10 @@ input NewPostInput {
 type Post {
   author: User!
   comments: [Comment!]!
+  createdAt: String!
   dislikes: Int!
   id: ID!
+  lastEdited: String
   likes: Int!
   message: String!
   title: String!

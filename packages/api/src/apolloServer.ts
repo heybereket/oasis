@@ -5,6 +5,7 @@ import { getSchema } from './utils/getSchema';
 
 export type ContextType = {
   hasAuth: boolean;
+  uid: string;
   getUser: () => Promise<User>;
 };
 
@@ -14,7 +15,7 @@ export const createApolloServer = async () =>
     context: async ({ req }: { req: Request }): Promise<ContextType> => {
       const uid = (req.session as any)?.passport?.user?.id;
 
-      return { hasAuth: !!uid, getUser: () => User.findOne(uid) };
+      return { hasAuth: !!uid, uid, getUser: () => User.findOne(uid) };
     },
     playground: true,
     introspection: true,
