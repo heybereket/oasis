@@ -11,7 +11,7 @@ module.exports = {
         source: '/u/:username',
         destination: '/user/:username',
         permanent: true,
-      }
+      },
     ];
   },
   webpack: (config, { isServer }) => {
@@ -27,5 +27,6 @@ module.exports = {
   env: {
     PROJECT_ROOT: join(__dirname, '../..'),
     IS_NEXT: true,
+    OASIS_API_SRC_PATH: join(__dirname, '../api/src'),
   },
 };
