@@ -57,6 +57,10 @@ export default class User extends BaseEntity {
   @Field()
   verified: boolean;
 
+  @Column('simple-array')
+  @Field(() => [String])
+  roles: string[] = [];
+
   @Field(() => [Repo], { nullable: true })
   @OneToMany(() => Repo, (repo) => repo.owner)
   repos: Promise<Repo[]>;
