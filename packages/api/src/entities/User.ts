@@ -3,12 +3,13 @@ import {
   BaseEntity,
   Column,
   Entity,
-  JoinColumn,
+  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import Repo from './Repo';
 import Post from './Post';
+import Badge from './Badge';
 
 @ObjectType()
 @Entity()
@@ -69,7 +70,7 @@ export default class User extends BaseEntity {
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
 
-  @Column('simple-array')
-  @Field(() => [String])
-  badges: string[];
+  @Field(() => [Badge], { nullable: true })
+  @ManyToMany(() => Badge)
+  badges: Promise<Badge[]>;
 }
