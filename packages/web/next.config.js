@@ -2,6 +2,7 @@ const { createSecureHeaders } = require('next-secure-headers');
 const { join } = require('path');
 
 module.exports = {
+  poweredByHeader: false,
   async headers() {
     return [{ source: '/(.*)', headers: createSecureHeaders() }];
   },
