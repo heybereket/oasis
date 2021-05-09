@@ -11,13 +11,20 @@ const handle = app.getRequestHandler();
 
 (async () => {
   if (!process.env.NEXT_PUBLIC_BASE_URL) {
-    console.error("> You must have NEXT_PUBLIC_BASE_URL set in your packages/web/.env file.");
-    console.error("> For more information, refer to the oasis.sh developer's wiki: https://github.com/oasis-sh/oasis/wiki/Web-Quick-Start");
+    console.error(
+      '> You must have NEXT_PUBLIC_BASE_URL set in your packages/web/.env file.'
+    );
+    console.error(
+      "> For more information, refer to the oasis.sh developer's wiki: https://github.com/oasis-sh/oasis/wiki/Web-Quick-Start"
+    );
     process.exit(1);
   }
 
   const server = await createApp();
-  if (!server) process.exit(1);
+  if (!server) {
+    console.error('> Uh oh, we ran into some errors.');
+    process.exit(1);
+  }
 
   app.prepare().then(() => {
     server.all('*', (req, res) => {
