@@ -36,7 +36,7 @@ const handle = app.getRequestHandler();
 
     try {
       server.listen(PORT, () =>
-        console.log(
+        console.error(
           `${chalk.green(`success`)} - Ready on http://localhost:${PORT} \n${chalk.green(`success`)} - API: http://localhost:${PORT}/graphql`
         )
       );
