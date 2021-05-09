@@ -80,7 +80,7 @@ type Query {
   getBadge(id: String!): Badge!
   getComment(id: String!): Comment!
   getPost(id: String!): Post!
-  getRepo(id: String!): Repo!
+  getRepo: Repo!
   getResort(id: String!): Resort!
   getUser(id: String!): User!
   getUserByName(username: String!): User
