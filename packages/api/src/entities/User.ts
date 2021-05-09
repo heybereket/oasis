@@ -64,19 +64,19 @@ export default class User extends BaseEntity {
   @Field(() => [Role])
   roles: Role[] = [];
 
-  @Field(() => [Repo], { nullable: true })
+  @Field(() => [Repo], { nullable: true, complexity: 5 })
   @OneToMany(() => Repo, (repo) => repo.owner)
   repos: Promise<Repo[]>;
 
-  @Field(() => [Post], { nullable: true })
+  @Field(() => [Post], { nullable: true, complexity: 5 })
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
 
-  @Field(() => [Comment], { nullable: true })
+  @Field(() => [Comment], { nullable: true, complexity: 5 })
   @OneToMany(() => Comment, (comment) => comment.author)
   comments: Promise<Comment[]>;
 
-  @Field(() => [Badge], { nullable: true })
+  @Field(() => [Badge], { nullable: true, complexity: 5 })
   @ManyToMany(() => Badge)
   badges: Promise<Badge[]>;
 }

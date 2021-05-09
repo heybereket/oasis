@@ -36,11 +36,11 @@ export default class Comment extends BaseEntity {
   @Field({ nullable: true })
   lastEdited: string;
 
-  @Field(() => Post)
+  @Field(() => Post, { complexity: 1 })
   @ManyToOne(() => Post, (post) => post.comments)
   post: Promise<Post>;
 
-  @Field(() => User)
+  @Field(() => User, { complexity: 1 })
   @ManyToOne(() => User, (user) => user.comments)
   author: Promise<User>;
 }

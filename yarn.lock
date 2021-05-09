@@ -1972,6 +1972,7 @@ __metadata:
     dotenv: ^9.0.0
     express: ^4.17.1
     express-session: ^1.17.1
+    graphql-query-complexity: ^0.8.1
     jest: ^26.6.3
     passport: ^0.4.1
     passport-discord: ^0.1.4
@@ -7327,6 +7328,17 @@ __metadata:
   peerDependencies:
     graphql: ^0.13.0 || ^14.0.0 || ^15.0.0
   checksum: dfde1b07aefbc8747d1f6556ad9ff4c9dbd636b10c798c5bb82fbdc80ea1f89674960ed955724b80e8b92f521242375812324dbaf6379db996b2c3dfce285ddf
+  languageName: node
+  linkType: hard
+
+"graphql-query-complexity@npm:^0.8.1":
+  version: 0.8.1
+  resolution: "graphql-query-complexity@npm:0.8.1"
+  dependencies:
+    lodash.get: ^4.4.2
+  peerDependencies:
+    graphql: ^0.13.0 || ^14.0.0 || ^15.0.0
+  checksum: 7b76e3c8a54b3e1e71b34f66eca287951bdd04d9385085cd982e1a48636e8c98ca92d8f857b5a8de0dff519097d443de21f7fece4d368ea09a88e6d2c0d9dd40
   languageName: node
   linkType: hard
 
