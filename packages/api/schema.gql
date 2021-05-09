@@ -15,14 +15,16 @@ type Badge {
 type Comment {
   author: User!
   content: String!
+  createdAt: String!
   dislikes: Int!
   id: ID!
+  lastEdited: String
   likes: Int!
   post: Post!
 }
 
 input EditCommentInput {
-  content: String
+  content: String!
 }
 
 input EditPostInput {
@@ -67,6 +69,7 @@ type Post {
   lastEdited: String
   likes: Int!
   message: String!
+  resort: Resort
   title: String!
   topics: [String!]!
 }
@@ -78,12 +81,14 @@ type Query {
   getComment(id: String!): Comment!
   getPost(id: String!): Post!
   getRepo: Repo!
+  getResort(id: String!): Resort!
   getUser(id: String!): User!
   getUserByName(username: String!): User
   paginateBadges(limit: Float!, offset: Float!): [Badge!]!
   paginateComments(limit: Float!, offset: Float!): [Comment!]!
   paginatePosts(limit: Float!, offset: Float!): [Post!]!
   paginateRepos(limit: Float!, offset: Float!): [Repo!]!
+  paginateResorts(limit: Float!, offset: Float!): [Resort!]!
   paginateUsers(limit: Float!, offset: Float!): [User!]!
 }
 
@@ -104,6 +109,15 @@ type Repo {
   owner: User!
   stars: Float!
   url: String!
+}
+
+type Resort {
+  banner: String!
+  description: String!
+  id: String!
+  logo: String!
+  name: String!
+  posts: [Post!]!
 }
 
 enum Role {

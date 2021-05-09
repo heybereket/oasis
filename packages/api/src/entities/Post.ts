@@ -10,6 +10,7 @@ import {
 import { Field, ID, Int, ObjectType } from 'type-graphql';
 import User from './User';
 import Comment from './Comment';
+import Resort from './Resort';
 
 @ObjectType()
 @Entity()
@@ -53,4 +54,8 @@ export default class Post extends BaseEntity {
   @Field(() => [Comment])
   @OneToMany(() => Comment, (comment) => comment.post)
   comments: Promise<Comment[]>;
+
+  @Field(() => Resort, { nullable: true })
+  @ManyToOne(() => Resort, (resort) => resort.posts, { nullable: true })
+  resort: Promise<Resort>;
 }
