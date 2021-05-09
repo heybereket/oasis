@@ -29,7 +29,7 @@ export const ssrRequest = async (
 
   const apolloClient = initializeApollo();
 
-  const contextValue = createContext(req);
+  const contextValue = await createContext(req);
 
   // For every document, follow the steps below
   for (const { document, variables = {} } of queries) {
