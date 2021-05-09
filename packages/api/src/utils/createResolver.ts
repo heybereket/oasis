@@ -7,10 +7,10 @@ export const createResolver = (
 ): any => {
   @Resolver()
   class BaseResolver {
-    @Query(() => [entity], { name: `all${suffix}s` })
-    all() {
-      return entity.find();
-    }
+    // @Query(() => [entity], { name: `all${suffix}s` })
+    // all() {
+    //   return entity.find();
+    // }
 
     @Query(() => [entity], { name: `paginate${suffix}s` })
     paginate(@Arg('limit') limit: number, @Arg('offset') offset: number) {

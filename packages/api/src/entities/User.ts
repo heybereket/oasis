@@ -11,6 +11,7 @@ import Repo from './Repo';
 import Post from './Post';
 import Badge from './Badge';
 import { Role } from '../modules/user/Roles';
+import Comment from './Comment';
 
 @ObjectType()
 @Entity()
@@ -70,6 +71,10 @@ export default class User extends BaseEntity {
   @Field(() => [Post], { nullable: true })
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
+
+  @Field(() => [Comment], { nullable: true })
+  @OneToMany(() => Comment, (comment) => comment.author)
+  comments: Promise<Comment[]>;
 
   @Field(() => [Badge], { nullable: true })
   @ManyToMany(() => Badge)

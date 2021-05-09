@@ -4,7 +4,7 @@ import Post from '../../entities/Post';
 import NewPostInput from './NewPostInput';
 
 @Resolver()
-export class CurrentUser {
+export class NewPostResolver {
   @Mutation(() => Boolean)
   @Authorized()
   async createPost(
@@ -22,6 +22,7 @@ export class CurrentUser {
     //  newPost.author = Promise.resolve(await getUser()); does work
 
     newPost.author = Promise.resolve(await getUser());
+    newPost.createdAt = String(Date.now());
     newPost.save();
     return true;
   }

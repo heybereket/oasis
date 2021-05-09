@@ -21,6 +21,10 @@ type Comment {
   post: Post!
 }
 
+input EditCommentInput {
+  content: String
+}
+
 input EditPostInput {
   message: String
   title: String
@@ -35,11 +39,17 @@ input MakeBadgeInput {
 }
 
 type Mutation {
+  createComment(data: NewCommentInput!, postId: String!): Boolean!
   createPost(data: NewPostInput!): Boolean!
+  editComment(commentId: String!, data: EditCommentInput!): Boolean!
   editPost(data: EditPostInput!, postId: String!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   updateProfile(data: UpdateProfileInput!): Boolean!
+}
+
+input NewCommentInput {
+  content: String!
 }
 
 input NewPostInput {
@@ -62,11 +72,6 @@ type Post {
 }
 
 type Query {
-  allBadges: [Badge!]!
-  allComments: [Comment!]!
-  allPosts: [Post!]!
-  allRepos: [Repo!]!
-  allUsers: [User!]!
   currentUser: User
   getAvailableUsername(username: String!): String!
   getBadge(id: String!): Badge!
@@ -120,6 +125,7 @@ type User {
   badges: [Badge!]
   banner: String
   bio: String
+  comments: [Comment!]
   createdAt: String!
   github: String
   id: ID!

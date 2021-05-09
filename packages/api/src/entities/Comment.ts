@@ -22,17 +22,17 @@ export default class Comment extends BaseEntity {
 
   @Column()
   @Field(() => Int)
-  likes: number;
+  likes: number = 0;
 
   @Column()
   @Field(() => Int)
-  dislikes: number;
+  dislikes: number = 0;
 
   @Field(() => Post)
   @ManyToOne(() => Post, (post) => post.comments)
   post: Promise<Post>;
 
   @Field(() => User)
-  @ManyToOne(() => Post, (user) => user.comments)
+  @ManyToOne(() => User, (user) => user.comments)
   author: Promise<User>;
 }
