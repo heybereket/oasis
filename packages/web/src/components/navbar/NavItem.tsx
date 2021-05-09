@@ -19,7 +19,7 @@ export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
 
     onClick = (event: any) => {
       event.preventDefault();
-      router.push(props.to);
+      (router as any).push(props.to);
     };
     href = props.to;
   }
