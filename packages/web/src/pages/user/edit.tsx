@@ -38,7 +38,9 @@ const EditProfile: React.FC<EditProfileProps> = () => {
               setSubmitting(true);
               const data: UpdateProfileInput = {};
               Object.keys(values).forEach((key) => {
-                if ((values as any)[key] !== (origData as any)[key]) {
+                if ((values as any)[key] === '') {
+                  (data as any)[key] = null;
+                } else if ((values as any)[key] !== (origData as any)[key]) {
                   (data as any)[key] = (values as any)[key];
                 }
               });

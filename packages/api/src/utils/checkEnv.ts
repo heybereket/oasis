@@ -41,7 +41,7 @@ function checkRequiredEnv(envProp: string, additionalValidation?: () => Promise<
 
     // If the property is not set, we can immediately error out.
     if (!isValid) {
-      if (logError) console.error(`>> You must have ${envProp} set in your packages/api/.env file.`);
+      if (logError) console.error(`> You must have ${envProp} set in your packages/api/.env file.`);
       return false;
     }
 
@@ -52,7 +52,7 @@ function checkRequiredEnv(envProp: string, additionalValidation?: () => Promise<
       // or a 'nullish' (i.e. undefined) value if not.
       // Hence if there is error, we will print it and return false to indicate the env check failed.
       if (additionalValidationError) {
-        if (logError) console.error(`>>> ${additionalValidationError}`);
+        if (logError) console.error(`>> ${additionalValidationError}`);
         return false;
       }
     }
