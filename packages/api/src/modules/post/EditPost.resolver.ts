@@ -28,6 +28,8 @@ export class EditPostResolver {
 
     Object.assign(post, data);
 
+    post.lastEdited = String(Date.now());
+
     await post.save();
     return true;
   }

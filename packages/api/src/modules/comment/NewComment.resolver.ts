@@ -14,12 +14,14 @@ export class NewCommentResolver {
     @Arg('data') data: NewCommentInput,
     @Ctx() { getUser }: ContextType
   ) {
-    const post = Post.findOne(postId);
+    const post = await Post.findOne(postId);
 
     if (!post) return new ApolloError('Post not found');
 
     const newComment = Comment.create();
     Comment.merge(newComment, data);
+
+    newComment.createdAt = String(Date.now());
 
     newComment.author = Promise.resolve(await getUser());
     newComment.post = Promise.resolve(post);

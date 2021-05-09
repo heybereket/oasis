@@ -28,6 +28,14 @@ export default class Comment extends BaseEntity {
   @Field(() => Int)
   dislikes: number = 0;
 
+  @Column()
+  @Field()
+  createdAt: string;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  lastEdited: string;
+
   @Field(() => Post)
   @ManyToOne(() => Post, (post) => post.comments)
   post: Promise<Post>;

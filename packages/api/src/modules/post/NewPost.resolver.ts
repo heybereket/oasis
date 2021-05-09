@@ -21,6 +21,8 @@ export class NewPostResolver {
     // while
     //  newPost.author = Promise.resolve(await getUser()); does work
 
+    newPost.createdAt = String(Date.now());
+
     newPost.author = Promise.resolve(await getUser());
     newPost.createdAt = String(Date.now());
     newPost.save();
