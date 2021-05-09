@@ -8,7 +8,7 @@ export default (passport: PassportStatic): Router => {
 
   /** Third party auth services */
   authRouter.use('/github', GitHubAuth(passport));
-  authRouter.use('/twitter', TwitterAuth(passport));
+  // authRouter.use('/twitter', TwitterAuth(passport));
 
   /** Internal actions. */
   authRouter.get('/logout', (req, res) => {

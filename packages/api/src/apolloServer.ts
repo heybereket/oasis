@@ -1,6 +1,7 @@
 import { ApolloServer } from 'apollo-server-express';
 import type { Request } from 'express';
 import User from './entities/User';
+import { createContext } from './utils/auth/createContext';
 import { getSchema } from './utils/getSchema';
 
 export type ContextType = {
@@ -12,11 +13,7 @@ export type ContextType = {
 export const createApolloServer = async () =>
   new ApolloServer({
     schema: await getSchema(),
-    context: async ({ req }: { req: Request }): Promise<ContextType> => {
-      const uid = (req.session as any)?.passport?.user?.id;
-
-      return { hasAuth: !!uid, uid, getUser: () => User.findOne(uid) };
-    },
+    context: async ({ req }: { req: Request }) => createContext(req),
     playground: true,
     introspection: true,
   });
