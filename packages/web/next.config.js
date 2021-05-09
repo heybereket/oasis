@@ -13,6 +13,11 @@ module.exports = {
         destination: '/user/:username',
         permanent: true,
       },
+      {
+        source: '/r/:resort',
+        destination: '/resort/:resort',
+        permanent: true,
+      }
     ];
   },
   webpack: (config, { isServer }) => {
