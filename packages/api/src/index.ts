@@ -11,12 +11,18 @@ import { createClient } from 'redis';
 import connectRedis from 'connect-redis';
 import { ormconfig } from './ormconfig';
 import passport from 'passport';
+import checkEnv from './utils/checkEnv';
 
 const RedisStore = connectRedis(expressSession);
 
 const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
 export const createApp = async () => {
+  if (!(await checkEnv())) {
+    console.error(">> For more information, refer to the oasis.sh developer's wiki: https://github.com/oasis-sh/oasis/wiki/API-Quick-Start")
+    return undefined;
+  }
+
   const app = express();
   app.disable('x-powered-by');
 
@@ -62,6 +68,8 @@ export const createApp = async () => {
 if (require.main === module) {
   const PORT = process.env.PORT || 4000;
   createApp().then((app) => {
+    if (!app) process.exit(1);
+
     app.listen(PORT, () =>
       console.log(`Server started on http://localhost:${PORT}/graphql`)
     );
