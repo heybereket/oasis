@@ -202,14 +202,19 @@ const Profile: React.FC<ProfileProps> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  req,
+}) => {
   return {
     props: {
       username: query.username,
-      initialApolloState: await ssrRequest({
-        document: GetUserByNameDocument,
-        variables: { username: query.username },
-      }),
+      initialApolloState: await ssrRequest(req, [
+        {
+          document: GetUserByNameDocument,
+          variables: { username: query.username },
+        },
+      ]),
     },
   };
 };

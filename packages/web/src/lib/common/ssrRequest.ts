@@ -1,6 +1,8 @@
 import { NormalizedCacheObject } from '@apollo/client';
 import { initializeApollo } from './apolloClient';
 import { graphql, DocumentNode, print } from 'graphql';
+import { IncomingMessage } from 'http';
+import forceRequire from '../require';
 
 // Creates a GraphQL request for SSR or SSG.
 // Instead of sending a request to the api
@@ -11,15 +13,23 @@ import { graphql, DocumentNode, print } from 'graphql';
 type Query = {
   document: DocumentNode;
   variables?: { [key: string]: any };
-  context?: any;
 };
 
+// let schema;
+
 export const ssrRequest = async (
-  ...queries: Query[]
+  req: IncomingMessage,
+  queries: Query[]
 ): Promise<NormalizedCacheObject> => {
-  const schema = await require('@oasis/api/dist/utils/getSchema').getSchema();
+  const { createContext, getSchema } = forceRequire(
+    '@oasis/api/dist/utils/web-utils'
+  );
+
+  const schema = await getSchema();
 
   const apolloClient = initializeApollo();
+
+  const contextValue = createContext(req);
 
   // For every document, follow the steps below
   for (const { document, variables = {} } of queries) {
@@ -37,6 +47,7 @@ export const ssrRequest = async (
       schema,
       source: print(DocumentForGql),
       variableValues: variables,
+      contextValue,
     });
 
     // Write the query to the cache
