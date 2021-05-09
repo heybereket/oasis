@@ -203,17 +203,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  //const cookies = req.headers.cookie ?? '';
-  //const cookiesArr = cookies.split('; ');
-  //const cookieData = cookiesArr.find((row) => row.startsWith('token='));
-  //const token = cookieData?.split('=')[1];
   return {
     props: {
       username: query.username,
       initialApolloState: await ssrRequest({
         document: GetUserByNameDocument,
         variables: { username: query.username },
-        // context: contextFromToken(token ?? '', req.socket.address()),
       }),
     },
   };

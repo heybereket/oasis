@@ -77,7 +77,7 @@ type Query {
   getBadge(id: String!): Badge!
   getComment(id: String!): Comment!
   getPost(id: String!): Post!
-  getRepo(id: String!): Repo!
+  getRepo: Repo!
   getUser(id: String!): User!
   getUserByName(username: String!): User
   paginateBadges(limit: Float!, offset: Float!): [Badge!]!

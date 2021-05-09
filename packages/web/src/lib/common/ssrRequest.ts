@@ -1,4 +1,3 @@
-import { getSchema } from '@oasis/api/dist/utils/getSchema';
 import { NormalizedCacheObject } from '@apollo/client';
 import { initializeApollo } from './apolloClient';
 import { graphql, DocumentNode, print } from 'graphql';
@@ -18,11 +17,12 @@ type Query = {
 export const ssrRequest = async (
   ...queries: Query[]
 ): Promise<NormalizedCacheObject> => {
-  const schema = await getSchema();
+  const schema = await require('@oasis/api/dist/utils/getSchema').getSchema();
+
   const apolloClient = initializeApollo();
 
   // For every document, follow the steps below
-  for (const { document, variables = {}, context } of queries) {
+  for (const { document, variables = {} } of queries) {
     // Add a "__typename" field because Apollo's cache expects it
     // @todo Change how this is done (editing JSON directly may cause problems in the future)
     const DocumentForGql: DocumentNode = JSON.parse(
@@ -37,7 +37,6 @@ export const ssrRequest = async (
       schema,
       source: print(DocumentForGql),
       variableValues: variables,
-      contextValue: context,
     });
 
     // Write the query to the cache
