@@ -47,15 +47,15 @@ export default class Post extends BaseEntity {
   @Field(() => [String])
   topics: string[];
 
-  @Field(() => User)
+  @Field(() => User, { complexity: 1 })
   @ManyToOne(() => User, (user) => user.posts)
   author: Promise<User>;
 
-  @Field(() => [Comment])
+  @Field(() => [Comment], { complexity: 5 })
   @OneToMany(() => Comment, (comment) => comment.post)
   comments: Promise<Comment[]>;
 
-  @Field(() => Resort, { nullable: true })
+  @Field(() => Resort, { nullable: true, complexity: 1 })
   @ManyToOne(() => Resort, (resort) => resort.posts, { nullable: true })
   resort: Promise<Resort>;
 }

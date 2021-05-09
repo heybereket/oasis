@@ -12,7 +12,10 @@ export const createResolver = (
     //   return entity.find();
     // }
 
-    @Query(() => [entity], { name: `paginate${suffix}s` })
+    @Query(() => [entity], {
+      name: `paginate${suffix}s`,
+      complexity: ({ args }) => args.limit,
+    })
     paginate(@Arg('limit') limit: number, @Arg('offset') offset: number) {
       return entity.find({
         skip: offset,
@@ -20,7 +23,10 @@ export const createResolver = (
       });
     }
 
-    @Query(() => entity, { name: `get${suffix}` })
+    @Query(() => entity, {
+      name: `get${suffix}`,
+      complexity: ({ args }) => args.limit,
+    })
     get(@Arg('id') id: string) {
       return entity.findOne(id);
     }

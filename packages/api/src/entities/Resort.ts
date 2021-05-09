@@ -32,6 +32,6 @@ export default class Resort extends BaseEntity {
   logo: string;
 
   @OneToMany(() => Post, (post) => post.resort)
-  @Field(() => [Post])
+  @Field(() => [Post], { complexity: 5 })
   posts: Promise<Post[]>;
 }
