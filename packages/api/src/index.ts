@@ -19,7 +19,7 @@ const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
 export const createApp = async () => {
   if (!(await checkEnv())) {
-    console.error(">> For more information, refer to the oasis.sh developer's wiki: https://github.com/oasis-sh/oasis/wiki/API-Quick-Start")
+    console.error("> For more information, refer to the oasis.sh developer's wiki: https://github.com/oasis-sh/oasis/wiki/API-Quick-Start")
     return undefined;
   }
 
