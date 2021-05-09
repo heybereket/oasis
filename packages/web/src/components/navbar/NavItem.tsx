@@ -1,4 +1,4 @@
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import { MouseEventHandler } from 'react';
 
 interface NavItemProps {
