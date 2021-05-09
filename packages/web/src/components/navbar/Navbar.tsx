@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           <div className="hidden md:flex space-x-3">
-            <NavItem name="Home" href="#" icon={Home} />
+            <NavItem name="Home" to="/" icon={Home} />
             <NavItem name="Topics" href="#" icon={Topics} />
             {user && (
               <>
