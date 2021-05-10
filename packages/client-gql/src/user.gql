@@ -6,6 +6,7 @@ query getCurrentUser {
     createdAt
     github
     twitter
+    discord
     bio
     username
     name

@@ -5,10 +5,21 @@ import { v4 as uuid } from 'uuid';
 import { generateSafeUsername } from '../../../utils/auth/generateSafeUsername';
 import { PassportStatic } from 'passport';
 
-const getAvatarURL = (hash: string, id: string, size = 512) => {
-  const extension = hash.startsWith('a_') ? 'gif' : 'png';
+const getAvatarURL = (options: {
+  hash?: string;
+  id?: string;
+  discriminator?: string;
+  size?: number;
+}): string => {
+  const extension = options.hash.startsWith('a_') ? 'gif' : 'png';
 
-  return `https://cdn.discordapp.com/embed/avatars/${id}/${hash}.${extension}?size=${size}`;
+  return `https://cdn.discordapp.com/${options.hash ? '' : 'embed/'}avatars${
+    options.hash
+      ? `${options.id}/${options.hash}`
+      : parseInt(options.discriminator) % 5
+  }.${options.hash ? extension : 'png'}?size=${
+    options.size ? options.size : 512
+  }`;
 };
 
 export default (passport: PassportStatic): Router => {
@@ -29,7 +40,12 @@ export default (passport: PassportStatic): Router => {
           // Store data from GitHub only on user's first login
           if (!user.id) {
             user.id = uuid();
-            user.avatar = getAvatarURL(profile.avatar, profile.id);
+            user.avatar = getAvatarURL({
+              hash: profile.avatar,
+              id: profile.id,
+              discriminator: profile.discriminator,
+              size: 512,
+            });
             user.name = profile.username;
             user.username = await generateSafeUsername(profile.username);
             user.discord = id;
