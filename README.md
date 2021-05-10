@@ -4,7 +4,8 @@
 
 ## 🤠 Structure
 - [`packages/web`](/packages/web) - Web Application
-- [`packages/api`](/packages/api) - Backend and API
+- [`packages/api`](/packages/api) - Backend and GraphQL API
+- [`packages/client-gql`](/packages/client-gql) - Client Side GraphQL Hooks
 - [`packages/bot-client`](/packages/bot-client) - Bot Client
 - [`packages/parser`](/packages/parser) - Emoji Parser
 
