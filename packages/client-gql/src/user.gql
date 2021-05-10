@@ -180,3 +180,7 @@ query getUser($id: String!) {
 mutation updateProfile($data: UpdateProfileInput!) {
   updateProfile(data: $data)
 }
+
+mutation deleteAccount {
+  deleteAccount
+}
