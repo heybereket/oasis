@@ -46,6 +46,10 @@ export default class User extends BaseEntity {
 
   @Column({ nullable: true })
   @Field({ nullable: true })
+  discord: string;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
   github: string;
 
   @Column({ nullable: true })

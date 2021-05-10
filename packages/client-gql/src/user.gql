@@ -21,6 +21,7 @@ query getUserByName($username: String!) {
     createdAt
     github
     twitter
+    discord
     bio
     username
     name
