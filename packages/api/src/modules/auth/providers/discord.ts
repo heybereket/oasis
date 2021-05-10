@@ -9,7 +9,7 @@ const getAvatarURL = (hash: string, id: string, size = 512) => {
   const extension = hash.startsWith('a_') ? 'gif' : 'png';
 
   return `https://cdn.discordapp.com/embed/avatars/${id}/${hash}.png?size=${size}`;
-}
+};
 
 export default (passport: PassportStatic): Router => {
   passport.use(
