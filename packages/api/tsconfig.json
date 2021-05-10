@@ -1,5 +1,14 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@entities/*": ["src/entities/*"],
+      "@lib/*": ["src/lib/*"],
+      "@modules/*": ["src/modules/*"],
+      "@test-utils/*": ["src/test-utils/*"],
+      "@utils/*": ["src/utils/*"],
+      "@root/*": ["src/*"]
+    },
     "rootDir": "src",
     "outDir": "dist",
     "target": "ES2018",
