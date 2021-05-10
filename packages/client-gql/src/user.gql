@@ -6,6 +6,7 @@ query getCurrentUser {
     createdAt
     github
     twitter
+    discord
     bio
     username
     name
@@ -21,6 +22,7 @@ query getUserByName($username: String!) {
     createdAt
     github
     twitter
+    discord
     bio
     username
     name
