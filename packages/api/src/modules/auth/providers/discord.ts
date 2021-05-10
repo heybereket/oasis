@@ -8,7 +8,7 @@ import { PassportStatic } from 'passport';
 const getAvatarURL = (hash: string, id: string, size = 512) => {
   const extension = hash.startsWith('a_') ? 'gif' : 'png';
 
-  return `https://cdn.discordapp.com/embed/avatars/${id}/${hash}.png?size=${size}`;
+  return `https://cdn.discordapp.com/embed/avatars/${id}/${hash}.${extension}?size=${size}`;
 };
 
 export default (passport: PassportStatic): Router => {
