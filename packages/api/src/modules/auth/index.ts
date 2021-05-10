@@ -11,7 +11,6 @@ export default (passport: PassportStatic): Router => {
   authRouter.use('/github', GitHubAuth(passport));
   authRouter.use('/twitter', TwitterAuth(passport));
   authRouter.use('/discord', DiscordAuth(passport));
-
   /** Internal actions. */
   authRouter.get('/logout', (req, res) => {
     req.logout();
