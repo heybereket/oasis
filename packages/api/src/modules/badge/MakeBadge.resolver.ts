@@ -1,6 +1,6 @@
 import { Arg, Authorized, Mutation, Resolver } from 'type-graphql';
 import MakeBadgeInput from './MakeBadgeInput';
-import Badge from '@entities/Badge';
+import Badge from '../../entities/Badge';
 import { Role } from '../user/Roles';
 
 @Resolver()
