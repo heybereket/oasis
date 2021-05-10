@@ -2,7 +2,7 @@ import { config } from 'dotenv';
 import { join } from 'path';
 import next from 'next';
 import { createApp } from '@oasis/api';
-import { chalkLog } from './lib'
+import { chalkLog } from './lib/chalkLog'
 
 config({ path: join(__dirname, '../../api/.env') });
 
