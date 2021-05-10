@@ -25,4 +25,4 @@ yarn-error.log*
 # sql
 *.sqlite
 
-/server/lib/chalkLog.js
+/server/lib/index.js
