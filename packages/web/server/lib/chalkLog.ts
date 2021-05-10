@@ -10,7 +10,7 @@ export const chalkLog = (type: string, message: string): any => {
   case 'error':
     return chalk.red(message)
 
-  // Non critical, just letting you know
+  // Non critical messages
   case 'warning':
     return chalk.yellow(message)
  }
