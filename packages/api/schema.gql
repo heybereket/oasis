@@ -141,7 +141,6 @@ type User {
   bio: String
   comments: [Comment!]
   createdAt: String!
-  discord: String
   github: String
   id: ID!
   name: String
