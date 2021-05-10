@@ -9,10 +9,7 @@ export default class DeleteAccountResolver {
   @Authorized()
   async deleteAccount(@Ctx() { getUser }: ContextType) {
     const user = await getUser();
-    await User.createQueryBuilder()
-      .delete()
-      .where('id = :id', { id: user.id })
-      .execute(); // We need to add error handling in here using catch()
+    await user.remove();
 
     return true;
   }
