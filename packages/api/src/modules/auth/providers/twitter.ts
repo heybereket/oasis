@@ -9,9 +9,9 @@ export default (passport: PassportStatic): Router => {
   passport.use(
     new Strategy(
       {
-        consumerKey: process.env.OASIS_API_TWITTER_API_KEY,
-        callbackURL: process.env.OASIS_API_TWITTER_CALLBACK_URL,
+        consumerKey: process.env.OASIS_API_TWITTER_KEY,
         consumerSecret: process.env.OASIS_API_TWITTER_SECRET_KEY,
+        callbackURL: process.env.OASIS_API_TWITTER_CALLBACK_URL
       },
       async (accessToken, refreshToken, profile, done) => {
         const id = String(profile.id);
