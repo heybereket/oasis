@@ -54,6 +54,10 @@ export default class User extends BaseEntity {
 
   @Column({ nullable: true })
   @Field({ nullable: true })
+  google: string;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
   twitter: string;
 
   @Column({ nullable: true })

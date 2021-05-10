@@ -7,6 +7,7 @@ query getCurrentUser {
     github
     twitter
     discord
+    google
     bio
     username
     name
@@ -23,6 +24,7 @@ query getUserByName($username: String!) {
     github
     twitter
     discord
+    google
     bio
     username
     name

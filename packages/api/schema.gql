@@ -143,6 +143,7 @@ type User {
   createdAt: String!
   discord: String
   github: String
+  google: String
   id: ID!
   name: String
   posts: [Post!]
