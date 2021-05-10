@@ -3,8 +3,10 @@
 <img src='https://img.shields.io/badge/License-MIT-blue.svg' > [![Deploy Production](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml) [![Deploy Staging](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml)
 
 ## 🤠 Structure
-- [`packages/web`](/packages/web) - Oasis for Web
+- [`packages/web`](/packages/web) - Web Application
 - [`packages/api`](/packages/api) - Backend and API
+- [`packages/bot-client`](/packages/bot-client) - Bot Client
+- [`packages/parser`](/packages/parser) - Emoji Parser
 
 ## 🚀 Contributions
 Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let us know what you are working on first that way we don't overwrite each other or have many people adding the same feature/solving the same issue. <br/>
