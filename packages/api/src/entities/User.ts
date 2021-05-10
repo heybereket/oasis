@@ -3,6 +3,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -86,5 +87,6 @@ export default class User extends BaseEntity {
 
   @Field(() => [Badge], { nullable: true, complexity: 5 })
   @ManyToMany(() => Badge)
+  @JoinTable()
   badges: Promise<Badge[]>;
 }
