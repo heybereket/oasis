@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { Strategy } from 'passport-discord';
 import User from '../../../entities/User';
 import { v4 as uuid } from 'uuid';
-import { generateSafeUsername } from '../../../utils/auth/generateSafeUsername';
+import { checkUsername } from '../../../utils/auth/checkUsername';
 import { PassportStatic } from 'passport';
 
 const getAvatarURL = (options: {
@@ -46,7 +46,7 @@ export default (passport: PassportStatic): Router => {
               size: 512,
             });
             user.name = profile.username;
-            user.username = await generateSafeUsername(profile.username);
+            user.username = await checkUsername(profile.username);
             user.discord = id;
             user.verified = false;
             user.createdAt = String(Date.now());

@@ -1,6 +1,6 @@
 import User from '../../entities/User';
 import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from 'type-graphql';
-import { generateSafeUsername } from '../../utils/auth/generateSafeUsername';
+import { checkUsername } from '../../utils/auth/checkUsername';
 import UpdateProfileInput from './UpdateProfileInput';
 import { ContextType } from '../../apolloServer';
 import { ApolloError } from 'apollo-server-errors';
@@ -36,6 +36,6 @@ export default class UserResolver {
 
   @Query(() => String)
   async getAvailableUsername(@Arg('username') username: String) {
-    return generateSafeUsername(username.toString());
+    return checkUsername(username.toString());
   }
 }

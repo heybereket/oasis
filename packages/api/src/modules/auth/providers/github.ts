@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { Strategy } from 'passport-github2';
 import User from '../../../entities/User';
 import { v4 as uuid } from 'uuid';
-import { generateSafeUsername } from '../../../utils/auth/generateSafeUsername';
+import { checkUsername } from '../../../utils/auth/checkUsername';
 import { PassportStatic } from 'passport';
 
 export default (passport: PassportStatic): Router => {
@@ -25,7 +25,7 @@ export default (passport: PassportStatic): Router => {
             user.id = uuid();
             user.avatar = profile._json.avatar_url;
             user.name = profile.displayName;
-            user.username = await generateSafeUsername(profile.username);
+            user.username = await checkUsername(profile.username);
             user.github = id;
             user.verified = false;
             user.createdAt = String(Date.now());
