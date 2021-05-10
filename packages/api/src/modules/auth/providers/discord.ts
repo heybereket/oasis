@@ -37,7 +37,6 @@ export default (passport: PassportStatic): Router => {
           const user =
             (await User.findOne({ where: { discord: id } })) || User.create();
 
-          // Store data from GitHub only on user's first login
           if (!user.id) {
             user.id = uuid();
             user.avatar = getAvatarURL({
