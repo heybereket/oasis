@@ -1,0 +1,37 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - staging
+    paths:
+      - "packages/web/**"
+      - "packages/api/**"
+  pull_request:
+    branches:
+      - staging
+    paths:
+      - "packages/web/**"
+      - "packages/api/**"
+jobs:
+  test:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+      - name: Yarn cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            .yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - run: yarn install
+      - run: yarn build
+      - run: cd packages/web && yarn lint
+      - run: cd packages/api && yarn lint
+        id: test
