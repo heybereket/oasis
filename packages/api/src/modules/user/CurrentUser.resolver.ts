@@ -1,5 +1,5 @@
 import { Authorized, Ctx, Query, Resolver } from 'type-graphql';
-import { ContextType } from '../../apolloServer';
+import { ContextType } from '@root/apolloServer';
 import User from '@entities/User';
 
 @Resolver()
