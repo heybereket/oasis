@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "playwright": "^1.10.0"
+    "playwright": "^1.11.0"
   },
   "devDependencies": {
     "@types/node": "^15.0.1",
