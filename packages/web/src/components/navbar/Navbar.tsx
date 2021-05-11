@@ -1,4 +1,4 @@
-import { GitHubLogin, Logout } from 'src/modules/auth';
+import { Login, Logout } from '@lib/login';
 import {
   Bell,
   DownArrow,
@@ -14,7 +14,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '../common/Button';
 import { NavItem } from './NavItem';
 import { DropdownItem } from '../common/DropdownItem';
-import { useGetCurrentUser } from 'src/modules/user/getCurrentUser';
+import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
@@ -97,7 +97,7 @@ export const Navbar: React.FC = () => {
                 size="sm"
                 className="my-1"
                 onClick={async () => {
-                  await GitHubLogin();
+                  await Login('github');
                 }}
               >
                 Login

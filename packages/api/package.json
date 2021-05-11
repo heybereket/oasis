@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "node .",
-    "watch": "tsc --watch",
-    "build": "tsc && NODE_ENV=development node dist/build.js",
+    "watch": "tsc --w && tsc-alias -w",
+    "build": "tsc && tsc-alias",
     "dev:start": "nodemon dist/index.js --ignore src",
     "dev": "concurrently \"yarn:watch\" \"yarn:dev:start\"",
     "typeorm:cli": "ts-node ../../node_modules/typeorm/cli -f ./src/ormconfig.ts",
@@ -15,7 +15,7 @@
     "db:setup": "node dist/test-utils/setup.js",
     "test": "yarn db:setup && jest",
     "clean": "rimraf dist/*"
-  },
+  }, 
   "keywords": [],
   "author": "oasis.sh",
   "license": "MIT",
@@ -28,6 +28,7 @@
     "@types/passport": "^1.0.6",
     "@types/passport-discord": "^0",
     "@types/passport-github2": "^1.2.4",
+    "@types/passport-google-oauth20": "^2",
     "@types/passport-twitter": "^1",
     "@types/uuid": "^8.3.0",
     "concurrently": "^6.0.2",
@@ -35,6 +36,7 @@
     "sqlite3": "^5.0.2",
     "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.6",
+    "tsc-alias": "^1.2.10",
     "typescript": "^4.2.4"
   },
   "dependencies": {
@@ -44,9 +46,11 @@
     "dotenv": "^9.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "graphql-query-complexity": "^0.8.1",
     "passport": "^0.4.1",
     "passport-discord": "^0.1.4",
     "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
     "passport-twitter": "^1.0.4",
     "pg": "^8.6.0",
     "redis": "^3.1.2",

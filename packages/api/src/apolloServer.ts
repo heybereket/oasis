@@ -1,7 +1,14 @@
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloError, ApolloServer } from 'apollo-server-express';
 import type { Request } from 'express';
-import User from './entities/User';
-import { getSchema } from './utils/getSchema';
+import {
+  fieldExtensionsEstimator,
+  simpleEstimator,
+  // @ts-ignore
+  getComplexity,
+} from 'graphql-query-complexity';
+import User from '@entities/User';
+import { createContext } from '@utils/auth/createContext';
+import { getSchema } from '@utils/getSchema';
 
 export type ContextType = {
   hasAuth: boolean;
@@ -9,14 +16,36 @@ export type ContextType = {
   getUser: () => Promise<User>;
 };
 
-export const createApolloServer = async () =>
-  new ApolloServer({
-    schema: await getSchema(),
-    context: async ({ req }: { req: Request }): Promise<ContextType> => {
-      const uid = (req.session as any)?.passport?.user?.id;
+export const createApolloServer = async () => {
+  const schema = await getSchema();
 
-      return { hasAuth: !!uid, uid, getUser: () => User.findOne(uid) };
-    },
+  return new ApolloServer({
+    schema,
+    context: async ({ req }: { req: Request }) => createContext(req),
+    // validationRules: [],
+    plugins: [
+      {
+        requestDidStart: () => ({
+          didResolveOperation({ request, document }) {
+            const complexity = getComplexity({
+              schema,
+              operationName: request.operationName,
+              query: document,
+              variables: request.variables,
+              estimators: [
+                fieldExtensionsEstimator(),
+                simpleEstimator({ defaultComplexity: 0 }),
+              ],
+            });
+
+            if (complexity > 50) {
+              throw new ApolloError('Query complexity was bigger than 50!');
+            }
+          },
+        }),
+      },
+    ],
     playground: true,
     introspection: true,
   });
+};

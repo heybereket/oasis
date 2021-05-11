@@ -6,7 +6,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import User from './User';
+import User from '@entities/User';
 
 @ObjectType()
 @Entity()
@@ -58,7 +58,7 @@ export default class Repo extends BaseEntity {
   })
   date_added: string;
 
-  @Field(() => User)
+  @Field(() => User, { complexity: 1 })
   @ManyToOne(() => User, (user) => user.posts)
   owner: Promise<User>;
 }

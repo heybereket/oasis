@@ -1,9 +1,9 @@
 import { ApolloError } from 'apollo-server-errors';
 import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';
-import { ContextType } from '../../apolloServer';
-import Post from '../../entities/Post';
-import { hasPermission } from '../../utils/hasPermission';
-import { Role } from '../user/Roles';
+import { ContextType } from '@root/apolloServer';
+import Post from '@entities/Post';
+import { hasPermission } from '@utils/hasPermission';
+import { Role } from '@modules/user/Roles';
 import EditPostInput from './EditPostInput';
 
 @Resolver()

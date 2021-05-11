@@ -1,5 +1,5 @@
 import { createConnection } from 'typeorm';
-import { ormconfig } from '../ormconfig';
+import { ormconfig } from '@root/ormconfig';
 
 export const testConn = (drop: boolean = false) =>
   createConnection({

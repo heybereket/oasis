@@ -1,8 +1,8 @@
-import User from '../../entities/User';
+import User from '@entities/User';
 import { getRepository } from 'typeorm';
-import { generatedNumber } from '../../lib';
+import { generatedNumber } from '@lib/index';
 
-export const generateSafeUsername = async (
+export const checkUsername = async (
   username: string
 ): Promise<string> => {
   const existingWithUsername = await getRepository(User)

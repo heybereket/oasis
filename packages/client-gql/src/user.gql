@@ -6,6 +6,8 @@ query getCurrentUser {
     createdAt
     github
     twitter
+    discord
+    google
     bio
     username
     name
@@ -21,6 +23,8 @@ query getUserByName($username: String!) {
     createdAt
     github
     twitter
+    discord
+    google
     bio
     username
     name
@@ -175,4 +179,8 @@ query getUser($id: String!) {
 
 mutation updateProfile($data: UpdateProfileInput!) {
   updateProfile(data: $data)
+}
+
+mutation deleteAccount {
+  deleteAccount
 }

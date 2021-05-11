@@ -1,15 +1,10 @@
 {
   "compilerOptions": {
+    "lib": ["ESNext"],
+    "target": "es2018",
+    "module": "commonjs",
     "rootDir": "src",
     "outDir": "dist",
-    "target": "ES2018",
-    "module": "commonjs",
-    "lib": ["ESNext"],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "declaration": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+    "declaration": true
   }
 }

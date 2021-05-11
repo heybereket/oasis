@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { PassportStatic } from 'passport';
 import GitHubAuth from './providers/github';
 import TwitterAuth from './providers/twitter';
+import DiscordAuth from './providers/discord';
 
 export default (passport: PassportStatic): Router => {
   const authRouter = Router();
@@ -9,7 +10,7 @@ export default (passport: PassportStatic): Router => {
   /** Third party auth services */
   authRouter.use('/github', GitHubAuth(passport));
   authRouter.use('/twitter', TwitterAuth(passport));
-
+  authRouter.use('/discord', DiscordAuth(passport));
   /** Internal actions. */
   authRouter.get('/logout', (req, res) => {
     req.logout();

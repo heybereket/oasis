@@ -2,6 +2,7 @@ import { config } from 'dotenv';
 import { join } from 'path';
 import next from 'next';
 import { createApp } from '@oasis/api';
+import { chalkLog } from './lib/chalkLog';
 
 config({ path: join(__dirname, '../../api/.env') });
 
@@ -10,7 +11,27 @@ const app = next({ dev, conf: require('../next.config.js') });
 const handle = app.getRequestHandler();
 
 (async () => {
+  if (!process.env.NEXT_PUBLIC_BASE_URL) {
+    console.error(
+      chalkLog(
+        'error',
+        '> You must have NEXT_PUBLIC_BASE_URL set in your packages/web/.env file.'
+      )
+    );
+    console.error(
+      chalkLog(
+        'error',
+        "> For more information, refer to the oasis.sh developer's wiki: https://github.com/oasis-sh/oasis/wiki/Web-Quick-Start"
+      )
+    );
+    process.exit(1);
+  }
+
   const server = await createApp();
+  if (!server) {
+    console.error('> Uh oh, we ran into some errors.');
+    process.exit(1);
+  }
 
   app.prepare().then(() => {
     server.all('*', (req, res) => {
@@ -21,8 +42,14 @@ const handle = app.getRequestHandler();
 
     try {
       server.listen(PORT, () =>
-        console.log(
-          `> Ready on http://localhost:${PORT} \n> API: http://localhost:${PORT}/graphql`
+        console.error(
+          `${chalkLog(
+            'success',
+            `success`
+          )} - Ready on http://localhost:${PORT} \n${chalkLog(
+            'success',
+            `success`
+          )} - API: http://localhost:${PORT}/graphql`
         )
       );
     } catch (err) {

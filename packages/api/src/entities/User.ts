@@ -3,15 +3,16 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import Repo from './Repo';
-import Post from './Post';
-import Badge from './Badge';
-import { Role } from '../modules/user/Roles';
-import Comment from './Comment';
+import Repo from '@entities/Repo';
+import Post from '@entities/Post';
+import Badge from '@entities/Badge';
+import { Role } from '@modules/user/Roles';
+import Comment from '@entities/Comment';
 
 @ObjectType()
 @Entity()
@@ -46,7 +47,15 @@ export default class User extends BaseEntity {
 
   @Column({ nullable: true })
   @Field({ nullable: true })
+  discord: string;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
   github: string;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  google: string;
 
   @Column({ nullable: true })
   @Field({ nullable: true })
@@ -64,19 +73,20 @@ export default class User extends BaseEntity {
   @Field(() => [Role])
   roles: Role[] = [];
 
-  @Field(() => [Repo], { nullable: true })
+  @Field(() => [Repo], { nullable: true, complexity: 5 })
   @OneToMany(() => Repo, (repo) => repo.owner)
   repos: Promise<Repo[]>;
 
-  @Field(() => [Post], { nullable: true })
+  @Field(() => [Post], { nullable: true, complexity: 5 })
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
 
-  @Field(() => [Comment], { nullable: true })
+  @Field(() => [Comment], { nullable: true, complexity: 5 })
   @OneToMany(() => Comment, (comment) => comment.author)
   comments: Promise<Comment[]>;
 
-  @Field(() => [Badge], { nullable: true })
+  @Field(() => [Badge], { nullable: true, complexity: 5 })
   @ManyToMany(() => Badge)
+  @JoinTable()
   badges: Promise<Badge[]>;
 }
