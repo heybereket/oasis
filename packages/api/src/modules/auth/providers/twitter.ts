@@ -24,6 +24,9 @@ export default (passport: PassportStatic): Router => {
           if (!user.id) {
             user.id = uuid();
             user.avatar = profile._json.profile_image_url_https;
+            user.banner = profile._json.profile_banner_url ?
+              profile._json.profile_banner_url :
+              null;
             user.name = profile.displayName;
             user.username = await checkUsername(profile.username);
             user.twitter = id;

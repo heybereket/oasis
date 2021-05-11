@@ -10,7 +10,7 @@
     "deploy": "sh bin/deploy.sh",
     "deploy:prod": "git add . && git commit -m \"chore(deploy): Merge staging -> prod\" &&git pull origin staging  && git checkout prod && git merge staging && git push origin prod && git checkout staging",
     "publish:bot": "sh bin/publish.sh",
-    "lint": "yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/playwright,@oasis/client-gql -p run prettify",
+    "lint": "yarn workspaces foreach --exclude @oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/client-gql -p run prettify",
     "dev:web": "yarn workspace @oasis/web dev",
     "dev:api": "yarn workspace @oasis/api dev",
     "dev:gql": "yarn workspace @oasis/client-gql dev",
