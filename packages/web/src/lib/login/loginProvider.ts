@@ -1,4 +1,4 @@
-import { baseURL } from "../../lib/constants";
+import { baseURL } from "../constants";
 
 export const loginProvider = (type: string): any => {
  switch (type) {

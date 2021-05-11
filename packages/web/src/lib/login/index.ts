@@ -1,5 +1,5 @@
-import { baseURL } from "../../lib/constants";
-import { setCurrentUser } from "../user/getCurrentUser";
+import { baseURL } from "../constants";
+import { setCurrentUser } from "../common/getCurrentUser";
 import { loginProvider } from './loginProvider'
 
 export const Login = async (type: string): Promise<void> => {
