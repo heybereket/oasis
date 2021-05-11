@@ -1,19 +1,20 @@
 import { baseURL } from "../../lib/constants";
 import { setCurrentUser } from "../user/getCurrentUser";
+import { loginProvider } from './loginProvider'
 
-export const Login = (type: string): any => {
+export const Login = async (type: string): Promise<void> => {
  switch (type) {
   // GitHub Authentication
   case 'github':
-    return window.location.href = `${baseURL}/api/auth/github`;
+    return loginProvider('github');
 
   // Twitter Authentication
   case 'twitter':
-    return window.location.href = `${baseURL}/api/auth/twitter`;
+    return loginProvider('twitter');
 
   // Discord Authentication
   case 'discord':
-    return window.location.href = `${baseURL}/api/auth/discord`;
+    return loginProvider('discord');
  }
 }
 
