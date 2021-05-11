@@ -1,4 +1,3 @@
-const chalk = require('chalk');
 import { chalkLog } from './chalkLog';
 
 export const ExitWithErrors = (amount: number): any => {
