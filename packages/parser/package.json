@@ -1,0 +1,12 @@
+{
+  "name": "@oasis/parser",
+  "version": "1.0.0",
+  "description": "Markdown/emoji parsers used in Oasis.",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc && node dist/generate-emoji.js",
+    "gen": ""
+  },
+  "license": "MIT"
+}
