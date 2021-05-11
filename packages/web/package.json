@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "tsc -p server && node server/dist/index.js",
-    "build": "next build && tsc --esModuleInterop server/src/index.ts",
+    "build": "next build && tsc -p server",
     "start": "NODE_ENV=production node server/dist/index.js",
     "prettify": "prettier --config .prettierrc --write server/index.ts src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js",
