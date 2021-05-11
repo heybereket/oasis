@@ -23,6 +23,5 @@ jobs:
         uses: actions/setup-node@v1
 
       - run: yarn install
-      - run: cd packages/web && yarn lint
-      - run: cd packages/api && yarn lint
+      - run: yarn lint
         id: test
