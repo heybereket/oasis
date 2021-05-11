@@ -1,4 +1,4 @@
-import { GitHubLogin, Logout } from 'src/modules/auth';
+import { Login, Logout } from 'src/modules/auth';
 import {
   Bell,
   DownArrow,
@@ -97,7 +97,7 @@ export const Navbar: React.FC = () => {
                 size="sm"
                 className="my-1"
                 onClick={async () => {
-                  await GitHubLogin();
+                  await Login('github');
                 }}
               >
                 Login
