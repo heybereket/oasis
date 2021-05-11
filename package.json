@@ -15,7 +15,7 @@
     "lint": "yarn workspaces foreach --exclude @oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/client-gql -p run prettify",
     "prepare": "husky install",
     "publish:bot": "sh bin/publish.sh",
-    "reinstall": "yarn clean && rimraf packages/**/*.sqlite && yarn install",
+    "reinstall": "yarn clean && rimraf packages/**/*.sqlite || yarn install",
     "start": "yarn workspace @oasis/web run start"
   },
   "devDependencies": {
