@@ -43,7 +43,6 @@ input MakeBadgeInput {
 type Mutation {
   createComment(data: NewCommentInput!, postId: String!): Boolean!
   createPost(data: NewPostInput!): Boolean!
-  deleteAccount: Boolean!
   editComment(commentId: String!, data: EditCommentInput!): Boolean!
   editPost(data: EditPostInput!, postId: String!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
@@ -142,9 +141,7 @@ type User {
   bio: String
   comments: [Comment!]
   createdAt: String!
-  discord: String
   github: String
-  google: String
   id: ID!
   name: String
   posts: [Post!]

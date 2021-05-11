@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "tsc --esModuleInterop server/src/index.ts && node server/dist/index.js",
+    "dev": "tsc -p server && node server/dist/index.js",
     "build": "next build && tsc --esModuleInterop server/src/index.ts",
     "start": "NODE_ENV=production node server/dist/index.js",
     "prettify": "prettier --config .prettierrc --write server/index.ts src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
