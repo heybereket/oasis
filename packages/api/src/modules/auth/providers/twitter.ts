@@ -23,7 +23,7 @@ export default (passport: PassportStatic): Router => {
           // Store data from Twitter only on user's first login
           if (!user.id) {
             user.id = uuid();
-            user.avatar = profile._json.profile_image_url;
+            user.avatar = profile._json.profile_image_url_https;
             user.name = profile.displayName;
             user.username = await checkUsername(profile.username);
             user.twitter = id;
@@ -46,7 +46,6 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/',
     passport.authenticate('twitter', {
-      scope: ['user:email'],
       session: true,
     })
   );
