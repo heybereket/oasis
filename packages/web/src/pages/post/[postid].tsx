@@ -24,7 +24,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
   return (
     <>
-      <SEOProvider
+      {/* <SEOProvider
         title={data?.name ? data?.name : data?.username + ' — Oasis'}
         metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
         metaImg={data?.avatar}
@@ -194,7 +194,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div>*/}
     </>
   );
 };
@@ -202,11 +202,11 @@ const Profile: React.FC<ProfileProps> = (props) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   return {
     props: {
-      username: query.postid,
-      initialApolloState: await ssrRequest({
-        document: GetPostDocument,
-        variables: { postid: query.postid },
-      }),
+      // username: query.postid,
+      // initialApolloState: await ssrRequest({
+      //   document: GetPostDocument,
+      //   variables: { postid: query.postid },
+      // }),
     },
   };
 };

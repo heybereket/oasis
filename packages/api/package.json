@@ -15,7 +15,7 @@
     "db:setup": "node dist/test-utils/setup.js",
     "test": "yarn db:setup && jest",
     "clean": "rimraf dist/*"
-  }, 
+  },
   "keywords": [],
   "author": "oasis.sh",
   "license": "MIT",
