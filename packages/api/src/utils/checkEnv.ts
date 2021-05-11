@@ -15,22 +15,8 @@ export default async function checkEnv(): Promise<boolean> {
 
     /* Extra props */
     checkRequiredEnv('OASIS_API_SESSION_SECRET'),
-    checkRequiredEnv('OASIS_API_SRC_PATH', async () => {
-      try {
-        let srcRealPath = await promisify(fs.realpath)(process.env.OASIS_API_SRC_PATH);
-        let stat: fs.Stats = await promisify(fs.stat)(srcRealPath);
-
-        if (!stat.isDirectory) return `OASIS_API_SRC_PATH (= ${srcRealPath}) is not a directory.`;
-
-        // Check that ormconfig.ts is created which doubles as checking if OASIS_API_SRC_PATH is correct.
-        let ormConfigTs = await promisify(fs.stat)(path.join(srcRealPath, 'ormconfig.ts'));
-        if (!ormConfigTs.isFile) return `Unable to locate OASIS_API_SRC_PATH/ormconfig.ts - are you sure that: 1) you set the OASIS_API_SRC_PATH correctly and 2) you copied ormconfig.example.ts to ormconfig.ts and set up your TypeORM configuration?`;
-      } catch (ex) {
-        return "An error occurred while checking OASIS_API_SRC_PATH. Are permissions set correctly?";
-      }
-    })
+    
   ]) if (!(await requiredEnvChecker(true))) return false;
-
   return true;
 }
 

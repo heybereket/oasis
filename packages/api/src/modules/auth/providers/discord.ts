@@ -1,8 +1,9 @@
 import { Router } from 'express';
 import { Strategy } from 'passport-discord';
-import User from '../../../entities/User';
+import User from '@entities/User';
 import { v4 as uuid } from 'uuid';
-import { checkUsername } from '../../../utils/auth/checkUsername';
+import { checkUsername } from '@utils/auth/checkUsername';
+import { getShortMonth } from '@lib';
 import { PassportStatic } from 'passport';
 
 const getAvatarURL = (options: {
@@ -41,6 +42,7 @@ export default (passport: PassportStatic): Router => {
             user.discord = id;
             user.verified = false;
             user.createdAt = String(Date.now());
+            user.joined = getShortMonth()
           }
 
           await user.save();

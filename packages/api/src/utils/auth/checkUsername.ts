@@ -1,6 +1,6 @@
-import User from '../../entities/User';
+import User from '@entities/User';
 import { getRepository } from 'typeorm';
-import { generatedNumber } from '../../lib';
+import { generatedNumber } from '@lib/index';
 
 export const checkUsername = async (
   username: string

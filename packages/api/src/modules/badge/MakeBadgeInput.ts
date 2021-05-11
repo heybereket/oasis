@@ -1,4 +1,3 @@
-import { IsOptional, IsUrl, Length } from 'class-validator';
 import { Field, InputType } from 'type-graphql';
 
 @InputType()

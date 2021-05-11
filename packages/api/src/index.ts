@@ -4,14 +4,14 @@ config();
 
 import express from 'express';
 import { createConnection } from 'typeorm';
-import { createApolloServer } from './apolloServer';
-import authRouter from './modules/auth';
+import { createApolloServer } from '@root/apolloServer';
+import authRouter from '@modules/auth';
 import expressSession from 'express-session';
 import { createClient } from 'redis';
 import connectRedis from 'connect-redis';
-import { ormconfig } from './ormconfig';
+import { ormconfig } from '@root/ormconfig';
 import passport from 'passport';
-import checkEnv from './utils/checkEnv';
+import checkEnv from '@utils/checkEnv';
 
 const RedisStore = connectRedis(expressSession);
 

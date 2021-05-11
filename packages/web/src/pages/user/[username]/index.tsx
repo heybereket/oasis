@@ -1,6 +1,4 @@
-// import { Navbar } from '@components/Navbar';
 import { TabItem } from '@components/profile/TabItem';
-
 import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
@@ -14,6 +12,8 @@ import { Container } from '@components/common/Container';
 import { About, Comments, Like, Posts } from '@components/icons';
 import { Navbar } from '@components/navbar/Navbar';
 import StyledMarkdown from '@components/StyledMarkdown';
+import Link from 'next/link';
+
 interface ProfileProps {
   initialApolloState: any;
   username: string;
@@ -48,12 +48,14 @@ const Profile: React.FC<ProfileProps> = (props) => {
           <div className="hidden md-50:grid grid-cols-12 transform -translate-y-12 px-8">
             <div className="col-span-8 flex flex-col mr-8">
               <div className="flex">
-                <a href={`/user/${data?.username}`}>
-                  <img
-                    src={data?.avatar}
-                    className="rounded-full w-50 h-40"
-                  ></img>
-                </a>
+                <Link href={`/user/${data?.username}`}>
+                  <a>
+                    <img
+                      src={data?.avatar}
+                      className="rounded-full w-50 h-40"
+                    ></img>
+                  </a>
+                </Link>
                 <div className="ml-8 flex flex-col justify-center">
                   {data?.name ? (
                     <>

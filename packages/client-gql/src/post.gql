@@ -1,0 +1,28 @@
+query getPost($id: String!) {
+  getPost(id: $id) {
+    author {
+      id
+      name
+      badges {
+        description
+        id
+        imagePath
+      }
+      avatar
+    }
+    createdAt
+    dislikes
+    id
+    lastEdited
+    likes
+    message
+    resort {
+      id
+      description
+      logo
+      name
+    }
+    title
+    topics
+  }
+}

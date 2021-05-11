@@ -1,0 +1,27 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - staging
+    paths:
+      - "packages/web/**"
+      - "packages/api/**"
+  pull_request:
+    branches:
+      - staging
+    paths:
+      - "packages/web/**"
+      - "packages/api/**"
+jobs:
+  test:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+
+      - run: yarn install
+      - run: yarn lint
+        id: test

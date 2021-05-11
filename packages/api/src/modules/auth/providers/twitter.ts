@@ -1,8 +1,9 @@
 import { Router } from 'express';
 import { Strategy } from 'passport-twitter';
-import User from '../../../entities/User';
+import User from '@entities/User';
 import { v4 as uuid } from 'uuid';
-import { checkUsername } from '../../../utils/auth/checkUsername';
+import { checkUsername } from '@utils/auth/checkUsername';
+import { getShortMonth } from '@lib';
 import { PassportStatic } from 'passport';
 
 export default (passport: PassportStatic): Router => {
@@ -24,11 +25,15 @@ export default (passport: PassportStatic): Router => {
           if (!user.id) {
             user.id = uuid();
             user.avatar = profile._json.profile_image_url_https;
+            user.banner = profile._json.profile_banner_url ?
+              profile._json.profile_banner_url :
+              null;
             user.name = profile.displayName;
             user.username = await checkUsername(profile.username);
             user.twitter = id;
             user.verified = false;
             user.createdAt = String(Date.now());
+            user.joined = getShortMonth()
           }
 
           await user.save();

@@ -8,11 +8,11 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import Repo from './Repo';
-import Post from './Post';
-import Badge from './Badge';
-import { Role } from '../modules/user/Roles';
-import Comment from './Comment';
+import Repo from '@entities/Repo';
+import Post from '@entities/Post';
+import Badge from '@entities/Badge';
+import { Role } from '@modules/user/Roles';
+import Comment from '@entities/Comment';
 
 @ObjectType()
 @Entity()
