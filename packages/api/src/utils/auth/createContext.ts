@@ -1,4 +1,4 @@
-import { ContextType } from '../../apolloServer';
+import { ContextType } from '@root/apolloServer';
 import User from '@entities/User';
 
 export const createContext = async (req: any): Promise<ContextType> => {

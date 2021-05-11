@@ -1,6 +1,6 @@
 import User from '@entities/User';
 import { Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
-import { ContextType } from '../../apolloServer';
+import { ContextType } from '@root/apolloServer';
 
 @Resolver()
 export default class DeleteAccountResolver {

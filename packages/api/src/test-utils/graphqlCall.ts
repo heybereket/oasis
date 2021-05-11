@@ -1,5 +1,5 @@
 import { graphql, GraphQLSchema, GraphQLArgs } from 'graphql';
-import { getSchema } from '../utils/getSchema';
+import { getSchema } from '@utils/getSchema';
 
 let schema: GraphQLSchema;
 
