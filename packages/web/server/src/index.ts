@@ -3,27 +3,18 @@ import { join } from 'path';
 import next from 'next';
 import { createApp } from '@oasis/api';
 import { chalkLog } from './lib/chalkLog';
+import { ExitWithErrors } from './lib/ExitWithErrors'
 
-config({ path: join(__dirname, '../../api/.env') });
+config({ path: join(__dirname, '../../../api/.env') });
 
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev, conf: require('../next.config.js') });
+const app = next({ dev, conf: require('../../next.config.js') });
 const handle = app.getRequestHandler();
 
 (async () => {
   if (!process.env.NEXT_PUBLIC_BASE_URL) {
-    console.error(
-      chalkLog(
-        'error',
-        '> You must have NEXT_PUBLIC_BASE_URL set in your packages/web/.env file.'
-      )
-    );
-    console.error(
-      chalkLog(
-        'error',
-        "> For more information, refer to the oasis.sh developer's wiki: https://github.com/oasis-sh/oasis/wiki/Web-Quick-Start"
-      )
-    );
+    console.error(`${chalkLog('error',`error`)} - You must have NEXT_PUBLIC_BASE_URL set in your .env file.`)
+    ExitWithErrors(1)
     process.exit(1);
   }
 
