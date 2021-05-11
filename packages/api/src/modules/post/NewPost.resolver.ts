@@ -1,6 +1,6 @@
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '../../apolloServer';
-import Post from '../../entities/Post';
+import Post from '@entities/Post';
 import NewPostInput from './NewPostInput';
 
 @Resolver()

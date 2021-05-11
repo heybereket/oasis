@@ -6,7 +6,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import Post from './Post';
+import Post from '@entities/Post';
 
 @ObjectType()
 @Entity()

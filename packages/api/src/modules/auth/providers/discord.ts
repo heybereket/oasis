@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { Strategy } from 'passport-discord';
-import User from '../../../entities/User';
+import User from '@entities/User';
 import { v4 as uuid } from 'uuid';
-import { checkUsername } from '../../../utils/auth/checkUsername';
+import { checkUsername } from '@utils/auth/checkUsername';
 import { PassportStatic } from 'passport';
 
 const getAvatarURL = (options: {

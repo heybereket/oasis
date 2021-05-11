@@ -1,5 +1,5 @@
 import { ContextType } from '../../apolloServer';
-import User from '../../entities/User';
+import User from '@entities/User';
 
 export const createContext = async (req: any): Promise<ContextType> => {
   const uid = (req.session as any)?.passport?.user?.id;

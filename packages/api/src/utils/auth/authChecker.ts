@@ -1,6 +1,6 @@
 import { AuthChecker } from 'type-graphql';
 import { ContextType } from '../../apolloServer';
-import { Role } from '../../modules/user/Roles';
+import { Role } from '@modules/user/Roles';
 
 export const customAuthChecker: AuthChecker<ContextType> = async (
   { context },

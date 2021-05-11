@@ -6,8 +6,8 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { Field, ID, Int, ObjectType } from 'type-graphql';
-import Post from './Post';
-import User from './User';
+import Post from '@entities/Post';
+import User from '@entities/User';
 
 @ObjectType()
 @Entity()

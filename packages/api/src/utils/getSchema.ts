@@ -1,6 +1,6 @@
 import { buildSchema } from 'type-graphql';
 import { joinRoot } from './rootPath';
-import { customAuthChecker } from './auth/authChecker';
+import { customAuthChecker } from '@utils/auth/authChecker';
 
 export const getSchema = () => {
   return buildSchema({
