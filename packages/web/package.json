@@ -3,20 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-<<<<<<< HEAD
     "dev": "tsc --esModuleInterop server/src/index.ts && node server/dist/index.js",
     "build": "next build && tsc --esModuleInterop server/src/index.ts",
     "start": "NODE_ENV=production node server/dist/index.js",
-    "prettify": "prettier --config .prettierrc --write server/src/index.ts src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
-    "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
-=======
-    "dev": "tsc --esModuleInterop server/index.ts && node server/index.js",
-    "build": "next build && tsc --esModuleInterop server/index.ts",
-    "start": "NODE_ENV=production node server/index.js",
     "prettify": "prettier --config .prettierrc --write server/index.ts src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js",
     "clean": "rimraf .next/*"
->>>>>>> ebaced445674050791c65106b955317b077fbce8
   },
   "dependencies": {
     "@primer/octicons-react": "^13.0.0",
