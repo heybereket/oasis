@@ -8,18 +8,11 @@ import { PassportStatic } from 'passport';
 const getAvatarURL = (options: {
   hash?: string;
   id?: string;
-  discriminator?: string;
   size?: number;
 }): string => {
   const extension = options.hash.startsWith('a_') ? 'gif' : 'png';
 
-  return `https://cdn.discordapp.com/${options.hash ? '' : 'embed/'}avatars${
-    options.hash
-      ? `${options.id}/${options.hash}`
-      : parseInt(options.discriminator) % 5
-  }.${options.hash ? extension : 'png'}?size=${
-    options.size ? options.size : 512
-  }`;
+  return `https://cdn.discordapp.com/avatars/${id}/${hash}.${extension}?size=${size ? size : 512}`;
 };
 
 export default (passport: PassportStatic): Router => {
@@ -42,7 +35,6 @@ export default (passport: PassportStatic): Router => {
             user.avatar = getAvatarURL({
               hash: profile.avatar,
               id: profile.id,
-              discriminator: profile.discriminator,
               size: 512,
             });
             user.name = profile.username;
