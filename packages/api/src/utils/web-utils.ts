@@ -1,2 +1,2 @@
-export const { createContext } = require('./auth/createContext');
-export const { getSchema } = require('./getSchema');
+export const { createContext } = require('@utils/auth/createContext');
+export const { getSchema } = require('@utils/getSchema');
