@@ -3,8 +3,10 @@ import { chalkLog } from './chalkLog';
 
 export const ExitWithErrors = (amount: number): any => {
   if (amount < 2){ 
-    return console.error(`${chalkLog('error',`error`)} - Exiting with ${amount} error...`)
+    console.error(`${chalkLog('error')} - Exiting with ${amount} error...`)
+    return process.exit(1);
   } else {
-    return console.error(`${chalkLog('error',`error`)} - Exiting with ${amount} errors...`)
+    console.error(`${chalkLog('error')} - Exiting with ${amount} errors...`)
+    return process.exit(1);
   }
 }

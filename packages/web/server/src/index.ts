@@ -13,15 +13,14 @@ const handle = app.getRequestHandler();
 
 (async () => {
   if (!process.env.NEXT_PUBLIC_BASE_URL) {
-    console.error(`${chalkLog('error',`error`)} - You must have NEXT_PUBLIC_BASE_URL set in your .env file.`)
+    console.error(`${chalkLog('error')} - You must have NEXT_PUBLIC_BASE_URL set in your .env file.`)
     ExitWithErrors(1)
-    process.exit(1);
   }
 
   const server = await createApp();
   if (!server) {
-    console.error('> Uh oh, we ran into some errors.');
-    process.exit(1);
+    console.error(`${chalkLog('error')} - Uh oh, we ran into some errors with our server.`);
+    ExitWithErrors(1)
   }
 
   app.prepare().then(() => {
@@ -33,15 +32,7 @@ const handle = app.getRequestHandler();
 
     try {
       server.listen(PORT, () =>
-        console.error(
-          `${chalkLog(
-            'success',
-            `success`
-          )} - Ready on http://localhost:${PORT} \n${chalkLog(
-            'success',
-            `success`
-          )} - API: http://localhost:${PORT}/graphql`
-        )
+        console.error(`${chalkLog('success')} - Ready on http://localhost:${PORT} \n${chalkLog('success')} - API: http://localhost:${PORT}/graphql`)
       );
     } catch (err) {
       if (err) throw err;
