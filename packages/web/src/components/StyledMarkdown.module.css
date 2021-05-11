@@ -1,0 +1,159 @@
+.markdown pre,
+.markdown code {
+  font-family: Menlo, Monaco, 'Courier New', monospace;
+}
+
+.markdown pre {
+  padding: 0.5rem;
+  line-height: 1.25;
+  overflow-x: scroll;
+}
+
+.markdown a,
+.markdown a:visited {
+  color: #3498db;
+}
+
+.markdown a:hover,
+.markdown a:focus,
+.markdown a:active {
+  color: #2980b9;
+}
+
+.modest-no-decoration {
+  text-decoration: none;
+}
+
+.markdown html {
+  font-size: 12px;
+}
+
+@media screen and (min-width: 32rem) and (max-width: 48rem) {
+  .markdown html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .markdown html {
+    font-size: 16px;
+  }
+}
+
+.markdown body {
+  line-height: 1.85;
+}
+
+.markdown p,
+.markdown .modest-p {
+  font-size: 1rem;
+  margin-bottom: 1.3rem;
+}
+
+.markdown h1,
+.markdown .modest-h1,
+.markdown h2,
+.markdown .modest-h2,
+.markdown h3,
+.modest-h3,
+.markdown h4,
+.markdown .modest-h4 {
+  margin: 1.414rem 0 0.5rem;
+  font-weight: inherit;
+  line-height: 1.42;
+}
+
+.markdown h1,
+.markdown .modest-h1 {
+  margin-top: 0;
+  font-size: 3.998rem;
+}
+
+.markdown h2,
+.markdown .modest-h2 {
+  font-size: 2.827rem;
+}
+
+.markdown h3,
+.markdown .modest-h3 {
+  font-size: 1.999rem;
+}
+
+.markdown h4,
+.markdown .modest-h4 {
+  font-size: 1.414rem;
+}
+
+.markdown h5,
+.modest-h5 {
+  font-size: 1.121rem;
+}
+
+.markdown h6,
+.modest-h6 {
+  font-size: 0.88rem;
+}
+
+.markdown small,
+.markdown .modest-small {
+  font-size: 0.707em;
+}
+
+/* https://github.com/mrmrs/fluidity */
+
+.markdown img,
+.markdown canvas,
+.markdown iframe,
+.markdown video,
+.markdown svg,
+.markdown select,
+.markdown textarea {
+  max-width: 100%;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+
+@import url(http://fonts.googleapis.com/css?family=Arimo:700,700italic);
+
+.markdown html {
+  font-size: 18px;
+  max-width: 100%;
+}
+
+.markdown body {
+  color: #444;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 300;
+  margin: 0 auto;
+  max-width: 48rem;
+  line-height: 1.45;
+  padding: 0.25rem;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-family: Arimo, Helvetica, sans-serif;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  border-bottom: 2px solid #fafafa;
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.markdown blockquote {
+  border-left: 8px solid #fafafa;
+  padding: 1rem;
+}
+
+.markdown pre,
+.markdown code {
+  background-color: #fafafa;
+}
