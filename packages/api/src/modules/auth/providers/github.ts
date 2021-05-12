@@ -39,8 +39,6 @@ export default (passport: PassportStatic): Router => {
           if (searchJSON(await contributorData, 'login', profile.username)) {
             // Give the user a contributor badge if returns true
             user.contributor = true
-          } else {
-            user.contributor = false
           }
 
           await user.save();

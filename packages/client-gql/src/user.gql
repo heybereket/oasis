@@ -12,6 +12,7 @@ query getCurrentUser {
     username
     name
     verified
+    contributor
   }
 }
 
@@ -29,83 +30,9 @@ query getUserByName($username: String!) {
     username
     name
     verified
+    contributor
   }
 }
-
-# query getUserByName($username: String!) {
-#   getUserByName(username: $username) {
-#     id
-#     banner
-#     avatar
-#     createdAt
-#     github
-#     twitter
-#     bio
-#     posts {
-#       author {
-#         createdAt
-#         id
-#         posts {
-#           comments {
-#             content
-#             dislikes
-#             id
-#             likes
-#           }
-#           dislikes
-#           id
-#           likes
-#           message
-#           title
-#           topics
-#         }
-#         repos {
-#           active
-#           date_added
-#           desc
-#           full_name
-#           github_owner
-#           id
-#           issues
-#           language
-#           name
-#           owner {
-#             createdAt
-#             id
-#             username
-#             verified
-#           }
-#           stars
-#           url
-#         }
-#         username
-#         verified
-#       }
-#       dislikes
-#       id
-#       likes
-#       message
-#       title
-#       topics
-#     }
-#     repos {
-#       active
-#       date_added
-#       desc
-#       full_name
-#       github_owner
-#       id
-#       issues
-#       language
-#       name
-#       stars
-#       url
-#     }
-#     username
-#     name
-#     verified
-#   }
-# }
 
 query getUser($id: String!) {
   getUser(id: $id) {
