@@ -2056,7 +2056,6 @@ __metadata:
     prettier: 2.3.0
     react: ^17.0.2
     react-dom: ^17.0.2
-    react-feather: ^2.0.9
     react-firebase-hooks: ^3.0.4
     react-markdown: ^6.0.2
     react-syntax-highlighter: ^15.4.3
@@ -12658,17 +12657,6 @@ __metadata:
   version: 2.0.4
   resolution: "react-fast-compare@npm:2.0.4"
   checksum: 4e4bfc3597414a36ee35977259012fff30c4f13a0e5dcabf958e91991bef8e9a3faee9dd666cfbdb0c2a0f0ddaf242ac2912054caa956a793c4cdff274dc5aec
-  languageName: node
-  linkType: hard
-
-"react-feather@npm:^2.0.9":
-  version: 2.0.9
-  resolution: "react-feather@npm:2.0.9"
-  dependencies:
-    prop-types: ^15.7.2
-  peerDependencies:
-    react: ^16.8.6 || ^17
-  checksum: 302a5ce0bffbd789b0c9ffe29146191db1b0926ae090bb48486f9cb40267d4e636822fa468dfb8614cbc0b3ac13e394937cd51327ec6c6b7ec6032060dfafbd2
   languageName: node
   linkType: hard
 
