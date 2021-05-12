@@ -1,12 +1,12 @@
 .markdown pre,
 .markdown code {
-  font-family: Menlo, Monaco, 'Courier New', monospace;
+  font-family: 'Victor Mono', Menlo, Monaco, 'Courier New', monospace !important;
 }
 
 .markdown pre {
   padding: 0.5rem;
   line-height: 1.25;
-  overflow-x: scroll;
+  overflow-x: hidden;
 }
 
 .markdown a,
@@ -22,22 +22,6 @@
 
 .modest-no-decoration {
   text-decoration: none;
-}
-
-.markdown html {
-  font-size: 12px;
-}
-
-@media screen and (min-width: 32rem) and (max-width: 48rem) {
-  .markdown html {
-    font-size: 15px;
-  }
-}
-
-@media screen and (min-width: 48rem) {
-  .markdown html {
-    font-size: 16px;
-  }
 }
 
 .markdown body {
@@ -111,15 +95,6 @@
   max-width: 100%;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
-
-@import url(http://fonts.googleapis.com/css?family=Arimo:700,700italic);
-
-.markdown html {
-  font-size: 18px;
-  max-width: 100%;
-}
-
 .markdown body {
   color: #444;
   font-family: 'Open Sans Condensed', sans-serif;
@@ -155,5 +130,18 @@
 
 .markdown pre,
 .markdown code {
-  background-color: #fafafa;
+  background-color: var(--color-gray-900);
+}
+
+.markdown ul {
+  padding-left: 1rem;
+  list-style: disc;
+}
+
+@font-face {
+  font-family: 'Victor Mono';
+  src: url('/static/fonts/VictorMono-Regular.eot');
+  src: url('/static/fonts/VictorMono-Regular.woff') format('woff'),
+    url('/static/fonts/VictorMono-Regular.otf') format('opentype'),
+    url('/static/fonts/VictorMono-Regular.ttf') format('ttf');
 }

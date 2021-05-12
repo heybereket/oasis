@@ -17,7 +17,7 @@ module.exports = {
         source: '/r/:resort',
         destination: '/resort/:resort',
         permanent: true,
-      }
+      },
     ];
   },
   webpack: (config, { isServer }) => {
