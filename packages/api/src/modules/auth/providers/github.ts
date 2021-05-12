@@ -3,7 +3,6 @@ import { Strategy } from 'passport-github2';
 import User from '@entities/User';
 import { v4 as uuid } from 'uuid';
 import { checkUsername } from '@utils/auth/checkUsername';
-import { getShortMonth } from '@lib/index';
 import { PassportStatic } from 'passport';
 
 export default (passport: PassportStatic): Router => {
@@ -30,7 +29,6 @@ export default (passport: PassportStatic): Router => {
             user.github = id;
             user.verified = false;
             user.createdAt = String(Date.now());
-            user.joined = getShortMonth()
           }
 
           await user.save();
