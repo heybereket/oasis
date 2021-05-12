@@ -15,7 +15,7 @@ export default async function checkEnv(): Promise<boolean> {
 
     /* Extra props */
     checkRequiredEnv('OASIS_API_SESSION_SECRET'),
-    
+
   ]) if (!(await requiredEnvChecker(true))) return false;
   return true;
 }

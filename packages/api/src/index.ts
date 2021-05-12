@@ -41,7 +41,6 @@ export const createApp = async () => {
       resave: false,
       saveUninitialized: true,
       cookie: {
-        domain: process.env.OASIS_API_PUBLIC_DOMAIN,
         secure: process.env.NODE_ENV === 'production',
         maxAge: null,
         signed: true,
