@@ -54,14 +54,20 @@ const EditProfile: React.FC<EditProfileProps> = () => {
             })();
           }}
         >
-          {({ handleSubmit }) => (
+          {({ values, handleSubmit, handleChange }) => (
             <Form onSubmit={handleSubmit}>
               <Field
                 label="Avatar URL"
                 name="avatar"
                 component={StyledFormikInput}
               />
-              <Field label="Bio" name="bio" component={StyledFormikInput} />
+              <label>Bio</label>
+              <textarea
+                name="bio"
+                onChange={handleChange}
+                value={values.bio ?? ''}
+                className="w-full py-2 px-4 rounded-lg text-gray-100 placeholder-gray-300 bg-gray-700 border border-gray-600 focus:outline-none focus:ring shadow-lg"
+              />
               <Field
                 label="Banner"
                 name="banner"

@@ -11,7 +11,8 @@ import { TopicBadge } from '@components/profile/TopicBadge';
 import { Container } from '@components/common/Container';
 import { About, Comments, Like, Posts } from '@components/icons';
 import { Navbar } from '@components/navbar/Navbar';
-import Link from 'next/link'
+import StyledMarkdown from '@components/StyledMarkdown';
+import Link from 'next/link';
 
 interface ProfileProps {
   initialApolloState: any;
@@ -80,7 +81,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                     About {`@${data?.username}`}
                   </h4>
                   {data?.bio !== null ? (
-                    <h5 className="text-gray-300 font-bold">{data?.bio}</h5>
+                    <div className="text-gray-300 font-bold">
+                      <StyledMarkdown text={data?.bio ?? ''} />
+                    </div>
                   ) : (
                     <h5 className="text-gray-300 font-bold">
                       Hmm, it seems like @{data?.username} does not have a bio
