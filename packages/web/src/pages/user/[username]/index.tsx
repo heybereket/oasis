@@ -93,13 +93,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
               <div className="flex">
                 {(data?.verified === true) && (
-                    <span className="tracking-wider text-white bg-[#306EEA] px-4 py-1 mt-3 mr-2 text-sm rounded-full h-8 w-8 flex items-center justify-center leading-loose font-semibold" title="">
+                    <span className="tracking-wider text-white bg-[#306EEA] px-4 py-1 mt-3 mr-2 text-sm rounded-full h-8 w-8 flex items-center justify-center leading-loose font-semibold" title="Verified">
                       V
                     </span>
                  )}
 
                 {(data?.contributor === true) && (
-                  <span className="tracking-wider text-white bg-[#306EEA] px-4 py-1 mt-3 text-sm rounded-full h-8 w-8 flex items-center justify-center leading-loose font-semibold" title="">
+                  <span className="tracking-wider text-white bg-[#306EEA] px-4 py-1 mt-3 text-sm rounded-full h-8 w-8 flex items-center justify-center leading-loose font-semibold" title="Contributor">
                     C
                   </span>
                 )}
