@@ -11,7 +11,7 @@ import { createClient } from 'redis';
 import connectRedis from 'connect-redis';
 import { ormconfig } from '@root/ormconfig';
 import passport from 'passport';
-import checkEnv from '@utils/checkEnv';
+import checkEnv from '@utils/common/checkEnv';
 
 const RedisStore = connectRedis(expressSession);
 
