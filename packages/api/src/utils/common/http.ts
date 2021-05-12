@@ -1,7 +1,5 @@
-const fetch = require('node-fetch');
+import fetch, { RequestInfo, RequestInit } from 'node-fetch';
 
-export const http = async (request: string): Promise<any> => {
-  const response = await fetch(request);
-  const body = await response.json();
-  return body;
+export const http = async (url: RequestInfo, options?: RequestInit) => {
+  return await fetch(url, options).then((res) => res.json());
 }
