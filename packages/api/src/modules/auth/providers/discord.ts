@@ -3,7 +3,7 @@ import { Strategy } from 'passport-discord';
 import User from '@entities/User';
 import { v4 as uuid } from 'uuid';
 import { checkUsername } from '@utils/auth/checkUsername';
-import { getShortMonth } from '@lib';
+import { getShortMonth } from '@lib/index';
 import { PassportStatic } from 'passport';
 
 const getAvatarURL = (options: {

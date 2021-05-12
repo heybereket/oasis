@@ -45,6 +45,10 @@ export default class User extends BaseEntity {
   @Field()
   createdAt: string;
 
+  @Column()
+  @Field()
+  joined: string;
+
   @Column({ nullable: true })
   @Field({ nullable: true })
   discord: string;
