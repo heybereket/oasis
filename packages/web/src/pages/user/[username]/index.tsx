@@ -90,6 +90,21 @@ const Profile: React.FC<ProfileProps> = (props) => {
                       set.
                     </h5>
                   )}
+
+              <div className="flex">
+                {(data?.contributor === true) && (
+                    <span className="tracking-wider text-white bg-[#306EEA] px-4 py-1 mt-3 mr-2 text-sm rounded-full h-8 w-8 flex items-center justify-center leading-loose font-semibold" title="">
+                      V
+                    </span>
+                 )}
+
+                {(data?.contributor === true) && (
+                  <span className="tracking-wider text-white bg-[#306EEA] px-4 py-1 mt-3 text-sm rounded-full h-8 w-8 flex items-center justify-center leading-loose font-semibold" title="">
+                    C
+                  </span>
+                )}
+              </div>
+
                 </div>
               </div>
             </div>

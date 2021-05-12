@@ -42,6 +42,7 @@
     "next-secure-headers": "^2.2.0",
     "postcss": "^8.2.13",
     "prettier": "2.3.0",
+    "react-feather": "^2.0.9",
     "ts-node": "^9.1.1"
   }
 }
