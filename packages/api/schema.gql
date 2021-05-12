@@ -141,6 +141,7 @@ type User {
   banner: String
   bio: String
   comments: [Comment!]
+  contributor: Boolean
   createdAt: String!
   discord: String
   github: String

@@ -3,6 +3,8 @@ import { Strategy } from 'passport-github2';
 import User from '@entities/User';
 import { v4 as uuid } from 'uuid';
 import { checkUsername } from '@utils/auth/checkUsername';
+import { http } from '@utils/common/http'
+import { searchJSON } from '@lib/index'
 import { PassportStatic } from 'passport';
 
 export default (passport: PassportStatic): Router => {
@@ -15,6 +17,8 @@ export default (passport: PassportStatic): Router => {
       },
       async (accessToken, refreshToken, profile, done) => {
         const id = String(profile.id);
+
+        const contributorData = http('https://api.github.com/repos/oasis-sh/oasis/contributors')
 
         try {
           const user =
@@ -29,6 +33,14 @@ export default (passport: PassportStatic): Router => {
             user.github = id;
             user.verified = false;
             user.createdAt = String(Date.now());
+          }
+
+          // Searches JSON to see if user is a contributor in the repository
+          if (searchJSON(await contributorData, 'login', profile.username)) {
+            // Give the user a contributor badge if returns true
+            user.contributor = true
+          } else {
+            user.contributor = false
           }
 
           await user.save();
