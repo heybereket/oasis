@@ -117,10 +117,9 @@
 .markdown h1,
 .markdown h2,
 .markdown h3 {
-  border-bottom: 2px solid #fafafa;
   margin-bottom: 1.15rem;
   padding-bottom: 0.5rem;
-  text-align: center;
+  text-align: left;
 }
 
 .markdown blockquote {
