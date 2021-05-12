@@ -11,7 +11,7 @@ import { createClient } from 'redis';
 import connectRedis from 'connect-redis';
 import { ormconfig } from '@root/ormconfig';
 import passport from 'passport';
-import checkEnv from '@utils/checkEnv';
+import checkEnv from '@utils/common/checkEnv';
 
 const RedisStore = connectRedis(expressSession);
 
@@ -41,7 +41,6 @@ export const createApp = async () => {
       resave: false,
       saveUninitialized: true,
       cookie: {
-        domain: process.env.OASIS_API_PUBLIC_DOMAIN,
         secure: process.env.NODE_ENV === 'production',
         maxAge: null,
         signed: true,

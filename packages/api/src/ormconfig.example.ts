@@ -1,7 +1,7 @@
 // Copy this file into "ormconfig.ts" in this same directory
 // You can change the TypeORM connection options here
 import { ConnectionOptions } from 'typeorm';
-import { joinRoot } from '@utils/rootPath';
+import { joinRoot } from '@utils/common/rootPath';
 
 /// SQLite (simple flat file storage intended for development instances)
 export const ormconfig: ConnectionOptions = {
