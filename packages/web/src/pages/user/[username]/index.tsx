@@ -91,20 +91,16 @@ const Profile: React.FC<ProfileProps> = (props) => {
                     </h5>
                   )}
 
-              <div className="flex">
-                {(data?.verified === true) && (
-                    <span className="tracking-wider text-white bg-[#306EEA] px-4 py-1 mt-3 mr-2 text-sm rounded-full h-8 w-8 flex items-center justify-center leading-loose font-semibold" title="Verified">
-                      V
-                    </span>
-                 )}
-
-                {(data?.contributor === true) && (
-                  <span className="tracking-wider text-white bg-[#306EEA] px-4 py-1 mt-3 text-sm rounded-full h-8 w-8 flex items-center justify-center leading-loose font-semibold" title="Contributor">
-                    C
-                  </span>
-                )}
-              </div>
-
+                  <div className="flex">
+                    {data?.badges?.map((badge) => (
+                      <img
+                        key={badge.id}
+                        title={badge.description}
+                        src={`/static/badges/${badge.imagePath}`}
+                        className="bg-[#306EEA] px-1 py-1 mx-2 my-3 rounded-full flex items-center justify-center"
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

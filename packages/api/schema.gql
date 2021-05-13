@@ -46,6 +46,7 @@ type Mutation {
   deleteAccount: Boolean!
   editComment(commentId: String!, data: EditCommentInput!): Boolean!
   editPost(data: EditPostInput!, postId: String!): Boolean!
+  giveBadge(badgeName: String!, username: String!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   updateProfile(data: UpdateProfileInput!): Boolean!
@@ -141,7 +142,6 @@ type User {
   banner: String
   bio: String
   comments: [Comment!]
-  contributor: Boolean
   createdAt: String!
   discord: String
   github: String

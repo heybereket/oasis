@@ -3,9 +3,10 @@ import { Strategy } from 'passport-github2';
 import User from '@entities/User';
 import { v4 as uuid } from 'uuid';
 import { checkUsername } from '@utils/auth/checkUsername';
-import { http } from '@utils/common/http'
-import { searchJSON } from '@lib/index'
+import { http } from '@utils/common/http';
+import { searchJSON } from '@lib/index';
 import { PassportStatic } from 'passport';
+import Badge from '@entities/Badge';
 
 export default (passport: PassportStatic): Router => {
   passport.use(
@@ -18,7 +19,9 @@ export default (passport: PassportStatic): Router => {
       async (accessToken, refreshToken, profile, done) => {
         const id = String(profile.id);
 
-        const contributorData = http('https://api.github.com/repos/oasis-sh/oasis/contributors')
+        const contributorData = http(
+          'https://api.github.com/repos/oasis-sh/oasis/contributors'
+        );
 
         try {
           const user =
@@ -38,7 +41,13 @@ export default (passport: PassportStatic): Router => {
           // Searches JSON to see if user is a contributor in the repository
           if (searchJSON(await contributorData, 'login', profile.username)) {
             // Give the user a contributor badge if returns true
-            user.contributor = true
+            user.badges = Promise.resolve([
+              await Badge.createQueryBuilder()
+                .where('name = :name', {
+                  name: 'contributor-badge',
+                })
+                .getOne(),
+            ]);
           }
 
           await user.save();

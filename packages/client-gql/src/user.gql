@@ -12,7 +12,6 @@ query getCurrentUser {
     username
     name
     verified
-    contributor
   }
 }
 
@@ -30,7 +29,13 @@ query getUserByName($username: String!) {
     username
     name
     verified
-    contributor
+    badges {
+      name
+      id
+      imagePath
+      level
+      description
+    }
   }
 }
 

@@ -69,10 +69,6 @@ export default class User extends BaseEntity {
   @Field()
   verified: boolean;
 
-  @Column({ nullable: true })
-  @Field({ nullable: true })
-  contributor: boolean;
-
   @Column('simple-array')
   @Field(() => [Role])
   roles: Role[] = [];
@@ -93,5 +89,4 @@ export default class User extends BaseEntity {
   @ManyToMany(() => Badge)
   @JoinTable()
   badges: Promise<Badge[]>;
-  user: string[];
 }
