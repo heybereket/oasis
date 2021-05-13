@@ -44,7 +44,7 @@ export default (passport: PassportStatic): Router => {
             user.badges = Promise.resolve([
               await Badge.createQueryBuilder()
                 .where('name = :name', {
-                  name: 'contributor-badge',
+                  name: 'contributor',
                 })
                 .getOne(),
             ]);
