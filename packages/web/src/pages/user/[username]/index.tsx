@@ -204,12 +204,25 @@ const Profile: React.FC<ProfileProps> = (props) => {
             <div className="mt-4 bg-gray-800 rounded-xl py-6 px-6">
               <h4 className="font-extrabold">About {`@${data?.username}`}</h4>
               {data?.bio !== null ? (
-                <h5 className="text-gray-300 font-bold">{data?.bio}</h5>
+                <div className="text-gray-300 font-bold">
+                  <StyledMarkdown text={data?.bio ?? ''} />
+                </div>
               ) : (
                 <h5 className="text-gray-300 font-bold">
                   Hmm, it seems like @{data?.username} does not have a bio set.
                 </h5>
               )}
+
+              <div className="flex">
+                {data?.badges?.map((badge) => (
+                  <img
+                    key={badge.id}
+                    title={badge.description}
+                    src={`/static/badges/${badge.imagePath}`}
+                    className="bg-[#306EEA] px-1 py-1 mx-2 my-3 rounded-full flex items-center justify-center"
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
