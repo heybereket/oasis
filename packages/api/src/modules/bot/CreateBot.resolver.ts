@@ -2,6 +2,7 @@ import User from '@entities/User';
 import { ContextType } from '@root/apolloServer';
 import { NoBot } from '@utils/auth/NoBot';
 import { ApolloError } from 'apollo-server-express';
+import { v4 as uuidv4 } from 'uuid';
 import {
   Arg,
   Authorized,
@@ -23,7 +24,7 @@ class CreateBotInput {
 
 @Resolver()
 export class CreateBotResolver {
-  @Mutation(() => Boolean)
+  @Mutation(() => String)
   @Authorized()
   @NoBot()
   async createBot(
@@ -56,9 +57,11 @@ export class CreateBotResolver {
     bot.comments = Promise.resolve([]);
     bot.badges = Promise.resolve([]);
     bot.botOwner = Promise.resolve(user);
+    const token = uuidv4();
+    bot.botToken = token;
 
     bot.save();
 
-    return true;
+    return token;
   }
 }

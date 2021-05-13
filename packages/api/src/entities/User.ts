@@ -3,6 +3,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  Generated,
   JoinTable,
   ManyToMany,
   ManyToOne,
@@ -102,4 +103,7 @@ export default class User extends BaseEntity {
   @Field(() => [User], { nullable: true })
   @OneToMany(() => User, (user) => user.botOwner, { nullable: true })
   bots: Promise<User[]>;
+
+  @Column({ nullable: true })
+  botToken: string;
 }

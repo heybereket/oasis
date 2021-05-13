@@ -46,7 +46,7 @@ input MakeBadgeInput {
 }
 
 type Mutation {
-  createBot(data: CreateBotInput!): Boolean!
+  createBot(data: CreateBotInput!): String!
   createComment(data: NewCommentInput!, postId: String!): Boolean!
   createPost(data: NewPostInput!): Boolean!
   deleteAccount: Boolean!
