@@ -7,7 +7,7 @@ import DiscordAuth from './providers/discord';
 export default (passport: PassportStatic): Router => {
   const authRouter = Router();
 
-  /** Third party auth services */
+  // OAuth Providers
   if (process.env.OASIS_API_GITHUB_CLIENT_ID)
     authRouter.use('/github', GitHubAuth(passport));
   if (process.env.OASIS_API_TWITTER_KEY)
