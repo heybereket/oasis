@@ -1,34 +1,45 @@
-import fs from 'fs';
-import path from 'path';
-import { promisify } from 'util';
-
 type EnvValidationFn = (logError: boolean) => Promise<boolean>;
 
 export default async function checkEnv(): Promise<boolean> {
   for (let requiredEnvChecker of [
     /* Redis and dependencies */
-    checkRequiredEnv('OASIS_API_REDIS_URL'),
+    checkRequiredEnv('OASIS_API_REDIS_URL', true),
 
     /* OAuth Credentials */
-    ...checkRequiredOatuhEnvs('GITHUB'), // GitHub
-    // ...checkRequiredOatuhEnvs('TWITTER'), // Twitter
+    ...checkOAuthEnvs('GITHUB'), // GitHub
+    ...checkOAuthEnvs('DISCORD'), // Discord
+    ...checkTwitterOAuthEnvs('TWITTER'), // Twitter
 
     /* Extra props */
-    checkRequiredEnv('OASIS_API_SESSION_SECRET'),
-
-  ]) if (!(await requiredEnvChecker(true))) return false;
+    checkRequiredEnv('OASIS_API_SESSION_SECRET', true),
+  ])
+    if (!(await requiredEnvChecker(true))) return false;
   return true;
 }
 
-function checkRequiredEnv(envProp: string, additionalValidation?: () => Promise<string | void>): EnvValidationFn {
-
+const checkRequiredEnv = (
+  envProp: string,
+  required: boolean,
+  additionalValidation?: () => Promise<string | void>
+): EnvValidationFn => {
   return async (logError: boolean) => {
-    const isValid: boolean = process.env[envProp] !== undefined && process.env[envProp] !== null && process.env[envProp].trim().length > 0;
+    const isValid: boolean =
+      process.env[envProp] !== undefined &&
+      process.env[envProp] !== null &&
+      process.env[envProp].trim().length > 0;
 
     // If the property is not set, we can immediately error out.
-    if (!isValid) {
-      if (logError) console.error(`> You must have ${envProp} set in your packages/api/.env file.`);
+    if (!isValid && required) {
+      if (logError)
+        console.error(
+          `> You must have ${envProp} set in your packages/api/.env file.`
+        );
       return false;
+    } else if (!isValid && !required) {
+      if (logError)
+        console.warn(
+          `> The env var ${envProp} is not defined. This will disable this OAuth strategy.`
+        );
     }
 
     // If the additionalValidation property is set, we'll call that to validate the env property.
@@ -47,15 +58,20 @@ function checkRequiredEnv(envProp: string, additionalValidation?: () => Promise<
     // all good!
     return true;
   };
+};
 
-}
-
-function checkRequiredOatuhEnvs(serviceName: string) {
-
+const checkOAuthEnvs = (serviceName: string) => {
   return [
-    checkRequiredEnv(`OASIS_API_${serviceName}_CLIENT_ID`),
-    checkRequiredEnv(`OASIS_API_${serviceName}_CLIENT_SECRET`),
-    checkRequiredEnv(`OASIS_API_${serviceName}_CALLBACK_URL`),
+    checkRequiredEnv(`OASIS_API_${serviceName}_CLIENT_ID`, false),
+    checkRequiredEnv(`OASIS_API_${serviceName}_CLIENT_SECRET`, false),
+    checkRequiredEnv(`OASIS_API_${serviceName}_CALLBACK_URL`, false),
   ];
+};
 
-}
+const checkTwitterOAuthEnvs = (serviceName: string) => {
+  return [
+    checkRequiredEnv(`OASIS_API_${serviceName}_KEY`, false),
+    checkRequiredEnv(`OASIS_API_${serviceName}_SECRET_KEY`, false),
+    checkRequiredEnv(`OASIS_API_${serviceName}_CALLBACK_URL`, false),
+  ];
+};
