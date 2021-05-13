@@ -22,7 +22,7 @@ export default (passport: PassportStatic): Router => {
         clientSecret: process.env.OASIS_API_DISCORD_CLIENT_SECRET,
         callbackURL: process.env.OASIS_API_DISCORD_CALLBACK_URL,
       },
-      async (accessToken, refreshToken, profile, done) => {
+      async (_, __, profile, done) => {
         const id = String(profile.id);
 
         try {
