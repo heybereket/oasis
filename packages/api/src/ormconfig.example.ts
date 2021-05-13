@@ -23,3 +23,5 @@ export const ormconfig: ConnectionOptions = {
 //   entities: [joinRoot("./entities/*.*")],
 //   migrations: [joinRoot("./migrations/*.*")]
 // };
+
+export default ormconfig;
