@@ -34,7 +34,7 @@ const checkRequiredEnv = (
     if (!isValid && required) {
       if (logError)
         console.error(
-          `${chalkLog('error')} - You must have ${envProp} set in packages/api/.env.`
+          `${chalkLog('error')} - You must have ${envProp} set in packages/api/.env`
         );
       return false;
     } else if (!isValid && !required) {
