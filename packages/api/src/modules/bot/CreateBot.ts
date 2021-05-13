@@ -23,7 +23,7 @@ class CreateBotInput {
 
 @Resolver()
 export class CreateBotResolver {
-  @Mutation()
+  @Mutation(() => Boolean)
   @Authorized()
   @NoBot()
   async createBot(
@@ -56,5 +56,7 @@ export class CreateBotResolver {
     bot.comments = Promise.resolve([]);
     bot.badges = Promise.resolve([]);
     bot.botOwner = Promise.resolve(user);
+
+    return true;
   }
 }
