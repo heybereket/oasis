@@ -49,13 +49,15 @@ export class CreateBotResolver {
     bot.username = data.username;
     bot.name = data.name || data.username;
     bot.createdAt = String(Date.now());
-    bot.verified = user.verified;
+    bot.verified = false;
     bot.roles = [];
     bot.repos = Promise.resolve([]);
     bot.posts = Promise.resolve([]);
     bot.comments = Promise.resolve([]);
     bot.badges = Promise.resolve([]);
     bot.botOwner = Promise.resolve(user);
+
+    bot.save();
 
     return true;
   }

@@ -95,7 +95,7 @@ export default class User extends BaseEntity {
   @Column({ nullable: true })
   isBot: boolean;
 
-  @Field({ nullable: true })
+  @Field(() => User, { nullable: true })
   @ManyToOne(() => User, (user) => user.bots, { nullable: true })
   botOwner: Promise<User>;
 

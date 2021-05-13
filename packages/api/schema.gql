@@ -23,6 +23,11 @@ type Comment {
   post: Post!
 }
 
+input CreateBotInput {
+  name: String!
+  username: String!
+}
+
 input EditCommentInput {
   content: String!
 }
@@ -41,6 +46,7 @@ input MakeBadgeInput {
 }
 
 type Mutation {
+  createBot(data: CreateBotInput!): Boolean!
   createComment(data: NewCommentInput!, postId: String!): Boolean!
   createPost(data: NewPostInput!): Boolean!
   deleteAccount: Boolean!
@@ -141,12 +147,15 @@ type User {
   badges: [Badge!]
   banner: String
   bio: String
+  botOwner: User
+  bots: [User!]
   comments: [Comment!]
   createdAt: String!
   discord: String
   github: String
   google: String
   id: ID!
+  isBot: Boolean
   name: String
   posts: [Post!]
   repos: [Repo!]
