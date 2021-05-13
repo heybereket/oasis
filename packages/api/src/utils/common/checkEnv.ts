@@ -1,3 +1,5 @@
+import { chalkLog } from '@lib/chalkLog'
+
 type EnvValidationFn = (logError: boolean) => Promise<boolean>;
 
 export default async function checkEnv(): Promise<boolean> {
@@ -7,8 +9,8 @@ export default async function checkEnv(): Promise<boolean> {
 
     /* OAuth Credentials */
     ...checkOAuthEnvs('GITHUB'), // GitHub
-    ...checkOAuthEnvs('DISCORD'), // Discord
     ...checkTwitterOAuthEnvs('TWITTER'), // Twitter
+    ...checkOAuthEnvs('DISCORD'), // Discord
 
     /* Extra props */
     checkRequiredEnv('OASIS_API_SESSION_SECRET', true),
@@ -32,13 +34,13 @@ const checkRequiredEnv = (
     if (!isValid && required) {
       if (logError)
         console.error(
-          `> You must have ${envProp} set in your packages/api/.env file.`
+          `${chalkLog('error')} - You must have ${envProp} set in packages/api/.env.`
         );
       return false;
     } else if (!isValid && !required) {
       if (logError)
         console.warn(
-          `> The env var ${envProp} is not defined. This will disable this OAuth strategy.`
+          `${chalkLog('warn')} - ${envProp} is not defined in packages/api/.env`
         );
     }
 
@@ -49,7 +51,7 @@ const checkRequiredEnv = (
       // or a 'nullish' (i.e. undefined) value if not.
       // Hence if there is error, we will print it and return false to indicate the env check failed.
       if (additionalValidationError) {
-        if (logError) console.error(`>> ${additionalValidationError}`);
+        if (logError) console.error(`${chalkLog('error')} - ${additionalValidationError}`);
         return false;
       }
     }

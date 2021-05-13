@@ -19,7 +19,6 @@ const handle = app.getRequestHandler();
 
   const server = await createApp();
   if (!server) {
-    console.error(`${chalkLog('error')} - Uh oh, we ran into some errors with our server.`);
     ExitWithErrors(1)
   }
 

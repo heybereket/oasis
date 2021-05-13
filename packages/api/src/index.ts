@@ -12,6 +12,7 @@ import connectRedis from 'connect-redis';
 import { ormconfig } from '@root/ormconfig';
 import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
+import { chalkLog } from '@lib/chalkLog'
 
 const RedisStore = connectRedis(expressSession);
 
@@ -19,7 +20,6 @@ const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
 export const createApp = async () => {
   if (!(await checkEnv())) {
-    console.error("> For more information, refer to the oasis.sh developer's wiki: https://github.com/oasis-sh/oasis/wiki/API-Quick-Start")
     return undefined;
   }
 

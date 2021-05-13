@@ -1,4 +1,4 @@
-const chalk = require('chalk');
+import chalk from 'chalk'
 
 export const chalkLog = (type: string): any => {
  switch (type) {
