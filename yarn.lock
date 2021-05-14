@@ -2093,6 +2093,7 @@ __metadata:
     graphql-query-complexity: ^0.8.1
     jest: ^26.6.3
     passport: ^0.4.1
+    passport-custom: ^1.1.1
     passport-discord: ^0.1.4
     passport-github2: ^0.1.12
     passport-google-oauth20: ^2.0.0
@@ -2135,7 +2136,7 @@ __metadata:
     "@babel/eslint-parser": ^7.14.2
     "@primer/octicons-react": ^13.0.0
     "@types/node": ^15.0.1
-    "@types/react-dom": ^17.0.4
+    "@types/react-dom": ^17.0.5
     "@types/react-syntax-highlighter": ^13.5.0
     "@typescript-eslint/eslint-plugin": ^4.23.0
     "@typescript-eslint/parser": ^4.23.0
@@ -2848,12 +2849,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^17.0.4":
-  version: 17.0.4
-  resolution: "@types/react-dom@npm:17.0.4"
+"@types/react-dom@npm:^17.0.5":
+  version: 17.0.5
+  resolution: "@types/react-dom@npm:17.0.5"
   dependencies:
     "@types/react": "*"
-  checksum: 2c69fc56cbb6231d0725fbcec09386fccd797863b3b67ebe046be0f777f25c0d4a147f3601a3cf62ef45aea1f0af2df74d063c1ccdac18211ec43f5029b233d9
+  checksum: b3e23acb7be9405050abb4bcd443d14b16b2f3ded2d1853528199e4307b17b25186f905ddd236c27b6ef0297e6779b7fedd11fd24ee9170771be45a7e8e70f4b
   languageName: node
   linkType: hard
 
@@ -11884,6 +11885,15 @@ __metadata:
   version: 0.1.1
   resolution: "pascalcase@npm:0.1.1"
   checksum: 268a9dbf9cd934fcd0ba02733b7d6176834b13a608bbcd295550636b3c6371a6047875175b457e705b283e81ec171884c9cd86d1fd6c49f70f66fbc3783dc0c1
+  languageName: node
+  linkType: hard
+
+"passport-custom@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "passport-custom@npm:1.1.1"
+  dependencies:
+    passport-strategy: 1.x.x
+  checksum: 5245b6bcf84b4790c96364f33ed8225f17bef4db6c3555d9e6be445efaf65fff5081721c5cbda74ca88bd981aba52b7538f4b5e5ab8ea4545634d21c09139aef
   languageName: node
   linkType: hard
 

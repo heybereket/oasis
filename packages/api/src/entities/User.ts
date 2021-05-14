@@ -3,8 +3,10 @@ import {
   BaseEntity,
   Column,
   Entity,
+  Generated,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -89,4 +91,19 @@ export default class User extends BaseEntity {
   @ManyToMany(() => Badge)
   @JoinTable()
   badges: Promise<Badge[]>;
+
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  isBot: boolean;
+
+  @Field(() => User, { nullable: true })
+  @ManyToOne(() => User, (user) => user.bots, { nullable: true })
+  botOwner: Promise<User>;
+
+  @Field(() => [User], { nullable: true })
+  @OneToMany(() => User, (user) => user.botOwner, { nullable: true })
+  bots: Promise<User[]>;
+
+  @Column({ nullable: true })
+  botToken: string;
 }

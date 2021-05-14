@@ -4,10 +4,14 @@ import GitHubAuth from './providers/github';
 import TwitterAuth from './providers/twitter';
 import DiscordAuth from './providers/discord';
 import GoogleAuth from './providers/google';
+import BotAuth from './providers/bot';
 
 export default (passport: PassportStatic): Router => {
   const authRouter = Router();
 
+  // Bot Auth
+  authRouter.use('/bot', BotAuth(passport));
+  
   // OAuth Providers
   if (process.env.OASIS_API_GITHUB_CLIENT_ID)
     authRouter.use('/github', GitHubAuth(passport));
@@ -17,6 +21,7 @@ export default (passport: PassportStatic): Router => {
     authRouter.use('/discord', DiscordAuth(passport));
   if (process.env.OASIS_API_GOOGLE_CLIENT_ID)
     authRouter.use('/google', GoogleAuth(passport));
+
   /** Internal actions. */
   authRouter.get('/logout', (req, res) => {
     req.logout();
