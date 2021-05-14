@@ -90,6 +90,7 @@ type Query {
   getPost(id: String!): Post!
   getRepo(id: String!): Repo!
   getResort(id: String!): Resort!
+  getResortByName(name: String!): Resort
   getUser(id: String!): User!
   getUserByName(username: String!): User
   paginateBadges(limit: Float!, offset: Float!): [Badge!]!
