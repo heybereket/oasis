@@ -4,19 +4,19 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn run build:api && yarn workspace @oasis/web run build",
+    "build": "yarn workspace @oasis/web run build",
     "build:api": "yarn workspace @oasis/api run build && yarn workspace @oasis/client-gql run build",
     "clean": "yarn workspaces foreach --include @oasis/api,@oasis/client-gql,@oasis/web -p run clean",
     "commit": "git add . && cz && git push",
-    "deploy": "sh bin/deploy.sh",
+    "deploy:dev": "sh bin/deploy.sh",
     "deploy:prod": "yarn lint && git add . && git commit -m \"chore(deploy): Merge staging -> prod\" &&git pull origin staging  && git checkout prod && git merge staging && git push origin prod && git checkout staging",
-    "dev": "yarn workspace @oasis/web dev",
+    "dev:web": "yarn workspace @oasis/web dev",
     "dev:api": "yarn workspaces foreach --include @oasis/client-gql,@oasis/api -p run dev",
     "lint": "yarn workspaces foreach --exclude @oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/client-gql -p run prettify",
     "prepare": "husky install",
     "publish:bot": "sh bin/publish.sh",
     "reinstall": "yarn clean && rimraf packages/**/*.sqlite || yarn install",
-    "start": "yarn workspace @oasis/web run start"
+    "start:web": "yarn workspace @oasis/web run start"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.2",
