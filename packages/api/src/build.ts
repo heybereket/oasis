@@ -1,7 +1,6 @@
-import { buildSchema } from "./buildSchema";
-import { buildGlobs } from "./globs/build";
+import 'reflect-metadata';
+import { getSchema } from '@utils/getSchema';
+import { config } from 'dotenv';
+config();
 
-(async () => {
-  await buildGlobs();
-  await buildSchema();
-})();
+getSchema().then(() => process.exit());

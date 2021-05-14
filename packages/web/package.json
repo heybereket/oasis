@@ -3,39 +3,45 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "tsc -p server && node server/dist/index.js",
+    "build": "next build && tsc -p server",
+    "start": "NODE_ENV=production node server/dist/index.js",
     "prettify": "prettier --config .prettierrc --write src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
-    "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
+    "lint": "yarn run eslint . --ext ts --ext tsx --ext js",
+    "clean": "rimraf .next/*"
   },
   "dependencies": {
-    "@oasis/api": "0.1.0",
     "@primer/octicons-react": "^13.0.0",
-    "firebase": "^8.4.3",
+    "formik": "^2.2.6",
+    "github-markdown-css": "^4.0.0",
     "graphql-cost-analysis": "^1.0.3",
     "next": "latest",
-    "react": "^17.0.1",
+    "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-firebase-hooks": "^3.0.4",
+    "react-markdown": "^6.0.2",
+    "react-syntax-highlighter": "^15.4.3",
+    "remark-gfm": "^1.0.0",
     "tailwindcss": "^2.1.2",
     "typescript": "^4.2.4",
-    "zustand": "^3.4.2"
+    "zustand": "^3.5.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.0",
-    "@babel/eslint-parser": "^7.13.14",
+    "@babel/core": "^7.14.2",
+    "@babel/eslint-parser": "^7.14.2",
     "@types/node": "^15.0.1",
-    "@types/react": "^17.0.4",
-    "@types/react-dom": "^17",
-    "@typescript-eslint/eslint-plugin": "^4.21.0",
-    "@typescript-eslint/parser": "^4.21.0",
-    "autoprefixer": "^10.0.4",
+    "@types/react-dom": "^17.0.5",
+    "@types/react-syntax-highlighter": "^13.5.0",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "autoprefixer": "^10.2.5",
+    "chalk": "^4.1.1",
     "eslint": "^7.25.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "latest",
     "next-secure-headers": "^2.2.0",
-    "postcss": "^8.1.10",
-    "prettier": "2.2.1"
+    "postcss": "^8.2.13",
+    "prettier": "2.3.0",
+    "ts-node": "^9.1.1"
   }
 }

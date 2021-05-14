@@ -2,16 +2,22 @@ const { createSecureHeaders } = require('next-secure-headers');
 const { join } = require('path');
 
 module.exports = {
+  poweredByHeader: false,
   async headers() {
     return [{ source: '/(.*)', headers: createSecureHeaders() }];
   },
   async redirects() {
     return [
       {
-        source: '/user/:username',
-        destination: '/u/:username',
+        source: '/u/:username',
+        destination: '/user/:username',
         permanent: true,
-      }
+      },
+      {
+        source: '/r/:resort',
+        destination: '/resort/:resort',
+        permanent: true,
+      },
     ];
   },
   webpack: (config, { isServer }) => {
@@ -27,5 +33,6 @@ module.exports = {
   env: {
     PROJECT_ROOT: join(__dirname, '../..'),
     IS_NEXT: true,
+    OASIS_API_SRC_PATH: join(__dirname, '../api/src'),
   },
 };

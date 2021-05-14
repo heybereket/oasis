@@ -1,78 +1,76 @@
-import { join, dirname } from "path";
-import { config } from "dotenv";
+import 'reflect-metadata';
+import { config } from 'dotenv';
+config();
 
-const ROOT = process.env.PROJECT_ROOT
-  ? join(process.env.PROJECT_ROOT, "./packages/api")
-  : dirname(__dirname);
+import express from 'express';
+import { createConnection } from 'typeorm';
+import { createApolloServer } from '@root/apolloServer';
+import authRouter from '@modules/auth';
+import expressSession from 'express-session';
+import { createClient } from 'redis';
+import connectRedis from 'connect-redis';
+import { ormconfig } from '@root/ormconfig';
+import passport from 'passport';
+import checkEnv from '@utils/common/checkEnv';
+import { isProduction } from '@lib/constants';
 
-config({ path: ROOT + "/.env" });
+const RedisStore = connectRedis(expressSession);
 
-import "reflect-metadata";
+const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
-import { GraphQLRequestContext } from "apollo-server-plugin-base";
-import { ApolloServer } from "apollo-server-micro";
-import admin from "./utils/firebase-admin";
-import { NextApiRequest } from "next";
+export const createApp = async () => {
+  if (!(await checkEnv())) {
+    return undefined;
+  }
 
-import { getComplexity, simpleEstimator } from "graphql-query-complexity";
-import depthLimit from "graphql-depth-limit";
+  const app = express();
+  app.disable('x-powered-by');
 
-import { getSchema } from "./utils/getSchema";
-import { TypeInfo, ValidationContext } from "graphql";
-import getDepth from "./utils/getDepth";
+  if (process.env.OASIS_API_TRUST_PROXY === 'true') {
+    app.set('trust proxy', 1);
+  }
 
-export { getSchema };
+  await createConnection(ormconfig);
+  const apolloServer = await createApolloServer();
 
-export const createApolloServer = async () => {
-  const schema = await getSchema();
-
-  const server = new ApolloServer({
-    schema,
-    context: async ({ req }: { req: NextApiRequest }) => {
-      const authHeader = req.headers.authorization;
-      const socketInfo = req.socket.address();
-
-      if (!authHeader || !authHeader.startsWith("Bearer "))
-        return { hasAuth: false, socketInfo };
-
-      const token = authHeader.substring(7, authHeader.length);
-
-      try {
-        const data = await admin.auth().verifyIdToken(token);
-        return { hasAuth: true, ...data, socketInfo };
-      } catch (e) {
-        return { hasAuth: false, socketInfo };
-      }
-    },
-    plugins: [
-      {
-        requestDidStart() {
-          return {
-            didResolveOperation(context: GraphQLRequestContext) {
-              const reqData = context.context;
-              const validationContext = new ValidationContext(
-                schema,
-                context.document,
-                new TypeInfo(schema),
-                () => null
-              );
-
-              const complexity = getComplexity({
-                estimators: [simpleEstimator({ defaultComplexity: 1 })],
-                schema,
-                query: context.document,
-              });
-
-              getDepth(validationContext, (depths) => console.log(depths));
-              console.log(`Complexity: ${complexity}`);
-            },
-          };
-        },
+  /* Express-Session configuration */
+  app.use(
+    expressSession({
+      store: new RedisStore({ client: redisClient }),
+      secret: process.env.OASIS_API_SESSION_SECRET,
+      resave: false,
+      saveUninitialized: true,
+      cookie: {
+        secure: isProduction,
+        maxAge: null,
+        signed: true,
+        sameSite: 'lax',
       },
-    ],
-    playground: true,
-    introspection: true,
-  });
+    })
+  );
 
-  return server;
+  /* Passport configuration */
+  app.use(passport.initialize());
+  app.use(passport.session());
+  passport.serializeUser((user, done) => done(null, user));
+  passport.deserializeUser((user, done) => done(null, user));
+
+  /* Authentication API */
+  app.use('/api/auth', authRouter(passport));
+
+  /* Apollo GraphQL Server */
+  apolloServer.applyMiddleware({ app });
+
+  return app;
 };
+
+if (require.main === module) {
+  const PORT = process.env.PORT || 4000;
+  createApp().then((app) => {
+    if (!app) process.exit(1);
+
+    app.listen(PORT, () =>
+      console.log(`Server started on http://localhost:${PORT}/graphql`)
+    );
+  });
+}

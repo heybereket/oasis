@@ -1,70 +1,41 @@
-query getUserByName($username: String!) {
-  getUserByName(username: $username) {
-    createdAt
+query getCurrentUser {
+  currentUser {
     id
-    posts {
-      author {
-        createdAt
-        id
-        posts {
-          comments {
-            content
-            dislikes
-            id
-            likes
-          }
-          dislikes
-          id
-          likes
-          message
-          title
-          topics
-        }
-        repos {
-          active
-          date_added
-          desc
-          full_name
-          github_owner
-          id
-          issues
-          language
-          name
-          owner {
-            createdAt
-            id
-            username
-            verified
-          }
-          stars
-          url
-        }
-        username
-        verified
-      }
-      dislikes
-      id
-      likes
-      message
-      title
-      topics
-    }
-    repos {
-      active
-      date_added
-      desc
-      full_name
-      github_owner
-      id
-      issues
-      language
-      name
-      stars
-      url
-    }
+    banner
+    avatar
+    createdAt
+    github
+    twitter
+    discord
+    google
+    bio
     username
     name
     verified
+  }
+}
+
+query getUserByName($username: String!) {
+  getUserByName(username: $username) {
+    id
+    banner
+    avatar
+    createdAt
+    github
+    twitter
+    discord
+    google
+    bio
+    username
+    name
+    verified
+    badges {
+      name
+      id
+      imagePath
+      level
+      description
+    }
   }
 }
 
@@ -136,4 +107,12 @@ query getUser($id: String!) {
     name
     verified
   }
+}
+
+mutation updateProfile($data: UpdateProfileInput!) {
+  updateProfile(data: $data)
+}
+
+mutation deleteAccount {
+  deleteAccount
 }

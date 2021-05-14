@@ -1,23 +1,32 @@
 import { Arg, Query, Resolver } from 'type-graphql';
-import { BaseEntity } from '../connection';
+import { BaseEntity } from 'typeorm';
 
-export const createBaseResolver = (
+export const createResolver = (
   suffix: string,
   entity: typeof BaseEntity
 ): any => {
   @Resolver()
   class BaseResolver {
-    @Query({ name: `all${suffix}s` })
-    all() {
-      return entity.find();
-    }
+    // @Query(() => [entity], { name: `all${suffix}s` })
+    // all() {
+    //   return entity.find();
+    // }
 
-    @Query({ name: `paginate${suffix}s` })
+    @Query(() => [entity], {
+      name: `paginate${suffix}s`,
+      complexity: ({ args }) => args.limit,
+    })
     paginate(@Arg('limit') limit: number, @Arg('offset') offset: number) {
-      return entity.paginate(limit, offset);
+      return entity.find({
+        skip: offset,
+        take: limit,
+      });
     }
 
-    @Query({ name: `get${suffix}` })
+    @Query(() => entity, {
+      name: `get${suffix}`,
+      complexity: ({ args }) => args.limit,
+    })
     get(@Arg('id') id: string) {
       return entity.findOne(id);
     }

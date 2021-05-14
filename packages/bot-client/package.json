@@ -1,0 +1,26 @@
+{
+  "name": "@oasis-sh/bot",
+  "version": "0.0.0",
+  "description": "The official Bot Wrapper for oasis.",
+  "main": "src/index.ts",
+  "keywords": [
+    "oasis",
+    "bot"
+  ],
+  "scripts": {
+    "publish": "npm publish"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Bereket Semagn",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oasis-sh/oasis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oasis-sh/oasis/issues"
+  },
+  "homepage": "https://github.com/oasis-sh/oasis#readme"
+}

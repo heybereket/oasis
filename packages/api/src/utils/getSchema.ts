@@ -1,15 +1,12 @@
 import { buildSchema } from 'type-graphql';
-import { importAll } from '../globs/importAll';
+import { joinRoot } from './common/rootPath';
+import { customAuthChecker } from '@utils/auth/authChecker';
+import { isProduction } from '@lib/constants'
 
-let schema: ReturnType<typeof buildSchema>;
-
-export const getSchema = async () => {
-  if (!schema)
-    schema = buildSchema({
-      resolvers: (await importAll('resolvers')) as any,
-      emitSchemaFile:
-        process.env.NODE_ENV === 'development' ? '../api/schema.gql' : false,
-    });
-
-  return schema;
+export const getSchema = () => {
+  return buildSchema({
+    resolvers: [joinRoot('./modules/**/*.resolver.js')],
+    emitSchemaFile: isProduction && joinRoot('../schema.gql'),
+    authChecker: customAuthChecker,
+  });
 };

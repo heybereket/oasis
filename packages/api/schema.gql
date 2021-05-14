@@ -3,43 +3,94 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type Badge {
+  createdAt: String!
+  description: String!
+  id: ID!
+  imagePath: String!
+  level: Float!
+  name: String!
+}
+
 type Comment {
   author: User!
   content: String!
+  createdAt: String!
   dislikes: Int!
-  id: String!
+  id: ID!
+  lastEdited: String
   likes: Int!
   post: Post!
 }
 
-type Mutation {
-  authenticate(idToken: String!): Boolean!
+input EditCommentInput {
+  content: String!
 }
 
-type Post {
-  author: User!
-  comments: [Comment!]!
-  dislikes: Int!
-  id: String!
-  likes: Int!
+input EditPostInput {
+  message: String
+  title: String
+  topics: [String!]
+}
+
+input MakeBadgeInput {
+  description: String!
+  imagePath: String!
+  level: Float!
+  name: String!
+}
+
+type Mutation {
+  createComment(data: NewCommentInput!, postId: String!): Boolean!
+  createPost(data: NewPostInput!): Boolean!
+  deleteAccount: Boolean!
+  editComment(commentId: String!, data: EditCommentInput!): Boolean!
+  editPost(data: EditPostInput!, postId: String!): Boolean!
+  giveBadge(badgeName: String!, username: String!): Boolean!
+  makeAdmin(roles: [Role!]!, user: String!): Boolean!
+  makeBadge(data: MakeBadgeInput!): Boolean!
+  updateProfile(data: UpdateProfileInput!): Boolean!
+}
+
+input NewCommentInput {
+  content: String!
+}
+
+input NewPostInput {
   message: String!
   title: String!
   topics: [String!]!
 }
 
+type Post {
+  author: User!
+  comments: [Comment!]!
+  createdAt: String!
+  dislikes: Int!
+  id: ID!
+  lastEdited: String
+  likes: Int!
+  message: String!
+  resort: Resort
+  title: String!
+  topics: [String!]!
+}
+
 type Query {
-  allComments: [Comment!]!
-  allPosts: [Post!]!
-  allRepos: [Repo!]!
-  allUsers: [User!]!
-  getComment(id: String!): Comment
-  getPost(id: String!): Post
-  getRepo(id: String!): Repo
-  getUser(id: String!): User
-  getUserByName(username: String!): [User!]
+  currentUser: User
+  getAvailableUsername(username: String!): String!
+  getBadge(id: String!): Badge!
+  getComment(id: String!): Comment!
+  getPost(id: String!): Post!
+  getRepo(id: String!): Repo!
+  getResort(id: String!): Resort!
+  getUser(id: String!): User!
+  getUserByName(username: String!): User
+  paginateBadges(limit: Float!, offset: Float!): [Badge!]!
   paginateComments(limit: Float!, offset: Float!): [Comment!]!
   paginatePosts(limit: Float!, offset: Float!): [Post!]!
   paginateRepos(limit: Float!, offset: Float!): [Repo!]!
+  paginateResorts(limit: Float!, offset: Float!): [Resort!]!
   paginateUsers(limit: Float!, offset: Float!): [User!]!
 }
 
@@ -62,12 +113,46 @@ type Repo {
   url: String!
 }
 
+type Resort {
+  banner: String!
+  description: String!
+  id: String!
+  logo: String!
+  name: String!
+  posts: [Post!]!
+}
+
+enum Role {
+  Admin
+  Moderator
+  SuperAdmin
+}
+
+input UpdateProfileInput {
+  avatar: String
+  banner: String
+  bio: String
+  name: String
+  username: String
+}
+
 type User {
-  createdAt: String
-  id: ID
+  avatar: String!
+  badges: [Badge!]
+  banner: String
+  bio: String
+  comments: [Comment!]
+  createdAt: String!
+  discord: String
+  github: String
+  google: String
+  id: ID!
   name: String
   posts: [Post!]
   repos: [Repo!]
+  roles: [Role!]!
+  twitter: String
+  url: String
   username: String
-  verified: Boolean
+  verified: Boolean!
 }

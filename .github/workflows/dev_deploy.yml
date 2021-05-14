@@ -1,0 +1,45 @@
+name: Deploy Staging
+
+on:
+  # Triggers the workflow on push or pull request events but only for the staging branch
+  push:
+    branches: [staging]
+  pull_request:
+    types: [closed]
+    branches: [staging]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    # Run the deploy if and only if, the event was push, or a merged pull request.
+    if: ${{ (github.event_name == 'push') || (github.event_name == 'pull_request' && github.event.pull_request.merged) }}
+    runs-on: ubuntu-latest
+
+    steps:
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      # Check out the repository to $GITHUB_WORKSPACE
+      - uses: actions/checkout@v2
+
+      # Install node dependencies
+      - name: Install node dependencies
+        run: |
+          npm install pm2 -g
+
+      # Prepare to deploy
+      - name: Prepare for deploy
+        run: |
+          mkdir -p /home/runner/.ssh
+          echo "${{ secrets.SSH_DEPLOY_CONFIG }}" > /home/runner/.ssh/config
+          echo "${{ secrets.SSH_DEPLOY_KEY }}" > /home/runner/.ssh/id_rsa
+          chmod 0600 /home/runner/.ssh/id_rsa
+
+      # Run the deployment
+      - name: Run deployment
+        run: |
+          cd $GITHUB_WORKSPACE
+          pm2 deploy ecosystem-staging.config.js staging update
