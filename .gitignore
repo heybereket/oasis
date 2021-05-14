@@ -5,6 +5,8 @@
 !.yarn/sdks
 !.yarn/versions
 
+.idea/
+
 node_modules/
 postgres_data/
 .next
