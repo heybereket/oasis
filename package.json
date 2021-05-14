@@ -9,7 +9,7 @@
     "clean": "yarn workspaces foreach --include @oasis/api,@oasis/client-gql,@oasis/web -p run clean",
     "commit": "git add . && cz && git push",
     "deploy": "sh bin/deploy.sh",
-    "deploy:prod": "yarn lint && git add . && git commit -m \"chore(deploy): Merge staging -> prod\" &&git pull origin staging  && git checkout prod && git merge staging && git push origin prod && git checkout staging",
+    "deploy:prod": "git add . && git commit -m 'chore(deploy): Merge staging -> prod' && git checkout prod && git merge staging && git push origin prod --force && git checkout staging",
     "dev": "yarn workspace @oasis/web dev",
     "dev:api": "yarn workspaces foreach --include @oasis/client-gql,@oasis/api -p run dev",
     "lint": "yarn workspaces foreach --exclude @oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/client-gql -p run prettify",
@@ -25,7 +25,6 @@
     "@types/jest": "^26.0.23",
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "3.3.0",
-    "husky": "^6.0.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.5.6"
