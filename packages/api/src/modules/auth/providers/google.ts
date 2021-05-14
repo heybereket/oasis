@@ -46,15 +46,15 @@ export default (passport: PassportStatic): Router => {
 
   router.get(
     '/',
-    passport.authenticate('discord', {
-      scope: ['identify'],
+    passport.authenticate('google', {
+      scope: ['https://www.googleapis.com/auth/userinfo.profile'],
       session: true,
     })
   );
 
   router.get(
     '/callback',
-    passport.authenticate('discord', {
+    passport.authenticate('google', {
       successReturnToOrRedirect: '/',
       failureRedirect: '/login',
       session: true,
