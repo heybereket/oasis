@@ -4,7 +4,7 @@ import User from '@entities/User';
 import { v4 as uuid } from 'uuid';
 import { checkUsername } from '@utils/auth/checkUsername';
 import { http } from '@utils/common/http';
-import { searchJSON } from '@lib/index';
+import { searchJSON } from '@utils/index';
 import { PassportStatic } from 'passport';
 import Badge from '@entities/Badge';
 
