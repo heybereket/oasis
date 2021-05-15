@@ -63,6 +63,7 @@ type Mutation {
   giveBadge(badgeName: String!, username: String!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
+  refreshBotToken(botId: String!): String!
   updateProfile(data: UpdateProfileInput!): Boolean!
 }
 
