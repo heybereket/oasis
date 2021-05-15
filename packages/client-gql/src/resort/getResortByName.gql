@@ -3,5 +3,7 @@ query GetResortByName($name: String!) {
     id
     name
     description
+    banner
+    logo
   }
 }
