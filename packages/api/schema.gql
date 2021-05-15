@@ -61,6 +61,7 @@ type Mutation {
   editComment(commentId: String!, data: EditCommentInput!): Boolean!
   editPost(data: EditPostInput!, postId: String!): Boolean!
   giveBadge(badgeName: String!, username: String!): Boolean!
+  joinResort(resortId: String!): Boolean
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   refreshBotToken(botId: String!): String!
@@ -106,6 +107,7 @@ type Query {
   paginateComments(limit: Float!, offset: Float!): [Comment!]!
   paginatePosts(limit: Float!, offset: Float!): [Post!]!
   paginateRepos(limit: Float!, offset: Float!): [Repo!]!
+  paginateResortMembers(limit: Float!, offset: Float!, resortId: String!): [User!]
   paginateResorts(limit: Float!, offset: Float!): [Resort!]!
   paginateUsers(limit: Float!, offset: Float!): [User!]!
 }
