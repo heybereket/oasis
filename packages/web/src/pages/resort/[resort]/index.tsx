@@ -25,7 +25,16 @@ const Resort: React.FC<IResortProps> = ({ variables }) => {
       <Container>
         <div className="flex-col mt-20 ">
           <div className="flex justify-center">
-            <ResortHeader />
+            <ResortHeader
+              avatarIcons={[
+                'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80',
+              ]}
+              resortBanner={data?.banner ?? ''}
+              resortCategory={'programming'}
+              resortDescription={data?.description ?? ''}
+              resortLogo={data?.logo ?? ''}
+            />
           </div>
         </div>
       </Container>

@@ -3,12 +3,20 @@ import { RightArrow } from '@components/icons';
 import React from 'react';
 import AvatarGroup from './AvatarGroup';
 
-const ResortHeader: React.FC = () => {
+interface IResortHeaderProps {
+  resortCategory: string;
+  resortDescription: string;
+  resortLogo: string;
+  avatarIcons: string[];
+  resortBanner: string;
+}
+
+const ResortHeader: React.FC<IResortHeaderProps> = (props) => {
   return (
     <div
       className="max-w-7xl rounded-2xl h-48 background-cover flex-grow flex px-16 items-center font-sans"
       style={{
-        background: `linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://resi.ze-robot.com/dl/ul/ultraviolet-4k-wallpaper-2560%C3%971600.jpg)`,
+        background: `linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${props.resortBanner})`,
         backgroundSize: '100%',
         backgroundPosition: 'center',
       }}
@@ -16,14 +24,15 @@ const ResortHeader: React.FC = () => {
       <div className="w-full flex justify-between items-center">
         <div>
           <span className="uppercase font-mono text-xs font-bold tracking-widest text-gray-500">
-            RESORTS / <span className="text-gray-200">PROGRAMMING</span>
+            RESORTS /{' '}
+            <span className="text-gray-200">
+              {props.resortCategory.toUpperCase()}
+            </span>
           </span>
           <h2 className="font-extrabold">TypeScript</h2>
-          <p className="text-gray-300 text-lg">
-            Have TS questions? Learn’t something new? Share it here!
-          </p>
+          <p className="text-gray-300 text-lg">{props.resortDescription}</p>
           <div className="flex items-center space-x-3 mt-2">
-            <AvatarGroup />
+            <AvatarGroup avatarIcons={props.avatarIcons} />
             <Button
               className="flex items-center justify-center space-x-1"
               size="xs"
@@ -37,7 +46,7 @@ const ResortHeader: React.FC = () => {
         <div>
           <img
             className="w-24 h-24 object-cover rounded"
-            src="https://raw.githubusercontent.com/remojansen/logo.ts/master/ts.png"
+            src={props.resortLogo}
             alt="resort logo"
           />
         </div>
