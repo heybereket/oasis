@@ -107,7 +107,6 @@ type Query {
   paginateComments(limit: Float!, offset: Float!): [Comment!]!
   paginatePosts(limit: Float!, offset: Float!): [Post!]!
   paginateRepos(limit: Float!, offset: Float!): [Repo!]!
-  paginateResortMembers(limit: Float!, offset: Float!, resortId: String!): [User!]
   paginateResorts(limit: Float!, offset: Float!): [Resort!]!
   paginateUsers(limit: Float!, offset: Float!): [User!]!
 }
@@ -137,6 +136,7 @@ type Resort {
   description: String!
   id: String!
   logo: String!
+  members(limit: Float!, offset: Float!): [User!]!
   name: String!
   owner: User!
   posts: [Post!]!

@@ -1,14 +1,16 @@
+import Resort from '@entities/Resort';
 import User from '@entities/User';
-import { Arg, Query, Resolver } from 'type-graphql';
+import { Arg, FieldResolver, Query, Resolver, Root } from 'type-graphql';
 
-@Resolver()
+@Resolver((of) => Resort)
 export class PaginateResortMembersResolver {
-  @Query(() => [User], { nullable: true })
-  async paginateResortMembers(
-    @Arg('resortId') resortId: string,
+  @FieldResolver(() => [User])
+  async members(
+    @Root() resort: Resort,
     @Arg('limit') limit: number,
     @Arg('offset') offset: number
   ) {
+    const resortId = resort.id;
     return await User.createQueryBuilder('user')
       .innerJoin('user.joinedResorts', 'resort', 'resort.id = :resortId', {
         resortId,
