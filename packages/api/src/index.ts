@@ -13,6 +13,7 @@ import { ormconfig } from '@root/ormconfig';
 import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
 import { isProduction } from '@lib/constants';
+import { chalkLog } from '@lib/chalkLog'
 
 const RedisStore = connectRedis(expressSession);
 
@@ -65,12 +66,12 @@ export const createApp = async () => {
 };
 
 if (require.main === module) {
-  const PORT = process.env.PORT || 4000;
+  const PORT = parseInt(process.env.PORT as string, 10) || 4000;
   createApp().then((app) => {
     if (!app) process.exit(1);
 
     app.listen(PORT, () =>
-      console.log(`Server started on http://localhost:${PORT}/graphql`)
+      console.log(`${chalkLog('success')} - Ready on http://localhost:${PORT}/graphql`)
     );
   });
 }

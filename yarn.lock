@@ -2134,7 +2134,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.14.2
     "@babel/eslint-parser": ^7.14.2
-    "@primer/octicons-react": ^14.0.0
+    "@primer/octicons-react": ^14.1.0
     "@types/node": ^15.0.1
     "@types/react-dom": ^17.0.5
     "@types/react-syntax-highlighter": ^13.5.0
@@ -2181,12 +2181,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@primer/octicons-react@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "@primer/octicons-react@npm:14.0.0"
+"@primer/octicons-react@npm:^14.1.0":
+  version: 14.1.0
+  resolution: "@primer/octicons-react@npm:14.1.0"
   peerDependencies:
     react: ">=15"
-  checksum: 2c3f28e4160e6b0a56f21557fa2bf05a3cce0cd24cf2bc2ea9b166fe2f221027001ea2a8682428f0a9cc8d3a93d24444802de95716c15020801732514d6f3a54
+  checksum: f51669cd75613b9d2bf9928dd91efae82fe603447588525c6646211806c9165ff7a3dbbc4f2129997afadea150df80031af307e7acfb9bef4a3045cd9ac6fa82
   languageName: node
   linkType: hard
 
