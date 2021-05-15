@@ -111,4 +111,7 @@ export default class User extends BaseEntity {
 
   @Column({ nullable: true })
   botToken: string;
+
+  @ManyToMany(() => Resort, (resort) => resort.members)
+  joinedResorts: Promise<Resort[]>;
 }

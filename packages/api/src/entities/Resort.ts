@@ -3,6 +3,8 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -44,4 +46,8 @@ export default class Resort extends BaseEntity {
   @ManyToOne(() => User, (user) => user.ownedResorts)
   @Field(() => User)
   owner: Promise<User>;
+
+  @ManyToMany(() => User, (user) => user.joinedResorts)
+  @JoinTable()
+  members: Promise<User[]>;
 }

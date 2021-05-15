@@ -61,6 +61,7 @@ type Mutation {
   editComment(commentId: String!, data: EditCommentInput!): Boolean!
   editPost(data: EditPostInput!, postId: String!): Boolean!
   giveBadge(badgeName: String!, username: String!): Boolean!
+  joinResort(resortId: String!): Boolean
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   refreshBotToken(botId: String!): String!
@@ -135,6 +136,7 @@ type Resort {
   description: String!
   id: String!
   logo: String!
+  members(limit: Float!, offset: Float!): [User!]!
   name: String!
   owner: User!
   posts: [Post!]!
