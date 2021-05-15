@@ -1,10 +1,8 @@
 import Resort from '@entities/Resort';
 import { Arg, Query, Resolver } from 'type-graphql';
 
-console.log('IGDdfsdf');
-
 @Resolver()
-export class GetUserByNameResolver {
+export class GetResortByNameResolver {
   @Query(() => Resort, { nullable: true })
   getResortByName(@Arg('name') name: string) {
     return Resort.createQueryBuilder('resort')

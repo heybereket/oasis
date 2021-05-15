@@ -28,6 +28,13 @@ input CreateBotInput {
   username: String!
 }
 
+input CreateResortInput {
+  banner: String!
+  description: String!
+  logo: String!
+  name: String!
+}
+
 input EditCommentInput {
   content: String!
 }
@@ -49,6 +56,7 @@ type Mutation {
   createBot(data: CreateBotInput!): String!
   createComment(data: NewCommentInput!, postId: String!): Boolean!
   createPost(data: NewPostInput!): Boolean!
+  createResort(data: CreateResortInput!): Boolean!
   deleteAccount: Boolean!
   editComment(commentId: String!, data: EditCommentInput!): Boolean!
   editPost(data: EditPostInput!, postId: String!): Boolean!
@@ -122,10 +130,12 @@ type Repo {
 
 type Resort {
   banner: String!
+  createdAt: String!
   description: String!
   id: String!
   logo: String!
   name: String!
+  owner: User!
   posts: [Post!]!
 }
 
@@ -158,6 +168,7 @@ type User {
   id: ID!
   isBot: Boolean
   name: String
+  ownedResorts: [Resort!]
   posts: [Post!]
   repos: [Repo!]
   roles: [Role!]!

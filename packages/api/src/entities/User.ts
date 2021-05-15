@@ -15,6 +15,7 @@ import Post from '@entities/Post';
 import Badge from '@entities/Badge';
 import { Role } from '@modules/user/Roles';
 import Comment from '@entities/Comment';
+import Resort from './Resort';
 
 @ObjectType()
 @Entity()
@@ -82,6 +83,10 @@ export default class User extends BaseEntity {
   @Field(() => [Post], { nullable: true, complexity: 5 })
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
+
+  @Field(() => [Resort], { nullable: true, complexity: 5 })
+  @OneToMany(() => Resort, (resort) => resort.owner)
+  ownedResorts: Promise<Resort[]>;
 
   @Field(() => [Comment], { nullable: true, complexity: 5 })
   @OneToMany(() => Comment, (comment) => comment.author)

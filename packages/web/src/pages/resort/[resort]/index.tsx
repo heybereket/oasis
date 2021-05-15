@@ -7,9 +7,11 @@ import {
 import { GetServerSideProps } from 'next';
 import React from 'react';
 
-const Resort: React.FC<{ variables: QueryGetResortByNameArgs }> = ({
-  variables,
-}) => {
+interface IResortProps {
+  variables: QueryGetResortByNameArgs;
+}
+
+const Resort: React.FC<IResortProps> = ({ variables }) => {
   const data = useGetResortByNameQuery({
     variables,
   }).data?.getResortByName;
@@ -19,17 +21,19 @@ const Resort: React.FC<{ variables: QueryGetResortByNameArgs }> = ({
 
 export default Resort;
 
-export const getServerSideProps: GetServerSideProps = async ({
+export const getServerSideProps: GetServerSideProps<IResortProps> = async ({
   query,
   req,
 }) => {
   return {
     props: {
-      name: query.resort,
+      variables: {
+        name: query.resort as string,
+      },
       initialApolloState: await ssrRequest(req, [
         {
           document: GetResortByNameDocument,
-          variables: { name: query.resorts } as QueryGetResortByNameArgs,
+          variables: { name: query.resort } as QueryGetResortByNameArgs,
         },
       ]),
     },
