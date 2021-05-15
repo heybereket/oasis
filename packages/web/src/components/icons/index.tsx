@@ -12,3 +12,4 @@ export { Saved } from './Saved';
 export { Search } from './Search';
 export { Topics } from './Topics';
 export { Twitter } from './Twitter';
+export { RightArrow } from './RightArrow';
