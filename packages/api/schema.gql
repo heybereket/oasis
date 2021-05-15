@@ -65,6 +65,7 @@ type Mutation {
   joinResort(resortId: String!): Boolean
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
+  markNotificationAsRead(notificationId: String!): Boolean!
   refreshBotToken(botId: String!): String!
   updateProfile(data: UpdateProfileInput!): Boolean!
 }
@@ -77,6 +78,21 @@ input NewPostInput {
   message: String!
   title: String!
   topics: [String!]!
+}
+
+type Notification {
+  createdAt: String!
+  id: ID!
+  performer: User
+  read: Boolean!
+  type: NotificationType!
+  user: User!
+}
+
+enum NotificationType {
+  Follow
+  Like
+  Reply
 }
 
 type Post {
@@ -98,6 +114,7 @@ type Query {
   getAvailableUsername(username: String!): String!
   getBadge(id: String!): Badge!
   getComment(id: String!): Comment!
+  getNotifications: [Notification!]
   getPost(id: String!): Post!
   getRepo(id: String!): Repo!
   getResort(id: String!): Resort!
