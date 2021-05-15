@@ -11,7 +11,7 @@ import { TopicBadge } from '@components/profile/TopicBadge';
 import { Container } from '@components/common/Container';
 import { About, Comments, Like, Posts } from '@components/icons';
 import { Navbar } from '@components/navbar/Navbar';
-import StyledMarkdown from '@components/StyledMarkdown';
+import StyledMarkdown from '@components/markdown/StyledMarkdown';
 import Link from 'next/link';
 
 interface ProfileProps {

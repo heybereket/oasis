@@ -1,12 +1,12 @@
 .markdown pre,
 .markdown code {
-  font-family: 'Victor Mono', Menlo, Monaco, 'Courier New', monospace !important;
+  font-family: 'Hack', monospace !important;
+  font-weight: 100 !important;
 }
 
 .markdown pre {
-  padding: 0.5rem;
-  line-height: 1.25;
   overflow-x: hidden;
+  @apply my-3;
 }
 
 .markdown a,
@@ -127,20 +127,7 @@
   padding: 1rem;
 }
 
-.markdown pre,
-.markdown code {
-  background-color: var(--color-gray-900);
-}
-
 .markdown ul {
   padding-left: 1rem;
   list-style: disc;
-}
-
-@font-face {
-  font-family: 'Victor Mono';
-  src: url('/static/fonts/VictorMono-Regular.eot');
-  src: url('/static/fonts/VictorMono-Regular.woff') format('woff'),
-    url('/static/fonts/VictorMono-Regular.otf') format('opentype'),
-    url('/static/fonts/VictorMono-Regular.ttf') format('ttf');
 }
