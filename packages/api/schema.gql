@@ -113,10 +113,7 @@ type Query {
   getAvailableUsername(username: String!): String!
   getBadge(id: String!): Badge!
   getComment(id: String!): Comment!
-<<<<<<< Updated upstream
-=======
   getNotifications: [Notification!]
->>>>>>> Stashed changes
   getPost(id: String!): Post!
   getRepo(id: String!): Repo!
   getResort(id: String!): Resort!
