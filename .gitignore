@@ -19,5 +19,3 @@ packages/web/server/index.js
 # sql db
 *.sqlite
 
-#custom vscode config
-.vscode/css_custom_data.json
