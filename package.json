@@ -14,7 +14,7 @@
     "dev:api": "yarn workspaces foreach --include @oasis/client-gql,@oasis/api -p run dev",
     "lint": "yarn workspaces foreach --exclude @oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/client-gql -p run prettify",
     "prepare": "husky install",
-    "publish:bot": "sh bin/publish.sh",
+    "publish:bot": "yarn workspace @oasis/bot-client run publish",
     "reinstall": "yarn clean && rimraf packages/**/*.sqlite || yarn install",
     "start": "yarn workspace @oasis/web run start"
   },
