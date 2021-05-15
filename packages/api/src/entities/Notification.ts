@@ -24,11 +24,11 @@ export default class Notification extends BaseEntity {
   @Column()
   type: NotificationType;
 
-  @Field(() => [User])
+  @Field(() => User)
   @ManyToOne(() => User)
   user: Promise<User>;
 
-  @Field(() => [User], { nullable: true })
+  @Field(() => User, { nullable: true })
   @ManyToOne(() => User, { nullable: true })
   performer: Promise<User>;
 

@@ -82,10 +82,10 @@ input NewPostInput {
 type Notification {
   createdAt: String!
   id: ID!
-  performer: [User!]
+  performer: User
   read: Boolean!
   type: NotificationType!
-  user: [User!]!
+  user: User!
 }
 
 enum NotificationType {
