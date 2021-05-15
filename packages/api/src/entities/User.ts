@@ -16,6 +16,7 @@ import Badge from '@entities/Badge';
 import { Role } from '@modules/user/Roles';
 import Comment from '@entities/Comment';
 import Resort from './Resort';
+import Notification from './Notification';
 
 @ObjectType()
 @Entity()
@@ -83,6 +84,11 @@ export default class User extends BaseEntity {
   @Field(() => [Post], { nullable: true, complexity: 5 })
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
+
+  @OneToMany(() => Notification, (notification) => notification.user, {
+    nullable: true,
+  })
+  notifications: Notification[];
 
   @Field(() => [Resort], { nullable: true, complexity: 5 })
   @OneToMany(() => Resort, (resort) => resort.owner)
