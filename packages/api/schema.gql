@@ -23,6 +23,18 @@ type Comment {
   post: Post!
 }
 
+input CreateBotInput {
+  name: String!
+  username: String!
+}
+
+input CreateResortInput {
+  banner: String!
+  description: String!
+  logo: String!
+  name: String!
+}
+
 input EditCommentInput {
   content: String!
 }
@@ -41,14 +53,17 @@ input MakeBadgeInput {
 }
 
 type Mutation {
+  createBot(data: CreateBotInput!): String!
   createComment(data: NewCommentInput!, postId: String!): Boolean!
   createPost(data: NewPostInput!): Boolean!
+  createResort(data: CreateResortInput!): Boolean!
   deleteAccount: Boolean!
   editComment(commentId: String!, data: EditCommentInput!): Boolean!
   editPost(data: EditPostInput!, postId: String!): Boolean!
   giveBadge(badgeName: String!, username: String!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
+  refreshBotToken(botId: String!): String!
   updateProfile(data: UpdateProfileInput!): Boolean!
 }
 
@@ -84,6 +99,7 @@ type Query {
   getPost(id: String!): Post!
   getRepo(id: String!): Repo!
   getResort(id: String!): Resort!
+  getResortByName(name: String!): Resort
   getUser(id: String!): User!
   getUserByName(username: String!): User
   paginateBadges(limit: Float!, offset: Float!): [Badge!]!
@@ -115,10 +131,12 @@ type Repo {
 
 type Resort {
   banner: String!
+  createdAt: String!
   description: String!
   id: String!
   logo: String!
   name: String!
+  owner: User!
   posts: [Post!]!
 }
 
@@ -141,13 +159,17 @@ type User {
   badges: [Badge!]
   banner: String
   bio: String
+  botOwner: User
+  bots: [User!]
   comments: [Comment!]
   createdAt: String!
   discord: String
   github: String
   google: String
   id: ID!
+  isBot: Boolean
   name: String
+  ownedResorts: [Resort!]
   posts: [Post!]
   repos: [Repo!]
   roles: [Role!]!

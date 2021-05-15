@@ -18,3 +18,4 @@ packages/web/server/index.js
 
 # sql db
 *.sqlite
+

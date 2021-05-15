@@ -10,7 +10,11 @@ export const Login = (type: string): any => {
   // Twitter Authentication
   case 'twitter':
     return window.location.href = `${baseURL}/api/auth/twitter`;
-
+  
+  // Google Authentication
+  case 'google':
+    return window.location.href = `${baseURL}/api/auth/google`;
+     
   // Discord Authentication
   case 'discord':
     return window.location.href = `${baseURL}/api/auth/discord`;

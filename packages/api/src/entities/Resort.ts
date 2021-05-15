@@ -3,10 +3,12 @@ import {
   BaseEntity,
   Column,
   Entity,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import Post from '@entities/Post';
+import User from './User';
 
 @ObjectType()
 @Entity()
@@ -31,7 +33,15 @@ export default class Resort extends BaseEntity {
   @Field()
   logo: string;
 
+  @Column()
+  @Field()
+  createdAt: string;
+
   @OneToMany(() => Post, (post) => post.resort)
   @Field(() => [Post], { complexity: 5 })
   posts: Promise<Post[]>;
+
+  @ManyToOne(() => User, (user) => user.ownedResorts)
+  @Field(() => User)
+  owner: Promise<User>;
 }

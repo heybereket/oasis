@@ -2,7 +2,7 @@ import { plugin as EmojiParser } from '@lib/emojiParser';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism';
-import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import OasisDark from './OasisDark';
 import gfm from 'remark-gfm';
 import styles from './StyledMarkdown.module.css';
 
@@ -15,15 +15,18 @@ export const StyledMarkdown: React.FC<{ text: string }> = ({ text }) => {
             const match = /language-(\w+)/.exec(className || '');
             return !inline && match ? (
               <SyntaxHighlighter
-                style={materialDark}
+                style={OasisDark}
                 language={match[1]}
                 PreTag="div"
                 {...props}
+                className="rounded-lg shadow-sm"
               >
                 {String(children).replace(/\n$/, '')}
               </SyntaxHighlighter>
             ) : (
-              <code className={className}>{children}</code>
+              <code className={`bg-gray-900 py-1 px-2 rounded-md ${className}`}>
+                {children}
+              </code>
             );
           },
         }}

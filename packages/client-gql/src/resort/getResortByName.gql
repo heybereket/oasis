@@ -1,0 +1,7 @@
+query GetResortByName($name: String!) {
+  getResortByName(name: $name) {
+    id
+    name
+    description
+  }
+}
