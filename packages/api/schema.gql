@@ -30,6 +30,7 @@ input CreateBotInput {
 
 input CreateResortInput {
   banner: String!
+  category: String!
   description: String!
   logo: String!
   name: String!
@@ -132,6 +133,7 @@ type Repo {
 
 type Resort {
   banner: String!
+  category: String!
   createdAt: String!
   description: String!
   id: String!

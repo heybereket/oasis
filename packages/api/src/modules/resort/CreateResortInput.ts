@@ -13,4 +13,7 @@ export default class CreateResortInput {
 
   @Field({ nullable: false })
   logo: string;
+
+  @Field({ nullable: false })
+  category: string;
 }

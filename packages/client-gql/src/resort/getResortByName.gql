@@ -1,9 +1,19 @@
-query GetResortByName($name: String!) {
+query GetResortByNameWithMembers(
+  $name: String!
+  $membersOffset: Float!
+  $membersLimit: Float!
+) {
   getResortByName(name: $name) {
     id
     name
     description
     banner
     logo
+    category
+    members(offset: $membersOffset, limit: $membersLimit) {
+      id
+      name
+      avatar
+    }
   }
 }

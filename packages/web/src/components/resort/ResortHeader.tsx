@@ -9,6 +9,7 @@ interface IResortHeaderProps {
   resortLogo: string;
   avatarIcons: string[];
   resortBanner: string;
+  resortName: string;
 }
 
 const ResortHeader: React.FC<IResortHeaderProps> = (props) => {
@@ -29,7 +30,7 @@ const ResortHeader: React.FC<IResortHeaderProps> = (props) => {
               {props.resortCategory.toUpperCase()}
             </span>
           </span>
-          <h2 className="font-extrabold">TypeScript</h2>
+          <h2 className="font-extrabold">{props.resortName}</h2>
           <p className="text-gray-300 text-lg">{props.resortDescription}</p>
           <div className="flex items-center space-x-3 mt-2">
             <AvatarGroup avatarIcons={props.avatarIcons} />

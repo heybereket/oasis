@@ -37,6 +37,10 @@ export default class Resort extends BaseEntity {
 
   @Column()
   @Field()
+  category: string;
+
+  @Column()
+  @Field()
   createdAt: string;
 
   @OneToMany(() => Post, (post) => post.resort)
