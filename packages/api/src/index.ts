@@ -12,7 +12,7 @@ import connectRedis from 'connect-redis';
 import { ormconfig } from '@root/ormconfig';
 import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
-import { chalkLog } from '@lib/chalkLog'
+import { isProduction } from '@lib/constants';
 
 const RedisStore = connectRedis(expressSession);
 
@@ -41,7 +41,7 @@ export const createApp = async () => {
       resave: false,
       saveUninitialized: true,
       cookie: {
-        secure: process.env.NODE_ENV === 'production',
+        secure: isProduction,
         maxAge: null,
         signed: true,
         sameSite: 'lax',

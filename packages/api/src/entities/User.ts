@@ -3,8 +3,10 @@ import {
   BaseEntity,
   Column,
   Entity,
+  Generated,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -13,6 +15,7 @@ import Post from '@entities/Post';
 import Badge from '@entities/Badge';
 import { Role } from '@modules/user/Roles';
 import Comment from '@entities/Comment';
+import Resort from './Resort';
 
 @ObjectType()
 @Entity()
@@ -81,6 +84,10 @@ export default class User extends BaseEntity {
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
 
+  @Field(() => [Resort], { nullable: true, complexity: 5 })
+  @OneToMany(() => Resort, (resort) => resort.owner)
+  ownedResorts: Promise<Resort[]>;
+
   @Field(() => [Comment], { nullable: true, complexity: 5 })
   @OneToMany(() => Comment, (comment) => comment.author)
   comments: Promise<Comment[]>;
@@ -89,4 +96,19 @@ export default class User extends BaseEntity {
   @ManyToMany(() => Badge)
   @JoinTable()
   badges: Promise<Badge[]>;
+
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  isBot: boolean;
+
+  @Field(() => User, { nullable: true })
+  @ManyToOne(() => User, (user) => user.bots, { nullable: true })
+  botOwner: Promise<User>;
+
+  @Field(() => [User], { nullable: true })
+  @OneToMany(() => User, (user) => user.botOwner, { nullable: true })
+  bots: Promise<User[]>;
+
+  @Column({ nullable: true })
+  botToken: string;
 }
