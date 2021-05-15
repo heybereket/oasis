@@ -3,7 +3,7 @@
 import { ConnectionOptions } from 'typeorm';
 import { joinRoot } from '@utils/common/rootPath';
 
-/// SQLite (simple flat file storage intended for development instances)
+// SQLite (simple flat file storage intended for development instances)
 export const ormconfig: ConnectionOptions = {
   type: 'sqlite',
   /* Be sure to change this to the location you'd like the sqlite file to be saved. */
