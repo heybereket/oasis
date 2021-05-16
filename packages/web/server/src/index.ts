@@ -3,7 +3,7 @@ import { join } from 'path';
 import next from 'next';
 import { createApp } from '@oasis/api';
 import { chalkLog } from './lib/chalkLog';
-import { ExitWithErrors } from './lib/ExitWithErrors'
+import { ExitWithErrors } from './lib/ExitWithErrors';
 
 config({ path: join(__dirname, '../../../api/.env') });
 
@@ -15,13 +15,17 @@ const startTime = Date.now();
 
 (async () => {
   if (!process.env.NEXT_PUBLIC_BASE_URL) {
-    console.error(`${chalkLog('error')} - NEXT_PUBLIC_BASE_URL is not defined in packages/web/.env`)
-    ExitWithErrors(1)
+    console.error(
+      `${chalkLog(
+        'error'
+      )} - NEXT_PUBLIC_BASE_URL is not defined in packages/web/.env`
+    );
+    ExitWithErrors(1);
   }
 
   const server = await createApp();
   if (!server) {
-    ExitWithErrors(1)
+    ExitWithErrors(1);
   }
 
   app.prepare().then(() => {
@@ -33,7 +37,13 @@ const startTime = Date.now();
 
     try {
       server.listen(PORT, () =>
-        console.error(`${chalkLog('success')} - Ready in ${Date.now() - startTime}ms on http://localhost:${PORT} \n${chalkLog('success')} - API: http://localhost:${PORT}/graphql`)
+        console.error(
+          `${chalkLog('success')} - Ready in ${
+            Date.now() - startTime
+          }ms on http://localhost:${PORT} \n${chalkLog(
+            'success'
+          )} - API: http://localhost:${PORT}/graphql`
+        )
       );
     } catch (err) {
       if (err) throw err;
