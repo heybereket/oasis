@@ -36,10 +36,7 @@ const time = Date.now();
 
     try {
       server.listen(PORT, () =>
-        chalkLog(
-          'success',
-          `Ready in ${Date.now() - time}ms on http://localhost:${PORT}`
-        )
+        chalkLog('success', `Ready in ${Date.now() - time}ms on http://localhost:${PORT}`)
       );
     } catch (err) {
       if (err) throw err;
