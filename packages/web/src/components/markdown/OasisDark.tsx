@@ -20,7 +20,7 @@ export default {
     padding: '1.15em',
     overflow: 'auto',
     background: 'var(--color-gray-900)',
-    borderRadius: '1rem',
+    borderRadius: '.5rem',
   },
   'code[class*="language-"]': {
     color: '#d4d4d4',
@@ -39,8 +39,7 @@ export default {
     WebkitHyphens: 'none',
     MozHyphens: 'none',
     msHyphens: 'none',
-    hyphens: 'none',
-    background: '#151719',
+    hyphens: 'none'
   },
   'pre[class*="language-"]::selection': {
     textShadow: 'none',
