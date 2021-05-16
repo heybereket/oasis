@@ -11,7 +11,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, conf: require('../../next.config.js') });
 const handle = app.getRequestHandler();
 
-const startTime = Date.now();
+const time = Date.now();
 
 (async () => {
   if (!process.env.NEXT_PUBLIC_BASE_URL) {
@@ -39,7 +39,7 @@ const startTime = Date.now();
       server.listen(PORT, () =>
         console.error(
           `${chalkLog('success')} - Ready in ${
-            Date.now() - startTime
+            Date.now() - time
           }ms on http://localhost:${PORT} \n${chalkLog(
             'success'
           )} - API: http://localhost:${PORT}/graphql`
