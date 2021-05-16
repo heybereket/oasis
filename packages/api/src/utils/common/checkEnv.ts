@@ -1,4 +1,4 @@
-import { chalkLog } from '@lib/chalkLog'
+import { chalkLog } from '@lib/chalkLog';
 
 type EnvValidationFn = (logError: boolean) => Promise<boolean>;
 
@@ -34,15 +34,12 @@ const checkRequiredEnv = (
     // If the property is not set, we can immediately error out.
     if (!isValid && required) {
       if (logError)
-        console.error(
-          `${chalkLog('error')} - You must have ${envProp} set in packages/api/.env`
-        );
+        chalkLog('error', `You must have ${envProp} set in packages/api/.env`);
+
       return false;
     } else if (!isValid && !required) {
       if (logError)
-        console.warn(
-          `${chalkLog('warn')} - ${envProp} is not defined in packages/api/.env`
-        );
+        chalkLog('warn', `${envProp} is not defined in packages/api/.env`);
     }
 
     // If the additionalValidation property is set, we'll call that to validate the env property.
@@ -52,7 +49,8 @@ const checkRequiredEnv = (
       // or a 'nullish' (i.e. undefined) value if not.
       // Hence if there is error, we will print it and return false to indicate the env check failed.
       if (additionalValidationError) {
-        if (logError) console.error(`${chalkLog('error')} - ${additionalValidationError}`);
+        if (logError) chalkLog('error', `${additionalValidationError}`);
+
         return false;
       }
     }
