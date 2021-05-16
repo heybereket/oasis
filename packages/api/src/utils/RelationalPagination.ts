@@ -4,6 +4,7 @@ import {
   ReturnTypeFunc,
 } from 'type-graphql/dist/decorators/types';
 import { BaseEntity } from 'typeorm';
+import { PaginatedResponse, IPaginatedResponse } from './PaginationResponse';
 
 export const allFieldResolvers = [];
 
@@ -15,24 +16,29 @@ export const RelationalPagination =
     options: AdvancedOptions = {}
   ): PropertyDecorator =>
   (_, pk) => {
+    const [valEntity] = typeFunc() as any as typeof BaseEntity[];
+    const PaginatedItemResponse = PaginatedResponse(valEntity);
+    type PaginatedItemResponse = InstanceType<typeof PaginatedItemResponse>;
     const propKey = String(pk);
 
     allFieldResolvers.push(() => {
       @Resolver(getTarget)
       class ResolverClass {
-        @FieldResolver(typeFunc, { name: propKey, ...options })
-        paginate(
+        @FieldResolver(() => PaginatedItemResponse, {
+          name: propKey,
+          ...options,
+        })
+        async paginate(
           @Root() obj: BaseEntity & { id: string },
           @Arg('limit') limit: number,
           @Arg('offset') offset: number
-        ) {
+        ): Promise<IPaginatedResponse> {
           const targetEntity = getTarget();
-          const [valEntity] = typeFunc() as any as typeof BaseEntity[];
 
           const valName = valEntity.name.toLowerCase();
           const targetName = targetEntity.name.toLowerCase();
 
-          return valEntity
+          const query = valEntity
             .createQueryBuilder(valName)
             .innerJoin(
               `${valName}.${otherSideKey}`,
@@ -42,10 +48,17 @@ export const RelationalPagination =
                 id: obj.id,
               }
             )
-            .orderBy(`${valName}.id`)
-            .skip(offset)
-            .take(limit)
-            .getMany();
+            .orderBy(`${valName}.id`);
+
+          const items = await query.skip(offset).take(limit).getMany();
+          const total = await query.getCount();
+          const hasMore = offset + limit < total;
+
+          return {
+            items,
+            total,
+            hasMore,
+          };
         }
       }
 
