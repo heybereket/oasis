@@ -15,6 +15,7 @@ import { Button } from '../common/Button';
 import { NavItem } from './NavItem';
 import { DropdownItem } from '../common/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import { PersonIcon } from '@primer/octicons-react';
 
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
@@ -109,7 +110,7 @@ export const Navbar: React.FC = () => {
         </div>
       </nav>
       <div
-        className={`flex rounded-lg bg-gray-700 px-4 py-3 max-w-md absolute right-0 mr-7 ${
+        className={`flex flex-col rounded-lg bg-gray-700 px-4 py-3 max-w-md absolute right-0 mr-7 ${
           isDropdownActive
             ? 'animate-fade-in-down'
             : 'animate-fade-out-up animate-fill-forwards'
@@ -122,6 +123,16 @@ export const Navbar: React.FC = () => {
             icon={LogoutIcon}
             onClick={async () => {
               await Logout();
+              setDropdownActive(false);
+            }}
+          />
+        </div>
+        <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
+          <DropdownItem
+            name="Open Profile"
+            icon={PersonIcon}
+            onClick={async () => {
+              window.location.pathname = '/user/' + user?.username;
               setDropdownActive(false);
             }}
           />
