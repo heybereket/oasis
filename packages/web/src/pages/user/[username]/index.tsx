@@ -132,9 +132,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 </div>
               </div>
               <div className="mt-8 flex flex-col bg-gray-800 rounded-2xl py-4 px-6">
-                <h4 className="font-black">
-                  {data?.name ? data?.name : '@' + data?.username}&#39;s
-                  Favourite Topics
+                <h4 className="font-extrabold">
+                  Topics Following 
                 </h4>
                 <div className="mt-2">
                   <TopicBadge content="Machine Learning" />
