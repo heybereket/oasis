@@ -17,6 +17,7 @@ import { Role } from '@modules/user/Roles';
 import Comment from '@entities/Comment';
 import Resort from './Resort';
 import Notification from './Notification';
+import { RelationalPagination } from '@utils/RelationalPagination';
 
 @ObjectType()
 @Entity()
@@ -81,7 +82,8 @@ export default class User extends BaseEntity {
   @OneToMany(() => Repo, (repo) => repo.owner)
   repos: Promise<Repo[]>;
 
-  @Field(() => [Post], { nullable: true, complexity: 5 })
+  // @Field(() => [Post], { nullable: true, complexity: 5 })
+  @RelationalPagination(() => User, () => [Post])
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
 

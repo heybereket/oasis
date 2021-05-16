@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "node .",
-    "watch": "concurrently \"tsc --w\" && \"tsc-alias -w\"",
+    "watch": "concurrently \"tsc --w\" \"tsc-alias -w\"",
     "build": "tsc && tsc-alias && node dist/build.js",
     "dev:start": "nodemon dist/index.js --ignore src",
     "dev": "concurrently \"yarn:watch\" \"yarn:dev:start\"",

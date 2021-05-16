@@ -11,7 +11,7 @@
     },
     "rootDir": "src",
     "outDir": "dist",
-    "target": "ES2018",
+    "target": "es2020",
     "module": "commonjs",
     "lib": ["ESNext"],
     "esModuleInterop": true,
