@@ -2,7 +2,7 @@ import Resort from '@entities/Resort';
 import User from '@entities/User';
 import { Arg, FieldResolver, Query, Resolver, Root } from 'type-graphql';
 
-@Resolver((of) => Resort)
+@Resolver(() => Resort)
 export class PaginateResortMembersResolver {
   @FieldResolver(() => [User])
   async members(
