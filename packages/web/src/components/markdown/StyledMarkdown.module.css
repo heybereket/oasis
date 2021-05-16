@@ -2,6 +2,7 @@
 .markdown code {
   font-family: 'Hack', monospace !important;
   font-weight: 100 !important;
+  overflow: hidden;
 }
 
 .markdown pre {
