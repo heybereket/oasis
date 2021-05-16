@@ -76,7 +76,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 </div>
                 <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6">
                   <h4 className="font-extrabold">
-                    About {`@${data?.username}`}
+                    About {data?.name}
                   </h4>
                   {data?.bio !== null ? (
                     <div className="text-gray-300 font-bold">
