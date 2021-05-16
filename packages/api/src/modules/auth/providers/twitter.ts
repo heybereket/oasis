@@ -11,7 +11,7 @@ export default (passport: PassportStatic): Router => {
       {
         consumerKey: process.env.OASIS_API_TWITTER_KEY,
         consumerSecret: process.env.OASIS_API_TWITTER_SECRET_KEY,
-        callbackURL: process.env.OASIS_API_TWITTER_CALLBACK_URL
+        callbackURL: process.env.OASIS_API_TWITTER_CALLBACK_URL,
       },
       async (_, __, profile, done) => {
         const id = String(profile.id);
@@ -24,9 +24,9 @@ export default (passport: PassportStatic): Router => {
           if (!user.id) {
             user.id = uuid();
             user.avatar = profile._json.profile_image_url_https;
-            user.banner = profile._json.profile_banner_url ?
-              profile._json.profile_banner_url :
-              null;
+            user.banner = profile._json.profile_banner_url
+              ? profile._json.profile_banner_url
+              : null;
             user.name = profile.displayName;
             user.username = await checkUsername(profile.username);
             user.twitter = id;
@@ -56,7 +56,7 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('twitter', {
-      successReturnToOrRedirect: '/',
+      successReturnToOrRedirect: '/authsuccess',
       failureRedirect: '/login',
       session: true,
     })

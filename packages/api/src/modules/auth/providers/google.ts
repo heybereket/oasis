@@ -5,7 +5,6 @@ import { v4 as uuid } from 'uuid';
 import { checkUsername } from '@utils/auth/checkUsername';
 import { PassportStatic } from 'passport';
 
-
 export default (passport: PassportStatic): Router => {
   passport.use(
     new Strategy(
@@ -55,7 +54,7 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('google', {
-      successReturnToOrRedirect: '/',
+      successReturnToOrRedirect: '/authsuccess',
       failureRedirect: '/login',
       session: true,
     })
