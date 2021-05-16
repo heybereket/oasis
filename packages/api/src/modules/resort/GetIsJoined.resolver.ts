@@ -14,15 +14,21 @@ import {
 @Resolver(() => Resort)
 export class PaginateResortMembersResolver {
   @FieldResolver(() => Boolean)
-  @Authorized()
-  async isJoined(@Root() resort: Resort, @Ctx() { getUser }: ContextType) {
-    const user = await getUser();
-    let retValue = false;
-    (await user.joinedResorts).forEach((res) => {
-      if (res.id === resort.id) {
-        retValue = true;
-      }
-    });
-    return retValue;
+  async isJoined(
+    @Root() resort: Resort,
+    @Ctx() { getUser, hasAuth }: ContextType
+  ) {
+    if (hasAuth) {
+      const user = await getUser();
+      let retValue = false;
+      (await user.joinedResorts).forEach((res) => {
+        if (res.id === resort.id) {
+          retValue = true;
+        }
+      });
+      return retValue;
+    } else {
+      return false;
+    }
   }
 }
