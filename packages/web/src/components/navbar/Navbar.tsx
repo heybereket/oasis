@@ -8,6 +8,7 @@ import {
   Saved,
   Search,
   Topics,
+  Profile as ProfileIcon,
   Logout as LogoutIcon,
 } from '@components/icons';
 import React, { useEffect, useRef, useState } from 'react';
@@ -15,7 +16,6 @@ import { Button } from '@components/common/Button';
 import { NavItem } from '@components/navbar/NavItem';
 import { DropdownItem } from '@components/common/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { PersonIcon } from '@primer/octicons-react';
 import { redirect } from '@utils/redirect';
 
 export const Navbar: React.FC = () => {
@@ -120,6 +120,16 @@ export const Navbar: React.FC = () => {
       >
         <div className="flex flex-col justify-start items-start text-base text-gray-300">
           <DropdownItem
+            name="Profile"
+            icon={ProfileIcon}
+            onClick={() => {
+              redirect('/user/' + user?.username)
+              setDropdownActive(false);
+            }}
+          />
+        </div>
+        <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
+          <DropdownItem
             name="Logout"
             icon={LogoutIcon}
             onClick={async () => {
@@ -127,16 +137,6 @@ export const Navbar: React.FC = () => {
               setDropdownActive(false);
             }}
           />
-        </div>
-        <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
-            <DropdownItem
-              name="Profile"
-              icon={PersonIcon}
-              onClick={() => {
-                redirect('/user/' + user?.username)
-                setDropdownActive(false);
-              }}
-            />
         </div>
       </div>
     </>
