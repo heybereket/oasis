@@ -1,0 +1,3 @@
+mutation JoinResort($resortId: String!) {
+  joinResort(resortId: $resortId)
+}

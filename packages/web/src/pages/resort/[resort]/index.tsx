@@ -25,14 +25,7 @@ const Resort: React.FC<IResortProps> = ({ variables }) => {
       <Container>
         <div className="flex-col mt-20 ">
           <div className="flex justify-center">
-            <ResortHeader
-              avatarIcons={data?.members.map((member) => member.avatar) ?? []}
-              resortBanner={data?.banner ?? ''}
-              resortCategory={data?.category ?? ''}
-              resortDescription={data?.description ?? ''}
-              resortLogo={data?.logo ?? ''}
-              resortName={data?.name ?? ''}
-            />
+            <ResortHeader resortData={data} />
           </div>
         </div>
       </Container>

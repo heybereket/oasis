@@ -1,23 +1,30 @@
 import { Button } from '@components/common/Button';
 import { RightArrow } from '@components/icons';
+import {
+  GetResortByNameWithMembersQuery,
+  useJoinResortMutation,
+} from '@oasis/client-gql';
 import React from 'react';
 import AvatarGroup from './AvatarGroup';
 
+type dataType = GetResortByNameWithMembersQuery['getResortByName'];
+
 interface IResortHeaderProps {
-  resortCategory: string;
-  resortDescription: string;
-  resortLogo: string;
-  avatarIcons: string[];
-  resortBanner: string;
-  resortName: string;
+  resortData: dataType;
 }
 
-const ResortHeader: React.FC<IResortHeaderProps> = (props) => {
+const ResortHeader: React.FC<IResortHeaderProps> = ({ resortData }) => {
+  const [joinMutation] = useJoinResortMutation({
+    variables: { resortId: resortData?.id ?? '' },
+  });
+
   return (
     <div
       className="max-w-7xl rounded-2xl h-48 background-cover flex-grow flex px-16 items-center font-sans"
       style={{
-        background: `linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${props.resortBanner})`,
+        background: `linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${
+          resortData?.banner ?? ''
+        })`,
         backgroundSize: '100%',
         backgroundPosition: 'center',
       }}
@@ -27,27 +34,45 @@ const ResortHeader: React.FC<IResortHeaderProps> = (props) => {
           <span className="uppercase font-mono text-xs font-bold tracking-widest text-gray-500">
             RESORTS /{' '}
             <span className="text-gray-200">
-              {props.resortCategory.toUpperCase()}
+              {resortData?.category.toUpperCase()}
             </span>
           </span>
-          <h2 className="font-extrabold">{props.resortName}</h2>
-          <p className="text-gray-300 text-lg">{props.resortDescription}</p>
+          <h2 className="font-extrabold">{resortData?.name ?? ''}</h2>
+          <p className="text-gray-300 text-lg">
+            {resortData?.description ?? ''}
+          </p>
           <div className="flex items-center space-x-3 mt-2">
-            <AvatarGroup avatarIcons={props.avatarIcons} />
+            <AvatarGroup
+              avatarIcons={
+                resortData?.members.map((member) => member.avatar) ?? []
+              }
+            />
             <Button
               className="flex items-center justify-center space-x-1"
               size="xs"
               color="gray"
+              onClick={(_) => {
+                if (!resortData?.isJoined) {
+                  joinMutation();
+                  window.location.reload();
+                }
+              }}
             >
-              <div className="text-sm">Follow</div>
-              <RightArrow height="1.25rem" width="1.25rem" />
+              {!resortData?.isJoined ? (
+                <>
+                  <div className="text-sm">Follow</div>
+                  <RightArrow height="1.25rem" width="1.25rem" />
+                </>
+              ) : (
+                <div className="text-sm">Following</div>
+              )}
             </Button>
           </div>
         </div>
         <div>
           <img
             className="w-24 h-24 object-cover rounded"
-            src={props.resortLogo}
+            src={resortData?.logo ?? ''}
             alt="resort logo"
           />
         </div>

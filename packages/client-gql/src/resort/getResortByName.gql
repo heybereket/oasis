@@ -10,6 +10,7 @@ query GetResortByNameWithMembers(
     banner
     logo
     category
+    isJoined
     members(offset: $membersOffset, limit: $membersLimit) {
       id
       name

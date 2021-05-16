@@ -1,0 +1,28 @@
+import Resort from '@entities/Resort';
+import User from '@entities/User';
+import { ContextType } from '@root/apolloServer';
+import {
+  Arg,
+  Authorized,
+  Ctx,
+  FieldResolver,
+  Query,
+  Resolver,
+  Root,
+} from 'type-graphql';
+
+@Resolver(() => Resort)
+export class PaginateResortMembersResolver {
+  @FieldResolver(() => Boolean)
+  @Authorized()
+  async isJoined(@Root() resort: Resort, @Ctx() { getUser }: ContextType) {
+    const user = await getUser();
+    let retValue = false;
+    (await user.joinedResorts).forEach((res) => {
+      if (res.id === resort.id) {
+        retValue = true;
+      }
+    });
+    return retValue;
+  }
+}
