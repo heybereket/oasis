@@ -11,15 +11,17 @@ import {
   Logout as LogoutIcon,
 } from '@components/icons';
 import React, { useEffect, useRef, useState } from 'react';
-import { Button } from '../common/Button';
-import { NavItem } from './NavItem';
-import { DropdownItem } from '../common/DropdownItem';
+import { Button } from '@components/common/Button';
+import { NavItem } from '@components/navbar/NavItem';
+import { DropdownItem } from '@components/common/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { PersonIcon } from '@primer/octicons-react';
+import { useRouter } from 'next/router';
 
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
   const { user, currentUserLoading } = useGetCurrentUser();
+  const router = useRouter()
 
   const node = useRef() as React.MutableRefObject<HTMLInputElement>;
   const handleClick = (e: MouseEvent) => {
@@ -128,14 +130,16 @@ export const Navbar: React.FC = () => {
           />
         </div>
         <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
-          <DropdownItem
-            name="Open Profile"
-            icon={PersonIcon}
-            onClick={async () => {
-              window.location.pathname = '/user/' + user?.username;
-              setDropdownActive(false);
-            }}
-          />
+          <a>
+            <DropdownItem
+              name="Open Profile"
+              icon={PersonIcon}
+              onClick={() => {
+                router.push('/user/' + user?.username)
+                setDropdownActive(false);
+              }}
+            />
+          </a>
         </div>
       </div>
     </>
