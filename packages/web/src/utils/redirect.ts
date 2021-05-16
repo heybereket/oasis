@@ -1,3 +1,6 @@
+import { useRouter } from 'next/router'
+
 export const redirect = (path: string): any => {
-  return window.location.pathname = path
+  const router = useRouter()
+  return router.push(path)
 }

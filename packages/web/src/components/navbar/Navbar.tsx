@@ -16,11 +16,12 @@ import { Button } from '@components/common/Button';
 import { NavItem } from '@components/navbar/NavItem';
 import { DropdownItem } from '@components/common/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { redirect } from '@utils/redirect';
+import { useRouter } from 'next/router';
 
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
   const { user, currentUserLoading } = useGetCurrentUser();
+  const router = useRouter()
 
   const node = useRef() as React.MutableRefObject<HTMLInputElement>;
   const handleClick = (e: MouseEvent) => {
@@ -123,7 +124,7 @@ export const Navbar: React.FC = () => {
             name="Profile"
             icon={ProfileIcon}
             onClick={() => {
-              redirect('/user/' + user?.username)
+              router.push('/user/' + user?.username)
               setDropdownActive(false);
             }}
           />
