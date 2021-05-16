@@ -11,12 +11,11 @@ export const RelationalPagination =
   (
     getTarget: () => typeof BaseEntity,
     typeFunc: ReturnTypeFunc,
+    otherSideKey: String,
     options: AdvancedOptions = {}
   ): PropertyDecorator =>
   (_, pk) => {
     const propKey = String(pk);
-
-    console.log(typeFunc(), { options, propKey, pk });
 
     allFieldResolvers.push(() => {
       @Resolver(getTarget)
@@ -33,12 +32,10 @@ export const RelationalPagination =
           const valName = valEntity.name.toLowerCase();
           const targetName = targetEntity.name.toLowerCase();
 
-          console.log({ targetEntity, valEntity, valName, targetName });
-
           return valEntity
             .createQueryBuilder(valName)
             .innerJoin(
-              `${valName}.${propKey}`,
+              `${valName}.${otherSideKey}`,
               targetName,
               `${targetName}.id = :id`,
               {

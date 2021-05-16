@@ -14,7 +14,6 @@ import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
 import { isProduction } from '@lib/constants';
 import { chalkLog } from '@lib/chalkLog';
-import { allFieldResolvers } from '@utils/RelationalPagination';
 
 const RedisStore = connectRedis(expressSession);
 
@@ -34,8 +33,6 @@ export const createApp = async () => {
 
   await createConnection(ormconfig);
   const apolloServer = await createApolloServer();
-
-  console.log(allFieldResolvers);
 
   /* Express-Session configuration */
   app.use(

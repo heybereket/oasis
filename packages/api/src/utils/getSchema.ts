@@ -2,8 +2,6 @@ import { buildSchema } from 'type-graphql';
 import { joinRoot } from './common/rootPath';
 import { customAuthChecker } from '@utils/auth/authChecker';
 
-console.log(joinRoot('./RelationalPaginationQueries.js'));
-
 export const getSchema = () => {
   return buildSchema({
     resolvers: [
