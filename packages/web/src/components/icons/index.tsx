@@ -13,3 +13,4 @@ export { Search } from './Search';
 export { Topics } from './Topics';
 export { Twitter } from './Twitter';
 export { RightArrow } from './RightArrow';
+export { Profile } from './Profile';
