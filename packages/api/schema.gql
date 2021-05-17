@@ -95,6 +95,18 @@ enum NotificationType {
   Reply
 }
 
+type PaginatedCommentResponse {
+  hasMore: Boolean!
+  items: [Comment!]!
+  total: Float!
+}
+
+type PaginatedPostResponse {
+  hasMore: Boolean!
+  items: [Post!]!
+  total: Float!
+}
+
 type Post {
   author: User!
   comments: [Comment!]!
@@ -183,7 +195,7 @@ type User {
   bio: String
   botOwner: User
   bots: [User!]
-  comments: [Comment!]
+  comments(limit: Float!, offset: Float!): PaginatedCommentResponse!
   createdAt: String!
   discord: String
   github: String
@@ -192,6 +204,7 @@ type User {
   isBot: Boolean
   name: String
   ownedResorts: [Resort!]
+  posts(limit: Float!, offset: Float!): PaginatedPostResponse!
   repos: [Repo!]
   roles: [Role!]!
   twitter: String

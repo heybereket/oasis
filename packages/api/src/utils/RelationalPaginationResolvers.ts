@@ -1,7 +1,7 @@
 import { mapping } from '@utils/RelationalPagination';
 import { Arg, FieldResolver, Resolver, Root } from 'type-graphql';
 import { BaseEntity } from 'typeorm';
-import { IPaginatedResponse, PaginatedResponse } from './PaginationResponse';
+import { PaginatedResponse } from './PaginationResponse';
 import { __decorate, __param, __metadata } from 'tslib';
 
 let a = 0,
@@ -15,19 +15,18 @@ console.log(mapping);
 
 for (const [getTargetEntity, obj] of mapping) {
   let ResolverClass = class ResolverClass {};
-  for (const [prop, { getValEntity, otherSideKey, options }] of Object.entries(
-    obj
-  )) {
+  for (const keys of Object.entries(obj)) {
+    const [prop, { getValEntity, otherSideKey, options }] = keys as any;
     console.log({ prop, getValEntity, otherSideKey, options });
-    const getPaginatedItemResponse = () =>
-      PaginatedResponse(getValEntity().name, getValEntity);
+    const valEntity = getValEntity();
+    const paginatedReponse = PaginatedResponse<typeof valEntity>(valEntity);
 
     const funcName = `XYZ${a++}`;
     ResolverClass.prototype[funcName] = async function (
       obj: BaseEntity & { id: string },
       limit: number,
       offset: number
-    ): Promise<IPaginatedResponse<BaseEntity>> {
+    ) {
       const valEntity = getValEntity();
       const targetEntity = getTargetEntity();
 
@@ -67,9 +66,8 @@ for (const [getTargetEntity, obj] of mapping) {
       [
         FieldResolver(
           () => {
-            const p = getPaginatedItemResponse();
-            console.log({ p });
-            return p;
+            console.log('OBJ TYPE: ', paginatedReponse);
+            return paginatedReponse;
           },
           {
             name: prop,

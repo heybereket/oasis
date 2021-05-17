@@ -1,20 +1,11 @@
-import { Field, ObjectType, ClassType } from 'type-graphql';
+import { ClassType, Field, ObjectType } from 'type-graphql';
 
-export interface IPaginatedResponse<T = any> {
-  items: T[];
-  total: number;
-  hasMore: boolean;
-}
-
-export function PaginatedResponse<TItem>(
-  name: string,
-  getTItemClass: () => ClassType<TItem>
-): ClassType<IPaginatedResponse<TItem>> {
+export function PaginatedResponse<TItem>(TItemClass: ClassType<TItem>) {
   // `isAbstract` decorator option is mandatory to prevent registering in schema
-  @ObjectType(`Paginated${name}Response`)
-  class PaginatedResponseClass {
+  @ObjectType(`Paginated${TItemClass.name}Response`, { isAbstract: true })
+  abstract class PaginatedResponseClass {
     // here we use the runtime argument
-    @Field(() => [getTItemClass()])
+    @Field(() => [TItemClass])
     // and here the generic type
     items: TItem[];
 
@@ -24,5 +15,5 @@ export function PaginatedResponse<TItem>(
     @Field()
     hasMore: boolean;
   }
-  return PaginatedResponseClass;
+  return PaginatedResponseClass as any;
 }

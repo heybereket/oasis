@@ -96,7 +96,8 @@ export default class User extends BaseEntity {
   @OneToMany(() => Resort, (resort) => resort.owner)
   ownedResorts: Promise<Resort[]>;
 
-  @Field(() => [Comment], { nullable: true, complexity: 5 })
+  //@Field(() => [Comment], { nullable: true, complexity: 5 })
+  @RelationalPagination(() => User, () => Comment, 'author')
   @OneToMany(() => Comment, (comment) => comment.author)
   comments: Promise<Comment[]>;
 
