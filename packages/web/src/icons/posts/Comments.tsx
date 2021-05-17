@@ -8,14 +8,14 @@ export const Comments: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#ffffff"
-      strokeWidth="2"
+      stroke="currentColor"
+      stroke-width="2"
       strokeLinecap="round"
       strokeLinejoin="round"
       className="feather feather-bookmark"
       {...props}
     >
-      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
     </svg>
   );
 };
