@@ -7,9 +7,9 @@
       "@lib/*": ["src/lib/*"],
       "@icons/*": ["src/icons"],
       "@styles/*": ["src/styles"],
-      "@hooks/*": ["src/hooks/*"]
+      "@utils/*": ["src/utils/*"]
     },
-    "target": "es5",src/utils/hooks/*oks/*
+    "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
