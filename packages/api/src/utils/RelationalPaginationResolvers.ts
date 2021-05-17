@@ -12,7 +12,10 @@ for (const [getTargetEntity, obj] of mapping) {
   for (const keys of Object.entries(obj)) {
     const [prop, { getValEntity, otherSideKey, options }] = keys as any;
     const valEntity = getValEntity();
-    const paginatedReponse = PaginatedResponse<typeof valEntity>(valEntity);
+    const paginatedReponse = PaginatedResponse<typeof valEntity>(
+      valEntity,
+      getTargetEntity()
+    );
 
     const funcName = `XYZ${a++}`;
     ResolverClass.prototype[funcName] = async function (
