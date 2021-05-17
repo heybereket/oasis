@@ -8,6 +8,7 @@ import {
   Saved,
   Search,
   Topics,
+  Profile as ProfileIcon,
   Logout as LogoutIcon,
 } from '@components/icons';
 import React, {useRef, useState } from 'react';
@@ -15,7 +16,6 @@ import { Button } from '@components/common/Button';
 import { NavItem } from '@components/navbar/NavItem';
 import { DropdownItem } from '@components/common/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { PersonIcon } from '@primer/octicons-react';
 import { useRouter } from 'next/router';
 import useOnClickOutside from 'src/hooks/useOnClickOutside';
 
@@ -110,6 +110,16 @@ export const Navbar: React.FC = () => {
         ref={node}
       >
         <div className="flex flex-col justify-start items-start text-base text-gray-300">
+          <DropdownItem
+            name="Profile"
+            icon={ProfileIcon}
+            onClick={() => {
+              router.push('/user/' + user?.username)
+              setDropdownActive(false);
+            }}
+          />
+        </div>
+        <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
           <DropdownItem
             name="Logout"
             icon={LogoutIcon}
