@@ -11,12 +11,13 @@ import {
   Profile as ProfileIcon,
   Logout as LogoutIcon,
 } from '@components/icons';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useRef, useState } from 'react';
 import { Button } from '@components/common/Button';
 import { NavItem } from '@components/navbar/NavItem';
 import { DropdownItem } from '@components/common/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { useRouter } from 'next/router';
+import useOnClickOutside from 'src/hooks/useOnClickOutside';
 
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
@@ -24,19 +25,8 @@ export const Navbar: React.FC = () => {
   const router = useRouter()
 
   const node = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const handleClick = (e: MouseEvent) => {
-    if (node?.current?.contains(e.target as Node)) return;
-    // outside click
-    setDropdownActive(false);
-  };
+  useOnClickOutside(node, () => setDropdownActive(false))
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClick);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClick);
-    };
-  }, []);
 
   return (
     <>
@@ -72,7 +62,7 @@ export const Navbar: React.FC = () => {
 
             <input
               placeholder="Search"
-              className="rounded-lg bg-gray-700 h-10 text-sm pl-11 text-gray-300 w-80"
+              className="rounded-lg bg-gray-700 h-10 text-sm pl-11 text-gray-300 w-80 focus:outline-none"
             />
           </div>
           <Search className="ml-3 md-50:hidden" />
@@ -84,7 +74,7 @@ export const Navbar: React.FC = () => {
               <div
                 className="flex justify-items-start items-center space-x-5"
                 onClick={() => {
-                  setDropdownActive(!isDropdownActive);
+                  setDropdownActive(current=>!current);
                 }}
                 ref={node}
               >
@@ -138,6 +128,16 @@ export const Navbar: React.FC = () => {
               setDropdownActive(false);
             }}
           />
+        </div>
+        <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
+            <DropdownItem
+              name="Open Profile"
+              icon={PersonIcon}
+              onClick={() => {
+                router.push('/user/' + user?.username)
+                setDropdownActive(false);
+              }}
+            />
         </div>
       </div>
     </>
