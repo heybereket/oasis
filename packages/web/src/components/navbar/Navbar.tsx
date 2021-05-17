@@ -1,7 +1,6 @@
 import { Login, Logout } from '@lib/login';
 import {
   Bell,
-  DownArrow,
   Friends,
   Home,
   MagnifyingGlass,
@@ -83,7 +82,6 @@ export const Navbar: React.FC = () => {
                   alt={user.name ?? undefined}
                   className="w-12 h-12 rounded-full"
                 />
-                <DownArrow className="hidden md-50:block" />
               </div>
             ) : (
               <Button
