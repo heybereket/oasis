@@ -9,7 +9,7 @@ import { SEOProvider } from '@components/common/SEOProvider';
 import { Button } from '@components/common/Button';
 import { TopicBadge } from '@components/profile/TopicBadge';
 import { Container } from '@components/common/Container';
-import { About, Comments, Like, Posts } from '@components/icons';
+import { About, Comments, Like, Posts } from '@icons/index';
 import { Navbar } from '@components/navbar/Navbar';
 import StyledMarkdown from '@components/markdown/StyledMarkdown';
 
@@ -133,7 +133,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
               </div>
               <div className="mt-8 flex flex-col bg-gray-800 rounded-2xl py-4 px-6">
                 <h4 className="font-extrabold">
-                  Topics Following 
+                  Topics Following
                 </h4>
                 <div className="mt-2">
                   <TopicBadge content="Machine Learning" />

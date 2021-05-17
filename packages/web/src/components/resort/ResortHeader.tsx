@@ -1,5 +1,5 @@
 import { Button } from '@components/common/Button';
-import { RightArrow } from '@components/icons';
+import { RightArrow } from '@icons/';
 import {
   GetResortByNameWithMembersQuery,
   useJoinResortMutation,

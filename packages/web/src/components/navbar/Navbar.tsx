@@ -10,7 +10,7 @@ import {
   Topics,
   Profile as ProfileIcon,
   Logout as LogoutIcon,
-} from '@components/icons';
+} from '@icons/index';
 import React, {useRef, useState } from 'react';
 import { Button } from '@components/common/Button';
 import { NavItem } from '@components/navbar/NavItem';

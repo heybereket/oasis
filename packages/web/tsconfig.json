@@ -5,10 +5,8 @@
       "@public/*": ["public/*"],
       "@components/*": ["src/components/*"],
       "@lib/*": ["src/lib/*"],
-      "@utils/*": ["src/utils/*"],
-      "@modules/*": ["src/modules"],
+      "@icons/*": ["src/icons"],
       "@styles/*": ["src/styles"],
-      "@icons/*": ["src/icons/*"],
       "@hooks/*": ["src/hooks/*"]
     },
     "target": "es5",
