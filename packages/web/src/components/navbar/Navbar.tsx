@@ -17,8 +17,7 @@ import { DropdownItem } from '@components/common/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { PersonIcon } from '@primer/octicons-react';
 import { useRouter } from 'next/router';
-import useOnClickOutside from 'src/hooks/useOnClickOutside';
-
+import {useOnClickOutside} from "@hooks/useOnClickOutside"
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
   const { user, currentUserLoading } = useGetCurrentUser();
@@ -26,6 +25,7 @@ export const Navbar: React.FC = () => {
 
   const node = useRef() as React.MutableRefObject<HTMLInputElement>;
   useOnClickOutside(node, () => setDropdownActive(false))
+
 
 
   return (

@@ -1,7 +1,7 @@
 const CategoryTab: React.FC = () => {
   return(
     <>
-    <div className={`bg-resortSecondary min-h-full max-w-md  rounded-lg`}>
+    <div className={`bg-resortSecondary max-w-md mb-10 rounded-lg`}>
       something
     </div>
     </>
