@@ -83,7 +83,7 @@ export default class User extends BaseEntity {
   repos: Promise<Repo[]>;
 
   // @Field(() => [Post], { nullable: true, complexity: 5 })
-  @RelationalPagination(() => User, () => [Post], 'author')
+  @RelationalPagination(() => User, () => Post, 'author')
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
 
