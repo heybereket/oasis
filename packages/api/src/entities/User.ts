@@ -114,7 +114,8 @@ export default class User extends BaseEntity {
   @ManyToOne(() => User, (user) => user.bots, { nullable: true })
   botOwner: Promise<User>;
 
-  @Field(() => [User], { nullable: true })
+  // @Field(() => [User], { nullable: true })
+  @RelationalPagination(() => User, () => User, 'botOwner')
   @OneToMany(() => User, (user) => user.botOwner, { nullable: true })
   bots: Promise<User[]>;
 

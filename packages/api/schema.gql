@@ -95,21 +95,45 @@ enum NotificationType {
   Reply
 }
 
-type PaginatedCommentResponse {
+type PaginatedCommentFromPostResponse {
   hasMore: Boolean!
   items: [Comment!]!
   total: Float!
 }
 
-type PaginatedPostResponse {
+type PaginatedCommentFromUserResponse {
+  hasMore: Boolean!
+  items: [Comment!]!
+  total: Float!
+}
+
+type PaginatedPostFromResortResponse {
   hasMore: Boolean!
   items: [Post!]!
   total: Float!
 }
 
+type PaginatedPostFromUserResponse {
+  hasMore: Boolean!
+  items: [Post!]!
+  total: Float!
+}
+
+type PaginatedUserFromResortResponse {
+  hasMore: Boolean!
+  items: [User!]!
+  total: Float!
+}
+
+type PaginatedUserFromUserResponse {
+  hasMore: Boolean!
+  items: [User!]!
+  total: Float!
+}
+
 type Post {
   author: User!
-  comments: [Comment!]!
+  comments(limit: Float!, offset: Float!): PaginatedCommentFromPostResponse!
   createdAt: String!
   dislikes: Int!
   id: ID!
@@ -168,10 +192,10 @@ type Resort {
   id: String!
   isJoined: Boolean!
   logo: String!
-  members(limit: Float!, offset: Float!): [User!]!
+  members(limit: Float!, offset: Float!): PaginatedUserFromResortResponse!
   name: String!
   owner: User!
-  posts: [Post!]!
+  posts(limit: Float!, offset: Float!): PaginatedPostFromResortResponse!
 }
 
 enum Role {
@@ -194,8 +218,8 @@ type User {
   banner: String
   bio: String
   botOwner: User
-  bots: [User!]
-  comments(limit: Float!, offset: Float!): PaginatedCommentResponse!
+  bots(limit: Float!, offset: Float!): PaginatedUserFromUserResponse!
+  comments(limit: Float!, offset: Float!): PaginatedCommentFromUserResponse!
   createdAt: String!
   discord: String
   github: String
@@ -204,7 +228,7 @@ type User {
   isBot: Boolean
   name: String
   ownedResorts: [Resort!]
-  posts(limit: Float!, offset: Float!): PaginatedPostResponse!
+  posts(limit: Float!, offset: Float!): PaginatedPostFromUserResponse!
   repos: [Repo!]
   roles: [Role!]!
   twitter: String
