@@ -1,4 +1,3 @@
-import { Container } from "@components/common/Container";
 import { Navbar } from "@components/navbar/Navbar";
 import CategoryTab from "@components/resort/CategoryTab";
 import React from "react";
