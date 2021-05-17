@@ -5,8 +5,6 @@ export const createResolver = (
   suffix: string,
   entity: typeof BaseEntity
 ): any => {
-  // console.log(entity);
-
   @Resolver()
   class BaseResolver {
     // @Query(() => [entity], { name: `all${suffix}s` })

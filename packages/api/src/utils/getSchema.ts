@@ -11,8 +11,6 @@ export const getSchema = async () => {
 
   filenames.push(joinRoot('./utils/RelationalPaginationResolvers.js'));
 
-  console.log(filenames);
-
   const resolvers: any = filenames
     .map((filename) => Object.values(require(filename)))
     .flat();

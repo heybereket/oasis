@@ -7,17 +7,10 @@ import { __decorate, __param, __metadata } from 'tslib';
 let a = 0,
   b = 0;
 
-const param =
-  (i: number, decorator: ParameterDecorator) => (target: any, key: any) =>
-    decorator(target, key, i);
-
-console.log(mapping);
-
 for (const [getTargetEntity, obj] of mapping) {
   let ResolverClass = class ResolverClass {};
   for (const keys of Object.entries(obj)) {
     const [prop, { getValEntity, otherSideKey, options }] = keys as any;
-    console.log({ prop, getValEntity, otherSideKey, options });
     const valEntity = getValEntity();
     const paginatedReponse = PaginatedResponse<typeof valEntity>(valEntity);
 
@@ -60,20 +53,12 @@ for (const [getTargetEntity, obj] of mapping) {
       value: funcName,
     });
 
-    console.log(ResolverClass.prototype[funcName]);
-
     __decorate(
       [
-        FieldResolver(
-          () => {
-            console.log('OBJ TYPE: ', paginatedReponse);
-            return paginatedReponse;
-          },
-          {
-            name: prop,
-            ...options,
-          }
-        ),
+        FieldResolver(() => paginatedReponse, {
+          name: prop,
+          ...options,
+        }),
         __param(0, Root()),
         __param(1, Arg('limit')),
         __param(2, Arg('offset')),
