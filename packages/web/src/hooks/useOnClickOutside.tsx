@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-const useOnClickOutside = (ref:React.MutableRefObject<HTMLInputElement>, handler:() => void):void => {
+export const useOnClickOutside = (ref:React.MutableRefObject<HTMLInputElement>, handler:() => void):void => {
   useEffect(() => {
     const listener = (ev: MouseEvent) =>{
       if (ref?.current?.contains(ev.target as Node)) return;
@@ -15,4 +15,3 @@ const useOnClickOutside = (ref:React.MutableRefObject<HTMLInputElement>, handler
   },[ref,handler])
 }
 
-export default useOnClickOutside;

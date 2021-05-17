@@ -30,10 +30,15 @@ module.exports = {
       // 1281px and over (max-width the webpage content to 1280px with container and center it)
     },
     extend: {
+      spacing:{
+        rs: '150px',
+        rsw: '500px'
+      },
       minHeight:{
         '1/4': '25%',
         '1/2': '50%',
-        '3/4': '75%'
+        '3/4': '75%',
+        '9/10': '90%'
       },
       backgroundColor:{
         resortSecondary: "#141923"

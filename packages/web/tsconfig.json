@@ -8,7 +8,8 @@
       "@utils/*": ["src/utils/*"],
       "@modules/*": ["src/modules"],
       "@styles/*": ["src/styles"],
-      "@icons/*": ["src/icons/*"]
+      "@icons/*": ["src/icons/*"],
+      "@hooks/*": ["src/hooks/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
