@@ -11,7 +11,7 @@ const Resort: React.FC = () => {
       <span className={`text-secondary`}>Choose a category to explore resort.</span>
         </div>
           </div>
-      <div className={'flex overflow-visible md:pl-32 pl-1 h-3/4 w-full  p-16 flex-wrap'}>
+      <div className={'flex overflow-visible md:pl-32 pl-1 h-3/4 w-full p-16 flex-wrap'}>
           <CategoryTab/>
           <CategoryTab/>
           <CategoryTab/>
