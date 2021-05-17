@@ -17,7 +17,7 @@ const time = Date.now();
   if (!process.env.NEXT_PUBLIC_BASE_URL) {
     chalkLog(
       'error',
-      `NEXT_PUBLIC_BASE_URL is not defined in packages/web/.env`
+      `NEXT_PUBLIC_BASE_URL is undefined in packages/web/.env`
     );
     ExitWithErrors(1);
   }

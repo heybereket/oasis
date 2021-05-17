@@ -34,12 +34,12 @@ const checkRequiredEnv = (
     // If the property is not set, we can immediately error out.
     if (!isValid && required) {
       if (logError)
-        chalkLog('error', `You must have ${envProp} set in packages/api/.env`);
+        chalkLog('error', `${envProp} is undefined in packages/api/.env`);
 
       return false;
     } else if (!isValid && !required) {
       if (logError)
-        chalkLog('warn', `${envProp} is not defined in packages/api/.env`);
+        chalkLog('warn', `${envProp} is undefined in packages/api/.env`);
     }
 
     // If the additionalValidation property is set, we'll call that to validate the env property.

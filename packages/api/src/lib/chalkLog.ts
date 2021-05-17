@@ -8,7 +8,7 @@ export const chalkLog = (type: string, message: string): any => {
 
     // Uh oh, there were issues found
     case 'error':
-      return console.error(`${chalk.green.bold('error')} - ${message}`);
+      return console.error(`${chalk.red.bold('error')} - ${message}`);
 
     // Non critical messages
     case 'warn':
