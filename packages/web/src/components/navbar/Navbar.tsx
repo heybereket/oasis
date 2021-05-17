@@ -17,7 +17,7 @@ import { NavItem } from '@components/navbar/NavItem';
 import { DropdownItem } from '@components/common/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { useRouter } from 'next/router';
-import useOnClickOutside from 'src/hooks/useOnClickOutside';
+import { useOnClickOutside } from '@hooks/useOnClickOutside';
 
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
@@ -132,7 +132,7 @@ export const Navbar: React.FC = () => {
         <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
             <DropdownItem
               name="Open Profile"
-              icon={PersonIcon}
+              icon={ProfileIcon}
               onClick={() => {
                 router.push('/user/' + user?.username)
                 setDropdownActive(false);
