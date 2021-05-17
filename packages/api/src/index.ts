@@ -71,9 +71,7 @@ if (require.main === module) {
     if (!app) process.exit(1);
 
     app.listen(PORT, () =>
-      console.log(
-        `${chalkLog('success')} - Ready on http://localhost:${PORT}/graphql`
-      )
+      chalkLog('success', `Ready on http://localhost:${PORT}/graphql`)
     );
   });
 }

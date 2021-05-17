@@ -20,7 +20,6 @@ export default {
     padding: '1.15em',
     overflow: 'auto',
     background: 'var(--color-gray-900)',
-    borderRadius: '1rem',
   },
   'code[class*="language-"]': {
     color: '#d4d4d4',
@@ -40,29 +39,29 @@ export default {
     MozHyphens: 'none',
     msHyphens: 'none',
     hyphens: 'none',
-    background: '#151719',
+    background: 'var(--color-gray-900)',
   },
   'pre[class*="language-"]::selection': {
     textShadow: 'none',
-    background: '#75a7ca',
+    background: 'var(--color-gray-900)',
   },
   'code[class*="language-"]::selection': {
     textShadow: 'none',
-    background: '#75a7ca',
+    background: 'var(--color-gray-900)',
   },
   'pre[class*="language-"] *::selection': {
     textShadow: 'none',
-    background: '#75a7ca',
+    background: 'var(--color-gray-900)',
   },
   'code[class*="language-"] *::selection': {
     textShadow: 'none',
-    background: '#75a7ca',
+    background: 'var(--color-gray-900)',
   },
   ':not(pre) > code[class*="language-"]': {
     padding: '.1em .3em',
     borderRadius: '.3em',
     color: '#db4c69',
-    background: '#f9f2f4',
+    background: 'var(--color-gray-900)',
   },
   '.namespace': {
     Opacity: '.7',
@@ -284,7 +283,7 @@ export default {
     right: '0',
     padding: 'inherit 0',
     marginTop: '1em',
-    background: '#f7ebc6',
+    background: 'var(--color-gray-900)',
     boxShadow: 'inset 5px 0 0 #f7d87c',
     zIndex: '0',
     pointerEvents: 'none',

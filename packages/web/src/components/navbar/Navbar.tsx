@@ -1,40 +1,31 @@
 import { Login, Logout } from '@lib/login';
 import {
   Bell,
-  DownArrow,
   Friends,
   Home,
   MagnifyingGlass,
   Saved,
   Search,
   Topics,
+  Profile as ProfileIcon,
   Logout as LogoutIcon,
-} from '@components/icons';
-import React, { useEffect, useRef, useState } from 'react';
-import { Button } from '../common/Button';
-import { NavItem } from './NavItem';
-import { DropdownItem } from '../common/DropdownItem';
+} from '@icons/index';
+import React, {useRef, useState } from 'react';
+import { Button } from '@components/common/Button';
+import { NavItem } from '@components/navbar/NavItem';
+import { DropdownItem } from '@components/common/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { PersonIcon } from '@primer/octicons-react';
+import { useRouter } from 'next/router';
+import { useOnClickOutside } from '@utils/hooks/useOnClickOutside';
 
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
   const { user, currentUserLoading } = useGetCurrentUser();
+  const router = useRouter()
 
   const node = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const handleClick = (e: MouseEvent) => {
-    if (node?.current?.contains(e.target as Node)) return;
-    // outside click
-    setDropdownActive(false);
-  };
+  useOnClickOutside(node, () => setDropdownActive(false))
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClick);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClick);
-    };
-  }, []);
 
   return (
     <>
@@ -70,7 +61,7 @@ export const Navbar: React.FC = () => {
 
             <input
               placeholder="Search"
-              className="rounded-lg bg-gray-700 h-10 text-sm pl-11 text-gray-300 w-80"
+              className="rounded-lg bg-gray-700 h-10 text-sm pl-11 text-gray-300 w-80 focus:outline-none"
             />
           </div>
           <Search className="ml-3 md-50:hidden" />
@@ -82,16 +73,15 @@ export const Navbar: React.FC = () => {
               <div
                 className="flex justify-items-start items-center space-x-5"
                 onClick={() => {
-                  setDropdownActive(!isDropdownActive);
+                  setDropdownActive(current=>!current);
                 }}
                 ref={node}
               >
                 <img
                   src={user.avatar ?? undefined}
                   alt={user.name ?? undefined}
-                  className="w-12 h-12 rounded-full"
+                  className="w-10 h-10 rounded-full cursor-pointer"
                 />
-                <DownArrow className="hidden md-50:block" />
               </div>
             ) : (
               <Button
@@ -119,20 +109,20 @@ export const Navbar: React.FC = () => {
       >
         <div className="flex flex-col justify-start items-start text-base text-gray-300">
           <DropdownItem
-            name="Logout"
-            icon={LogoutIcon}
-            onClick={async () => {
-              await Logout();
+            name="Profile"
+            icon={ProfileIcon}
+            onClick={() => {
+              router.push('/user/' + user?.username)
               setDropdownActive(false);
             }}
           />
         </div>
         <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
           <DropdownItem
-            name="Open Profile"
-            icon={PersonIcon}
+            name="Logout"
+            icon={LogoutIcon}
             onClick={async () => {
-              window.location.pathname = '/user/' + user?.username;
+              await Logout();
               setDropdownActive(false);
             }}
           />

@@ -18,15 +18,15 @@ export const SEOProvider: React.FC<SEOProps> = ({
 }) => {
   return (
     <Head>
-      <title>{title}</title>
-      {description && <meta name="description" content={description} />}
+      <title>{title} - Oasis</title>
+      <meta name="description" content={description} />
       {metaTitle ? (
         <meta name="og:title" content={metaTitle} />
       ) : (
         <meta name="og:title" content={title} />
       )}
-      {metaDesc && <meta name="og:description" content={metaDesc} />}
-      {metaImg && <meta name="og:image" content={metaImg} />}
+      <meta name="og:description" content={metaDesc} />
+      <meta name="og:image" content={metaImg} />
     </Head>
   );
 };

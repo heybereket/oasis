@@ -2,8 +2,8 @@ module.exports = {
   mode: 'jit',
   darkMode: 'class',
   purge: [
-    './src/pages/**/*.{js,ts,jsx,tsx}',
-    './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/pages/**/*.{ts,tsx}',
+    './src/components/**/*.{ts,tsx}',
   ],
   theme: {
     fontFamily: {
@@ -31,6 +31,17 @@ module.exports = {
       // 1281px and over (max-width the webpage content to 1280px with container and center it)
     },
     extend: {
+      minHeight: {
+        '1/4': '25%',
+        '1/2': '50%',
+        '3/4': '75%',
+      },
+      backgroundColor: {
+        resortSecondary: '#141923',
+      },
+      textColor: {
+        secondary: '#828282',
+      },
       keyframes: {
         'fade-in-down': {
           '0%': {

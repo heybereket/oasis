@@ -9,10 +9,9 @@ import { SEOProvider } from '@components/common/SEOProvider';
 import { Button } from '@components/common/Button';
 import { TopicBadge } from '@components/profile/TopicBadge';
 import { Container } from '@components/common/Container';
-import { About, Comments, Like, Posts } from '@components/icons';
+import { About, Comments, Like, Posts } from '@icons/index';
 import { Navbar } from '@components/navbar/Navbar';
 import StyledMarkdown from '@components/markdown/StyledMarkdown';
-import Link from 'next/link';
 
 interface ProfileProps {
   initialApolloState: any;
@@ -48,14 +47,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
           <div className="hidden md-50:grid grid-cols-12 transform -translate-y-12 px-8">
             <div className="col-span-8 flex flex-col mr-8">
               <div className="flex">
-                <Link href={`/user/${data?.username}`}>
-                  <a>
-                    <img
-                      src={data?.avatar}
-                      className="rounded-full w-50 h-40"
-                    ></img>
-                  </a>
-                </Link>
+                <a href={`/user/${data?.username}`}>
+                  <img
+                    src={data?.avatar}
+                    style={{pointerEvents: 'none'}}
+                    className="rounded-full w-50 h-40"
+                  ></img>
+                </a>
                 <div className="ml-8 flex flex-col justify-center">
                   {data?.name ? (
                     <>
@@ -78,7 +76,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 </div>
                 <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6">
                   <h4 className="font-extrabold">
-                    About {`@${data?.username}`}
+                    About {data?.name}
                   </h4>
                   {data?.bio !== null ? (
                     <div className="text-gray-300 font-bold">
@@ -134,9 +132,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 </div>
               </div>
               <div className="mt-8 flex flex-col bg-gray-800 rounded-2xl py-4 px-6">
-                <h4 className="font-black">
-                  {data?.name ? data?.name : '@' + data?.username}&#39;s
-                  Favourite Topics
+                <h4 className="font-extrabold">
+                  Topics Following
                 </h4>
                 <div className="mt-2">
                   <TopicBadge content="Machine Learning" />

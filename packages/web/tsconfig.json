@@ -5,9 +5,9 @@
       "@public/*": ["public/*"],
       "@components/*": ["src/components/*"],
       "@lib/*": ["src/lib/*"],
-      "@modules/*": ["src/modules"],
+      "@icons/*": ["src/icons"],
       "@styles/*": ["src/styles"],
-      "@icons/*": ["src/icons/*"]
+      "@utils/*": ["src/utils/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
