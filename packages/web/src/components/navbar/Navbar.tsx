@@ -17,7 +17,7 @@ import { NavItem } from '@components/navbar/NavItem';
 import { DropdownItem } from '@components/common/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { useRouter } from 'next/router';
-import { useOnClickOutside } from '@hooks/useOnClickOutside';
+import { useOnClickOutside } from '@utils/hooks/useOnClickOutside';
 
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);

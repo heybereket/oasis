@@ -9,7 +9,7 @@
       "@styles/*": ["src/styles"],
       "@hooks/*": ["src/hooks/*"]
     },
-    "target": "es5",
+    "target": "es5",src/utils/hooks/*oks/*
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
