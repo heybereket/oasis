@@ -1,0 +1,39 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - *
+    paths:
+      - "packages/web/**"
+      - "packages/api/**"
+  pull_request:
+    branches:
+      - *
+    paths:
+      - "packages/web/**"
+      - "packages/api/**"
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        
+      - name: Redis Server in GitHub Actions
+        uses: supercharge/redis-github-action@1.1.0
+        
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      
+      - run: yarn install
+      
+      - run: yarn test
