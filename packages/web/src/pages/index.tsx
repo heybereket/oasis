@@ -5,52 +5,40 @@ import { TopicBadge } from '@components/profile/TopicBadge';
 import { Button } from '@components/common/Button';
 import { FollowUser } from '@components/home/FollowUser';
 import { SidebarItem } from '@components/home/SidebarItem';
-
-const testData = [
-  {
-    content:
-      'The quick brown fox jumped over the lazy sleeping dog. This post is very long. There is a lot of content. Oh no, it might break onto the next line!',
-    name: 'Alex',
-    username: 'alexover1',
-  },
-  {
-    content:
-      'The quick brown fox jumped over the lazy sleeping dog. This post is very long. There is a lot of content. Oh no, it might break onto the next line!',
-    name: 'Alex',
-    username: 'alexover1',
-  },
-  {
-    content:
-      'The quick brown fox jumped over the lazy sleeping dog. This post is very long. There is a lot of content. Oh no, it might break onto the next line!',
-    name: 'Alex',
-    username: 'alexover1',
-  },
-  {
-    content: 'To the mooooon! 🚀',
-    name: 'f1sh',
-    username: 'F1shNotFound',
-  },
-  {
-    content: 'Code example',
-    code: '```js\n function cat = () => { return "meow" }\n```',
-    name: 'Bereket',
-    username: 'heybereket',
-  },
-];
+import { usePaginatePostsQuery } from '@oasis/client-gql';
 
 const HomePage: React.FC = () => {
+  const { data } = usePaginatePostsQuery();
+  const posts = data?.paginatePosts;
+
+  // @todo make this better
+  if (!posts) return <p>Loading</p>;
+
+  const half = Math.ceil(posts.length / 2);
+
+  const firstHalf = [...posts].splice(0, half);
+  const secondHalf = [...posts].splice(-half);
+
   return (
     <>
       <Navbar />
       <div className="w-full flex justify-center items-center">
         <div className="px-6 mt-14 grid grid-cols-1 md:grid-cols-three gap-16">
-          <section className="flex justify-center">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-9 gap-y-12">
-              {testData &&
-                testData.map((post, index) => <Post post={post} key={index} />)}
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-9">
+              <div className="space-y-12">
+                {firstHalf.map((post: any, index: number) => (
+                  <Post post={post} key={index} />
+                ))}
+              </div>
+              <div className="space-y-12">
+                {secondHalf.map((post: any, index: number) => (
+                  <Post post={post} key={index} />
+                ))}
+              </div>
             </div>
-          </section>
-          <section className="hidden md:flex flex-col items-center">
+          </div>
+          <div className="hidden md:flex flex-col items-center">
             <div className="w-full flex flex-col items-center">
               <div className="flex flex-col items-center">
                 <h2>Something on your mind?</h2>
@@ -87,7 +75,7 @@ const HomePage: React.FC = () => {
                 </div>
               </SidebarItem>
             </div>
-          </section>
+          </div>
         </div>
       </div>
     </>
