@@ -3,13 +3,13 @@ name: Test
 on:
   push:
     branches:
-      - *
+      - '*'
     paths:
       - "packages/web/**"
       - "packages/api/**"
   pull_request:
     branches:
-      - *
+      - '*'
     paths:
       - "packages/web/**"
       - "packages/api/**"
