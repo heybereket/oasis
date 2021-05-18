@@ -39,5 +39,9 @@
       "path": "./node_modules/cz-conventional-changelog",
       "defaultScope": "global"
     }
+  },
+  "resolutions": {
+    "@oasis/client-gql": "portal:/Users/vrishank/Desktop/OasisDev/oasis-noapi/packages/client-gql",
+    "@oasis/web": "portal:/Users/vrishank/Desktop/OasisDev/oasis-noapi/packages/web"
   }
 }

@@ -2136,6 +2136,7 @@ __metadata:
     "@babel/core": ^7.14.2
     "@babel/eslint-parser": ^7.14.3
     "@primer/octicons-react": ^14.1.0
+    "@types/express": ^4
     "@types/node": ^15.0.1
     "@types/react-dom": ^17.0.5
     "@types/react-syntax-highlighter": ^13.5.0
@@ -2146,16 +2147,14 @@ __metadata:
     eslint: ^7.25.0
     eslint-plugin-react: ^7.23.2
     eslint-plugin-react-hooks: latest
+    express: ^4.17.1
     formik: ^2.2.6
-    github-markdown-css: ^4.0.0
-    graphql-cost-analysis: ^1.0.3
     next: latest
     next-secure-headers: ^2.2.0
     postcss: ^8.2.13
     prettier: 2.3.0
     react: ^17.0.2
     react-dom: ^17.0.2
-    react-firebase-hooks: ^3.0.4
     react-markdown: ^6.0.2
     react-syntax-highlighter: ^15.4.3
     remark-gfm: ^1.0.0
@@ -4224,13 +4223,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"brackets2dots@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "brackets2dots@npm:1.1.0"
-  checksum: da2c52ab93d76cf3d4a4df7b40af66f7943f88beed0ae9471da35a4babb68ce6278c326ee070bcca244450d9c8fc669b1776431cff36834822969114c9bb0b74
-  languageName: node
-  linkType: hard
-
 "brorand@npm:^1.0.1, brorand@npm:^1.1.0":
   version: 1.1.0
   resolution: "brorand@npm:1.1.0"
@@ -5575,15 +5567,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"curry2@npm:^1.0.0":
-  version: 1.0.3
-  resolution: "curry2@npm:1.0.3"
-  dependencies:
-    fast-bind: ^1.0.0
-  checksum: 612ac89ad49b43d4254761a219fbcd1f1a8ed215c32c8804d173a9ed96d632f668ab7b6b9fcca90bfd6a448adee92dcb4871da162dcec2b8fa89c62b94090391
-  languageName: node
-  linkType: hard
-
 "cz-conventional-changelog@npm:3.2.0":
   version: 3.2.0
   resolution: "cz-conventional-changelog@npm:3.2.0"
@@ -5694,7 +5677,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:2, debug@npm:2.6.9, debug@npm:^2.2.0, debug@npm:^2.3.3, debug@npm:^2.5.2":
+"debug@npm:2, debug@npm:2.6.9, debug@npm:^2.2.0, debug@npm:^2.3.3":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
   dependencies:
@@ -6094,13 +6077,6 @@ __metadata:
   version: 8.6.0
   resolution: "dotenv@npm:8.6.0"
   checksum: f4649999a157061dd169118f459d88db56380b2eef68e87fa9de7201796e5f6d94fa337658d7e148f404b48652a0eefe11222d9eba0cd464497911ae56cd6f93
-  languageName: node
-  linkType: hard
-
-"dotsplit.js@npm:^1.0.3":
-  version: 1.1.0
-  resolution: "dotsplit.js@npm:1.1.0"
-  checksum: ff714abaccd03dbd6d32ff3c60b245b090059699dac1e583ee6e68c0860205e9504128f1253238585504566a78df498c7934891c71947d8cd8ab698bdd23484b
   languageName: node
   linkType: hard
 
@@ -6771,13 +6747,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-bind@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "fast-bind@npm:1.0.0"
-  checksum: 5fba0923dc9f8c64a66947995fac45e9ed9ca03665971a1fab233cf55db130c8d01af972bcb4e209260d74e89893a4b1d1301f050bd0fffb7713f64920670519
-  languageName: node
-  linkType: hard
-
 "fast-deep-equal@npm:^3.1.1":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -7358,13 +7327,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"github-markdown-css@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "github-markdown-css@npm:4.0.0"
-  checksum: 7b4b5f41986b38bb3d2b66fca649b1cc09c67185bf0f71ab1b5be54e7359a158a0d3de42e58f1eae59f024068f3dc10cb6de8f200f97a49c1d7b635f0d8584bc
-  languageName: node
-  linkType: hard
-
 "glob-base@npm:^0.3.0":
   version: 0.3.0
   resolution: "glob-base@npm:0.3.0"
@@ -7554,17 +7516,6 @@ __metadata:
   peerDependencies:
     graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
   checksum: c8269eff20f8ff7000941107e67829336d06c2fa8fca24c3b525a0a1c0f890c77d42ccc50a762b6e97e8180443ff82544862d8bc8e7776f336ca0e704695278d
-  languageName: node
-  linkType: hard
-
-"graphql-cost-analysis@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "graphql-cost-analysis@npm:1.0.3"
-  dependencies:
-    selectn: ^1.1.2
-  peerDependencies:
-    graphql: ">=0.11.7"
-  checksum: 910c8dd35505ec42b61963f35e0b223a94c398c5f245f2b297520874e3fcb6cc6032713055b82f0bf23188393afecebe0898e649a29958ba0eeae9f0a60ff557
   languageName: node
   linkType: hard
 
@@ -12758,16 +12709,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-firebase-hooks@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "react-firebase-hooks@npm:3.0.4"
-  peerDependencies:
-    firebase: ">= 8.0.0"
-    react: ">= 16.8.0"
-  checksum: e1a1207062443cd60d0bf74651faea73a4680e91f01306f7be975cc029317daf85deeea07e85f486c9f6973085f7c6e5463300e4afa4305623d080b526c0388e
-  languageName: node
-  linkType: hard
-
 "react-is@npm:16.13.1, react-is@npm:^16.7.0, react-is@npm:^16.8.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -13549,18 +13490,6 @@ resolve@^2.0.0-next.3:
   version: 1.1.2
   resolution: "select@npm:1.1.2"
   checksum: 66be63b7cf0973af48cebcca47909d0ba703bb7f01373f9ebf19880dc8fe9c97f41e2ebdefee144f60bbf416cafbf77dfb98cd1776e62d7afc336b843f1009b1
-  languageName: node
-  linkType: hard
-
-"selectn@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "selectn@npm:1.1.2"
-  dependencies:
-    brackets2dots: ^1.1.0
-    curry2: ^1.0.0
-    debug: ^2.5.2
-    dotsplit.js: ^1.0.3
-  checksum: 52804d05434b042e9204b16087793fe5708ab19362f1c48092a33348ebc0c480f02f663a3911701294eaba3d16de21eefcb1ca8a7d7fff05fe15bf00aa054b60
   languageName: node
   linkType: hard
 

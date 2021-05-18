@@ -1,11 +1,14 @@
 import { config } from 'dotenv';
 import { join } from 'path';
 import next from 'next';
-import { createApp } from '@oasis/api';
 import { chalkLog } from './lib/chalkLog';
 import { ExitWithErrors } from './lib/ExitWithErrors';
+import { getServer } from './lib/getServer';
 
-config({ path: join(__dirname, '../../../api/.env') });
+config({ path: join(__dirname, '../../.env') });
+
+process.env.API_MODE == 'local' &&
+  config({ path: join(__dirname, '../../../api/.env') });
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, conf: require('../../next.config.js') });
@@ -19,7 +22,8 @@ const time = Date.now();
     ExitWithErrors(1);
   }
 
-  const server = await createApp();
+  const server = await getServer();
+
   if (!server) {
     ExitWithErrors(1);
   }

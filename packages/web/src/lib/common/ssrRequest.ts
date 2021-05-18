@@ -20,7 +20,9 @@ type Query = {
 export const ssrRequest = async (
   req: IncomingMessage,
   queries: Query[]
-): Promise<NormalizedCacheObject> => {
+): Promise<NormalizedCacheObject | void> => {
+  // TODO: make this send a request and not resolve client-side
+  if (process.env.API_MODE === 'remote') return {};
   const { createContext, getSchema } = forceRequire(
     '@oasis/api/dist/utils/web-utils'
   );
