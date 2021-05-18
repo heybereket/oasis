@@ -120,7 +120,7 @@ export default class User extends BaseEntity {
   bots: Promise<User[]>;
 
   @Column({ nullable: true })
-  botToken: string;
+  botTokenId: string;
 
   @ManyToMany(() => Resort, (resort) => resort.members)
   joinedResorts: Promise<Resort[]>;

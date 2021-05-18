@@ -3,6 +3,7 @@ import { ContextType } from '@root/apolloServer';
 import { NoBot } from '@utils/auth/NoBot';
 import { ApolloError } from 'apollo-server-express';
 import { v4 as uuidv4 } from 'uuid';
+import { sign } from 'jsonwebtoken';
 import {
   Arg,
   Authorized,
@@ -57,11 +58,11 @@ export class CreateBotResolver {
     bot.comments = Promise.resolve([]);
     bot.badges = Promise.resolve([]);
     bot.botOwner = Promise.resolve(user);
-    const token = uuidv4();
-    bot.botToken = token;
+    const tokenId = uuidv4();
+    bot.botTokenId = tokenId;
 
-    bot.save();
+    const { id: uid } = await bot.save();
 
-    return token;
+    return sign({ uid, tokenId }, process.env.BOT_TOKEN_SECRET);
   }
 }

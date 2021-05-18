@@ -2064,6 +2064,11 @@ __metadata:
 "@oasis-sh/bot@workspace:packages/bot-client":
   version: 0.0.0-use.local
   resolution: "@oasis-sh/bot@workspace:packages/bot-client"
+  dependencies:
+    "@types/node": ^15.3.0
+    "@types/node-fetch": ^2
+    ee-ts: ^1.0.2
+    node-fetch: ^2.6.1
   languageName: unknown
   linkType: soft
 
@@ -2076,6 +2081,7 @@ __metadata:
     "@types/dotenv": ^8.2.0
     "@types/express": ^4
     "@types/express-session": ^1
+    "@types/jsonwebtoken": ^8
     "@types/passport": ^1.0.6
     "@types/passport-discord": ^0
     "@types/passport-github2": ^1.2.4
@@ -2092,6 +2098,7 @@ __metadata:
     express-session: ^1.17.1
     graphql-query-complexity: ^0.8.1
     jest: ^26.6.3
+    jsonwebtoken: ^8.5.1
     passport: ^0.4.1
     passport-custom: ^1.1.1
     passport-discord: ^0.1.4
@@ -2625,7 +2632,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jsonwebtoken@npm:^8.5.0":
+"@types/jsonwebtoken@npm:^8, @types/jsonwebtoken@npm:^8.5.0":
   version: 8.5.1
   resolution: "@types/jsonwebtoken@npm:8.5.1"
   dependencies:
@@ -2712,7 +2719,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node-fetch@npm:^2.5.10":
+"@types/node-fetch@npm:^2, @types/node-fetch@npm:^2.5.10":
   version: 2.5.10
   resolution: "@types/node-fetch@npm:2.5.10"
   dependencies:
@@ -2733,6 +2740,13 @@ __metadata:
   version: 10.17.59
   resolution: "@types/node@npm:10.17.59"
   checksum: 558c0e23405e34103c517bdf352f89519001bf0de6f0e14f46ceba77e920c534e67174f309659cf804ccde1cbfdb55c07cdcc6087183f0afb416d0f4815834fb
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^15.3.0":
+  version: 15.3.0
+  resolution: "@types/node@npm:15.3.0"
+  checksum: 44039665ab71a6ec12e6637a9db4ec3123fdfaf52952ca8028a6f1b37c41c2d380e88d28a41e02693bf9d4815307e0ad938815bf8ffedc5f4d045855fa28db06
   languageName: node
   linkType: hard
 
@@ -6143,6 +6157,15 @@ __metadata:
   version: 1.1.1
   resolution: "ee-first@npm:1.1.1"
   checksum: ba74f91398e3ee3b6d665b2f0d13ad6530e89a7e64ec886a6eec0602fb8a5a274652960e21bd5d4b42fdeb9017d873ff872f50342d38779e955285977edb337c
+  languageName: node
+  linkType: hard
+
+"ee-ts@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "ee-ts@npm:1.0.2"
+  peerDependencies:
+    typescript: ">=3"
+  checksum: 3a18c9496fce8dcc9a250fb82ed3471f80799e7555d6a3a3773c63b6065cb30221592d492a1cd89d6b6a7e0fc16fe1d0f54412ca5d68f149f4479c8842ec9ef6
   languageName: node
   linkType: hard
 
