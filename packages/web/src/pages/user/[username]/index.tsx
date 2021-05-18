@@ -12,7 +12,8 @@ import { Container } from '@components/common/Container';
 import { About, Comments, Like, Posts } from '@components/icons';
 import { Navbar } from '@components/navbar/Navbar';
 import StyledMarkdown from '@components/markdown/StyledMarkdown';
-
+import { useState } from "react";
+import Modal from "../../../components/EditModal";
 interface ProfileProps {
   initialApolloState: any;
   username: string;
@@ -25,6 +26,21 @@ const Profile: React.FC<ProfileProps> = (props) => {
     },
   }).data?.getUserByName;
 
+  const [isOpen, setIsOpen] = useState(false);
+
+
+
+  const onClose = () => {
+    setIsOpen(false);
+  };
+
+  const onOpen = () => {
+    setIsOpen(true);
+  };
+
+
+
+
   return (
     <>
       <SEOProvider
@@ -36,9 +52,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
       <div className="flex w-screen flex-col">
         <div
           style={{
-            background: `linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #0C111B 100%), url(${
-              data?.banner || '/static/default-banner.png'
-            }) no-repeat center`,
+            background: `linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #0C111B 100%), url(${data?.banner || '/static/default-banner.png'
+              }) no-repeat center`,
             backgroundSize: 'cover',
           }}
           className="flex-grow h-52 md:h-60"
@@ -50,7 +65,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 <a href={`/user/${data?.username}`}>
                   <img
                     src={data?.avatar}
-                    style={{pointerEvents: 'none'}}
+                    style={{ pointerEvents: 'none' }}
                     className="rounded-full w-50 h-40"
                   ></img>
                 </a>
@@ -63,8 +78,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
                       </h4>
                     </>
                   ) : (
-                    <h1>@{data?.username}</h1>
-                  )}
+                      <h1>@{data?.username}</h1>
+                    )}
                 </div>
               </div>
               <div className="flex flex-col mt-6">
@@ -83,11 +98,11 @@ const Profile: React.FC<ProfileProps> = (props) => {
                       <StyledMarkdown text={data?.bio ?? ''} />
                     </div>
                   ) : (
-                    <h5 className="text-gray-300 font-bold">
-                      Hmm, it seems like @{data?.username} does not have a bio
+                      <h5 className="text-gray-300 font-bold">
+                        Hmm, it seems like @{data?.username} does not have a bio
                       set.
-                    </h5>
-                  )}
+                      </h5>
+                    )}
 
                   <div className="flex">
                     {data?.badges?.map((badge) => (
@@ -113,9 +128,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 <Button
                   color="primary"
                   className="md:row-span-1 lg:col-span-1 text-sm"
+                  onClick={() => onOpen()}
                 >
-                  Follow @{data?.username}
+                  {' '}
+                    Edit Profile{' '}
                 </Button>
+
+                {isOpen && <Modal onClose={onClose} isOpen={isOpen}></Modal>}
               </div>
               <div className="mt-8 flex bg-gray-800 rounded-2xl py-4 justify-center gap-8">
                 <div className="flex flex-col text-center leading-4">
@@ -133,7 +152,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
               </div>
               <div className="mt-8 flex flex-col bg-gray-800 rounded-2xl py-4 px-6">
                 <h4 className="font-extrabold">
-                  Topics Following 
+                  Topics Following
                 </h4>
                 <div className="mt-2">
                   <TopicBadge content="Machine Learning" />
@@ -161,8 +180,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   </h5>
                 </>
               ) : (
-                <h1>@{data?.username}</h1>
-              )}
+                  <h1>@{data?.username}</h1>
+                )}
             </div>
           </div>
           <div className="mt-6 flex justify-center gap-12 md:hidden">
@@ -205,10 +224,10 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   <StyledMarkdown text={data?.bio ?? ''} />
                 </div>
               ) : (
-                <h5 className="text-gray-300 font-bold">
-                  Hmm, it seems like @{data?.username} does not have a bio set.
-                </h5>
-              )}
+                  <h5 className="text-gray-300 font-bold">
+                    Hmm, it seems like @{data?.username} does not have a bio set.
+                  </h5>
+                )}
 
               <div className="flex">
                 {data?.badges?.map((badge) => (
