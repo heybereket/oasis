@@ -13,7 +13,7 @@ import {
 import React, {useRef, useState } from 'react';
 import { Button } from '@components/common/Button';
 import { NavItem } from '@components/navbar/NavItem';
-import { DropdownItem } from '@components/common/DropdownItem';
+import { DropdownItem } from '@components/navbar/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { useRouter } from 'next/router';
 import { useOnClickOutside } from '@utils/hooks/useOnClickOutside';

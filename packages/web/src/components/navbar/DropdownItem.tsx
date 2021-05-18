@@ -18,7 +18,7 @@ export const DropdownItem: React.FC<DropdownItemProps> = (props) => {
       <Icon />
       <a
         href={props.href ? props.href : '#'}
-        className="font-extrabold text-white"
+        className="font-bold text-white"
       >
         {props.name}
       </a>
