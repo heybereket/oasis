@@ -1,10 +1,7 @@
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
-  purge: [
-    './src/pages/**/*.{ts,tsx}',
-    './src/components/**/*.{ts,tsx}',
-  ],
+  purge: ['./src/pages/**/*.{ts,tsx}', './src/components/**/*.{ts,tsx}'],
   theme: {
     fontFamily: {
       sans: [
@@ -41,6 +38,9 @@ module.exports = {
       },
       textColor: {
         secondary: '#828282',
+      },
+      gridTemplateColumns: {
+        three: 'minmax(350px, 1170px) 420px',
       },
       keyframes: {
         'fade-in-down': {
