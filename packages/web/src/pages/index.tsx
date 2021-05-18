@@ -6,10 +6,13 @@ import { Button } from '@components/common/Button';
 import { FollowUser } from '@components/home/FollowUser';
 import { SidebarItem } from '@components/home/SidebarItem';
 import { usePaginatePostsQuery } from '@oasis/client-gql';
+import { Modal } from '@components/common/Modal';
 
 const HomePage: React.FC = () => {
   const { data } = usePaginatePostsQuery();
   const posts = data?.paginatePosts;
+  
+  const [open, setOpen] = React.useState(true);
 
   // @todo make this better
   if (!posts) return <p>Loading</p>;
@@ -22,6 +25,9 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Navbar />
+      <Modal open={open} closeHandler={() => setOpen(false)}>
+        <p>This is a test of modals</p>
+      </Modal>
       <div className="w-full flex justify-center items-center">
         <div className="px-6 mt-14 grid grid-cols-1 md:grid-cols-three gap-16">
           <div className="flex justify-center">
