@@ -1,7 +1,10 @@
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
-  purge: ['./src/pages/**/*.{ts,tsx}', './src/components/**/*.{ts,tsx}'],
+  purge: [
+    './src/pages/**/*.tsx',
+    './src/components/**/*.tsx'
+  ],
   theme: {
     fontFamily: {
       sans: [
