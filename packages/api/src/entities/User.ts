@@ -17,6 +17,7 @@ import { Role } from '@modules/user/Roles';
 import Comment from '@entities/Comment';
 import Resort from './Resort';
 import Notification from './Notification';
+import { RelationalPagination } from '@utils/RelationalPagination';
 
 @ObjectType()
 @Entity()
@@ -81,7 +82,8 @@ export default class User extends BaseEntity {
   @OneToMany(() => Repo, (repo) => repo.owner)
   repos: Promise<Repo[]>;
 
-  @Field(() => [Post], { nullable: true, complexity: 5 })
+  // @Field(() => [Post], { nullable: true, complexity: 5 })
+  @RelationalPagination(() => User, () => Post, 'author')
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
 
@@ -94,7 +96,8 @@ export default class User extends BaseEntity {
   @OneToMany(() => Resort, (resort) => resort.owner)
   ownedResorts: Promise<Resort[]>;
 
-  @Field(() => [Comment], { nullable: true, complexity: 5 })
+  //@Field(() => [Comment], { nullable: true, complexity: 5 })
+  @RelationalPagination(() => User, () => Comment, 'author')
   @OneToMany(() => Comment, (comment) => comment.author)
   comments: Promise<Comment[]>;
 
@@ -111,7 +114,8 @@ export default class User extends BaseEntity {
   @ManyToOne(() => User, (user) => user.bots, { nullable: true })
   botOwner: Promise<User>;
 
-  @Field(() => [User], { nullable: true })
+  // @Field(() => [User], { nullable: true })
+  @RelationalPagination(() => User, () => User, 'botOwner')
   @OneToMany(() => User, (user) => user.botOwner, { nullable: true })
   bots: Promise<User[]>;
 

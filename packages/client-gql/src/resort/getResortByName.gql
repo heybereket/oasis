@@ -12,9 +12,13 @@ query GetResortByNameWithMembers(
     category
     isJoined
     members(offset: $membersOffset, limit: $membersLimit) {
-      id
-      name
-      avatar
+      items {
+        id
+        name
+        avatar
+      }
+      total
+      hasMore
     }
   }
 }

@@ -11,6 +11,7 @@ import { Field, ID, Int, ObjectType } from 'type-graphql';
 import User from '@entities/User';
 import Comment from '@entities/Comment';
 import Resort from '@entities/Resort';
+import { RelationalPagination } from '@utils/RelationalPagination';
 
 @ObjectType()
 @Entity()
@@ -51,7 +52,8 @@ export default class Post extends BaseEntity {
   @ManyToOne(() => User, (user) => user.posts)
   author: Promise<User>;
 
-  @Field(() => [Comment], { complexity: 5 })
+  // @Field(() => [Comment], { complexity: 5 })
+  @RelationalPagination(() => Post, () => Comment, 'post')
   @OneToMany(() => Comment, (comment) => comment.post)
   comments: Promise<Comment[]>;
 

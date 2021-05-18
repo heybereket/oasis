@@ -3,7 +3,7 @@ import React from 'react';
 export const Home: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
-      width="18"
+      width="20"
       height="20"
       viewBox="0 0 18 20"
       fill="none"

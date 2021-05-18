@@ -15,10 +15,7 @@ const time = Date.now();
 
 (async () => {
   if (!process.env.NEXT_PUBLIC_BASE_URL) {
-    chalkLog(
-      'error',
-      `NEXT_PUBLIC_BASE_URL is undefined in packages/web/.env`
-    );
+    chalkLog('error', `NEXT_PUBLIC_BASE_URL is undefined in packages/web/.env`);
     ExitWithErrors(1);
   }
 
@@ -36,7 +33,10 @@ const time = Date.now();
 
     try {
       server.listen(PORT, () =>
-        chalkLog('success', `Ready in ${Date.now() - time}ms on http://localhost:${PORT}`)
+        chalkLog(
+          'success',
+          `Ready in ${Date.now() - time}ms on http://localhost:${PORT}`
+        )
       );
     } catch (err) {
       if (err) throw err;

@@ -9,7 +9,7 @@ import { SEOProvider } from '@components/common/SEOProvider';
 import { Button } from '@components/common/Button';
 import { TopicBadge } from '@components/profile/TopicBadge';
 import { Container } from '@components/common/Container';
-import { About, Comments, Like, Posts } from '@components/icons';
+import { About, Comments, Like, Posts } from '@icons/index';
 import { Navbar } from '@components/navbar/Navbar';
 import StyledMarkdown from '@components/markdown/StyledMarkdown';
 import { useState } from "react";
@@ -90,9 +90,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   <TabItem name="Comments" active={false} icon={Comments} />
                 </div>
                 <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6">
-                  <h4 className="font-extrabold">
-                    About {data?.name}
-                  </h4>
+                  <h4 className="font-extrabold">About {data?.name}</h4>
                   {data?.bio !== null ? (
                     <div className="text-gray-300 font-bold">
                       <StyledMarkdown text={data?.bio ?? ''} />

@@ -13,10 +13,10 @@ export const StyledMarkdown: React.FC<{ text: string }> = ({ text }) => {
         components={{
           code({ node: _, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '');
-            return !inline && match ? (
+            return !inline ? (
               <SyntaxHighlighter
                 style={OasisDark}
-                language={match[1]}
+                language={match?.[1]}
                 PreTag="div"
                 {...props}
                 className="rounded-lg shadow-sm"

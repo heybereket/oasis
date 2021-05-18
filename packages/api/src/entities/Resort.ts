@@ -11,6 +11,7 @@ import {
 } from 'typeorm';
 import Post from '@entities/Post';
 import User from './User';
+import { RelationalPagination } from '@utils/RelationalPagination';
 
 @ObjectType()
 @Entity()
@@ -43,8 +44,9 @@ export default class Resort extends BaseEntity {
   @Field()
   createdAt: string;
 
+  // @Field(() => [Post], { complexity: 5 })
+  @RelationalPagination(() => Resort, () => Post, 'resort')
   @OneToMany(() => Post, (post) => post.resort)
-  @Field(() => [Post], { complexity: 5 })
   posts: Promise<Post[]>;
 
   @ManyToOne(() => User, (user) => user.ownedResorts)
@@ -53,5 +55,6 @@ export default class Resort extends BaseEntity {
 
   @ManyToMany(() => User, (user) => user.joinedResorts)
   @JoinTable()
+  @RelationalPagination(() => Resort, () => User, 'joinedResorts')
   members: Promise<User[]>;
 }
