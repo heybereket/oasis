@@ -9,7 +9,7 @@ import {
   Profile as ProfileIcon,
   Logout as LogoutIcon,
 } from '@icons/index';
-import React, {useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from '@components/common/Button';
 import { NavItem } from '@components/navbar/NavItem';
 import { DropdownItem } from '@components/navbar/DropdownItem';
@@ -20,11 +20,10 @@ import { useOnClickOutside } from '@utils/hooks/useOnClickOutside';
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
   const { user, currentUserLoading } = useGetCurrentUser();
-  const router = useRouter()
+  const router = useRouter();
 
   const node = useRef() as React.MutableRefObject<HTMLInputElement>;
-  useOnClickOutside(node, () => setDropdownActive(false))
-
+  useOnClickOutside(node, () => setDropdownActive(false));
 
   return (
     <>
@@ -71,7 +70,7 @@ export const Navbar: React.FC = () => {
               <div
                 className="flex justify-items-start items-center space-x-5"
                 onClick={() => {
-                  setDropdownActive(current=>!current);
+                  setDropdownActive((current) => !current);
                 }}
                 ref={node}
               >
@@ -110,7 +109,7 @@ export const Navbar: React.FC = () => {
             name="Profile"
             icon={ProfileIcon}
             onClick={() => {
-              router.push('/user/' + user?.username)
+              router.push('/user/' + user?.username);
               setDropdownActive(false);
             }}
           />

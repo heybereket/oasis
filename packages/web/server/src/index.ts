@@ -43,4 +43,3 @@ const time = Date.now();
     }
   });
 })();
-
