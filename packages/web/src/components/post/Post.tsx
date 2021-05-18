@@ -1,28 +1,12 @@
 import React from 'react';
 import { Comments, SmallUpArrow, SmallDownArrow } from '@icons/index';
 import Link from 'next/link';
+import { PaginatePostsQuery } from '@oasis/client-gql';
 
-interface Author {
-  id: string;
-  name: string;
-  username: string;
-  avatar: string;
-}
-
-interface Post {
-  author: Author;
-  createdAt: string;
-  likes: number;
-  dislikes: number;
-  lastEdited?: string;
-  message: string;
-  resort?: any;
-  title: string;
-  topics?: Array<string>;
-}
+type PostType = PaginatePostsQuery['paginatePosts'][0];
 
 interface Props {
-  post: Post;
+  post: PostType;
 }
 
 export const Post: React.FC<Props> = ({ post }) => {
@@ -46,11 +30,11 @@ export const Post: React.FC<Props> = ({ post }) => {
               </a>
             </Link>
             <div className="flex flex-col items-center">
-              <SmallUpArrow />
+              <SmallUpArrow className={'cursor-pointer'} />
               <p className="font-bold bg-gray-700 px-2 rounded-full">
                 {post.likes - post.dislikes}
               </p>
-              <SmallDownArrow />
+              <SmallDownArrow className={'cursor-pointer'} />
             </div>
           </div>
         </header>
@@ -61,7 +45,7 @@ export const Post: React.FC<Props> = ({ post }) => {
       <footer className="flex justify-between">
         <p className="text-sm font-bold">9:44PM • May 17th 2021</p>
         <div className="flex items-center space-x-2">
-          <p className="text-sm">12 replies</p>
+          <p className="text-sm">{post.comments.total} replies</p>
           <Comments />
         </div>
       </footer>

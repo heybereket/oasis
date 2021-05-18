@@ -5,13 +5,26 @@ import { TopicBadge } from '@components/profile/TopicBadge';
 import { Button } from '@components/common/Button';
 import { FollowUser } from '@components/home/FollowUser';
 import { SidebarItem } from '@components/home/SidebarItem';
-import { usePaginatePostsQuery } from '@oasis/client-gql';
+import {
+  PaginatePostsDocument,
+  PaginatePostsQueryVariables,
+  usePaginatePostsQuery,
+} from '@oasis/client-gql';
+import { GetServerSideProps } from 'next';
+import { ssrRequest } from '@lib/common/ssrRequest';
 
-const HomePage: React.FC = () => {
-  const { data } = usePaginatePostsQuery();
+interface IndexPageProps {
+  initialApolloState: any;
+  vars: PaginatePostsQueryVariables;
+}
+
+const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
+  const { data } = usePaginatePostsQuery({
+    variables: vars,
+  });
   const posts = data?.paginatePosts;
 
-  // @todo make this better
+  // Shouldn't ever show. Hopefully
   if (!posts) return <p>Loading</p>;
 
   const half = Math.ceil(posts.length / 2);
@@ -27,12 +40,12 @@ const HomePage: React.FC = () => {
           <div className="flex justify-center">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-9">
               <div className="space-y-12">
-                {firstHalf.map((post: any, index: number) => (
+                {firstHalf.map((post, index: number) => (
                   <Post post={post} key={index} />
                 ))}
               </div>
               <div className="space-y-12">
-                {secondHalf.map((post: any, index: number) => (
+                {secondHalf.map((post, index: number) => (
                   <Post post={post} key={index} />
                 ))}
               </div>
@@ -80,6 +93,26 @@ const HomePage: React.FC = () => {
       </div>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
+  req,
+}) => {
+  const vars: PaginatePostsQueryVariables = {
+    postsLimit: 25,
+    postsOffset: 0,
+  };
+  return {
+    props: {
+      initialApolloState: await ssrRequest(req, [
+        {
+          document: PaginatePostsDocument,
+          variables: vars,
+        },
+      ]),
+      vars,
+    },
+  };
 };
 
 export default HomePage;
