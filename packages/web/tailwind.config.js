@@ -1,7 +1,8 @@
 module.exports = {
   darkMode: 'class',
   purge: [
-
+    './src/pages/**/*.{ts,tsx}',
+    './src/components/**/*.{ts,tsx}',
   ],
   theme: {
 
@@ -46,6 +47,17 @@ module.exports = {
         textColor: {
       secondary: "#828282"
     },
+      minHeight: {
+        '1/4': '25%',
+        '1/2': '50%',
+        '3/4': '75%',
+      },
+      backgroundColor: {
+        resortSecondary: '#141923',
+      },
+      textColor: {
+        secondary: '#828282',
+      },
       keyframes: {
         'fade-in-down': {
           '0%': {

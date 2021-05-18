@@ -1,23 +1,26 @@
 import { Login, Logout } from '@lib/login';
 import {
   Bell,
-  DownArrow,
   Friends,
   Home,
-  MagnifyingGlass,
-  Saved,
   Search,
+  Saved,
   Topics,
   Profile as ProfileIcon,
   Logout as LogoutIcon,
 } from '@components/icons';
+=======
+} from '@icons/index';
 import React, {useRef, useState } from 'react';
 import { Button } from '@components/common/Button';
 import { NavItem } from '@components/navbar/NavItem';
-import { DropdownItem } from '@components/common/DropdownItem';
+import { DropdownItem } from '@components/navbar/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { useRouter } from 'next/router';
 import {useOnClickOutside} from "@hooks/useOnClickOutside"
+=======
+import { useOnClickOutside } from '@utils/hooks/useOnClickOutside';
+
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
   const { user, currentUserLoading } = useGetCurrentUser();
@@ -58,14 +61,13 @@ export const Navbar: React.FC = () => {
         </div>
         <div className="flex justify-items-start items-center space-x-8 ml-4">
           <div className="hidden md-50:flex items-center relative">
-            <MagnifyingGlass className="absolute ml-3" />
+            <Search className="absolute ml-3" />
 
             <input
               placeholder="Search"
               className="rounded-lg bg-gray-700 h-10 text-sm pl-11 text-gray-300 w-80 focus:outline-none"
             />
           </div>
-          <Search className="ml-3 md-50:hidden" />
           <Bell className="hidden sm-50:block" />
 
           {!currentUserLoading ? (
@@ -81,9 +83,8 @@ export const Navbar: React.FC = () => {
                 <img
                   src={user.avatar ?? undefined}
                   alt={user.name ?? undefined}
-                  className="w-12 h-12 rounded-full"
+                  className="w-10 h-10 rounded-full cursor-pointer"
                 />
-                <DownArrow className="hidden md-50:block" />
               </div>
             ) : (
               <Button

@@ -7,7 +7,7 @@ import { joinRoot } from '@utils/common/rootPath';
 export const ormconfig: ConnectionOptions = {
   type: 'sqlite',
   /* Be sure to change this to the location you'd like the sqlite file to be saved. */
-  database: '<path-to-sqlite-file>',
+  database: './db.sqlite',
   entities: [joinRoot('./entities/*.*')],
   synchronize: true,
 };

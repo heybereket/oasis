@@ -1,6 +1,8 @@
 import React from 'react';
 
-export const Comments: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+export const SmallUpArrow: React.FC<React.SVGProps<SVGSVGElement>> = (
+  props
+) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,14 +10,13 @@ export const Comments: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#ffffff"
-      strokeWidth="2"
+      stroke="currentColor"
+      strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="feather feather-bookmark"
       {...props}
     >
-      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+      <polyline points="18 15 12 9 6 15" />
     </svg>
   );
 };

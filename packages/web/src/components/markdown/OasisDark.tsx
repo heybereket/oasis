@@ -20,7 +20,6 @@ export default {
     padding: '1.15em',
     overflow: 'auto',
     background: 'var(--color-gray-900)',
-    borderRadius: '0.75rem',
   },
   'code[class*="language-"]': {
     color: '#d4d4d4',

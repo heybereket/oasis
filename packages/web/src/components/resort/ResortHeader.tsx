@@ -1,5 +1,5 @@
 import { Button } from '@components/common/Button';
-import { RightArrow } from '@components/icons';
+import { RightArrow } from '@icons/index';
 import {
   GetResortByNameWithMembersQuery,
   useJoinResortMutation,
@@ -44,7 +44,7 @@ const ResortHeader: React.FC<IResortHeaderProps> = ({ resortData }) => {
           <div className="flex items-center space-x-3 mt-2">
             <AvatarGroup
               avatarIcons={
-                resortData?.members.map((member) => member.avatar) ?? []
+                resortData?.members.items.map((member) => member.avatar) ?? []
               }
             />
             <Button
