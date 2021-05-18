@@ -1,11 +1,10 @@
 const CategoryTab: React.FC = () => {
-  return(
+  return (
     <>
-    <div className={`bg-resortSecondary min-h-full max-w-md  rounded-lg`}>
-      something
-    </div>
+      <div className={`bg-resortSecondary min-h-full max-w-md  rounded-lg`}>
+        something
+      </div>
     </>
-  )
-}
-export default CategoryTab
-
+  );
+};
+export default CategoryTab;

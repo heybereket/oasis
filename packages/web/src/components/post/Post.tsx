@@ -20,7 +20,9 @@ export const Post: React.FC<PostProps> = (props: PostProps) => {
             </div>
             <div className="flex flex-col items-center">
               <SmallUpArrow />
-              <p className="font-bold bg-gray-700 px-2 rounded-full">{props.votes}</p>
+              <p className="font-bold bg-gray-700 px-2 rounded-full">
+                {props.votes}
+              </p>
               <SmallDownArrow />
             </div>
           </div>

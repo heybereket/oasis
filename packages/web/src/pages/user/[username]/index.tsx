@@ -50,7 +50,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 <a href={`/user/${data?.username}`}>
                   <img
                     src={data?.avatar}
-                    style={{pointerEvents: 'none'}}
+                    style={{ pointerEvents: 'none' }}
                     className="rounded-full w-50 h-40"
                   ></img>
                 </a>
@@ -75,9 +75,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   <TabItem name="Comments" active={false} icon={Comments} />
                 </div>
                 <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6">
-                  <h4 className="font-extrabold">
-                    About {data?.name}
-                  </h4>
+                  <h4 className="font-extrabold">About {data?.name}</h4>
                   {data?.bio !== null ? (
                     <div className="text-gray-300 font-bold">
                       <StyledMarkdown text={data?.bio ?? ''} />
@@ -132,9 +130,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 </div>
               </div>
               <div className="mt-8 flex flex-col bg-gray-800 rounded-2xl py-4 px-6">
-                <h4 className="font-extrabold">
-                  Topics Following
-                </h4>
+                <h4 className="font-extrabold">Topics Following</h4>
                 <div className="mt-2">
                   <TopicBadge content="Machine Learning" />
                   <TopicBadge content="Development" />
