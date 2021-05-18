@@ -16,7 +16,8 @@
     "prepare": "husky install",
     "publish:bot": "yarn workspace @oasis/bot-client run publish",
     "reinstall": "yarn clean && rimraf packages/**/*.sqlite || yarn install",
-    "start": "yarn workspace @oasis/web run start"
+    "start": "yarn workspace @oasis/web run start",
+    "test": "echo \"Error: no test specified\""
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.2",
