@@ -14,3 +14,5 @@ export { Topics } from './navbar/Topics';
 export { Twitter } from './social/Twitter';
 export { RightArrow } from './arrows/RightArrow';
 export { Profile } from './navbar/Profile';
+export { SmallUpArrow } from './arrows/SmallUpArrow';
+export { SmallDownArrow } from './arrows/SmallDownArrow';
