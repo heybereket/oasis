@@ -1,5 +1,5 @@
 import { Navbar } from '@components/navbar/Navbar';
-import CategoryTab from '@components/resort/CategoryTab';
+import { ResortCard } from '@components/resort/ResortCard';
 import React from 'react';
 const Resort: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const Resort: React.FC = () => {
           </span>
         </div>
         <div className={`mt-16 min-h-1/2`}>
-          <CategoryTab />
+          <ResortCard />
         </div>
       </div>
     </>
