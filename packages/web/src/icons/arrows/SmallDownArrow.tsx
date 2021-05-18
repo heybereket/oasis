@@ -1,8 +1,6 @@
 import React from 'react';
 
-export const SmallDownArrow: React.FC<React.SVGProps<SVGSVGElement>> = (
-  props
-) => {
+export const SmallDownArrow: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,6 +12,7 @@ export const SmallDownArrow: React.FC<React.SVGProps<SVGSVGElement>> = (
       strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
+      {...props}
     >
       <polyline points="6 9 12 15 18 9" />
     </svg>
