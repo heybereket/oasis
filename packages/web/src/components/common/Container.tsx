@@ -1,3 +1,3 @@
-export const Container: React.FC = (props) => {
-  return <div className={`lg:max-w-lg mx-auto`}>{props.children}</div>;
+export const Container: React.FC = ({ children }) => {
+  return <div className={`lg:max-w-lg mx-auto`}>{children}</div>;
 };

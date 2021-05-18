@@ -30,6 +30,7 @@ body {
     --color-primary: #306eea;
     --color-primary-light: #5c91fc;
     --color-primary-lighter: #a3c1ff;
+    --color-text-light: #bdbdbd;
   }
 
   img {
@@ -111,5 +112,5 @@ body {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #4B5563;
+  background: #4b5563;
 }

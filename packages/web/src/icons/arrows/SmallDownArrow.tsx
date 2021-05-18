@@ -14,6 +14,7 @@ export const SmallDownArrow: React.FC<React.SVGProps<SVGSVGElement>> = (
       strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
+      {...props}
     >
       <polyline points="6 9 12 15 18 9" />
     </svg>
