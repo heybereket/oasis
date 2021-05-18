@@ -3,9 +3,8 @@ import {
   Bell,
   Friends,
   Home,
-  MagnifyingGlass,
-  Saved,
   Search,
+  Saved,
   Topics,
   Profile as ProfileIcon,
   Logout as LogoutIcon,
@@ -57,14 +56,13 @@ export const Navbar: React.FC = () => {
         </div>
         <div className="flex justify-items-start items-center space-x-8 ml-4">
           <div className="hidden md-50:flex items-center relative">
-            <MagnifyingGlass className="absolute ml-3" />
+            <Search className="absolute ml-3" />
 
             <input
               placeholder="Search"
               className="rounded-lg bg-gray-700 h-10 text-sm pl-11 text-gray-300 w-80 focus:outline-none"
             />
           </div>
-          <Search className="ml-3 md-50:hidden" />
           <Bell className="hidden sm-50:block" />
 
           {!currentUserLoading ? (
