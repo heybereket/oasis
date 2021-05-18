@@ -32,7 +32,9 @@ const HomePage: React.FC = () => {
                 username="f1sh"
                 votes={95}
               />
-          </div>
+            </div>
+          </section>
+         </div>
         </div>
         <div className="hidden md:flex flex-col items-center">
           <div className="flex flex-col items-center space-y-10">
