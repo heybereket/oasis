@@ -11,7 +11,7 @@ import { Modal } from '@components/common/Modal';
 const HomePage: React.FC = () => {
   const { data } = usePaginatePostsQuery();
   const posts = data?.paginatePosts;
-
+  
   const [open, setOpen] = React.useState(true);
 
   // @todo make this better

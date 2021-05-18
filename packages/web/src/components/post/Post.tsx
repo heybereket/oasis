@@ -1,6 +1,6 @@
 import React from 'react';
 import { Comments, SmallUpArrow, SmallDownArrow } from '@icons/index';
-import StyledMarkdown from '@components/markdown/StyledMarkdown';
+import Link from 'next/link';
 
 interface Author {
   id: string;
@@ -27,7 +27,7 @@ interface Props {
 
 export const Post: React.FC<Props> = ({ post }) => {
   return (
-    <div className="shadow-lg max-w-[580px] w-full bg-gray-800 px-5 pt-2 pb-4 rounded-2xl flex flex-col justify-between">
+    <div className="shadow-lg max-w-580 w-full bg-gray-800 px-5 pt-2 pb-4 rounded-2xl flex flex-col justify-between">
       <div>
         <header className="flex items-center space-x-4">
           <img
@@ -35,12 +35,16 @@ export const Post: React.FC<Props> = ({ post }) => {
             className="flex-none bg-gray-600 rounded-full w-11 h-11"
           />
           <div className="flex items-center justify-between w-full">
-            <div>
-              <p className="text-xl font-bold">{post.author.name}</p>
-              <p className="-mt-1 text-light font-bold">
-                @{post.author.username}
-              </p>
-            </div>
+            <Link href={`/user/${post.author.username}`}>
+              <a>
+                <div>
+                  <p className="text-xl font-bold">{post.author.name}</p>
+                  <p className="-mt-1 text-light font-bold">
+                    @{post.author.username}
+                  </p>
+                </div>
+              </a>
+            </Link>
             <div className="flex flex-col items-center">
               <SmallUpArrow />
               <p className="font-bold bg-gray-700 px-2 rounded-full">

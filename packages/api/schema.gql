@@ -59,6 +59,7 @@ type Mutation {
   createPost(data: NewPostInput!): Boolean!
   createResort(data: CreateResortInput!): Boolean!
   deleteAccount: Boolean!
+  deletePost(postId: String!): Boolean!
   editComment(commentId: String!, data: EditCommentInput!): Boolean!
   editPost(data: EditPostInput!, postId: String!): Boolean!
   giveBadge(badgeName: String!, username: String!): Boolean!

@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
-  purge: ['./src/pages/**/*.{ts,tsx}', './src/components/**/*.{ts,tsx}'],
+  purge: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
   theme: {
     fontFamily: {
       sans: [
@@ -32,6 +32,9 @@ module.exports = {
         '1/4': '25%',
         '1/2': '50%',
         '3/4': '75%',
+      },
+      maxWidth: {
+        '580': '580px',
       },
       backgroundColor: {
         resortSecondary: '#141923',
