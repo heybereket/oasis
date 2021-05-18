@@ -7,6 +7,7 @@ interface Post {
   name: string;
   username: string;
   code?: string;
+  votes?: number;
 }
 
 interface Props {
@@ -26,7 +27,9 @@ export const Post: React.FC<Props> = ({ post }) => {
             </div>
             <div className="flex flex-col items-center">
               <SmallUpArrow />
-              <p className="font-bold bg-gray-700 px-2 rounded-full">23</p>
+              <p className="font-bold bg-gray-700 px-2 rounded-full">
+                {post.votes || '23'}
+              </p>
               <SmallDownArrow />
             </div>
           </div>

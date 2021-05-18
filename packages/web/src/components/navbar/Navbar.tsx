@@ -77,7 +77,7 @@ export const Navbar: React.FC = () => {
               >
                 <img
                   src={user.avatar ?? undefined}
-                  alt={user.name ?? undefined}
+                  alt={`@${user.username}` ?? undefined}
                   className="w-10 h-10 rounded-full cursor-pointer"
                 />
               </div>
