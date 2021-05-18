@@ -12,6 +12,7 @@ import {
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
+import { Modal } from '@components/common/Modal';
 
 interface IndexPageProps {
   initialApolloState: any;
@@ -24,6 +25,8 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   });
   const posts = data?.paginatePosts;
 
+  const [open, setOpen] = React.useState(false);
+
   // Shouldn't ever show. Hopefully
   if (!posts) return <p>Loading</p>;
 
@@ -35,6 +38,9 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   return (
     <>
       <Navbar />
+      <Modal open={open} closeHandler={() => setOpen(false)}>
+        <p>This is a test of modals</p>
+      </Modal>
       <div className="w-full flex justify-center items-center">
         <div className="px-6 mt-14 grid grid-cols-1 md:grid-cols-three gap-16">
           <div className="flex justify-center">
