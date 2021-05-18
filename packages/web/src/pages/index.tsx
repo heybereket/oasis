@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
   const { data } = usePaginatePostsQuery();
   const posts = data?.paginatePosts;
   
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   // @todo make this better
   if (!posts) return <p>Loading</p>;
