@@ -1,6 +1,5 @@
 import React from 'react';
 import { Comments, SmallUpArrow, SmallDownArrow } from '@icons/index';
-import StyledMarkdown from '@components/markdown/StyledMarkdown';
 
 interface Author {
   id: string;
