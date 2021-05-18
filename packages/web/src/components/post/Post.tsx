@@ -26,7 +26,6 @@ interface Props {
 }
 
 export const Post: React.FC<Props> = ({ post }) => {
-  console.log(post);
   return (
     <div className="shadow-lg max-w-[580px] w-full bg-gray-800 px-5 pt-2 pb-4 rounded-2xl flex flex-col justify-between">
       <div>
