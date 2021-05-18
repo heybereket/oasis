@@ -40,7 +40,7 @@ module.exports = {
         secondary: '#828282',
       },
       gridTemplateColumns: {
-        three: 'minmax(350px, 1170px) 420px',
+        three: 'minmax(350px, 1190px) 470px',
       },
       keyframes: {
         'fade-in-down': {
@@ -85,6 +85,9 @@ module.exports = {
           DEFAULT: 'var(--color-primary)',
           light: 'var(--color-primary-light)',
           lighter: 'var(--color-primary-lighter)',
+        },
+        light: {
+          DEFAULT: 'var(--color-text-light)',
         },
       },
     },
