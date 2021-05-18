@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node .",
-    "watch": "concurrently \"tsc --w\" && \"tsc-alias -w\"",
+    "start": "node dist/index.js",
+    "watch": "concurrently \"tsc --w\" \"tsc-alias -w\"",
     "build": "tsc && tsc-alias && node dist/build.js",
     "dev:start": "nodemon dist/index.js --ignore src",
     "dev": "concurrently \"yarn:watch\" \"yarn:dev:start\"",
@@ -57,6 +57,7 @@
     "pg": "^8.6.0",
     "redis": "^3.1.2",
     "reflect-metadata": "^0.1.13",
+    "tslib": "^2.2.0",
     "type-graphql": "^1.1.1",
     "typeorm": "^0.2.32",
     "uuid": "^8.3.2"

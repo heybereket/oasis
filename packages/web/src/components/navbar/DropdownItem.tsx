@@ -13,12 +13,12 @@ export const DropdownItem: React.FC<DropdownItemProps> = (props) => {
   return (
     <div
       className="flex justify-between hover:opacity-80 cursor-pointer px-2 space-x-3"
-      onClick={props.onClick ? props.onClick : undefined}
+      onClick={props.onClick}
     >
       <Icon />
       <a
-        href={props.href ? props.href : '#'}
-        className="font-extrabold text-white"
+        href={props.href}
+        className="font-bold text-white"
       >
         {props.name}
       </a>
