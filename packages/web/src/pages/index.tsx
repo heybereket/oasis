@@ -45,7 +45,6 @@ const HomePage: React.FC = () => {
               </button>
               <p>Your most popular posts are about TypeScript and Oasis.</p>
             </div>
-          </section>
           <section className="hidden md:flex flex-col items-center">
             <div className="max-w-[420px] flex flex-col items-center">
               <article className="flex flex-col items-center">
