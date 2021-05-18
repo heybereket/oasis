@@ -26,3 +26,33 @@ query getPost($id: String!) {
     topics
   }
 }
+
+query PaginatePosts {
+  paginatePosts(limit: 50, offset: 0) {
+    author {
+      id
+      name
+      username
+      badges {
+        description
+        id
+        imagePath
+      }
+      avatar
+    }
+    createdAt
+    dislikes
+    id
+    lastEdited
+    likes
+    message
+    resort {
+      id
+      description
+      logo
+      name
+    }
+    title
+    topics
+  }
+}
