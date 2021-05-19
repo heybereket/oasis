@@ -2,6 +2,7 @@ import {
   BaseEntity,
   Column,
   Entity,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   OneToOne,
@@ -29,14 +30,6 @@ export default class Post extends BaseEntity {
   message: string;
 
   @Column()
-  @Field(() => Int)
-  likes: number = 0;
-
-  @Column()
-  @Field(() => Int)
-  dislikes: number = 0;
-
-  @Column()
   @Field()
   createdAt: string;
 
@@ -51,6 +44,15 @@ export default class Post extends BaseEntity {
   @Field(() => User, { complexity: 1 })
   @ManyToOne(() => User, (user) => user.posts)
   author: Promise<User>;
+
+  // @Field(() => User, { complexity: 1 })
+  @RelationalPagination(() => Post, () => User, 'likedPosts')
+  @ManyToMany(() => User, (user) => user.likedPosts)
+  likers: Promise<User[]>;
+
+  @RelationalPagination(() => Post, () => User, 'dislikedPosts')
+  @ManyToMany(() => User, (user) => user.dislikedPosts)
+  dislikers: Promise<User[]>;
 
   // @Field(() => [Comment], { complexity: 5 })
   @RelationalPagination(() => Post, () => Comment, 'post')

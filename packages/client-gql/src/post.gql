@@ -57,5 +57,15 @@ query PaginatePosts($postsLimit: Float!, $postsOffset: Float!) {
     }
     title
     topics
+    isLiked
+    isDisliked
   }
+}
+
+mutation LikeDislikePost(
+  $like: Boolean!
+  $dislike: Boolean!
+  $postId: String!
+) {
+  likeDislike(like: $like, dislike: $dislike, postId: $postId)
 }

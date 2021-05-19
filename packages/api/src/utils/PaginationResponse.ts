@@ -2,12 +2,16 @@ import { ClassType, Field, ObjectType } from 'type-graphql';
 
 export function PaginatedResponse<TItem>(
   TItemClass: ClassType<TItem>,
-  TOwner: ClassType
+  TOwner: ClassType,
+  fieldName: string
 ) {
   // `isAbstract` decorator option is mandatory to prevent registering in schema
-  @ObjectType(`Paginated${TItemClass.name}From${TOwner.name}Response`, {
-    isAbstract: true,
-  })
+  @ObjectType(
+    `Paginated${TItemClass.name}From${TOwner.name}_${fieldName}Response`,
+    {
+      isAbstract: true,
+    }
+  )
   abstract class PaginatedResponseClass {
     // here we use the runtime argument
     @Field(() => [TItemClass])
