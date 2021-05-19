@@ -9,8 +9,6 @@ type Query = {
   variables?: { [key: string]: any };
 };
 
-// let schema;
-
 export const ssrRequest = async (
   req: IncomingMessage,
   queries: Query[]
@@ -25,7 +23,7 @@ export const ssrRequest = async (
 
   const contextValue = await createContext(req);
 
-  // For every document, follow the steps below
+  // For every document, do the following
   for (const { document, variables = {} } of queries) {
     // Add a "__typename" field because Apollo's cache expects it
     // @todo Change how this is done (editing JSON directly may cause problems in the future)
