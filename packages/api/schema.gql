@@ -59,10 +59,12 @@ type Mutation {
   createPost(data: NewPostInput!): Boolean!
   createResort(data: CreateResortInput!): Boolean!
   deleteAccount: Boolean!
+  deletePost(postId: String!): Boolean!
   editComment(commentId: String!, data: EditCommentInput!): Boolean!
   editPost(data: EditPostInput!, postId: String!): Boolean!
   giveBadge(badgeName: String!, username: String!): Boolean!
   joinResort(resortId: String!): Boolean
+  likeDislike(dislike: Boolean!, like: Boolean!, postId: String!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   markNotificationAsRead(notificationId: String!): Boolean!
@@ -95,37 +97,61 @@ enum NotificationType {
   Reply
 }
 
-type PaginatedCommentFromPostResponse {
+type PaginatedCommentFromPost_postResponse {
   hasMore: Boolean!
   items: [Comment!]!
   total: Float!
 }
 
-type PaginatedCommentFromUserResponse {
+type PaginatedCommentFromUser_authorResponse {
   hasMore: Boolean!
   items: [Comment!]!
   total: Float!
 }
 
-type PaginatedPostFromResortResponse {
+type PaginatedPostFromResort_resortResponse {
   hasMore: Boolean!
   items: [Post!]!
   total: Float!
 }
 
-type PaginatedPostFromUserResponse {
+type PaginatedPostFromUser_authorResponse {
   hasMore: Boolean!
   items: [Post!]!
   total: Float!
 }
 
-type PaginatedUserFromResortResponse {
+type PaginatedPostFromUser_dislikersResponse {
+  hasMore: Boolean!
+  items: [Post!]!
+  total: Float!
+}
+
+type PaginatedPostFromUser_likersResponse {
+  hasMore: Boolean!
+  items: [Post!]!
+  total: Float!
+}
+
+type PaginatedUserFromPost_dislikedPostsResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
 }
 
-type PaginatedUserFromUserResponse {
+type PaginatedUserFromPost_likedPostsResponse {
+  hasMore: Boolean!
+  items: [User!]!
+  total: Float!
+}
+
+type PaginatedUserFromResort_joinedResortsResponse {
+  hasMore: Boolean!
+  items: [User!]!
+  total: Float!
+}
+
+type PaginatedUserFromUser_botOwnerResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
@@ -133,12 +159,16 @@ type PaginatedUserFromUserResponse {
 
 type Post {
   author: User!
-  comments(limit: Float!, offset: Float!): PaginatedCommentFromPostResponse!
+  comments(limit: Float!, offset: Float!): PaginatedCommentFromPost_postResponse!
   createdAt: String!
-  dislikes: Int!
+  dislikers(limit: Float!, offset: Float!): PaginatedUserFromPost_dislikedPostsResponse!
+  dislikes: Float!
   id: ID!
+  isDisliked: Boolean!
+  isLiked: Boolean!
   lastEdited: String
-  likes: Int!
+  likers(limit: Float!, offset: Float!): PaginatedUserFromPost_likedPostsResponse!
+  likes: Float!
   message: String!
   resort: Resort
   title: String!
@@ -192,10 +222,10 @@ type Resort {
   id: String!
   isJoined: Boolean!
   logo: String!
-  members(limit: Float!, offset: Float!): PaginatedUserFromResortResponse!
+  members(limit: Float!, offset: Float!): PaginatedUserFromResort_joinedResortsResponse!
   name: String!
   owner: User!
-  posts(limit: Float!, offset: Float!): PaginatedPostFromResortResponse!
+  posts(limit: Float!, offset: Float!): PaginatedPostFromResort_resortResponse!
 }
 
 enum Role {
@@ -218,17 +248,19 @@ type User {
   banner: String
   bio: String
   botOwner: User
-  bots(limit: Float!, offset: Float!): PaginatedUserFromUserResponse!
-  comments(limit: Float!, offset: Float!): PaginatedCommentFromUserResponse!
+  bots(limit: Float!, offset: Float!): PaginatedUserFromUser_botOwnerResponse!
+  comments(limit: Float!, offset: Float!): PaginatedCommentFromUser_authorResponse!
   createdAt: String!
   discord: String
+  dislikedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_dislikersResponse!
   github: String
   google: String
   id: ID!
   isBot: Boolean
+  likedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_likersResponse!
   name: String
   ownedResorts: [Resort!]
-  posts(limit: Float!, offset: Float!): PaginatedPostFromUserResponse!
+  posts(limit: Float!, offset: Float!): PaginatedPostFromUser_authorResponse!
   repos: [Repo!]
   roles: [Role!]!
   twitter: String

@@ -12,6 +12,8 @@ import {
   Mutation,
   Resolver,
 } from 'type-graphql';
+import { generatedNumber } from '@utils/index';
+import { sign } from 'jsonwebtoken';
 
 @Resolver()
 export class RefreshBotTokenResolver {
@@ -29,11 +31,11 @@ export class RefreshBotTokenResolver {
     if ((await bot.botOwner).id !== user.id)
       throw new ApolloError('This bot is not your bot!');
 
-    const token = uuidv4();
-    bot.botToken = token;
+    const tokenId = uuidv4();
+    bot.botTokenId = tokenId;
 
-    bot.save();
+    const { id: uid } = await bot.save();
 
-    return token;
+    return sign({ uid, tokenId }, process.env.BOT_TOKEN_SECRET);
   }
 }

@@ -14,7 +14,8 @@ for (const [getTargetEntity, obj] of mapping) {
     const valEntity = getValEntity();
     const paginatedReponse = PaginatedResponse<typeof valEntity>(
       valEntity,
-      getTargetEntity()
+      getTargetEntity(),
+      otherSideKey
     );
 
     const funcName = `XYZ${a++}`;
