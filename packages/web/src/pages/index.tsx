@@ -31,7 +31,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   const half = Math.ceil(posts.length / 2);
 
   const firstHalf = [...posts].splice(0, half);
-  const secondHalf = [...posts].splice(-half);
+  const secondHalf = [...posts].splice(half, posts.length);
 
   return (
     <>
