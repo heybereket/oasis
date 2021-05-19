@@ -51,9 +51,10 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                 ))}
               </div>
               <div className="w-full space-y-12">
-                {secondHalf.map((post, index: number) => (
-                  <Post post={post} key={index} />
-                ))}
+                {posts.length > 1 &&
+                  secondHalf.map((post, index: number) => (
+                    <Post post={post} key={index} />
+                  ))}
               </div>
             </div>
           </div>

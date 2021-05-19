@@ -2,6 +2,7 @@ import React from 'react';
 import { Comments, SmallUpArrow, SmallDownArrow } from '@icons/index';
 import Link from 'next/link';
 import { PaginatePostsQuery } from '@oasis/client-gql';
+import { postDate } from '@lib/postDate';
 
 type PostType = PaginatePostsQuery['paginatePosts'][0];
 
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export const Post: React.FC<Props> = ({ post }) => {
+  const date = postDate(post.createdAt);
+
   return (
     <div className="shadow-lg max-w-580 w-full bg-gray-800 px-5 pt-2 pb-4 rounded-2xl flex flex-col justify-between">
       <div>
@@ -43,7 +46,7 @@ export const Post: React.FC<Props> = ({ post }) => {
         </p>
       </div>
       <footer className="flex justify-between">
-        <p className="text-sm font-bold">9:44PM • May 17th 2021</p>
+        <p className="text-sm font-bold">{date}</p>
         <div className="flex items-center space-x-2">
           <p className="text-sm">{post.comments.total} replies</p>
           <Comments />
