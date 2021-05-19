@@ -34,7 +34,11 @@ export default class Client extends EventEmitter<Events> {
     const data = await res.json();
 
     if (data.errors) {
-      throw new Error(`GraphQL Returned Error: ${data.errors.join(', \n')}`);
+      throw new Error(
+        `GraphQL Returned Error: ${data.errors
+          .map((err) => JSON.stringify(err))
+          .join(', \n')}`
+      );
     }
 
     return extractor(data);
