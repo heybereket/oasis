@@ -4,12 +4,6 @@ import { graphql, DocumentNode, print } from 'graphql';
 import { IncomingMessage } from 'http';
 import forceRequire from '../require';
 
-// Creates a GraphQL request for SSR or SSG.
-// Instead of sending a request to the api
-// endpoint, this uses the schema from
-// TypeGraphQL and queries that. This method
-// increases performance
-
 type Query = {
   document: DocumentNode;
   variables?: { [key: string]: any };
