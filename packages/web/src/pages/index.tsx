@@ -28,10 +28,14 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   const [open, setOpen] = React.useState(false);
 
   if (!posts) return null;
-  const half = Math.ceil(posts.length / 2);
 
-  const firstHalf = [...posts].splice(0, half);
-  const secondHalf = [...posts].splice(half, posts.length);
+  const result = posts.reduce((acc: any, letter, ndx) => {
+    acc[ndx % 2] = acc[ndx % 2] || [];
+    acc[ndx % 2].push(letter);
+    return acc;
+  }, []);
+
+  const [firstHalf, secondHalf] = result;
 
   return (
     <>
