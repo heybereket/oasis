@@ -117,7 +117,7 @@ export const Post: React.FC<Props> = ({ post }) => {
         </p>
       </div>
       <footer className="flex justify-between">
-        <p className="text-sm font-light">{date}</p>
+        <p className="text-sm font-semibold">{date}</p>
         <div className="flex items-center space-x-2">
           <p className="text-sm">{post.comments.total} replies</p>
           <Comments />
