@@ -4,18 +4,10 @@ import { graphql, DocumentNode, print } from 'graphql';
 import { IncomingMessage } from 'http';
 import forceRequire from '@lib/require';
 
-// Creates a GraphQL request for SSR or SSG.
-// Instead of sending a request to the api
-// endpoint, this uses the schema from
-// TypeGraphQL and queries that. This method
-// increases performance
-
 type Query = {
   document: DocumentNode;
   variables?: { [key: string]: any };
 };
-
-// let schema;
 
 export const ssrRequest = async (
   req: IncomingMessage,
@@ -31,7 +23,7 @@ export const ssrRequest = async (
 
   const contextValue = await createContext(req);
 
-  // For every document, follow the steps below
+  // For every document, do the following
   for (const { document, variables = {} } of queries) {
     // Add a "__typename" field because Apollo's cache expects it
     // @todo Change how this is done (editing JSON directly may cause problems in the future)
