@@ -5,9 +5,9 @@ __metadata:
   version: 4
   cacheKey: 7
 
-"@apollo/client@npm:^3.3.18":
-  version: 3.3.18
-  resolution: "@apollo/client@npm:3.3.18"
+"@apollo/client@npm:^3.3.19":
+  version: 3.3.19
+  resolution: "@apollo/client@npm:3.3.19"
   dependencies:
     "@graphql-typed-document-node/core": ^3.0.0
     "@types/zen-observable": ^0.8.0
@@ -31,7 +31,7 @@ __metadata:
       optional: true
     subscriptions-transport-ws:
       optional: true
-  checksum: 7d72f4eda7f9f65821c0e431ca4442fe3baee8a69dc5a059094260b2cabe9c8d9ee8bf50613ea15bfca422f92edfb5e6110289a4a97298d863426fe464294f16
+  checksum: a7266cfdff900ef71adece4d24c853fc6179dfe3d3b89905b468b0a487959a435ef84219fb1266c86e2edb0747ff0e52b6ac49dba72bdac7cdbc55e1d0a2e357
   languageName: node
   linkType: hard
 
@@ -2069,6 +2069,7 @@ __metadata:
     "@types/node-fetch": ^2
     ee-ts: ^1.0.2
     node-fetch: ^2.6.1
+    typescript: ^4.2.4
   languageName: unknown
   linkType: soft
 
@@ -2096,6 +2097,7 @@ __metadata:
     dotenv: ^9.0.0
     express: ^4.17.1
     express-session: ^1.17.1
+    graphql: ^15.5.0
     graphql-query-complexity: ^0.8.1
     jest: ^26.6.3
     jsonwebtoken: ^8.5.1
@@ -2111,7 +2113,7 @@ __metadata:
     sqlite3: ^5.0.2
     ts-node: ^9.1.1
     ts-node-dev: ^1.1.6
-    tsc-alias: ^1.2.10
+    tsc-alias: ^1.2.11
     tslib: ^2.2.0
     type-graphql: ^1.1.1
     typeorm: ^0.2.32
@@ -2124,13 +2126,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@oasis/client-gql@workspace:packages/client-gql"
   dependencies:
-    "@apollo/client": ^3.3.18
+    "@apollo/client": ^3.3.19
     "@graphql-codegen/cli": ^1.21.4
     "@graphql-codegen/typescript": ^1.22.0
     "@graphql-codegen/typescript-document-nodes": ^1.17.11
     "@graphql-codegen/typescript-operations": ^1.17.16
     "@graphql-codegen/typescript-react-apollo": ^2.2.4
     graphql: ^15.5.0
+    graphql-tag: ^2.12.4
     npm-run-all: ^4.1.5
     typescript: ^4.2.4
   languageName: unknown
@@ -2144,6 +2147,7 @@ __metadata:
     "@babel/eslint-parser": ^7.14.3
     "@primer/octicons-react": ^14.1.0
     "@types/node": ^15.0.1
+    "@types/react": ^17.0.6
     "@types/react-dom": ^17.0.5
     "@types/react-syntax-highlighter": ^13.5.0
     "@typescript-eslint/eslint-plugin": ^4.24.0
@@ -2155,14 +2159,12 @@ __metadata:
     eslint-plugin-react-hooks: latest
     formik: ^2.2.6
     github-markdown-css: ^4.0.0
-    graphql-cost-analysis: ^1.0.3
     next: latest
     next-secure-headers: ^2.2.0
     postcss: ^8.2.13
     prettier: 2.3.0
     react: ^17.0.2
     react-dom: ^17.0.2
-    react-firebase-hooks: ^3.0.4
     react-markdown: ^6.0.2
     react-syntax-highlighter: ^15.4.3
     remark-gfm: ^1.0.0
@@ -2890,6 +2892,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: f9793e8113f14122d6ed20643b4fe27d30e10d7c80571a1d238c13f8171864f2a7b337194bf41310724498586ed4560fffd081a2d21e488afbb1aca33534189b
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^17.0.6":
+  version: 17.0.6
+  resolution: "@types/react@npm:17.0.6"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: dcd8e559f758de7c856bd24136d9005e2b6fbae3d6d81704ba33c6a8ba787874f738b7aae8cfffd89ee35f05658800c43d7fdb9493b79c06a3bcdc1e37ea4635
   languageName: node
   linkType: hard
 
@@ -4238,13 +4251,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"brackets2dots@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "brackets2dots@npm:1.1.0"
-  checksum: da2c52ab93d76cf3d4a4df7b40af66f7943f88beed0ae9471da35a4babb68ce6278c326ee070bcca244450d9c8fc669b1776431cff36834822969114c9bb0b74
-  languageName: node
-  linkType: hard
-
 "brorand@npm:^1.0.1, brorand@npm:^1.1.0":
   version: 1.1.0
   resolution: "brorand@npm:1.1.0"
@@ -5589,15 +5595,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"curry2@npm:^1.0.0":
-  version: 1.0.3
-  resolution: "curry2@npm:1.0.3"
-  dependencies:
-    fast-bind: ^1.0.0
-  checksum: 612ac89ad49b43d4254761a219fbcd1f1a8ed215c32c8804d173a9ed96d632f668ab7b6b9fcca90bfd6a448adee92dcb4871da162dcec2b8fa89c62b94090391
-  languageName: node
-  linkType: hard
-
 "cz-conventional-changelog@npm:3.2.0":
   version: 3.2.0
   resolution: "cz-conventional-changelog@npm:3.2.0"
@@ -5708,7 +5705,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:2, debug@npm:2.6.9, debug@npm:^2.2.0, debug@npm:^2.3.3, debug@npm:^2.5.2":
+"debug@npm:2, debug@npm:2.6.9, debug@npm:^2.2.0, debug@npm:^2.3.3":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
   dependencies:
@@ -6108,13 +6105,6 @@ __metadata:
   version: 8.6.0
   resolution: "dotenv@npm:8.6.0"
   checksum: f4649999a157061dd169118f459d88db56380b2eef68e87fa9de7201796e5f6d94fa337658d7e148f404b48652a0eefe11222d9eba0cd464497911ae56cd6f93
-  languageName: node
-  linkType: hard
-
-"dotsplit.js@npm:^1.0.3":
-  version: 1.1.0
-  resolution: "dotsplit.js@npm:1.1.0"
-  checksum: ff714abaccd03dbd6d32ff3c60b245b090059699dac1e583ee6e68c0860205e9504128f1253238585504566a78df498c7934891c71947d8cd8ab698bdd23484b
   languageName: node
   linkType: hard
 
@@ -6791,13 +6781,6 @@ __metadata:
   version: 1.4.0
   resolution: "extsprintf@npm:1.4.0"
   checksum: 092e011574324c5cddd78b5a27f869c2703613c1140eb7763aef8f5b0e33769a9b4c7dbcc50acd39b6afebe79bf66adcec73bf3c84e095c5bcfb42306d128ad0
-  languageName: node
-  linkType: hard
-
-"fast-bind@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "fast-bind@npm:1.0.0"
-  checksum: 5fba0923dc9f8c64a66947995fac45e9ed9ca03665971a1fab233cf55db130c8d01af972bcb4e209260d74e89893a4b1d1301f050bd0fffb7713f64920670519
   languageName: node
   linkType: hard
 
@@ -7580,17 +7563,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-cost-analysis@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "graphql-cost-analysis@npm:1.0.3"
-  dependencies:
-    selectn: ^1.1.2
-  peerDependencies:
-    graphql: ">=0.11.7"
-  checksum: 910c8dd35505ec42b61963f35e0b223a94c398c5f245f2b297520874e3fcb6cc6032713055b82f0bf23188393afecebe0898e649a29958ba0eeae9f0a60ff557
-  languageName: node
-  linkType: hard
-
 "graphql-extensions@npm:^0.14.0":
   version: 0.14.0
   resolution: "graphql-extensions@npm:0.14.0"
@@ -7650,7 +7622,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-tag@npm:^2.11.0, graphql-tag@npm:^2.12.0":
+"graphql-tag@npm:^2.11.0, graphql-tag@npm:^2.12.0, graphql-tag@npm:^2.12.4":
   version: 2.12.4
   resolution: "graphql-tag@npm:2.12.4"
   dependencies:
@@ -11368,6 +11340,7 @@ __metadata:
     "@types/jest": ^26.0.23
     commitizen: ^4.2.3
     cz-conventional-changelog: 3.3.0
+    jest: ^26.6.3
     npm-run-all: ^4.1.5
     rimraf: ^3.0.2
     ts-jest: ^26.5.6
@@ -12781,16 +12754,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-firebase-hooks@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "react-firebase-hooks@npm:3.0.4"
-  peerDependencies:
-    firebase: ">= 8.0.0"
-    react: ">= 16.8.0"
-  checksum: e1a1207062443cd60d0bf74651faea73a4680e91f01306f7be975cc029317daf85deeea07e85f486c9f6973085f7c6e5463300e4afa4305623d080b526c0388e
-  languageName: node
-  linkType: hard
-
 "react-is@npm:16.13.1, react-is@npm:^16.7.0, react-is@npm:^16.8.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -13572,18 +13535,6 @@ resolve@^2.0.0-next.3:
   version: 1.1.2
   resolution: "select@npm:1.1.2"
   checksum: 66be63b7cf0973af48cebcca47909d0ba703bb7f01373f9ebf19880dc8fe9c97f41e2ebdefee144f60bbf416cafbf77dfb98cd1776e62d7afc336b843f1009b1
-  languageName: node
-  linkType: hard
-
-"selectn@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "selectn@npm:1.1.2"
-  dependencies:
-    brackets2dots: ^1.1.0
-    curry2: ^1.0.0
-    debug: ^2.5.2
-    dotsplit.js: ^1.0.3
-  checksum: 52804d05434b042e9204b16087793fe5708ab19362f1c48092a33348ebc0c480f02f663a3911701294eaba3d16de21eefcb1ca8a7d7fff05fe15bf00aa054b60
   languageName: node
   linkType: hard
 
@@ -15047,9 +14998,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tsc-alias@npm:^1.2.10":
-  version: 1.2.10
-  resolution: "tsc-alias@npm:1.2.10"
+"tsc-alias@npm:^1.2.11":
+  version: 1.2.11
+  resolution: "tsc-alias@npm:1.2.11"
   dependencies:
     "@jfonx/console-utils": ^1.0.3
     "@jfonx/file-utils": ^3.0.1
@@ -15060,7 +15011,7 @@ resolve@^2.0.0-next.3:
     normalize-path: ^3.0.0
   bin:
     tsc-alias: dist/bin/index.js
-  checksum: ffccd630e47d15a76e3622d783736358a4de3e73ca2ca8732e660e68d630354ba6d9e55553b49f814302a13e080358402b2526ef4f7ede42ad6fab770faad157
+  checksum: 90aff40609adf845eca89ccbda684548323cdbc9a81b66cecfeeea47f2297fc39b52ff5d21de8aff2c14a9313b31aac5465d3e276937e38f3c9171f569aedce4
   languageName: node
   linkType: hard
 

@@ -6,18 +6,15 @@
   "scripts": {
     "build": "yarn run build:api && yarn workspace @oasis/web run build",
     "build:api": "yarn workspace @oasis/api run build && yarn workspace @oasis/client-gql run build",
-    "clean": "yarn workspace @oasis/api run clean && yarn workspace @oasis/client-gql run clean",
     "commit": "git add . && cz && git push",
-    "deploy": "sh bin/deploy.sh",
-    "deploy:prod": "git add . && git commit -m 'chore(deploy): Merge staging -> prod' && git checkout prod && git merge staging && git push origin prod --force && git checkout staging",
     "dev": "yarn workspace @oasis/web dev",
     "dev:api": "yarn workspaces foreach --include @oasis/client-gql,@oasis/api -p run dev",
-    "lint": "yarn workspaces foreach --exclude @oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/client-gql -p run prettify",
-    "prepare": "husky install",
-    "publish:bot": "yarn workspace @oasis/bot-client run publish",
-    "reinstall": "yarn clean && rimraf packages/**/*.sqlite || yarn install",
     "start": "yarn workspace @oasis/web run start",
-    "test": "echo \"Error: no test specified\""
+    "deploy:prod": "git add . && git commit -m 'chore(deploy): Merge staging -> prod' && git checkout prod && git merge staging && git push origin prod --force && git checkout staging",
+    "publish:bot": "yarn workspace @oasis/bot-client run publish",
+    "lint": "yarn workspaces foreach --exclude @oasis/client-gql -p run lint && yarn workspaces foreach --exclude @oasis/client-gql -p run prettify",
+    "clean": "yarn workspace @oasis/api run clean && yarn workspace @oasis/client-gql run clean",
+    "reinstall": "yarn clean && rimraf packages/**/*.sqlite || yarn install"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.2",
@@ -26,6 +23,7 @@
     "@types/jest": "^26.0.23",
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "3.3.0",
+    "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.5.6"

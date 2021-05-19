@@ -44,13 +44,13 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
       <div className="w-full flex justify-center items-center">
         <div className="px-6 mt-14 grid grid-cols-1 md:grid-cols-three gap-16">
           <div className="flex justify-center">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-9">
-              <div className="space-y-12">
+            <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-x-9">
+              <div className="w-full space-y-12">
                 {firstHalf.map((post, index: number) => (
                   <Post post={post} key={index} />
                 ))}
               </div>
-              <div className="space-y-12">
+              <div className="w-full space-y-12">
                 {secondHalf.map((post, index: number) => (
                   <Post post={post} key={index} />
                 ))}
