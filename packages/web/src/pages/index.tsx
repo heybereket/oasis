@@ -27,9 +27,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [open, setOpen] = React.useState(false);
 
-  // Shouldn't ever show. Hopefully
-  if (!posts) return <p>Loading</p>;
-
+  if (!posts) return null;
   const half = Math.ceil(posts.length / 2);
 
   const firstHalf = [...posts].splice(0, half);
