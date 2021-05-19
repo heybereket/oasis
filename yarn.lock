@@ -2161,7 +2161,7 @@ __metadata:
     eslint: ^7.25.0
     eslint-plugin-react: ^7.23.2
     eslint-plugin-react-hooks: latest
-    formik: ^2.2.6
+    formik: ^2.2.7
     github-markdown-css: ^4.0.0
     next: latest
     next-secure-headers: ^2.2.0
@@ -7116,9 +7116,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formik@npm:^2.2.6":
-  version: 2.2.6
-  resolution: "formik@npm:2.2.6"
+"formik@npm:^2.2.7":
+  version: 2.2.7
+  resolution: "formik@npm:2.2.7"
   dependencies:
     deepmerge: ^2.1.1
     hoist-non-react-statics: ^3.3.0
@@ -7129,7 +7129,7 @@ __metadata:
     tslib: ^1.10.0
   peerDependencies:
     react: ">=16.8.0"
-  checksum: 9de7908b46d06321b2653ec1c965298500ad25457f93aa3e54359a8ba101b7f9d30519d172be9de66af6cf7e423e16bbe8860439c50cd3d47ca52b199d9158c0
+  checksum: 3216147125327d01d4a01e037f59a3145e0ea1a77f414f1221b280d0c126652e6ada25ba0ec765dfb0ab1fdb014bb7bfca4c39f24314d30ee1b937c249342f84
   languageName: node
   linkType: hard
 
