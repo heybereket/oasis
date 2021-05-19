@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { apiBaseURL } from '../constants';
+import { apiBaseURL } from '@lib/constants';
 
 type ClientType = ReturnType<typeof createApolloClient>;
 

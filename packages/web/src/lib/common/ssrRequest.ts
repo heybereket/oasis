@@ -2,7 +2,7 @@ import { NormalizedCacheObject } from '@apollo/client';
 import { initializeApollo } from './apolloClient';
 import { graphql, DocumentNode, print } from 'graphql';
 import { IncomingMessage } from 'http';
-import forceRequire from '../require';
+import forceRequire from '@lib/require';
 
 // Creates a GraphQL request for SSR or SSG.
 // Instead of sending a request to the api

@@ -1,5 +1,5 @@
-import { baseURL } from '../constants';
-import { setCurrentUser } from '../common/getCurrentUser';
+import { baseURL } from '@lib/constants';
+import { setCurrentUser } from '@lib/common/getCurrentUser';
 
 export const Login = (type: string): any => {
   window.localStorage.setItem('redirectPath', window.location.pathname);
