@@ -5,10 +5,20 @@ import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism';
 import OasisDark from './OasisDark';
 import gfm from 'remark-gfm';
 import styles from './StyledMarkdown.module.css';
+import poststyles from './StyledMarkdownPost.module.css';
+import biostyles from './StyledMarkdownBio.module.css';
 
-export const StyledMarkdown: React.FC<{ text: string }> = ({ text }) => {
+export const StyledMarkdown: React.FC<{
+  text: string;
+  isBio?: boolean;
+  isPost?: boolean;
+}> = ({ text, isBio, isPost }) => {
   return (
-    <div className={styles.markdown}>
+    <div
+      className={`${styles.markdown} ${isPost ? poststyles.markdown : ''} ${
+        isBio ? biostyles.markdown : ''
+      }`}
+    >
       <ReactMarkdown
         components={{
           code({ node: _, inline, className, children, ...props }) {

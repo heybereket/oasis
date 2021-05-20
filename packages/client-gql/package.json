@@ -1,5 +1,5 @@
 {
-  "name": "@oasis/client-gql",
+  "name": "@oasis-sh/client-gql",
   "version": "1.0.0",
   "description": "Client-Side GraphQL API Hooks for Oasis",
   "main": "dist/index.js",
