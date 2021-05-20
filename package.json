@@ -21,7 +21,7 @@
     "deploy:prod": "git add . && git commit -m 'chore(deploy): Merge staging -> prod' && git checkout prod && git merge staging && git push origin prod --force && git checkout staging",
     "publish:bot": "yarn workspace @oasis-sh/bot-client run publish",
     "lint": "yarn workspaces foreach --exclude @oasis-sh/client-gql -p run lint && yarn workspaces foreach --exclude @oasis-sh/client-gql -p run prettify",
-    "clean": "yarn workspace @oasis-sh/api run clean && yarn workspace @oasis-sh/client-gql run clean",
+    "clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/client-gql run clean",
     "reinstall": "yarn clean && rimraf packages/**/*.sqlite || yarn install"
   },
   "devDependencies": {
