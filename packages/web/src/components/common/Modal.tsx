@@ -19,7 +19,6 @@ export const Modal: React.FC<Props> = ({ open, closeHandler, children }) => {
         <div className="relative max-w-530 w-full bg-gray-700 p-10 rounded-2xl">
           <svg
             onClick={() => {
-              console.log('this ran');
               closeHandler();
             }}
             className="absolute top-4 right-4 h-8 w-8 cursor-pointer p-1 hover:bg-gray-500 rounded-full"
