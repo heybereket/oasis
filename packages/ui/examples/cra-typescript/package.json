@@ -43,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "cra-typescript": "portal:/C:/Users/Samar/Documents/Coding/oasis-fork/packages/ui/examples/cra-typescript"
   }
 }

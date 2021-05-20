@@ -5,7 +5,8 @@
       "packages/web",
       "packages/api",
       "packages/client-gql",
-      "packages/bot-client"
+      "packages/bot-client",
+      "packages/ui"
     ],
     "nohoist": [
       "**"
@@ -46,5 +47,8 @@
       "path": "./node_modules/cz-conventional-changelog",
       "defaultScope": "global"
     }
+  },
+  "resolutions": {
+    "@oasis-sh/ui": "portal:/C:/Users/Samar/Documents/Coding/oasis-fork/packages/ui"
   }
 }
