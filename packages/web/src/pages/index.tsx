@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Navbar } from '@components/navbar/Navbar';
 import { Post } from '@components/post/Post';
 import { TopicBadge } from '@components/profile/TopicBadge';
@@ -13,6 +14,7 @@ import {
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
+import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 
 interface IndexPageProps {
   initialApolloState: any;
@@ -24,6 +26,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
     variables: vars,
   });
 
+  const { user, currentUserLoading } = useGetCurrentUser();
   const posts = data?.paginatePosts;
 
   if (!posts) {
@@ -36,8 +39,44 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
       <div className="flex flex-col items-center w-full">
         <div className="relative px-6 mt-14 grid grid-cols-1 lg:grid-cols-three gap-16">
           <div className="hidden lg:flex flex-col flex-1 sticky top-14 h-screen">
-            <div className="w-full flex flex-col overflow-y-auto py-6 px-8 bg-gray-800 rounded-2xl">
-              <h4>Friends Activity</h4>
+            <div className="w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
+              {currentUserLoading || (
+                <>
+                  <div className="flex items-center space-x-4">
+                    {user?.avatar ? (
+                      <img
+                        src={user.avatar}
+                        alt=""
+                        className="w-14 h-14 rounded-full"
+                      />
+                    ) : (
+                      <div className="w-14 h-14 rounded-full bg-gray-600" />
+                    )}
+                    <div>
+                      <p className="font-bold text-xl">
+                        {user ? user.name : 'Alex'}
+                      </p>
+                      <p className="font-bold text-light -mt-1">
+                        {user ? '@' + user.username : '@alexover1'}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-3">
+                    {user
+                      ? user.bio
+                      : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem Ipsum'}
+                  </p>
+                  <Link href={user ? `/user/${user.username}` : '/user/alex'}>
+                    <>
+                      <p className="mt-2 font-bold text-lg text-primary">
+                        u/{user ? user.username : 'alexover1'}
+                      </p>
+                    </>
+                  </Link>
+                </>
+              )}
+            </div>
+            <Sidebar title="Friends Activity">
               <div className="mt-6 flex flex-col space-y-4">
                 <FriendActivity
                   name="Sam Jakob"
@@ -52,7 +91,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                   activity={['Browsing', 'the Feed']}
                 />
               </div>
-            </div>
+            </Sidebar>
           </div>
           <div className="flex flex-col flex-1 w-full space-y-12 pb-12">
             {[...posts].reverse().map((post: any, index: number) => (
@@ -62,7 +101,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
           <div className="hidden lg:flex flex-col flex-1 sticky top-14 h-screen">
             <div className="w-full flex flex-col items-center">
               <div className="flex flex-col items-center">
-                <h2>Something on your mind?</h2>
+                <h3>Something on your mind?</h3>
                 <Button color="primary" className="mt-6 mb-7 max-w-200 w-full">
                   Make a Post
                 </Button>
