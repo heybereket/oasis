@@ -2110,7 +2110,11 @@ __metadata:
 "@opentelemetry/context-base@npm:^0.14.0":
   version: 0.14.0
   resolution: "@opentelemetry/context-base@npm:0.14.0"
-  checksum: f1e637a1912e5876a49fcdfefd76c5e37fd94852a444ad6a3e42fab2d136f0794d5f6455b01866c4342cec624541cb83cfadcc86f83ba2ececf9dc83117a982d
+  checksum: f1e637a1912e5876a49fcdfefd76c5e<<<<<<< HEAD
+=======
+    "@types/react": ^17.0.6
+>>>>>>> 8bf3e632fb4a3fab410ed72fba9c17bbe89a8521
+37fd94852a444ad6a3e42fab2d136f0794d5f6455b01866c4342cec624541cb83cfadcc86f83ba2ececf9dc83117a982d
   languageName: node
   linkType: hard
 
