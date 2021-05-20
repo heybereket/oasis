@@ -20,7 +20,7 @@ const sizes = {
   sm: "py-2 px-5 rounded-lg text-base",
 };
 
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   color = "primary",
   size = "md",
   children,
@@ -36,3 +36,5 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
+
+export default Button;
