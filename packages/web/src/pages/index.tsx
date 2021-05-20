@@ -41,8 +41,13 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col items-center w-full mt-8">
-        <Modal open={open} closeHandler={() => setOpen(false)}>
+      <div className="flex flex-col items-center w-full">
+        <Modal
+          open={open}
+          closeHandler={() => {
+            setOpen(false);
+          }}
+        >
           <form className="grid grid-cols-3 gap-5 w-full">
             <div className="col-span-3 block">
               <h4>New post</h4>
