@@ -6,6 +6,7 @@ import {
   useLikeDislikePostMutation,
 } from '@oasis/client-gql';
 import { postDate } from '@lib/postDate';
+import StyledMarkdown from '@components/markdown/StyledMarkdown';
 
 type PostType = PaginatePostsQuery['paginatePosts'][0];
 
@@ -117,7 +118,7 @@ export const Post: React.FC<Props> = ({ post }) => {
           </div>
         </header>
         <p className="font-medium mt-2 mb-6 text-xl break-words">
-          {post.message}
+          <StyledMarkdown text={post.message} isPost={true} />
         </p>
       </div>
       <footer className="flex justify-between">

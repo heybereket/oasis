@@ -31,12 +31,6 @@
   line-height: 1.85;
 }
 
-.markdown p,
-.markdown .modest-p {
-  font-size: 1rem;
-  margin-bottom: 1.3rem;
-}
-
 .markdown h1,
 .markdown .modest-h1,
 .markdown h2,

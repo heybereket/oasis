@@ -22,7 +22,7 @@ export const Bio: React.FC<Props> = ({
         <h4 className="font-extrabold">About {name}</h4>
         {bio !== null ? (
           <div className="text-gray-300 font-bold">
-            <StyledMarkdown text={bio ?? ''} />
+            <StyledMarkdown text={bio ?? ''} isBio={true} />
           </div>
         ) : (
           <h5 className="text-gray-300 font-bold">
