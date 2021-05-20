@@ -64,7 +64,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
           </form>
         </Modal>
         <div className="z-10 relative px-6 grid grid-cols-1 lg:grid-cols-three gap-16">
-          <div className="hidden lg:flex flex-col flex-1 sticky top-32 h-screen">
+          <div className="hidden lg:flex flex-col flex-1 sticky top-32 h-px">
             <div className="w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
               {currentUserLoading || (
                 <>
@@ -130,12 +130,12 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               </div>
             </Sidebar>
           </div>
-          <div className="flex flex-col flex-1 w-full space-y-12 pb-12">
+          <div className="flex flex-col flex-1 w-full space-y-12 pb-12 mt-5">
             {[...posts].reverse().map((post: any, index: number) => (
               <Post post={post} key={index} />
             ))}
           </div>
-          <div className="hidden lg:flex flex-col flex-1 sticky top-32 h-screen">
+          <div className="hidden lg:flex flex-col flex-1 sticky top-32 h-px">
             <div className="w-full flex flex-col items-center">
               <div className="flex flex-col items-center">
                 <h3>Something on your mind?</h3>
