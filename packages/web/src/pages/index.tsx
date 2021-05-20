@@ -18,7 +18,7 @@ import {
   PaginatePostsDocument,
   PaginatePostsQueryVariables,
   usePaginatePostsQuery,
-} from '@oasis/client-gql';
+} from '@oasis-sh/client-gql';
 interface IndexPageProps {
   initialApolloState: any;
   vars: PaginatePostsQueryVariables;

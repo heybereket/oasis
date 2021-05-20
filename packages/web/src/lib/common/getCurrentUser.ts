@@ -2,7 +2,7 @@ import {
   GetCurrentUserDocument,
   GetCurrentUserQuery,
   User,
-} from '@oasis/client-gql';
+} from '@oasis-sh/client-gql';
 import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
 
