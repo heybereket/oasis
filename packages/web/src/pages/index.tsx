@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Navbar } from '@components/navbar/Navbar';
 import { Post } from '@components/post/Post';
@@ -15,6 +15,8 @@ import {
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import { Modal } from '@components/common/Modal';
+import { RightArrow } from '@icons/index';
 
 interface IndexPageProps {
   initialApolloState: any;
@@ -29,6 +31,8 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   const { user, currentUserLoading } = useGetCurrentUser();
   const posts = data?.paginatePosts;
 
+  const [open, setOpen] = useState(false);
+
   if (!posts) {
     return null;
   }
@@ -37,41 +41,69 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
     <>
       <Navbar />
       <div className="flex flex-col items-center w-full">
-        <div className="relative px-6 mt-14 grid grid-cols-1 lg:grid-cols-three gap-16">
+        <Modal open={open} closeHandler={() => setOpen(false)}>
+          <form className="grid grid-cols-3 gap-5 w-full">
+            <div className="col-span-3 block">
+              <h4>New post</h4>
+            </div>
+            <div className="flex w-full h-full col-span-2">
+              <input
+                placeholder="Title"
+                className="col-span-2 w-full h-11 px-4 py-2 bg-gray-600 rounded-lg focus:outline-none"
+              />
+            </div>
+            <div className="col-span-1 w-full"></div>
+            <textarea
+              placeholder="What's on your mind?"
+              className="col-span-3 px-4 py-2 resize-none w-full h-24 bg-gray-600 rounded-lg focus:outline-none"
+            />
+            <div className="col-span-full">
+              <Button color="primary">New post</Button>
+            </div>
+          </form>
+        </Modal>
+        <div className="z-10 relative px-6 mt-14 grid grid-cols-1 lg:grid-cols-three gap-16">
           <div className="hidden lg:flex flex-col flex-1 sticky top-14 h-screen">
             <div className="w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
               {currentUserLoading || (
                 <>
-                  <div className="flex items-center space-x-4">
-                    {user?.avatar ? (
-                      <img
-                        src={user.avatar}
-                        alt=""
-                        className="w-14 h-14 rounded-full"
-                      />
-                    ) : (
-                      <div className="w-14 h-14 rounded-full bg-gray-600" />
-                    )}
-                    <div>
-                      <p className="font-bold text-xl">
-                        {user ? user.name : 'Alex'}
-                      </p>
-                      <p className="font-bold text-light -mt-1">
-                        {user ? '@' + user.username : '@alexover1'}
-                      </p>
-                    </div>
-                  </div>
+                  <Link
+                    href={user ? `/user/${user.username}` : `/user/alexover1`}
+                  >
+                    <a className="flex items-center space-x-4">
+                      {user?.avatar ? (
+                        <img
+                          src={user.avatar}
+                          alt=""
+                          className="w-14 h-14 rounded-full"
+                        />
+                      ) : (
+                        <div className="w-14 h-14 rounded-full bg-gray-600" />
+                      )}
+                      <div>
+                        <p className="font-bold text-xl">
+                          {user ? user.name : 'Alex'}
+                        </p>
+                        <p className="font-bold text-light -mt-1">
+                          {user ? '@' + user.username : '@alexover1'}
+                        </p>
+                      </div>
+                    </a>
+                  </Link>
                   <p className="mt-3">
                     {user
                       ? user.bio
                       : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem Ipsum'}
                   </p>
-                  <Link href={user ? `/user/${user.username}` : '/user/alex'}>
-                    <>
-                      <p className="mt-2 font-bold text-lg text-primary">
+                  <Link
+                    href={user ? `/user/${user.username}` : '/user/alexover1'}
+                  >
+                    <a className="flex items-center space-x-0.5 mt-2">
+                      <p className="font-bold text-lg text-primary">
                         u/{user ? user.username : 'alexover1'}
                       </p>
-                    </>
+                      <RightArrow className="text-primary" />
+                    </a>
                   </Link>
                 </>
               )}
@@ -106,7 +138,11 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             <div className="w-full flex flex-col items-center">
               <div className="flex flex-col items-center">
                 <h3>Something on your mind?</h3>
-                <Button color="primary" className="mt-6 mb-7 max-w-200 w-full">
+                <Button
+                  onClick={() => setOpen(!open)}
+                  color="primary"
+                  className="mt-6 mb-7 max-w-200 w-full"
+                >
                   Make a Post
                 </Button>
                 <div className="flex">

@@ -35,6 +35,7 @@ module.exports = {
       },
       maxWidth: {
         580: '580px',
+        530: '530px',
         200: '200px',
       },
       backgroundColor: {
@@ -90,9 +91,8 @@ module.exports = {
           light: 'var(--color-primary-light)',
           lighter: 'var(--color-primary-lighter)',
         },
-        light: {
-          DEFAULT: 'var(--color-text-light)',
-        },
+        light: 'var(--color-text-light)',
+        dim: 'rgba(0,0,0,0.6)',
       },
     },
   },
