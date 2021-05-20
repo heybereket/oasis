@@ -14,19 +14,24 @@ export const Modal: React.FC<Props> = ({ open, closeHandler, children }) => {
   useOnClickOutside(modalRef, () => closeHandler());
 
   return (
-    <div className="w-screen h-screen bg-black top-0 left-0 fixed flex justify-center items-center">
-      <div ref={modalRef} className="bg-gray-600">
+    <div className="w-screen h-screen bg-dim top-0 left-0 fixed flex justify-center items-center z-50">
+      <div className="relative max-w-530 w-full bg-gray-700 p-10 rounded-2xl">
         <svg
-          onClick={() => closeHandler()}
-          className="h-6 w-6 cursor-pointer p-1 hover:bg-gray-500 rounded-full"
-          fill="currentColor"
-          viewBox="0 0 20 20"
+          onClick={() => {
+            console.log('this ran');
+            closeHandler();
+          }}
+          className="absolute top-4 right-4 h-8 w-8 cursor-pointer p-1 hover:bg-gray-500 rounded-full"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         >
-          <path
-            fill-rule="evenodd"
-            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          />
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
         {children}
       </div>
