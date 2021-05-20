@@ -12,7 +12,7 @@ import ResortHeader from '@components/resort/ResortHeader';
 
 interface IResortProps {
   variables: GetResortByNameWithMembersQueryVariables;
-}
+} 
 const Resort: React.FC<IResortProps> = ({ variables }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const data = useGetResortByNameWithMembersQuery({
