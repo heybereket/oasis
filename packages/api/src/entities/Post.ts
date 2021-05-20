@@ -5,6 +5,7 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
+  PrimaryColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Field, ID, ObjectType } from 'type-graphql';
@@ -16,7 +17,8 @@ import { RelationalPagination } from '@utils/RelationalPagination';
 @ObjectType()
 @Entity()
 export default class Post extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
+  // @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   @Field(() => ID)
   id: string;
 

@@ -2,6 +2,7 @@ import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/apolloServer';
 import Post from '@entities/Post';
 import NewPostInput from './NewPostInput';
+import { nanoid } from 'nanoid';
 
 @Resolver()
 export class NewPostResolver {
@@ -25,6 +26,8 @@ export class NewPostResolver {
 
     newPost.author = Promise.resolve(await getUser());
     newPost.createdAt = String(Date.now());
+    newPost.id = nanoid();
+
     newPost.save();
     return true;
   }
