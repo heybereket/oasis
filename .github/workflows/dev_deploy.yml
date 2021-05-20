@@ -12,8 +12,6 @@ on:
   pull_request:
     types: [closed]
     branches: [staging]
-  workflow_dispatch:
-
 jobs:
   deploy:
     # Run the deploy if and only if, the event was push, or a merged pull request.
