@@ -12,8 +12,10 @@
     ]
   },
   "scripts": {
-    "build": "yarn run build:api && yarn workspace @oasis-sh/web run build",
+    "build": "yarn run build:api && yarn build:ui && yarn workspace @oasis-sh/web run build",
+    "build:dev": "yarn run build:api && yarn build:ui",
     "build:api": "yarn workspace @oasis-sh/api run build && yarn workspace @oasis-sh/client-gql run build",
+    "build:ui": "yarn workspace @oasis-sh/ui run build",
     "commit": "git add . && cz && git push",
     "dev": "yarn workspace @oasis-sh/web dev",
     "dev:api": "yarn workspaces foreach --include @oasis-sh/client-gql,@oasis-sh/api -p run dev",
