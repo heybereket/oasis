@@ -11354,9 +11354,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"oasis@workspace:.":
+"oasis-sh@workspace:.":
   version: 0.0.0-use.local
-  resolution: "oasis@workspace:."
+  resolution: "oasis-sh@workspace:."
   dependencies:
     "@commitlint/cli": ^12.1.2
     "@commitlint/config-conventional": ^12.1.2
