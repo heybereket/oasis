@@ -21,7 +21,7 @@ import { RelationalPagination } from '@utils/RelationalPagination';
 
 @ObjectType()
 @Entity()
-export default class  User extends BaseEntity {
+export default class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
   id: string;
@@ -134,4 +134,13 @@ export default class  User extends BaseEntity {
 
   @ManyToMany(() => Resort, (resort) => resort.members)
   joinedResorts: Promise<Resort[]>;
+
+  @RelationalPagination(() => User, () => User, 'followers')
+  @ManyToMany(() => User, (user) => user.followers)
+  @JoinTable()
+  following: Promise<User[]>;
+
+  @RelationalPagination(() => User, () => User, 'following')
+  @ManyToMany(() => User, (user) => user.following)
+  followers: Promise<User[]>;
 }
