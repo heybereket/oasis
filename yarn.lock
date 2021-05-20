@@ -2100,7 +2100,7 @@ __metadata:
     connect-redis: ^5.2.0
     dotenv: ^9.0.0
     express: ^4.17.1
-    express-session: ^1.17.1
+    express-session: ^1.17.2
     graphql: ^15.5.0
     graphql-query-complexity: ^0.8.1
     jest: ^26.6.3
@@ -5330,6 +5330,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cookie@npm:0.4.1":
+  version: 0.4.1
+  resolution: "cookie@npm:0.4.1"
+  checksum: b8e0928e3e7aba013087974b33a6eec730b0a68b7ec00fc3c089a56ba2883bcf671252fc2ed64775aa1ca64796b6e1f6fdddba25a66808aef77614d235fd3e06
+  languageName: node
+  linkType: hard
+
 "copy-descriptor@npm:^0.1.0":
   version: 0.1.1
   resolution: "copy-descriptor@npm:0.1.1"
@@ -6667,19 +6674,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-session@npm:^1.17.1":
-  version: 1.17.1
-  resolution: "express-session@npm:1.17.1"
+"express-session@npm:^1.17.2":
+  version: 1.17.2
+  resolution: "express-session@npm:1.17.2"
   dependencies:
-    cookie: 0.4.0
+    cookie: 0.4.1
     cookie-signature: 1.0.6
     debug: 2.6.9
     depd: ~2.0.0
     on-headers: ~1.0.2
     parseurl: ~1.3.3
-    safe-buffer: 5.2.0
+    safe-buffer: 5.2.1
     uid-safe: ~2.1.5
-  checksum: f40acdd82f118329de84e419b6e6192564c715a2431325ac1d913a4233d9adef02424e75e951bf9aed85c150d61cddc276e5dc14a5d8f65e19a11ac8c8e3745c
+  checksum: d01a9d12c2541618b3c8d154c417c1b95ecef4a0891d9902fa18b477ad0ba1eb80559db7c88510861c1c7b151f282cc12d6147dce4ececca5ad04e56e573f983
   languageName: node
   linkType: hard
 
@@ -13460,14 +13467,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"safe-buffer@npm:5.2.0":
-  version: 5.2.0
-  resolution: "safe-buffer@npm:5.2.0"
-  checksum: e513079353a235749e64dc3b1ade741caf651c09d1291ee826e68d42c08913dcd2c76b291dd23979b0fd0bd551d99f4a3d8cc05aef4e9c75bebf6cbbd310b129
-  languageName: node
-  linkType: hard
-
-"safe-buffer@npm:^5.0.1, safe-buffer@npm:^5.1.0, safe-buffer@npm:^5.1.1, safe-buffer@npm:^5.1.2, safe-buffer@npm:^5.2.0, safe-buffer@npm:~5.2.0":
+"safe-buffer@npm:5.2.1, safe-buffer@npm:^5.0.1, safe-buffer@npm:^5.1.0, safe-buffer@npm:^5.1.1, safe-buffer@npm:^5.1.2, safe-buffer@npm:^5.2.0, safe-buffer@npm:~5.2.0":
   version: 5.2.1
   resolution: "safe-buffer@npm:5.2.1"
   checksum: 0bb57f0d8f9d1fa4fe35ad8a2db1f83a027d48f2822d59ede88fd5cd4ddad83c0b497213feb7a70fbf90597a70c5217f735b0eb1850df40ce9b4ae81dd22b3f9
