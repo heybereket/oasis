@@ -14,7 +14,7 @@ export const ssrRequest = async (
   queries: Query[]
 ): Promise<NormalizedCacheObject> => {
   const { createContext, getSchema } = forceRequire(
-    '@oasis/api/dist/utils/web-utils'
+    '@oasis-sh/api/dist/utils/web-utils'
   );
 
   const schema = await getSchema();

@@ -3,7 +3,7 @@ import {
   GetResortByNameWithMembersDocument,
   GetResortByNameWithMembersQueryVariables,
   useGetResortByNameWithMembersQuery,
-} from '@oasis/client-gql';
+} from '@oasis-sh/client-gql';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 import { Navbar } from '@components/navbar/Navbar';

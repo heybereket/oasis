@@ -1,7 +1,7 @@
 import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
-} from '@oasis/client-gql';
+} from '@oasis-sh/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { About, Comments, Like, Posts } from '@icons/index';

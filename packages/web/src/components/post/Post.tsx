@@ -4,7 +4,7 @@ import Link from 'next/link';
 import {
   PaginatePostsQuery,
   useLikeDislikePostMutation,
-} from '@oasis/client-gql';
+} from '@oasis-sh/client-gql';
 import { postDate } from '@lib/postDate';
 import StyledMarkdown from '@components/markdown/StyledMarkdown';
 

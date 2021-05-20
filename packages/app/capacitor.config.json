@@ -1,0 +1,6 @@
+{
+	"appId": "sh.oasis.oasis",
+	"appName": "app",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

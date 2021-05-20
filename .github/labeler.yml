@@ -1,2 +1,6 @@
 translation:
   - packages/web/public/locales/**/*
+web:
+  - packages/web/**/*
+api:
+  - packages/api/**/*
