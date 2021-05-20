@@ -53,7 +53,7 @@ export const Post: React.FC<Props> = ({ post }) => {
       <div>
         <header className="flex items-center space-x-4">
           <Link href={`/user/${post.author.username}`}>
-            <a>
+            <a className="w-11 h-11 flex-none">
               <img
                 src={post.author.avatar}
                 className="flex-none bg-gray-600 rounded-full w-11 h-11"
