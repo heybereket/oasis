@@ -13,7 +13,6 @@ import {
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
-import { Modal } from '@components/common/Modal';
 
 interface IndexPageProps {
   initialApolloState: any;
@@ -24,9 +23,8 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   const { data } = usePaginatePostsQuery({
     variables: vars,
   });
-  const posts = data?.paginatePosts;
 
-  const [open, setOpen] = React.useState(false);
+  const posts = data?.paginatePosts;
 
   if (!posts) {
     return null;
@@ -35,9 +33,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   return (
     <>
       <Navbar />
-      <Modal open={open} closeHandler={() => setOpen(false)}>
-        <p>This is a test of modals</p>
-      </Modal>
       <div className="flex flex-col items-center w-full">
         <div className="relative px-6 mt-14 grid grid-cols-1 lg:grid-cols-three gap-16">
           <div className="hidden lg:flex flex-col flex-1 sticky top-14 h-screen">
@@ -60,7 +55,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             </div>
           </div>
           <div className="flex flex-col flex-1 w-full space-y-12 pb-12">
-            {posts.map((post: any, index: number) => (
+            {[...posts].reverse().map((post: any, index: number) => (
               <Post post={post} key={index} />
             ))}
           </div>
