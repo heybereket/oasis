@@ -2,7 +2,7 @@
   "name": "@oasis-sh/ui",
   "author": "Samar Mohan <samar.mohan@gmail.com>",
   "license": "MIT",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
