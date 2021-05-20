@@ -3,7 +3,7 @@ import { RightArrow } from '@icons/index';
 import {
   GetResortByNameWithMembersQuery,
   useJoinResortMutation,
-} from '@oasis/client-gql';
+} from '@oasis-sh/client-gql';
 import React from 'react';
 import AvatarGroup from './AvatarGroup';
 
