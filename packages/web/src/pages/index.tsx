@@ -122,6 +122,10 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                   name="bereket"
                   activity={['Browsing', 'the Feed']}
                 />
+                <FriendActivity
+                  name="Henry"
+                  activity={['Idle for', '10 minutes']}
+                />
               </div>
             </Sidebar>
           </div>
