@@ -2101,7 +2101,6 @@ __metadata:
     dotenv: ^9.0.0
     express: ^4.17.1
     express-session: ^1.17.2
-    graphql: ^15.5.0
     graphql-query-complexity: ^0.8.1
     jest: ^26.6.3
     jsonwebtoken: ^8.5.1
