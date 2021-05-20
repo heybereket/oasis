@@ -1,0 +1,25 @@
+{
+  "name": "@oasis-sh/ui",
+  "author": "Samar Mohan <samar.mohan@gmail.com>",
+  "license": "MIT",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "typescript": "^4.1.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oasis-sh/oasis.git",
+    "directory": "packages/ui"
+  }
+}
