@@ -42,7 +42,10 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
     <>
       <Navbar />
       <div className="flex flex-col items-center w-full">
-        <Modal open={open} closeHandler={() => setOpen(false)}>
+        <Modal open={open} closeHandler={() =>{
+           setOpen(!open)
+           console.log("USED THE USEONCLICKOUTSIDE HOOOK")
+        }}>
           <form className="grid grid-cols-3 gap-5 w-full">
             <div className="col-span-3 block">
               <h4>New post</h4>

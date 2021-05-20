@@ -21,7 +21,7 @@ import { RelationalPagination } from '@utils/RelationalPagination';
 
 @ObjectType()
 @Entity()
-export default class User extends BaseEntity {
+export default class  User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
   id: string;
