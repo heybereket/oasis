@@ -8,9 +8,12 @@ import { About, Comments, Like, Posts } from '@icons/index';
 import {
   SEOProvider,
   Container,
+  Button,
+} from '@oasis-sh/ui';
+
+import {
   Navbar,
   TabItem,
-  Button,
   TopicBadge,
   LargeUserCard,
   SmallUserCard,
