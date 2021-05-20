@@ -1,21 +1,23 @@
-import { TabItem } from '@components/profile/TabItem';
 import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
-import { SEOProvider } from '@components/common/SEOProvider';
-import { Button } from '@components/common/Button';
-import { TopicBadge } from '@components/profile/TopicBadge';
-import { Container } from '@components/common/Container';
 import { About, Comments, Like, Posts } from '@icons/index';
-import { Navbar } from '@components/navbar/Navbar';
-import { ProfileBanner } from '@components/profile/ProfileBanner';
-import { LargeUserCard } from '@components/profile/large/UserCard';
-import { Bio } from '@components/profile/Bio';
-import { SmallUserCard } from '@components/profile/small/UserCard';
-import { FollowersInfo } from '@components/profile/FollowersInfo';
+import {
+  SEOProvider,
+  Container,
+  Navbar,
+  TabItem,
+  Button,
+  TopicBadge,
+  LargeUserCard,
+  SmallUserCard,
+  ProfileBanner,
+  FollowersInfo,
+  Bio
+} from '@components/index';
 
 interface ProfileProps {
   initialApolloState: any;
