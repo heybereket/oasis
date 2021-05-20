@@ -2032,6 +2032,36 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@oasis-sh/ui@workspace:packages/ui":
+  version: 0.0.0-use.local
+  resolution: "@oasis-sh/ui@workspace:packages/ui"
+  dependencies:
+    "@types/eslint": ^7
+    "@types/eslint-plugin-prettier": ^3
+    "@types/node": ^12.0.0
+    "@types/prettier": ^2
+    "@types/react-dom": ^17.0.5
+    "@types/tailwindcss": ^2
+    "@typescript-eslint/eslint-plugin": ^4.24.0
+    "@typescript-eslint/parser": ^4.24.0
+    autoprefixer: latest
+    eslint: ^7.26.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^3.4.0
+    eslint-plugin-react: ^7.23.2
+    eslint-plugin-react-hooks: ^4.2.0
+    postcss: latest
+    prettier: ^2.3.0
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    tailwindcss: latest
+    typescript: ^4.1.2
+  peerDependencies:
+    react: ^17.0.2
+    react-dom: ^17.0.2
+  languageName: unknown
+  linkType: soft
+
 "@oasis-sh/web@workspace:packages/web":
   version: 0.0.0-use.local
   resolution: "@oasis-sh/web@workspace:packages/web"
@@ -2039,7 +2069,6 @@ __metadata:
     "@babel/runtime": ^7.14.0
     "@primer/octicons-react": ^14.1.0
     "@types/node": ^15.0.1
-    "@types/react": ^17.0.6
     "@types/react-dom": ^17.0.5
     "@types/react-syntax-highlighter": ^13.5.0
     "@types/rimraf": ^3
@@ -2354,7 +2383,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:^7.2.10":
+"@types/eslint-plugin-prettier@npm:^3":
+  version: 3.1.0
+  resolution: "@types/eslint-plugin-prettier@npm:3.1.0"
+  dependencies:
+    "@types/eslint": "*"
+  checksum: 2fb9fc7e402378aa95e02455d657b3fee2693ca85fae9c2f9a9d9b543ddb3723f3b3a103cfc4306de963bab15c3162d291f32b4e7605870a8637c503779b6e7a
+  languageName: node
+  linkType: hard
+
+"@types/eslint@npm:*, @types/eslint@npm:^7, @types/eslint@npm:^7.2.10":
   version: 7.2.10
   resolution: "@types/eslint@npm:7.2.10"
   dependencies:
@@ -2639,6 +2677,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^12.0.0":
+  version: 12.20.13
+  resolution: "@types/node@npm:12.20.13"
+  checksum: 4e0f02ec78b8d911595b20b9a7c3ac6c8e5f77ab5c57d0c14197fa021dec2c791469e1597b890f0d443f3809c908952e9ea56a2866d3cccf6076ff8a4579d969
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^15.3.0":
   version: 15.3.0
   resolution: "@types/node@npm:15.3.0"
@@ -2739,7 +2784,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prettier@npm:^2.0.0":
+"@types/prettier@npm:^2, @types/prettier@npm:^2.0.0":
   version: 2.2.3
   resolution: "@types/prettier@npm:2.2.3"
   checksum: b7e80288f9f776caca84391a7a217b8baac6b4fce00bb9701af69299d465cb8faf17466f0af0803970c74d2c191767ca729a6d21a2f7e2ce552d1ef6cc0d653a
@@ -2793,17 +2838,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: f9793e8113f14122d6ed20643b4fe27d30e10d7c80571a1d238c13f8171864f2a7b337194bf41310724498586ed4560fffd081a2d21e488afbb1aca33534189b
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^17.0.6":
-  version: 17.0.6
-  resolution: "@types/react@npm:17.0.6"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: dcd8e559f758de7c856bd24136d9005e2b6fbae3d6d81704ba33c6a8ba787874f738b7aae8cfffd89ee35f05658800c43d7fdb9493b79c06a3bcdc1e37ea4635
   languageName: node
   linkType: hard
 
@@ -2877,6 +2911,13 @@ __metadata:
   version: 0.0.30
   resolution: "@types/strip-json-comments@npm:0.0.30"
   checksum: 2b9eff26906f14903835a3ecd316e7df130bdfbbd0b784fba15b9ff99ac1ef041aeb7a37c9535dfc0e733211ef3cb881cc91940a52aa9076982ea0cbca50e088
+  languageName: node
+  linkType: hard
+
+"@types/tailwindcss@npm:^2":
+  version: 2.0.3
+  resolution: "@types/tailwindcss@npm:2.0.3"
+  checksum: 5dcf4e276b11e86529cfaf06a24291e5bc3858e2ec4be59fe8ab012beeb82d0d5835b1e370e21f37c196d07029f962219eccfe2c340a52105ef0e38e7abbb853
   languageName: node
   linkType: hard
 
@@ -3833,7 +3874,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.2.5":
+"autoprefixer@npm:^10.2.5, autoprefixer@npm:latest":
   version: 10.2.5
   resolution: "autoprefixer@npm:10.2.5"
   dependencies:
@@ -6287,7 +6328,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:latest":
+"eslint-config-prettier@npm:^8.3.0":
+  version: 8.3.0
+  resolution: "eslint-config-prettier@npm:8.3.0"
+  peerDependencies:
+    eslint: ">=7.0.0"
+  bin:
+    eslint-config-prettier: bin/cli.js
+  checksum: 94ccbb50fb67e5e47e8ba6cfa257b5cbf53619990ab13f46b99518cfe9b900394b93bdf6ffedbde1a8e2997d301b0fbd73a6b4202146bc53475dfb30a8c812f2
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-prettier@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "eslint-plugin-prettier@npm:3.4.0"
+  dependencies:
+    prettier-linter-helpers: ^1.0.0
+  peerDependencies:
+    eslint: ">=5.0.0"
+    prettier: ">=1.13.0"
+  peerDependenciesMeta:
+    eslint-config-prettier:
+      optional: true
+  checksum: 322be1af8c7a6b7f1c718d912090722b65da072fda05bbc0a9d94523e6c3dfda49a7f62fd411126f1909c12bbc63e827ee6459163b2ce3458adb292541decf66
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-react-hooks@npm:^4.2.0, eslint-plugin-react-hooks@npm:latest":
   version: 4.2.0
   resolution: "eslint-plugin-react-hooks@npm:4.2.0"
   peerDependencies:
@@ -6351,7 +6418,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^7.25.0":
+"eslint@npm:^7.25.0, eslint@npm:^7.26.0":
   version: 7.26.0
   resolution: "eslint@npm:7.26.0"
   dependencies:
@@ -6713,6 +6780,13 @@ __metadata:
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
   checksum: 451526766b219503131d11e823eaadd1533080b0be4860e316670b039dcaf31cd1007c2fe036a9b922abba7c040dfad5e942ed79d21f2ff849e50049f36e0fb7
+  languageName: node
+  linkType: hard
+
+"fast-diff@npm:^1.1.2":
+  version: 1.2.0
+  resolution: "fast-diff@npm:1.2.0"
+  checksum: 9c5407d9c4869407854fe8838b8d9d26065ca747c9b80697957ae37482e982e880de823efa2c97ea1cba05dc06fce853a005e7557d10550c64c052cf7021ba9e
   languageName: node
   linkType: hard
 
@@ -10754,6 +10828,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^3.1.23":
+  version: 3.1.23
+  resolution: "nanoid@npm:3.1.23"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: e6dea1da5a593ffdc8cf2676d1d02f0626f07a54a5947a7a1f5ff1fd07901b2f53044c285e98b87eb367f016fde285fd8785d54a2dceeab9c3721f4e618f8326
+  languageName: node
+  linkType: hard
+
 "nanomatch@npm:^1.2.9":
   version: 1.2.13
   resolution: "nanomatch@npm:1.2.13"
@@ -12282,6 +12365,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss@npm:latest":
+  version: 8.2.15
+  resolution: "postcss@npm:8.2.15"
+  dependencies:
+    colorette: ^1.2.2
+    nanoid: ^3.1.23
+    source-map: ^0.6.1
+  checksum: 2d26bc29dedd7656d1f53fa002374a014a8c2c7b9f1538d0fafadb9eae2494f5b037c87de4390d620f622b31d7f15c8c8d88de2bd682e206104fb44e781737df
+  languageName: node
+  linkType: hard
+
 "postgres-array@npm:~2.0.0":
   version: 2.0.0
   resolution: "postgres-array@npm:2.0.0"
@@ -12333,7 +12427,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.3.0":
+"prettier-linter-helpers@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "prettier-linter-helpers@npm:1.0.0"
+  dependencies:
+    fast-diff: ^1.1.2
+  checksum: 6d698b9c8dc28e52c8d69df520cde3410cc06cc40471acf81b4b7c18ca08e73d0efb0f878654985bb02fce4f8d3d64cdf64fe9f3ffad3e1dc7e17b837d4ddcb2
+  languageName: node
+  linkType: hard
+
+"prettier@npm:2.3.0, prettier@npm:^2.3.0":
   version: 2.3.0
   resolution: "prettier@npm:2.3.0"
   bin:
@@ -14461,7 +14564,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^2.1.2":
+"tailwindcss@npm:^2.1.2, tailwindcss@npm:latest":
   version: 2.1.2
   resolution: "tailwindcss@npm:2.1.2"
   dependencies:
@@ -15147,7 +15250,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-typescript@^4.2.4:
+"typescript@^4.1.2, typescript@^4.2.4":
   version: 4.2.4
   resolution: "typescript@npm:4.2.4"
   bin:
@@ -15157,7 +15260,7 @@ typescript@^4.2.4:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.2.4#builtin<compat/typescript>":
+"typescript@patch:typescript@^4.1.2#builtin<compat/typescript>, typescript@patch:typescript@^4.2.4#builtin<compat/typescript>":
   version: 4.2.4
   resolution: "typescript@patch:typescript@npm%3A4.2.4#builtin<compat/typescript>::version=4.2.4&hash=a45b0e"
   bin:
