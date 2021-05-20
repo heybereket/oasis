@@ -2756,6 +2756,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^15.3.1":
+  version: 15.3.1
+  resolution: "@types/node@npm:15.3.1"
+  checksum: 1c3c94f4c8e1df26b24a00637fdd5a50a5ea7afd0e97cbd298cf675d49ad5436b8b2b111b349194e2fb8bfc81291a67dff9eac80abbf610f938f7a89ba5ba426
+  languageName: node
+  linkType: hard
+
 "@types/normalize-package-data@npm:^2.4.0":
   version: 2.4.0
   resolution: "@types/normalize-package-data@npm:2.4.0"
@@ -11356,6 +11363,7 @@ __metadata:
     "@commitlint/config-conventional": ^12.1.2
     "@types/eslint": ^7.2.10
     "@types/jest": ^26.0.23
+    "@types/node": ^15.3.1
     commitizen: ^4.2.3
     cz-conventional-changelog: 3.3.0
     jest: ^26.6.3
