@@ -15,6 +15,9 @@ module.exports = {
         'sans-serif',
       ],
     },
+     zIndex: {
+        '50': '50',
+      },
     screens: {
       'sm-50': '350px',
       // 0px to 640px (mobile design with bottom bar)
