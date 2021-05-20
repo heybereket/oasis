@@ -135,7 +135,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               </div>
             </Sidebar>
           </div>
-          <div className="mt-32 flex flex-col flex-1 w-full space-y-12 pb-12">
+          <div className="flex flex-col flex-1 w-full space-y-12 pb-12">
             {[...posts].reverse().map((post: any, index: number) => (
               <Post post={post} key={index} />
             ))}
