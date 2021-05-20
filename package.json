@@ -1,16 +1,12 @@
 {
   "name": "oasis-sh",
-  "workspaces": {
-    "packages": [
-      "packages/web",
-      "packages/api",
-      "packages/client-gql",
-      "packages/bot-client"
-    ],
-    "nohoist": [
-      "**"
-    ]
-  },
+  "workspaces": [
+    "packages/web",
+    "packages/api",
+    "packages/client-gql",
+    "packages/bot-client",
+    "packages/ui"
+  ],
   "scripts": {
     "build": "yarn run build:api && yarn build:ui && yarn workspace @oasis-sh/web run build",
     "build:dev": "yarn run build:api && yarn build:ui",

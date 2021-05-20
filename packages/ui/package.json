@@ -18,7 +18,6 @@
     "@types/eslint-plugin-prettier": "^3",
     "@types/node": "^12.0.0",
     "@types/prettier": "^2",
-    "@types/react": "^17.0.6",
     "@types/react-dom": "^17.0.5",
     "@types/tailwindcss": "^2",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
