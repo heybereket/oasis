@@ -1,5 +1,5 @@
 {
-  "name": "oasis",
+  "name": "oasis-sh",
   "workspaces": [
     "packages/*"
   ],
