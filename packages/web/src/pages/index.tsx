@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Navbar } from '@components/navbar/Navbar';
-import { Post } from '@components/post/Post';
-import { TopicBadge } from '@components/profile/TopicBadge';
-import { Button } from '@components/common/Button';
-import { FollowUser } from '@components/home/FollowUser';
-import { Sidebar } from '@components/home/Sidebar';
-import { FriendActivity } from '@components/home/FriendActivity';
+import {
+  Navbar,
+  Sidebar,
+  FriendActivity,
+  Button,
+  TopicBadge,
+  Post,
+  FollowUser
+} from '@components/index';
 import {
   PaginatePostsDocument,
   PaginatePostsQueryVariables,
@@ -17,7 +19,8 @@ import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { Modal } from '@components/common/Modal';
 import { RightArrow } from '@icons/index';
-
+import { useOnClickOutside } from '@utils/hooks/useOnClickOutside';
+import { useRef } from 'react';
 interface IndexPageProps {
   initialApolloState: any;
   vars: PaginatePostsQueryVariables;
@@ -33,6 +36,9 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [open, setOpen] = useState(false);
 
+  const node = useRef() as React.MutableRefObject<HTMLInputElement>;
+  useOnClickOutside(node, () => setOpen(false));
+
   if (!posts) {
     return null;
   }
@@ -43,7 +49,12 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
       <div className="flex flex-col items-center w-full">
         <Modal open={open} closeHandler={() => setOpen(false)}>
           <form className="grid grid-cols-3 gap-5 w-full">
-            <div className="col-span-3 block">
+            <div
+              className="col-span-3 block"
+              onClick={() => {
+                setOpen((current) => !current);
+              }}
+              ref={node}>
               <h4>New post</h4>
             </div>
             <div className="flex w-full h-full col-span-2">
