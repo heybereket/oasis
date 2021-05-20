@@ -45,7 +45,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
         <Modal
           open={open}
           closeHandler={() => {
-            setOpen(!open);
+            setOpen(false);
           }}
         >
           <form className="grid grid-cols-3 gap-5 w-full">

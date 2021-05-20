@@ -12,7 +12,7 @@ export const Modal: React.FC<Props> = ({ open, closeHandler, children }) => {
 
   const modalRef = useRef<HTMLDivElement | null>(null);
   useOnClickOutside(modalRef, () => closeHandler());
-  //fixed the modal
+  
   return (
     <div className="bg-dim w-screen h-screen flex justify-center items-center fixed z-50 top-0 left-0">
       <div ref={modalRef} className="fixed flex z-50">
