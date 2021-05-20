@@ -30,6 +30,7 @@
     "@types/react": "^17.0.6",
     "@types/react-dom": "^17.0.5",
     "@types/react-syntax-highlighter": "^13.5.0",
+    "@types/rimraf": "^3",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "autoprefixer": "^10.2.5",
@@ -40,6 +41,7 @@
     "next-secure-headers": "^2.2.0",
     "postcss": "^8.2.13",
     "prettier": "2.3.0",
+    "rimraf": "^3.0.2",
     "ts-node": "^9.1.1"
   }
 }
