@@ -2,7 +2,7 @@ import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/apolloServer';
 import Post from '@entities/Post';
 import NewPostInput from './NewPostInput';
-import { nanoid } from 'nanoid';
+import { customAlphabet } from 'nanoid';
 
 @Resolver()
 export class NewPostResolver {
@@ -13,14 +13,8 @@ export class NewPostResolver {
     @Ctx() { getUser }: ContextType
   ) {
     const newPost = Post.create();
+    const nanoid = customAlphabet('1234567890abcdef', 10);
     Post.merge(newPost, data);
-
-    // Even though getUser returns a Promise<User> it does not work with lazy loading for some reason.
-    // For lazy loading relationships you need to call Promsie.resolve with the entity for the relationship
-    // for example
-    //  newPost.author = getUser(); does not work
-    // while
-    //  newPost.author = Promise.resolve(await getUser()); does work
 
     newPost.createdAt = String(Date.now());
 
