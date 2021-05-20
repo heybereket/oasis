@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { GetServerSideProps } from 'next';
+import { ssrRequest } from '@lib/common/ssrRequest';
+import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import { RightArrow } from '@icons/index';
 import {
   Navbar,
   Sidebar,
@@ -7,6 +11,7 @@ import {
   Button,
   TopicBadge,
   Post,
+  Modal,
   FollowUser
 } from '@components/index';
 import {
@@ -14,13 +19,6 @@ import {
   PaginatePostsQueryVariables,
   usePaginatePostsQuery,
 } from '@oasis/client-gql';
-import { GetServerSideProps } from 'next';
-import { ssrRequest } from '@lib/common/ssrRequest';
-import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { Modal } from '@components/common/Modal';
-import { RightArrow } from '@icons/index';
-import { useOnClickOutside } from '@utils/hooks/useOnClickOutside';
-import { useRef } from 'react';
 interface IndexPageProps {
   initialApolloState: any;
   vars: PaginatePostsQueryVariables;
@@ -36,9 +34,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [open, setOpen] = useState(false);
 
-  const node = useRef() as React.MutableRefObject<HTMLInputElement>;
-  useOnClickOutside(node, () => setOpen(false));
-
   if (!posts) {
     return null;
   }
@@ -49,12 +44,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
       <div className="flex flex-col items-center w-full">
         <Modal open={open} closeHandler={() => setOpen(false)}>
           <form className="grid grid-cols-3 gap-5 w-full">
-            <div
-              className="col-span-3 block"
-              onClick={() => {
-                setOpen((current) => !current);
-              }}
-              ref={node}>
+            <div className="col-span-3 block">
               <h4>New post</h4>
             </div>
             <div className="flex w-full h-full col-span-2">

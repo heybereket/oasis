@@ -13,3 +13,4 @@ export { Post } from '@components/post/Post';
 export { FollowUser } from '@components/home/FollowUser';
 export { Sidebar } from '@components/home/Sidebar';
 export { FriendActivity } from '@components/home/FriendActivity';
+export { Modal } from '@components/common/Modal';
