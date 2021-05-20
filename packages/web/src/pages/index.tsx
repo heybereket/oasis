@@ -4,7 +4,7 @@ import { Post } from '@components/post/Post';
 import { TopicBadge } from '@components/profile/TopicBadge';
 import { Button } from '@components/common/Button';
 import { FollowUser } from '@components/home/FollowUser';
-import { SidebarItem } from '@components/home/SidebarItem';
+import { Sidebar } from '@components/home/Sidebar';
 import { FriendActivity } from '@components/home/FriendActivity';
 import {
   PaginatePostsDocument,
@@ -28,7 +28,9 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [open, setOpen] = React.useState(false);
 
-  if (!posts) return null;
+  if (!posts) {
+    return null;
+  }
 
   return (
     <>
@@ -66,10 +68,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             <div className="w-full flex flex-col items-center">
               <div className="flex flex-col items-center">
                 <h2>Something on your mind?</h2>
-                <Button
-                  color="primary"
-                  className="mt-6 mb-7 max-w-[200px] w-full"
-                >
+                <Button color="primary" className="mt-6 mb-7 max-w-200 w-full">
                   Make a Post
                 </Button>
                 <div className="flex">
@@ -78,7 +77,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                   <p className="font-bold">&nbsp;Oasis</p>.
                 </div>
               </div>
-              <SidebarItem title="Trending on Oasis">
+              <Sidebar title="Trending on Oasis">
                 <div className="mt-6">
                   <TopicBadge content="JavaScript" />
                   <TopicBadge content="Python" />
@@ -90,14 +89,14 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                   <TopicBadge content="Code" />
                   <TopicBadge content="CatsWhoCode" />
                 </div>
-              </SidebarItem>
-              <SidebarItem title="Find New People">
+              </Sidebar>
+              <Sidebar title="Find New People">
                 <div className="mt-6 space-y-3">
                   <FollowUser name="Bereket" username="heybereket" />
                   <FollowUser name="Alex" username="alexover1" />
                   <FollowUser name="Sam" username="samjakob" />
                 </div>
-              </SidebarItem>
+              </Sidebar>
             </div>
           </div>
         </div>

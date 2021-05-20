@@ -1,17 +1,23 @@
-import { TabItem } from '@components/profile/TabItem';
 import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
 } from '@oasis/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
-import { SEOProvider } from '@components/common/SEOProvider';
-import { Button } from '@components/common/Button';
-import { TopicBadge } from '@components/profile/TopicBadge';
-import { Container } from '@components/common/Container';
 import { About, Comments, Like, Posts } from '@icons/index';
-import { Navbar } from '@components/navbar/Navbar';
-import StyledMarkdown from '@components/markdown/StyledMarkdown';
+import {
+  SEOProvider,
+  Container,
+  Navbar,
+  TabItem,
+  Button,
+  TopicBadge,
+  LargeUserCard,
+  SmallUserCard,
+  ProfileBanner,
+  FollowersInfo,
+  Bio
+} from '@components/index';
 
 interface ProfileProps {
   initialApolloState: any;
@@ -34,39 +40,17 @@ const Profile: React.FC<ProfileProps> = (props) => {
       />
       <Navbar />
       <div className="flex w-screen flex-col">
-        <div
-          style={{
-            background: `linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, #0C111B 100%), url(${
-              data?.banner || '/static/default-banner.png'
-            }) no-repeat center`,
-            backgroundSize: 'cover',
-          }}
-          className="flex-grow h-52 md:h-60"
-        ></div>
+        <ProfileBanner bannerUrl={data?.banner} />
+        {/* Large and Medium Screens */}
         <Container>
           <div className="hidden md-50:grid grid-cols-12 transform -translate-y-12 px-8">
+            {/* Left Side */}
             <div className="col-span-8 flex flex-col mr-8">
-              <div className="flex">
-                <a href={`/user/${data?.username}`}>
-                  <img
-                    src={data?.avatar}
-                    style={{ pointerEvents: 'none' }}
-                    className="rounded-full w-50 h-40"
-                  ></img>
-                </a>
-                <div className="ml-8 flex flex-col justify-center">
-                  {data?.name ? (
-                    <>
-                      <h1 className="leading-none">{data?.name}</h1>
-                      <h4 className="text-gray-400 font-bold">
-                        @{data?.username}
-                      </h4>
-                    </>
-                  ) : (
-                    <h1>@{data?.username}</h1>
-                  )}
-                </div>
-              </div>
+              <LargeUserCard
+                avatar={data?.avatar}
+                name={data?.name}
+                username={data?.username}
+              />
               <div className="flex flex-col mt-6">
                 <div className="flex">
                   <TabItem name="About" active={true} icon={About} />
@@ -74,32 +58,16 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   <TabItem name="Likes" active={false} icon={Like} />
                   <TabItem name="Comments" active={false} icon={Comments} />
                 </div>
-                <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6">
-                  <h4 className="font-extrabold">About {data?.name}</h4>
-                  {data?.bio !== null ? (
-                    <div className="text-gray-300 font-bold">
-                      <StyledMarkdown text={data?.bio ?? ''} />
-                    </div>
-                  ) : (
-                    <h5 className="text-gray-300 font-bold">
-                      Hmm, it seems like @{data?.username} does not have a bio
-                      set.
-                    </h5>
-                  )}
-
-                  <div className="flex">
-                    {data?.badges?.map((badge) => (
-                      <img
-                        key={badge.id}
-                        title={badge.description}
-                        src={`/static/badges/${badge.imagePath}`}
-                        className="bg-[#306EEA] px-1 py-1 mx-2 my-3 rounded-full flex items-center justify-center"
-                      />
-                    ))}
-                  </div>
-                </div>
+                <Bio
+                  bio={data?.bio}
+                  name={data?.name}
+                  username={data?.username}
+                  badges={data?.badges}
+                  marginTop="8"
+                />
               </div>
             </div>
+            {/* Right Side */}
             <div className="col-span-4 transform translate-y-16 flex flex-col">
               <div className="grid md:grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 gap-2 ">
                 <Button
@@ -115,20 +83,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   Follow @{data?.username}
                 </Button>
               </div>
-              <div className="mt-8 flex bg-gray-800 rounded-2xl py-4 justify-center gap-8">
-                <div className="flex flex-col text-center leading-4">
-                  <span className="text-2xl font-black">666</span>
-                  <span className="font-extrabold text-sm">Followers</span>
-                </div>
-                <div className="flex flex-col text-center leading-4">
-                  <span className="text-2xl font-black">69</span>
-                  <span className="font-extrabold text-sm">Posts</span>
-                </div>
-                <div className="flex flex-col text-center leading-4">
-                  <span className="text-2xl font-black">420</span>
-                  <span className="font-extrabold text-sm">Following</span>
-                </div>
-              </div>
+              <FollowersInfo size="large" />
               <div className="mt-8 flex flex-col bg-gray-800 rounded-2xl py-4 px-6">
                 <h4 className="font-extrabold">Topics Following</h4>
                 <div className="mt-2">
@@ -142,39 +97,14 @@ const Profile: React.FC<ProfileProps> = (props) => {
             </div>
           </div>
         </Container>
+        {/* Small Screens */}
         <div className="flex flex-col md-50:hidden transform -translate-y-20 md:-translate-y-32 items-center mx-6 sm-50:mx-8">
-          <div className="flex flex-col md:flex-row items-center">
-            <img
-              src={data?.avatar}
-              className="rounded-full w-32 h-32 md:w-36 md:h-36"
-            ></img>
-            <div className="mt-4 md:mt-6 text-center md:ml-6">
-              {data?.name ? (
-                <>
-                  <h2 className="leading-none md:text-5xl">{data?.name}</h2>
-                  <h5 className="text-gray-400 font-bold mt-1 md:text-xl">
-                    @{data?.username}
-                  </h5>
-                </>
-              ) : (
-                <h1>@{data?.username}</h1>
-              )}
-            </div>
-          </div>
-          <div className="mt-6 flex justify-center gap-12 md:hidden">
-            <div className="flex flex-col text-center leading-4">
-              <span className="text-2xl font-black">666</span>
-              <span className="font-extrabold text-sm">Followers</span>
-            </div>
-            <div className="flex flex-col text-center leading-4">
-              <span className="text-2xl font-black">69</span>
-              <span className="font-extrabold text-sm">Posts</span>
-            </div>
-            <div className="flex flex-col text-center leading-4">
-              <span className="text-2xl font-black">420</span>
-              <span className="font-extrabold text-sm">Following</span>
-            </div>
-          </div>
+          <SmallUserCard
+            avatar={data?.avatar}
+            name={data?.name}
+            username={data?.username}
+          />
+          <FollowersInfo size="small" />
           <div className="grid grid-cols-2 mt-6 w-full max-w-sm gap-1 md:gap-2">
             <Button color="gray" className="col-span-2 md:col-span-1 text-sm">
               Send Message
@@ -194,29 +124,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
               <TabItem name="Likes" active={false} icon={Like} />
               <TabItem name="Comments" active={false} icon={Comments} />
             </div>
-            <div className="mt-4 bg-gray-800 rounded-xl py-6 px-6">
-              <h4 className="font-extrabold">About {`@${data?.username}`}</h4>
-              {data?.bio !== null ? (
-                <div className="text-gray-300 font-bold">
-                  <StyledMarkdown text={data?.bio ?? ''} />
-                </div>
-              ) : (
-                <h5 className="text-gray-300 font-bold">
-                  Hmm, it seems like @{data?.username} does not have a bio set.
-                </h5>
-              )}
-
-              <div className="flex">
-                {data?.badges?.map((badge) => (
-                  <img
-                    key={badge.id}
-                    title={badge.description}
-                    src={`/static/badges/${badge.imagePath}`}
-                    className="bg-[#306EEA] px-1 py-1 mx-2 my-3 rounded-full flex items-center justify-center"
-                  />
-                ))}
-              </div>
-            </div>
+            <Bio
+              badges={data?.badges}
+              bio={data?.bio}
+              marginTop="4"
+              username={data?.username}
+              name={data?.username}
+            />
           </div>
         </div>
       </div>

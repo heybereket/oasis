@@ -35,6 +35,7 @@ module.exports = {
       },
       maxWidth: {
         580: '580px',
+        200: '200px',
       },
       backgroundColor: {
         resortSecondary: '#141923',
