@@ -5,6 +5,7 @@ import { TopicBadge } from '@components/profile/TopicBadge';
 import { Button } from '@components/common/Button';
 import { FollowUser } from '@components/home/FollowUser';
 import { Sidebar } from '@components/home/Sidebar';
+import { FriendActivity } from '@components/home/FriendActivity';
 import {
   PaginatePostsDocument,
   PaginatePostsQueryVariables,
@@ -22,48 +23,47 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   const { data } = usePaginatePostsQuery({
     variables: vars,
   });
+
   const posts = data?.paginatePosts;
 
   if (!posts) {
     return null;
   }
 
-  const result = posts.reduce((acc: any, letter, ndx) => {
-    acc[ndx % 2] = acc[ndx % 2] || [];
-    acc[ndx % 2].push(letter);
-    return acc;
-  }, []);
-
-  const [firstHalf, secondHalf] = result;
-
   return (
     <>
       <Navbar />
-      <div className="w-full flex justify-center items-center">
-        <div className="px-6 mt-14 grid grid-cols-1 md:grid-cols-three gap-16">
-          <div className="flex justify-center">
-            <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-x-9">
-              <div className="w-full space-y-12 pb-12">
-                {firstHalf.map((post: any, index: number) => (
-                  <Post post={post} key={index} />
-                ))}
-              </div>
-              <div className="w-full space-y-12 pb-12">
-                {posts.length > 1 &&
-                  secondHalf.map((post: any, index: number) => (
-                    <Post post={post} key={index} />
-                  ))}
+      <div className="flex flex-col items-center w-full">
+        <div className="relative px-6 mt-14 grid grid-cols-1 lg:grid-cols-three gap-16">
+          <div className="hidden lg:flex flex-col flex-1 sticky top-14 h-screen">
+            <div className="w-full flex flex-col overflow-y-auto py-6 px-8 bg-gray-800 rounded-2xl">
+              <h4>Friends Activity</h4>
+              <div className="mt-6 flex flex-col space-y-4">
+                <FriendActivity
+                  name="Sam Jakob"
+                  activity={['Playing', 'Visual Studio Code']}
+                />
+                <FriendActivity
+                  name="Angshu31"
+                  activity={['Listening to', 'Spotify']}
+                />
+                <FriendActivity
+                  name="bereket"
+                  activity={['Browsing', 'the Feed']}
+                />
               </div>
             </div>
           </div>
-          <div className="hidden md:flex flex-col items-center">
+          <div className="flex flex-col flex-1 w-full space-y-12 pb-12">
+            {[...posts].reverse().map((post: any, index: number) => (
+              <Post post={post} key={index} />
+            ))}
+          </div>
+          <div className="hidden lg:flex flex-col flex-1 sticky top-14 h-screen">
             <div className="w-full flex flex-col items-center">
               <div className="flex flex-col items-center">
                 <h2>Something on your mind?</h2>
-                <Button
-                  color="primary"
-                  className="mt-6 mb-7 max-w-200 w-full"
-                >
+                <Button color="primary" className="mt-6 mb-7 max-w-200 w-full">
                   Make a Post
                 </Button>
                 <div className="flex">

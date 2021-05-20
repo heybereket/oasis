@@ -34,8 +34,8 @@ module.exports = {
         '3/4': '75%',
       },
       maxWidth: {
-        '580': '580px',
-        '200': '200px'
+        580: '580px',
+        200: '200px',
       },
       backgroundColor: {
         resortSecondary: '#141923',
@@ -44,7 +44,7 @@ module.exports = {
         secondary: '#828282',
       },
       gridTemplateColumns: {
-        three: 'minmax(350px, 1190px) 470px',
+        three: '370px 570px 470px',
       },
       keyframes: {
         'fade-in-down': {
