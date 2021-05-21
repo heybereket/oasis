@@ -19,7 +19,6 @@ import {
   PaginatePostsQueryVariables,
   usePaginatePostsQuery,
 } from '@oasis-sh/client-gql';
-import { SayHello } from '@oasis-sh/ui/dist/esm';
 interface IndexPageProps {
   initialApolloState: any;
   vars: PaginatePostsQueryVariables;
@@ -42,7 +41,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   return (
     <>
       <Navbar />
-      <SayHello name={'Hello'} />
       <div className="flex flex-col items-center w-full">
         <Modal
           open={open}

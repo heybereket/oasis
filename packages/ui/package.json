@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@types/eslint": "^7",
     "@types/eslint-plugin-prettier": "^3",
