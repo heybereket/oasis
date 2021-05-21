@@ -1,8 +1,9 @@
-// export { TabItem } from "/profile/TabItem";
 export { SEOProvider } from "./components/common/SEOProvider";
 export { Button } from "./components/common/Button";
-// export { TopicBadge } from "/profile/TopicBadge";
 export { Container } from "./components/common/Container";
+export { Modal } from "./components/common/Modal";
+// export { TabItem } from "/profile/TabItem";
+// export { TopicBadge } from "/profile/TopicBadge";
 // export { Navbar } from "/navbar/Navbar";
 // export { ProfileBanner } from "/profile/ProfileBanner";
 // export { LargeUserCard } from "/profile/large/UserCard";
@@ -13,7 +14,8 @@ export { Container } from "./components/common/Container";
 // export { FollowUser } from "/home/FollowUser";
 // export { Sidebar } from "/home/Sidebar";
 // export { FriendActivity } from "/home/FriendActivity";
-export { Modal } from "./components/common/Modal";
+export { DropdownItem } from "./components/navbar/DropdownItem";
+export { NavItem } from "./components/navbar/NavItem";
 
 export { About } from "./icons/navbar/About";
 export { Bell } from "./icons/navbar/Bell";
