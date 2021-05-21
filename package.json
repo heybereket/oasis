@@ -5,7 +5,8 @@
     "packages/api",
     "packages/client-gql",
     "packages/bot-client",
-    "packages/ui"
+    "packages/ui",
+    "packages/vsc-extension"
   ],
   "scripts": {
     "build": "yarn run build:api && yarn build:ui && yarn workspace @oasis-sh/web run build",
