@@ -2529,7 +2529,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/concurrently@npm:^6.0.1":
+"@types/concurrently@npm:^6, @types/concurrently@npm:^6.0.1":
   version: 6.0.1
   resolution: "@types/concurrently@npm:6.0.1"
   dependencies:
@@ -12484,10 +12484,12 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^12.1.2
     "@commitlint/config-conventional": ^12.1.2
+    "@types/concurrently": ^6
     "@types/eslint": ^7.2.10
     "@types/jest": ^26.0.23
     "@types/node": ^15.3.1
     commitizen: ^4.2.3
+    concurrently: ^6.1.0
     cz-conventional-changelog: 3.3.0
     jest: ^26.6.3
     npm-run-all: ^4.1.5
