@@ -1,6 +1,8 @@
 import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
+  useFollowUserMutation,
+  useGetMyUserIdQuery,
 } from '@oasis-sh/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
@@ -16,7 +18,7 @@ import {
   SmallUserCard,
   ProfileBanner,
   FollowersInfo,
-  Bio
+  Bio,
 } from '@components/index';
 
 interface ProfileProps {
@@ -30,6 +32,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
       username: props.username,
     },
   }).data?.getUserByName;
+
+  const [follow] = useFollowUserMutation({
+    variables: { userId: data?.id ?? '' },
+  });
+
+  const myId = useGetMyUserIdQuery().data?.currentUser?.id ?? '';
 
   return (
     <>
@@ -79,11 +87,21 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 <Button
                   color="primary"
                   className="md:row-span-1 lg:col-span-1 text-sm"
+                  onClick={() => {
+                    follow();
+                  }}
                 >
-                  Follow @{data?.username}
+                  {data?.id === myId
+                    ? 'Edit Profile'
+                    : `Follow @${data?.username}`}
                 </Button>
               </div>
-              <FollowersInfo size="large" />
+              <FollowersInfo
+                size="large"
+                followers={data?.followers.total}
+                following={data?.following.total}
+                posts={data?.posts.total}
+              />
               <div className="mt-8 flex flex-col bg-gray-800 rounded-2xl py-4 px-6">
                 <h4 className="font-extrabold">Topics Following</h4>
                 <div className="mt-2">
@@ -104,7 +122,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
             name={data?.name}
             username={data?.username}
           />
-          <FollowersInfo size="small" />
+          <FollowersInfo
+            size="small"
+            followers={data?.followers.total}
+            following={data?.following.total}
+            posts={data?.posts.total}
+          />
           <div className="grid grid-cols-2 mt-6 w-full max-w-sm gap-1 md:gap-2">
             <Button color="gray" className="col-span-2 md:col-span-1 text-sm">
               Send Message
@@ -113,7 +136,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
               color="primary"
               className="col-span-2 md:col-span-1 text-sm"
             >
-              Follow @{data?.username}
+              {data?.id === myId ? 'Edit Profile' : `Follow @${data?.username}`}
             </Button>
           </div>
 
