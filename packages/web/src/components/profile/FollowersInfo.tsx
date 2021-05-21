@@ -17,8 +17,8 @@ export const FollowersInfo: React.FC<Props> = ({
     <div
       className={
         size === 'large'
-          ? 'mt-8 flex bg-gray-800 rounded-2xl py-4 justify-center gap-8'
-          : 'mt-6 flex justify-center gap-12 md:hidden'
+          ? 'mt-8 flex bg-gray-800 rounded-2xl py-4 justify-center gap-8 space-x-2 '
+          : 'mt-6 flex justify-center gap-8 space-x-2 md:hidden'
       }
     >
       <div className="flex flex-col text-center leading-4">
