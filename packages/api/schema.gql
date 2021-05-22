@@ -158,18 +158,6 @@ type PaginatedUserFromUser_botOwnerResponse {
   total: Float!
 }
 
-type PaginatedUserFromUser_followersResponse {
-  hasMore: Boolean!
-  items: [User!]!
-  total: Float!
-}
-
-type PaginatedUserFromUser_followingResponse {
-  hasMore: Boolean!
-  items: [User!]!
-  total: Float!
-}
-
 type Post {
   author: User!
   comments(limit: Float!, offset: Float!): PaginatedCommentFromPost_postResponse!
@@ -266,8 +254,6 @@ type User {
   createdAt: String!
   discord: String
   dislikedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_dislikersResponse!
-  followers(limit: Float!, offset: Float!): PaginatedUserFromUser_followingResponse!
-  following(limit: Float!, offset: Float!): PaginatedUserFromUser_followersResponse!
   github: String
   google: String
   id: ID!

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { RightArrow } from '@icons/index';
+import { RightArrow } from '@oasis-sh/ui';
 import {
   Navbar,
   Sidebar,
@@ -17,7 +17,6 @@ import {
 import {
   PaginatePostsDocument,
   PaginatePostsQueryVariables,
-  useLikeDislikePostMutation,
   usePaginatePostsQuery,
 } from '@oasis-sh/client-gql';
 interface IndexPageProps {
@@ -35,7 +34,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [open, setOpen] = useState(false);
 
-  const [likeDislikePost] = useLikeDislikePostMutation();
+  // const [likeDislikePost] = useLikeDislikePostMutation();
 
   if (!posts) {
     return null;
