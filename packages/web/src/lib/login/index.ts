@@ -2,7 +2,7 @@ import { baseURL } from '@lib/constants';
 import { setCurrentUser } from '@lib/common/getCurrentUser';
 
 export const Login = (type: string): any => {
-  window.localStorage.setItem('redirectPath', window.location.pathname);
+  window.localStorage.setItem('redirectPath', window.location.href);
   switch (type) {
     // GitHub Authentication
     case 'github':

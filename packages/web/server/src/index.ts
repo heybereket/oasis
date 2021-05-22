@@ -1,7 +1,6 @@
 import { config } from 'dotenv';
 import { join } from 'path';
 import next from 'next';
-import { createApp } from '@oasis-sh/api';
 import { chalkLog } from './lib/chalkLog';
 import { ExitWithErrors } from './lib/ExitWithErrors';
 import { getServer } from './lib/getServer';
@@ -18,11 +17,6 @@ const handle = app.getRequestHandler();
 const time = Date.now();
 
 (async () => {
-  if (!process.env.NEXT_PUBLIC_BASE_URL) {
-    chalkLog('error', `NEXT_PUBLIC_BASE_URL is undefined in packages/web/.env`);
-    ExitWithErrors(1);
-  }
-
   const server = await getServer();
 
   if (!server) {

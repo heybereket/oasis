@@ -151,7 +151,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.14.3, @babel/core@npm:^7.12.13":
+"@babel/core@npm:7.14.3, @babel/core@npm:^7.12.13, @babel/core@npm:^7.14.2":
   version: 7.14.3
   resolution: "@babel/core@npm:7.14.3"
   dependencies:
@@ -171,6 +171,20 @@ __metadata:
     semver: ^6.3.0
     source-map: ^0.5.0
   checksum: 4bc2d1abf53e8d1399d5fe159f4f6d275feb64cdfb3a975e903edcbbd98b71ba4a216af28f43db0a5303691a291590837964934acaf673b024563f3acad919f6
+  languageName: node
+  linkType: hard
+
+"@babel/eslint-parser@npm:^7.14.3":
+  version: 7.14.3
+  resolution: "@babel/eslint-parser@npm:7.14.3"
+  dependencies:
+    eslint-scope: ^5.1.0
+    eslint-visitor-keys: ^2.1.0
+    semver: ^6.3.0
+  peerDependencies:
+    "@babel/core": ">=7.11.0"
+    eslint: ">=7.5.0"
+  checksum: faab714c777344ef0d6e96e3a6286766ce4c38a93a974c41d5f05fb778a7492e02fa79e1e3160abef9d935c95f9e46ade984411df73f68b114f9d79bcfe9a918
   languageName: node
   linkType: hard
 
@@ -2253,6 +2267,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@oasis-sh/web@workspace:packages/web"
   dependencies:
+    "@babel/core": ^7.14.2
+    "@babel/eslint-parser": ^7.14.3
     "@babel/runtime": ^7.14.0
     "@primer/octicons-react": ^14.1.0
     "@types/express": ^4
@@ -2268,7 +2284,7 @@ __metadata:
     eslint-plugin-react: ^7.23.2
     eslint-plugin-react-hooks: latest
     express: ^4.17.1
-    formik: ^2.2.8
+    formik: ^2.2.6
     github-markdown-css: ^4.0.0
     next: latest
     next-secure-headers: ^2.2.0
@@ -2628,7 +2644,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:*, @types/express@npm:4.17.11, @types/express@npm:^4.17.11":
+"@types/express@npm:*, @types/express@npm:4.17.11, @types/express@npm:^4, @types/express@npm:^4.17.11":
   version: 4.17.11
   resolution: "@types/express@npm:4.17.11"
   dependencies:
@@ -6672,7 +6688,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-scope@npm:^5.0.0, eslint-scope@npm:^5.1.1":
+"eslint-scope@npm:^5.0.0, eslint-scope@npm:^5.1.0, eslint-scope@npm:^5.1.1":
   version: 5.1.1
   resolution: "eslint-scope@npm:5.1.1"
   dependencies:
@@ -6698,7 +6714,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-visitor-keys@npm:^2.0.0":
+"eslint-visitor-keys@npm:^2.0.0, eslint-visitor-keys@npm:^2.1.0":
   version: 2.1.0
   resolution: "eslint-visitor-keys@npm:2.1.0"
   checksum: 75eaae9006f5bcb9d1e09641719b840b83c4758f5f25bc06a0e94918d78658d0f19691bdc2e3b100604d0fe2d1eb94a2aab287ba24ad2f02f87cacdccb86c2e4
@@ -7393,7 +7409,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formik@npm:^2.2.8":
+"formik@npm:^2.2.6":
   version: 2.2.8
   resolution: "formik@npm:2.2.8"
   dependencies:
@@ -7649,6 +7665,13 @@ __metadata:
   bin:
     git-raw-commits: cli.js
   checksum: 8c8769db98108a40c978c028680e798499b3aa0a560ac2fc02544aa75c8541fc07fb92cffd8041b7ed68e06db1041c2ada33c3d6ba2f520328813ebe741521ea
+  languageName: node
+  linkType: hard
+
+"github-markdown-css@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "github-markdown-css@npm:4.0.0"
+  checksum: 7b4b5f41986b38bb3d2b66fca649b1cc09c67185bf0f71ab1b5be54e7359a158a0d3de42e58f1eae59f024068f3dc10cb6de8f200f97a49c1d7b635f0d8584bc
   languageName: node
   linkType: hard
 
