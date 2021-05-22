@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-export { SEOProvider } from "./components/common/SEOProvider";
-export { Button } from "./components/common/Button";
-export { Container } from "./components/common/Container";
-export { Modal } from "./components/common/Modal";
-// export { TabItem } from "/profile/TabItem";
-// export { TopicBadge } from "/profile/TopicBadge";
-// export { Navbar } from "/navbar/Navbar";
-// export { ProfileBanner } from "/profile/ProfileBanner";
-// export { LargeUserCard } from "/profile/large/UserCard";
-// export { Bio } from "/profile/Bio";
-// export { SmallUserCard } from "/profile/small/UserCard";
-// export { FollowersInfo } from "/profile/FollowersInfo";
-// export { Post } from "/post/Post";
-// export { FollowUser } from "/home/FollowUser";
-// export { Sidebar } from "/home/Sidebar";
-// export { FriendActivity } from "/home/FriendActivity";
-export { DropdownItem } from "./components/navbar/DropdownItem";
-export { NavItem } from "./components/navbar/NavItem";
-
-=======
 // Components
 // Common
 export { Button } from "./components/common/Button";
@@ -60,7 +39,6 @@ export { ResortCard } from "./components/resort/ResortCard";
 export { ResortHeader } from "./components/resort/ResortHeader";
 
 // Icons
->>>>>>> ui-new
 export { About } from "./icons/navbar/About";
 export { Bell } from "./icons/navbar/Bell";
 export { Comments } from "./icons/posts/Comments";
@@ -78,7 +56,3 @@ export { RightArrow } from "./icons/arrows/RightArrow";
 export { Profile } from "./icons/navbar/Profile";
 export { SmallUpArrow } from "./icons/arrows/SmallUpArrow";
 export { SmallDownArrow } from "./icons/arrows/SmallDownArrow";
-<<<<<<< HEAD
-
-=======
->>>>>>> ui-new

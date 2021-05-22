@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import { Button } from '../common/Button';
-=======
 import { Button } from '../../index';
->>>>>>> ui-new
 
 interface Props {
   name: string;

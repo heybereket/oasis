@@ -1,9 +1,5 @@
 import { useRouter } from 'next/router';
-<<<<<<< HEAD
-import { MouseEventHandler } from 'react';
-=======
 import React, { MouseEventHandler } from 'react';
->>>>>>> ui-new
 
 interface NavItemProps {
   name: string;
