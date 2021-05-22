@@ -54,7 +54,7 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('google', {
-      successReturnToOrRedirect: '/authsuccess',
+      successReturnToOrRedirect: '/auth/success',
       failureRedirect: '/login',
       session: true,
     })

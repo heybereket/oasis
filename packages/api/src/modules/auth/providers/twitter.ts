@@ -56,7 +56,7 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('twitter', {
-      successReturnToOrRedirect: '/authsuccess',
+      successReturnToOrRedirect: '/auth/success',
       failureRedirect: '/login',
       session: true,
     })

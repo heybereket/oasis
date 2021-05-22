@@ -73,7 +73,7 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('github', {
-      successReturnToOrRedirect: '/authsuccess',
+      successReturnToOrRedirect: '/auth/success',
       failureRedirect: '/login',
       session: true,
     })
