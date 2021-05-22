@@ -40,7 +40,6 @@ export default (passport: PassportStatic): Router => {
             });
             user.name = profile.username;
             user.username = await checkUsername(profile.username);
-            user.discord = id;
             user.verified = false;
             user.createdAt = String(Date.now());
           }

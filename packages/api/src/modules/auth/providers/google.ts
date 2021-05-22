@@ -26,7 +26,6 @@ export default (passport: PassportStatic): Router => {
             user.avatar = profile._json.picture;
             user.name = profile.displayName;
             user.username = await checkUsername(username);
-            user.google = id;
             user.verified = false;
             user.createdAt = String(Date.now());
           }

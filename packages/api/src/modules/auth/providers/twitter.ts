@@ -29,7 +29,6 @@ export default (passport: PassportStatic): Router => {
               : null;
             user.name = profile.displayName;
             user.username = await checkUsername(profile.username);
-            user.twitter = id;
             user.verified = false;
             user.createdAt = String(Date.now());
           }
