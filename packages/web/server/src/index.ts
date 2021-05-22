@@ -7,8 +7,11 @@ import { getServer } from './lib/getServer';
 
 config({ path: join(__dirname, '../../.env') });
 
-process.env.API_MODE == 'local' &&
-  config({ path: join(__dirname, '../../../api/.env') });
+// default to running api locally
+const apiMode = (process.env.API_MODE ??= 'local');
+console.log(apiMode);
+
+if (apiMode == 'local') config({ path: join(__dirname, '../../../api/.env') });
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, conf: require('../../next.config.js') });
@@ -17,7 +20,7 @@ const handle = app.getRequestHandler();
 const time = Date.now();
 
 (async () => {
-  const server = await getServer();
+  const server = await getServer(apiMode);
 
   if (!server) {
     ExitWithErrors(1);

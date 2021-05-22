@@ -10,7 +10,7 @@
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js",
     "clean": "rimraf .next/*",
     "setup:remote": "yarn clean || echo \"API_MODE='remote'\\\nNEXT_PUBLIC_BASE_URL='http://localhost:3000'\" > .env"
-  }, 
+  },
   "dependencies": {
     "@primer/octicons-react": "^14.1.0",
     "express": "^4.17.1",
