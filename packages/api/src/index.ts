@@ -17,7 +17,7 @@ import { chalkLog } from '@lib/chalkLog';
 
 const RedisStore = connectRedis(expressSession);
 
-const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
+export const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
 export const createApp = async () => {
   if (!(await checkEnv())) {

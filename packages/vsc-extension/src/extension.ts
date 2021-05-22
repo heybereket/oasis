@@ -1,21 +1,21 @@
-import * as vscode from "vscode";
-import { SidebarProvider } from "./Sidebar";
+import * as vscode from 'vscode';
+import { SidebarProvider } from './Sidebar';
 
 export function activate(context: vscode.ExtensionContext) {
   console.log('Congratulations, your extension "vsc-oasis" is now active!');
 
-  const sidebarProvider = new SidebarProvider(context.extensionUri);
+  const sidebarProvider = new SidebarProvider(context);
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider(
-      "vsc-oasis-sidebar",
+      'vsc-oasis-sidebar',
       sidebarProvider
     )
   );
 
   let disposable = vscode.commands.registerCommand(
-    "vsc-oasis.helloWorld",
+    'vsc-oasis.helloWorld',
     () => {
-      vscode.window.showInformationMessage("Hello World from Oasis!");
+      vscode.window.showInformationMessage('Hello World from Oasis!');
     }
   );
 

@@ -23,7 +23,7 @@ export default class Client extends EventEmitter<Events> {
       headers: {
         accept: '*/*',
         'content-type': 'application/json',
-        authorization: `Bearer ${this.options.token}`,
+        authorization: `Bearer BOT ${this.options.token}`,
       },
       body: JSON.stringify({
         query,
