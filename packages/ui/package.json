@@ -14,16 +14,16 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@types/eslint": "^7",
-    "@types/eslint-plugin-prettier": "^3",
-    "@types/node": "^12.0.0",
-    "@types/prettier": "^2",
+    "@types/eslint": "^7.2.11",
+    "@types/eslint-plugin-prettier": "^3.1.0",
+    "@types/node": "^12.20.13",
+    "@types/prettier": "^2.2.3",
     "@types/react-dom": "^17.0.5",
-    "@types/tailwindcss": "^2",
+    "@types/tailwindcss": "^2.0.3",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "autoprefixer": "latest",
-    "eslint": "^7.26.0",
+    "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
@@ -33,7 +33,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "tailwindcss": "latest",
-    "typescript": "^4.1.2"
+    "typescript": "^4.2.4"
   },
   "scripts": {
     "build": "yarn clean && yarn build:esm && yarn build:cjs",

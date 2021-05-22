@@ -27,8 +27,8 @@
   "homepage": "https://github.com/oasis-sh/oasis#readme",
   "devDependencies": {
     "@types/jest": "^26.0.23",
-    "@types/node": "^15.3.0",
-    "@types/node-fetch": "^2",
+    "@types/node": "^15.6.0",
+    "@types/node-fetch": "^2.5.10",
     "dotenv": "^10.0.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.6",

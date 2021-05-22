@@ -7,9 +7,24 @@ export const createContext = async (req: Request): Promise<ContextType> => {
   let uid: string;
 
   if (req.headers.authorization) {
-    const [, token] = req.headers.authorization.split(' ');
+    const [, type, token] = req.headers.authorization.split(' ');
 
-    uid = (verify(token, process.env.BOT_TOKEN_SECRET) as any).uid;
+    switch (type) {
+      case 'BOT':
+        uid = (verify(token, process.env.BOT_TOKEN_SECRET) as any).uid;
+      case 'VSC': {
+        const data = verify(
+          token,
+          process.env.VSCODE_ACCESS_TOKEN_SECRET
+        ) as any;
+
+        const user = await User.findOne(data.uid);
+
+        if (user.vscTokenCount === data.count) {
+          uid = data.uid;
+        }
+      }
+    }
   } else {
     uid = (req.session as any)?.passport?.user?.id;
   }

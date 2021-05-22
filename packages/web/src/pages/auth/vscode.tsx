@@ -12,7 +12,7 @@ export default function VSCodeAuth(): any {
 
   useEffect(() => {
     if (data)
-      fetch(`${apiBaseURL}/auth/vscode`, {
+      fetch(`${apiBaseURL}/auth/vscode/grant-access`, {
         method: 'POST',
         headers: {
           authorization: 'Bearer ' + window.location.search.replace('?t=', ''),
