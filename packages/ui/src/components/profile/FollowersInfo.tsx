@@ -2,11 +2,6 @@ import React from 'react';
 
 type Props = {
   size: 'small' | 'large';
-<<<<<<< HEAD
-};
-
-export const FollowersInfo: React.FC<Props> = ({ size }) => {
-=======
   followers: number | undefined | null;
   following: number | undefined | null;
   posts: number | undefined | null;
@@ -18,7 +13,6 @@ export const FollowersInfo: React.FC<Props> = ({
   following,
   posts,
 }) => {
->>>>>>> ui-new
   return (
     <div
       className={
@@ -28,17 +22,6 @@ export const FollowersInfo: React.FC<Props> = ({
       }
     >
       <div className="flex flex-col text-center leading-4">
-<<<<<<< HEAD
-        <span className="text-2xl font-black">666</span>
-        <span className="font-extrabold text-sm">Followers</span>
-      </div>
-      <div className="flex flex-col text-center leading-4">
-        <span className="text-2xl font-black">69</span>
-        <span className="font-extrabold text-sm">Posts</span>
-      </div>
-      <div className="flex flex-col text-center leading-4">
-        <span className="text-2xl font-black">420</span>
-=======
         <span className="text-2xl font-black">{followers}</span>
         <span className="font-extrabold text-sm">Followers</span>
       </div>
@@ -48,7 +31,6 @@ export const FollowersInfo: React.FC<Props> = ({
       </div>
       <div className="flex flex-col text-center leading-4">
         <span className="text-2xl font-black">{following}</span>
->>>>>>> ui-new
         <span className="font-extrabold text-sm">Following</span>
       </div>
     </div>
