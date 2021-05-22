@@ -7,11 +7,10 @@ import {
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { Formik, Form, Field } from 'formik';
-import { Navbar } from '@components/navbar/Navbar';
+import { Navbar, Button, StyledFormikInput } from '@oasis-sh/ui';
 import React from 'react';
-import { StyledFormikInput } from '@components/common/FormikInput';
 import { apolloClient } from '@lib/common/apolloClient';
-import { Button } from '@components/common/Button';
+import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 
 interface EditProfileProps {
   initialApolloState: any;
@@ -27,9 +26,11 @@ const EditProfile: React.FC<EditProfileProps> = () => {
     username: origData?.username,
   };
 
+  const { user, currentUserLoading } = useGetCurrentUser();
+
   return (
     <>
-      <Navbar />
+      <Navbar user={user} currentUserLoading={currentUserLoading} />
       <div className="w-1/2 mx-auto">
         <Formik
           initialValues={initialValues}

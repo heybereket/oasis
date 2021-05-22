@@ -13,10 +13,11 @@ import {
   Post,
   Modal,
   FollowUser,
-} from '@components/index';
+} from '@oasis-sh/ui';
 import {
   PaginatePostsDocument,
   PaginatePostsQueryVariables,
+  useLikeDislikePostMutation,
   usePaginatePostsQuery,
 } from '@oasis-sh/client-gql';
 interface IndexPageProps {
@@ -34,13 +35,15 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [open, setOpen] = useState(false);
 
+  const [likeDislikePost] = useLikeDislikePostMutation();
+
   if (!posts) {
     return null;
   }
 
   return (
     <>
-      <Navbar />
+      <Navbar user={user} currentUserLoading={currentUserLoading} />
       <div className="flex flex-col items-center w-full">
         <Modal
           open={open}
