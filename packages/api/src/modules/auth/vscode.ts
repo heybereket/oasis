@@ -1,20 +1,24 @@
 import { Router } from 'express';
 import { redisClient } from '@root/index';
-import { sign, verify } from 'jsonwebtoken';
+import { sign } from 'jsonwebtoken';
 import User from '@entities/User';
 
 export default function VSCodeAuth() {
   const router = Router();
-  router.post('/grant-accesss', async (req, res) => {
+  router.post('/grant-access', async (req, res) => {
     const uid = (req.session as any)?.passport?.user?.id;
+
+    console.log(uid);
+
     if (!uid) return res.status(401).send('Not Logged In!');
 
     try {
-      const [, token] = req.headers.authorization?.split(' ') || [];
+      const authId = req.headers.authorization;
 
-      const { authId }: any = verify(token, process.env.VSCODE_AUTH_ID_SECRET);
+      if (!authId)
+        throw new Error('No `authId` field was passed in the JSON body');
 
-      redisClient.setex(`vsc:${authId}`, 30, uid, (err, s) => {
+      redisClient.setex(`aid:${authId}`, 30, uid, (err, s) => {
         console.log({ err, s });
       });
 
@@ -26,13 +30,13 @@ export default function VSCodeAuth() {
   });
 
   router.get('/get-access', async (req, res) => {
-    const [token, authId] = req.headers.authorization.split(' ');
+    const { authId } = req.query;
 
-    if (token !== process.env.VSCODE_TOKEN) return res.send(null);
+    if (!authId) return;
 
-    console.log({ token, authId });
+    console.log({ authId });
 
-    redisClient.get(`vsc:${authId}`, async (err, uid) => {
+    redisClient.get(`aid:${authId}`, async (err, uid) => {
       console.log('GET /vscode', { uid });
 
       if (err) {
@@ -44,15 +48,17 @@ export default function VSCodeAuth() {
       user.vscTokenCount = 0;
       await user.save();
 
+      redisClient.del(`aid:${authId}`);
+
       res.send({
         accessToken: sign(
           { uid, count: 0 },
-          process.env.VSCODE_ACCESS_TOKEN_SECRET,
+          process.env.AID_ACCESS_TOKEN_SECRET,
           {
             expiresIn: '15m',
           }
         ),
-        refreshToken: sign({ uid }, process.env.VSCODE_REFRESH_TOKEN_SECRET, {
+        refreshToken: sign({ uid }, process.env.AID_REFRESH_TOKEN_SECRET, {
           expiresIn: '7d',
         }),
       });

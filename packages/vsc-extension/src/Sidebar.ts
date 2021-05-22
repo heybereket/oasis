@@ -3,11 +3,7 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { Keys } from './keys';
 import fetch from 'node-fetch';
-
-const serverURL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://vsc.oasis.sh'
-    : 'http://localhost:5000';
+import { nanoid } from 'nanoid';
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
   _view?: vscode.WebviewView;
@@ -25,16 +21,17 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 
     webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
 
+    const globalState = this._context.globalState;
+
     webviewView.webview.onDidReceiveMessage(async (msg) => {
       switch (msg.type) {
         case 'open-login': {
-          const res = await fetch(`${serverURL}/login-creds`);
-          const { authIdToken } = await res.json();
-          this._context.globalState.update(Keys.auth, authIdToken);
+          const authId = nanoid();
+          globalState.update(Keys.authId, authId);
 
           vscode.env.openExternal(
             vscode.Uri.parse(
-              `http://localhost:3000/auth/vscode?t=${authIdToken}`
+              `http://localhost:3000/auth/vscode?authId=${authId}`
             )
           );
 
@@ -42,17 +39,15 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
         }
 
         case 'logged-in': {
-          const authToken =
-            this._context.globalState.get<string>(Keys.auth) || '';
+          const authId = globalState.get<string>(Keys.authId) || '';
 
-          const res = await fetch(`${serverURL}/get-data`, {
-            headers: {
-              authorization: `Bearer ${authToken}`,
-            },
-          });
+          const res = await fetch(
+            `http://localhost:3000/api/auth/vscode/get-access?authId=${authId}`
+          );
           const data = await res.json();
 
-          console.log(data);
+          await globalState.update(Keys.accessToken, data.accessToken);
+          await globalState.update(Keys.refreshToken, data.refreshToken);
 
           break;
         }

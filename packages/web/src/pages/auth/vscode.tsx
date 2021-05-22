@@ -15,7 +15,7 @@ export default function VSCodeAuth(): any {
       fetch(`${apiBaseURL}/auth/vscode/grant-access`, {
         method: 'POST',
         headers: {
-          authorization: 'Bearer ' + window.location.search.replace('?t=', ''),
+          authorization: window.location.search.replace('?authId=', ''),
         },
       }).then(() => setDone(true));
   }, [data]);

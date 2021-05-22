@@ -1,3 +1,5 @@
 export enum Keys {
-  auth = 'AUTH_KEY',
+  authId = 'AUTH_ID',
+  accessToken = 'ACCESS_TOKEN',
+  refreshToken = 'REFRESH_TOKEN',
 }

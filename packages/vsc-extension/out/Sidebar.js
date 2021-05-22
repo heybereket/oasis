@@ -15,9 +15,7 @@ const fs_1 = require("fs");
 const path_1 = require("path");
 const keys_1 = require("./keys");
 const node_fetch_1 = require("node-fetch");
-const serverURL = process.env.NODE_ENV === 'production'
-    ? 'https://vsc.oasis.sh'
-    : 'http://localhost:5000';
+const nanoid_1 = require("nanoid");
 class SidebarProvider {
     constructor(_context) {
         this._context = _context;
@@ -32,20 +30,17 @@ class SidebarProvider {
         webviewView.webview.onDidReceiveMessage((msg) => __awaiter(this, void 0, void 0, function* () {
             switch (msg.type) {
                 case 'open-login': {
-                    const res = yield node_fetch_1.default(`${serverURL}/login-creds`);
-                    const { authIdToken } = yield res.json();
-                    this._context.globalState.update(keys_1.Keys.auth, authIdToken);
-                    vscode.env.openExternal(vscode.Uri.parse(`http://localhost:3000/auth/vscode?t=${authIdToken}`));
+                    const authId = nanoid_1.nanoid();
+                    this._context.globalState.update(keys_1.Keys.auth, authId);
+                    vscode.env.openExternal(vscode.Uri.parse(`http://localhost:3000/auth/vscode?authId=${authId}`));
+                    break;
                 }
                 case 'logged-in': {
-                    const authToken = this._context.globalState.get(keys_1.Keys.auth) || '';
-                    const res = yield node_fetch_1.default(`${serverURL}/get-data`, {
-                        headers: {
-                            authorization: `Bearer ${authToken}`,
-                        },
-                    });
+                    const authId = this._context.globalState.get(keys_1.Keys.auth) || '';
+                    const res = yield node_fetch_1.default(`http://localhost:3000/api/auth/vscode/get-access?authId=${authId}`);
                     const data = yield res.json();
                     console.log(data);
+                    break;
                 }
             }
         }));
@@ -55,7 +50,7 @@ class SidebarProvider {
     }
     _getHtmlForWebview(webview) {
         let content = fs_1.readFileSync(path_1.join(__dirname, '../vsc-ui/dist/index.html')).toString();
-        content = content.replace(/(href|src)\=\"(.*?)\"/g, (_, hrefOrSrc, path) => {
+        content = content.replace(/(href|src)="(.*?)"/g, (_, hrefOrSrc, path) => {
             return `${hrefOrSrc}="${webview.asWebviewUri(vscode.Uri.joinPath(this._context.extensionUri, 'vsc-ui/dist', path))}"`;
         });
         return content;

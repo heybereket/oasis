@@ -22,15 +22,16 @@ export function useGetCurrentUser(): LoadableCurrentUser {
   const query = useQuery<GetCurrentUserQuery>(GetCurrentUserDocument);
   const { data, loading } = query;
 
+  console.log({ data, loading, GetCurrentUserDocument });
+
   useEffect(() => {
     if (data?.currentUser !== null && data?.currentUser !== undefined)
       setUser(data?.currentUser as User);
-    else
-      setUser(undefined);
+    else setUser(undefined);
   }, [data]);
 
   return {
     user,
-    currentUserLoading: loading
+    currentUserLoading: loading,
   };
 }

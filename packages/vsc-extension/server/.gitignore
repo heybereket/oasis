@@ -1,6 +1,0 @@
-.env
-dist
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
-.pnp.*
