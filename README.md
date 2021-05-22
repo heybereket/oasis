@@ -1,6 +1,7 @@
 # Oasis
 
 <img src='https://img.shields.io/badge/License-MIT-blue.svg' > [![Deploy Production](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml) [![Deploy Staging](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready%20to%20code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/oasis-sh/oasis)
 
 ## Structure
 - [`packages/web`](/packages/web) - Web Application
