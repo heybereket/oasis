@@ -12,7 +12,6 @@ import React, { useRef, useState } from "react";
 import { Button } from "../../index";
 import { NavItem } from "../../index";
 import { DropdownItem } from "../../index";
-import { useRouter } from "next/router";
 import useOnClickOutside from "../../utils/hooks/useOnClickOutside";
 import { User } from "@oasis-sh/client-gql";
 
@@ -30,7 +29,6 @@ export const Navbar: React.FC<INavbarProps> = ({
   logout,
 }) => {
   const [isDropdownActive, setDropdownActive] = useState(false);
-  const router = useRouter();
 
   const node = useRef(null);
   useOnClickOutside(node, () => setDropdownActive(false));
@@ -113,7 +111,8 @@ export const Navbar: React.FC<INavbarProps> = ({
                         name="Profile"
                         icon={ProfileIcon}
                         onClick={() => {
-                          router.push("/user/" + user?.username);
+                          // router.push("/user/" + user?.username);
+                          window.location.href = "/user/" + user?.username;
                         }}
                       />
                     </div>
