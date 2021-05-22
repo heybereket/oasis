@@ -2,24 +2,29 @@ import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
   useFollowUserMutation,
-  useGetMyUserIdQuery,
 } from '@oasis-sh/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
-import { About, Comments, Like, Posts } from '@icons/index';
+import { About, Comments, Like, Posts } from '@oasis-sh/ui';
 import {
-  SEOProvider,
   Container,
+  Button,
+} from '@oasis-sh/ui';
+
+import {
   Navbar,
   TabItem,
-  Button,
   TopicBadge,
   LargeUserCard,
   SmallUserCard,
   ProfileBanner,
   FollowersInfo,
   Bio,
-} from '@components/index';
+} from '@oasis-sh/ui';
+import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import { SEOProvider } from '@components/common/SEOProvider';
+import StyledMarkdown from '@components/markdown/StyledMarkdown';
+import { Login, Logout } from '@lib/login';
 
 interface ProfileProps {
   initialApolloState: any;
@@ -37,7 +42,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
     variables: { userId: data?.id ?? '' },
   });
 
-  const myId = useGetMyUserIdQuery().data?.currentUser?.id ?? '';
+  const { user, currentUserLoading } = useGetCurrentUser();
 
   return (
     <>
@@ -46,7 +51,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
         metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
         metaImg={data?.avatar}
       />
-      <Navbar />
+      <Navbar
+        user={user}
+        currentUserLoading={currentUserLoading}
+        login={Login}
+        logout={Logout}
+      />
       <div className="flex w-screen flex-col">
         <ProfileBanner bannerUrl={data?.banner} />
         {/* Large and Medium Screens */}
@@ -72,6 +82,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   username={data?.username}
                   badges={data?.badges}
                   marginTop="8"
+                  markdown={(text) => {
+                    return <StyledMarkdown isBio={true} text={text} />;
+                  }}
                 />
               </div>
             </div>
@@ -91,7 +104,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                     follow();
                   }}
                 >
-                  {data?.id === myId
+                  {data?.id === user?.id
                     ? 'Edit Profile'
                     : `Follow @${data?.username}`}
                 </Button>
@@ -136,7 +149,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
               color="primary"
               className="col-span-2 md:col-span-1 text-sm"
             >
-              {data?.id === myId ? 'Edit Profile' : `Follow @${data?.username}`}
+              {data?.id === user?.id
+                ? 'Edit Profile'
+                : `Follow @${data?.username}`}
             </Button>
           </div>
 
@@ -153,6 +168,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
               marginTop="4"
               username={data?.username}
               name={data?.username}
+              markdown={(text) => {
+                return <StyledMarkdown isBio={true} text={text} />;
+              }}
             />
           </div>
         </div>

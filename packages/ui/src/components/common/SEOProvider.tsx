@@ -12,9 +12,9 @@ interface SEOProps {
 export const SEOProvider: React.FC<SEOProps> = ({
   title,
   description,
+  metaTitle,
   metaDesc,
   metaImg,
-  metaTitle,
 }) => {
   return (
     <Head>

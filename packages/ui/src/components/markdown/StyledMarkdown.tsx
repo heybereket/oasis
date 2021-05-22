@@ -1,4 +1,4 @@
-import { plugin as EmojiParser } from './emojiParser';
+import { plugin as EmojiParser } from '../../lib/emojiParser';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism';
@@ -6,7 +6,7 @@ import OasisDark from './OasisDark';
 import gfm from 'remark-gfm';
 import styles from './StyledMarkdown.module.css';
 import poststyles from './StyledMarkdownPost.module.css';
-import biostyles from './StyledMarkdownBio.module.css';
+import biostyles from './StyledMarkdowdnBio.module.css';
 
 export const StyledMarkdown: React.FC<{
   text: string;
