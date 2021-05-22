@@ -14,7 +14,8 @@ for (const [getTargetEntity, obj] of mapping) {
     const valEntity = getValEntity();
     const paginatedReponse = PaginatedResponse<typeof valEntity>(
       valEntity,
-      getTargetEntity()
+      getTargetEntity(),
+      otherSideKey
     );
 
     const funcName = `XYZ${a++}`;
@@ -24,22 +25,13 @@ for (const [getTargetEntity, obj] of mapping) {
       offset: number
     ) {
       const valEntity = getValEntity();
-      const targetEntity = getTargetEntity();
-
-      const valName = valEntity.name.toLowerCase();
-      const targetName = targetEntity.name.toLowerCase();
 
       const query = valEntity
-        .createQueryBuilder(valName)
-        .innerJoin(
-          `${valName}.${otherSideKey}`,
-          targetName,
-          `${targetName}.id = :id`,
-          {
-            id: obj.id,
-          }
-        )
-        .orderBy(`${valName}.id`);
+        .createQueryBuilder('root')
+        .innerJoin(`root.${otherSideKey}`, 'vals', 'vals.id = :id', {
+          id: obj.id,
+        })
+        .orderBy(`root.id`);
 
       const items = await query.skip(offset).take(limit).getMany();
       const total = await query.getCount();

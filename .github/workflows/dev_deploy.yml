@@ -1,14 +1,17 @@
 name: Deploy Staging
 
 on:
-  # Triggers the workflow on push or pull request events but only for the staging branch
   push:
-    branches: [staging]
+    branches:
+      - staging
+    paths:
+      - "packages/web/**"
+      - "packages/api/**"
+      - "packages/client-gql/**"
+      - "packages/ui/**"
   pull_request:
     types: [closed]
     branches: [staging]
-  workflow_dispatch:
-
 jobs:
   deploy:
     # Run the deploy if and only if, the event was push, or a merged pull request.

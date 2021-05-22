@@ -27,8 +27,8 @@ query getPost($id: String!) {
   }
 }
 
-query PaginatePosts {
-  paginatePosts(limit: 50, offset: 0) {
+query PaginatePosts($postsLimit: Float!, $postsOffset: Float!) {
+  paginatePosts(limit: $postsLimit, offset: $postsOffset) {
     author {
       id
       name
@@ -52,7 +52,20 @@ query PaginatePosts {
       logo
       name
     }
+    comments(limit: 0, offset: 0) {
+      total
+    }
     title
     topics
+    isLiked
+    isDisliked
   }
+}
+
+mutation LikeDislikePost(
+  $like: Boolean!
+  $dislike: Boolean!
+  $postId: String!
+) {
+  likeDislike(like: $like, dislike: $dislike, postId: $postId)
 }

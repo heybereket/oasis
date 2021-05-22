@@ -15,6 +15,7 @@ packages/web/server/index.js
 # macOS
 .DS_Store
 
-# sql db
+# sql/redis db
 *.sqlite
+*.rdb
 

@@ -1,5 +1,5 @@
 {
-  "name": "@oasis/web",
+  "name": "@oasis-sh/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,6 +15,7 @@
     "@primer/octicons-react": "^14.1.0",
     "express": "^4.17.1",
     "formik": "^2.2.6",
+    "github-markdown-css": "^4.0.0",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -23,25 +24,28 @@
     "remark-gfm": "^1.0.0",
     "tailwindcss": "^2.1.2",
     "typescript": "^4.2.4",
-    "zustand": "^3.5.0"
+    "zustand": "^3.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.2",
     "@babel/eslint-parser": "^7.14.3",
     "@types/express": "^4",
-    "@types/node": "^15.0.1",
+    "@babel/runtime": "^7.14.0",
+    "@types/node": "^15.6.0",
     "@types/react-dom": "^17.0.5",
     "@types/react-syntax-highlighter": "^13.5.0",
+    "@types/rimraf": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "autoprefixer": "^10.2.5",
     "chalk": "^4.1.1",
-    "eslint": "^7.25.0",
+    "eslint": "^7.27.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "latest",
     "next-secure-headers": "^2.2.0",
-    "postcss": "^8.2.13",
+    "postcss": "^8.3.0",
     "prettier": "2.3.0",
+    "rimraf": "^3.0.2",
     "ts-node": "^9.1.1"
   }
 }

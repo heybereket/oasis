@@ -1,5 +1,5 @@
 {
-  "name": "@oasis/client-gql",
+  "name": "@oasis-sh/client-gql",
   "version": "1.0.0",
   "description": "Client-Side GraphQL API Hooks for Oasis",
   "main": "dist/index.js",
@@ -19,10 +19,11 @@
     "@graphql-codegen/typescript-document-nodes": "^1.17.11",
     "@graphql-codegen/typescript-operations": "^1.17.16",
     "@graphql-codegen/typescript-react-apollo": "^2.2.4",
+    "graphql-tag": "^2.12.4",
     "npm-run-all": "^4.1.5"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.18",
+    "@apollo/client": "^3.3.19",
     "graphql": "^15.5.0",
     "typescript": "^4.2.4"
   }

@@ -17,7 +17,7 @@ import { chalkLog } from '@lib/chalkLog';
 
 const RedisStore = connectRedis(expressSession);
 
-const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
+export const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
 export const createApp = async () => {
   if (!(await checkEnv())) {
@@ -66,7 +66,7 @@ export const createApp = async () => {
 };
 
 if (require.main === module) {
-  const PORT = parseInt(process.env.PORT as string, 10) || 4000;
+  const PORT = parseInt(process.env.PORT as string, 10) || 3000;
   createApp().then((app) => {
     if (!app) process.exit(1);
 

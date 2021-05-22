@@ -3,7 +3,7 @@ import '../styles/globals.css';
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@lib/common/apolloClient';
-import { AuthProvider } from '@components/AuthProvider';
+import { AuthProvider } from '@components/common/AuthProvider';
 
 export default function App({
   Component,

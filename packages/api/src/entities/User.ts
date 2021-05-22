@@ -87,6 +87,16 @@ export default class User extends BaseEntity {
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
 
+  @RelationalPagination(() => User, () => Post, 'likers')
+  @ManyToMany(() => Post, (post) => post.likers)
+  @JoinTable()
+  likedPosts: Promise<Post[]>;
+
+  @RelationalPagination(() => User, () => Post, 'dislikers')
+  @ManyToMany(() => Post, (post) => post.dislikers)
+  @JoinTable()
+  dislikedPosts: Promise<Post[]>;
+
   @OneToMany(() => Notification, (notification) => notification.user, {
     nullable: true,
   })
@@ -120,8 +130,20 @@ export default class User extends BaseEntity {
   bots: Promise<User[]>;
 
   @Column({ nullable: true })
-  botToken: string;
+  botTokenId: string;
+
+  @Column({ nullable: true })
+  vscTokenCount: number;
 
   @ManyToMany(() => Resort, (resort) => resort.members)
   joinedResorts: Promise<Resort[]>;
+
+  @RelationalPagination(() => User, () => User, 'followers')
+  @ManyToMany(() => User, (user) => user.followers)
+  @JoinTable()
+  following: Promise<User[]>;
+
+  @RelationalPagination(() => User, () => User, 'following')
+  @ManyToMany(() => User, (user) => user.following)
+  followers: Promise<User[]>;
 }

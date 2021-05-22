@@ -4,14 +4,13 @@ import GitHubAuth from './providers/github';
 import TwitterAuth from './providers/twitter';
 import DiscordAuth from './providers/discord';
 import GoogleAuth from './providers/google';
-import BotAuth from './providers/bot';
+import VSCodeAuth from './vscode';
 
 export default (passport: PassportStatic): Router => {
   const authRouter = Router();
 
-  // Bot Auth
-  authRouter.use('/bot', BotAuth(passport));
-  
+  authRouter.use('/vscode', VSCodeAuth());
+
   // OAuth Providers
   if (process.env.OASIS_API_GITHUB_CLIENT_ID)
     authRouter.use('/github', GitHubAuth(passport));

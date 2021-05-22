@@ -2,12 +2,13 @@ import {
   BaseEntity,
   Column,
   Entity,
+  ManyToMany,
   ManyToOne,
   OneToMany,
-  OneToOne,
+  PrimaryColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Field, ID, Int, ObjectType } from 'type-graphql';
+import { Field, ID, ObjectType } from 'type-graphql';
 import User from '@entities/User';
 import Comment from '@entities/Comment';
 import Resort from '@entities/Resort';
@@ -16,7 +17,8 @@ import { RelationalPagination } from '@utils/RelationalPagination';
 @ObjectType()
 @Entity()
 export default class Post extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
+  // @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   @Field(() => ID)
   id: string;
 
@@ -27,14 +29,6 @@ export default class Post extends BaseEntity {
   @Column()
   @Field()
   message: string;
-
-  @Column()
-  @Field(() => Int)
-  likes: number = 0;
-
-  @Column()
-  @Field(() => Int)
-  dislikes: number = 0;
 
   @Column()
   @Field()
@@ -51,6 +45,15 @@ export default class Post extends BaseEntity {
   @Field(() => User, { complexity: 1 })
   @ManyToOne(() => User, (user) => user.posts)
   author: Promise<User>;
+
+  // @Field(() => User, { complexity: 1 })
+  @RelationalPagination(() => Post, () => User, 'likedPosts')
+  @ManyToMany(() => User, (user) => user.likedPosts)
+  likers: Promise<User[]>;
+
+  @RelationalPagination(() => Post, () => User, 'dislikedPosts')
+  @ManyToMany(() => User, (user) => user.dislikedPosts)
+  dislikers: Promise<User[]>;
 
   // @Field(() => [Comment], { complexity: 5 })
   @RelationalPagination(() => Post, () => Comment, 'post')

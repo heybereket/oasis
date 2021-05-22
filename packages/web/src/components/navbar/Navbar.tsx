@@ -15,19 +15,19 @@ import { NavItem } from '@components/navbar/NavItem';
 import { DropdownItem } from '@components/navbar/DropdownItem';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { useRouter } from 'next/router';
-import { useOnClickOutside } from '@utils/hooks/useOnClickOutside';
+import useOnClickOutside from '@utils/hooks/useOnClickOutside';
 
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
   const { user, currentUserLoading } = useGetCurrentUser();
   const router = useRouter();
 
-  const node = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const node = useRef(null);
   useOnClickOutside(node, () => setDropdownActive(false));
 
   return (
     <>
-      <nav className="flex items-center justify-between px-4 sm-50:px-6 md:px-8 py-4">
+      <nav className="sticky top-0 z-50 bg-gray-900 flex items-center justify-between px-4 sm-50:px-6 md:px-8 py-4">
         <div className="flex justify-items-start items-center">
           <div className="mr-3">
             <a href="/" className="block md:hidden">
@@ -63,68 +63,66 @@ export const Navbar: React.FC = () => {
             />
           </div>
           <Bell className="hidden sm-50:block" />
-
-          {!currentUserLoading ? (
-            /* Only show user segment or login button if user is loaded! */
-            user ? (
-              <div
-                className="flex justify-items-start items-center space-x-5"
+          {/* Improved the logic here  */}
+          {currentUserLoading || !user ? (
+            <Button
+              size="sm"
+              className="my-1"
+              onClick={async () => {
+                await Login('github');
+              }}
+            >
+              Login
+            </Button>
+          ) : (
+            <div
+              className="flex justify-items-start flex-col items-center space-x-5"
+              ref={node}
+            >
+              <img
+                src={user.avatar ?? undefined}
+                alt={`@${user.username}` ?? undefined}
+                className="w-10 h-10 rounded-full cursor-pointer"
                 onClick={() => {
                   setDropdownActive((current) => !current);
                 }}
-                ref={node}
-              >
-                <img
-                  src={user.avatar ?? undefined}
-                  alt={`@${user.username}` ?? undefined}
-                  className="w-10 h-10 rounded-full cursor-pointer"
-                />
+              />
+              <div className="flex">
+                {/*fixed the rendering logic here */}
+                {isDropdownActive && (
+                  <div
+                    className={`flex absolute flex-col rounded-lg bg-gray-700 px-4 py-3 max-w-md z-50 right-0 mr-7  ${
+                      isDropdownActive
+                        ? 'animate-fade-in-down'
+                        : 'animate-fade-out-up animate-fill-forwards'
+                    }`}
+                    ref={node}
+                  >
+                    <div className="flex flex-col justify-start items-start text-base text-gray-300">
+                      <DropdownItem
+                        name="Profile"
+                        icon={ProfileIcon}
+                        onClick={() => {
+                          router.push('/user/' + user?.username);
+                        }}
+                      />
+                    </div>
+                    <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
+                      <DropdownItem
+                        name="Logout"
+                        icon={LogoutIcon}
+                        onClick={async () => {
+                          await Logout();
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
-            ) : (
-              <Button
-                size="sm"
-                className="my-1"
-                onClick={async () => {
-                  await Login('github');
-                }}
-              >
-                Login
-              </Button>
-            )
-          ) : (
-            <div className="w-20 mr-2 h-12"></div>
+            </div>
           )}
         </div>
       </nav>
-      <div
-        className={`flex flex-col rounded-lg bg-gray-700 px-4 py-3 max-w-md absolute right-0 mr-7 ${
-          isDropdownActive
-            ? 'animate-fade-in-down'
-            : 'animate-fade-out-up animate-fill-forwards'
-        }`}
-        ref={node}
-      >
-        <div className="flex flex-col justify-start items-start text-base text-gray-300">
-          <DropdownItem
-            name="Profile"
-            icon={ProfileIcon}
-            onClick={() => {
-              router.push('/user/' + user?.username);
-              setDropdownActive(false);
-            }}
-          />
-        </div>
-        <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
-          <DropdownItem
-            name="Logout"
-            icon={LogoutIcon}
-            onClick={async () => {
-              await Logout();
-              setDropdownActive(false);
-            }}
-          />
-        </div>
-      </div>
     </>
   );
 };

@@ -3,7 +3,7 @@ import {
   GetResortByNameWithMembersDocument,
   GetResortByNameWithMembersQueryVariables,
   useGetResortByNameWithMembersQuery,
-} from '@oasis/client-gql';
+} from '@oasis-sh/client-gql';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 import { Navbar } from '@components/navbar/Navbar';
@@ -12,7 +12,7 @@ import ResortHeader from '@components/resort/ResortHeader';
 
 interface IResortProps {
   variables: GetResortByNameWithMembersQueryVariables;
-}
+} 
 const Resort: React.FC<IResortProps> = ({ variables }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const data = useGetResortByNameWithMembersQuery({

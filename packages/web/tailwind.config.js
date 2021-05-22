@@ -34,7 +34,9 @@ module.exports = {
         '3/4': '75%',
       },
       maxWidth: {
-        '580': '580px',
+        580: '580px',
+        530: '530px',
+        200: '200px',
       },
       backgroundColor: {
         resortSecondary: '#141923',
@@ -43,7 +45,7 @@ module.exports = {
         secondary: '#828282',
       },
       gridTemplateColumns: {
-        three: 'minmax(350px, 1190px) 470px',
+        three: '370px 570px 470px',
       },
       keyframes: {
         'fade-in-down': {
@@ -89,9 +91,8 @@ module.exports = {
           light: 'var(--color-primary-light)',
           lighter: 'var(--color-primary-lighter)',
         },
-        light: {
-          DEFAULT: 'var(--color-text-light)',
-        },
+        light: 'var(--color-text-light)',
+        dim: 'rgba(0,0,0,0.6)',
       },
     },
   },

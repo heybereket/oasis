@@ -1,6 +1,7 @@
 import { config } from 'dotenv';
 import { join } from 'path';
 import next from 'next';
+import { createApp } from '@oasis-sh/api';
 import { chalkLog } from './lib/chalkLog';
 import { ExitWithErrors } from './lib/ExitWithErrors';
 import { getServer } from './lib/getServer';
