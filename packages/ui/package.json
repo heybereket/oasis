@@ -1,0 +1,60 @@
+{
+  "name": "@oasis-sh/ui",
+  "author": "Samar Mohan <samar.mohan@gmail.com>",
+  "license": "MIT",
+  "version": "1.1.0",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@types/eslint": "^7",
+    "@types/eslint-plugin-prettier": "^3",
+    "@types/node": "^12.0.0",
+    "@types/prettier": "^2",
+    "@types/react-dom": "^17.0.5",
+    "@types/rollup-plugin-peer-deps-external": "^2",
+    "@types/tailwindcss": "^2",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "autoprefixer": "latest",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "node-sass": "^6.0.0",
+    "postcss": "latest",
+    "prettier": "^2.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup": "^2.48.0",
+    "rollup-plugin-dts": "^3.0.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "tailwindcss": "latest",
+    "typescript": "^4.2.4"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -cw",
+    "lint": "eslint src --fix",
+    "format": "prettier --write src",
+    "clean": "rimraf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oasis-sh/oasis.git",
+    "directory": "packages/ui"
+  }
+}

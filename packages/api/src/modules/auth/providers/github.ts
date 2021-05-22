@@ -32,8 +32,8 @@ export default (passport: PassportStatic): Router => {
             user.id = uuid();
             user.avatar = profile._json.avatar_url;
             user.name = profile.displayName;
-            user.username = await checkUsername(profile.username);
             user.github = id;
+            user.username = await checkUsername(profile.username);
             user.verified = false;
             user.createdAt = String(Date.now());
           }
@@ -73,7 +73,7 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('github', {
-      successReturnToOrRedirect: '/authsuccess',
+      successReturnToOrRedirect: '/auth/success',
       failureRedirect: '/login',
       session: true,
     })

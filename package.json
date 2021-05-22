@@ -1,36 +1,37 @@
 {
   "name": "oasis-sh",
-  "workspaces": {
-    "packages": [
-      "packages/web",
-      "packages/api",
-      "packages/client-gql",
-      "packages/bot-client"
-    ],
-    "nohoist": [
-      "**"
-    ]
-  },
+  "workspaces": [
+    "packages/web",
+    "packages/api",
+    "packages/client-gql",
+    "packages/bot-client",
+    "packages/ui",
+    "packages/setup",
+    "packages/vsc-extension"
+  ],
   "scripts": {
-    "build": "yarn run build:api && yarn workspace @oasis-sh/web run build",
-    "build:api": "yarn workspace @oasis-sh/api run build && yarn workspace @oasis-sh/client-gql run build",
+    "build:all": "yarn build api && yarn build client-gql && yarn build ui && yarn build web",
     "commit": "git add . && cz && git push",
-    "dev": "yarn workspace @oasis-sh/web dev",
+    "dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
     "dev:api": "yarn workspaces foreach --include @oasis-sh/client-gql,@oasis-sh/api -p run dev",
     "start": "yarn workspace @oasis-sh/web run start",
     "deploy:prod": "git add . && git commit -m 'chore(deploy): Merge staging -> prod' && git checkout prod && git merge staging && git push origin prod --force && git checkout staging",
     "publish:bot": "yarn workspace @oasis-sh/bot-client run publish",
     "lint": "yarn workspaces foreach --exclude @oasis-sh/client-gql -p run lint && yarn workspaces foreach --exclude @oasis-sh/client-gql -p run prettify",
-    "clean": "yarn workspace @oasis-sh/api run clean && yarn workspace @oasis-sh/client-gql run clean",
-    "reinstall": "yarn clean && rimraf packages/**/*.sqlite || yarn install"
+    "clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/client-gql,@oasis-sh/ui -p run clean",
+    "reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",
+    "build": "yarn workspace @oasis-sh/$0 run build",
+    "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build client-gql && yarn build ui"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.2",
     "@commitlint/config-conventional": "^12.1.2",
+    "@types/concurrently": "^6",
     "@types/eslint": "^7.2.10",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.3.1",
     "commitizen": "^4.2.3",
+    "concurrently": "^6.1.0",
     "cz-conventional-changelog": "3.3.0",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",

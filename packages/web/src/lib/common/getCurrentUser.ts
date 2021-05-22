@@ -25,12 +25,11 @@ export function useGetCurrentUser(): LoadableCurrentUser {
   useEffect(() => {
     if (data?.currentUser !== null && data?.currentUser !== undefined)
       setUser(data?.currentUser as User);
-    else
-      setUser(undefined);
+    else setUser(undefined);
   }, [data]);
 
   return {
     user,
-    currentUserLoading: loading
+    currentUserLoading: loading,
   };
 }

@@ -5,10 +5,10 @@ import {
   ManyToMany,
   ManyToOne,
   OneToMany,
-  OneToOne,
+  PrimaryColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Field, ID, Int, ObjectType } from 'type-graphql';
+import { Field, ID, ObjectType } from 'type-graphql';
 import User from '@entities/User';
 import Comment from '@entities/Comment';
 import Resort from '@entities/Resort';
@@ -17,7 +17,8 @@ import { RelationalPagination } from '@utils/RelationalPagination';
 @ObjectType()
 @Entity()
 export default class Post extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
+  // @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   @Field(() => ID)
   id: string;
 

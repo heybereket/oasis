@@ -1,23 +1,30 @@
 import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
+  useFollowUserMutation,
 } from '@oasis-sh/client-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
-import { About, Comments, Like, Posts } from '@icons/index';
+import { About, Comments, Like, Posts } from '@oasis-sh/ui';
 import {
-  SEOProvider,
   Container,
+  Button,
+} from '@oasis-sh/ui';
+
+import {
   Navbar,
   TabItem,
-  Button,
   TopicBadge,
   LargeUserCard,
   SmallUserCard,
   ProfileBanner,
   FollowersInfo,
-  Bio
-} from '@components/index';
+  Bio,
+} from '@oasis-sh/ui';
+import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import { SEOProvider } from '@components/common/SEOProvider';
+import StyledMarkdown from '@components/markdown/StyledMarkdown';
+import { Login, Logout } from '@lib/login';
 
 interface ProfileProps {
   initialApolloState: any;
@@ -31,6 +38,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
     },
   }).data?.getUserByName;
 
+  const [follow] = useFollowUserMutation({
+    variables: { userId: data?.id ?? '' },
+  });
+
+  const { user, currentUserLoading } = useGetCurrentUser();
+
   return (
     <>
       <SEOProvider
@@ -38,7 +51,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
         metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
         metaImg={data?.avatar}
       />
-      <Navbar />
+      <Navbar
+        user={user}
+        currentUserLoading={currentUserLoading}
+        login={Login}
+        logout={Logout}
+      />
       <div className="flex w-screen flex-col">
         <ProfileBanner bannerUrl={data?.banner} />
         {/* Large and Medium Screens */}
@@ -64,6 +82,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   username={data?.username}
                   badges={data?.badges}
                   marginTop="8"
+                  markdown={(text) => {
+                    return <StyledMarkdown isBio={true} text={text} />;
+                  }}
                 />
               </div>
             </div>
@@ -79,11 +100,21 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 <Button
                   color="primary"
                   className="md:row-span-1 lg:col-span-1 text-sm"
+                  onClick={() => {
+                    follow();
+                  }}
                 >
-                  Follow @{data?.username}
+                  {data?.id === user?.id
+                    ? 'Edit Profile'
+                    : `Follow @${data?.username}`}
                 </Button>
               </div>
-              <FollowersInfo size="large" />
+              <FollowersInfo
+                size="large"
+                followers={data?.followers.total}
+                following={data?.following.total}
+                posts={data?.posts.total}
+              />
               <div className="mt-8 flex flex-col bg-gray-800 rounded-2xl py-4 px-6">
                 <h4 className="font-extrabold">Topics Following</h4>
                 <div className="mt-2">
@@ -104,7 +135,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
             name={data?.name}
             username={data?.username}
           />
-          <FollowersInfo size="small" />
+          <FollowersInfo
+            size="small"
+            followers={data?.followers.total}
+            following={data?.following.total}
+            posts={data?.posts.total}
+          />
           <div className="grid grid-cols-2 mt-6 w-full max-w-sm gap-1 md:gap-2">
             <Button color="gray" className="col-span-2 md:col-span-1 text-sm">
               Send Message
@@ -113,7 +149,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
               color="primary"
               className="col-span-2 md:col-span-1 text-sm"
             >
-              Follow @{data?.username}
+              {data?.id === user?.id
+                ? 'Edit Profile'
+                : `Follow @${data?.username}`}
             </Button>
           </div>
 
@@ -130,6 +168,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
               marginTop="4"
               username={data?.username}
               name={data?.username}
+              markdown={(text) => {
+                return <StyledMarkdown isBio={true} text={text} />;
+              }}
             />
           </div>
         </div>

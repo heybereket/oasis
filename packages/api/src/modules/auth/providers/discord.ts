@@ -39,8 +39,8 @@ export default (passport: PassportStatic): Router => {
               size: 512,
             });
             user.name = profile.username;
-            user.username = await checkUsername(profile.username);
             user.discord = id;
+            user.username = await checkUsername(profile.username);
             user.verified = false;
             user.createdAt = String(Date.now());
           }
@@ -68,7 +68,7 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('discord', {
-      successReturnToOrRedirect: '/authsuccess',
+      successReturnToOrRedirect: '/auth/success',
       failureRedirect: '/login',
       session: true,
     })

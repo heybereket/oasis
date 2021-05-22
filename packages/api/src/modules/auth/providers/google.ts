@@ -25,8 +25,8 @@ export default (passport: PassportStatic): Router => {
             user.id = uuid();
             user.avatar = profile._json.picture;
             user.name = profile.displayName;
-            user.username = await checkUsername(username);
             user.google = id;
+            user.username = await checkUsername(username);
             user.verified = false;
             user.createdAt = String(Date.now());
           }
@@ -54,7 +54,7 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('google', {
-      successReturnToOrRedirect: '/authsuccess',
+      successReturnToOrRedirect: '/auth/success',
       failureRedirect: '/login',
       session: true,
     })

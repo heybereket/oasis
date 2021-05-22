@@ -28,8 +28,8 @@ export default (passport: PassportStatic): Router => {
               ? profile._json.profile_banner_url
               : null;
             user.name = profile.displayName;
-            user.username = await checkUsername(profile.username);
             user.twitter = id;
+            user.username = await checkUsername(profile.username);
             user.verified = false;
             user.createdAt = String(Date.now());
           }
@@ -56,7 +56,7 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('twitter', {
-      successReturnToOrRedirect: '/authsuccess',
+      successReturnToOrRedirect: '/auth/success',
       failureRedirect: '/login',
       session: true,
     })

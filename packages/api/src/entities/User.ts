@@ -132,6 +132,18 @@ export default class User extends BaseEntity {
   @Column({ nullable: true })
   botTokenId: string;
 
+  @Column({ nullable: true })
+  vscTokenCount: number;
+
   @ManyToMany(() => Resort, (resort) => resort.members)
   joinedResorts: Promise<Resort[]>;
+
+  @RelationalPagination(() => User, () => User, 'followers')
+  @ManyToMany(() => User, (user) => user.followers)
+  @JoinTable()
+  following: Promise<User[]>;
+
+  @RelationalPagination(() => User, () => User, 'following')
+  @ManyToMany(() => User, (user) => user.following)
+  followers: Promise<User[]>;
 }

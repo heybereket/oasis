@@ -9,7 +9,7 @@ import authRouter from '@modules/auth';
 import expressSession from 'express-session';
 import { createClient } from 'redis';
 import connectRedis from 'connect-redis';
-import { ormconfig } from '@root/ormconfig';
+import ormconfig from '@root/ormconfig';
 import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
 import { isProduction } from '@lib/constants';
@@ -17,7 +17,7 @@ import { chalkLog } from '@lib/chalkLog';
 
 const RedisStore = connectRedis(expressSession);
 
-const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
+export const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
 export const createApp = async () => {
   if (!(await checkEnv())) {
