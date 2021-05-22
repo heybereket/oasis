@@ -1,22 +1,13 @@
-<<<<<<< HEAD
-import StyledMarkdown from '../markdown/StyledMarkdown';
-import React from 'react';
-=======
 // import StyledMarkdown from '../../../../web/src/components/markdown/StyledMarkdown';
 import React from "react";
->>>>>>> ui-new
 
 type Props = {
   bio: string | undefined | null;
   name: string | undefined | null;
   username: string | undefined | null;
   badges: any[] | undefined | null;
-<<<<<<< HEAD
-  marginTop: '4' | '8';
-=======
   marginTop: "4" | "8";
   markdown: (text: string) => JSX.Element;
->>>>>>> ui-new
 };
 
 export const Bio: React.FC<Props> = ({
@@ -25,10 +16,7 @@ export const Bio: React.FC<Props> = ({
   username,
   badges,
   marginTop,
-<<<<<<< HEAD
-=======
   markdown,
->>>>>>> ui-new
 }) => {
   return (
     <>
@@ -36,12 +24,8 @@ export const Bio: React.FC<Props> = ({
         <h4 className="font-extrabold">About {name}</h4>
         {bio !== null ? (
           <div className="text-gray-300 font-bold">
-<<<<<<< HEAD
-            <StyledMarkdown text={bio ?? ''} isBio={true} />
-=======
             {markdown(bio ?? "")}
             {/* <StyledMarkdown text={bio ?? ''} isBio={true} /> */}
->>>>>>> ui-new
           </div>
         ) : (
           <h5 className="text-gray-300 font-bold">
