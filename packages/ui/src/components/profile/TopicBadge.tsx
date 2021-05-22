@@ -1,5 +1,8 @@
+<<<<<<< HEAD
+=======
 import React from 'react'
 
+>>>>>>> ui-new
 interface TopicBadgeProps {
   content: string;
 }
