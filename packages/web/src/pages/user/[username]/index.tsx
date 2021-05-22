@@ -8,9 +8,12 @@ import { ssrRequest } from '@lib/common/ssrRequest';
 import { About, Comments, Like, Posts } from '@oasis-sh/ui';
 import {
   Container,
+  Button,
+} from '@oasis-sh/ui';
+
+import {
   Navbar,
   TabItem,
-  Button,
   TopicBadge,
   LargeUserCard,
   SmallUserCard,
