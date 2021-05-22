@@ -6,6 +6,7 @@ export { Footer } from "./components/common/Footer";
 export { StyledFormikInput } from "./components/common/FormikInput";
 export { Input } from "./components/common/Input";
 export { Modal } from "./components/common/Modal";
+export { SEO as default } from './components/common/SEO';
 // export { SEOProvider } from "./components/common/SEOProvider";
 
 // Home

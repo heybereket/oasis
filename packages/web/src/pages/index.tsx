@@ -20,7 +20,7 @@ import {
   useLikeDislikePostMutation,
   usePaginatePostsQuery,
 } from '@oasis-sh/client-gql';
-import StyledMarkdown from '@components/markdown/StyledMarkdown';
+import StyledMarkdown from 'src/markdown/StyledMarkdown';
 import { Login, Logout } from '@lib/login';
 interface IndexPageProps {
   initialApolloState: any;

@@ -22,9 +22,10 @@ import {
   Bio,
 } from '@oasis-sh/ui';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { SEOProvider } from '@components/common/SEOProvider';
-import StyledMarkdown from '@components/markdown/StyledMarkdown';
+import SEO from '@oasis-sh/ui';
+import StyledMarkdown from '@markdown/StyledMarkdown';
 import { Login, Logout } from '@lib/login';
+import Head from 'next/head'
 
 interface ProfileProps {
   initialApolloState: any;
@@ -46,11 +47,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
   return (
     <>
-      <SEOProvider
-        title={data?.name ? data?.name : data?.username + ' — Oasis'}
-        metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
-        metaImg={data?.avatar}
-      />
+      <Head>
+        <SEO
+          title={data?.name ? data?.name : data?.username + ' — Oasis'}
+          metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
+          metaImg={data?.avatar}
+        />
+      </Head>
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
