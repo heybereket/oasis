@@ -7,7 +7,6 @@ import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { About, Comments, Like, Posts } from '@icons/index';
 import {
-  SEOProvider,
   Container,
   Navbar,
   TabItem,
@@ -20,6 +19,8 @@ import {
   Bio,
 } from '@oasis-sh/ui';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import { SEOProvider } from '@components/common/SEOProvider';
+import StyledMarkdown from '@components/markdown/StyledMarkdown';
 
 interface ProfileProps {
   initialApolloState: any;
@@ -72,6 +73,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   username={data?.username}
                   badges={data?.badges}
                   marginTop="8"
+                  markdown={(text) => {
+                    return <StyledMarkdown isBio={true} text={text} />;
+                  }}
                 />
               </div>
             </div>
@@ -155,6 +159,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
               marginTop="4"
               username={data?.username}
               name={data?.username}
+              markdown={(text) => {
+                return <StyledMarkdown isBio={true} text={text} />;
+              }}
             />
           </div>
         </div>

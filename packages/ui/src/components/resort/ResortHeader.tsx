@@ -1,9 +1,6 @@
 import { Button } from "../../index";
 import { RightArrow } from "../../index";
-import {
-  GetResortByNameWithMembersQuery,
-  useJoinResortMutation,
-} from "@oasis-sh/client-gql";
+import { GetResortByNameWithMembersQuery } from "@oasis-sh/client-gql";
 import React from "react";
 import AvatarGroup from "./AvatarGroup";
 
@@ -11,13 +8,13 @@ type dataType = GetResortByNameWithMembersQuery["getResortByName"];
 
 interface IResortHeaderProps {
   resortData: dataType;
+  joinResort: () => any;
 }
 
-export const ResortHeader: React.FC<IResortHeaderProps> = ({ resortData }) => {
-  const [joinMutation] = useJoinResortMutation({
-    variables: { resortId: resortData?.id ?? "" },
-  });
-
+export const ResortHeader: React.FC<IResortHeaderProps> = ({
+  resortData,
+  joinResort,
+}) => {
   return (
     <div
       className="max-w-7xl rounded-2xl h-48 background-cover flex-grow flex px-16 items-center font-sans"
@@ -53,7 +50,7 @@ export const ResortHeader: React.FC<IResortHeaderProps> = ({ resortData }) => {
               color="gray"
               onClick={(_) => {
                 if (!resortData?.isJoined) {
-                  joinMutation();
+                  joinResort();
                   window.location.reload();
                 }
               }}

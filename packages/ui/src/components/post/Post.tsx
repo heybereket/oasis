@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Comments, SmallUpArrow, SmallDownArrow } from "../../index";
-import Link from "next/link";
+// import Link from "next/link";
 import { Post as TPost } from "@oasis-sh/client-gql";
 import { postDate } from "../../lib/postDate";
-import StyledMarkdown from "../markdown/styledMarkdown";
+// import { StyledMarkdown } from "../../../../web/src/components/markdown/styledMarkdown";
 
 interface Props {
   post: TPost;
   likePost?: () => any;
   dislikePost?: () => any;
+  markdown: (text: string) => JSX.Element;
 }
 
 enum LikeDislikeState {
@@ -19,8 +20,9 @@ enum LikeDislikeState {
 
 export const Post: React.FC<Props> = ({
   post: postData,
-  dislikePost,
   likePost,
+  dislikePost,
+  markdown,
 }) => {
   const date = postDate(postData.createdAt);
 
@@ -39,16 +41,16 @@ export const Post: React.FC<Props> = ({
     <div className="shadow-lg max-w-580 w-full bg-gray-800 px-5 pt-2 pb-4 rounded-2xl flex flex-col justify-between">
       <div>
         <header className="flex items-center space-x-4">
-          <Link href={`/user/${postData.author.username}`}>
+          <a href={`/user/${postData.author.username}`}>
             <a className="w-11 h-11 flex-none">
               <img
                 src={postData.author.avatar}
                 className="flex-none bg-gray-600 rounded-full w-11 h-11"
               />
             </a>
-          </Link>
+          </a>
           <div className="flex items-center justify-between w-full">
-            <Link href={`/user/${postData.author.username}`}>
+            <a href={`/user/${postData.author.username}`}>
               <a>
                 <div>
                   <p className="text-xl font-bold">{postData.author.name}</p>
@@ -57,7 +59,7 @@ export const Post: React.FC<Props> = ({
                   </p>
                 </div>
               </a>
-            </Link>
+            </a>
             <div className="flex flex-col items-center">
               <SmallUpArrow
                 onClick={() => {
@@ -112,7 +114,8 @@ export const Post: React.FC<Props> = ({
           </div>
         </header>
         <p className="font-medium mt-2 mb-6 text-xl break-words">
-          <StyledMarkdown text={postData.message} isPost={true} />
+          {markdown(postData?.message ?? "")}
+          {/* <StyledMarkdown text={postData.message} isPost={true} /> */}
         </p>
       </div>
       <footer className="flex justify-between">

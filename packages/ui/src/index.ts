@@ -6,7 +6,7 @@ export { Footer } from "./components/common/Footer";
 export { StyledFormikInput } from "./components/common/FormikInput";
 export { Input } from "./components/common/Input";
 export { Modal } from "./components/common/Modal";
-export { SEOProvider } from "./components/common/SEOProvider";
+// export { SEOProvider } from "./components/common/SEOProvider";
 
 // Home
 export { FollowUser } from "./components/home/FollowUser";
@@ -14,7 +14,7 @@ export { FriendActivity } from "./components/home/FriendActivity";
 export { Sidebar } from "./components/home/Sidebar";
 
 // Markdown
-export { StyledMarkdown } from "./components/markdown/StyledMarkdown";
+// export { StyledMarkdown } from "../../web/src/components/markdown/StyledMarkdown";
 
 // Navbar
 export { DropdownItem } from "./components/navbar/DropdownItem";

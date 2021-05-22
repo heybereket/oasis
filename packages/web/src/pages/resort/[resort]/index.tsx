@@ -3,6 +3,7 @@ import {
   GetResortByNameWithMembersDocument,
   GetResortByNameWithMembersQueryVariables,
   useGetResortByNameWithMembersQuery,
+  useJoinResortMutation,
 } from '@oasis-sh/client-gql';
 import { GetServerSideProps } from 'next';
 import React from 'react';
@@ -18,6 +19,8 @@ const Resort: React.FC<IResortProps> = ({ variables }) => {
     variables,
   }).data?.getResortByName;
 
+  const [joinMutation] = useJoinResortMutation();
+
   const { user, currentUserLoading } = useGetCurrentUser();
 
   return (
@@ -26,7 +29,12 @@ const Resort: React.FC<IResortProps> = ({ variables }) => {
       <Container>
         <div className="flex-col mt-20 ">
           <div className="flex justify-center">
-            <ResortHeader resortData={data} />
+            <ResortHeader
+              resortData={data}
+              joinResort={() => {
+                joinMutation({ variables: { resortId: data?.id ?? '' } });
+              }}
+            />
           </div>
         </div>
       </Container>

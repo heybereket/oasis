@@ -20,6 +20,7 @@ import {
   useLikeDislikePostMutation,
   usePaginatePostsQuery,
 } from '@oasis-sh/client-gql';
+import StyledMarkdown from '@components/markdown/StyledMarkdown';
 interface IndexPageProps {
   initialApolloState: any;
   vars: PaginatePostsQueryVariables;
@@ -140,7 +141,32 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
           </div>
           <div className="flex flex-col flex-1 w-full space-y-12 pb-12 mt-[33px]">
             {[...posts].reverse().map((post: any, index: number) => (
-              <Post post={post} key={index} />
+              <Post
+                post={post}
+                key={index}
+                markdown={(text) => {
+                  return <StyledMarkdown text={text} isPost={true} />;
+                }}
+                likePost={() => {
+                  likeDislikePost({
+                    variables: {
+                      postId: post.id,
+                      dislike: false,
+                      like: true,
+                    },
+                  });
+                }}
+                dislikePost={() => {
+                  likeDislikePost({
+                    variables: {
+                      postId: post.id,
+                      dislike: true,
+                      like: false,
+                    },
+                  });
+                }}
+              />
+              //<div key={index}>{JSON.stringify(post)}</div>
             ))}
           </div>
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
