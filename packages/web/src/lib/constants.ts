@@ -1,5 +1,5 @@
 export const baseURL =
-  process.env.DEV_MODE === 'local'
+  process.env.API_MODE === 'local'
     ? process.env.NEXT_PUBLIC_BASE_URL
     : 'https://dev.oasis.sh';
 
