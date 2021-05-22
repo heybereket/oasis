@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { Login, Logout } from '../../lib/login';
+=======
+>>>>>>> ui-new
 import {
   Bell,
   Friends,
@@ -8,6 +11,7 @@ import {
   Topics,
   Profile as ProfileIcon,
   Logout as LogoutIcon,
+<<<<<<< HEAD
 } from '../../index';
 import React, { useRef, useState } from 'react';
 import { Button } from '../../index';
@@ -20,6 +24,31 @@ import useOnClickOutside from '../../utils/hooks/useOnClickOutside';
 export const Navbar: React.FC = () => {
   const [isDropdownActive, setDropdownActive] = useState(false);
   const { user, currentUserLoading } = useGetCurrentUser();
+=======
+} from "../../index";
+import React, { useRef, useState } from "react";
+import { Button } from "../../index";
+import { NavItem } from "../../index";
+import { DropdownItem } from "../../index";
+import { useRouter } from "next/router";
+import useOnClickOutside from "../../utils/hooks/useOnClickOutside";
+import { User } from "@oasis-sh/client-gql";
+
+interface INavbarProps {
+  user?: User;
+  currentUserLoading: boolean;
+  login: (provider: string) => Promise<void>;
+  logout: () => Promise<void>;
+}
+
+export const Navbar: React.FC<INavbarProps> = ({
+  currentUserLoading,
+  user,
+  login,
+  logout,
+}) => {
+  const [isDropdownActive, setDropdownActive] = useState(false);
+>>>>>>> ui-new
   const router = useRouter();
 
   const node = useRef(null);
@@ -69,7 +98,11 @@ export const Navbar: React.FC = () => {
               size="sm"
               className="my-1"
               onClick={async () => {
+<<<<<<< HEAD
                 await Login('github');
+=======
+                await login("github");
+>>>>>>> ui-new
               }}
             >
               Login
@@ -93,8 +126,13 @@ export const Navbar: React.FC = () => {
                   <div
                     className={`flex absolute flex-col rounded-lg bg-gray-700 px-4 py-3 max-w-md z-50 right-0 mr-7  ${
                       isDropdownActive
+<<<<<<< HEAD
                         ? 'animate-fade-in-down'
                         : 'animate-fade-out-up animate-fill-forwards'
+=======
+                        ? "animate-fade-in-down"
+                        : "animate-fade-out-up animate-fill-forwards"
+>>>>>>> ui-new
                     }`}
                     ref={node}
                   >
@@ -103,7 +141,11 @@ export const Navbar: React.FC = () => {
                         name="Profile"
                         icon={ProfileIcon}
                         onClick={() => {
+<<<<<<< HEAD
                           router.push('/user/' + user?.username);
+=======
+                          router.push("/user/" + user?.username);
+>>>>>>> ui-new
                         }}
                       />
                     </div>
@@ -112,7 +154,11 @@ export const Navbar: React.FC = () => {
                         name="Logout"
                         icon={LogoutIcon}
                         onClick={async () => {
+<<<<<<< HEAD
                           await Logout();
+=======
+                          await logout();
+>>>>>>> ui-new
                         }}
                       />
                     </div>

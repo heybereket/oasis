@@ -3,29 +3,44 @@ import {
   GetResortByNameWithMembersDocument,
   GetResortByNameWithMembersQueryVariables,
   useGetResortByNameWithMembersQuery,
+  useJoinResortMutation,
 } from '@oasis-sh/client-gql';
 import { GetServerSideProps } from 'next';
 import React from 'react';
-import { Navbar } from '@components/navbar/Navbar';
-import { Container } from '@components/common/Container';
-import ResortHeader from '@components/resort/ResortHeader';
+import { Navbar, Container, ResortHeader } from '@oasis-sh/ui';
+import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import { Login, Logout } from '@lib/login';
 
 interface IResortProps {
   variables: GetResortByNameWithMembersQueryVariables;
-} 
+}
 const Resort: React.FC<IResortProps> = ({ variables }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const data = useGetResortByNameWithMembersQuery({
     variables,
   }).data?.getResortByName;
 
+  const [joinMutation] = useJoinResortMutation();
+
+  const { user, currentUserLoading } = useGetCurrentUser();
+
   return (
     <>
-      <Navbar />
+      <Navbar
+        user={user}
+        currentUserLoading={currentUserLoading}
+        login={Login}
+        logout={Logout}
+      />
       <Container>
         <div className="flex-col mt-20 ">
           <div className="flex justify-center">
-            <ResortHeader resortData={data} />
+            <ResortHeader
+              resortData={data}
+              joinResort={() => {
+                joinMutation({ variables: { resortId: data?.id ?? '' } });
+              }}
+            />
           </div>
         </div>
       </Container>

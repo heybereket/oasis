@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { RightArrow } from '@icons/index';
+import { RightArrow } from '@oasis-sh/ui';
 import {
   Navbar,
   Sidebar,
@@ -13,12 +13,15 @@ import {
   Post,
   Modal,
   FollowUser,
-} from '@components/index';
+} from '@oasis-sh/ui';
 import {
   PaginatePostsDocument,
   PaginatePostsQueryVariables,
+  useLikeDislikePostMutation,
   usePaginatePostsQuery,
 } from '@oasis-sh/client-gql';
+import StyledMarkdown from '@components/markdown/StyledMarkdown';
+import { Login, Logout } from '@lib/login';
 interface IndexPageProps {
   initialApolloState: any;
   vars: PaginatePostsQueryVariables;
@@ -35,13 +38,20 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   
   const [open, setOpen] = useState(false);
 
+  const [likeDislikePost] = useLikeDislikePostMutation();
+
   if (!posts) {
     return null;
   }
 
   return (
     <>
-      <Navbar />
+      <Navbar
+        user={user}
+        currentUserLoading={currentUserLoading}
+        login={Login}
+        logout={Logout}
+      />
       <div className="flex flex-col items-center w-full">
         <Modal
           open={open}
@@ -138,7 +148,32 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
           </div>
           <div className="flex flex-col flex-1 w-full space-y-12 pb-12 mt-[33px]">
             {[...posts].reverse().map((post: any, index: number) => (
-              <Post post={post} key={index} />
+              <Post
+                post={post}
+                key={index}
+                markdown={(text) => {
+                  return <StyledMarkdown text={text} isPost={true} />;
+                }}
+                likePost={() => {
+                  likeDislikePost({
+                    variables: {
+                      postId: post.id,
+                      dislike: false,
+                      like: true,
+                    },
+                  });
+                }}
+                dislikePost={() => {
+                  likeDislikePost({
+                    variables: {
+                      postId: post.id,
+                      dislike: true,
+                      like: false,
+                    },
+                  });
+                }}
+              />
+              //<div key={index}>{JSON.stringify(post)}</div>
             ))}
           </div>
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">

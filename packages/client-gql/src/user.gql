@@ -36,6 +36,21 @@ query getUserByName($username: String!) {
       level
       description
     }
+    followers(offset: 0, limit: 0) {
+      total
+    }
+    following(offset: 0, limit: 0) {
+      total
+    }
+    posts(offset: 0, limit: 0) {
+      total
+    }
+  }
+}
+
+query getMyUserId {
+  currentUser {
+    id
   }
 }
 
@@ -45,4 +60,8 @@ mutation updateProfile($data: UpdateProfileInput!) {
 
 mutation deleteAccount {
   deleteAccount
+}
+
+mutation FollowUser($userId: String!) {
+  followUser(userId: $userId)
 }

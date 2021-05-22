@@ -1,4 +1,4 @@
-import { plugin as EmojiParser } from '@lib/emojiParser';
+import { plugin as EmojiParser } from './emojiParser';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism';
