@@ -128,7 +128,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.14.3, @babel/core@npm:^7.0.0, @babel/core@npm:^7.1.0, @babel/core@npm:^7.12.13, @babel/core@npm:^7.7.5":
+"@babel/core@npm:7.14.3, @babel/core@npm:^7.0.0, @babel/core@npm:^7.1.0, @babel/core@npm:^7.12.13, @babel/core@npm:^7.14.2, @babel/core@npm:^7.7.5":
   version: 7.14.3
   resolution: "@babel/core@npm:7.14.3"
   dependencies:
@@ -148,6 +148,20 @@ __metadata:
     semver: ^6.3.0
     source-map: ^0.5.0
   checksum: 4bc2d1abf53e8d1399d5fe159f4f6d275feb64cdfb3a975e903edcbbd98b71ba4a216af28f43db0a5303691a291590837964934acaf673b024563f3acad919f6
+  languageName: node
+  linkType: hard
+
+"@babel/eslint-parser@npm:^7.14.3":
+  version: 7.14.3
+  resolution: "@babel/eslint-parser@npm:7.14.3"
+  dependencies:
+    eslint-scope: ^5.1.0
+    eslint-visitor-keys: ^2.1.0
+    semver: ^6.3.0
+  peerDependencies:
+    "@babel/core": ">=7.11.0"
+    eslint: ">=7.5.0"
+  checksum: faab714c777344ef0d6e96e3a6286766ce4c38a93a974c41d5f05fb778a7492e02fa79e1e3160abef9d935c95f9e46ade984411df73f68b114f9d79bcfe9a918
   languageName: node
   linkType: hard
 
@@ -1988,6 +2002,7 @@ __metadata:
     "@types/passport-github2": ^1.2.4
     "@types/passport-google-oauth20": ^2.0.7
     "@types/passport-twitter": ^1.0.36
+    "@types/rimraf": ^3.0.0
     "@types/uuid": ^8.3.0
     apollo-server-express: ^2.24.1
     chalk: ^4.1.1
@@ -2010,6 +2025,7 @@ __metadata:
     pg: ^8.6.0
     redis: ^3.1.2
     reflect-metadata: ^0.1.13
+    rimraf: ^3.0.2
     sqlite3: ^5.0.2
     ts-node: ^9.1.1
     ts-node-dev: ^1.1.6
@@ -2048,9 +2064,11 @@ __metadata:
     "@graphql-codegen/typescript-document-nodes": ^1.17.11
     "@graphql-codegen/typescript-operations": ^1.17.16
     "@graphql-codegen/typescript-react-apollo": ^2.2.4
+    "@types/rimraf": ^3.0.0
     graphql: ^15.5.0
     graphql-tag: ^2.12.4
     npm-run-all: ^4.1.5
+    rimraf: ^3.0.2
     typescript: ^4.2.4
   languageName: unknown
   linkType: soft
@@ -2102,6 +2120,7 @@ __metadata:
     "@types/glob": ^7.1.3
     "@types/node": ^12.20.13
     "@types/node-fetch": ^2.5.10
+    "@types/prettier": ^2
     "@types/react": ^17.0.6
     "@types/react-dom": ^17.0.5
     "@types/vscode": ^1.56.0
@@ -2112,6 +2131,7 @@ __metadata:
     eslint: ^7.27.0
     glob: ^7.1.7
     node-fetch: ^2.6.1
+    prettier: ^2.3.0
     react: ^17.0.2
     react-dom: ^17.0.2
     typescript: ^4.2.4
@@ -2124,8 +2144,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@oasis-sh/web@workspace:packages/web"
   dependencies:
+    "@babel/core": ^7.14.2
+    "@babel/eslint-parser": ^7.14.3
     "@babel/runtime": ^7.14.0
     "@primer/octicons-react": ^14.1.0
+    "@types/express": ^4
     "@types/node": ^15.6.0
     "@types/react-dom": ^17.0.5
     "@types/react-syntax-highlighter": ^13.5.0
@@ -2137,7 +2160,8 @@ __metadata:
     eslint: ^7.27.0
     eslint-plugin-react: ^7.23.2
     eslint-plugin-react-hooks: latest
-    formik: ^2.2.8
+    express: ^4.17.1
+    formik: ^2.2.6
     github-markdown-css: ^4.0.0
     next: latest
     next-secure-headers: ^2.2.0
@@ -2563,7 +2587,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:*, @types/express@npm:4.17.11, @types/express@npm:^4.17.11":
+"@types/express@npm:*, @types/express@npm:4.17.11, @types/express@npm:^4, @types/express@npm:^4.17.11":
   version: 4.17.11
   resolution: "@types/express@npm:4.17.11"
   dependencies:
@@ -6915,7 +6939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-scope@npm:^5.0.0, eslint-scope@npm:^5.1.1":
+"eslint-scope@npm:^5.0.0, eslint-scope@npm:^5.1.0, eslint-scope@npm:^5.1.1":
   version: 5.1.1
   resolution: "eslint-scope@npm:5.1.1"
   dependencies:
@@ -6941,7 +6965,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-visitor-keys@npm:^2.0.0":
+"eslint-visitor-keys@npm:^2.0.0, eslint-visitor-keys@npm:^2.1.0":
   version: 2.1.0
   resolution: "eslint-visitor-keys@npm:2.1.0"
   checksum: 75eaae9006f5bcb9d1e09641719b840b83c4758f5f25bc06a0e94918d78658d0f19691bdc2e3b100604d0fe2d1eb94a2aab287ba24ad2f02f87cacdccb86c2e4
@@ -7673,7 +7697,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formik@npm:^2.2.8":
+"formik@npm:^2.2.6":
   version: 2.2.8
   resolution: "formik@npm:2.2.8"
   dependencies:
