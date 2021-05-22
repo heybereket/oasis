@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@components/common/Button';
+import { Button } from '../../index';
 
 interface Props {
   name: string;

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import useOnClickOutside from '@utils/hooks/useOnClickOutside';
+import useOnClickOutside from '../../utils/hooks/useOnClickOutside';
 
 interface Props {
   open: boolean;
@@ -12,7 +12,7 @@ export const Modal: React.FC<Props> = ({ open, closeHandler, children }) => {
 
   const modalRef = useRef<HTMLDivElement | null>(null);
   useOnClickOutside(modalRef, () => closeHandler());
-  
+
   return (
     <div className="bg-dim w-screen h-screen flex justify-center items-center fixed z-50 top-0 left-0">
       <div ref={modalRef} className="fixed flex z-50">

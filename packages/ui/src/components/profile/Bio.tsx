@@ -1,12 +1,13 @@
-import StyledMarkdown from '@components/markdown/StyledMarkdown';
-import React from 'react';
+// import StyledMarkdown from '../../../../web/src/components/markdown/StyledMarkdown';
+import React from "react";
 
 type Props = {
   bio: string | undefined | null;
   name: string | undefined | null;
   username: string | undefined | null;
   badges: any[] | undefined | null;
-  marginTop: '4' | '8';
+  marginTop: "4" | "8";
+  markdown: (text: string) => JSX.Element;
 };
 
 export const Bio: React.FC<Props> = ({
@@ -15,6 +16,7 @@ export const Bio: React.FC<Props> = ({
   username,
   badges,
   marginTop,
+  markdown,
 }) => {
   return (
     <>
@@ -22,7 +24,8 @@ export const Bio: React.FC<Props> = ({
         <h4 className="font-extrabold">About {name}</h4>
         {bio !== null ? (
           <div className="text-gray-300 font-bold">
-            <StyledMarkdown text={bio ?? ''} isBio={true} />
+            {markdown(bio ?? "")}
+            {/* <StyledMarkdown text={bio ?? ''} isBio={true} /> */}
           </div>
         ) : (
           <h5 className="text-gray-300 font-bold">

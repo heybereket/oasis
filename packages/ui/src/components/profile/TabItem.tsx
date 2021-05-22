@@ -1,4 +1,5 @@
 import { MouseEventHandler } from 'react';
+import React from 'react'
 
 interface NavItemProps {
   name: string;
