@@ -19,7 +19,7 @@ const handle = app.getRequestHandler();
 const time = Date.now();
 
 (async () => {
-  const server = await getServer(process.env.API_MODE);
+  const server = await getServer(process.env.API_MODE as string);
 
   if (!server) {
     ExitWithErrors(1);
