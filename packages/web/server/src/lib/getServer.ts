@@ -3,6 +3,7 @@ import { chalkLog } from './chalkLog';
 import { ExitWithErrors } from './ExitWithErrors';
 
 export const getServer = async (): Promise<Express> => {
+  console.log(process.env.API_MODE);
   if (process.env.API_MODE === 'local') {
     if (!process.env.NEXT_PUBLIC_BASE_URL) {
       chalkLog(
@@ -14,7 +15,7 @@ export const getServer = async (): Promise<Express> => {
 
     /* eslint-disable @typescript-eslint/ban-ts-comment */
     // @ts-ignore
-    return import('@oasis/api').then(
+    return import('@oasis-sh/api').then(
       async ({ createApp }) => await createApp()
     );
   }
