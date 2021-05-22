@@ -34,8 +34,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const { user, currentUserLoading } = useGetCurrentUser();
   const posts = data?.paginatePosts;
-  console.log(posts)
-  
+
   const [open, setOpen] = useState(false);
 
   const [likeDislikePost] = useLikeDislikePostMutation();
