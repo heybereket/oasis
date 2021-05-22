@@ -2,8 +2,8 @@ import express, { Express } from 'express';
 import { chalkLog } from './chalkLog';
 import { ExitWithErrors } from './ExitWithErrors';
 
-export const getServer = async (): Promise<Express> => {
-  if (process.env.API_MODE === 'local') {
+export const getServer = async (apiMode: string): Promise<Express> => {
+  if (apiMode === 'local') {
     if (!process.env.NEXT_PUBLIC_BASE_URL) {
       chalkLog(
         'error',
@@ -19,6 +19,7 @@ export const getServer = async (): Promise<Express> => {
     );
   }
 
+  // connect to staging
   const app = express();
   app.disable('x-powered-by');
   return app;
