@@ -9,7 +9,7 @@
     "prettify": "prettier --config .prettierrc --write server/src/*.ts server/src/lib/*.ts src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js",
     "clean": "rimraf .next/*",
-    "setup:noapi": "yarn link -p @oasis/client-gql && echo \"API_MODE='remote'\" > .env"
+    "setup:remote": "yarn clean || echo \"API_MODE='remote'\\\nNEXT_PUBLIC_BASE_URL='http://localhost:3000'\" > .env"
   },
   "dependencies": {
     "@primer/octicons-react": "^14.1.0",

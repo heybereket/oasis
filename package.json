@@ -9,20 +9,18 @@
     "packages/vsc-extension"
   ],
   "scripts": {
-    "build": "yarn run build:api && yarn build:ui && yarn workspace @oasis-sh/web run build",
-    "build:dev": "yarn run build:api && yarn build:ui",
-    "build:api": "yarn workspace @oasis-sh/api run build && yarn workspace @oasis-sh/client-gql run build",
-    "build:ui": "yarn workspace @oasis-sh/ui run build",
-    "build:web": "yarn workspace @oasis-sh/web run build",
+    "build:all": "yarn build api && yarn build client-gql && yarn build ui && yarn build web",
     "commit": "git add . && cz && git push",
     "dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
     "dev:api": "yarn workspaces foreach --include @oasis-sh/client-gql,@oasis-sh/api -p run dev",
     "start": "yarn workspace @oasis-sh/web run start",
     "deploy:prod": "git add . && git commit -m 'chore(deploy): Merge staging -> prod' && git checkout prod && git merge staging && git push origin prod --force && git checkout staging",
     "publish:bot": "yarn workspace @oasis-sh/bot-client run publish",
-    "lint": "yarn workspaces foreach --exclude @oasis-sh/client-gql -p run lint && yarn workspaces foreach --exclude @oasis-sh/client-gql -p run prettify",
-    "clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/client-gql run clean",
-    "reinstall": "yarn clean && rimraf packages/**/*.sqlite || yarn install"
+    "lint": "yarn workspaces foreach --exclude @oasis-sh/client-gql run lint -p && yarn workspaces foreach --exclude @oasis-sh/client-gql -p run prettify",
+    "clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/client-gql,@oasis-sh/ui -p run clean",
+    "reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",
+    "build": "yarn workspace @oasis-sh/$0 run build",
+    "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build client-gql && yarn build ui"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.2",

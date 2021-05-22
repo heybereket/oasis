@@ -1,6 +1,14 @@
-import React from 'react'
+import { GetResortByNameWithMembersQuery } from "@oasis-sh/client-gql";
+import React from "react";
 
-export const ResortHeader: React.FC = () => {
+type ResortData = GetResortByNameWithMembersQuery["getResortByName"];
+
+interface Props {
+  resortData: ResortData | undefined | null;
+  joinResort: () => void;
+}
+
+export const ResortHeader: React.FC<Props> = () => {
   return (
     <>
       <div
