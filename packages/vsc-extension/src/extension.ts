@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { SidebarProvider } from './Sidebar';
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): void {
   console.log('Congratulations, your extension "vsc-oasis" is now active!');
 
   const sidebarProvider = new SidebarProvider(context);
@@ -19,6 +19,5 @@ export function activate(context: vscode.ExtensionContext) {
   );
 }
 
-export function deactivate() {
-  // Called when extension deactivates
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+export function deactivate(): void {}

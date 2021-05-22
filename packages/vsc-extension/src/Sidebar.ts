@@ -15,7 +15,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 
   constructor(private readonly _context: vscode.ExtensionContext) {}
 
-  public resolveWebviewView(webviewView: vscode.WebviewView) {
+  public resolveWebviewView(webviewView: vscode.WebviewView): void {
     this._view = webviewView;
 
     webviewView.webview.options = {
@@ -60,7 +60,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     });
   }
 
-  public revive(panel: vscode.WebviewView) {
+  public revive(panel: vscode.WebviewView): void {
     this._view = panel;
   }
 

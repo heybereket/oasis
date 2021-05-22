@@ -17,6 +17,7 @@
       "version": "detect"
     }
   },
+  "ignorePatterns": ["vsc-ui/dist/*", "out/*", "server/dist/*"],
   "rules": {
     "react/react-in-jsx-scope": 0,
     "react/no-unknown-property": 0,
