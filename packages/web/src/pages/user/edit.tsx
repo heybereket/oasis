@@ -11,6 +11,7 @@ import { Navbar, Button, StyledFormikInput } from '@oasis-sh/ui';
 import React from 'react';
 import { apolloClient } from '@lib/common/apolloClient';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import { Login, Logout } from '@lib/login';
 
 interface EditProfileProps {
   initialApolloState: any;
@@ -30,7 +31,12 @@ const EditProfile: React.FC<EditProfileProps> = () => {
 
   return (
     <>
-      <Navbar user={user} currentUserLoading={currentUserLoading} />
+      <Navbar
+        user={user}
+        currentUserLoading={currentUserLoading}
+        login={Login}
+        logout={Logout}
+      />
       <div className="w-1/2 mx-auto">
         <Formik
           initialValues={initialValues}

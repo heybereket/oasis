@@ -21,6 +21,7 @@ import {
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { SEOProvider } from '@components/common/SEOProvider';
 import StyledMarkdown from '@components/markdown/StyledMarkdown';
+import { Login, Logout } from '@lib/login';
 
 interface ProfileProps {
   initialApolloState: any;
@@ -47,7 +48,12 @@ const Profile: React.FC<ProfileProps> = (props) => {
         metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
         metaImg={data?.avatar}
       />
-      <Navbar user={user} currentUserLoading={currentUserLoading} />
+      <Navbar
+        user={user}
+        currentUserLoading={currentUserLoading}
+        login={Login}
+        logout={Logout}
+      />
       <div className="flex w-screen flex-col">
         <ProfileBanner bannerUrl={data?.banner} />
         {/* Large and Medium Screens */}

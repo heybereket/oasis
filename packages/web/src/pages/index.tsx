@@ -17,9 +17,11 @@ import {
 import {
   PaginatePostsDocument,
   PaginatePostsQueryVariables,
+  useLikeDislikePostMutation,
   usePaginatePostsQuery,
 } from '@oasis-sh/client-gql';
 import StyledMarkdown from '@components/markdown/StyledMarkdown';
+import { Login, Logout } from '@lib/login';
 interface IndexPageProps {
   initialApolloState: any;
   vars: PaginatePostsQueryVariables;
@@ -35,7 +37,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [open, setOpen] = useState(false);
 
-  // const [likeDislikePost] = useLikeDislikePostMutation();
+  const [likeDislikePost] = useLikeDislikePostMutation();
 
   if (!posts) {
     return null;
@@ -43,7 +45,12 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   return (
     <>
-      <Navbar user={user} currentUserLoading={currentUserLoading} />
+      <Navbar
+        user={user}
+        currentUserLoading={currentUserLoading}
+        login={Login}
+        logout={Logout}
+      />
       <div className="flex flex-col items-center w-full">
         <Modal
           open={open}

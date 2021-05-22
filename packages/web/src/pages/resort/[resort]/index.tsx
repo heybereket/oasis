@@ -9,6 +9,7 @@ import { GetServerSideProps } from 'next';
 import React from 'react';
 import { Navbar, Container, ResortHeader } from '@oasis-sh/ui';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import { Login, Logout } from '@lib/login';
 
 interface IResortProps {
   variables: GetResortByNameWithMembersQueryVariables;
@@ -25,7 +26,12 @@ const Resort: React.FC<IResortProps> = ({ variables }) => {
 
   return (
     <>
-      <Navbar user={user} currentUserLoading={currentUserLoading} />
+      <Navbar
+        user={user}
+        currentUserLoading={currentUserLoading}
+        login={Login}
+        logout={Logout}
+      />
       <Container>
         <div className="flex-col mt-20 ">
           <div className="flex justify-center">

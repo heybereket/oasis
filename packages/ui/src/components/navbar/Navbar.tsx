@@ -19,11 +19,15 @@ import { User } from "@oasis-sh/client-gql";
 interface INavbarProps {
   user?: User;
   currentUserLoading: boolean;
+  login: (provider: string) => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 export const Navbar: React.FC<INavbarProps> = ({
   currentUserLoading,
   user,
+  login,
+  logout,
 }) => {
   const [isDropdownActive, setDropdownActive] = useState(false);
   const router = useRouter();
@@ -75,8 +79,7 @@ export const Navbar: React.FC<INavbarProps> = ({
               size="sm"
               className="my-1"
               onClick={async () => {
-                // TODO: Login
-                //await Login("github");
+                await login("github");
               }}
             >
               Login
@@ -119,8 +122,7 @@ export const Navbar: React.FC<INavbarProps> = ({
                         name="Logout"
                         icon={LogoutIcon}
                         onClick={async () => {
-                          // TODO: Add logout
-                          // await Logout();
+                          await logout();
                         }}
                       />
                     </div>

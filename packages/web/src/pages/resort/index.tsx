@@ -1,4 +1,5 @@
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import { Login, Logout } from '@lib/login';
 import { Navbar, ResortCard } from '@oasis-sh/ui';
 import React from 'react';
 
@@ -7,7 +8,12 @@ const Resort: React.FC = () => {
 
   return (
     <>
-      <Navbar user={user} currentUserLoading={currentUserLoading} />
+      <Navbar
+        user={user}
+        currentUserLoading={currentUserLoading}
+        login={Login}
+        logout={Logout}
+      />
 
       <div className={`flex-col flex h-1/2 mt-12 w-full md:pl-32 pl-1`}>
         <div>
