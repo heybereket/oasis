@@ -12,14 +12,13 @@ export function activate(context: vscode.ExtensionContext) {
     )
   );
 
-  let disposable = vscode.commands.registerCommand(
-    'vsc-oasis.helloWorld',
-    () => {
+  context.subscriptions.push(
+    vscode.commands.registerCommand('vsc-oasis.helloWorld', () => {
       vscode.window.showInformationMessage('Hello World from Oasis!');
-    }
+    })
   );
-
-  context.subscriptions.push(disposable);
 }
 
-export function deactivate() {}
+export function deactivate() {
+  // Called when extension deactivates
+}

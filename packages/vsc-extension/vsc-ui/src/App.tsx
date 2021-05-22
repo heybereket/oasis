@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { vscode } from './vscode';
 
-export function App() {
+export const App: React.FC = () => {
   const [opened, setOpened] = useState(false);
 
   const openLogin = () => {
@@ -21,4 +21,4 @@ export function App() {
       {opened && <button onClick={done}>Done</button>}
     </div>
   );
-}
+};

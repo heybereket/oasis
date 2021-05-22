@@ -37,6 +37,8 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
               `http://localhost:3000/auth/vscode?t=${authIdToken}`
             )
           );
+
+          break;
         }
 
         case 'logged-in': {
@@ -51,6 +53,8 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           const data = await res.json();
 
           console.log(data);
+
+          break;
         }
       }
     });
@@ -65,14 +69,11 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
       join(__dirname, '../vsc-ui/dist/index.html')
     ).toString();
 
-    content = content.replace(
-      /(href|src)\=\"(.*?)\"/g,
-      (_, hrefOrSrc, path) => {
-        return `${hrefOrSrc}="${webview.asWebviewUri(
-          vscode.Uri.joinPath(this._context.extensionUri, 'vsc-ui/dist', path)
-        )}"`;
-      }
-    );
+    content = content.replace(/(href|src)="(.*?)"/g, (_, hrefOrSrc, path) => {
+      return `${hrefOrSrc}="${webview.asWebviewUri(
+        vscode.Uri.joinPath(this._context.extensionUri, 'vsc-ui/dist', path)
+      )}"`;
+    });
 
     return content;
   }
