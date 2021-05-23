@@ -19,6 +19,7 @@ import {
   PaginatePostsQueryVariables,
   useLikeDislikePostMutation,
   usePaginatePostsQuery,
+  useMakePostMutation,
 } from '@oasis-sh/client-gql';
 import StyledMarkdown from '@components/markdown/StyledMarkdown';
 import { Login, Logout } from '@lib/login';
@@ -39,6 +40,11 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [likeDislikePost] = useLikeDislikePostMutation();
 
+  const [makePost] = useMakePostMutation();
+
+  const [newMessage, setNewMessage] = useState('');
+  const [editingPost, setEditingPost] = useState(true);
+
   if (!posts) {
     return null;
   }
@@ -52,29 +58,72 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
         logout={Logout}
       />
       <div className="flex flex-col items-center w-full">
+        {/* Post Modal */}
         <Modal
           open={open}
           closeHandler={() => {
             setOpen(false);
           }}
+          modalClasses="w-1/3"
         >
           <form className="grid grid-cols-3 gap-5 w-full">
             <div className="col-span-3 block">
               <h4>New post</h4>
             </div>
-            <div className="flex w-full h-full col-span-2">
-              <input
+            <div className={'flex mx-auto col-span-full space-x-20'}>
+              {/* <input
                 placeholder="Title"
                 className="col-span-2 w-full h-11 px-4 py-2 bg-gray-600 rounded-lg focus:outline-none"
-              />
+                value={newTitle}
+                onChange={(e) => setNewTitle(e.currentTarget.value)}
+              /> */}
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setEditingPost(true);
+                }}
+              >
+                Edit
+              </Button>
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setEditingPost(false);
+                }}
+              >
+                View
+              </Button>
             </div>
             <div className="col-span-1 w-full"></div>
-            <textarea
-              placeholder="What's on your mind?"
-              className="col-span-3 px-4 py-2 resize-none w-full h-24 bg-gray-600 rounded-lg focus:outline-none"
-            />
+            {editingPost ? (
+              <textarea
+                placeholder="What's on your mind?"
+                className="col-span-3 px-4 py-2 resize-none w-full h-24 bg-gray-600 rounded-lg focus:outline-none"
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.currentTarget.value)}
+              />
+            ) : (
+              <StyledMarkdown
+                text={newMessage}
+                isPost={true}
+                classes="col-span-3"
+              />
+            )}
             <div className="col-span-full">
-              <Button color="primary">New post</Button>
+              <Button
+                onClick={() => {
+                  makePost({
+                    variables: {
+                      message: newMessage,
+                      title: '',
+                      topics: [],
+                    },
+                  });
+                }}
+                color="primary"
+              >
+                New post
+              </Button>
             </div>
           </form>
         </Modal>

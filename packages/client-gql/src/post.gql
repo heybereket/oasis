@@ -69,3 +69,7 @@ mutation LikeDislikePost(
 ) {
   likeDislike(like: $like, dislike: $dislike, postId: $postId)
 }
+
+mutation MakePost($title: String!, $message: String!, $topics: [String!]!) {
+  createPost(data: { title: $title, message: $message, topics: $topics })
+}

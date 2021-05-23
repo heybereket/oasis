@@ -12,12 +12,13 @@ export const StyledMarkdown: React.FC<{
   text: string;
   isBio?: boolean;
   isPost?: boolean;
-}> = ({ text, isBio, isPost }) => {
+  classes?: string;
+}> = ({ text, isBio, isPost, classes }) => {
   return (
     <div
       className={`${styles.markdown} ${isPost ? poststyles.markdown : ''} ${
         isBio ? biostyles.markdown : ''
-      }`}
+      } ${classes ?? ''}`}
     >
       <ReactMarkdown
         components={{
