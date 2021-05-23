@@ -24,6 +24,5 @@ yarn-error.log*
 
 # sql
 *.sqlite
-*.db
 
 /server/dist
