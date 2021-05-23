@@ -25,13 +25,8 @@ export default class Post extends BaseEntity {
   @BCField()
   id: string;
 
-<<<<<<< HEAD
-  @Column()
-  @PublicField()
-=======
   @Column({ nullable: true })
-  @Field({ nullable: true })
->>>>>>> 58d8886fc40d8fc36cfd8ca97cdf834e9000e739
+  @PublicField({ nullable: true })
   title: string;
 
   @Column()
