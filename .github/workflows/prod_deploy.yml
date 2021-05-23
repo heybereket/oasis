@@ -4,12 +4,8 @@ on:
   # Triggers the workflow on push or pull request events but only for the prod branch
   push:
     branches: [prod]
-  pull_request:
-    types: [closed]
-    branches: [prod]
-
   # Allows running this workflow manually from the Actions tab
-  # workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   deploy:
