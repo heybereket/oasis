@@ -26,7 +26,7 @@
     "react-scripts": "4.0.2",
     "typescript": "^4.1.3",
     "web-vitals": "^0.2.4",
-    "workbox-background-sync": "^5.1.4",
+    "workbox-background-sync": "^6.1.5",
     "workbox-broadcast-update": "^5.1.4",
     "workbox-cacheable-response": "^5.1.4",
     "workbox-core": "^5.1.4",
