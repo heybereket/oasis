@@ -102,7 +102,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             { user &&
               <CreatePostInput
                 avatarUrl={user.avatar}
-                onSubmit={(value: string) => createPost({ variables: { title: 'hi', message: value, topics: [] } })}
+                onSubmit={(value: string) => createPost({ variables: { message: value, topics: [] } })}
               />
             }
             {[...posts].reverse().map((post: any, index: number) => (
