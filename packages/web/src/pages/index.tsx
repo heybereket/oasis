@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { RightArrow } from '@oasis-sh/ui';
 import {
   Navbar,
   Sidebar,
@@ -80,7 +79,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
         </Modal>
         <div className="z-10 relative px-6 grid grid-cols-1 lg:grid-cols-three gap-16">
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
-            <div className="w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
+            <div className="flex-shrink-0 w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
               {currentUserLoading || (
                 <>
                   <Link href={`/user/${user?.username}`}>
@@ -107,7 +106,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               )}
             </div>
             <Sidebar title="Friends Activity">
-              <div className="mt-6 flex flex-col space-y-4">
+              <div className="flex-shrink-0 mt-6 flex flex-col space-y-4">
                 <FriendActivity
                   name="Sam Jakob"
                   activity={['Playing', 'Visual Studio Code']}
@@ -157,8 +156,8 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               //<div key={index}>{JSON.stringify(post)}</div>
             ))}
           </div>
-          <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
-            <div className="w-full flex flex-col items-center">
+          <div className="flex-shrink-0 hidden lg:flex flex-col flex-1 sticky top-28 h-px">
+            <div className="flex-shrink-0 w-full flex flex-col items-center">
               <div className="flex flex-col items-center">
                 <h3>Something on your mind?</h3>
                 <Button
