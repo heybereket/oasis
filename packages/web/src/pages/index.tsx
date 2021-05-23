@@ -20,7 +20,7 @@ import {
   usePaginatePostsQuery,
 } from '@oasis-sh/client-gql';
 import StyledMarkdown from 'src/markdown/StyledMarkdown';
-import { Login, Logout } from '@lib/login';
+import { login, logout } from '@lib/login';
 interface IndexPageProps {
   initialApolloState: any;
   vars: PaginatePostsQueryVariables;
@@ -47,8 +47,8 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
-        login={Login}
-        logout={Logout}
+        login={login}
+        logout={logout}
       />
       <div className="flex flex-col items-center w-full">
         <Modal

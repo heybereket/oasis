@@ -1,5 +1,5 @@
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { Login, Logout } from '@lib/login';
+import { login, logout } from '@lib/login';
 import { Navbar, ResortCard } from '@oasis-sh/ui';
 import React from 'react';
 
@@ -11,8 +11,8 @@ const Resort: React.FC = () => {
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
-        login={Login}
-        logout={Logout}
+        login={login}
+        logout={logout}
       />
 
       <div className={`flex-col flex h-1/2 mt-12 w-full md:pl-32 pl-1`}>
