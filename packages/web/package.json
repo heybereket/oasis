@@ -12,6 +12,7 @@
     "setup:remote": "yarn clean || echo \"API_MODE='remote'\\\nNEXT_PUBLIC_BASE_URL='http://localhost:3000'\" > .env"
   },
   "dependencies": {
+    "@babel/runtime": "^7.14.0",
     "@primer/octicons-react": "^14.1.0",
     "express": "^4.17.1",
     "formik": "^2.2.6",
@@ -29,7 +30,6 @@
   "devDependencies": {
     "@babel/core": "^7.14.2",
     "@babel/eslint-parser": "^7.14.3",
-    "@babel/runtime": "^7.14.0",
     "@types/express": "^4",
     "@types/node": "^15.6.0",
     "@types/react-dom": "^17.0.5",
