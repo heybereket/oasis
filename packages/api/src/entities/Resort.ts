@@ -12,49 +12,54 @@ import {
 import Post from '@entities/Post';
 import User from './User';
 import { RelationalPagination } from '@utils/RelationalPagination';
+import { BCEntity, BCField, PublicField } from '@root/bot-client-gen';
 
 @ObjectType()
 @Entity()
+@BCEntity('resorts')
 export default class Resort extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  @Field()
+  @PublicField()
   id: string;
 
   @Column()
-  @Field()
+  @PublicField()
   name: string;
 
   @Column()
-  @Field()
+  @PublicField()
   description: string;
 
   @Column()
-  @Field()
+  @PublicField()
   banner: string;
 
   @Column()
-  @Field()
+  @PublicField()
   logo: string;
 
   @Column()
-  @Field()
+  @PublicField()
   category: string;
 
   @Column()
-  @Field()
+  @PublicField()
   createdAt: string;
 
   // @Field(() => [Post], { complexity: 5 })
   @RelationalPagination(() => Resort, () => Post, 'resort')
   @OneToMany(() => Post, (post) => post.resort)
+  @BCField({ type: 'PaginationResponseType<Post>' })
   posts: Promise<Post[]>;
 
   @ManyToOne(() => User, (user) => user.ownedResorts)
   @Field(() => User)
+  @BCField({ type: 'User' })
   owner: Promise<User>;
 
   @ManyToMany(() => User, (user) => user.joinedResorts)
   @JoinTable()
   @RelationalPagination(() => Resort, () => User, 'joinedResorts')
+  @BCField({ type: 'PaginationResponseType<User>' })
   members: Promise<User[]>;
 }

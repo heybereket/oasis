@@ -1,30 +1,33 @@
+import { BCEntity, BCField, PublicField } from '@root/bot-client-gen';
 import { Field, ID, ObjectType } from 'type-graphql';
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 @Entity()
+@BCEntity('badges')
 export default class Badge extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
+  @BCField()
   id: string;
 
   @Column()
-  @Field()
+  @PublicField()
   name: string;
 
   @Column()
-  @Field()
+  @PublicField()
   imagePath: string;
 
   @Column()
-  @Field()
+  @PublicField()
   level: number;
 
   @Column()
-  @Field()
+  @PublicField()
   description: string;
 
   @Column()
-  @Field()
+  @PublicField()
   createdAt: string;
 }

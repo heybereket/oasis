@@ -14,6 +14,7 @@ import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
 import { isProduction } from '@lib/constants';
 import { chalkLog } from '@lib/chalkLog';
+import { allFields } from './bot-client-gen/RegisterEntity';
 
 const RedisStore = connectRedis(expressSession);
 

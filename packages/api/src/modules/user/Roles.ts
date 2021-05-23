@@ -1,3 +1,4 @@
+import { addCode } from '@root/bot-client-gen';
 import { registerEnumType } from 'type-graphql';
 
 export enum Role {
@@ -9,3 +10,11 @@ export enum Role {
 registerEnumType(Role, {
   name: 'Role',
 });
+
+addCode(`
+enum Role {
+  SuperAdmin = 'SUPERADMIN',
+  Admin = 'ADMIN',
+  Moderator = 'MODERATOR',
+}
+`);

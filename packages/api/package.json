@@ -6,10 +6,11 @@
   "scripts": {
     "start": "node dist/index.js",
     "watch": "concurrently \"tsc --w\" \"tsc-alias -w\"",
-    "build": "tsc && tsc-alias && node dist/build.js",
+    "build": "tsc && node dist/bot-client-gen/clean && tsc-alias && node dist/build.js",
+    "bcg": "tsc && tsc-alias && node dist/bot-client-gen/output",
     "dev:start": "nodemon dist/index.js --ignore src",
     "dev": "concurrently \"tsc -w\" \"yarn run-app\"",
-    "run-app": "cd dist && nodemon -e \"js\" --exec \"cd .. && tsc-alias && node dist/index.js\"",
+    "run-app": "cd dist && nodemon -e \"js\" --exec \"cd .. && node dist/bot-client-gen/clean && tsc-alias && node dist/index.js\"",
     "typeorm:cli": "ts-node ../../node_modules/typeorm/cli -f ./src/ormconfig.ts",
     "typeorm:generate_migration": "yarn typeorm:cli migration:generate -d ./src/migrations -n",
     "typeorm:run_migrations": "yarn typeorm:cli migration:run",
