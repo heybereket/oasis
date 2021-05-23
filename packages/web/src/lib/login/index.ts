@@ -1,7 +1,7 @@
 import { baseURL } from '@lib/constants';
 import { setCurrentUser } from '@lib/common/getCurrentUser';
 
-export const Login = (type: string): any => {
+export const login = (type: string): any => {
   window.localStorage.setItem('redirectPath', window.location.href);
   switch (type) {
     // GitHub Authentication
@@ -22,7 +22,7 @@ export const Login = (type: string): any => {
   }
 };
 
-export const Logout = async (): Promise<void> => {
+export const logout = async (): Promise<void> => {
   const response = await (
     await fetch(`${baseURL}/api/auth/logout`, {
       headers: {

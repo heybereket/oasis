@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { RightArrow } from '@oasis-sh/ui';
 import {
   Navbar,
   Sidebar,
@@ -21,8 +20,8 @@ import {
   usePaginatePostsQuery,
   useMakePostMutation,
 } from '@oasis-sh/client-gql';
-import StyledMarkdown from '@components/markdown/StyledMarkdown';
-import { Login, Logout } from '@lib/login';
+import StyledMarkdown from 'src/markdown/StyledMarkdown';
+import { login, logout } from '@lib/login';
 interface IndexPageProps {
   initialApolloState: any;
   vars: PaginatePostsQueryVariables;
@@ -54,8 +53,8 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
-        login={Login}
-        logout={Logout}
+        login={login}
+        logout={logout}
       />
       <div className="flex flex-col items-center w-full">
         {/* Post Modal */}
@@ -129,52 +128,30 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
         </Modal>
         <div className="z-10 relative px-6 grid grid-cols-1 lg:grid-cols-three gap-16">
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
-            <div className="w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
+            <div className="flex-shrink-0 w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
               {currentUserLoading || (
                 <>
-                  <Link
-                    href={user ? `/user/${user.username}` : `/user/alexover1`}
-                  >
+                  <Link href={`/user/${user?.username}`}>
                     <a className="flex items-center space-x-4">
-                      {user?.avatar ? (
-                        <img
-                          src={user.avatar}
-                          alt=""
-                          className="w-14 h-14 rounded-full"
-                        />
-                      ) : (
-                        <div className="w-14 h-14 rounded-full bg-gray-600" />
-                      )}
+                      <img
+                        src={user?.avatar}
+                        alt=""
+                        className="w-14 h-14 rounded-full"
+                      />
                       <div>
-                        <p className="font-bold text-xl">
-                          {user ? user.name : 'Alex'}
-                        </p>
+                        <p className="font-bold text-xl">{user?.name}</p>
                         <p className="font-bold text-light -mt-1">
-                          {user ? '@' + user.username : '@alexover1'}
+                          @{user?.username}
                         </p>
                       </div>
                     </a>
                   </Link>
-                  <p className="mt-3">
-                    {user
-                      ? user.bio
-                      : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem Ipsum'}
-                  </p>
-                  <Link
-                    href={user ? `/user/${user.username}` : '/user/alexover1'}
-                  >
-                    <a className="flex items-center space-x-0.5 mt-2">
-                      <p className="font-bold text-lg text-primary">
-                        u/{user ? user.username : 'alexover1'}
-                      </p>
-                      <RightArrow className="text-primary" />
-                    </a>
-                  </Link>
+                  <p className="mt-3">{user?.bio}</p>
                 </>
               )}
             </div>
             <Sidebar title="Friends Activity">
-              <div className="mt-6 flex flex-col space-y-4">
+              <div className="flex-shrink-0 mt-6 flex flex-col space-y-4">
                 <FriendActivity
                   name="Sam Jakob"
                   activity={['Playing', 'Visual Studio Code']}
@@ -224,8 +201,8 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               //<div key={index}>{JSON.stringify(post)}</div>
             ))}
           </div>
-          <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
-            <div className="w-full flex flex-col items-center">
+          <div className="flex-shrink-0 hidden lg:flex flex-col flex-1 sticky top-28 h-px">
+            <div className="flex-shrink-0 w-full flex flex-col items-center">
               <div className="flex flex-col items-center">
                 <h3>Something on your mind?</h3>
                 <Button

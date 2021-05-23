@@ -2,15 +2,16 @@ import { config } from 'dotenv';
 import { join } from 'path';
 import next from 'next';
 import { chalkLog } from './lib/chalkLog';
-import { ExitWithErrors } from './lib/ExitWithErrors';
+import { exit } from './lib/exit';
 import { getServer } from './lib/getServer';
 
 config({ path: join(__dirname, '../../.env') });
 
 // default to running api locally
 
-if (process.env.API_MODE == 'local')
+if (process.env.API_MODE === 'local') {
   config({ path: join(__dirname, '../../../api/.env') });
+}
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, conf: require('../../next.config.js') });
@@ -22,7 +23,7 @@ const time = Date.now();
   const server = await getServer(process.env.API_MODE as string);
 
   if (!server) {
-    ExitWithErrors(1);
+    exit(1);
   }
 
   app.prepare().then(() => {

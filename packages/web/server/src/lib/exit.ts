@@ -1,6 +1,6 @@
 import { chalkLog } from './chalkLog';
 
-export const ExitWithErrors = (amount: number): any => {
+export const exit = (amount: number): any => {
   chalkLog(
     'error',
     `${

@@ -3,5 +3,8 @@
     "git.ignoreLimitWarning": true,
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "prettier.singleQuote": true
+    "prettier.singleQuote": true,
+    "cSpell.words": [
+        "prefetch"
+    ]
 }

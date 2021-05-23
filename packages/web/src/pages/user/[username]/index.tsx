@@ -1,18 +1,23 @@
+import { GetServerSideProps } from 'next';
+import { ssrRequest } from '@lib/common/ssrRequest';
+import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import StyledMarkdown from '@markdown/StyledMarkdown';
+import { login, logout } from '@lib/login';
+import Head from 'next/head';
 import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
   useFollowUserMutation,
 } from '@oasis-sh/client-gql';
-import { GetServerSideProps } from 'next';
-import { ssrRequest } from '@lib/common/ssrRequest';
-import { About, Comments, Like, Posts } from '@oasis-sh/ui';
 import {
+  SEO,
+  About,
+  Comments,
+  Like,
+  Posts,
+  Navbar,
   Container,
   Button,
-} from '@oasis-sh/ui';
-
-import {
-  Navbar,
   TabItem,
   TopicBadge,
   LargeUserCard,
@@ -21,10 +26,6 @@ import {
   FollowersInfo,
   Bio,
 } from '@oasis-sh/ui';
-import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { SEOProvider } from '@components/common/SEOProvider';
-import StyledMarkdown from '@components/markdown/StyledMarkdown';
-import { Login, Logout } from '@lib/login';
 
 interface ProfileProps {
   initialApolloState: any;
@@ -46,16 +47,18 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
   return (
     <>
-      <SEOProvider
-        title={data?.name ? data?.name : data?.username + ' — Oasis'}
-        metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
-        metaImg={data?.avatar}
-      />
+      <Head>
+        <SEO
+          title={data?.name ? data?.name : data?.username + ' — Oasis'}
+          metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
+          metaImg={data?.avatar}
+        />
+      </Head>
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
-        login={Login}
-        logout={Logout}
+        login={login}
+        logout={logout}
       />
       <div className="flex w-screen flex-col">
         <ProfileBanner bannerUrl={data?.banner} />
