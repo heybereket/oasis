@@ -13,6 +13,7 @@ export { SEO } from './components/common/SEO';
 export { FollowUser } from "./components/home/FollowUser";
 export { FriendActivity } from "./components/home/FriendActivity";
 export { Sidebar } from "./components/home/Sidebar";
+export { CreatePostInput } from "./components/home/CreatePostInput";
 
 // Markdown
 // export { StyledMarkdown } from "../../web/src/components/markdown/StyledMarkdown";
