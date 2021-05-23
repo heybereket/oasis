@@ -198,7 +198,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                   });
                 }}
               />
-              //<div key={index}>{JSON.stringify(post)}</div>
             ))}
           </div>
           <div className="flex-shrink-0 hidden lg:flex flex-col flex-1 sticky top-28 h-px">
@@ -246,9 +245,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
-  req,
-}) => {
+export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({ req }) => {
   const vars: PaginatePostsQueryVariables = {
     postsLimit: 25,
     postsOffset: 0,

@@ -1,5 +1,5 @@
 {
-  "name": "@oasis-sh/app",
+  "name": "@oasis-sh/mobile",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
