@@ -83,44 +83,26 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             <div className="w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
               {currentUserLoading || (
                 <>
-                  <Link
-                    href={user ? `/user/${user.username}` : `/user/alexover1`}
-                  >
+                  <Link href={`/user/${user?.username}`}>
                     <a className="flex items-center space-x-4">
-                      {user?.avatar ? (
-                        <img
-                          src={user.avatar}
-                          alt=""
-                          className="w-14 h-14 rounded-full"
-                        />
-                      ) : (
-                        <div className="w-14 h-14 rounded-full bg-gray-600" />
-                      )}
+                      <img
+                        src={user?.avatar}
+                        alt=""
+                        className="w-14 h-14 rounded-full"
+                      />
                       <div>
                         <p className="font-bold text-xl">
-                          {user ? user.name : 'Alex'}
+                          {user?.name}
                         </p>
                         <p className="font-bold text-light -mt-1">
-                          {user ? '@' + user.username : '@alexover1'}
+                          @{user?.username}
                         </p>
                       </div>
                     </a>
                   </Link>
                   <p className="mt-3">
-                    {user
-                      ? user.bio
-                      : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem Ipsum'}
+                    {user?.bio}
                   </p>
-                  <Link
-                    href={user ? `/user/${user.username}` : '/user/alexover1'}
-                  >
-                    <a className="flex items-center space-x-0.5 mt-2">
-                      <p className="font-bold text-lg text-primary">
-                        u/{user ? user.username : 'alexover1'}
-                      </p>
-                      <RightArrow className="text-primary" />
-                    </a>
-                  </Link>
                 </>
               )}
             </div>
