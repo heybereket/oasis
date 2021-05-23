@@ -7,7 +7,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import User from '@entities/User';
-import { BCEntity, BCField, PublicField } from '@root/bot-client-gen';
+import { BCEntity, BCField } from '@root/bot-client-gen';
+import { PublicField } from '@utils/PublicField';
 
 @ObjectType()
 @Entity()

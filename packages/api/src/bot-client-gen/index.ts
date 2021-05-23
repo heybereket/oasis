@@ -1,4 +1,3 @@
-export * from './PublicField';
 export * from './RegisterEntity';
 export * from './Resolver';
 

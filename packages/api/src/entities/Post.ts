@@ -13,7 +13,8 @@ import User from '@entities/User';
 import Comment from '@entities/Comment';
 import Resort from '@entities/Resort';
 import { RelationalPagination } from '@utils/RelationalPagination';
-import { BCEntity, BCField, PublicField } from '@root/bot-client-gen';
+import { BCEntity, BCField } from '@root/bot-client-gen';
+import { PublicField } from '@utils/PublicField';
 
 @ObjectType()
 @Entity()

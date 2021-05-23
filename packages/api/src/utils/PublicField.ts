@@ -1,5 +1,5 @@
 import { Field } from 'type-graphql';
-import { BCField } from './RegisterEntity';
+import { BCField } from '../bot-client-gen/RegisterEntity';
 
 export const PublicField =
   process.env.BOT_CLIENT_MODE === 'true'

@@ -17,7 +17,8 @@ import Comment from '@entities/Comment';
 import Resort from './Resort';
 import Notification from './Notification';
 import { RelationalPagination } from '@utils/RelationalPagination';
-import { BCEntity, BCField, PublicField } from '@root/bot-client-gen';
+import { BCEntity, BCField } from '@root/bot-client-gen';
+import { PublicField } from '@utils/PublicField';
 
 @ObjectType()
 @Entity()

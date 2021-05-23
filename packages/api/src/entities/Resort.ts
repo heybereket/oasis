@@ -12,7 +12,8 @@ import {
 import Post from '@entities/Post';
 import User from './User';
 import { RelationalPagination } from '@utils/RelationalPagination';
-import { BCEntity, BCField, PublicField } from '@root/bot-client-gen';
+import { BCEntity, BCField } from '@root/bot-client-gen';
+import { PublicField } from '@utils/PublicField';
 
 @ObjectType()
 @Entity()

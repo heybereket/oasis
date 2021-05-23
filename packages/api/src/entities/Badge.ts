@@ -1,4 +1,5 @@
-import { BCEntity, BCField, PublicField } from '@root/bot-client-gen';
+import { BCEntity, BCField } from '@root/bot-client-gen';
+import { PublicField } from '@utils/PublicField';
 import { Field, ID, ObjectType } from 'type-graphql';
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
