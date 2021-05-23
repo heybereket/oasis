@@ -5,13 +5,15 @@ on:
     branches:
       - staging
     paths:
-      - "packages/web/**"
-      - "packages/api/**"
-      - "packages/client-gql/**"
-      - "packages/ui/**"
+      - 'packages/web/**'
+      - 'packages/api/**'
+      - 'packages/client-gql/**'
+      - 'packages/ui/**'
   pull_request:
     types: [closed]
     branches: [staging]
+  worflow_dispatch:
+
 jobs:
   deploy:
     # Run the deploy if and only if, the event was push, or a merged pull request.
