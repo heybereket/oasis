@@ -12,7 +12,7 @@ on:
   pull_request:
     types: [closed]
     branches: [staging]
-  worflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   deploy:
