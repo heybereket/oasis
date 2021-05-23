@@ -11,7 +11,6 @@ glob(join(__dirname, '/../**/*.js'), (_, allFilenames) => {
   );
 
   for (const filename of filenames) {
-    console.log(filename);
     let content = readFileSync(filename).toString();
 
     content = content

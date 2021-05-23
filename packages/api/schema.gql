@@ -4,21 +4,13 @@
 # -----------------------------------------------
 
 type Badge {
-  createdAt: String!
-  description: String!
   id: ID!
-  imagePath: String!
-  level: Float!
-  name: String!
 }
 
 type Comment {
   author: User!
-  content: String!
-  createdAt: String!
   dislikes: Int!
   id: ID!
-  lastEdited: String
   likes: Int!
   post: Post!
 }
@@ -83,10 +75,8 @@ input NewPostInput {
 }
 
 type Notification {
-  createdAt: String!
   id: ID!
   performer: User
-  read: Boolean!
   type: NotificationType!
   user: User!
 }
@@ -172,18 +162,14 @@ type PaginatedUserFromUser_followingResponse {
 type Post {
   author: User!
   comments(limit: Float!, offset: Float!): PaginatedCommentFromPost_postResponse!
-  createdAt: String!
   dislikers(limit: Float!, offset: Float!): PaginatedUserFromPost_dislikedPostsResponse!
   dislikes: Float!
   id: ID!
   isDisliked: Boolean!
   isLiked: Boolean!
-  lastEdited: String
   likers(limit: Float!, offset: Float!): PaginatedUserFromPost_likedPostsResponse!
   likes: Float!
-  message: String!
   resort: Resort
-  title: String
   topics: [String!]!
 }
 
@@ -208,34 +194,17 @@ type Query {
 }
 
 type Repo {
-  active: Boolean!
-
   """
   Time when the repo was added (the number of milliseconds passed since Unix epoch 1970-01-01T00:00:00Z)
   """
   date_added: String!
-  desc: String!
-  full_name: String!
-  github_owner: String!
   id: ID!
-  issues: Float!
-  language: String!
-  name: String!
   owner: User!
-  stars: Float!
-  url: String!
 }
 
 type Resort {
-  banner: String!
-  category: String!
-  createdAt: String!
-  description: String!
-  id: String!
   isJoined: Boolean!
-  logo: String!
   members(limit: Float!, offset: Float!): PaginatedUserFromResort_joinedResortsResponse!
-  name: String!
   owner: User!
   posts(limit: Float!, offset: Float!): PaginatedPostFromResort_resortResponse!
 }
@@ -255,30 +224,17 @@ input UpdateProfileInput {
 }
 
 type User {
-  avatar: String!
   badges: [Badge!]
-  banner: String
-  bio: String
   botOwner: User
   bots(limit: Float!, offset: Float!): PaginatedUserFromUser_botOwnerResponse!
   comments(limit: Float!, offset: Float!): PaginatedCommentFromUser_authorResponse!
-  createdAt: String!
-  discord: String
   dislikedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_dislikersResponse!
   followers(limit: Float!, offset: Float!): PaginatedUserFromUser_followingResponse!
   following(limit: Float!, offset: Float!): PaginatedUserFromUser_followersResponse!
-  github: String
-  google: String
   id: ID!
-  isBot: Boolean
   likedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_likersResponse!
-  name: String
   ownedResorts: [Resort!]
   posts(limit: Float!, offset: Float!): PaginatedPostFromUser_authorResponse!
   repos: [Repo!]
   roles: [Role!]!
-  twitter: String
-  url: String
-  username: String
-  verified: Boolean!
 }
