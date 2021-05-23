@@ -22,8 +22,8 @@ export default class Post extends BaseEntity {
   @Field(() => ID)
   id: string;
 
-  @Column()
-  @Field()
+  @Column({ nullable: true })
+  @Field({ nullable: true })
   title: string;
 
   @Column()
