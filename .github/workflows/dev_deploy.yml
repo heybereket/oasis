@@ -9,9 +9,6 @@ on:
       - 'packages/api/**'
       - 'packages/client-gql/**'
       - 'packages/ui/**'
-  pull_request:
-    types: [closed]
-    branches: [staging]
   workflow_dispatch:
 
 jobs:
