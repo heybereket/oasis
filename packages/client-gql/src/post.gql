@@ -22,7 +22,6 @@ query getPost($id: String!) {
       logo
       name
     }
-    title
     topics
   }
 }
@@ -55,7 +54,6 @@ query PaginatePosts($postsLimit: Float!, $postsOffset: Float!) {
     comments(limit: 0, offset: 0) {
       total
     }
-    title
     topics
     isLiked
     isDisliked
@@ -70,6 +68,6 @@ mutation LikeDislikePost(
   likeDislike(like: $like, dislike: $dislike, postId: $postId)
 }
 
-mutation MakePost($title: String!, $message: String!, $topics: [String!]!) {
-  createPost(data: { title: $title, message: $message, topics: $topics })
+mutation MakePost($message: String!, $topics: [String!]!) {
+  createPost(data: { message: $message, topics: $topics })
 }

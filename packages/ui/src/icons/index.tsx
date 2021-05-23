@@ -5,6 +5,7 @@ export { DownArrow } from './arrows/DownArrow';
 export { Friends } from './navbar/Friends';
 export { Home } from './navbar/Home';
 export { Like } from './posts/Like';
+export { Info } from './other/Info'
 export { Logout } from './navbar/Logout';
 export { Search } from './navbar/Search';
 export { Posts } from './navbar/Posts';

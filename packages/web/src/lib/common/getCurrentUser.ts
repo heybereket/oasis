@@ -11,13 +11,15 @@ interface LoadableCurrentUser {
   currentUserLoading: boolean;
 }
 
+let user: any;
+let setUser: any;
+
 export function setCurrentUser(currentUser: User | undefined): any {
-  let setUser: any;
   return setUser(currentUser);
 }
 
 export function useGetCurrentUser(): LoadableCurrentUser {
-  const [user, setUser] = useState<User | undefined>();
+  [user, setUser] = useState<User | undefined>();
   const query = useQuery<GetCurrentUserQuery>(GetCurrentUserDocument);
   const { data, loading } = query;
 
