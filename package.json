@@ -3,7 +3,7 @@
   "workspaces": [
     "packages/web",
     "packages/api",
-    "package/app",
+    "packages/app",
     "packages/client-gql",
     "packages/bot-client",
     "packages/ui",
