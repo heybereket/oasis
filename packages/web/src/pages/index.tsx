@@ -90,18 +90,14 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                         className="w-14 h-14 rounded-full"
                       />
                       <div>
-                        <p className="font-bold text-xl">
-                          {user?.name}
-                        </p>
+                        <p className="font-bold text-xl">{user?.name}</p>
                         <p className="font-bold text-light -mt-1">
                           @{user?.username}
                         </p>
                       </div>
                     </a>
                   </Link>
-                  <p className="mt-3">
-                    {user?.bio}
-                  </p>
+                  <p className="mt-3">{user?.bio}</p>
                 </>
               )}
             </div>

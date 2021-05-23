@@ -6,10 +6,7 @@ import {
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { About, Comments, Like, Posts } from '@oasis-sh/ui';
-import {
-  Container,
-  Button,
-} from '@oasis-sh/ui';
+import { Container, Button } from '@oasis-sh/ui';
 
 import {
   Navbar,
@@ -25,7 +22,7 @@ import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { SEO } from '@oasis-sh/ui';
 import StyledMarkdown from '@markdown/StyledMarkdown';
 import { Login, Logout } from '@lib/login';
-import Head from 'next/head'
+import Head from 'next/head';
 
 interface ProfileProps {
   initialApolloState: any;

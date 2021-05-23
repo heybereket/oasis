@@ -46,7 +46,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "yarn run compile && yarn run lint",
-    "prettify": "prettier --config .prettierrc --write server/src/*.ts src/*.ts vsc-ui/src/*.ts vsc-ui/src/*.tsx",
+    "prettify": "prettier --config .prettierrc --write src/*.ts vsc-ui/src/*.ts vsc-ui/src/*.tsx",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "node ./out/test/runTest.js",
     "vite:build": "cd vsc-ui && vite build && cd ..",
