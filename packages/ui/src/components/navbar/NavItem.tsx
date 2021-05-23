@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import React, { MouseEventHandler } from 'react';
 
 interface NavItemProps {
@@ -15,11 +14,8 @@ export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
   let onClick = props.onClick;
 
   if (props.to !== undefined && props.to !== null) {
-    const router = useRouter();
-
     onClick = (event: any) => {
       event.preventDefault();
-      (router as any).push(props.to);
     };
     href = props.to;
   }

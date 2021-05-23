@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+  overflow-x: hidden;
+}
+
+/* @font-face {
+  font-family: Hack;
+  src: url('/static/hack-regular-webfont.woff2');
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-size: 14px;
+    color: var(--color-white);
+    --color-white: #ffffff;
+    --color-gray-100: #f2f5fb;
+    --color-gray-200: #dae1f0;
+    --color-gray-300: #98a3b9;
+    --color-gray-400: #768198;
+    --color-gray-500: #535d73;
+    --color-gray-600: #333b4d;
+    --color-gray-700: #232936;
+    --color-gray-800: #141923;
+    --color-gray-900: #0c111b;
+    --color-primary: #306eea;
+    --color-primary-light: #5c91fc;
+    --color-primary-lighter: #a3c1ff;
+    --color-text-light: #bdbdbd;
+  }
+
+  img {
+    user-select: none;
+  }
+
+  html,
+  body,
+  #__next {
+    @apply antialiased;
+    background-color: var(--color-gray-900);
+  }
+
+  h1 {
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 50px;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-weight: bold;
+    font-size: 27px;
+    line-height: 40px;
+  }
+
+  h4 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+  }
+
+  .small {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer utilities {
+  .max-w-lg {
+    max-width: 1280px;
+  }
+  .animate-fill-forwards {
+    animation-fill-mode: forwards;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
