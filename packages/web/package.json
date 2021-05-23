@@ -6,7 +6,7 @@
     "dev": "tsc -p server && node server/dist/index.js",
     "build": "next build && tsc -p server",
     "start": "NODE_ENV=production node server/dist/index.js",
-    "prettify": "prettier --config .prettierrc --write server/src/*.ts server/src/lib/*.ts src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
+    "prettify": "prettier --config .prettierrc --write server/src/*.ts src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js",
     "clean": "rimraf .next/*",
     "setup:remote": "yarn clean || echo \"API_MODE='remote'\\\nNEXT_PUBLIC_BASE_URL='http://localhost:3000'\" > .env"

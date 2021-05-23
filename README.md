@@ -5,7 +5,8 @@
 
 ## Structure
 - [`packages/web`](/packages/web) - Web Application
-- [`packages/app`](/packages/app) - Capacitor/Ionic Mobile Application
+- [`packages/ui`](/packages/ui) - UI Components
+- [`packages/mobile`](/packages/mobile) - Capacitor/Ionic Mobile App
 - [`packages/api`](/packages/api) - Backend and GraphQL API
 - [`packages/client-gql`](/packages/client-gql) - Client Side GraphQL Hooks
 - [`packages/bot-client`](/packages/bot-client) - Bot Client

@@ -107,14 +107,12 @@ export const Navbar: React.FC<INavbarProps> = ({
                     ref={node}
                   >
                     <div className="flex flex-col justify-start items-start text-base text-gray-300">
-                      <DropdownItem
-                        name="Profile"
-                        icon={ProfileIcon}
-                        onClick={() => {
-                          // router.push("/user/" + user?.username);
-                          window.location.href = "/user/" + user?.username;
-                        }}
-                      />
+                      <a href={`/user/${user?.username}`}>
+                        <DropdownItem
+                          name="Profile"
+                          icon={ProfileIcon}
+                        />
+                      </a>
                     </div>
                     <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
                       <DropdownItem
