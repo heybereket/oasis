@@ -4,8 +4,8 @@ import { BaseEntity } from 'typeorm';
 import { PaginatedResponse } from './PaginationResponse';
 import { __decorate, __param, __metadata } from 'tslib';
 
-let a = 0,
-  b = 0;
+let a = 0;
+let b = 0;
 
 for (const [getTargetEntity, obj] of mapping) {
   let ResolverClass = class ResolverClass {};
@@ -19,7 +19,7 @@ for (const [getTargetEntity, obj] of mapping) {
     );
 
     const funcName = `XYZ${a++}`;
-    ResolverClass.prototype[funcName] = async function (
+    ResolverClass.prototype[funcName] = async function(
       obj: BaseEntity & { id: string },
       limit: number,
       offset: number
@@ -44,7 +44,7 @@ for (const [getTargetEntity, obj] of mapping) {
       };
     };
 
-    Object.defineProperty(ResolverClass.prototype[funcName], 'name', {
+    Reflect.defineProperty(ResolverClass.prototype[funcName], 'name', {
       value: funcName,
     });
 

@@ -21,8 +21,7 @@ export class DeletePostResolver {
     if (
       author.id !== uid &&
       !hasPermission((await getUser()).roles, Role.Moderator)
-    )
-      throw new ApolloError('You do not have permission to edit this post');
+    ) throw new ApolloError('You do not have permission to edit this post');
 
     post.remove();
 

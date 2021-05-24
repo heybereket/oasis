@@ -8,7 +8,7 @@ export class MakeAdminResolver {
   @Authorized(Role.SuperAdmin)
   async makeAdmin(
     @Arg('roles', () => [Role]) roles: Role[],
-    @Arg('user') username: String
+    @Arg('user') username: string
   ) {
     const user = await User.createQueryBuilder('user')
       .where('LOWER(user.username) = LOWER(:username)', { username })

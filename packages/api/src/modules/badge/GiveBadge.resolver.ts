@@ -12,8 +12,8 @@ export default class GiveBadgeResolver {
     args: { username: 'string', badgeName: 'string' },
   })
   async giveBadge(
-    @Arg('username') username: String,
-    @Arg('badgeName') badgeName: String
+    @Arg('username') username: string,
+    @Arg('badgeName') badgeName: string
   ) {
     const user = await User.createQueryBuilder()
       .where('username = :username', { username })

@@ -35,7 +35,7 @@ export default class UserResolver {
   }
 
   @Query(() => String)
-  async getAvailableUsername(@Arg('username') username: String) {
+  async getAvailableUsername(@Arg('username') username: string) {
     return checkUsername(username.toString());
   }
 }

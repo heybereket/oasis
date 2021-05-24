@@ -27,8 +27,7 @@ export class LikeDislikePostResolver {
 
     if (!post) throw new ApolloError('Post not found');
 
-    if ((like && dislike) || (!like && !dislike))
-      throw new ApolloError('Please select like or dislike');
+    if ((like && dislike) || (!like && !dislike)) throw new ApolloError('Please select like or dislike');
 
     const user = await getUser();
 

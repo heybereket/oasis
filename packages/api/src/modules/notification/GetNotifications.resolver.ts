@@ -11,6 +11,6 @@ export default class GetNotifications {
   async getNotifications(@Ctx() { getUser }: ContextType) {
     const user = await getUser();
 
-    return await Notification.find({ where: { user: user } });
+    return await Notification.find({ where: { user } });
   }
 }

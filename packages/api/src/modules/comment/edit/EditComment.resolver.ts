@@ -23,8 +23,7 @@ export class EditCommentResolver {
     if (
       author.id !== uid &&
       !hasPermission((await getUser()).roles, Role.Moderator)
-    )
-      throw new ApolloError('You do not have permission to edit this comment!');
+    ) throw new ApolloError('You do not have permission to edit this comment!');
 
     Object.assign(comment, data);
 
