@@ -24,7 +24,7 @@
     "@types/react-dom": "^17.0.5",
     "@types/rollup-plugin-peer-deps-external": "^2",
     "@types/tailwindcss": "^2",
-    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.24.0",
     "autoprefixer": "latest",
     "eslint": "^7.27.0",
