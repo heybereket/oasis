@@ -15,7 +15,11 @@ query getCurrentUser {
   }
 }
 
-query getUserByName($username: String!) {
+query getUserByName(
+  $username: String!
+  $postsLimit: Float!
+  $postsOffset: Float!
+) {
   getUserByName(username: $username) {
     id
     banner
@@ -42,7 +46,29 @@ query getUserByName($username: String!) {
     following(offset: 0, limit: 0) {
       total
     }
-    posts(offset: 0, limit: 0) {
+    posts(offset: $postsOffset, limit: $postsLimit) {
+      items {
+        id
+        title
+        message
+        createdAt
+        lastEdited
+        topics
+        author {
+          id
+          avatar
+          username
+          name
+        }
+        isLiked
+        isDisliked
+        likes
+        dislikes
+        comments(limit: 0, offset: 0) {
+          total
+        }
+      }
+      hasMore
       total
     }
   }
@@ -64,4 +90,34 @@ mutation deleteAccount {
 
 mutation FollowUser($userId: String!) {
   followUser(userId: $userId)
+}
+
+query getUsersPosts(
+  $username: String!
+  $postsLimit: Float!
+  $postsOffset: Float!
+) {
+  getUserByName(username: $username) {
+    posts(offset: $postsOffset, limit: $postsLimit) {
+      total
+      items {
+        id
+        title
+        message
+        createdAt
+        lastEdited
+        topics
+        author {
+          id
+          avatar
+          username
+          name
+        }
+        isLiked
+        isDisliked
+        likes
+        dislikes
+      }
+    }
+  }
 }

@@ -22,8 +22,7 @@ module.exports = {
       ssh_options: 'StrictHostKeyChecking=no',
       'pre-deploy-local': '',
       'post-deploy':
-        'export NODE_OPTIONS="--max-old-space-size=1024" && yarn && yarn build:all && yarn workspace @oasis-sh/api typeorm:run_migrations && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem-staging.config.js --env staging',
-      'pre-setup': '',
+        'yarn && yarn build:all && yarn workspace @oasis-sh/api typeorm:run_migrations && env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem-staging.config.js --env staging',
     },
   },
 };

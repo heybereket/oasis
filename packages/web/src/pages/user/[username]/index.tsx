@@ -8,6 +8,8 @@ import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
   useFollowUserMutation,
+  GetUserByNameQueryVariables,
+  useLikeDislikePostMutation,
 } from '@oasis-sh/client-gql';
 import {
   SEO,
@@ -25,18 +27,26 @@ import {
   ProfileBanner,
   FollowersInfo,
   Bio,
+  PostsTab as PostsTabItem,
 } from '@oasis-sh/ui';
+import { useState } from 'react';
 
 interface ProfileProps {
   initialApolloState: any;
   username: string;
+  vars: GetUserByNameQueryVariables;
+}
+
+enum CenterColumnTabState {
+  AboutTab,
+  PostsTab,
+  LikesTab,
+  CommentsTab,
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
   const data = useGetUserByNameQuery({
-    variables: {
-      username: props.username,
-    },
+    variables: props.vars,
   }).data?.getUserByName;
 
   const [follow] = useFollowUserMutation({
@@ -44,6 +54,43 @@ const Profile: React.FC<ProfileProps> = (props) => {
   });
 
   const { user, currentUserLoading } = useGetCurrentUser();
+
+  const [tabState, setTabState] = useState<CenterColumnTabState>(
+    CenterColumnTabState.AboutTab
+  );
+
+  const [likeDislikePost] = useLikeDislikePostMutation();
+
+  const CenterColumnComponent: React.FC = () => {
+    switch (tabState) {
+      case CenterColumnTabState.AboutTab:
+        return (
+          <Bio
+            bio={data?.bio}
+            name={data?.name}
+            username={data?.username}
+            badges={data?.badges}
+            marginTop="8"
+            markdown={(text) => {
+              return <StyledMarkdown isBio={true} text={text} />;
+            }}
+          />
+        );
+
+      case CenterColumnTabState.PostsTab:
+        return (
+          <PostsTabItem
+            markdown={(text) => (
+              <StyledMarkdown text={text} isBio={false} isPost={true} />
+            )}
+            posts={data}
+            likeDislikePost={likeDislikePost}
+          />
+        );
+      default:
+        return <div></div>;
+    }
+  };
 
   return (
     <>
@@ -74,21 +121,34 @@ const Profile: React.FC<ProfileProps> = (props) => {
               />
               <div className="flex flex-col mt-6">
                 <div className="flex">
-                  <TabItem name="About" active={true} icon={About} />
-                  <TabItem name="Posts" active={false} icon={Posts} />
-                  <TabItem name="Likes" active={false} icon={Like} />
-                  <TabItem name="Comments" active={false} icon={Comments} />
+                  <TabItem
+                    name="About"
+                    active={tabState === CenterColumnTabState.AboutTab}
+                    icon={About}
+                    onClick={() => setTabState(CenterColumnTabState.AboutTab)}
+                  />
+                  <TabItem
+                    name="Posts"
+                    active={tabState === CenterColumnTabState.PostsTab}
+                    icon={Posts}
+                    onClick={() => setTabState(CenterColumnTabState.PostsTab)}
+                  />
+                  <TabItem
+                    name="Likes"
+                    active={tabState === CenterColumnTabState.LikesTab}
+                    icon={Like}
+                    onClick={() => setTabState(CenterColumnTabState.LikesTab)}
+                  />
+                  <TabItem
+                    name="Comments"
+                    active={tabState === CenterColumnTabState.CommentsTab}
+                    icon={Comments}
+                    onClick={() =>
+                      setTabState(CenterColumnTabState.CommentsTab)
+                    }
+                  />
                 </div>
-                <Bio
-                  bio={data?.bio}
-                  name={data?.name}
-                  username={data?.username}
-                  badges={data?.badges}
-                  marginTop="8"
-                  markdown={(text) => {
-                    return <StyledMarkdown isBio={true} text={text} />;
-                  }}
-                />
+                <CenterColumnComponent />
               </div>
             </div>
             {/* Right Side */}
@@ -160,12 +220,33 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
           <div className="flex flex-col mt-8">
             <div className="flex justify-center space-x-2 sm-50:space-x-4">
-              <TabItem name="About" active={true} icon={About} />
-              <TabItem name="Posts" active={false} icon={Posts} />
-              <TabItem name="Likes" active={false} icon={Like} />
-              <TabItem name="Comments" active={false} icon={Comments} />
+              <TabItem
+                name="About"
+                active={tabState === CenterColumnTabState.AboutTab}
+                icon={About}
+                onClick={() => setTabState(CenterColumnTabState.AboutTab)}
+              />
+              <TabItem
+                name="Posts"
+                active={tabState === CenterColumnTabState.PostsTab}
+                icon={Posts}
+                onClick={() => setTabState(CenterColumnTabState.PostsTab)}
+              />
+              <TabItem
+                name="Likes"
+                active={tabState === CenterColumnTabState.LikesTab}
+                icon={Like}
+                onClick={() => setTabState(CenterColumnTabState.LikesTab)}
+              />
+              <TabItem
+                name="Comments"
+                active={tabState === CenterColumnTabState.CommentsTab}
+                icon={Comments}
+                onClick={() => setTabState(CenterColumnTabState.CommentsTab)}
+              />
             </div>
-            <Bio
+            <CenterColumnComponent />
+            {/* <Bio
               badges={data?.badges}
               bio={data?.bio}
               marginTop="4"
@@ -174,7 +255,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
               markdown={(text) => {
                 return <StyledMarkdown isBio={true} text={text} />;
               }}
-            />
+            /> */}
           </div>
         </div>
       </div>
@@ -186,13 +267,19 @@ export const getServerSideProps: GetServerSideProps = async ({
   query,
   req,
 }) => {
+  const vars: GetUserByNameQueryVariables = {
+    username: query.username as string,
+    postsLimit: 10,
+    postsOffset: 0,
+  };
   return {
     props: {
+      vars,
       username: query.username,
       initialApolloState: await ssrRequest(req, [
         {
           document: GetUserByNameDocument,
-          variables: { username: query.username },
+          variables: vars,
         },
       ]),
     },
