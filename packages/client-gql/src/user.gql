@@ -99,3 +99,37 @@ query getUsersPosts(
     }
   }
 }
+
+query getUsersLikedPosts(
+  $username: String!
+  $postsLimit: Float!
+  $postsOffset: Float!
+) {
+  getUserByName(username: $username) {
+    likedPosts(offset: $postsOffset, limit: $postsLimit) {
+      items {
+        id
+        title
+        message
+        createdAt
+        lastEdited
+        topics
+        author {
+          id
+          avatar
+          username
+          name
+        }
+        isLiked
+        isDisliked
+        likes
+        dislikes
+        comments(limit: 0, offset: 0) {
+          total
+        }
+      }
+      hasMore
+      total
+    }
+  }
+}

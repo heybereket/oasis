@@ -10,6 +10,7 @@ import {
   GetUserByNameQueryVariables,
   useLikeDislikePostMutation,
   useGetUsersPostsLazyQuery,
+  useGetUsersLikedPostsLazyQuery,
 } from '@oasis-sh/client-gql';
 import {
   About,
@@ -69,6 +70,14 @@ const Profile: React.FC<ProfileProps> = (props) => {
     },
   });
 
+  const [getLikedPosts, likedPostsData] = useGetUsersLikedPostsLazyQuery({
+    variables: {
+      postsLimit: 10,
+      postsOffset: 0,
+      username: props.username,
+    },
+  });
+
   const CenterColumnComponent: React.FC = () => {
     switch (tabState) {
       case CenterColumnTabState.AboutTab:
@@ -87,17 +96,33 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
       case CenterColumnTabState.PostsTab:
         if (!postsData.called) {
-          console.log('Fetching data');
           getPosts();
           return <div></div>;
         } else {
-          console.log('Data Exists');
           return (
             <PostsTabItem
               markdown={(text: any) => (
                 <StyledMarkdown text={text} isBio={false} isPost={true} />
               )}
               posts={postsData.data?.userOnlyPosts}
+              likedPosts={null}
+              likeDislikePost={likeDislikePost}
+            />
+          );
+        }
+
+      case CenterColumnTabState.LikesTab:
+        if (!likedPostsData.called) {
+          getLikedPosts();
+          return <div />;
+        } else {
+          return (
+            <PostsTabItem
+              markdown={(text: any) => (
+                <StyledMarkdown text={text} isBio={false} isPost={true} />
+              )}
+              posts={null}
+              likedPosts={likedPostsData.data?.getUserByName}
               likeDislikePost={likeDislikePost}
             />
           );

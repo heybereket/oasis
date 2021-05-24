@@ -1,5 +1,6 @@
 // import StyledMarkdown from '../../../../web/src/components/markdown/StyledMarkdown';
 import {
+  GetUsersLikedPostsQuery,
   GetUsersPostsQuery,
   Post as TPost,
   useLikeDislikePostMutation,
@@ -7,23 +8,31 @@ import {
 import React from 'react';
 import Post from '../post/Post';
 
-type PostType = GetUsersPostsQuery['userOnlyPosts'];
+type UsersPostType = GetUsersPostsQuery['userOnlyPosts'];
+type UsersLikedPostType = GetUsersLikedPostsQuery['getUserByName'];
 
 type Props = {
-  posts: PostType | undefined | null;
+  posts: UsersPostType | undefined | null;
+  likedPosts: UsersLikedPostType | undefined | null;
   likeDislikePost: ReturnType<typeof useLikeDislikePostMutation>[0];
   markdown: (text: string) => JSX.Element;
 };
 
 export const Posts: React.FC<Props> = ({
   posts,
+  likedPosts,
   markdown,
   likeDislikePost,
 }) => {
   return (
     <>
       <div className={`mt-8 bg-gray-800 rounded-xl py-6 px-6`}>
-        {posts?.posts.items.map((post, index) => (
+        {(posts
+          ? posts.posts
+          : likedPosts
+          ? likedPosts.likedPosts
+          : null
+        )?.items.map((post, index) => (
           <div key={index} className="mb-6">
             <Post
               post={post as TPost}
