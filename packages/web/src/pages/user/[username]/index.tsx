@@ -12,7 +12,6 @@ import {
   useLikeDislikePostMutation,
 } from '@oasis-sh/client-gql';
 import {
-  SEO,
   About,
   Comments,
   Like,
@@ -29,6 +28,7 @@ import {
   Bio,
   PostsTab as PostsTabItem,
 } from '@oasis-sh/ui';
+import { SEO } from '@utils/SEO';
 import { useState } from 'react';
 
 interface ProfileProps {
@@ -80,7 +80,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
       case CenterColumnTabState.PostsTab:
         return (
           <PostsTabItem
-            markdown={(text) => (
+            markdown={(text: any) => (
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}
             posts={data}
