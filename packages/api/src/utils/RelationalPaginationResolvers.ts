@@ -44,7 +44,7 @@ for (const [getTargetEntity, obj] of mapping) {
       };
     };
 
-    Object.defineProperty(ResolverClass.prototype[funcName], 'name', {
+    Reflect.defineProperty(ResolverClass.prototype[funcName], 'name', {
       value: funcName,
     });
 

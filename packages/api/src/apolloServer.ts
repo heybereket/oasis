@@ -3,7 +3,6 @@ import type { Request } from 'express';
 import {
   fieldExtensionsEstimator,
   simpleEstimator,
-  // @ts-ignore
   getComplexity,
 } from 'graphql-query-complexity';
 import User from '@entities/User';
