@@ -3,6 +3,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "build:all": "yarn build api && yarn build client-gql && yarn build ui && yarn build web",
     "commit": "git add . && cz && git push",
