@@ -3,7 +3,6 @@ import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import StyledMarkdown from '@markdown/StyledMarkdown';
 import { login, logout } from '@lib/login';
-import Head from 'next/head';
 import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
