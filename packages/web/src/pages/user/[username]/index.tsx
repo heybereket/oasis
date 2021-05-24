@@ -94,13 +94,11 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
   return (
     <>
-      <Head>
-        <SEO
-          title={data?.name ? data?.name : data?.username + ' — Oasis'}
-          metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
-          metaImg={data?.avatar}
-        />
-      </Head>
+      <SEO
+        title={data?.name ? data?.name : data?.username + ' — Oasis'}
+        metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
+        metaImg={data?.avatar}
+      />
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
