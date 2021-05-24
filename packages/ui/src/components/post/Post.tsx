@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Comments, SmallUpArrow, SmallDownArrow } from "../../index";
+import React, { useState } from 'react';
+import { Comments, SmallUpArrow, SmallDownArrow } from '../../index';
 // import Link from "next/link";
-import { Post as TPost } from "@oasis-sh/client-gql";
-import { postDate } from "../../lib/postDate";
+import { Post as TPost } from '@oasis-sh/client-gql';
+import { postDate } from '../../lib/postDate';
 // import { StyledMarkdown } from "../../../../web/src/components/markdown/styledMarkdown";
 
 interface Props {
@@ -10,12 +10,13 @@ interface Props {
   likePost?: () => any;
   dislikePost?: () => any;
   markdown: (text: string) => JSX.Element;
+  bgColorOveride?: string;
 }
 
 enum LikeDislikeState {
-  "LIKED",
-  "NONE",
-  "DISLIKED",
+  'LIKED',
+  'NONE',
+  'DISLIKED',
 }
 
 export const Post: React.FC<Props> = ({
@@ -23,6 +24,7 @@ export const Post: React.FC<Props> = ({
   likePost,
   dislikePost,
   markdown,
+  bgColorOveride,
 }) => {
   const date = postDate(postData.createdAt);
 
@@ -38,7 +40,11 @@ export const Post: React.FC<Props> = ({
   );
 
   return (
-    <div className="shadow-lg max-w-580 w-full bg-gray-800 px-5 pt-2 pb-4 rounded-2xl flex flex-col justify-between">
+    <div
+      className={`shadow-lg w-full ${
+        bgColorOveride ?? 'bg-gray-800'
+      } px-5 pt-2 pb-4 rounded-2xl flex flex-col justify-between`}
+    >
       <div>
         <header className="flex items-center space-x-4">
           <a href={`/user/${postData.author.username}`}>
@@ -68,6 +74,7 @@ export const Post: React.FC<Props> = ({
                     : () => {
                         return;
                       };
+                  console.log(likeState);
                   if (likeState === LikeDislikeState.LIKED) {
                     setLikeState(LikeDislikeState.NONE);
                     setLikes(likes - 1);
@@ -79,9 +86,10 @@ export const Post: React.FC<Props> = ({
                     setLikeState(LikeDislikeState.LIKED);
                     setLikes(likes + 1);
                   }
+                  console.log(likeState);
                 }}
                 className={`cursor-pointer ${
-                  likeState === LikeDislikeState.LIKED ? "text-blue-400" : ""
+                  likeState === LikeDislikeState.LIKED ? 'text-blue-400' : ''
                 }`}
               />
               <p className="font-bold bg-gray-700 px-2 rounded-full">
@@ -107,14 +115,14 @@ export const Post: React.FC<Props> = ({
                   }
                 }}
                 className={`cursor-pointer ${
-                  likeState === LikeDislikeState.DISLIKED ? "text-blue-400" : ""
+                  likeState === LikeDislikeState.DISLIKED ? 'text-blue-400' : ''
                 }`}
               />
             </div>
           </div>
         </header>
         <p className="font-medium mt-2 mb-6 text-xl break-words">
-          {markdown(postData?.message ?? "")}
+          {markdown(postData?.message ?? '')}
           {/* <StyledMarkdown text={postData.message} isPost={true} /> */}
         </p>
       </div>
