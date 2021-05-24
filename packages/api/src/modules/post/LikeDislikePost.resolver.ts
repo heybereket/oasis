@@ -12,10 +12,12 @@ import {
 import { ContextType } from '@root/apolloServer';
 import Post from '@entities/Post';
 import User from '@entities/User';
+import { BCQuery } from '@root/bot-client-gen';
 
 @Resolver(() => Post)
 export class LikeDislikePostResolver {
   @Mutation(() => Boolean)
+  @BCQuery('post', 'boolean')
   @Authorized()
   async likeDislike(
     @Arg('postId') postId: string,

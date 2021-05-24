@@ -4,10 +4,12 @@ import { ContextType } from '@root/apolloServer';
 import Post from '@entities/Post';
 import { hasPermission } from '@utils/common/hasPermission';
 import { Role } from '@modules/user/Roles';
+import { BCQuery } from '@root/bot-client-gen';
 
 @Resolver()
 export class DeletePostResolver {
   @Mutation(() => Boolean)
+  @BCQuery('post', 'boolean')
   async deletePost(
     @Arg('postId') postId: string,
     @Ctx() { uid, getUser }: ContextType

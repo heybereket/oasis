@@ -5,10 +5,12 @@ import Comment from '@entities/Comment';
 import { hasPermission } from '@utils/common/hasPermission';
 import { Role } from '../../user/Roles';
 import EditCommentInput from './EditCommentInput';
+import { BCQuery } from '@root/bot-client-gen';
 
 @Resolver()
 export class EditCommentResolver {
   @Mutation(() => Boolean)
+  @BCQuery('comment', 'boolean')
   async editComment(
     @Arg('commentId') commentId: string,
     @Arg('data') data: EditCommentInput,

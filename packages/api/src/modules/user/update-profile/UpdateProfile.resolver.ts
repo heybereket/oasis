@@ -4,11 +4,13 @@ import { checkUsername } from '@utils/auth/checkUsername';
 import UpdateProfileInput from './UpdateProfileInput';
 import { ContextType } from '@root/apolloServer';
 import { ApolloError } from 'apollo-server-errors';
+import { BCQuery } from '@root/bot-client-gen';
 
 @Resolver()
 export default class UserResolver {
   @Mutation(() => Boolean)
   @Authorized()
+  @BCQuery('users', 'boolean')
   async updateProfile(
     @Arg('data') data: UpdateProfileInput,
     @Ctx() { getUser }: ContextType

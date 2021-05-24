@@ -3,11 +3,13 @@ import { ContextType } from '@root/apolloServer';
 import Post from '@entities/Post';
 import NewPostInput from './NewPostInput';
 import { customAlphabet } from 'nanoid';
+import { BCQuery } from '@root/bot-client-gen';
 
 @Resolver()
 export class NewPostResolver {
   @Mutation(() => Boolean)
   @Authorized()
+  @BCQuery('post', 'boolean')
   async createPost(
     @Arg('data') data: NewPostInput,
     @Ctx() { getUser }: ContextType

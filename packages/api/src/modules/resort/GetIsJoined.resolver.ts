@@ -1,6 +1,7 @@
 import Resort from '@entities/Resort';
 import User from '@entities/User';
 import { ContextType } from '@root/apolloServer';
+import { BCQuery } from '@root/bot-client-gen';
 import {
   Arg,
   Authorized,
@@ -14,6 +15,7 @@ import {
 @Resolver(() => Resort)
 export class PaginateResortMembersResolver {
   @FieldResolver(() => Boolean)
+  @BCQuery('resort', 'boolean')
   async isJoined(
     @Root() resort: Resort,
     @Ctx() { getUser, hasAuth }: ContextType

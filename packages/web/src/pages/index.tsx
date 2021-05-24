@@ -19,6 +19,7 @@ import {
   useLikeDislikePostMutation,
   usePaginatePostsQuery,
   useMakePostMutation,
+  usePaginatePostsLazyQuery,
 } from '@oasis-sh/client-gql';
 import StyledMarkdown from 'src/markdown/StyledMarkdown';
 import { login, logout } from '@lib/login';
@@ -28,36 +29,23 @@ interface IndexPageProps {
 }
 
 const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
-  const { data } = usePaginatePostsQuery({
-    variables: vars,
-  });
-
+  const [getPosts, fetchedPosts] = usePaginatePostsLazyQuery();
   const [createPost] = useMakePostMutation();
-
+  const posts = fetchedPosts.data?.paginatePosts;
   const { user, currentUserLoading } = useGetCurrentUser();
-  const posts = data?.paginatePosts;
 
   const [likeDislikePost] = useLikeDislikePostMutation();
 
   const [makePost] = useMakePostMutation();
 
   const [fetch, setFetch] = useInfiniteScroll();
-
   useEffect(() => {
-    console.log(fetch);
     const offset: PaginatePostsQueryVariables = {
       postsLimit: 25,
-      postsOffset: 50,
+      postsOffset: 0,
     };
-    if (fetch) {
-      const fetchedData = usePaginatePostsQuery({
-        variables: offset,
-      });
-      console.log(fetchedData);
-    }
+    getPosts({ variables: offset });
   }, [fetch]);
-
-  console.log(posts);
   if (!posts) {
     return null;
   }

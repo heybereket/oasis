@@ -7,6 +7,7 @@ import Resort from '@entities/Resort';
 export class CreateResortResolver {
   @Mutation(() => Boolean)
   @Authorized()
+  @BCQuery('resort', 'boolean')
   async createResort(
     @Arg('data') data: CreateResortInput,
     @Ctx() { getUser }: ContextType

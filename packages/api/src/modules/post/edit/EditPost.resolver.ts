@@ -5,10 +5,12 @@ import Post from '@entities/Post';
 import { hasPermission } from '@utils/common/hasPermission';
 import { Role } from '@modules/user/Roles';
 import EditPostInput from './EditPostInput';
+import { BCQuery } from '@root/bot-client-gen';
 
 @Resolver()
 export class EditPostResolver {
   @Mutation(() => Boolean)
+  @BCQuery('post', 'boolean')
   async editPost(
     @Arg('postId') postId: string,
     @Arg('data') data: EditPostInput,

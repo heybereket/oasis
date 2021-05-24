@@ -3,12 +3,14 @@ import { ContextType } from '@root/apolloServer';
 import Notification from '@entities/Notification';
 import { ApolloError } from 'apollo-server-express';
 import { NoBot } from '@utils/auth/NoBot';
+import { BCQuery } from '@root/bot-client-gen';
 
 @Resolver()
 export default class MarkNotificationAsRead {
   @Authorized()
   @NoBot()
   @Mutation(() => Boolean)
+  @BCQuery('notification', 'boolean')
   async markNotificationAsRead(
     @Ctx() { getUser }: ContextType,
     @Arg('notificationId') notificationId: string

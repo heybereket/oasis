@@ -13,6 +13,7 @@ import {
   Mutation,
   Resolver,
 } from 'type-graphql';
+import { BCQuery } from '@root/bot-client-gen';
 
 @InputType()
 class CreateBotInput {
@@ -28,6 +29,7 @@ export class CreateBotResolver {
   @Mutation(() => String)
   @Authorized()
   @NoBot()
+  @BCQuery('bot', 'string')
   async createBot(
     @Arg('data') data: CreateBotInput,
     @Ctx() { getUser }: ContextType

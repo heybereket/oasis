@@ -4,11 +4,13 @@ import { ContextType } from '@root/apolloServer';
 import Comment from '@entities/Comment';
 import Post from '@entities/Post';
 import NewCommentInput from './NewCommentInput';
+import { BCQuery } from '@root/bot-client-gen';
 
 @Resolver()
 export class NewCommentResolver {
   @Mutation(() => Boolean)
   @Authorized()
+  @BCQuery('comment', 'boolean')
   async createComment(
     @Arg('postId') postId: string,
     @Arg('data') data: NewCommentInput,

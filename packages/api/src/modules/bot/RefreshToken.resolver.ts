@@ -14,12 +14,14 @@ import {
 } from 'type-graphql';
 import { generatedNumber } from '@utils/index';
 import { sign } from 'jsonwebtoken';
+import { BCQuery } from '@root/bot-client-gen';
 
 @Resolver()
 export class RefreshBotTokenResolver {
   @Mutation(() => String)
   @Authorized()
   @NoBot()
+  @BCQuery('bot', 'string')
   async refreshBotToken(
     @Arg('botId') botId: string,
     @Ctx() { getUser }: ContextType
