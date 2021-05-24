@@ -27,12 +27,12 @@ export default class Comment extends BaseEntity {
   @Column()
   @Field(() => Int)
   @BCField()
-  likes = 0;
+  likes: number = 0;
 
   @Column()
   @Field(() => Int)
   @BCField()
-  dislikes = 0;
+  dislikes: number = 0;
 
   @Column()
   @PublicField()
