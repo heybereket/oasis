@@ -94,7 +94,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
   return (
     <>
       <SEO
-        title={data?.name ? data?.name : data?.username + ' — Oasis'}
+        title={data?.name ? data?.name : data?.username}
         metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
         metaImg={data?.avatar}
       />
