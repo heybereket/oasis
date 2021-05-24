@@ -7,7 +7,7 @@ import {
 import React from 'react';
 import Post from '../post/Post';
 
-type PostType = GetUsersPostsQuery['getUserByName'];
+type PostType = GetUsersPostsQuery['userOnlyPosts'];
 
 type Props = {
   posts: PostType | undefined | null;
