@@ -19,7 +19,7 @@ for (const [getTargetEntity, obj] of mapping) {
     );
 
     const funcName = `XYZ${a++}`;
-    ResolverClass.prototype[funcName] = async function (
+    ResolverClass.prototype[funcName] = async function(
       obj: BaseEntity & { id: string },
       limit: number,
       offset: number
@@ -44,7 +44,7 @@ for (const [getTargetEntity, obj] of mapping) {
       };
     };
 
-    Reflect.defineProperty(ResolverClass.prototype[funcName], 'name', {
+    Object.defineProperty(ResolverClass.prototype[funcName], 'name', {
       value: funcName,
     });
 
