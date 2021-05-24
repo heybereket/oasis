@@ -9,7 +9,7 @@ const typeMap = new Map<Function, string>([
 export const BCEntity =
   (key: string): ClassDecorator =>
   (target) => {
-    keyMap[target.name] = key;
+    keyMap[key] = target.name;
   };
 
 export const BCField =

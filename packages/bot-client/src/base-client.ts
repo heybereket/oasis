@@ -1,11 +1,13 @@
 import { EventEmitter } from 'ee-ts';
 import fetch from 'node-fetch';
 import { API_BASE_URL } from './constants';
+import { Selections } from './generated/types';
 
 export type Events = {};
 
 export type Options = {
   token: string;
+  selections?: Selections;
 };
 
 export default class BaseClient extends EventEmitter<Events> {
@@ -44,7 +46,9 @@ export default class BaseClient extends EventEmitter<Events> {
     return extractor(data);
   }
 
-  getSelection(_: string) {
-    return [];
+  getSelections(key: string) {
+    const sels = this.options.selections?.[key] || [];
+
+    return sels;
   }
 }

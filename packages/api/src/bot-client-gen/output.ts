@@ -9,6 +9,7 @@ import { writeFileSync } from 'fs';
     allFields,
     allResolvers,
     overrides,
+    keyMap,
   }: {
     allFields: { [key: string]: string };
     keyMap: { [key: string]: string };
@@ -23,34 +24,60 @@ import { writeFileSync } from 'fs';
     overrides: any[];
   } = require('./index');
 
-  let output = 'import BaseClient from "./base-client";\n';
-  output += 'import PaginationResponseType from "./pagination-response";\n\n';
+  let typeOutput = '';
 
-  output += overrides.join('\n\n');
+  let output = 'import BaseClient from "../base-client";\n';
+  output += `import { ${Object.values(keyMap).join(
+    ', '
+  )} } from "./types";\n\n`;
+  typeOutput +=
+    'import PaginationResponseType from "../pagination-response";\n\n';
+
+  typeOutput += overrides.join('\n');
 
   for (const prop in allFields) {
     const val = allFields[prop];
 
-    output += `interface ${prop} {${val}\n}\n\n`;
+    typeOutput += `export interface ${prop} {${val}\n}\n\n`;
   }
 
   output += 'export class Client extends BaseClient {\n';
 
+  typeOutput += 'type EntityKey = ';
   for (const key in allResolvers) {
-    output += `// ${key.toUpperCase()}\n`;
+    output += `  // ${key.toUpperCase()}\n`;
 
-    output += `${key} = {\n`;
-    for (const { name } of allResolvers[key]) {
-      const query = `{ ${name} { \${this.getSelection("${name}")} } }`;
+    typeOutput += `"${key}" | `;
 
-      output += ` ${name}: () => {\n`;
-      output += `   return this.fetchGraphQL(\`${query}\`, data => data["${name}"])\n`;
-      output += ` },\n`;
+    output += `  ${key} = {\n`;
+    for (const { name, args } of allResolvers[key]) {
+      const query = `{ ${name} { \${selection.join(",")} } }`;
+
+      output += `    ${name}: (${args}) => {\n`;
+      output += `      const selection = this.options.selections?.${key} || [];\n`;
+      output += `      return this.fetchGraphQL<Pick<${
+        keyMap[key]
+      }, typeof selection[0]>>(\`${query}\`, data => data["${name}"], { ${args
+        .split(', ')
+        .map((s) => s.split(':')[0])
+        .join(', ')} })\n`;
+      output += `    },\n`;
     }
-    output += '}\n';
+    output += '  }\n';
   }
 
   output += '}\n';
+  typeOutput = typeOutput.slice(0, -3) + '\n\n';
+  typeOutput += 'interface EntityKeyMap {\n';
+  typeOutput += Object.entries(keyMap)
+    .map(([k, v]) => `  ${k}?: ${v};\n`)
+    .join('');
+  typeOutput += '}\n\n';
+  typeOutput += `export type Selections = { [P in EntityKey]?: (keyof EntityKeyMap[P])[] };`;
 
-  writeFileSync(joinRoot('../../bot-client/src/generated.ts'), output);
+  writeFileSync(joinRoot('../../bot-client/src/generated/client.ts'), output);
+  writeFileSync(
+    joinRoot('../../bot-client/src/generated/types.ts'),
+    typeOutput
+  );
 })();
