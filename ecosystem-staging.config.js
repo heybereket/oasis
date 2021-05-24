@@ -20,13 +20,13 @@ module.exports = {
       repo: 'https://github.com/oasis-sh/oasis.git',
       path: '/opt/oasis/staging',
       ssh_options: 'StrictHostKeyChecking=no',
-      'pre-setup': 'export NODE_OPTIONS="--max-old-space-size=1024"',
-      'post-setup':
-        'yarn && yarn build:all && yarn workspace @oasis-sh/api typeorm:run_migrations',
+      'pre-setup': '',
+      'post-setup': '',
+      'pre-deploy-local':
+        'export NODE_OPTIONS="--max-old-space-size=1024" && yarn && yarn build:all && yarn workspace @oasis-sh/api typeorm:run_migrations',
       'post-deploy':
         'env PM2_HOME=/opt/oasis/.pm2 pm2 reload ecosystem-staging.config.js --env staging',
       'pre-setup': '',
-      'pre-deploy-local': '',
     },
   },
 };
