@@ -17,7 +17,7 @@
     "db:setup": "node dist/test-utils/setup.js",
     "test": "yarn db:setup && jest",
     "clean": "rimraf dist",
-    "prettify": "prettier --config .prettierrc --write server/src/*.ts src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
+    "prettify": "prettier --config .prettierrc --write src/{.,entities,modules,lib,utils,bot-client-gen}/*.ts",
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
   },
   "keywords": [],
