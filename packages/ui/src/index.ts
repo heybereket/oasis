@@ -59,3 +59,4 @@ export { RightArrow } from './icons/arrows/RightArrow';
 export { Profile } from './icons/navbar/Profile';
 export { SmallUpArrow } from './icons/arrows/SmallUpArrow';
 export { SmallDownArrow } from './icons/arrows/SmallDownArrow';
+export { useInfiniteScroll } from './utils/hooks/useInfiniteScroll';

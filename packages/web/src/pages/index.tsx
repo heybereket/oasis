@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
@@ -10,7 +10,8 @@ import {
   TopicBadge,
   Post,
   FollowUser,
-  CreatePostInput
+  CreatePostInput,
+  useInfiniteScroll,
 } from '@oasis-sh/ui';
 import {
   PaginatePostsDocument,
@@ -40,10 +41,26 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [makePost] = useMakePostMutation();
 
+  const [fetch, setFetch] = useInfiniteScroll();
+
+  useEffect(() => {
+    console.log(fetch);
+    const offset: PaginatePostsQueryVariables = {
+      postsLimit: 25,
+      postsOffset: 50,
+    };
+    if (fetch) {
+      const fetchedData = usePaginatePostsQuery({
+        variables: offset,
+      });
+      console.log(fetchedData);
+    }
+  }, [fetch]);
+
+  console.log(posts);
   if (!posts) {
     return null;
   }
-
   return (
     <>
       <Navbar
@@ -99,13 +116,15 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             </Sidebar>
           </div>
           <div className="flex flex-col flex-1 w-full space-y-12 pb-12 mt-[33px]">
-            { user &&
+            {user && (
               <CreatePostInput
                 avatarUrl={user.avatar}
-                onSubmit={(value: string) => createPost({ variables: { message: value, topics: [] } })}
+                onSubmit={(value: string) =>
+                  createPost({ variables: { message: value, topics: [] } })
+                }
               />
-            }
-            {[...posts].reverse().map((post: any, index: number) => (
+            )}
+            {[...posts].map((post: any, index: number) => (
               <Post
                 post={post}
                 key={index}
@@ -163,9 +182,11 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
+  req,
+}) => {
   const vars: PaginatePostsQueryVariables = {
-    postsLimit: 25,
+    postsLimit: 50,
     postsOffset: 0,
   };
   return {

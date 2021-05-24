@@ -7,9 +7,9 @@ module.exports = {
     '../ui/src/**/*.tsx',
   ],
   theme: {
-     flexShrink: {
-        '0': 0,
-      },
+    flexShrink: {
+      0: 0,
+    },
     fontFamily: {
       sans: [
         'Inter',
