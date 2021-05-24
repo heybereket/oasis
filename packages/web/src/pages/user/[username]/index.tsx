@@ -80,7 +80,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
       case CenterColumnTabState.PostsTab:
         return (
           <PostsTabItem
-            markdown={(text) => <StyledMarkdown text={text} isBio={true} />}
+            markdown={(text) => (
+              <StyledMarkdown text={text} isBio={false} isPost={true} />
+            )}
             posts={data}
             likeDislikePost={likeDislikePost}
           />
@@ -218,12 +220,33 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
           <div className="flex flex-col mt-8">
             <div className="flex justify-center space-x-2 sm-50:space-x-4">
-              <TabItem name="About" active={true} icon={About} />
-              <TabItem name="Posts" active={false} icon={Posts} />
-              <TabItem name="Likes" active={false} icon={Like} />
-              <TabItem name="Comments" active={false} icon={Comments} />
+              <TabItem
+                name="About"
+                active={tabState === CenterColumnTabState.AboutTab}
+                icon={About}
+                onClick={() => setTabState(CenterColumnTabState.AboutTab)}
+              />
+              <TabItem
+                name="Posts"
+                active={tabState === CenterColumnTabState.PostsTab}
+                icon={Posts}
+                onClick={() => setTabState(CenterColumnTabState.PostsTab)}
+              />
+              <TabItem
+                name="Likes"
+                active={tabState === CenterColumnTabState.LikesTab}
+                icon={Like}
+                onClick={() => setTabState(CenterColumnTabState.LikesTab)}
+              />
+              <TabItem
+                name="Comments"
+                active={tabState === CenterColumnTabState.CommentsTab}
+                icon={Comments}
+                onClick={() => setTabState(CenterColumnTabState.CommentsTab)}
+              />
             </div>
-            <Bio
+            <CenterColumnComponent />
+            {/* <Bio
               badges={data?.badges}
               bio={data?.bio}
               marginTop="4"
@@ -232,7 +255,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
               markdown={(text) => {
                 return <StyledMarkdown isBio={true} text={text} />;
               }}
-            />
+            /> */}
           </div>
         </div>
       </div>
