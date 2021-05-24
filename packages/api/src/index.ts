@@ -62,7 +62,7 @@ export const createApp = async () => {
   app.use('/api/auth', authRouter(passport));
 
   /* Connection API */
-  app.use('/api/connection', connectionRouter(passport));
+  app.use('/api/connection', connectionRouter());
 
   /* Apollo GraphQL Server */
   apolloServer.applyMiddleware({ app });

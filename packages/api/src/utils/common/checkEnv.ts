@@ -12,6 +12,7 @@ export default async function checkEnv(): Promise<boolean> {
     ...checkTwitterOAuthEnvs('TWITTER'), // Twitter
     ...checkOAuthEnvs('DISCORD'), // Discord
     ...checkOAuthEnvs('GOOGLE'), // Google
+    ...checkOAuthEnvs('SPOTIFY'), // Google
 
     /* Extra props */
     checkRequiredEnv('OASIS_API_SESSION_SECRET', true),

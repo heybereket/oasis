@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { PassportStatic } from 'passport';
 import Spotify from './methods/spotify';
 
-export default (passport: PassportStatic): Router => {
+export default (): Router => {
   const connectionRouter = Router();
 
   // OAuth Providers
