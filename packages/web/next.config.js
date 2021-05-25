@@ -21,6 +21,11 @@ module.exports = {
         destination: '/resort/:resort',
         permanent: true,
       },
+      {
+        source: '/oss/github',
+        destination: 'https://github.com/oasis-sh/oasis',
+        permanent: false,
+      },
     ];
   },
   webpack: (config, { isServer }) => {

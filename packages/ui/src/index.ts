@@ -14,8 +14,8 @@ export { FriendActivity } from './components/home/FriendActivity';
 export { Sidebar } from './components/home/Sidebar';
 export { CreatePostInput } from './components/home/CreatePostInput';
 
-// Markdown
-// export { StyledMarkdown } from "../../web/src/components/markdown/StyledMarkdown";
+// OSS
+export { Contributors } from "./components/oss/Contributors";
 
 // Navbar
 export { DropdownItem } from './components/navbar/DropdownItem';
