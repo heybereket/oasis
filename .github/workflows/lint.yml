@@ -5,14 +5,12 @@ on:
     branches:
       - staging
     paths:
-      - "packages/web/**"
-      - "packages/api/**"
+      - "packages/*"
   pull_request:
     branches:
       - staging
     paths:
-      - "packages/web/**"
-      - "packages/api/**"
+      - "packages/*"
 jobs:
   test:
     name: lint
