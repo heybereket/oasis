@@ -1,7 +1,8 @@
 import React from 'react';
+import Head from 'next/head';
 
 interface SEOProps {
-  title: string;
+  title: any;
   description?: string;
   metaTitle?: string;
   metaDesc?: string;
@@ -16,7 +17,7 @@ export const SEO: React.FC<SEOProps> = ({
   metaTitle,
 }) => {
   return (
-      <>
+      <Head>
         <title>{title} - Oasis</title>
         <meta name="description" content={description} />
         {metaTitle ? (
@@ -26,6 +27,7 @@ export const SEO: React.FC<SEOProps> = ({
         )}
         <meta name="og:description" content={metaDesc} />
         <meta name="og:image" content={metaImg} />
-      </>
+        <meta name="theme-color" content="#306EEA" />
+      </Head>
   );
 };

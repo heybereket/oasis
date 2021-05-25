@@ -41,5 +41,5 @@ export default class Notification extends BaseEntity {
 
   @PublicField()
   @Column()
-  read: boolean = false;
+  read: boolean;
 }

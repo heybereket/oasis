@@ -15,8 +15,7 @@ export default function VSCodeAuth() {
     try {
       const authId = req.headers.authorization;
 
-      if (!authId)
-        throw new Error('No `authId` field was passed in the JSON body');
+      if (!authId) throw new Error('No `authId` field was passed in the JSON body');
 
       redisClient.setex(`aid:${authId}`, 30, uid, (err, s) => {
         console.log({ err, s });

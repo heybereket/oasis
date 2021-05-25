@@ -115,7 +115,7 @@ export default class User extends BaseEntity {
   @BCField({ type: 'Resort[]' })
   ownedResorts: Promise<Resort[]>;
 
-  //@Field(() => [Comment], { nullable: true, complexity: 5 })
+  // @Field(() => [Comment], { nullable: true, complexity: 5 })
   @RelationalPagination(() => User, () => Comment, 'author')
   @OneToMany(() => Comment, (comment) => comment.author)
   @BCField({ type: 'PaginationResponseType<Comment>' })

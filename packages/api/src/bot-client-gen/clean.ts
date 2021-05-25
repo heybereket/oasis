@@ -17,7 +17,7 @@ glob(join(__dirname, '/../**/*.js'), (_, allFilenames) => {
       .replace(/\/\/ @bcg start(.*?)\/\/ @bcg end/gs, '')
       .replace(/bot_client_gen_1\.(.*?)\((.*?)\)(,?)(;?)/gs, '')
       .replace(
-        /const bot_client_gen_1 = require\("@root\/bot-client-gen"\)\;/gs,
+        /const bot_client_gen_1 = require\("@root\/bot-client-gen"\);/gs,
         ''
       );
 

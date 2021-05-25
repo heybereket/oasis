@@ -2,25 +2,6 @@ import { chalkLog } from '@lib/chalkLog';
 
 type EnvValidationFn = (logError: boolean) => Promise<boolean>;
 
-export default async function checkEnv(): Promise<boolean> {
-  for (let requiredEnvChecker of [
-    /* Redis and dependencies */
-    checkRequiredEnv('OASIS_API_REDIS_URL', true),
-
-    /* OAuth Credentials */
-    ...checkOAuthEnvs('GITHUB'), // GitHub
-    ...checkTwitterOAuthEnvs('TWITTER'), // Twitter
-    ...checkOAuthEnvs('DISCORD'), // Discord
-    ...checkOAuthEnvs('GOOGLE'), // Google
-    ...checkOAuthEnvs('SPOTIFY'), // Google
-
-    /* Extra props */
-    checkRequiredEnv('OASIS_API_SESSION_SECRET', true),
-  ])
-    if (!(await requiredEnvChecker(true))) return false;
-  return true;
-}
-
 const checkRequiredEnv = (
   envProp: string,
   required: boolean,
@@ -34,18 +15,19 @@ const checkRequiredEnv = (
 
     // If the property is not set, we can immediately error out.
     if (!isValid && required) {
-      if (logError)
+      if (logError) {
         chalkLog('error', `${envProp} is undefined in packages/api/.env`);
-
+      }
       return false;
     } else if (!isValid && !required) {
-      if (logError)
+      if (logError) {
         chalkLog('warn', `${envProp} is undefined in packages/api/.env`);
+      }
     }
 
     // If the additionalValidation property is set, we'll call that to validate the env property.
     if (additionalValidation) {
-      let additionalValidationError = await additionalValidation();
+      const additionalValidationError = await additionalValidation();
       // The additionalValidation function returns a string (i.e. an error message) if there's an issue,
       // or a 'nullish' (i.e. undefined) value if not.
       // Hence if there is error, we will print it and return false to indicate the env check failed.
@@ -77,3 +59,21 @@ const checkTwitterOAuthEnvs = (serviceName: string) => {
     checkRequiredEnv(`OASIS_API_${serviceName}_CALLBACK_URL`, false),
   ];
 };
+
+export default async function checkEnv(): Promise<boolean> {
+  for (const requiredEnvChecker of [
+    /* Redis and dependencies */
+    checkRequiredEnv('OASIS_API_REDIS_URL', true),
+
+    /* OAuth Credentials */
+    ...checkOAuthEnvs('GITHUB'), // GitHub
+    ...checkTwitterOAuthEnvs('TWITTER'), // Twitter
+    ...checkOAuthEnvs('DISCORD'), // Discord
+    ...checkOAuthEnvs('GOOGLE'), // Google
+    ...checkOAuthEnvs('SPOTIFY'), // Google
+
+    /* Extra props */
+    checkRequiredEnv('OASIS_API_SESSION_SECRET', true),
+  ]) if (!(await requiredEnvChecker(true))) return false;
+  return true;
+}

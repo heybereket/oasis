@@ -29,9 +29,9 @@ export default (): Router => {
     spotifyApi
       .authorizationCodeGrant(code)
       .then((data) => {
-        const access_token = data.body['access_token'];
-        const refresh_token = data.body['refresh_token'];
-        const expires_in = data.body['expires_in'];
+        const access_token = data.body.access_token;
+        const refresh_token = data.body.refresh_token;
+        const expires_in = data.body.expires_in;
 
         spotifyApi.setAccessToken(access_token);
         spotifyApi.setRefreshToken(refresh_token);
@@ -48,6 +48,16 @@ export default (): Router => {
         console.error('Error getting Tokens:', error);
         res.send(`Error getting Tokens: ${error}`);
       });
+  });
+
+  router.get('/userinfo', async (req, res) => {
+    try {
+      const result = await spotifyApi.getMe();
+      console.log(result.body);
+      res.status(200).send(result.body);
+    } catch (err) {
+      res.status(400).send(err);
+    }
   });
 
   return router;

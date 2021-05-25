@@ -23,6 +23,8 @@ import {
 } from '@oasis-sh/client-gql';
 import StyledMarkdown from 'src/markdown/StyledMarkdown';
 import { login, logout } from '@lib/login';
+import { SEO } from '@utils/SEO';
+
 interface IndexPageProps {
   initialApolloState: any;
   vars: PaginatePostsQueryVariables;
@@ -51,6 +53,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   }
   return (
     <>
+      <SEO title="Feed" />
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
@@ -113,6 +116,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               />
             )}
             {[...posts].map((post: any, index: number) => (
+            {[...posts].reverse().map((post: any, index: number) => (
               <Post
                 post={post}
                 key={index}

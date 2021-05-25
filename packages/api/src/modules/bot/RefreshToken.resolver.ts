@@ -30,8 +30,7 @@ export class RefreshBotTokenResolver {
     const bot = await User.findOne(botId);
 
     if (!bot) throw new ApolloError('Bot Not Found');
-    if ((await bot.botOwner).id !== user.id)
-      throw new ApolloError('This bot is not your bot!');
+    if ((await bot.botOwner).id !== user.id) throw new ApolloError('This bot is not your bot!');
 
     const tokenId = uuidv4();
     bot.botTokenId = tokenId;

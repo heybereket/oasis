@@ -8,7 +8,6 @@ export const createContext = async (req: Request): Promise<ContextType> => {
 
   if (req.headers.authorization) {
     const [, type, token] = req.headers.authorization.split(' ');
-
     switch (type) {
       case 'BOT':
         uid = (verify(token, process.env.BOT_TOKEN_SECRET) as any).uid;

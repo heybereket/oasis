@@ -3,19 +3,19 @@ import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import StyledMarkdown from '@markdown/StyledMarkdown';
 import { login, logout } from '@lib/login';
-import Head from 'next/head';
 import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
   useFollowUserMutation,
   GetUserByNameQueryVariables,
   useLikeDislikePostMutation,
+  useGetUsersPostsLazyQuery,
+  useGetUsersLikedPostsLazyQuery,
 } from '@oasis-sh/client-gql';
 import {
-  SEO,
   About,
   Comments,
-  Like,
+  UpArrow,
   Posts,
   Navbar,
   Container,
@@ -29,6 +29,7 @@ import {
   Bio,
   PostsTab as PostsTabItem,
 } from '@oasis-sh/ui';
+import { SEO } from '@utils/SEO';
 import { useState } from 'react';
 
 interface ProfileProps {
@@ -61,6 +62,22 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
   const [likeDislikePost] = useLikeDislikePostMutation();
 
+  const [getPosts, postsData] = useGetUsersPostsLazyQuery({
+    variables: {
+      postsLimit: 10,
+      postsOffset: 0,
+      username: props.username,
+    },
+  });
+
+  const [getLikedPosts, likedPostsData] = useGetUsersLikedPostsLazyQuery({
+    variables: {
+      postsLimit: 10,
+      postsOffset: 0,
+      username: props.username,
+    },
+  });
+
   const CenterColumnComponent: React.FC = () => {
     switch (tabState) {
       case CenterColumnTabState.AboutTab:
@@ -78,15 +95,38 @@ const Profile: React.FC<ProfileProps> = (props) => {
         );
 
       case CenterColumnTabState.PostsTab:
-        return (
-          <PostsTabItem
-            markdown={(text) => (
-              <StyledMarkdown text={text} isBio={false} isPost={true} />
-            )}
-            posts={data}
-            likeDislikePost={likeDislikePost}
-          />
-        );
+        if (!postsData.called) {
+          getPosts();
+          return <div></div>;
+        } else {
+          return (
+            <PostsTabItem
+              markdown={(text: any) => (
+                <StyledMarkdown text={text} isBio={false} isPost={true} />
+              )}
+              posts={postsData.data?.userOnlyPosts}
+              likedPosts={null}
+              likeDislikePost={likeDislikePost}
+            />
+          );
+        }
+
+      case CenterColumnTabState.LikesTab:
+        if (!likedPostsData.called) {
+          getLikedPosts();
+          return <div />;
+        } else {
+          return (
+            <PostsTabItem
+              markdown={(text: any) => (
+                <StyledMarkdown text={text} isBio={false} isPost={true} />
+              )}
+              posts={null}
+              likedPosts={likedPostsData.data?.getUserByName}
+              likeDislikePost={likeDislikePost}
+            />
+          );
+        }
       default:
         return <div></div>;
     }
@@ -94,13 +134,11 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
   return (
     <>
-      <Head>
-        <SEO
-          title={data?.name ? data?.name : data?.username + ' — Oasis'}
-          metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
-          metaImg={data?.avatar}
-        />
-      </Head>
+      <SEO
+        title={data?.name ? data?.name : data?.username}
+        metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
+        metaImg={data?.avatar}
+      />
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
@@ -134,9 +172,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                     onClick={() => setTabState(CenterColumnTabState.PostsTab)}
                   />
                   <TabItem
-                    name="Likes"
+                    name="Upvotes"
                     active={tabState === CenterColumnTabState.LikesTab}
-                    icon={Like}
+                    icon={UpArrow}
                     onClick={() => setTabState(CenterColumnTabState.LikesTab)}
                   />
                   <TabItem
@@ -233,9 +271,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 onClick={() => setTabState(CenterColumnTabState.PostsTab)}
               />
               <TabItem
-                name="Likes"
+                name="Upvotes"
                 active={tabState === CenterColumnTabState.LikesTab}
-                icon={Like}
+                icon={UpArrow}
                 onClick={() => setTabState(CenterColumnTabState.LikesTab)}
               />
               <TabItem
@@ -269,8 +307,6 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const vars: GetUserByNameQueryVariables = {
     username: query.username as string,
-    postsLimit: 10,
-    postsOffset: 0,
   };
   return {
     props: {
