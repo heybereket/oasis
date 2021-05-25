@@ -19,7 +19,7 @@ for (const [getTargetEntity, obj] of mapping) {
     );
 
     const funcName = `XYZ${a++}`;
-    ResolverClass.prototype[funcName] = async function(
+    ResolverClass.prototype[funcName] = async function (
       obj: BaseEntity & { id: string },
       limit: number,
       offset: number

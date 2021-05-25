@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 
 interface SEOProps {
-  title: string;
+  title: any;
   description?: string;
   metaTitle?: string;
   metaDesc?: string;

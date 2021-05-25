@@ -14,8 +14,8 @@ export { FriendActivity } from './components/home/FriendActivity';
 export { Sidebar } from './components/home/Sidebar';
 export { CreatePostInput } from './components/home/CreatePostInput';
 
-// Markdown
-// export { StyledMarkdown } from "../../web/src/components/markdown/StyledMarkdown";
+// OSS
+export { Contributors } from "./components/oss/Contributors";
 
 // Navbar
 export { DropdownItem } from './components/navbar/DropdownItem';
@@ -57,4 +57,5 @@ export { Twitter } from './icons/social/Twitter';
 export { RightArrow } from './icons/arrows/RightArrow';
 export { Profile } from './icons/navbar/Profile';
 export { SmallUpArrow } from './icons/arrows/SmallUpArrow';
+export { UpArrow } from './icons/arrows/UpArrow';
 export { SmallDownArrow } from './icons/arrows/SmallDownArrow';

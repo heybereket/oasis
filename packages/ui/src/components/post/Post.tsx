@@ -47,24 +47,23 @@ export const Post: React.FC<Props> = ({
     >
       <div>
         <header className="flex items-center space-x-4">
-          <a href={`/user/${postData.author.username}`}>
-            <a className="w-11 h-11 flex-none">
-              <img
-                src={postData.author.avatar}
-                className="flex-none bg-gray-600 rounded-full w-11 h-11"
-              />
-            </a>
+          <a
+            className="w-11 h-11 flex-none"
+            href={`/user/${postData.author.username}`}
+          >
+            <img
+              src={postData.author.avatar}
+              className="flex-none bg-gray-600 rounded-full w-11 h-11"
+            />
           </a>
           <div className="flex items-center justify-between w-full">
             <a href={`/user/${postData.author.username}`}>
-              <a>
-                <div>
-                  <p className="text-xl font-bold">{postData.author.name}</p>
-                  <p className="-mt-1 text-light font-bold">
-                    @{postData.author.username}
-                  </p>
-                </div>
-              </a>
+              <div>
+                <p className="text-xl font-bold">{postData.author.name}</p>
+                <p className="-mt-1 text-light font-bold">
+                  @{postData.author.username}
+                </p>
+              </div>
             </a>
             <div className="flex flex-col items-center">
               <SmallUpArrow
@@ -121,10 +120,10 @@ export const Post: React.FC<Props> = ({
             </div>
           </div>
         </header>
-        <p className="font-medium mt-2 mb-6 text-xl break-words">
+        <div className="font-medium mt-2 mb-6 text-xl break-words">
           {markdown(postData?.message ?? '')}
           {/* <StyledMarkdown text={postData.message} isPost={true} /> */}
-        </p>
+        </div>
       </div>
       <footer className="flex justify-between">
         <p className="text-sm font-semibold">{date}</p>
