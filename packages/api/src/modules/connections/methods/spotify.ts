@@ -13,7 +13,7 @@ export default (): Router => {
   const router = Router();
 
   router.get('/', (req, res) => {
-     res.redirect(spotifyApi.createAuthorizeURL(scopes));
+    res.redirect(spotifyApi.createAuthorizeURL(scopes));
   });
 
   router.get('/callback', (req, res) => {
@@ -22,7 +22,7 @@ export default (): Router => {
 
     if (error) {
       console.error('Callback Error:', error);
-      res.send(`Callback Error: ${error}`);
+      res.send(`Callback Error`);
       return;
     }
 
@@ -46,7 +46,7 @@ export default (): Router => {
       })
       .catch((error) => {
         console.error('Error getting Tokens:', error);
-        res.send(`Error getting Tokens: ${error}`);
+        res.send(`Error getting Tokens`);
       });
   });
 
@@ -56,7 +56,7 @@ export default (): Router => {
       console.log(result.body);
       res.status(200).send(result.body);
     } catch (err) {
-      res.status(400).send(err);
+      res.status(400).send('Error');
     }
   });
 
