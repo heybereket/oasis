@@ -6,6 +6,7 @@ import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import {
   Navbar,
   Sidebar,
+  RightArrow,
   FriendActivity,
   TopicBadge,
   Post,
@@ -59,7 +60,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             <div className="flex-shrink-0 w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
               {currentUserLoading || (
                 <>
-                  <Link href={`/user/${user?.username}`}>
                     <a className="flex items-center space-x-4">
                       <img
                         src={user?.avatar}
@@ -73,8 +73,23 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                         </p>
                       </div>
                     </a>
+                  <p className="mt-3">
+                    {user?.bio !== null ? (
+                        user?.bio
+                      ) : (
+                        "Your bio has not been set."
+                      )}
+                  </p>
+                   <Link
+                    href={`/user/${user?.username}`}
+                  >
+                    <a className="flex items-center space-x-0.5 mt-2">
+                      <p className="font-bold text-lg text-primary">
+                        View Profile
+                      </p>
+                      <RightArrow className="text-primary" />
+                    </a>
                   </Link>
-                  <p className="mt-3">{user?.bio}</p>
                 </>
               )}
             </div>
