@@ -19,11 +19,11 @@ for (const [getTargetEntity, obj] of mapping) {
     );
 
     const funcName = `XYZ${a++}`;
-    ResolverClass.prototype[funcName] = async function (
+    ResolverClass.prototype[funcName] = async (
       obj: BaseEntity & { id: string },
       limit: number,
       offset: number
-    ) {
+    ) => {
       const valEntity = getValEntity();
 
       const query = valEntity
