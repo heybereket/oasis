@@ -1,5 +1,4 @@
-import { Button } from "../../index";
-import { RightArrow } from "../../index";
+import { Button, RightArrow } from "../../index";
 import { GetResortByNameWithMembersQuery } from "@oasis-sh/client-gql";
 import React from "react";
 import AvatarGroup from "./AvatarGroup";

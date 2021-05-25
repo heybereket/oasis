@@ -71,7 +71,7 @@ export const Post: React.FC<Props> = ({
                   likePost
                     ? likePost()
                     : () => {
-                        return;
+
                       };
                   console.log(likeState);
                   if (likeState === LikeDislikeState.LIKED) {
@@ -99,7 +99,7 @@ export const Post: React.FC<Props> = ({
                   dislikePost
                     ? dislikePost()
                     : () => {
-                        return;
+
                       };
                   if (likeState === LikeDislikeState.DISLIKED) {
                     setLikeState(LikeDislikeState.NONE);

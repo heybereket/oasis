@@ -1,7 +1,7 @@
 import { useEffect, RefObject } from 'react';
 
 type AnyEvent = MouseEvent | TouchEvent;
-//Just used random snippet for useOnClickOutside for now if you want I can just revert it back it's same *shrug*
+// Just used random snippet for useOnClickOutside for now if you want I can just revert it back it's same *shrug*
 function useOnClickOutside<T extends HTMLElement = HTMLElement>(
   ref: RefObject<T>,
   handler: () => void

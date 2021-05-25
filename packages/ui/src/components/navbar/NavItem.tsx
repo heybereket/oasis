@@ -17,7 +17,7 @@ export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
       event.preventDefault();
       onClick();
   };
-  const className = props.className
+  const className = props.className;
 
   if (props.to !== undefined && props.to !== null) {
     href = props.to;

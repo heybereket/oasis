@@ -1,4 +1,7 @@
 import {
+  NavItem,
+  DropdownItem,
+  Button,
   Bell,
   Friends,
   Home,
@@ -9,9 +12,6 @@ import {
   Logout as LogoutIcon,
 } from "../../index";
 import React, { useRef, useState } from "react";
-import { Button } from "../../index";
-import { NavItem } from "../../index";
-import { DropdownItem } from "../../index";
 import useOnClickOutside from "../../utils/hooks/useOnClickOutside";
 import { User } from "@oasis-sh/client-gql";
 
@@ -41,11 +41,11 @@ export const Navbar: React.FC<INavbarProps> = ({
     SAVED = 'SAVED'
   }
 
-  const getIsActive = (type: activeTabType) => {
-    return activeTab === type ? "active" : ""
-  }
+  const [activeTab, setActiveTab] = useState(activeTabType.HOME);
 
-  const [activeTab, setActiveTab] = useState(activeTabType.HOME)
+  const getIsActive = (type: activeTabType) => {
+    return activeTab === type ? "active" : "";
+  };
 
   return (
     <>
@@ -122,7 +122,7 @@ export const Navbar: React.FC<INavbarProps> = ({
                 }}
               />
               <div className="flex">
-                {/*fixed the rendering logic here */}
+                {/* fixed the rendering logic here */}
                 {isDropdownActive && (
                   <div
                     className={`flex absolute flex-col rounded-lg bg-gray-700 px-4 py-3 max-w-md z-50 right-0 mr-7  ${

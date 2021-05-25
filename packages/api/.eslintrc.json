@@ -33,6 +33,7 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/ban-types": "off",
     "no-empty": "off",
     "no-empty-pattern": "off",
     "react/prop-types": "off",
@@ -269,7 +270,6 @@
     "wrap-regex": "off",
     "yield-star-spacing": "error",
     "yoda": "error",
-    "@typescript-eslint/ban-types": ["warn"],
     "react/react-in-jsx-scope": "off"
   }
 }

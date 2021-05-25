@@ -1,5 +1,4 @@
-import React, { TextareaHTMLAttributes } from 'react';
-import { useRef } from 'react';
+import React, { useRef, TextareaHTMLAttributes } from 'react';
 
 type Props = {
   maxHeight?: number;
