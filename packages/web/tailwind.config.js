@@ -4,12 +4,12 @@ module.exports = {
   purge: [
     './src/pages/**/*.tsx',
     './src/components/**/*.tsx',
-    '../ui/src/**/*.tsx',
+    '../ui/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-     flexShrink: {
-        '0': 0,
-      },
+    flexShrink: {
+      0: 0,
+    },
     fontFamily: {
       sans: [
         'Inter',

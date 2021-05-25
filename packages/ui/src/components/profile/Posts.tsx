@@ -26,7 +26,7 @@ export const Posts: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <div className={`mt-8 bg-gray-800 rounded-xl py-6 px-6`}>
+      <div className={`mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full`}>
         {(posts
           ? posts.posts
           : likedPosts
