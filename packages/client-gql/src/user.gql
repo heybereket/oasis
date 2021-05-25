@@ -15,11 +15,7 @@ query getCurrentUser {
   }
 }
 
-query getUserByName(
-  $username: String!
-  $postsLimit: Float!
-  $postsOffset: Float!
-) {
+query getUserByName($username: String!) {
   getUserByName(username: $username) {
     id
     banner
@@ -46,29 +42,7 @@ query getUserByName(
     following(offset: 0, limit: 0) {
       total
     }
-    posts(offset: $postsOffset, limit: $postsLimit) {
-      items {
-        id
-        title
-        message
-        createdAt
-        lastEdited
-        topics
-        author {
-          id
-          avatar
-          username
-          name
-        }
-        isLiked
-        isDisliked
-        likes
-        dislikes
-        comments(limit: 0, offset: 0) {
-          total
-        }
-      }
-      hasMore
+    posts(offset: 0, limit: 0) {
       total
     }
   }
@@ -97,9 +71,8 @@ query getUsersPosts(
   $postsLimit: Float!
   $postsOffset: Float!
 ) {
-  getUserByName(username: $username) {
+  userOnlyPosts: getUserByName(username: $username) {
     posts(offset: $postsOffset, limit: $postsLimit) {
-      total
       items {
         id
         title
@@ -117,7 +90,46 @@ query getUsersPosts(
         isDisliked
         likes
         dislikes
+        comments(limit: 0, offset: 0) {
+          total
+        }
       }
+      hasMore
+      total
+    }
+  }
+}
+
+query getUsersLikedPosts(
+  $username: String!
+  $postsLimit: Float!
+  $postsOffset: Float!
+) {
+  getUserByName(username: $username) {
+    likedPosts(offset: $postsOffset, limit: $postsLimit) {
+      items {
+        id
+        title
+        message
+        createdAt
+        lastEdited
+        topics
+        author {
+          id
+          avatar
+          username
+          name
+        }
+        isLiked
+        isDisliked
+        likes
+        dislikes
+        comments(limit: 0, offset: 0) {
+          total
+        }
+      }
+      hasMore
+      total
     }
   }
 }

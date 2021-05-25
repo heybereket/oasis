@@ -9,6 +9,8 @@ import {
   useFollowUserMutation,
   GetUserByNameQueryVariables,
   useLikeDislikePostMutation,
+  useGetUsersPostsLazyQuery,
+  useGetUsersLikedPostsLazyQuery,
 } from '@oasis-sh/client-gql';
 import {
   About,
@@ -60,6 +62,22 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
   const [likeDislikePost] = useLikeDislikePostMutation();
 
+  const [getPosts, postsData] = useGetUsersPostsLazyQuery({
+    variables: {
+      postsLimit: 10,
+      postsOffset: 0,
+      username: props.username,
+    },
+  });
+
+  const [getLikedPosts, likedPostsData] = useGetUsersLikedPostsLazyQuery({
+    variables: {
+      postsLimit: 10,
+      postsOffset: 0,
+      username: props.username,
+    },
+  });
+
   const CenterColumnComponent: React.FC = () => {
     switch (tabState) {
       case CenterColumnTabState.AboutTab:
@@ -77,15 +95,38 @@ const Profile: React.FC<ProfileProps> = (props) => {
         );
 
       case CenterColumnTabState.PostsTab:
-        return (
-          <PostsTabItem
-            markdown={(text: any) => (
-              <StyledMarkdown text={text} isBio={false} isPost={true} />
-            )}
-            posts={data}
-            likeDislikePost={likeDislikePost}
-          />
-        );
+        if (!postsData.called) {
+          getPosts();
+          return <div></div>;
+        } else {
+          return (
+            <PostsTabItem
+              markdown={(text: any) => (
+                <StyledMarkdown text={text} isBio={false} isPost={true} />
+              )}
+              posts={postsData.data?.userOnlyPosts}
+              likedPosts={null}
+              likeDislikePost={likeDislikePost}
+            />
+          );
+        }
+
+      case CenterColumnTabState.LikesTab:
+        if (!likedPostsData.called) {
+          getLikedPosts();
+          return <div />;
+        } else {
+          return (
+            <PostsTabItem
+              markdown={(text: any) => (
+                <StyledMarkdown text={text} isBio={false} isPost={true} />
+              )}
+              posts={null}
+              likedPosts={likedPostsData.data?.getUserByName}
+              likeDislikePost={likeDislikePost}
+            />
+          );
+        }
       default:
         return <div></div>;
     }
@@ -266,8 +307,6 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const vars: GetUserByNameQueryVariables = {
     username: query.username as string,
-    postsLimit: 10,
-    postsOffset: 0,
   };
   return {
     props: {
