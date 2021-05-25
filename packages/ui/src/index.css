@@ -92,6 +92,9 @@ body {
   .animate-fill-forwards {
     animation-fill-mode: forwards;
   }
+  .active {
+    border-bottom: 5px solid white;
+  }
 }
 
 /* width */

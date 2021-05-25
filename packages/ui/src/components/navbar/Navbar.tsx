@@ -33,6 +33,20 @@ export const Navbar: React.FC<INavbarProps> = ({
   const node = useRef(null);
   useOnClickOutside(node, () => setDropdownActive(false));
 
+  enum activeTabType {
+    TEST = 'TEST',
+    HOME = 'HOME',
+    TOPICS = 'TOPICS',
+    FRIENDS = 'FRIENDS',
+    SAVED = 'SAVED'
+  }
+
+  const getIsActive = (type: activeTabType) => {
+    return activeTab === type ? "active" : ""
+  }
+
+  const [activeTab, setActiveTab] = useState(activeTabType.HOME)
+
   return (
     <>
       <nav className="sticky top-0 z-50 bg-gray-900 flex items-center justify-between px-4 sm-50:px-6 md:px-8 py-4">
@@ -43,20 +57,32 @@ export const Navbar: React.FC<INavbarProps> = ({
             </a>
             <a href="/" className="hidden md:block">
               <img
-                src="/static/OasisLogo.png"
+                src="/static/OasisLogo.svg"
                 alt="Oasis Logo"
                 className="w-28 mr-8 pb-1"
               />
             </a>
           </div>
 
-          <div className="hidden md:flex space-x-3">
-            <NavItem name="Home" to="/" icon={Home} />
-            <NavItem name="Topics" href="#" icon={Topics} />
+          <div className="hidden md:flex space-x-3 h-full absolute top-0 md:left-48 ">
+            <NavItem name="Home" href="#" icon={Home}
+                className={getIsActive(activeTabType.HOME)}
+                onClick={() => setActiveTab(activeTabType.HOME)}
+            />
+            <NavItem name="Topics" href="#" icon={Topics}
+                className={getIsActive(activeTabType.TOPICS)}
+                onClick={() => setActiveTab(activeTabType.TOPICS)}
+            />
             {user && (
               <>
-                <NavItem name="Friends" href="#" icon={Friends} />
-                <NavItem name="Saved" href="#" icon={Saved} />
+                <NavItem name="Friends" href="#" icon={Friends}
+                    className={getIsActive(activeTabType.FRIENDS)}
+                    onClick={() => setActiveTab(activeTabType.FRIENDS)}
+                />
+                <NavItem name="Saved" href="#" icon={Saved}
+                    className={getIsActive(activeTabType.SAVED)}
+                    onClick={() => setActiveTab(activeTabType.SAVED)}
+                />
               </>
             )}
           </div>
@@ -66,8 +92,8 @@ export const Navbar: React.FC<INavbarProps> = ({
             <Search className="absolute ml-3" />
 
             <input
-              placeholder="Search"
-              className="rounded-lg bg-gray-700 h-10 text-sm pl-11 text-gray-300 w-80 focus:outline-none"
+              placeholder="Search for People, Posts, etc..."
+              className="rounded-lg bg-gray-700 h-10 text-sm font-bold pl-11 text-gray-500 w-80 focus:outline-none overflow-ellipsis"
             />
           </div>
           <Bell className="hidden sm-50:block" />

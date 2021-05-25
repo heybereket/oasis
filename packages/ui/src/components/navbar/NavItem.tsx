@@ -1,29 +1,32 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 
 interface NavItemProps {
   name: string;
   href?: string;
   to?: string;
-  onClick?: MouseEventHandler;
+  onClick: () => void;
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  className: string
 }
 
 export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
   const Icon = props.icon;
   let href = props.href;
-  let onClick = props.onClick;
+  const onClick = props.onClick;
+  const onClickRedirect = (event: any) => {
+      event.preventDefault();
+      onClick();
+  };
+  const className = props.className
 
   if (props.to !== undefined && props.to !== null) {
-    onClick = (event: any) => {
-      event.preventDefault();
-    };
     href = props.to;
   }
 
   return (
     <div
-      className="flex items-center justify-between hover:opacity-80 cursor-pointer px-2 space-x-3"
-      onClick={onClick ? onClick : undefined}
+      className={`flex items-center justify-between hover:opacity-80 cursor-pointer px-2 space-x-3 ${className} p-4`}
+      onClick={onClickRedirect}
     >
       <Icon />
       <a
