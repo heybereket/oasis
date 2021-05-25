@@ -14,6 +14,7 @@
     "lint": "yarn workspaces foreach --exclude @oasis-sh/client-gql -p run lint && yarn workspaces foreach --exclude @oasis-sh/client-gql -p run prettify",
     "clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/client-gql,@oasis-sh/ui -p run clean",
     "reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",
+    "reinstall:rebuild": "yarn reinstall || yarn build:all",
     "build": "yarn workspace @oasis-sh/$0 run build",
     "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build client-gql && yarn build ui"
   },
