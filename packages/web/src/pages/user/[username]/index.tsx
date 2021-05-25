@@ -15,7 +15,7 @@ import {
 import {
   About,
   Comments,
-  Like,
+  UpArrow,
   Posts,
   Navbar,
   Container,
@@ -172,9 +172,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                     onClick={() => setTabState(CenterColumnTabState.PostsTab)}
                   />
                   <TabItem
-                    name="Likes"
+                    name="Upvotes"
                     active={tabState === CenterColumnTabState.LikesTab}
-                    icon={Like}
+                    icon={UpArrow}
                     onClick={() => setTabState(CenterColumnTabState.LikesTab)}
                   />
                   <TabItem
@@ -271,9 +271,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 onClick={() => setTabState(CenterColumnTabState.PostsTab)}
               />
               <TabItem
-                name="Likes"
+                name="Upvotes"
                 active={tabState === CenterColumnTabState.LikesTab}
-                icon={Like}
+                icon={UpArrow}
                 onClick={() => setTabState(CenterColumnTabState.LikesTab)}
               />
               <TabItem
