@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
   overflow-x: hidden;
@@ -6,7 +6,7 @@ body {
 
 @font-face {
   font-family: Hack;
-  src: url("/static/hack-regular-webfont.woff2");
+  src: url('/static/hack-regular-webfont.woff2');
 }
 
 @tailwind base;
@@ -93,7 +93,7 @@ body {
     animation-fill-mode: forwards;
   }
   .active {
-    border-bottom: 5px solid white;
+    border-bottom: 2px solid white;
   }
 }
 

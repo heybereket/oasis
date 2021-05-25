@@ -28,7 +28,7 @@
     "@types/connect-redis": "^0.0.16",
     "@types/dotenv": "^8.2.0",
     "@types/eslint": "^7",
-    "@types/express": "^4.17.11",
+    "@types/express": "^4.17.12",
     "@types/express-session": "^1.17.3",
     "@types/jsonwebtoken": "^8.5.1",
     "@types/passport": "^1.0.6",
