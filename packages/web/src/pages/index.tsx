@@ -10,7 +10,7 @@ import {
   TopicBadge,
   Post,
   FollowUser,
-  CreatePostInput
+  CreatePostInput,
 } from '@oasis-sh/ui';
 import {
   PaginatePostsDocument,
@@ -40,17 +40,13 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [likeDislikePost] = useLikeDislikePostMutation();
 
-  const [makePost] = useMakePostMutation();
-
   if (!posts) {
     return null;
   }
 
   return (
     <>
-      <SEO
-        title="Feed"
-      />
+      <SEO title="Feed" />
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
@@ -104,12 +100,14 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             </Sidebar>
           </div>
           <div className="flex flex-col flex-1 w-full space-y-12 pb-12 mt-[33px]">
-            { user &&
+            {user && (
               <CreatePostInput
                 avatarUrl={user.avatar}
-                onSubmit={(value: string) => createPost({ variables: { message: value, topics: [] } })}
+                onSubmit={(value: string) =>
+                  createPost({ variables: { message: value, topics: [] } })
+                }
               />
-            }
+            )}
             {[...posts].reverse().map((post: any, index: number) => (
               <Post
                 post={post}
@@ -168,7 +166,9 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
+  req,
+}) => {
   const vars: PaginatePostsQueryVariables = {
     postsLimit: 25,
     postsOffset: 0,
