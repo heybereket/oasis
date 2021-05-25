@@ -120,8 +120,9 @@
 }
 
 .markdown blockquote {
-  border-left: 8px solid #fafafa;
-  padding: 1rem;
+  padding: 0 1em;
+  color: lightgray;
+  border-left: .25em solid gray;
 }
 
 .markdown ul {
