@@ -25,7 +25,7 @@ export const ProfilePost: React.FC<ProfilePostProps> = ({
         <img
           className="w-12 h-12 rounded-full mr-4"
           src={avatarUrl}
-          alt={name}
+          alt="avatar"
         />
         <div>
           <p className="font-bold ">{name}</p>

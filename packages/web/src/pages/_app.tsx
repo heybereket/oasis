@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@lib/common/apolloClient';
 import { AuthProvider } from '@lib/login/AuthProvider';
+import { SEO } from '@utils/SEO';
 
 export default function App({
   Component,
@@ -14,24 +15,12 @@ export default function App({
   return (
     <ApolloProvider client={client}>
       <AuthProvider>
+        <SEO
+          title="Home"
+          description="The social platform for developers"
+          keywords="developers,ideas,discuss,fun,programming,graphql,typescript,nextjs,tailwindcss,react,apollo"
+        />
         <Head>
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `<h1>JavaScript is not supported by your browser.</h1>`,
-            }}
-          />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=0"
-          />
-          <meta
-            name="description"
-            content="Oasis - Discover new ideas, Discuss with developers."
-          />
-          <meta
-            name="keywords"
-            content="developers,ideas,discuss,fun,programming,graphql,typescript,nextjs,tailwindcss,react,apollo"
-          />
           <link
             rel="icon"
             type="image/png"
@@ -55,7 +44,6 @@ export default function App({
             href="/static/favicons/safari-pinned-tab.svg"
             color="#5bbad5"
           />
-          <meta name="theme-color" content="#ffffff" />
         </Head>
         <Component {...pageProps} />
       </AuthProvider>

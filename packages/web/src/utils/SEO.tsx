@@ -7,6 +7,7 @@ interface SEOProps {
   metaTitle?: string;
   metaDesc?: string;
   metaImg?: string;
+  keywords?: string;
 }
 
 export const SEO: React.FC<SEOProps> = ({
@@ -15,11 +16,14 @@ export const SEO: React.FC<SEOProps> = ({
   metaDesc,
   metaImg,
   metaTitle,
+  keywords
 }) => {
   return (
       <Head>
         <title>{title} - Oasis</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=0" />
         <meta name="description" content={description} />
+         <meta name="keywords" content={keywords} />
         {metaTitle ? (
           <meta name="og:title" content={metaTitle} />
         ) : (

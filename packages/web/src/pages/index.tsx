@@ -63,7 +63,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                     <a className="flex items-center space-x-4">
                       <img
                         src={user?.avatar}
-                        alt=""
+                        alt="avatar"
                         className="w-14 h-14 rounded-full"
                       />
                       <div>
