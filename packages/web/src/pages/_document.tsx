@@ -10,7 +10,7 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" href="/static/favicons/favicon.ico" />
           <meta
-            name="Description"
+            name="description"
             content="The social platform for developers"
           />
           <link
