@@ -4,6 +4,7 @@ export const baseURL =
     : 'https://dev.oasis.sh';
 
 export const localBaseURL = process.env.NEXT_PUBLIC_BASE_URL;
+export const prod = process.env.NODE_ENV === 'production';
 
 export const gqlBaseURL = `${baseURL}/graphql`;
 export const apiBaseURL = `${baseURL}/api`;

@@ -181,7 +181,6 @@
     "no-undefined": "off",
     "no-underscore-dangle": "off",
     "no-unmodified-loop-condition": "error",
-    "no-unneeded-ternary": "error",
     "no-unreachable-loop": "error",
     "no-unsafe-optional-chaining": "error",
     "no-unused-expressions": "error",

@@ -1,5 +1,7 @@
 import { config } from 'dotenv';
 import { join } from 'path';
+import { createServer } from 'http';
+import { parse } from 'url';
 import next from 'next';
 import { chalkLog } from './lib/chalkLog';
 import { exit } from './lib/exit';
@@ -27,6 +29,20 @@ const time = Date.now();
   }
 
   app.prepare().then(() => {
+     createServer((req, res) => {
+       const parsedUrl = parse(req.url, true);
+       const { pathname } = parsedUrl;
+
+       if (
+         pathname === '/sw.js' ||
+         /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname)
+       ) {
+         const filePath = join(__dirname, '.next', pathname);
+         app.serveStatic(req, res, filePath);
+       } else {
+         handle(req, res, parsedUrl);
+       }
+     });
     server.all('*', (req, res) => {
       return handle(req, res);
     });

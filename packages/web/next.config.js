@@ -1,9 +1,14 @@
 const { createSecureHeaders } = require('next-secure-headers');
+const withPWA = require('next-pwa');
 const { join } = require('path');
+import { prod } from '@lib/constants';
 
-module.exports = {
+module.exports = withPWA({
   future: {
     webpack5: true,
+  },
+  pwa: {
+    disable: prod ? false : true
   },
   poweredByHeader: false,
   async headers() {
@@ -44,4 +49,4 @@ module.exports = {
     OASIS_API_SRC_PATH: join(__dirname, '../api/src'),
     API_MODE: process.env.API_MODE === 'remote' ? 'remote' : 'local',
   },
-};
+});
