@@ -13110,6 +13110,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"husky@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "husky@npm:6.0.0"
+  bin:
+    husky: lib/bin.js
+  checksum: 61e1f7f53f3c969d361c2a1d4ed8018b9447406ea6cd644a2526d18b76877d135001d8cbd48a1d201fc1614d96995e691ecd2b82a8d8513a6b4a313da1188ccd
+  languageName: node
+  linkType: hard
+
 "iconv-lite@npm:0.4.24, iconv-lite@npm:^0.4.24, iconv-lite@npm:^0.4.4":
   version: 0.4.24
   resolution: "iconv-lite@npm:0.4.24"
@@ -17833,6 +17842,7 @@ fsevents@^1.2.7:
     commitizen: ^4.2.3
     concurrently: ^6.1.0
     cz-conventional-changelog: 3.3.0
+    husky: ^6.0.0
     jest: ^26.6.3
     npm-run-all: ^4.1.5
     rimraf: ^3.0.2
