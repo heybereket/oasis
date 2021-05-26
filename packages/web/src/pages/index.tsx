@@ -19,6 +19,7 @@ import {
   useLikeDislikePostMutation,
   usePaginatePostsQuery,
   useMakePostMutation,
+  GetCurrentUserDocument,
 } from '@oasis-sh/client-gql';
 import StyledMarkdown from 'src/markdown/StyledMarkdown';
 import { login, logout } from '@lib/login';
@@ -192,6 +193,9 @@ export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
         {
           document: PaginatePostsDocument,
           variables: vars,
+        },
+        {
+          document: GetCurrentUserDocument,
         },
       ]),
       vars,
