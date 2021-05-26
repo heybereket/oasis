@@ -4,6 +4,9 @@
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "prettier.singleQuote": true,
+     "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
     "cSpell.words": [
         "prefetch"
     ]

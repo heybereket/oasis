@@ -16,6 +16,10 @@ export default class FollowUserResolver {
 
     if (!userToFollow) throw new ApolloError('Could not find user to follow');
 
+    if (user.id === userToFollow.id) throw new ApolloError(
+        'You may not follow yourself, you dirty, dirty cheater'
+      );
+
     user.following = Promise.resolve([...(await user.following), userToFollow]);
 
     user.save();

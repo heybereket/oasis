@@ -11,6 +11,7 @@ import {
   useLikeDislikePostMutation,
   useGetUsersPostsLazyQuery,
   useGetUsersLikedPostsLazyQuery,
+  GetCurrentUserDocument,
 } from '@oasis-sh/client-gql';
 import {
   About,
@@ -202,7 +203,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   color="primary"
                   className="md:row-span-1 lg:col-span-1 text-sm"
                   onClick={() => {
-                    follow();
+                    if (data?.id !== user?.id) {
+                      follow();
+                    }
                   }}
                 >
                   {data?.id === user?.id
@@ -249,6 +252,11 @@ const Profile: React.FC<ProfileProps> = (props) => {
             <Button
               color="primary"
               className="col-span-2 md:col-span-1 text-sm"
+              onClick={() => {
+                if (data?.id !== user?.id) {
+                  follow();
+                }
+              }}
             >
               {data?.id === user?.id
                 ? 'Edit Profile'
@@ -316,6 +324,9 @@ export const getServerSideProps: GetServerSideProps = async ({
         {
           document: GetUserByNameDocument,
           variables: vars,
+        },
+        {
+          document: GetCurrentUserDocument,
         },
       ]),
     },
