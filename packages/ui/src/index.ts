@@ -13,7 +13,10 @@ export { FollowUser } from './components/home/FollowUser';
 export { FriendActivity } from './components/home/FriendActivity';
 export { Sidebar } from './components/home/Sidebar';
 export { CreatePostInput } from './components/home/CreatePostInput';
-
+export { UserSection } from "./components/home/sections/UserSection";
+export { FriendActivitySection } from "./components/home/sections/FriendActivitySection";
+export { PostsSection } from "./components/home/sections/PostsSection";
+export { SidebarSection } from "./components/home/sections/SidebarSection";
 // OSS
 export { Contributors } from "./components/oss/Contributors";
 
