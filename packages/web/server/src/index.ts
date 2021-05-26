@@ -1,6 +1,5 @@
 import { config } from 'dotenv';
 import { join } from 'path';
-import { createServer } from 'http';
 import { parse } from 'url';
 import next from 'next';
 import { chalkLog } from './lib/chalkLog';
@@ -35,7 +34,7 @@ const time = Date.now();
 
      server.get('/workbox-*.js', (req, res) => {
        const { pathname } = parse(req.path, true);
-       return app.serveStatic(req, res, join(__dirname, '.next', pathname));
+       return app.serveStatic(req, res, join(__dirname, '.next', pathname ?? ""));
      });
 
      server.get('/manifest.json', (req, res) => {
