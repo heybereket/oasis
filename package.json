@@ -5,6 +5,7 @@
   ],
   "scripts": {
     "build:all": "yarn build api && yarn build client-gql && yarn build ui && yarn build web",
+    "build:dev": "yarn build api && yarn build client-gql && yarn build ui",
     "commit": "git add . && cz && git push",
     "dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
     "dev:api": "yarn workspaces foreach --include @oasis-sh/client-gql,@oasis-sh/api -p run dev",
