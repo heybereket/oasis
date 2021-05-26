@@ -37,14 +37,6 @@ const time = Date.now();
        return app.serveStatic(req, res, join(__dirname, '.next', pathname ?? ""));
      });
 
-     server.get('/manifest.json', (req, res) => {
-       return app.serveStatic(
-         req,
-         res,
-         join(__dirname, 'public', 'manifest.json')
-       );
-     });
-
      // Static resources should not be redirected by i18n middleware to same network trip
      // highly recommend add any extension of static resources here, though it would still
      // work if you don't
