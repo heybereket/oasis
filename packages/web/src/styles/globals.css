@@ -6,7 +6,8 @@ body {
 
 @font-face {
   font-family: Hack;
-  src: url('/static/hack-regular-webfont.woff2');
+  src: url('/static/hack-regular-webfont.woff2') format('woff2');
+  font-display: swap;
 }
 
 @tailwind base;
