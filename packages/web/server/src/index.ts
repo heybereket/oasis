@@ -30,7 +30,7 @@ const time = Date.now();
 
   app.prepare().then(() => {
      createServer((req, res) => {
-       const parsedUrl = parse(req.url, true);
+       const parsedUrl = parse(req.url as string, true);
        const { pathname } = parsedUrl;
 
        if (
