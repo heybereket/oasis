@@ -4,13 +4,9 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en-GB">
+      <Html lang="en">
         <Head>
           <meta name="theme-color" content="#5C91FC" />
-          <meta
-            name="Description"
-            content="an example of NextJS app with 100% accessible lighthouse score"
-          />
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" href="/static/favicons/favicon.ico" />
           <link
