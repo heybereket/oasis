@@ -60,29 +60,25 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             <div className="flex-shrink-0 w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
               {currentUserLoading || (
                 <>
-                    <a className="flex items-center space-x-4">
-                      <img
-                        src={user?.avatar}
-                        alt="avatar"
-                        className="w-14 h-14 rounded-full"
-                      />
-                      <div>
-                        <p className="font-bold text-xl">{user?.name}</p>
-                        <p className="font-bold text-light -mt-1">
-                          @{user?.username}
-                        </p>
-                      </div>
-                    </a>
+                  <a className="flex items-center space-x-4">
+                    <img
+                      src={user?.avatar}
+                      alt="avatar"
+                      className="w-14 h-14 rounded-full"
+                    />
+                    <div>
+                      <p className="font-bold text-xl">{user?.name}</p>
+                      <p className="font-bold text-light -mt-1">
+                        @{user?.username}
+                      </p>
+                    </div>
+                  </a>
                   <p className="mt-3">
-                    {user?.bio !== null ? (
-                        user?.bio
-                      ) : (
-                        "Your bio has not been set."
-                      )}
+                    {user?.bio !== null
+                      ? user?.bio
+                      : 'Your bio has not been set.'}
                   </p>
-                   <Link
-                    href={`/user/${user?.username}`}
-                  >
+                  <Link href={`/user/${user?.username}`}>
                     <a className="flex items-center space-x-0.5 mt-2">
                       <p className="font-bold text-lg text-primary">
                         View Profile

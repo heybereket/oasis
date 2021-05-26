@@ -8,13 +8,13 @@ export const ContributorsPage: React.FC = () => {
 
   return (
     <>
-    <Navbar
-      user={user}
-      currentUserLoading={currentUserLoading}
-      login={login}
-      logout={logout}
-    />
-    <Contributors />
+      <Navbar
+        user={user}
+        currentUserLoading={currentUserLoading}
+        login={login}
+        logout={logout}
+      />
+      <Contributors />
     </>
   );
 };
