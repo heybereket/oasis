@@ -29,20 +29,30 @@ const time = Date.now();
   }
 
   app.prepare().then(() => {
-     createServer((req, res) => {
-       const parsedUrl = parse(req.url as string, true);
-       const { pathname } = parsedUrl;
-
-       if (
-         pathname === '/sw.js' ||
-         /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname || "")
-       ) {
-         const filePath = join(__dirname, '.next', pathname || "");
-         app.serveStatic(req, res, filePath);
-       } else {
-         handle(req, res, parsedUrl);
-       }
+     server.get('/sw.js', (req, res) => {
+       return app.serveStatic(req, res, join(__dirname, '.next', 'sw.js'));
      });
+
+     server.get('/workbox-*.js', (req, res) => {
+       const { pathname } = parse(req.path, true);
+       return app.serveStatic(req, res, join(__dirname, '.next', pathname));
+     });
+
+     server.get('/manifest.json', (req, res) => {
+       return app.serveStatic(
+         req,
+         res,
+         join(__dirname, 'public', 'manifest.json')
+       );
+     });
+
+     // Static resources should not be redirected by i18n middleware to same network trip
+     // highly recommend add any extension of static resources here, though it would still
+     // work if you don't
+     server.all(/\.(js|json|png|jpg|ico)$/i, (req, res) => {
+       return handle(req, res);
+     });
+
     server.all('*', (req, res) => {
       return handle(req, res);
     });

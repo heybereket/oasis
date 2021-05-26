@@ -2,14 +2,26 @@ const { createSecureHeaders } = require('next-secure-headers');
 const withPWA = require('next-pwa');
 const { join } = require('path');
 
-const prod = process.env.NODE_ENV === 'production';
-
 module.exports = withPWA({
   future: {
     webpack5: true,
   },
   pwa: {
-    disable: prod ? false : true
+    disable: process.env.NODE_ENV !== 'production',
+    register: true,
+    dest: '.next',
+    sw: 'sw.js',
+    // https://developers.google.com/web/tools/workbox/modules/workbox-strategies
+    runtimeCaching: [
+      {
+        handler: 'NetworkFirst',
+        urlPattern: /^https?.*/,
+      },
+      {
+        handler: 'NetworkFirst',
+        urlPattern: /\/_next\/.*/,
+      },
+    ],
   },
   poweredByHeader: false,
   async headers() {

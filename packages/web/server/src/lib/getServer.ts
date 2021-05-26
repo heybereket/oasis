@@ -9,8 +9,10 @@ export const getServer = async (apiMode: string): Promise<Express> => {
     );
   }
 
-  // connect to staging
   const app = express();
+  // Serve static files
+  app.use(express.static('public'));
+  app.use(express.static('.next'));
   app.disable('x-powered-by');
   return app;
 };
