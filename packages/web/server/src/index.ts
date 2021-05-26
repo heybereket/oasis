@@ -1,5 +1,6 @@
 import { config } from 'dotenv';
 import { join } from 'path';
+import { createServer } from 'http';
 import { parse } from 'url';
 import next from 'next';
 import { chalkLog } from './lib/chalkLog';
@@ -28,13 +29,19 @@ const time = Date.now();
   }
 
   app.prepare().then(() => {
-     server.get('/sw.js', (req, res) => {
-       return app.serveStatic(req, res, join(__dirname, '.next', 'sw.js'));
-     });
+     createServer((req, res) => {
+       const parsedUrl = parse(req.url as string, true);
+       const { pathname } = parsedUrl;
 
-     server.get('/workbox-*.js', (req, res) => {
-       const { pathname } = parse(req.path, true);
-       return app.serveStatic(req, res, join(__dirname, '.next', pathname ?? ""));
+       if (
+         pathname === '/sw.js' ||
+         /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname ?? '')
+       ) {
+         const filePath = join(__dirname, '.next', pathname ?? '');
+         app.serveStatic(req, res, filePath);
+       } else {
+         handle(req, res, parsedUrl);
+       }
      });
 
      // Static resources should not be redirected by i18n middleware to same network trip
