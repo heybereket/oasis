@@ -37,7 +37,7 @@ const time = Date.now();
          pathname === '/sw.js' ||
          /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname || "")
        ) {
-         const filePath = join(__dirname, '.next', pathname);
+         const filePath = join(__dirname, '.next', pathname || "");
          app.serveStatic(req, res, filePath);
        } else {
          handle(req, res, parsedUrl);
