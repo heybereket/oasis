@@ -1,7 +1,8 @@
 const { createSecureHeaders } = require('next-secure-headers');
 const withPWA = require('next-pwa');
 const { join } = require('path');
-import { prod } from '@lib/constants';
+
+const prod = process.env.NODE_ENV === 'production';
 
 module.exports = withPWA({
   future: {
