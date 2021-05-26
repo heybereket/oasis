@@ -10,7 +10,6 @@ module.exports = withPWA({
     disable: process.env.NODE_ENV !== 'production',
     register: true,
     dest: '.next',
-    sw: 'sw.js',
     // https://developers.google.com/web/tools/workbox/modules/workbox-strategies
     runtimeCaching: [
       {
