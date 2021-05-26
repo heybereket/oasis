@@ -27,7 +27,7 @@ const time = Date.now();
   }
 
   app.prepare().then(() => {
-    server.get('/sw.js', function (req, res) {
+    server.get('/sw.js', function(req, res) {
       res.sendFile(path.resolve(__dirname, '../../.next', 'sw.js'));
     });
 
