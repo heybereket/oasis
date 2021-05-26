@@ -74,9 +74,11 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                     </div>
                   </a>
                   <p className="mt-3">
-                    {user?.bio !== null
-                      ? user?.bio
-                      : 'Your bio has not been set.'}
+                    {user?.bio !== null ? (
+                      <StyledMarkdown text={user?.bio ?? ''} isBio={true} />
+                    ) : (
+                      'Your bio has not been set.'
+                    )}
                   </p>
                   <Link href={`/user/${user?.username}`}>
                     <a className="flex items-center space-x-0.5 mt-2">
