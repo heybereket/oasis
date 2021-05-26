@@ -54,6 +54,7 @@ export const Post: React.FC<Props> = ({
             <img
               src={postData.author.avatar}
               alt="avatar"
+              loading="lazy"
               className="flex-none bg-gray-600 rounded-full w-11 h-11"
             />
           </a>
