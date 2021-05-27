@@ -66,7 +66,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             <div className="flex-shrink-0 w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
               {currentUserLoading || (
                 <>
-                  <a className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-4">
                     <img
                       src={user?.avatar}
                       alt="avatar"
@@ -78,7 +78,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                         @{user?.username}
                       </p>
                     </div>
-                  </a>
+                  </div>
                   <p className="mt-3">
                     {user?.bio !== null ? (
                       <StyledMarkdown text={user?.bio ?? ''} isBio={true} />
