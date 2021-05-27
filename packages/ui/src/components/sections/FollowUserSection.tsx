@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidebar, FollowUser } from '@oasis-sh/ui';
+import { Sidebar, FollowUser } from '../../index';
 export const FollowUserSection: React.FC<any> = () => {
   return (
     <Sidebar title="Find New People" className="mt-10">

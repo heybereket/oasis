@@ -1,5 +1,5 @@
 import React from 'react';
-import { RightArrow } from '@oasis-sh/ui';
+import { RightArrow } from '../../index';
 type Props = {
   user: any;
   currentUserLoading: boolean;

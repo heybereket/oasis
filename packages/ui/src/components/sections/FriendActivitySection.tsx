@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidebar, FriendActivity } from '@oasis-sh/ui';
+import { Sidebar, FriendActivity } from '../../index';
 export const FriendActivitySection: React.FC<any> = () => {
   return (
     <Sidebar title="Friends Activity" className="mt-10">

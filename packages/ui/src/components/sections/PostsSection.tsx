@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CreatePostInput, Post } from '@oasis-sh/ui';
+import { CreatePostInput, Post } from '../../index';
 interface Props {
   createPost: (variables: object) => void;
   likeDislikePost: (variable: object) => void;
