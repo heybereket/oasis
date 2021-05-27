@@ -20,6 +20,7 @@ import {
   usePaginatePostsQuery,
   useMakePostMutation,
   GetCurrentUserDocument,
+  useDeletePostMutation,
 } from '@oasis-sh/client-gql';
 import StyledMarkdown from 'src/markdown/StyledMarkdown';
 import { login, logout } from '@lib/login';
@@ -41,6 +42,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   const posts = data?.paginatePosts;
 
   const [likeDislikePost] = useLikeDislikePostMutation();
+  const [deletePost] = useDeletePostMutation();
 
   if (!posts) {
     return null;
@@ -131,6 +133,15 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                 key={index}
                 markdown={(text) => {
                   return <StyledMarkdown text={text} isPost={true} />;
+                }}
+                currentUser={user}
+                deletePost={(id) => {
+                  deletePost({
+                    variables: {
+                      postId: id,
+                    },
+                  });
+                  window.location.reload();
                 }}
                 likePost={() => {
                   likeDislikePost({
