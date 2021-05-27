@@ -26,8 +26,8 @@ const time = Date.now();
 
   app.prepare().then(() => {
     if (process.env.NODE_ENV === 'production') {
-      server.get('/sw.js', function(req, res) {
-        res.sendFile(path.resolve(__dirname, '../../.next', 'sw.js'));
+      server.get('/service-worker.js', function(req, res) {
+        res.sendFile(path.resolve(__dirname, '../../.next', 'service-worker.js'));
       });
     }
 
