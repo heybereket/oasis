@@ -185,7 +185,7 @@ export const Post: React.FC<Props> = ({
             </div>
           </div>
         </header>
-        <div className="font-medium mt-2 mb-6 text-xl break-words text-lightest">
+        <div className="font-medium mt-2 mb-6 text-xl break-words">
           {markdown(postData?.message ?? '')}
           {/* <StyledMarkdown text={postData.message} isPost={true} /> */}
         </div>

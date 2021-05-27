@@ -75,7 +75,6 @@ module.exports = {
         'fade-out-up': 'fade-out-up 0.2s ease-out',
       },
       colors: {
-        "lightest": '#cccccc',
         gray: {
           100: 'var(--color-gray-100)',
           200: 'var(--color-gray-200)',
