@@ -5,10 +5,12 @@ import { chalkLog } from './lib/chalkLog';
 import { exit } from './lib/exit';
 import { getServer } from './lib/getServer';
 
+config({ path: join(__dirname, '../../.env') });
+
+// default to running api locally
+
 if (process.env.API_MODE === 'local') {
   config({ path: join(__dirname, '../../../api/.env') });
-} else {
-  config({ path: join(__dirname, '../../.env') });
 }
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -27,6 +29,13 @@ const time = Date.now();
   app.prepare().then(() => {
     server.get('/sw.js', function(req, res) {
       res.sendFile(path.resolve(__dirname, '../../.next', 'sw.js'));
+    });
+
+    // Static resources should not be redirected by i18n middleware to same network trip
+    // highly recommend add any extension of static resources here, though it would still
+    // work if you don't
+    server.all(/\.(js|json|png|jpg|ico)$/i, (req, res) => {
+      return handle(req, res);
     });
 
     server.all('*', (req, res) => {
