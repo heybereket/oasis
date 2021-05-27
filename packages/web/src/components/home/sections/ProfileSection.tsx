@@ -49,8 +49,6 @@ export const ProfileSection: React.FC<Props> = (
                     </a>
                 </>
             )}
-
-
         </>
-    )
+    );
 }

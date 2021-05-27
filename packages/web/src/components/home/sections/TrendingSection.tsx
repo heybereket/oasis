@@ -21,5 +21,5 @@ export const TrendingSection: React.FC<any> = () => {
             </Sidebar>
 
         </>
-    )
+    );
 }

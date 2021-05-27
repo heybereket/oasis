@@ -2,8 +2,6 @@ import React from 'react'
 import {
     Sidebar, FriendActivity
 } from '@oasis-sh/ui';
-
-
 export const FriendActivitySection: React.FC<any> = () => {
     return (
         <Sidebar title="Friends Activity" className="mt-10">
@@ -26,5 +24,5 @@ export const FriendActivitySection: React.FC<any> = () => {
                 />
             </div>
         </Sidebar>
-    )
+    );
 } 

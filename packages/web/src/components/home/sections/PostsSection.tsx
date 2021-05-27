@@ -57,6 +57,6 @@ export const PostsSection: React.FC<Props> =
                 ))}
             </>
 
-        )
+        );
 
     }

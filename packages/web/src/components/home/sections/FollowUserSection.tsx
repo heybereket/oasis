@@ -2,10 +2,6 @@ import React from 'react';
 import {
     Sidebar, FollowUser
 } from '@oasis-sh/ui';
-
-
-
-
 export const FollowUserSection: React.FC<any> = () => {
     return (
         <Sidebar title="Find New People" className="mt-10">
@@ -14,5 +10,5 @@ export const FollowUserSection: React.FC<any> = () => {
                 <FollowUser name="Alex" username="alexover1" />
                 <FollowUser name="Sam" username="samjakob" />
             </div>
-        </Sidebar>)
+        </Sidebar>);
 }
