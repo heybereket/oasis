@@ -12,6 +12,7 @@ import {
   useGetUsersPostsLazyQuery,
   useGetUsersLikedPostsLazyQuery,
   GetCurrentUserDocument,
+  useDeletePostMutation,
 } from '@oasis-sh/client-gql';
 import {
   About,
@@ -54,6 +55,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
   const [follow] = useFollowUserMutation({
     variables: { userId: data?.id ?? '' },
   });
+
+  const [deletePost] = useDeletePostMutation();
 
   const { user, currentUserLoading } = useGetCurrentUser();
 
@@ -108,6 +111,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
               posts={postsData.data?.userOnlyPosts}
               likedPosts={null}
               likeDislikePost={likeDislikePost}
+              currentUser={user}
+              deletePost={deletePost}
             />
           );
         }
@@ -122,9 +127,11 @@ const Profile: React.FC<ProfileProps> = (props) => {
               markdown={(text: any) => (
                 <StyledMarkdown text={text} isBio={false} isPost={true} />
               )}
+              currentUser={user}
               posts={null}
               likedPosts={likedPostsData.data?.getUserByName}
               likeDislikePost={likeDislikePost}
+              deletePost={deletePost}
             />
           );
         }

@@ -4,6 +4,8 @@ import {
   GetUsersPostsQuery,
   Post as TPost,
   useLikeDislikePostMutation,
+  User,
+  useDeletePostMutation,
 } from '@oasis-sh/client-gql';
 import React from 'react';
 import Post from '../post/Post';
@@ -15,7 +17,9 @@ type Props = {
   posts: UsersPostType | undefined | null;
   likedPosts: UsersLikedPostType | undefined | null;
   likeDislikePost: ReturnType<typeof useLikeDislikePostMutation>[0];
+  deletePost: ReturnType<typeof useDeletePostMutation>[0];
   markdown: (text: string) => JSX.Element;
+  currentUser?: User;
 };
 
 export const Posts: React.FC<Props> = ({
@@ -23,6 +27,8 @@ export const Posts: React.FC<Props> = ({
   likedPosts,
   markdown,
   likeDislikePost,
+  currentUser,
+  deletePost,
 }) => {
   return (
     <>
@@ -38,6 +44,13 @@ export const Posts: React.FC<Props> = ({
           <div key={index} className="mb-6">
             <Post
               post={post as TPost}
+              currentUser={currentUser}
+              deletePost={(id) => {
+                deletePost({
+                  variables: { postId: id },
+                });
+                window.location.reload();
+              }}
               markdown={markdown}
               bgColorOveride={'bg-gray-900'}
               likePost={() => {

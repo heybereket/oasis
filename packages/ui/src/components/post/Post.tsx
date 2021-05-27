@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
-import { Comments, SmallUpArrow, SmallDownArrow } from '../../index';
+import React, { useRef, useState } from 'react';
+import {
+  Comments,
+  SmallUpArrow,
+  SmallDownArrow,
+  DropdownItem,
+} from '../../index';
 // import Link from "next/link";
-import { Post as TPost } from '@oasis-sh/client-gql';
+import { Post as TPost, Role, User } from '@oasis-sh/client-gql';
 import { postDate } from '../../lib/postDate';
+import { ThreeDots } from '../../icons/other/ThreeDots';
+import useOnClickOutside from '../../utils/hooks/useOnClickOutside';
+import { Trash } from '../../icons/other/Trash';
+import { Info } from '../../icons';
 // import { StyledMarkdown } from "../../../../web/src/components/markdown/styledMarkdown";
 
 interface Props {
   post: TPost;
+  currentUser?: User;
   likePost?: () => any;
   dislikePost?: () => any;
+  deletePost?: (id: string) => any;
   markdown: (text: string) => JSX.Element;
   bgColorOveride?: string;
 }
@@ -25,6 +36,8 @@ export const Post: React.FC<Props> = ({
   dislikePost,
   markdown,
   bgColorOveride,
+  deletePost,
+  currentUser,
 }) => {
   const date = postDate(postData.createdAt);
 
@@ -38,6 +51,10 @@ export const Post: React.FC<Props> = ({
       ? LikeDislikeState.DISLIKED
       : LikeDislikeState.NONE
   );
+
+  const [isDropdownActive, setDropdownActive] = useState(false);
+  const node = useRef(null);
+  useOnClickOutside(node, () => setDropdownActive(false));
 
   return (
     <div
@@ -67,58 +84,104 @@ export const Post: React.FC<Props> = ({
                 </p>
               </div>
             </a>
-            <div className="flex flex-col items-center">
-              <SmallUpArrow
-                onClick={() => {
-                  likePost
-                    ? likePost()
-                    : () => {
-
-                      };
-                  console.log(likeState);
-                  if (likeState === LikeDislikeState.LIKED) {
-                    setLikeState(LikeDislikeState.NONE);
-                    setLikes(likes - 1);
-                  } else if (likeState === LikeDislikeState.DISLIKED) {
-                    setLikeState(LikeDislikeState.LIKED);
-                    setDislikes(dislikes - 1);
-                    setLikes(likes + 1);
-                  } else {
-                    setLikeState(LikeDislikeState.LIKED);
-                    setLikes(likes + 1);
-                  }
-                  console.log(likeState);
-                }}
-                className={`cursor-pointer ${
-                  likeState === LikeDislikeState.LIKED ? 'text-blue-400' : ''
-                }`}
-              />
-              <p className="font-bold bg-gray-700 px-2 rounded-full">
-                {likes - dislikes}
-              </p>
-              <SmallDownArrow
-                onClick={() => {
-                  dislikePost
-                    ? dislikePost()
-                    : () => {
-
-                      };
-                  if (likeState === LikeDislikeState.DISLIKED) {
-                    setLikeState(LikeDislikeState.NONE);
-                    setDislikes(dislikes - 1);
-                  } else if (likeState === LikeDislikeState.LIKED) {
-                    setLikeState(LikeDislikeState.DISLIKED);
-                    setDislikes(dislikes + 1);
-                    setLikes(likes - 1);
-                  } else {
-                    setLikeState(LikeDislikeState.DISLIKED);
-                    setDislikes(dislikes + 1);
-                  }
-                }}
-                className={`cursor-pointer ${
-                  likeState === LikeDislikeState.DISLIKED ? 'text-blue-400' : ''
-                }`}
-              />
+            <div className="flex flex-row">
+              <div className="flex flex-col items-center">
+                <SmallUpArrow
+                  onClick={() => {
+                    likePost ? likePost() : () => {};
+                    console.log(likeState);
+                    if (likeState === LikeDislikeState.LIKED) {
+                      setLikeState(LikeDislikeState.NONE);
+                      setLikes(likes - 1);
+                    } else if (likeState === LikeDislikeState.DISLIKED) {
+                      setLikeState(LikeDislikeState.LIKED);
+                      setDislikes(dislikes - 1);
+                      setLikes(likes + 1);
+                    } else {
+                      setLikeState(LikeDislikeState.LIKED);
+                      setLikes(likes + 1);
+                    }
+                    console.log(likeState);
+                  }}
+                  className={`cursor-pointer ${
+                    likeState === LikeDislikeState.LIKED ? 'text-blue-400' : ''
+                  }`}
+                />
+                <p className="font-bold bg-gray-700 px-2 rounded-full">
+                  {likes - dislikes}
+                </p>
+                <SmallDownArrow
+                  onClick={() => {
+                    dislikePost ? dislikePost() : () => {};
+                    if (likeState === LikeDislikeState.DISLIKED) {
+                      setLikeState(LikeDislikeState.NONE);
+                      setDislikes(dislikes - 1);
+                    } else if (likeState === LikeDislikeState.LIKED) {
+                      setLikeState(LikeDislikeState.DISLIKED);
+                      setDislikes(dislikes + 1);
+                      setLikes(likes - 1);
+                    } else {
+                      setLikeState(LikeDislikeState.DISLIKED);
+                      setDislikes(dislikes + 1);
+                    }
+                  }}
+                  className={`cursor-pointer ${
+                    likeState === LikeDislikeState.DISLIKED
+                      ? 'text-blue-400'
+                      : ''
+                  }`}
+                />
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <ThreeDots
+                  className="mx-2 cursor-pointer"
+                  onClick={() => setDropdownActive(true)}
+                />
+                <div className="flex relative">
+                  {/* fixed the rendering logic here */}
+                  {isDropdownActive && (
+                    <div
+                      className={`flex absolute flex-col rounded-lg bg-gray-700 px-4 py-3 max-w-md z-50 right-0 mt-7  ${
+                        isDropdownActive
+                          ? 'animate-fade-in-down'
+                          : 'animate-fade-out-up animate-fill-forwards'
+                      }`}
+                      ref={node}
+                    >
+                      {(currentUser?.roles?.includes(Role.Moderator) ||
+                        currentUser?.id === postData.author.id) && (
+                        <div className="flex flex-col justify-start items-start text-base text-gray-300 mb-2">
+                          <DropdownItem
+                            name="Delete"
+                            icon={Trash}
+                            onClick={() =>
+                              deletePost
+                                ? deletePost(postData.id ?? '')
+                                : () => {}
+                            }
+                          />
+                        </div>
+                      )}
+                      <div className="flex flex-col justify-start items-start text-base text-gray-300 mb-2">
+                        <DropdownItem
+                          name="Report"
+                          icon={Info}
+                          onClick={() => {}}
+                        />
+                      </div>
+                      {/* <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
+                        <DropdownItem
+                          name="Logout"
+                          icon={LogoutIcon}
+                          onClick={async () => {
+                            await logout();
+                          }}
+                        />
+                      </div> */}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </header>

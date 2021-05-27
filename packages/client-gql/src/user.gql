@@ -12,6 +12,7 @@ query getCurrentUser {
     username
     name
     verified
+    roles
   }
 }
 
