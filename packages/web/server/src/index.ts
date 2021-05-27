@@ -5,10 +5,10 @@ import { chalkLog } from './lib/chalkLog';
 import { exit } from './lib/exit';
 import { getServer } from './lib/getServer';
 
+config({ path: join(__dirname, '../../.env') });
+
 if (process.env.API_MODE === 'local') {
   config({ path: join(__dirname, '../../../api/.env') });
-} else {
-  config({ path: join(__dirname, '../../.env') });
 }
 
 const dev = process.env.NODE_ENV !== 'production';
