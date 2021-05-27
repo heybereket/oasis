@@ -19,9 +19,11 @@ export function setCurrentUser(currentUser: User | undefined): any {
 }
 
 export function useGetCurrentUser(): LoadableCurrentUser {
-  [user, setUser] = useState<User | undefined>();
   const query = useQuery<GetCurrentUserQuery>(GetCurrentUserDocument);
   const { data, loading } = query;
+  [user, setUser] = useState<User | undefined>(
+    (data?.currentUser as User) ?? undefined
+  );
 
   useEffect(() => {
     if (data?.currentUser !== null && data?.currentUser !== undefined) {
