@@ -4,6 +4,7 @@
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "prettier.singleQuote": true,
+    "css.lint.unknownAtRules": "ignore",
      "editor.codeActionsOnSave": {
         "source.fixAll": true
     },
