@@ -4,9 +4,6 @@ import {
     CreatePostInput,
     Post
 } from '@oasis-sh/ui';
-
-
-
 interface Props {
     createPost: (variables: object) => void,
     likeDislikePost: (variable: object) => void,

@@ -1,12 +1,8 @@
-import React from 'react'
+import React from 'react';
 import {
     Sidebar,
     TopicBadge
 } from '@oasis-sh/ui';
-
-
-
-
 export const TrendingSection: React.FC<any> = () => {
     return (
         <>
