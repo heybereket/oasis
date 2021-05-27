@@ -15,7 +15,7 @@ export { Sidebar } from './components/home/Sidebar';
 export { CreatePostInput } from './components/home/CreatePostInput';
 
 // OSS
-export { Contributors } from "./components/oss/Contributors";
+export { Contributors } from './components/oss/Contributors';
 
 // Navbar
 export { DropdownItem } from './components/navbar/DropdownItem';
@@ -39,6 +39,13 @@ export { TopicBadge } from './components/profile/TopicBadge';
 // Resort
 export { ResortCard } from './components/resort/ResortCard';
 export { ResortHeader } from './components/resort/ResortHeader';
+
+// Sections
+export { FollowUserSection } from './components/sections/FollowUserSection';
+export { FriendActivitySection } from './components/sections/FriendActivitySection';
+export { ProfileSection } from './components/sections/ProfileSection';
+export { PostsSection } from './components/sections/PostsSection';
+export { TrendingSection } from './components/sections/TrendingSection';
 
 // Icons
 export { About } from './icons/navbar/About';
