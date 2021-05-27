@@ -3,15 +3,16 @@ import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
+import StyledMarkdown from '@markdown/StyledMarkdown';
+import { login, logout } from '@lib/login';
+import { SEO } from '@utils/SEO';
 import {
   Navbar,
-  Sidebar,
-  RightArrow,
-  FriendActivity,
-  TopicBadge,
-  Post,
-  FollowUser,
-  CreatePostInput,
+  FollowUserSection,
+  FriendActivitySection,
+  PostsSection,
+  ProfileSection,
+  TrendingSection,
 } from '@oasis-sh/ui';
 import {
   PaginatePostsDocument,
@@ -22,16 +23,6 @@ import {
   GetCurrentUserDocument,
   useDeletePostMutation,
 } from '@oasis-sh/client-gql';
-import {
-  FollowUserSection,
-  FriendActivitySection,
-  PostsSection,
-  ProfileSection,
-  TrendingSection
-} from '../components/home/index'
-import StyledMarkdown from 'src/markdown/StyledMarkdown';
-import { login, logout } from '@lib/login';
-import { SEO } from '@utils/SEO';
 
 interface IndexPageProps {
   initialApolloState: any;
@@ -71,7 +62,11 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
         <div className="z-10 relative px-6 grid grid-cols-1 lg:grid-cols-three gap-16">
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
             <div className="flex-shrink-0 w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
-              <ProfileSection user={user} currentUserLoading={currentUserLoading} StyledMarkdown={StyledMarkdown}></ProfileSection>
+              <ProfileSection
+                user={user}
+                currentUserLoading={currentUserLoading}
+                StyledMarkdown={StyledMarkdown}
+              ></ProfileSection>
             </div>
             <FriendActivitySection></FriendActivitySection>
           </div>
@@ -81,13 +76,13 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               user={user}
               posts={posts}
               createPost={createPost}
-              likeDislikePost={likeDislikePost}>
-            </PostsSection>
+              likeDislikePost={likeDislikePost}
+            ></PostsSection>
           </div>
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
             <div className="w-full flex flex-col items-center">
-              <TrendingSection></TrendingSection>
-              <FollowUserSection></FollowUserSection>
+              <TrendingSection />
+              <FollowUserSection />
             </div>
           </div>
         </div>
