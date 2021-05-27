@@ -25,9 +25,11 @@ const time = Date.now();
   }
 
   app.prepare().then(() => {
-    server.get('/sw.js', function(req, res) {
-      res.sendFile(path.resolve(__dirname, '../../.next', 'sw.js'));
-    });
+    if(process.env.NODE_ENV === 'production') {
+      server.get('/sw.js', function(req, res) {
+        res.sendFile(path.resolve(__dirname, '../../.next', 'sw.js'));
+      });
+    }
 
     server.all('*', (req, res) => {
       return handle(req, res);
