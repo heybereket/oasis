@@ -1,31 +1,19 @@
 const bundleAnalyzer = require('@next/bundle-analyzer');
+const withOffline = require('next-offline');
 const { createSecureHeaders } = require('next-secure-headers');
-const withPWA = require('next-pwa');
 const { join } = require('path');
 
 const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' });
 
 module.exports = withBundleAnalyzer(
-  withPWA({
+  withOffline({
+    target: 'serverless',
+    dontAutoRegisterSw: true,
+    workboxOpts: {
+      swDest: '.next',
+    },
     future: {
       webpack5: true,
-    },
-    pwa: {
-      disable: process.env.NODE_ENV !== 'production',
-      register: true,
-      dest: '.next',
-      sw: 'sw.js',
-      // https://developers.google.com/web/tools/workbox/modules/workbox-strategies
-      runtimeCaching: [
-        {
-          handler: 'NetworkFirst',
-          urlPattern: /^https?.*/,
-        },
-        {
-          handler: 'NetworkFirst',
-          urlPattern: /\/_next\/.*/,
-        },
-      ],
     },
     poweredByHeader: false,
     async headers() {
