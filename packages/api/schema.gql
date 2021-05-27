@@ -42,7 +42,6 @@ input EditCommentInput {
 
 input EditPostInput {
   message: String
-  title: String
   topics: [String!]
 }
 
@@ -183,7 +182,6 @@ type Post {
   likes: Float!
   message: String!
   resort: Resort
-  title: String
   topics: [String!]!
 }
 
