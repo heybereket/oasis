@@ -48,7 +48,10 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   return (
     <>
-      <SEO title="Feed" />
+      <SEO
+        title="Feed"
+        description="💻 Oasis — the social platform for developers"
+      />
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
