@@ -1,4 +1,4 @@
-_Follow these steps to get started with running the `web` package!_
+# Oasis GraphQL API
 
 **Prerequisites**<br>
 1. Setup the [API](API-Quick-Start)
