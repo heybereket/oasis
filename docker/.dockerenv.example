@@ -47,3 +47,10 @@ OASIS_API_GOOGLE_CALLBACK_URL=http://localhost:3000/api/auth/google/callback
 OASIS_API_SPOTIFY_CLIENT_SECRET=
 OASIS_API_SPOTIFY_CLIENT_SECRET=
 OASIS_API_SPOTIFY_CALLBACK_URL=
+
+# Database Options
+# Can be any database type supported by typeorm. Must be in the same docker network if a networked db
+DATABASE_TYPE=
+DATABASE_HOST=
+DATABASE_USERNAME=
+DATABASE_PASSWORD

@@ -20,5 +20,3 @@ packages/web/server/index.js
 *.rdb
 
 .dockerenv
-
-docker-ormconfig.ts
