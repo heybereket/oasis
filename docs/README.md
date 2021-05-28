@@ -20,7 +20,7 @@ $ yarn dev
 ``` 
 
 ## Enviornment Variables
-Follow the enviornment variable examples for `web` and `api`, to fill in your own .env file. <br/>
+Follow the enviornment variable examples (located in **.env.example**) for `web` and `api`, to fill in your own .env file. <br/>
 **Reminder:** Not all of the enviornment variables are required.
 
 ## Linting
