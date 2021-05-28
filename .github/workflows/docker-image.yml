@@ -1,0 +1,34 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ staging ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Make Ormconfig
+      uses: finnp/create-file-action@1.0.0
+      env:
+        FILE_NAME: "docker/ormconfig.ts"
+        FILE_DATA: ${{ secrets.ORMCONFIG  }}
+    
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1.9.0
+      with:
+        registry: docker.pkg.github.com
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN  }}
+        
+    - name: Build and Push Docker Image
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: |
+          docker.pkg.github.com/oasis-sh/oasis/oasis:${{ github.sha }}
+          docker.pkg.github.com/oasis-sh/oasis/oasis:latest
