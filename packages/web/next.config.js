@@ -1,6 +1,4 @@
 const bundleAnalyzer = require('@next/bundle-analyzer');
-const withOffline = require('next-offline');
-const { createSecureHeaders } = require('next-secure-headers');
 const { join } = require('path');
 
 const withBundleAnalyzer = bundleAnalyzer({
@@ -11,9 +9,26 @@ module.exports = withBundleAnalyzer({
   future: {
     webpack5: true,
   },
-  poweredByHeader: false,
-  async headers() {
-    return [{ source: '/(.*)', headers: createSecureHeaders() }];
+  reactStrictMode: true,
+  headers() {
+    return [
+      {
+        source: '/',
+        headers: [{ key: 'X-Frame-Options', value: 'SAMEORIGIN' }],
+      },
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-XSS-Protection', value: '1; mode=block' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'no-referrer-when-downgrade' },
+          {
+            key: 'Feature-Policy',
+            value: "geolocation 'self'; microphone 'self'; camera 'self'",
+          },
+        ],
+      },
+    ];
   },
   async redirects() {
     return [
