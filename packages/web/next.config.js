@@ -18,7 +18,7 @@ module.exports = withBundleAnalyzer({
           // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
           {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
+            value: 'same-origin',
           },
           // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
           {
@@ -44,10 +44,11 @@ module.exports = withBundleAnalyzer({
           // Opt-out of Google FLoC: https://amifloced.org/
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+            value:
+              'camera=(), microphone=(), geolocation=(), interest-cohort=()',
           },
         ],
-      }
+      },
     ];
   },
   async redirects() {
