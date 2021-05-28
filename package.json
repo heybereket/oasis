@@ -1,6 +1,5 @@
 {
   "name": "oasis-sh",
-  "license": "MIT",
   "private": true,
   "workspaces": [
     "packages/*"
