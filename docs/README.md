@@ -7,6 +7,22 @@ Oasis is following the [conventional commits](https://www.conventionalcommits.or
 2. Add the files you want to commit with `git add [files]`
 3. Run `yarn commit` in the project root for a interactive prompt to appear, and follow the instructions.
 
+## Understanding Scripts
+```bash
+# Build all the Packages
+$ yarn build:all
+
+# Build a specific package
+$ yarn build <package>
+
+# Run the Web Application and UI Components
+$ yarn dev
+``` 
+
+## Enviornment Variables
+Follow the enviornment variable examples for `web` and `api`, to fill in your own .env file. <br/>
+**Reminder:** Not all of the enviornment variables are required.
+
 ## Linting
 ```bash
 # Run Prettier + Eslint Globally
