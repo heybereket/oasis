@@ -66,9 +66,9 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                 user={user}
                 currentUserLoading={currentUserLoading}
                 StyledMarkdown={StyledMarkdown}
-              ></ProfileSection>
+              />
             </div>
-            <FriendActivitySection></FriendActivitySection>
+            <FriendActivitySection />
           </div>
           <div className="flex flex-col flex-1 w-full space-y-12 pb-12 mt-[33px]">
             <PostsSection
@@ -77,7 +77,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               posts={posts}
               createPost={createPost}
               likeDislikePost={likeDislikePost}
-            ></PostsSection>
+            />
           </div>
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
             <div className="w-full flex flex-col items-center">
