@@ -3652,7 +3652,6 @@ __metadata:
     "@babel/core": ^7.14.3
     "@babel/eslint-parser": ^7.14.3
     "@next/bundle-analyzer": ^10.2.3
-    "@primer/octicons-react": ^14.1.0
     "@types/express": ^4
     "@types/node": ^15.6.0
     "@types/react-dom": ^17.0.5
@@ -3742,15 +3741,6 @@ __metadata:
   version: 1.0.0-next.15
   resolution: "@polka/url@npm:1.0.0-next.15"
   checksum: c2a678bdc0a46353e251fad7419f2456e7e95aac1a3814abba84291cff5ed6f9d80a1b4b59288aae6c347766d0eae8a78120dc6d063e86d54ef3ad73f621575d
-  languageName: node
-  linkType: hard
-
-"@primer/octicons-react@npm:^14.1.0":
-  version: 14.1.0
-  resolution: "@primer/octicons-react@npm:14.1.0"
-  peerDependencies:
-    react: ">=15"
-  checksum: f51669cd75613b9d2bf9928dd91efae82fe603447588525c6646211806c9165ff7a3dbbc4f2129997afadea150df80031af307e7acfb9bef4a3045cd9ac6fa82
   languageName: node
   linkType: hard
 
