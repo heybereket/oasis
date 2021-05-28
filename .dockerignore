@@ -8,8 +8,8 @@
 node_modules/
 postgres_data/
 .next
-packages/api/src/ormconfig.ts
 packages/api/db.sqlite
+packages/api/src/ormconfig.ts
 packages/web/db.sqlite
 packages/web/server/index.js
 # macOS
@@ -19,6 +19,4 @@ packages/web/server/index.js
 *.sqlite
 *.rdb
 
-.dockerenv
-
-docker-ormconfig.ts
+.env

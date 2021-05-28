@@ -1,0 +1,49 @@
+## Web
+# Where is the server running?
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
+# Set to 'local' if running API locally, otherwise set to 'remote'
+API_MODE='local'
+
+# Enable Bundle Analyzer (Optional)
+ANALYZE=true yarn build
+
+## API
+# Session Secret Token
+OASIS_API_SESSION_SECRET=
+
+# Trust Proxy ('true' ONLY if you are reverse-proxying the API)
+OASIS_API_TRUST_PROXY=false
+
+# https://redis.io/download
+OASIS_API_REDIS_URL=redis://localhost:6379
+
+# Github Authentication (Optional)
+# https://github.com/settings/developers
+OASIS_API_GITHUB_CLIENT_ID=
+OASIS_API_GITHUB_CLIENT_SECRET=
+OASIS_API_GITHUB_CALLBACK_URL=http://localhost:3000/api/auth/github/callback
+
+# Twitter Authentication (Optional)
+# https://apps.twitter.com
+OASIS_API_TWITTER_KEY=
+OASIS_API_TWITTER_SECRET_KEY=
+OASIS_API_TWITTER_CALLBACK_URL=http://localhost:3000/api/auth/twitter/callback
+
+# Discord Authentication (Optional)
+# https://discord.com/developers/applications
+OASIS_API_DISCORD_CLIENT_ID=
+OASIS_API_DISCORD_CLIENT_SECRET=
+OASIS_API_DISCORD_CALLBACK_URL=http://localhost:3000/api/auth/discord/callback
+
+# Google Authentication (Optional)
+# https://console.developers.google.com
+OASIS_API_GOOGLE_CLIENT_ID=
+OASIS_API_GOOGLE_CLIENT_SECRET=
+OASIS_API_GOOGLE_CALLBACK_URL=http://localhost:3000/api/auth/google/callback
+
+# Spotify Connection (Optional)
+# https://developer.spotify.com/dashboard
+OASIS_API_SPOTIFY_CLIENT_SECRET=
+OASIS_API_SPOTIFY_CLIENT_SECRET=
+OASIS_API_SPOTIFY_CALLBACK_URL=
