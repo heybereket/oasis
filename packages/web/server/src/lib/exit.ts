@@ -1,7 +1,7 @@
-import { chalkLog } from './chalkLog';
+import { log } from './log';
 
 export const exit = (amount: number): any => {
-  chalkLog(
+  log(
     'error',
     `${
       amount >= 1
