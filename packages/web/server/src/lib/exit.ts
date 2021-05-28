@@ -1,8 +1,7 @@
-import { log } from './log';
+import * as log from './log';
 
 export const exit = (amount: number): any => {
-  log(
-    'error',
+  log.error(
     `${
       amount >= 1
         ? `Exiting with ${amount} error`

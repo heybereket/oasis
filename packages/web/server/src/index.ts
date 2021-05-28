@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
 import path, { join } from 'path';
 import next from 'next';
-import { log } from './lib/log';
+import * as log from './lib/log';
 import { exit } from './lib/exit';
 import { getServer } from './lib/getServer';
 
@@ -39,7 +39,7 @@ const time = Date.now();
 
     try {
       server.listen(PORT, () =>
-        log('ready', `Ready in ${Date.now() - time}ms on http://localhost:${PORT}`)
+        log.ready(`Ready in ${Date.now() - time}ms on http://localhost:${PORT}`)
       );
     } catch (err) {
       if (err) throw err;
