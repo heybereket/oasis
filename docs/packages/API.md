@@ -1,4 +1,4 @@
-_Follow these steps to get started with running the `api` package!_
+# Oasis GraphQL API
 
 **Prerequisites**<br>
 This guide assumes you have already:
