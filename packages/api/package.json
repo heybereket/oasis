@@ -41,7 +41,7 @@
     "@types/spotify-web-api-node": "^5.0.2",
     "@types/uuid": "^8.3.0",
     "chalk": "^4.1.1",
-    "concurrently": "^6.1.0",
+    "concurrently": "^6.2.0",
     "eslint": "^7.27.0",
     "jest": "^27.0.1",
     "nanoid": "^3.1.23",
