@@ -95,7 +95,7 @@ export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
   req,
 }) => {
   const vars: PaginatePostsQueryVariables = {
-    postsLimit: 25,
+    postsLimit: 100,
     postsOffset: 0,
   };
   return {
