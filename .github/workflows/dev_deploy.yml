@@ -12,9 +12,21 @@ on:
   workflow_dispatch:
 
 jobs:
+  #check-avail:
+  #  runs-on: ubuntu-latest
+  #  outputs:
+  #    retVal: ${{ steps.request.outputs.return }}
+  #  
+  #  steps:
+  #    - name: Make Request
+  #      id: request
+  #      run: "echo \"::set-output name=return::$(curl https://dev.oasis.sh/gha/devAvail)\""
+      
   deploy:
+    #needs: check-avail
     runs-on: ubuntu-latest
 
+    #if: ${{ contains(needs.check-avail.output.retVal, 'true') }}
     steps:
       # Setup Node.js
       - name: Setup Node.js
