@@ -1,7 +1,7 @@
 # 🔨 Contributing to Oasis
 
 ## Commit Messages
-Oasis is following the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) standard for commit messages.
+Oasis is following the [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog) standard for commit messages.
 
 1. Run `yarn` in the project root
 2. Add the files you want to commit with `git add [files]`
