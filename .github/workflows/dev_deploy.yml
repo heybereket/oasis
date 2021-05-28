@@ -26,7 +26,7 @@ jobs:
     needs: check-avail
     runs-on: ubuntu-latest
 
-    if: ${{ needs.check-avail.output.retVal == 'true' }}
+    if: ${{ contains(needs.check-avail.output.retVal, 'true') }}
     steps:
       # Setup Node.js
       - name: Setup Node.js
