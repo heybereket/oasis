@@ -1,6 +1,6 @@
 # Oasis
 
-<img src='https://img.shields.io/badge/License-MIT-blue.svg' > [![Deploy Production](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/prod_deploy.yml) [![Deploy Staging](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/dev_deploy.yml)
+<img src='https://img.shields.io/badge/License-MIT-blue.svg' > [![Docker Image CI](https://github.com/oasis-sh/oasis/actions/workflows/docker-image.yml/badge.svg)](https://github.com/oasis-sh/oasis/actions/workflows/docker-image.yml)
 
 ## Structure
 - [`packages/web`](/packages/web) - Web Application
