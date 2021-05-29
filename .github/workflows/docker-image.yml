@@ -39,7 +39,7 @@ jobs:
             docker pull docker.pkg.github.com/oasis-sh/oasis/oasis:latest
             cd /opt/oasis/docker/staging
             docker-compose down
-            docker-compose up
+            docker-compose up -d
           host: ${{ secrets.SSH_HOST }}
           user: ci-runner
           key: ${{ secrets.SSH_DEPLOY_KEY }}
