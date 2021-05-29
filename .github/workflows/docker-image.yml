@@ -3,6 +3,16 @@ name: Docker Image CI
 on:
   push:
     branches: [ staging ]
+    paths:
+      - 'packages/web/**'
+      - 'packages/api/**'
+      - 'packages/client-gql/**'
+      - 'packages/ui/**'
+      - 'docker/**'
+      - 'package.json'
+      - 'yarn.lock'
+      - 'Dockerfile'
+      
   workflow_dispatch:
 
 jobs:
