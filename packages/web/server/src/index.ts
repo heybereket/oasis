@@ -27,8 +27,10 @@ const start = Date.now();
 
   app.prepare().then(() => {
     if (process.env.NODE_ENV === 'production') {
-      server.get('/service-worker.js', function(req, res) {
-        res.sendFile(path.resolve(__dirname, '../../.next', 'service-worker.js'));
+      server.get('/service-worker.js', function (req, res) {
+        res.sendFile(
+          path.resolve(__dirname, '../../.next', 'service-worker.js')
+        );
       });
     }
 
@@ -40,7 +42,9 @@ const start = Date.now();
 
     try {
       server.listen(PORT, () =>
-        log.ready(`Ready in ${ms(Date.now() - start)} on http://localhost:${PORT}`)
+        log.ready(
+          `Ready in ${ms(Date.now() - start)} on http://localhost:${PORT}`
+        )
       );
     } catch (err) {
       if (err) throw err;

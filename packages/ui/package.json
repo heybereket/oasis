@@ -43,6 +43,7 @@
     "build": "rollup -c",
     "build:watch": "rollup -cw",
     "lint": "eslint src --fix",
+    "prettify": "prettier --config .prettierrc --write src/{.,components,icons,lib,utils}/*.tsx src/{components,modules,pages,lib}/**/*.ts",
     "format": "prettier --write src",
     "clean": "rimraf dist"
   }
