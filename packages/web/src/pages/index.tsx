@@ -81,6 +81,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               posts={posts}
               createPost={createPost}
               likeDislikePost={likeDislikePost}
+              deleteMutation={deletePost}
             />
           </div>
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
