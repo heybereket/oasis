@@ -19,4 +19,4 @@ packages/web/server/index.js
 *.sqlite
 *.rdb
 
-.env
+**/.env

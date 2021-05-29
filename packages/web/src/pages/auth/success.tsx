@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { localBaseURL } from '@lib/constants';
+// import { localBaseURL } from '@lib/constants';
 
 export const AuthSuccess: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
     router.prefetch('/');
-    router.push(
-      window.localStorage.getItem('redirectPath') ?? `${localBaseURL}/`
-    );
+    router.push(window.localStorage.getItem('redirectPath') ?? `/`);
   }, []);
   return <div></div>;
 };

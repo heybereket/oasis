@@ -1,4 +1,4 @@
-import { baseURL } from '@lib/constants';
+// import { baseURL } from '@lib/constants';
 import { setCurrentUser } from '@lib/common/getCurrentUser';
 
 export const login = (type: string): any => {
@@ -6,25 +6,25 @@ export const login = (type: string): any => {
   switch (type) {
     // GitHub Authentication
     case 'github':
-      return (window.location.href = `${baseURL}/api/auth/github`);
+      return (window.location.href = `/api/auth/github`);
 
     // Twitter Authentication
     case 'twitter':
-      return (window.location.href = `${baseURL}/api/auth/twitter`);
+      return (window.location.href = `/api/auth/twitter`);
 
     // Google Authentication
     case 'google':
-      return (window.location.href = `${baseURL}/api/auth/google`);
+      return (window.location.href = `/api/auth/google`);
 
     // Discord Authentication
     case 'discord':
-      return (window.location.href = `${baseURL}/api/auth/discord`);
+      return (window.location.href = `/api/auth/discord`);
   }
 };
 
 export const logout = async (): Promise<void> => {
   const response = await (
-    await fetch(`${baseURL}/api/auth/logout`, {
+    await fetch(`/api/auth/logout`, {
       headers: {
         Accept: 'application/json',
       },
