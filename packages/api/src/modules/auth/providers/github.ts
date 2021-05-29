@@ -31,10 +31,7 @@ export default (passport: PassportStatic): Router => {
           if (!user.id) {
             user.id = uuid();
             user.avatar = profile._json.avatar_url;
-            user.name =
-              (profile.displayName as string).trim() !== ''
-                ? profile.displayName
-                : profile.username;
+            user.name = profile.displayName;
             user.github = id;
             user.username = await checkUsername(profile.username);
             user.verified = false;
