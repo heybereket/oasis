@@ -1,5 +1,6 @@
 import React from 'react';
-import { Sidebar, FriendActivity } from '../../index';
+import { Sidebar } from '../home/Sidebar';
+import { FriendActivity } from '../home/FriendActivity';
 export const FriendActivitySection: React.FC<any> = () => {
   return (
     <Sidebar title="Friends Activity" className="mt-10">

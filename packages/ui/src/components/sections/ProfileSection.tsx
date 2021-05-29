@@ -1,5 +1,5 @@
 import React from 'react';
-import { RightArrow } from '../../index';
+import { RightArrow } from '../../icons';
 type Props = {
   user: any;
   currentUserLoading: boolean;
