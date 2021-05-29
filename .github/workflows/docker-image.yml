@@ -27,3 +27,19 @@ jobs:
         tags: |
           docker.pkg.github.com/oasis-sh/oasis/oasis:${{ github.sha }}
           docker.pkg.github.com/oasis-sh/oasis/oasis:latest
+          
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remote SSH Commands
+        uses: fifsky/ssh-action@v0.0.5
+        with:
+          command: |
+            docker pull docker.pkg.github.com/oasis-sh/oasis/oasis:latest
+            cd /opt/oasis/docker/staging
+            docker-compose down
+            docker-compose up
+          host: ${{ secrets.SSH_HOST }}
+          user: ci-runner
+          key: ${{ secrets.SSH_DEPLOY_KEY }}
