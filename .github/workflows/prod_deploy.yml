@@ -1,41 +1,41 @@
-name: Deploy Production
+# name: Deploy Production
 
-on:
-  # Triggers the workflow on push or pull request events but only for the prod branch
-  push:
-    branches: [prod]
-  # Allows running this workflow manually from the Actions tab
-  workflow_dispatch:
+# on:
+#   # Triggers the workflow on push or pull request events but only for the prod branch
+#   push:
+#     branches: [prod]
+#   # Allows running this workflow manually from the Actions tab
+#   workflow_dispatch:
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-      # Setup Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+#     steps:
+#       # Setup Node.js
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: '14'
 
-      # Install node dependencies
-      - name: Install node dependencies
-        run: |
-          npm install pm2 -g
+#       # Install node dependencies
+#       - name: Install node dependencies
+#         run: |
+#           npm install pm2 -g
 
-      # Prepare to deploy
-      - name: Prepare for deploy
-        run: |
-          mkdir -p /home/runner/.ssh
-          echo "${{ secrets.SSH_DEPLOY_CONFIG }}" > /home/runner/.ssh/config
-          echo "${{ secrets.SSH_DEPLOY_KEY }}" > /home/runner/.ssh/id_rsa
-          chmod 0600 /home/runner/.ssh/id_rsa
+#       # Prepare to deploy
+#       - name: Prepare for deploy
+#         run: |
+#           mkdir -p /home/runner/.ssh
+#           echo "${{ secrets.SSH_DEPLOY_CONFIG }}" > /home/runner/.ssh/config
+#           echo "${{ secrets.SSH_DEPLOY_KEY }}" > /home/runner/.ssh/id_rsa
+#           chmod 0600 /home/runner/.ssh/id_rsa
 
-      # Check out the repository to $GITHUB_WORKSPACE
-      - uses: actions/checkout@v2
+#       # Check out the repository to $GITHUB_WORKSPACE
+#       - uses: actions/checkout@v2
 
-      # Run the deployment
-      - name: Run deployment
-        run: |
-          cd $GITHUB_WORKSPACE
-          pm2 deploy ecosystem-prod.config.js production update
+#       # Run the deployment
+#       - name: Run deployment
+#         run: |
+#           cd $GITHUB_WORKSPACE
+#           pm2 deploy ecosystem-prod.config.js production update
