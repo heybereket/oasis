@@ -15,7 +15,6 @@ if (process.env.API_MODE === 'local') {
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, conf: require('../../next.config.js') });
 const handle = app.getRequestHandler();
-
 const start = Date.now();
 
 (async () => {
@@ -27,7 +26,7 @@ const start = Date.now();
 
   app.prepare().then(() => {
     if (process.env.NODE_ENV === 'production') {
-      server.get('/service-worker.js', function (req, res) {
+      server.get('/service-worker.js', function(req, res) {
         res.sendFile(
           path.resolve(__dirname, '../../.next', 'service-worker.js')
         );

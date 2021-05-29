@@ -1,4 +1,3 @@
-// import StyledMarkdown from '../../../../web/src/components/markdown/StyledMarkdown';
 import React from 'react';
 
 type Props = {
@@ -31,7 +30,7 @@ export const Bio: React.FC<Props> = ({
           </div>
         ) : (
           <h5 className="text-gray-300 font-bold">
-            Hmm, it seems like @{username} does not have a bio set.
+           @{username} currently does not have a bio set.
           </h5>
         )}
         <div className="flex">
