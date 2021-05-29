@@ -26,18 +26,19 @@ export const ProfileSection: React.FC<Props> = ({
               <p className="font-bold text-light -mt-1">@{user?.username}</p>
             </div>
           </div>
-          <p className="mt-3">
+          <div className="mt-3">
             {user?.bio !== null ? (
               <StyledMarkdown text={user?.bio ?? ''} isBio={true} />
             ) : (
-              'Your bio has not been set.'
+              <p>Your bio has not been set.</p>
             )}
-          </p>
-          <a href={`/user/${user?.username}`}>
-            <a className="flex items-center space-x-0.5 mt-2">
-              <p className="font-bold text-lg text-primary">View Profile</p>
-              <RightArrow className="text-primary" />
-            </a>
+          </div>
+          <a
+            className="flex items-center space-x-0.5 mt-2"
+            href={`/user/${user?.username}`}
+          >
+            <p className="font-bold text-lg text-primary">View Profile</p>
+            <RightArrow className="text-primary" />
           </a>
         </>
       )}

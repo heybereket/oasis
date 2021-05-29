@@ -27,9 +27,10 @@ export const PostsSection: React.FC<Props> = ({
       {user && (
         <CreatePostInput
           avatarUrl={user.avatar}
-          onSubmit={(value: string) =>
-            createPost({ variables: { message: value, topics: [] } })
-          }
+          onSubmit={(value: string) => {
+            createPost({ variables: { message: value, topics: [] } });
+            window.location.reload();
+          }}
         />
       )}
       {[...posts].reverse().map((post: any, index: number) => (
