@@ -1,0 +1,23 @@
+name: Docker Image Prod Deploy
+
+on:
+  push:
+    branches: [ prod ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remote SSH Commands
+        uses: fifsky/ssh-action@v0.0.5
+        with:
+          command: |
+            docker pull docker.pkg.github.com/oasis-sh/oasis/oasis:${{ github.sha }}
+            cd /opt/oasis/docker/prod
+            echo "FROM docker.pkg.github.com/oasis-sh/oasis/oasis:${{ github.sha }}" > Dockerfile
+            docker-compose down
+            docker-compose up -d
+          host: ${{ secrets.SSH_HOST }}
+          user: ci-runner
+          key: ${{ secrets.SSH_DEPLOY_KEY }}

@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image CI, CD
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
       - 'package.json'
       - 'yarn.lock'
       - 'Dockerfile'
-      
+
   workflow_dispatch:
 
 jobs:
@@ -37,7 +37,7 @@ jobs:
         tags: |
           docker.pkg.github.com/oasis-sh/oasis/oasis:${{ github.sha }}
           docker.pkg.github.com/oasis-sh/oasis/oasis:latest
-          
+
   deploy:
     needs: [build]
     runs-on: ubuntu-latest
