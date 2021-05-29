@@ -31,6 +31,10 @@ export const SEO: React.FC<SEOProps> = ({
         )}
         <meta name="og:description" content={metaDesc} />
         <meta name="og:image" content={metaImg} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={metaImg} />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="theme-color" content="#306EEA" />
       </Head>
   );
