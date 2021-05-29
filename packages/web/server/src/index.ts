@@ -1,7 +1,8 @@
 import { config } from 'dotenv';
 import path, { join } from 'path';
+import ms from 'pretty-ms';
 import next from 'next';
-import { chalkLog } from './lib/chalkLog';
+import * as log from './lib/log';
 import { exit } from './lib/exit';
 import { getServer } from './lib/getServer';
 
@@ -15,7 +16,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, conf: require('../../next.config.js') });
 const handle = app.getRequestHandler();
 
-const time = Date.now();
+const start = Date.now();
 
 (async () => {
   const server = await getServer(process.env.API_MODE as string);
@@ -39,10 +40,7 @@ const time = Date.now();
 
     try {
       server.listen(PORT, () =>
-        chalkLog(
-          'success',
-          `Ready in ${Date.now() - time}ms on http://localhost:${PORT}`
-        )
+        log.ready(`Ready in ${ms(Date.now() - start)} on http://localhost:${PORT}`)
       );
     } catch (err) {
       if (err) throw err;

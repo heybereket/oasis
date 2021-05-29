@@ -62,11 +62,15 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
         <div className="z-10 relative px-6 grid grid-cols-1 lg:grid-cols-three gap-16">
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
             <div className="flex-shrink-0 w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
-              <ProfileSection
-                user={user}
-                currentUserLoading={currentUserLoading}
-                StyledMarkdown={StyledMarkdown}
-              />
+              {user ?
+                <ProfileSection
+                  user={user}
+                  currentUserLoading={currentUserLoading}
+                  StyledMarkdown={StyledMarkdown}
+                />
+              :
+                "Login to view your profile card."
+              }
             </div>
             <FriendActivitySection />
           </div>

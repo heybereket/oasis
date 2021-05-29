@@ -1,7 +1,7 @@
+import { NavItem } from '../navbar/NavItem';
+import { DropdownItem } from '../navbar/DropdownItem';
+import { Button } from '../common/Button';
 import {
-  NavItem,
-  DropdownItem,
-  Button,
   Bell,
   Friends,
   Home,
@@ -10,7 +10,7 @@ import {
   Topics,
   Profile as ProfileIcon,
   Logout as LogoutIcon,
-} from "../../index";
+} from "../../icons";
 import React, { useRef, useState } from "react";
 import useOnClickOutside from "../../utils/hooks/useOnClickOutside";
 import { User } from "@oasis-sh/client-gql";

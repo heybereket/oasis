@@ -1,5 +1,7 @@
 import React from 'react';
-import { Sidebar, TopicBadge } from '../../index';
+import { Sidebar } from '../home/Sidebar';
+import { TopicBadge } from '../profile/TopicBadge';
+
 export const TrendingSection: React.FC<any> = () => {
   return (
     <>
