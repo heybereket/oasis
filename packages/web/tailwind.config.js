@@ -3,8 +3,7 @@ module.exports = {
   darkMode: 'class',
   purge: [
     './src/pages/**/*.tsx',
-    './src/components/**/*.tsx',
-    '../ui/**/*.{js,ts,jsx,tsx}',
+    '../ui/**/*.tsx',
   ],
   theme: {
     flexShrink: {
