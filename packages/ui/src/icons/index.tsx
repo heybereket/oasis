@@ -1,3 +1,4 @@
+// Icons
 export { About } from './navbar/About';
 export { Bell } from './navbar/Bell';
 export { Comments } from './posts/Comments';
@@ -5,7 +6,6 @@ export { DownArrow } from './arrows/DownArrow';
 export { Friends } from './navbar/Friends';
 export { Home } from './navbar/Home';
 export { Like } from './posts/Like';
-export { Info } from './other/Info';
 export { Logout } from './navbar/Logout';
 export { Search } from './navbar/Search';
 export { Posts } from './navbar/Posts';
@@ -15,4 +15,7 @@ export { Twitter } from './social/Twitter';
 export { RightArrow } from './arrows/RightArrow';
 export { Profile } from './navbar/Profile';
 export { SmallUpArrow } from './arrows/SmallUpArrow';
+export { UpArrow } from './arrows/UpArrow';
 export { SmallDownArrow } from './arrows/SmallDownArrow';
+export { Info } from './other/Info';
+export { Trash } from './other/Trash';

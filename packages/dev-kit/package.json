@@ -10,7 +10,9 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:oasis-dev-kit.commit"
+    "onCommand:oasis-dev-kit.commit",
+    "onCommand:oasis-dev-kit.audit-staging",
+    "onCommand:oasis-dev-kit.audit-local"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -18,6 +20,16 @@
       {
         "command": "oasis-dev-kit.commit",
         "title": "Commit",
+        "category": "Oasis DevKit"
+      },
+      {
+        "command": "oasis-dev-kit.audit-staging",
+        "title": "Audit Staging Server",
+        "category": "Oasis DevKit"
+      },
+      {
+        "command": "oasis-dev-kit.audit-local",
+        "title": "Audit Local Server",
         "category": "Oasis DevKit"
       }
     ]
@@ -33,6 +45,7 @@
   "devDependencies": {
     "@types/glob": "^7.1.3",
     "@types/node": "^12.11.7",
+    "@types/node-fetch": "^2.5.10",
     "@types/vscode": "^1.46.0",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",
@@ -42,6 +55,8 @@
     "vscode-test": "^1.4.1"
   },
   "dependencies": {
-    "cz-conventional-changelog": "^3.3.0"
+    "cz-conventional-changelog": "^3.3.0",
+    "lighthouse": "^7.5.0",
+    "node-fetch": "^2.6.1"
   }
 }

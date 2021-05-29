@@ -1,0 +1,13 @@
+# Docker Compose to use in dev
+
+version: "3.9"  # optional since v1.27.0
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - redis
+    env_file: docker/.dockerenv
+  redis:
+    image: redis

@@ -1,14 +1,8 @@
 {
   "name": "@oasis-sh/ui",
-  "author": "Samar Mohan <samar.mohan@gmail.com>",
-  "license": "MIT",
   "version": "1.1.0",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
-  "files": [
-    "dist/"
-  ],
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -51,10 +45,5 @@
     "lint": "eslint src --fix",
     "format": "prettier --write src",
     "clean": "rimraf dist"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/oasis-sh/oasis.git",
-    "directory": "packages/ui"
   }
 }

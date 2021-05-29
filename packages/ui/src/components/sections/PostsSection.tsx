@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { CreatePostInput, Post } from '../../index';
+import { Post } from '../post/Post';
+import { CreatePostInput } from '../home/CreatePostInput';
+
 interface Props {
   createPost: (variables: object) => void;
   likeDislikePost: (variable: object) => void;

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Sidebar, FollowUser } from '../../index';
+import { Sidebar } from '../home/Sidebar';
+import { FollowUser } from '../home/FollowUser';
+
 export const FollowUserSection: React.FC<any> = () => {
   return (
     <Sidebar title="Find New People" className="mt-10">

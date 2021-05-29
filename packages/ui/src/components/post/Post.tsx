@@ -1,18 +1,10 @@
 import React, { useRef, useState } from 'react';
-import {
-  Comments,
-  SmallUpArrow,
-  SmallDownArrow,
-  DropdownItem,
-} from '../../index';
-// import Link from "next/link";
+import { DropdownItem } from '../navbar/DropdownItem';
 import { Post as TPost, Role, User } from '@oasis-sh/client-gql';
 import { postDate } from '../../lib/postDate';
 import { ThreeDots } from '../../icons/other/ThreeDots';
 import useOnClickOutside from '../../utils/hooks/useOnClickOutside';
-import { Trash } from '../../icons/other/Trash';
-import { Info } from '../../icons';
-// import { StyledMarkdown } from "../../../../web/src/components/markdown/styledMarkdown";
+import { Info, Trash, SmallDownArrow, SmallUpArrow, Comments } from '../../icons';
 
 interface Props {
   post: TPost;

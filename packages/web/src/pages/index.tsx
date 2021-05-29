@@ -62,13 +62,17 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
         <div className="z-10 relative px-6 grid grid-cols-1 lg:grid-cols-three gap-16">
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
             <div className="flex-shrink-0 w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
-              <ProfileSection
-                user={user}
-                currentUserLoading={currentUserLoading}
-                StyledMarkdown={StyledMarkdown}
-              ></ProfileSection>
+              {user ?
+                <ProfileSection
+                  user={user}
+                  currentUserLoading={currentUserLoading}
+                  StyledMarkdown={StyledMarkdown}
+                />
+              :
+                "Login to view your profile card."
+              }
             </div>
-            <FriendActivitySection></FriendActivitySection>
+            <FriendActivitySection />
           </div>
           <div className="flex flex-col flex-1 w-full space-y-12 pb-12 mt-[33px]">
             <PostsSection
@@ -77,7 +81,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               posts={posts}
               createPost={createPost}
               likeDislikePost={likeDislikePost}
-            ></PostsSection>
+            />
           </div>
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
             <div className="w-full flex flex-col items-center">
@@ -95,7 +99,7 @@ export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
   req,
 }) => {
   const vars: PaginatePostsQueryVariables = {
-    postsLimit: 25,
+    postsLimit: 100,
     postsOffset: 0,
   };
   return {
