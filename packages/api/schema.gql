@@ -16,9 +16,13 @@ type Comment {
   author: User!
   content: String!
   createdAt: String!
+  dislikers(limit: Float!, offset: Float!): PaginatedUserFromComment_dislikedCommentsResponse!
   dislikes: Int!
   id: ID!
+  isDisliked: Boolean!
+  isLiked: Boolean!
   lastEdited: String
+  likers(limit: Float!, offset: Float!): PaginatedUserFromComment_likedCommentsResponse!
   likes: Int!
   post: Post!
 }
@@ -65,6 +69,7 @@ type Mutation {
   giveBadge(badgeName: String!, username: String!): Boolean!
   joinResort(resortId: String!): Boolean
   likeDislike(dislike: Boolean!, like: Boolean!, postId: String!): Boolean!
+  likeDislikeComment(commentId: String!, dislike: Boolean!, like: Boolean!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   markNotificationAsRead(notificationId: String!): Boolean!
@@ -108,6 +113,18 @@ type PaginatedCommentFromUser_authorResponse {
   total: Float!
 }
 
+type PaginatedCommentFromUser_dislikersResponse {
+  hasMore: Boolean!
+  items: [Comment!]!
+  total: Float!
+}
+
+type PaginatedCommentFromUser_likersResponse {
+  hasMore: Boolean!
+  items: [Comment!]!
+  total: Float!
+}
+
 type PaginatedPostFromResort_resortResponse {
   hasMore: Boolean!
   items: [Post!]!
@@ -129,6 +146,18 @@ type PaginatedPostFromUser_dislikersResponse {
 type PaginatedPostFromUser_likersResponse {
   hasMore: Boolean!
   items: [Post!]!
+  total: Float!
+}
+
+type PaginatedUserFromComment_dislikedCommentsResponse {
+  hasMore: Boolean!
+  items: [User!]!
+  total: Float!
+}
+
+type PaginatedUserFromComment_likedCommentsResponse {
+  hasMore: Boolean!
+  items: [User!]!
   total: Float!
 }
 
@@ -262,6 +291,7 @@ type User {
   comments(limit: Float!, offset: Float!): PaginatedCommentFromUser_authorResponse!
   createdAt: String!
   discord: String
+  dislikedComments(limit: Float!, offset: Float!): PaginatedCommentFromUser_dislikersResponse!
   dislikedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_dislikersResponse!
   followers(limit: Float!, offset: Float!): PaginatedUserFromUser_followingResponse!
   following(limit: Float!, offset: Float!): PaginatedUserFromUser_followersResponse!
@@ -269,6 +299,7 @@ type User {
   google: String
   id: ID!
   isBot: Boolean
+  likedComments(limit: Float!, offset: Float!): PaginatedCommentFromUser_likersResponse!
   likedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_likersResponse!
   name: String
   ownedResorts: [Resort!]

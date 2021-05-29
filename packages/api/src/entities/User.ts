@@ -105,6 +105,18 @@ export default class User extends BaseEntity {
   @BCField({ type: 'PaginationResponseType<Post>' })
   dislikedPosts: Promise<Post[]>;
 
+  @RelationalPagination(() => User, () => Comment, 'likers')
+  @ManyToMany(() => Comment, (comment) => comment.likers)
+  @JoinTable()
+  @BCField({ type: 'PaginationResponseType<Comment>' })
+  likedComments: Promise<Comment[]>;
+
+  @RelationalPagination(() => User, () => Comment, 'dislikers')
+  @ManyToMany(() => Comment, (comment) => comment.dislikers)
+  @JoinTable()
+  @BCField({ type: 'PaginationResponseType<Comment>' })
+  dislikedComments: Promise<Comment[]>;
+
   @OneToMany(() => Notification, (notification) => notification.user, {
     nullable: true,
   })

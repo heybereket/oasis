@@ -4,12 +4,14 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
+  ManyToMany,
 } from 'typeorm';
 import { Field, ID, Int, ObjectType } from 'type-graphql';
 import Post from '@entities/Post';
 import User from '@entities/User';
 import { BCEntity, BCField } from '@root/bot-client-gen';
 import { PublicField } from '@utils/PublicField';
+import { RelationalPagination } from '@utils/RelationalPagination';
 
 @ObjectType()
 @Entity()
@@ -51,4 +53,14 @@ export default class Comment extends BaseEntity {
   @ManyToOne(() => User, (user) => user.comments)
   @BCField({ type: 'User' })
   author: Promise<User>;
+
+  @RelationalPagination(() => Comment, () => User, 'likedComments')
+  @ManyToMany(() => User, (user) => user.likedComments)
+  @BCField({ type: 'PaginationResponseType<User>' })
+  likers: Promise<User[]>;
+
+  @RelationalPagination(() => Comment, () => User, 'dislikedComments')
+  @ManyToMany(() => User, (user) => user.dislikedComments)
+  @BCField({ type: 'PaginationResponseType<User>' })
+  dislikers: Promise<User[]>;
 }
