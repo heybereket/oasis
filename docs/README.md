@@ -1,11 +1,9 @@
 # 🔨 Contributing to Oasis
 
-## Development Process
+## Getting Started
 Oasis is actively open to new contributions. If you would like to contribute, follow the instructions for the package(s) you are looking to set up in [docs/packages](./packages). We also highly recommend taking a look at our [issues](https://github.com/oasis-sh/oasis/issues) for anything interesting that may seem fitting for you to work on before deciding to add any new features.
 
 We also have a [public roadmap](https://github.com/oasis-sh/oasis/projects/9), that can be viewable for everyone.
-
-After you are done with a contribution, we use [pull requests](https://github.com/oasis-sh/oasis/pulls) to review all code before they potentially be merged into the project. As also stated in the project [README.md](https://github.com/oasis-sh/oasis/blob/staging/README.md), we use staging for all testing related purposes before it gets pushed to production.
 
 ## Commit Messages
 Oasis is following the [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog) standard for commit messages.
