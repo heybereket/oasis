@@ -1,11 +1,22 @@
 # 🔨 Contributing to Oasis
 
+## Development Process
+Oasis is actively open to new contributions. If you would like to contribute, follow the instructions for the package(s) you are looking to set up in [docs/packages](./packages). We also highly recommend taking a look at our [issues](https://github.com/oasis-sh/oasis/issues) for anything interesting that may seem fitting for you to work on before deciding to add any new features.
+
+We also have a [public roadmap](https://github.com/oasis-sh/oasis/projects/9), that can be viewable for everyone.
+
+After you are done with a contribution, we use [pull requests](https://github.com/oasis-sh/oasis/pulls) to review all code before they potentially be merged into the project. As also stated in the project [README.md](https://github.com/oasis-sh/oasis/blob/staging/README.md), we use staging for all testing related purposes before it gets pushed to production.
+
 ## Commit Messages
 Oasis is following the [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog) standard for commit messages.
 
 1. Run `yarn` in the project root
 2. Add the files you want to commit with `git add [files]`
-3. Run `yarn commit` in the project root for a interactive prompt to appear, and follow the instructions.
+3. Run `yarn commit` in the project root for a interactive prompt to appear and follow the instructions.
+
+## Enviornment Variables
+Follow the enviornment variable examples (located in **.env.example**) for `web` and `api`, to fill in your own .env file. <br/>
+**Reminder:** Not all of the enviornment variables are required.
 
 ## Understanding Scripts
 ```bash
@@ -17,23 +28,22 @@ $ yarn build <package>
 
 # Run the Web Application and UI Components
 $ yarn dev
-``` 
 
-## Enviornment Variables
-Follow the enviornment variable examples (located in **.env.example**) for `web` and `api`, to fill in your own .env file. <br/>
-**Reminder:** Not all of the enviornment variables are required.
+# Delete all compiled code (dist folders) globally
+$ yarn clean
+```
 
 ## Linting
 ```bash
 # Run Prettier + Eslint Globally
 $ yarn format
 
-# Run Prettier 
+# Run Prettier
 $ yarn prettify
 
 # Run Eslint
 $ yarn lint
-``` 
+```
 
 ## TypeORM Migrations
 ```bash
@@ -42,10 +52,4 @@ $ yarn workspace @oasis-sh/api typeorm:generate_migration <name>
 
 # Run the Migration
 $ yarn workspace @oasis-sh/api typeorm:run_migrations
-``` 
-
-## Code of Conduct
-Our code of conduct is viewable in [`CODE_OF_CONDUCT.md`](https://github.com/oasis-sh/oasis/blob/staging/.github/CODE_OF_CONDUCT.md).
-
-## License
-All contributions made to Oasis are under the [MIT License](LICENSE).
+```
