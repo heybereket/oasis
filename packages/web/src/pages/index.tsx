@@ -34,7 +34,12 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
     variables: vars,
   });
 
-  const [createPost] = useMakePostMutation();
+  const [createPost] = useMakePostMutation({
+    onError: (e) => {
+      console.log(e.message);
+    },
+    // errorPolicy: 'none',
+  });
 
   const { user, currentUserLoading } = useGetCurrentUser();
   const posts = data?.paginatePosts;

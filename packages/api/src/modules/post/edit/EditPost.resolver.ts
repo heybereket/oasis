@@ -14,6 +14,9 @@ export class EditPostResolver {
     @Arg('data') data: EditPostInput,
     @Ctx() { uid, getUser }: ContextType
   ) {
+    if (data.message.length < 1 || data.message.length > 1000) throw new ApolloError("Messages need to be more than 0 chars and less than 1000");
+
+
     const post = await Post.findOne(postId);
 
     if (!post) throw new ApolloError('Post not found');
