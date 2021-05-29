@@ -3593,7 +3593,6 @@ __metadata:
     "@types/prettier": ^2
     "@types/react-dom": ^17.0.5
     "@types/rollup-plugin-peer-deps-external": ^2
-    "@types/tailwindcss": ^2
     "@typescript-eslint/eslint-plugin": ^4.25.0
     "@typescript-eslint/parser": ^4.24.0
     autoprefixer: latest
@@ -3603,16 +3602,13 @@ __metadata:
     eslint-plugin-react: ^7.23.2
     eslint-plugin-react-hooks: ^4.2.0
     node-sass: ^6.0.0
-    postcss: latest
     prettier: ^2.3.0
     react: ^17.0.2
     react-dom: ^17.0.2
     rollup: ^2.48.0
     rollup-plugin-dts: ^3.0.2
     rollup-plugin-peer-deps-external: ^2.2.4
-    rollup-plugin-postcss: ^4.0.0
     rollup-plugin-typescript2: ^0.30.0
-    tailwindcss: latest
     typescript: ^4.2.4
   peerDependencies:
     react: ^17.0.2
@@ -8742,15 +8738,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concat-with-sourcemaps@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "concat-with-sourcemaps@npm:1.1.0"
-  dependencies:
-    source-map: ^0.6.1
-  checksum: fdde7c621e5f8e1015670294ec5d524787b0eb53c422222dc10a0b2b2762a310197043aba526a3ed5f8933fb44e68d40e8119723bbf20f1f95d43699960f6933
-  languageName: node
-  linkType: hard
-
 "concurrently@npm:^6.1.0":
   version: 6.1.0
   resolution: "concurrently@npm:6.1.0"
@@ -11097,7 +11084,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter3@npm:^4.0.0, eventemitter3@npm:^4.0.4":
+"eventemitter3@npm:^4.0.0":
   version: 4.0.7
   resolution: "eventemitter3@npm:4.0.7"
   checksum: 1fc12c7bc3b4194c50975827e72d56ff57c32b75a4c7dbf4d5eebf3c8371f6f1aad6799150b609de1b867c0d8a9885c08b6ca5e7e0dc437d6152f3063b2607dd
@@ -12075,15 +12062,6 @@ fsevents@^1.2.7:
   dependencies:
     globule: ^1.0.0
   checksum: 3613f9c407274ee5165960341973e0bf96630f6c9395871bd1fad714e7e68df55b4f60b568a13b189d87e14f30172cf6da22261cf4f7c99ca74f56f88f8cf18b
-  languageName: node
-  linkType: hard
-
-"generic-names@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "generic-names@npm:2.0.1"
-  dependencies:
-    loader-utils: ^1.1.0
-  checksum: 1ed17b3c9a635cce5e740ca6e983889e41f65e5e1b4ae500d6f64dc2984cad400a7a86f9bd3c4b598a63e5b69b03cbe0155acf6e958909eece71efb50da76307
   languageName: node
   linkType: hard
 
@@ -13209,28 +13187,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"icss-replace-symbols@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "icss-replace-symbols@npm:1.1.0"
-  checksum: 6529ec8274f670e4ed5ded7d48f3f6d6f1576078353f3a363e6183f0be95166c74b4e2a93e1557d1852c59d0ce573ad5e91329e65a8fe94ab88fbb12a02f0ea9
-  languageName: node
-  linkType: hard
-
 "icss-utils@npm:^4.0.0, icss-utils@npm:^4.1.1":
   version: 4.1.1
   resolution: "icss-utils@npm:4.1.1"
   dependencies:
     postcss: ^7.0.14
   checksum: 437ba4f7c9543db7a007f3968698ae26c966e2c54e34ac08c8f88737d06181ffacc5de8d17435940367135822a98655e3c6c8f70504d22b2f5cbc8e10798f873
-  languageName: node
-  linkType: hard
-
-"icss-utils@npm:^5.0.0":
-  version: 5.1.0
-  resolution: "icss-utils@npm:5.1.0"
-  peerDependencies:
-    postcss: ^8.1.0
-  checksum: 4bf5c2e25b106a6c1f58d5f7b35134810aa785455f0c30e31939d873d4110964c5e470862026e0af51608b6d64853c614d9c724018f73cd59974106c0927e982
   languageName: node
   linkType: hard
 
@@ -13310,15 +13272,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"import-cwd@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "import-cwd@npm:3.0.0"
-  dependencies:
-    import-from: ^3.0.0
-  checksum: 5689cfc5d26336ed9ae15a2c725d881845a2455a75fdd92cf715fa92e13ede901cf95c7bb48aeca9b7612f23d53380ff762defc804403f653eedcf53c37e9e5c
-  languageName: node
-  linkType: hard
-
 "import-fresh@npm:^2.0.0":
   version: 2.0.0
   resolution: "import-fresh@npm:2.0.0"
@@ -13339,7 +13292,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"import-from@npm:3.0.0, import-from@npm:^3.0.0":
+"import-from@npm:3.0.0":
   version: 3.0.0
   resolution: "import-from@npm:3.0.0"
   dependencies:
@@ -16229,13 +16182,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"lodash.camelcase@npm:^4.3.0":
-  version: 4.3.0
-  resolution: "lodash.camelcase@npm:4.3.0"
-  checksum: 3cb674ed3b37bb698f2ec5a1c3f607d157279f3015877132e8be5c22cf8048988cb9bf1e61c90dbefea3895a459c095773cc266a5b1a9f4202bcd062b3983e37
-  languageName: node
-  linkType: hard
-
 "lodash.clonedeep@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.clonedeep@npm:4.5.0"
@@ -18528,31 +18474,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"p-queue@npm:^6.6.2":
-  version: 6.6.2
-  resolution: "p-queue@npm:6.6.2"
-  dependencies:
-    eventemitter3: ^4.0.4
-    p-timeout: ^3.2.0
-  checksum: e95a48f421589ac95dc8913bc949e4c73cfc40c294580f176d2e1af6fa525459ed340c9e8d72a9947ca25e5f79f1d5cfbc10f546f958a324704bfcc838340cee
-  languageName: node
-  linkType: hard
-
 "p-retry@npm:^3.0.1":
   version: 3.0.1
   resolution: "p-retry@npm:3.0.1"
   dependencies:
     retry: ^0.12.0
   checksum: 26c888de4e64e62e9b6112219fae2c2f45ddc2face5d6c7c98e1b8762bcd4a54bea4f50cdff275b2ee5ebb11b633bfb16f4dd473ecd4d07081385cb716e961cf
-  languageName: node
-  linkType: hard
-
-"p-timeout@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "p-timeout@npm:3.2.0"
-  dependencies:
-    p-finally: ^1.0.0
-  checksum: d7e71c1547736ecd392be3c4ea956af1abd2b6f56179f37443672cfaccb41383533cdf2e927890bb5282e1eb41c979be133eef26a6a84a8224ff4f5c9455b517
   languageName: node
   linkType: hard
 
@@ -19160,13 +19087,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"pify@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "pify@npm:5.0.0"
-  checksum: 4c28d29597a49bbf320c0c6526fac7858d53b8398a46bfa6ed1a120a922773c7ef50bea166e27952bbc476bce1c72cf3e7d648462ac82e704e62431bdec95cec
-  languageName: node
-  linkType: hard
-
 "pinkie-promise@npm:^2.0.0":
   version: 2.0.1
   resolution: "pinkie-promise@npm:2.0.1"
@@ -19591,16 +19511,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-load-config@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "postcss-load-config@npm:3.0.1"
-  dependencies:
-    cosmiconfig: ^7.0.0
-    import-cwd: ^3.0.0
-  checksum: e71f181552a8e6c52577034d440ef3599af353caab29e6f124b8e969f00cbc1dc7a2640e352920891892a4b0f0e5084d73a89a0512d128b6a91384d8d5833cd6
-  languageName: node
-  linkType: hard
-
 "postcss-loader@npm:3.0.0":
   version: 3.0.0
   resolution: "postcss-loader@npm:3.0.0"
@@ -19728,15 +19638,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-modules-extract-imports@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "postcss-modules-extract-imports@npm:3.0.0"
-  peerDependencies:
-    postcss: ^8.1.0
-  checksum: 874b94fd94f6e44e27f7a08814b972c472bcf21db708640f09b8d5900ce9ef6c8aa3291bc54be0526ba07efee5da0322ea01ed0deecd831e80ba5bd5de0e784e
-  languageName: node
-  linkType: hard
-
 "postcss-modules-local-by-default@npm:^3.0.3":
   version: 3.0.3
   resolution: "postcss-modules-local-by-default@npm:3.0.3"
@@ -19746,19 +19647,6 @@ fsevents@^1.2.7:
     postcss-selector-parser: ^6.0.2
     postcss-value-parser: ^4.1.0
   checksum: 6d34b3b1dc38cba7a3c50ef1bf6f5a0573c638b92a74cf47a730b9e029ad0f1464a944470a4aa51fdaaa8e4c47fcbb52f167d2da0342778776cdd6bafe9b146e
-  languageName: node
-  linkType: hard
-
-"postcss-modules-local-by-default@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "postcss-modules-local-by-default@npm:4.0.0"
-  dependencies:
-    icss-utils: ^5.0.0
-    postcss-selector-parser: ^6.0.2
-    postcss-value-parser: ^4.1.0
-  peerDependencies:
-    postcss: ^8.1.0
-  checksum: c0331dbc56cb37174ad5d9cf84c71fd5787a4f0241fafaade870cb6382abdb0e3db233e9e0eb86fc000a7399006fa360391d97341d4ac0f21e4918ad01892cb9
   languageName: node
   linkType: hard
 
@@ -19772,17 +19660,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-modules-scope@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "postcss-modules-scope@npm:3.0.0"
-  dependencies:
-    postcss-selector-parser: ^6.0.4
-  peerDependencies:
-    postcss: ^8.1.0
-  checksum: 0b30c7bd28433880baf35f9e076f79fee98d9fe2544d118618429dacedd0a26d26145efd238c72f2c68f936b35729fe45e193e088f7d16fce72dd40bfa6afb69
-  languageName: node
-  linkType: hard
-
 "postcss-modules-values@npm:^3.0.0":
   version: 3.0.0
   resolution: "postcss-modules-values@npm:3.0.0"
@@ -19790,35 +19667,6 @@ fsevents@^1.2.7:
     icss-utils: ^4.0.0
     postcss: ^7.0.6
   checksum: 01dc4ea51ecc12654b9e46773180d2cf731b69ad7abf5e4b9368b653dbbbc28aa3e1db31027b50d8d7534c0c206e684ae2edaaedb120220871559e43ebe81c9c
-  languageName: node
-  linkType: hard
-
-"postcss-modules-values@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "postcss-modules-values@npm:4.0.0"
-  dependencies:
-    icss-utils: ^5.0.0
-  peerDependencies:
-    postcss: ^8.1.0
-  checksum: 43fa6db334e38acb9b835578dccab45a5e9e5951dcbb20647348cdc0ad35ed362e36833facd8dab753fa83ffbecd26d2b3f9d4f06a2f9ae4c5c39abf9a0191e0
-  languageName: node
-  linkType: hard
-
-"postcss-modules@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "postcss-modules@npm:4.0.0"
-  dependencies:
-    generic-names: ^2.0.1
-    icss-replace-symbols: ^1.1.0
-    lodash.camelcase: ^4.3.0
-    postcss-modules-extract-imports: ^3.0.0
-    postcss-modules-local-by-default: ^4.0.0
-    postcss-modules-scope: ^3.0.0
-    postcss-modules-values: ^4.0.0
-    string-hash: ^1.1.1
-  peerDependencies:
-    postcss: ^8.0.0
-  checksum: 6ffe437f923142262d7a2a9bc4ec2ddf52cf454856d4fe7cb14278076c65942f9599a8a3a970b367fd9452b21f7558990af7b4110bfb970a6efb9bc522da3191
   languageName: node
   linkType: hard
 
@@ -20233,7 +20081,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.0, postcss@npm:^8.1.6, postcss@npm:^8.2.1, postcss@npm:^8.2.10, postcss@npm:^8.3.0, postcss@npm:latest":
+"postcss@npm:^8.1.0, postcss@npm:^8.1.6, postcss@npm:^8.2.1, postcss@npm:^8.2.10, postcss@npm:^8.3.0":
   version: 8.3.0
   resolution: "postcss@npm:8.3.0"
   dependencies:
@@ -20424,13 +20272,6 @@ fsevents@^1.2.7:
     err-code: ^2.0.2
     retry: ^0.12.0
   checksum: 325e99d059fc624129c020507047a9aeadb988d03fd2165829af7c43af9c6d0510f2ccddb68efa0bac607d4c43591b3af8b1207db132986bfa458f78549ea4f1
-  languageName: node
-  linkType: hard
-
-"promise.series@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "promise.series@npm:0.2.0"
-  checksum: 51fb6c8e50d756a1ce934407fd2bc8f3dcee2bf280c7bbd8cc95925f58358625059adf4437801556d6d381d84e91b6e98fda9780e601fe56f81a856ea8f95e25
   languageName: node
   linkType: hard
 
@@ -21921,29 +21762,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"rollup-plugin-postcss@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "rollup-plugin-postcss@npm:4.0.0"
-  dependencies:
-    chalk: ^4.1.0
-    concat-with-sourcemaps: ^1.1.0
-    cssnano: ^4.1.10
-    import-cwd: ^3.0.0
-    p-queue: ^6.6.2
-    pify: ^5.0.0
-    postcss-load-config: ^3.0.0
-    postcss-modules: ^4.0.0
-    promise.series: ^0.2.0
-    resolve: ^1.19.0
-    rollup-pluginutils: ^2.8.2
-    safe-identifier: ^0.4.2
-    style-inject: ^0.3.0
-  peerDependencies:
-    postcss: 8.x
-  checksum: 89795a34e7f20d631f6cce042da9a77f4dd21bba2d1b08fde550defca1b29a085ad17689a57b19912b345cb642f5988afa714c99642ccb44529c9e8a40a345ab
-  languageName: node
-  linkType: hard
-
 "rollup-plugin-terser@npm:^5.3.1":
   version: 5.3.1
   resolution: "rollup-plugin-terser@npm:5.3.1"
@@ -22075,13 +21893,6 @@ resolve@^2.0.0-next.3:
   version: 5.2.1
   resolution: "safe-buffer@npm:5.2.1"
   checksum: 0bb57f0d8f9d1fa4fe35ad8a2db1f83a027d48f2822d59ede88fd5cd4ddad83c0b497213feb7a70fbf90597a70c5217f735b0eb1850df40ce9b4ae81dd22b3f9
-  languageName: node
-  linkType: hard
-
-"safe-identifier@npm:^0.4.2":
-  version: 0.4.2
-  resolution: "safe-identifier@npm:0.4.2"
-  checksum: 659986cb9f995387032675b89eed8a0a129af7fece421ed0488072644b7c29266aa76c01576d1c4eb24764048da9be3cc65ab643a8732be277dae0d7590cb086
   languageName: node
   linkType: hard
 
@@ -23164,7 +22975,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"string-hash@npm:1.1.3, string-hash@npm:^1.1.1":
+"string-hash@npm:1.1.3":
   version: 1.1.3
   resolution: "string-hash@npm:1.1.3"
   checksum: 178d855be2999a4ae2070d578e872574370224d86ca5d7b45bd709562a9acca61ac165a866c0b8b39e1cf2c181d781b96735725b7036e10b94196b261eb8229e
@@ -23430,13 +23241,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"style-inject@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "style-inject@npm:0.3.0"
-  checksum: 1ff06fa7d2f1724ca333c402eff1b221a4bc829c617743639e02e7e4ee1ee276443994917c34521c3b826805d84e8e4bbc69e8f74a21fcda87d4647c624f377d
-  languageName: node
-  linkType: hard
-
 "style-loader@npm:1.3.0":
   version: 1.3.0
   resolution: "style-loader@npm:1.3.0"
@@ -23674,7 +23478,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^2.1.2, tailwindcss@npm:latest":
+"tailwindcss@npm:^2.1.2":
   version: 2.1.2
   resolution: "tailwindcss@npm:2.1.2"
   dependencies:
