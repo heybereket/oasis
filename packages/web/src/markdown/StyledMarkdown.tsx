@@ -29,8 +29,9 @@ export const StyledMarkdown: React.FC<{
                 style={OasisDark}
                 language={match?.[1]}
                 PreTag="div"
-                {...props}
                 className="rounded-lg shadow-sm"
+                wrapLongLines={true}
+                {...props}
               >
                 {String(children).replace(/\n$/, '')}
               </SyntaxHighlighter>

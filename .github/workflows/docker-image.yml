@@ -50,6 +50,7 @@ jobs:
             cd /opt/oasis/docker/staging
             docker-compose down
             docker-compose up -d
+            docker image prune -f
           host: ${{ secrets.SSH_HOST }}
           user: ci-runner
           key: ${{ secrets.SSH_DEPLOY_KEY }}

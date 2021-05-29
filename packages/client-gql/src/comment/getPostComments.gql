@@ -1,0 +1,22 @@
+query GetPostComments($postId: String! $commentsOffset: Float! $commentsLimit: Float!) {
+  getPost(id: $postId) {
+    id
+    comments(offset: $commentsOffset limit: $commentsLimit) {
+      items {
+        id
+        content
+        likes
+        dislikes
+        createdAt
+        lastEdited
+        author {
+          avatar
+          username
+          name
+        }
+        isLiked
+        isDisliked
+      }
+    }
+  }
+}

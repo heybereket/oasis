@@ -1,0 +1,7 @@
+mutation LikeDislikeComment(
+  $like: Boolean!
+  $dislike: Boolean!
+  $commentId: String!
+) {
+  likeDislikeComment(like: $like, dislike: $dislike, commentId: $commentId)
+}

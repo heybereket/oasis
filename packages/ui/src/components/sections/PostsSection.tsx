@@ -2,6 +2,9 @@ import React from 'react';
 
 import { Post } from '../post/Post';
 import { CreatePostInput } from '../home/CreatePostInput';
+import { DeletePostMutationHookResult } from '@oasis-sh/client-gql';
+
+type DeleteMutation = DeletePostMutationHookResult[0];
 
 interface Props {
   createPost: (variables: object) => void;
@@ -9,6 +12,7 @@ interface Props {
   user: any;
   posts: any;
   StyledMarkdown: any;
+  deleteMutation: DeleteMutation;
 }
 export const PostsSection: React.FC<Props> = ({
   createPost,
@@ -16,6 +20,7 @@ export const PostsSection: React.FC<Props> = ({
   user,
   posts,
   StyledMarkdown,
+  deleteMutation,
 }) => {
   return (
     <>
@@ -51,6 +56,17 @@ export const PostsSection: React.FC<Props> = ({
                 like: false,
               },
             });
+          }}
+          currentUser={user}
+          deletePost={(id) => {
+            deleteMutation
+              ? deleteMutation({
+                  variables: {
+                    postId: id,
+                  },
+                })
+              : () => {};
+            window.location.reload();
           }}
         />
       ))}
