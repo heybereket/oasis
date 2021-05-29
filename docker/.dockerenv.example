@@ -1,7 +1,4 @@
 ## Web
-# Where is the server running?
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
-
 # Set to 'local' if running API locally, otherwise set to 'remote'
 API_MODE='local'
 
@@ -10,13 +7,13 @@ ANALYZE=true yarn build
 
 ## API
 # Session Secret Token
-OASIS_API_SESSION_SECRET=
+OASIS_API_SESSION_SECRET=can-be-anything-even-this
 
 # Trust Proxy ('true' ONLY if you are reverse-proxying the API)
 OASIS_API_TRUST_PROXY=false
 
 # https://redis.io/download
-OASIS_API_REDIS_URL=redis://localhost:6379
+OASIS_API_REDIS_URL=redis://redis:6379
 
 # Github Authentication (Optional)
 # https://github.com/settings/developers
@@ -49,8 +46,8 @@ OASIS_API_SPOTIFY_CLIENT_SECRET=
 OASIS_API_SPOTIFY_CALLBACK_URL=
 
 # Database Options
-# Can be any database type supported by typeorm. Must be in the same docker network if a networked db
-DATABASE_TYPE=
-DATABASE_HOST=
-DATABASE_USERNAME=
-DATABASE_PASSWORD
+# Should be Postgres as that is used for prod and testing, Can be any db though
+DATABASE_TYPE=postgres
+DATABASE_HOST=postgres
+DATABASE_USERNAME=postgres
+DATABASE_PASSWORD=password

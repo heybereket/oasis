@@ -8,6 +8,20 @@ services:
       - "3000:3000"
     links:
       - redis
-    env_file: docker/.dockerenv
+      - postgres
+    # To setup auth uncomment the next line and comment out he line after that.
+    # Then copy the docker/.dcokerenv.example to docker/.dockerenv and add you OAuth keys
+
+    # env_file: docker/.dockerenv
+    env_file: docker/.dockerenv.example
+
   redis:
     image: redis
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
