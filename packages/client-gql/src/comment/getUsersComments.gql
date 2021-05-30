@@ -1,0 +1,28 @@
+query getUsersComments(
+  $username: String!
+  $commentsLimit: Float!
+  $commentsOffset: Float!
+) {
+  userOnlyComments: getUserByName(username: $username) {
+    comments(offset: $commentsOffset, limit: $commentsLimit) {
+      items {
+        id
+        content
+        createdAt
+        lastEdited
+        author {
+          id
+          avatar
+          username
+          name
+        }
+        isLiked
+        isDisliked
+        likes
+        dislikes
+      }
+      hasMore
+      total
+    }
+  }
+}

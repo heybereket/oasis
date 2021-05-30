@@ -17,13 +17,13 @@ type Comment {
   content: String!
   createdAt: String!
   dislikers(limit: Float!, offset: Float!): PaginatedUserFromComment_dislikedCommentsResponse!
-  dislikes: Int!
+  dislikes: Float!
   id: ID!
   isDisliked: Boolean!
   isLiked: Boolean!
   lastEdited: String
   likers(limit: Float!, offset: Float!): PaginatedUserFromComment_likedCommentsResponse!
-  likes: Int!
+  likes: Float!
   post: Post!
 }
 

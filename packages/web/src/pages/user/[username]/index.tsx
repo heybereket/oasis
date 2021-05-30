@@ -13,6 +13,8 @@ import {
   useGetUsersLikedPostsLazyQuery,
   GetCurrentUserDocument,
   useDeletePostMutation,
+  useGetUsersCommentsLazyQuery,
+  useLikeDislikeCommentMutation,
 } from '@oasis-sh/client-gql';
 import {
   About,
@@ -30,6 +32,7 @@ import {
   FollowersInfo,
   Bio,
   PostsTab as PostsTabItem,
+  CommentsTab as CommentsCenterTab,
 } from '@oasis-sh/ui';
 import { SEO } from '@utils/SEO';
 import { useState } from 'react';
@@ -65,6 +68,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
   );
 
   const [likeDislikePost] = useLikeDislikePostMutation();
+  const [likeDislikeComment] = useLikeDislikeCommentMutation();
 
   const [getPosts, postsData] = useGetUsersPostsLazyQuery({
     variables: {
@@ -78,6 +82,14 @@ const Profile: React.FC<ProfileProps> = (props) => {
     variables: {
       postsLimit: 10,
       postsOffset: 0,
+      username: props.username,
+    },
+  });
+
+  const [getComments, commentsData] = useGetUsersCommentsLazyQuery({
+    variables: {
+      commentsLimit: 10,
+      commentsOffset: 0,
       username: props.username,
     },
   });
@@ -135,6 +147,24 @@ const Profile: React.FC<ProfileProps> = (props) => {
             />
           );
         }
+
+      case CenterColumnTabState.CommentsTab:
+        if (!commentsData.called) {
+          getComments();
+          return <div />;
+        } else {
+          return (
+            <CommentsCenterTab
+              comments={commentsData.data?.userOnlyComments}
+              likeDislikeComment={likeDislikeComment}
+              markdown={(text) => (
+                <StyledMarkdown text={text} isBio={false} isPost={true} />
+              )}
+              currentUser={user}
+            />
+          );
+        }
+
       default:
         return <div></div>;
     }

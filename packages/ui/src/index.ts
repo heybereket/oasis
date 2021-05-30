@@ -1,4 +1,7 @@
 // Components
+// Comments
+export { Comment } from './components/comment/Comment';
+
 // Common
 export { Button } from './components/common/Button';
 export { Container } from './components/common/Container';
@@ -29,6 +32,7 @@ export { Post } from './components/post/Post';
 export { LargeUserCard } from './components/profile/large/UserCard';
 export { SmallUserCard } from './components/profile/small/UserCard';
 export { Bio } from './components/profile/Bio';
+export { Comments as CommentsTab } from './components/profile/Comments';
 export { FollowersInfo } from './components/profile/FollowersInfo';
 export { Posts as PostsTab } from './components/profile/Posts';
 export { ProfileBanner } from './components/profile/ProfileBanner';
