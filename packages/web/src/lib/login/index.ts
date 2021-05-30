@@ -1,24 +1,20 @@
-// import { baseURL } from '@lib/constants';
+import { redirect } from '@utils/redirect';
 import { setCurrentUser } from '@lib/common/getCurrentUser';
 
 export const login = (type: string): any => {
   window.localStorage.setItem('redirectPath', window.location.href);
   switch (type) {
-    // GitHub Authentication
     case 'github':
-      return (window.location.href = `/api/auth/github`);
+      return redirect('/api/auth/github');
 
-    // Twitter Authentication
     case 'twitter':
-      return (window.location.href = `/api/auth/twitter`);
+      return redirect('/api/auth/twitter');
 
-    // Google Authentication
     case 'google':
-      return (window.location.href = `/api/auth/google`);
+      return redirect('/api/auth/google');
 
-    // Discord Authentication
     case 'discord':
-      return (window.location.href = `/api/auth/discord`);
+      return redirect('/api/auth/discord');
   }
 };
 

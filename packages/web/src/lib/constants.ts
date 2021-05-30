@@ -7,7 +7,4 @@
 
 export const gqlBaseURL = `/graphql`;
 export const apiBaseURL = `/api`;
-
-export const linkRegex =
-  /(^|\s)(https?:\/\/)(www\.)?([-a-z0-9]{1,63}\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\.[a-z]{1,6}(\/[-\\w@\\+\\.~#\\?&/=%]*)?[^\s()]+/;
 export const mentionRegex = /^(?!.*\bRT\b)(?:.+\s)?#?@\w+/i;
