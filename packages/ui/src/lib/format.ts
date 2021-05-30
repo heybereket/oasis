@@ -4,7 +4,6 @@ const abbreviateNumber = (num: number) => {
   if (num >= 1e6 && num < 1e9) return +(num / 1e6).toFixed(1) + 'M';
   if (num >= 1e9 && num < 1e12) return +(num / 1e9).toFixed(1) + 'B';
   if (num >= 1e12) return +(num / 1e12).toFixed(1) + 'T';
-  if (num < 0) return num * -1;
   return num;
 };
 
