@@ -18,6 +18,9 @@ Follow the enviornment variable examples (located in **.env.example**) for `web`
 
 ## Understanding Scripts
 ```bash
+# Install all dependencies
+$ yarn install
+
 # Build all the Packages
 $ yarn build:all
 
