@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { DropdownItem } from '../navbar/DropdownItem';
 import { Post as TPost, Role, User } from '@oasis-sh/client-gql';
 import { postDate } from '../../lib/postDate';
-import { postUpvotes } from '../../lib/postUpvotes';
+import { formatNumber } from '../../lib/format';
 import { ThreeDots } from '../../icons/other/ThreeDots';
 import useOnClickOutside from '../../utils/hooks/useOnClickOutside';
 import { Info, Trash, SmallDownArrow, SmallUpArrow, Comments } from '../../icons';
@@ -33,7 +33,7 @@ export const Post: React.FC<Props> = ({
   currentUser,
 }) => {
   const date = postDate(postData.createdAt);
-  const upvotes = postUpvotes(postData.likes);
+  const upvotes = formatNumber(postData.likes);
 
   const [likes, setLikes] = useState(postData.likes);
   const [dislikes, setDislikes] = useState(postData.dislikes);
@@ -102,7 +102,7 @@ export const Post: React.FC<Props> = ({
                   }`}
                 />
                 <p className="font-bold bg-gray-700 px-2 rounded-full">
-                  {likes - dislikes}
+                  {Number(formatNumber(likes)) - Number(formatNumber(dislikes))}
                 </p>
                 <SmallDownArrow
                   onClick={() => {
