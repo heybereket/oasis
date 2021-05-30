@@ -48,7 +48,8 @@ jobs:
           command: |
             docker pull docker.pkg.github.com/oasis-sh/oasis/oasis:latest
             cd /opt/oasis/docker/staging
-            docker-compose down
+            docker-compose stop web
+            docker-compose rm -f web
             docker-compose up -d
             docker image prune -f
           host: ${{ secrets.SSH_HOST }}
