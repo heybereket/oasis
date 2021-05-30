@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { Post } from '../post/Post';
 import { CreatePostInput } from '../home/CreatePostInput';
 import { DeletePostMutationHookResult } from '@oasis-sh/client-gql';
@@ -13,6 +13,8 @@ interface Props {
   posts: any;
   StyledMarkdown: any;
   deleteMutation: DeleteMutation;
+  fetch: (limit: number, offset: number) => Promise<any>;
+  amountPerFetch: number;
 }
 export const PostsSection: React.FC<Props> = ({
   createPost,
@@ -21,7 +23,13 @@ export const PostsSection: React.FC<Props> = ({
   posts,
   StyledMarkdown,
   deleteMutation,
+  fetch,
+  amountPerFetch,
 }) => {
+  const [items, setItems] = useState<any>(posts);
+  const limit = amountPerFetch;
+  const [offset, setOffset] = useState<number>(posts.length);
+  const [hasMore, setHasMore] = useState(true);
   return (
     <>
       {user && (
@@ -33,7 +41,7 @@ export const PostsSection: React.FC<Props> = ({
           }}
         />
       )}
-      {[...posts].reverse().map((post: any, index: number) => (
+      {/* {[...posts].reverse().map((post: any, index: number) => (
         <Post
           post={post}
           key={index}
@@ -70,7 +78,66 @@ export const PostsSection: React.FC<Props> = ({
             window.location.reload();
           }}
         />
-      ))}
+      ))} */}
+      <InfiniteScroll
+        dataLength={items.length}
+        next={async () => {
+          const newData = await fetch(limit, offset);
+          if (newData.length === 0) {
+            setHasMore(false);
+          } else {
+            setItems([...items, ...newData]);
+            setOffset(offset + limit);
+          }
+        }}
+        hasMore={hasMore}
+        loader={<h4>Loading...</h4>}
+        endMessage={
+          <p style={{ textAlign: 'center' }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        {items.map((post: any, index: number) => (
+          <div className="mb-6" key={index}>
+            <Post
+              post={post}
+              markdown={(text) => {
+                return <StyledMarkdown text={text} isPost={true} />;
+              }}
+              likePost={() => {
+                likeDislikePost({
+                  variables: {
+                    postId: post.id,
+                    dislike: false,
+                    like: true,
+                  },
+                });
+              }}
+              dislikePost={() => {
+                likeDislikePost({
+                  variables: {
+                    postId: post.id,
+                    dislike: true,
+                    like: false,
+                  },
+                });
+              }}
+              currentUser={user}
+              deletePost={(id) => {
+                deleteMutation
+                  ? deleteMutation({
+                      variables: {
+                        postId: id,
+                      },
+                    })
+                  : () => {};
+                window.location.reload();
+              }}
+            />
+          </div>
+        ))}
+      </InfiniteScroll>
     </>
   );
 };

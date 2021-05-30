@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
@@ -30,7 +29,7 @@ interface IndexPageProps {
 }
 
 const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
-  const { data } = usePaginatePostsQuery({
+  const postsQuery = usePaginatePostsQuery({
     variables: vars,
   });
 
@@ -42,14 +41,14 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   });
 
   const { user, currentUserLoading } = useGetCurrentUser();
-  const posts = data?.paginatePosts;
+  const posts = postsQuery.data?.paginatePosts;
 
   const [likeDislikePost] = useLikeDislikePostMutation();
   const [deletePost] = useDeletePostMutation();
 
-  if (!posts) {
-    return null;
-  }
+  // if (!posts) {
+  //   return null;
+  // }
 
   return (
     <>
@@ -81,12 +80,26 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
           </div>
           <div className="flex flex-col flex-1 w-full space-y-12 pb-12 mt-[33px]">
             <PostsSection
+              amountPerFetch={vars.postsLimit}
               StyledMarkdown={StyledMarkdown}
               user={user}
               posts={posts}
               createPost={createPost}
               likeDislikePost={likeDislikePost}
               deleteMutation={deletePost}
+              fetch={async (limit, offset) => {
+                const newData = (
+                  await postsQuery.fetchMore({
+                    variables: {
+                      postsLimit: limit,
+                      postsOffset: offset,
+                    },
+                  })
+                ).data.paginatePosts;
+
+                console.log(newData);
+                return newData;
+              }}
             />
           </div>
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
@@ -105,7 +118,7 @@ export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
   req,
 }) => {
   const vars: PaginatePostsQueryVariables = {
-    postsLimit: 100,
+    postsLimit: 20,
     postsOffset: 0,
   };
   return {
