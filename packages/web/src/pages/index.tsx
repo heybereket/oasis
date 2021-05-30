@@ -5,7 +5,7 @@ import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import StyledMarkdown from '@markdown/StyledMarkdown';
 import { login, logout } from '@lib/login';
-import { SEO } from '@utils/SEO';
+import { SEO } from '@shared/SEO';
 import {
   Navbar,
   FollowUserSection,

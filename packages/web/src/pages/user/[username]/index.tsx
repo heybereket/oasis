@@ -34,7 +34,7 @@ import {
   PostsTab as PostsTabItem,
   CommentsTab as CommentsCenterTab,
 } from '@oasis-sh/ui';
-import { SEO } from '@utils/SEO';
+import { SEO } from 'src/shared/SEO';
 import { useState } from 'react';
 
 interface ProfileProps {

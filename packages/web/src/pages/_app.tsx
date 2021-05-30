@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@lib/common/apolloClient';
 import { AuthProvider } from '@lib/login/AuthProvider';
-import { SEO } from '@utils/SEO';
+import { SEO } from '@shared/SEO';
 
 export default function App({
   Component,
