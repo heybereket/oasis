@@ -1,4 +1,4 @@
-import { Button } from '../common/Button';
+import { Button } from '../shared/Button';
 import { RightArrow } from '../../icons';
 import { GetResortByNameWithMembersQuery } from "@oasis-sh/client-gql";
 import React from "react";

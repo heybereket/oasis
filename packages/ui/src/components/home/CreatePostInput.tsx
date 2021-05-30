@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { RightArrow } from '../../icons';
-import { AutoResizeTextArea } from '../common/AutoResizeTextArea';
+import { AutoResizeTextArea } from '../shared/AutoResizeTextArea';
 
 interface Props {
   onSubmit: (value: string) => void;

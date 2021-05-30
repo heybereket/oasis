@@ -1,6 +1,6 @@
 import { NavItem } from '../navbar/NavItem';
 import { DropdownItem } from '../navbar/DropdownItem';
-import { Button } from '../common/Button';
+import { Button } from '../shared/Button';
 import {
   Bell,
   Friends,

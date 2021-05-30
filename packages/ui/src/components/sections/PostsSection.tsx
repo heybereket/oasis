@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Post } from '../post/Post';
+import { Loading } from '../shared/Loading';
 import { CreatePostInput } from '../home/CreatePostInput';
 import { DeletePostMutationHookResult } from '@oasis-sh/client-gql';
 
@@ -91,7 +92,7 @@ export const PostsSection: React.FC<Props> = ({
           }
         }}
         hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
+        loader={<Loading message="Loading posts..." />}
         endMessage={
           <p style={{ textAlign: 'center' }}>
             <b>Yay! You have seen it all</b>

@@ -2,14 +2,14 @@
 // Comments
 export { Comment } from './components/comment/Comment';
 
-// Common
-export { Button } from './components/common/Button';
-export { Container } from './components/common/Container';
-export { Footer } from './components/common/Footer';
-export { StyledFormikInput } from './components/common/FormikInput';
-export { Input } from './components/common/Input';
-export { Modal } from './components/common/Modal';
-// export { SEOProvider } from "./components/common/SEOProvider";
+// Shared
+export { Button } from './components/shared/Button';
+export { Container } from './components/shared/Container';
+export { Footer } from './components/shared/Footer';
+export { StyledFormikInput } from './components/shared/FormikInput';
+export { Input } from './components/shared/Input';
+export { Modal } from './components/shared/Modal';
+export { Loading } from './components/shared/Loading';
 
 // Home
 export { FollowUser } from './components/home/FollowUser';
