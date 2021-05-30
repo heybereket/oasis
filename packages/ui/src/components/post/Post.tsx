@@ -33,7 +33,6 @@ export const Post: React.FC<Props> = ({
   currentUser,
 }) => {
   const date = postDate(postData.createdAt);
-  const upvotes = formatNumber(postData.likes);
 
   const [likes, setLikes] = useState(postData.likes);
   const [dislikes, setDislikes] = useState(postData.dislikes);
