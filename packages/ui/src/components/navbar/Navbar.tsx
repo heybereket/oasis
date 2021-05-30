@@ -123,13 +123,7 @@ export const Navbar: React.FC<INavbarProps> = ({
               />
               <div className="flex">
                 {isDropdownActive && (
-                  <div
-                    className={`flex absolute flex-col rounded-lg bg-gray-700 px-4 py-3 max-w-md z-50 right-0 mr-7  ${
-                      isDropdownActive
-                        ? "animate-fade-in-down"
-                        : "animate-fade-out-up animate-fill-forwards"
-                    }`}
-                  >
+                  <div className="flex absolute flex-col rounded-lg bg-gray-700 px-4 py-3 max-w-md z-50 right-0 mr-7">
                     <div className="flex flex-col justify-start items-start text-base text-gray-300">
                       <a href={`/user/${user?.username}`}>
                         <DropdownItem
