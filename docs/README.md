@@ -60,7 +60,3 @@ $ yarn workspace @oasis-sh/api typeorm:run_migrations
 **How can I add a translation?** <br>
 If you would like to add a language to Oasis, feel free to edit the [locales](web/public/locales) directory. <br/>
 We are always open to making Oasis more accessible by adding languages.## Frequently Asked Questions
-
-**How can I add a translation?** <br>
-If you would like to add a language to Oasis, feel free to edit the [locales](web/public/locales) directory. <br/>
-We are always open to making Oasis more accessible by adding languages.
