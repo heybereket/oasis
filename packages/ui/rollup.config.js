@@ -6,18 +6,13 @@ import json from "@rollup/plugin-json";
 const packageJson = require("./package.json");
 
 export default {
-  input: "src/index.ts",
+  input: 'src/index.ts',
   output: [
     {
       file: packageJson.module,
+      format: 'esm',
       sourcemap: true,
     },
   ],
-  plugins: [
-    peerDepsExternal(),
-    resolve(),
-    commonjs(),
-    typescript(),
-    json(),
-  ],
+  plugins: [peerDepsExternal(), resolve(), commonjs(), typescript(), json()],
 };
