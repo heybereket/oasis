@@ -5,7 +5,9 @@ import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@lib/common/apolloClient';
 import { AuthProvider } from '@lib/login/AuthProvider';
 import { SEO } from '@shared/SEO';
+import { initSentry } from '@utils/sentry';
 
+initSentry();
 export default function App({
   Component,
   pageProps,
