@@ -1,0 +1,9 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "defaultCommandTimeout": 20000,
+  "env": {
+    "API_MODE": "remote"
+  },
+  "video": false,
+  "screenshotOnRunFailure": false
+}

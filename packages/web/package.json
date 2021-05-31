@@ -9,7 +9,10 @@
     "prettify": "prettier --config .prettierrc --write server/src/*.ts src/{.,components,modules,pages,lib}/*.tsx src/{components,modules,pages,lib}/**/*.tsx",
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js",
     "clean": "rimraf .next/*",
-    "setup:remote": "yarn clean || echo \"API_MODE='remote'\\\nNEXT_PUBLIC_BASE_URL='http://localhost:3000'\" > .env"
+    "setup:remote": "yarn clean || echo \"API_MODE='remote'\\\nNEXT_PUBLIC_BASE_URL='http://localhost:3000'\" > .env",
+    "cy:install": "cypress install",
+    "cy:run": "cypress run --headless --browser chrome",
+    "cy:open": "cypress open --browser chrome"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^10.2.3",
@@ -41,6 +44,7 @@
     "@typescript-eslint/parser": "^4.24.0",
     "autoprefixer": "^10.2.5",
     "chalk": "^4.1.1",
+    "cypress": "^7.4.0",
     "eslint": "^7.27.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "latest",
