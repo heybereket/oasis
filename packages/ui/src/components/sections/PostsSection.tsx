@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Post } from '../post/Post';
-import { Loading } from '../shared/Loading';
 import { CreatePostInput } from '../home/CreatePostInput';
 import { DeletePostMutationHookResult } from '@oasis-sh/client-gql';
 
@@ -42,44 +41,6 @@ export const PostsSection: React.FC<Props> = ({
           }}
         />
       )}
-      {/* {[...posts].reverse().map((post: any, index: number) => (
-        <Post
-          post={post}
-          key={index}
-          markdown={(text) => {
-            return <StyledMarkdown text={text} isPost={true} />;
-          }}
-          likePost={() => {
-            likeDislikePost({
-              variables: {
-                postId: post.id,
-                dislike: false,
-                like: true,
-              },
-            });
-          }}
-          dislikePost={() => {
-            likeDislikePost({
-              variables: {
-                postId: post.id,
-                dislike: true,
-                like: false,
-              },
-            });
-          }}
-          currentUser={user}
-          deletePost={(id) => {
-            deleteMutation
-              ? deleteMutation({
-                  variables: {
-                    postId: id,
-                  },
-                })
-              : () => {};
-            window.location.reload();
-          }}
-        />
-      ))} */}
       <InfiniteScroll
         dataLength={items.length}
         next={async () => {
@@ -92,7 +53,7 @@ export const PostsSection: React.FC<Props> = ({
           }
         }}
         hasMore={hasMore}
-        loader={<Loading message="Loading posts..." />}
+        loader={null}
         endMessage={
           <p style={{ textAlign: 'center' }}>
             <b>Yay! You have seen it all</b>
