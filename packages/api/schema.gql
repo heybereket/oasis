@@ -216,6 +216,7 @@ type Post {
 
 type Query {
   currentUser: User
+  feedSortPosts(limit: Float!, offset: Float!): [Post!]!
   getAvailableUsername(username: String!): String!
   getBadge(id: String!): Badge!
   getComment(id: String!): Comment!
