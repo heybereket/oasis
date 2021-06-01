@@ -1,5 +1,5 @@
 {
-  "name": "@oasis-sh/api-client",
+  "name": "@oasis-sh/client",
   "version": "0.0.0",
   "description": "The official Bot Wrapper for oasis.",
   "main": "src/index.ts",
