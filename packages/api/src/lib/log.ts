@@ -3,7 +3,7 @@ import chalk from 'chalk';
 export const colors = {
   error: chalk.red('error') + ' -',
   ready: chalk.green('ready') + ' -',
-  warn: chalk.yellow('warn') + ' -'
+  warn: chalk.yellow('warn') + ' -',
 };
 
 // Ready, no issues
