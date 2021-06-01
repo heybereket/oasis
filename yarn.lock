@@ -2135,6 +2135,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cypress/webpack-preprocessor@npm:^5.9.0":
+  version: 5.9.0
+  resolution: "@cypress/webpack-preprocessor@npm:5.9.0"
+  dependencies:
+    bluebird: ^3.7.1
+    debug: 4.3.2
+    lodash: ^4.17.20
+  peerDependencies:
+    "@babel/core": ^7.0.1
+    "@babel/preset-env": ^7.0.0
+    babel-loader: ^8.0.2
+    webpack: ^4.18.1
+  checksum: 9a896046d8507fcaf5025f04dc4f56cbef30b641dad9fba3798920abda36109cb14f0770fb6a700fe09b5bbcf615ff7527f8078884d8df33e5d3c1bd5896399e
+  languageName: node
+  linkType: hard
+
 "@cypress/xvfb@npm:^1.2.4":
   version: 1.2.4
   resolution: "@cypress/xvfb@npm:1.2.4"
@@ -3699,6 +3715,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.14.3
     "@babel/eslint-parser": ^7.14.4
+    "@cypress/webpack-preprocessor": ^5.9.0
     "@next/bundle-analyzer": ^10.2.3
     "@sentry/react": ^6.5.0
     "@sentry/tracing": ^6.5.0
@@ -7567,7 +7584,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bluebird@npm:^3.5.5, bluebird@npm:^3.7.2":
+"bluebird@npm:^3.5.5, bluebird@npm:^3.7.1, bluebird@npm:^3.7.2":
   version: 3.7.2
   resolution: "bluebird@npm:3.7.2"
   checksum: 4f2288662f3d4eadbb82d4daa4a7d7976a28fa3c7eb4102c9b4033b03e5be4574ba123ac52a7c103cde4cb7b2d2afc1dbe41817ca15a29ff21ecd258d0286047
