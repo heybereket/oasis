@@ -26,7 +26,7 @@
     "@commitlint/cli": "^12.1.2",
     "@commitlint/config-conventional": "^12.1.2",
     "@types/concurrently": "^6",
-    "@types/eslint": "^7.2.10",
+    "@types/eslint": "^7.2.13",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.3.1",
     "commitizen": "^4.2.3",
