@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { DropdownItem } from '../navbar/DropdownItem';
 import { Comment as TComment, Role, User } from '@oasis-sh/client-gql';
-import { postDate } from '../../lib/postDate';
+import { formatDate } from '../../lib/format';
 import { ThreeDots } from '../../icons/other/ThreeDots';
 import useOnClickOutside from '../../utils/hooks/useOnClickOutside';
 import { Info, Trash, SmallDownArrow, SmallUpArrow } from '../../icons';
@@ -30,7 +30,7 @@ export const Comment: React.FC<Props> = ({
   bgColorOveride,
   currentUser,
 }) => {
-  const date = postDate(commentData.createdAt);
+  const date = formatDate(commentData.createdAt);
 
   const [likes, setLikes] = useState(commentData.likes);
   const [dislikes, setDislikes] = useState(commentData.dislikes);
