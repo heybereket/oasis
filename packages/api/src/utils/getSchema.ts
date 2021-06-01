@@ -3,7 +3,6 @@ import { joinRoot } from './common/rootPath';
 import { customAuthChecker } from '@utils/auth/authChecker';
 import { glob as _glob } from 'glob';
 import { promisify } from 'util';
-import { allFields } from '@root/bot-client-gen/RegisterEntity';
 
 const glob = promisify(_glob);
 
@@ -25,9 +24,4 @@ export const getSchema = async () => {
 
 if (require.main === module) {
   process.env.BOT_CLIENT_MODE = 'true';
-  getSchema().then(() => {
-    console.log(allFields);
-
-    process.exit();
-  });
 }
