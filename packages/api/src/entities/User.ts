@@ -78,10 +78,11 @@ export default class User extends BaseEntity {
   @PublicField()
   verified: boolean;
 
-  /*@BCField({ type: 'Connection[]' })
+  /* @BCField({ type: 'Connection[]' })
   @OneToMany(() => Connection, (connection) => connection.user)
   @Column({ nullable: true })
   connections: Promise<Connection[]>; */
+
   @Column('simple-array')
   @Field(() => [Role])
   @BCField({ type: 'Role[]' })
