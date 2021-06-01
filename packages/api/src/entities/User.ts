@@ -81,7 +81,7 @@ export default class User extends BaseEntity {
   /*@BCField({ type: 'Connection[]' })
   @OneToMany(() => Connection, (connection) => connection.user)
   @Column({ nullable: true })
-  connections: Connection; */
+  connections: Promise<Connection[]>; */
   @Column('simple-array')
   @Field(() => [Role])
   @BCField({ type: 'Role[]' })
