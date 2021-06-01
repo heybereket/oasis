@@ -4,6 +4,11 @@ import { join } from 'path';
 
 const dir = join(__dirname, '../../../api/src/modules/**/*.resolver.ts');
 const genFile = join(__dirname, '../../src/generated/client.ts');
+const types = readFileSync(
+  join(__dirname, '../../src/generated/types.ts')
+).toString();
+
+const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
 
 glob(dir, (err, filenames) => {
   const keyMap: Record<string, string[][]> = {};
@@ -23,25 +28,31 @@ glob(dir, (err, filenames) => {
   }
 
   let output = '';
-  let imports = ['Mutation'];
+  let imports = [];
 
   output += 'import BaseClient from "../base-client";\n';
-  output += 'import { /* IMPORT_SPACE */ } from "./types";\n';
+  output += 'import { Mutation, Query, /* IMPORT_SPACE */ } from "./types";\n';
   output += 'export class Client extends BaseClient {\n';
 
   for (const key in keyMap) {
     const resolverNames = keyMap[key];
     output += `  ${key} = {\n`;
     for (const [type, resolver] of resolverNames) {
-      const argType = `${type[0].toUpperCase()}${type.slice(
-        1
-      )}${resolver[0].toUpperCase()}${resolver.slice(1)}Args`;
+      const argType = `${capitalize(type)}${capitalize(resolver)}Args`;
+      const needsArgs = types.includes(argType);
 
-      imports.push(argType);
+      if (needsArgs) imports.push(argType);
 
-      output += `    ${resolver}: (args: ${argType}) => {\n`;
+      output += `    ${resolver.replace(
+        new RegExp(`${key}(s?)`, 'ig'),
+        ''
+      )}: (${needsArgs ? `args: ${argType}` : ''}) => {\n`;
       output += `      const selection = this.options.selections?.${key} || [];\n`;
-      output += `      return this.fetchGraphQL<Mutation["${resolver}"]>(\`${type} { paginateBadges { \${selection.join(",")} } }\`, data => data.${resolver}, args);\n`;
+      output += `      return this.fetchGraphQL<${capitalize(
+        type
+      )}["${resolver}"]>(\`${type} { paginateBadges { \${selection.join(",")} } }\`, data => data.${resolver}, ${
+        needsArgs ? 'args' : '{}'
+      });\n`;
       output += `    },\n`;
     }
     output += '  }\n';

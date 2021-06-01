@@ -4,12 +4,12 @@ import { Client } from '.';
 const client = new Client({
   token: process.env.TOKEN,
   selections: {
-    users: ['id'],
+    user: ['id'],
   },
 });
 
 test('gets `currentUser` data', async () => {
-  const data = await client.users.getUser('d');
+  const data = await client.user.current();
 
   expect(data).toBeTruthy();
   expect(data).toBeInstanceOf(Object);
