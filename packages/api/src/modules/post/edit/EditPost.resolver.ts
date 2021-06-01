@@ -6,6 +6,8 @@ import { hasPermission } from '@utils/common/hasPermission';
 import { Role } from '@modules/user/Roles';
 import EditPostInput from './EditPostInput';
 
+// @bcg-resolver(mutation, editPost, post)
+
 @Resolver()
 export class EditPostResolver {
   @Mutation(() => Boolean)
@@ -14,8 +16,11 @@ export class EditPostResolver {
     @Arg('data') data: EditPostInput,
     @Ctx() { uid, getUser }: ContextType
   ) {
-    if (data.message.length < 1 || data.message.length > 1000) throw new ApolloError("Messages need to be more than 0 chars and less than 1000");
-
+    if (data.message.length < 1 || data.message.length > 1000) {
+      throw new ApolloError(
+        'Messages need to be more than 0 chars and less than 1000'
+      );
+    }
 
     const post = await Post.findOne(postId);
 
@@ -26,7 +31,9 @@ export class EditPostResolver {
     if (
       author.id !== uid &&
       !hasPermission((await getUser()).roles, Role.Moderator)
-    ) throw new ApolloError('You do not have permission to edit this post');
+    ) {
+      throw new ApolloError('You do not have permission to edit this post');
+    }
 
     Object.assign(post, data);
 

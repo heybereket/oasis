@@ -2,15 +2,13 @@ import { Arg, Authorized, Mutation, Resolver } from 'type-graphql';
 import Badge from '@entities/Badge';
 import { Role } from '@modules/user/Roles';
 import User from '@entities/User';
-import { BCMutation } from '@root/bot-client-gen';
+
+// @bcg-resolver(mutation, giveBadge, badge)
 
 @Resolver()
 export default class GiveBadgeResolver {
   @Mutation(() => Boolean)
   @Authorized(Role.Admin)
-  @BCMutation('badges', 'boolean', {
-    args: { username: 'string', badgeName: 'string' },
-  })
   async giveBadge(
     @Arg('username') username: string,
     @Arg('badgeName') badgeName: string

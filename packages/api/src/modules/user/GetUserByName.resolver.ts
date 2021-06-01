@@ -1,6 +1,8 @@
 import { Query, Arg, Resolver } from 'type-graphql';
 import User from '@entities/User';
 
+// @bcg-resolver(query, getUserByName, user)
+
 @Resolver()
 export class GetUserByNameResolver {
   @Query(() => User, { nullable: true })

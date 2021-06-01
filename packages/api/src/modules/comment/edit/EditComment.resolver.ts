@@ -6,6 +6,8 @@ import { hasPermission } from '@utils/common/hasPermission';
 import { Role } from '../../user/Roles';
 import EditCommentInput from './EditCommentInput';
 
+// @bcg-resolver(mutation, editComment, comment)
+
 @Resolver()
 export class EditCommentResolver {
   @Mutation(() => Boolean)
@@ -23,7 +25,9 @@ export class EditCommentResolver {
     if (
       author.id !== uid &&
       !hasPermission((await getUser()).roles, Role.Moderator)
-    ) throw new ApolloError('You do not have permission to edit this comment!');
+    ) {
+      throw new ApolloError('You do not have permission to edit this comment!');
+    }
 
     Object.assign(comment, data);
 

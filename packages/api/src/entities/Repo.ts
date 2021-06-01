@@ -7,52 +7,48 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import User from '@entities/User';
-import { BCEntity, BCField } from '@root/bot-client-gen';
-import { PublicField } from '@utils/PublicField';
 
 @ObjectType()
 @Entity()
-@BCEntity('repos')
 export default class Repo extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
-  @BCField()
   id: string;
 
   @Column()
-  @PublicField()
+  @Field()
   active: boolean;
 
   @Column()
-  @PublicField()
+  @Field()
   name: string;
 
   @Column()
-  @PublicField()
+  @Field()
   full_name: string;
 
   @Column()
-  @PublicField()
+  @Field()
   github_owner: string;
 
   @Column()
-  @PublicField()
+  @Field()
   issues: number;
 
   @Column()
-  @PublicField()
+  @Field()
   desc: string;
 
   @Column()
-  @PublicField()
+  @Field()
   language: string;
 
   @Column()
-  @PublicField()
+  @Field()
   stars: number;
 
   @Column()
-  @PublicField()
+  @Field()
   url: string;
 
   @Column()
@@ -60,11 +56,9 @@ export default class Repo extends BaseEntity {
     description:
       'Time when the repo was added (the number of milliseconds passed since Unix epoch 1970-01-01T00:00:00Z)',
   })
-  @BCField()
   date_added: string;
 
   @Field(() => User, { complexity: 1 })
   @ManyToOne(() => User, (user) => user.posts)
-  @BCField({ type: 'User' })
   owner: Promise<User>;
 }

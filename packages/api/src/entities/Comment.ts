@@ -9,48 +9,40 @@ import {
 import { Field, ID, Int, ObjectType } from 'type-graphql';
 import Post from '@entities/Post';
 import User from '@entities/User';
-import { BCEntity, BCField } from '@root/bot-client-gen';
-import { PublicField } from '@utils/PublicField';
 import { RelationalPagination } from '@utils/RelationalPagination';
 
 @ObjectType()
 @Entity()
-@BCEntity('comments')
 export default class Comment extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
-  @BCField()
   id: string;
 
   @Column()
-  @PublicField()
+  @Field()
   content: string;
 
   @Column()
-  @PublicField()
+  @Field()
   createdAt: string;
 
   @Column({ nullable: true })
-  @PublicField({ nullable: true })
+  @Field({ nullable: true })
   lastEdited: string;
 
   @Field(() => Post, { complexity: 1 })
   @ManyToOne(() => Post, (post) => post.comments, { onDelete: 'CASCADE' })
-  @BCField({ type: 'Post' })
   post: Promise<Post>;
 
   @Field(() => User, { complexity: 1 })
   @ManyToOne(() => User, (user) => user.comments)
-  @BCField({ type: 'User' })
   author: Promise<User>;
 
   @RelationalPagination(() => Comment, () => User, 'likedComments')
   @ManyToMany(() => User, (user) => user.likedComments)
-  @BCField({ type: 'PaginationResponseType<User>' })
   likers: Promise<User[]>;
 
   @RelationalPagination(() => Comment, () => User, 'dislikedComments')
   @ManyToMany(() => User, (user) => user.dislikedComments)
-  @BCField({ type: 'PaginationResponseType<User>' })
   dislikers: Promise<User[]>;
 }

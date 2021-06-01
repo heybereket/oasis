@@ -3,6 +3,7 @@ import MakeBadgeInput from '@modules/badge/make/MakeBadgeInput';
 import Badge from '@entities/Badge';
 import { Role } from '@modules/user/Roles';
 
+// @bcg-resolver(mutation, makeBadge, badge)
 @Resolver()
 export default class MakeBadgeResolver {
   @Mutation(() => Boolean)

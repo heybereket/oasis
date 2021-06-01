@@ -4,6 +4,8 @@ import Post from '@entities/Post';
 import NewPostInput from './NewPostInput';
 import { customAlphabet } from 'nanoid';
 
+// @bcg-resolver(mutation, createPost, post)
+
 @Resolver()
 export class NewPostResolver {
   @Mutation(() => Boolean)

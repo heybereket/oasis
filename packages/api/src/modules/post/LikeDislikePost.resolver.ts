@@ -13,6 +13,8 @@ import { ContextType } from '@root/apolloServer';
 import Post from '@entities/Post';
 import User from '@entities/User';
 
+// @bcg-resolver(mutation, likeDislike, post)
+
 @Resolver(() => Post)
 export class LikeDislikePostResolver {
   @Mutation(() => Boolean)
@@ -27,7 +29,9 @@ export class LikeDislikePostResolver {
 
     if (!post) throw new ApolloError('Post not found');
 
-    if ((like && dislike) || (!like && !dislike)) throw new ApolloError('Please select like or dislike');
+    if ((like && dislike) || (!like && !dislike)) {
+      throw new ApolloError('Please select like or dislike');
+    }
 
     const user = await getUser();
 

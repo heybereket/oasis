@@ -1,6 +1,8 @@
 import Resort from '@entities/Resort';
 import { Arg, Query, Resolver } from 'type-graphql';
 
+// @bcg-resolver(query, getResortByName, resort)
+
 @Resolver()
 export class GetResortByNameResolver {
   @Query(() => Resort, { nullable: true })

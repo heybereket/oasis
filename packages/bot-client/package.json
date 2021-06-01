@@ -9,8 +9,13 @@
   ],
   "scripts": {
     "publish": "npm publish",
-    "build": "tsc",
-    "watch": "tsc --watch"
+    "build": "graphql-codegenn && tsc",
+    "watch": "tsc --watch",
+    "gen": "graphql-codegen",
+    "watch:gen": "graphql-codegen -w",
+    "watch:tsc": "tsc --watch",
+    "dev": "run-p \"watch:gen\" \"watch:tsc\"",
+    "clean": "rimraf dist/*"
   },
   "publishConfig": {
     "access": "public"
@@ -26,6 +31,8 @@
   },
   "homepage": "https://github.com/oasis-sh/oasis#readme",
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.21.4",
+    "@graphql-codegen/typescript": "^1.22.1",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.6.0",
     "@types/node-fetch": "^2.5.10",

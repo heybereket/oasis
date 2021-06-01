@@ -5,6 +5,8 @@ import Comment from '@entities/Comment';
 import Post from '@entities/Post';
 import NewCommentInput from './NewCommentInput';
 
+// @bcg-resolver(mutation, createComment, comment)
+
 @Resolver()
 export class NewCommentResolver {
   @Mutation(() => Boolean)

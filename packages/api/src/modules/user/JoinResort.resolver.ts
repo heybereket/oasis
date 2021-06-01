@@ -3,6 +3,8 @@ import Resort from '@entities/Resort';
 import { ApolloError } from 'apollo-server-errors';
 import { ContextType } from '@root/apolloServer';
 
+// @bcg-resolver(mutation, joinResort, resort)
+
 @Resolver()
 export class JoinResortResolver {
   @Mutation(() => Boolean, { nullable: true })

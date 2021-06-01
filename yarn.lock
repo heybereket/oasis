@@ -3540,6 +3540,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@oasis-sh/bot@workspace:packages/bot-client"
   dependencies:
+    "@graphql-codegen/cli": ^1.21.4
+    "@graphql-codegen/typescript": ^1.22.1
     "@types/jest": ^26.0.23
     "@types/node": ^15.6.0
     "@types/node-fetch": ^2.5.10
