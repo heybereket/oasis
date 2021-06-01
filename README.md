@@ -7,8 +7,8 @@
 - [`packages/ui`](/packages/ui) - UI Components
 - [`packages/mobile`](/packages/mobile) - Capacitor/Ionic Mobile App
 - [`packages/api`](/packages/api) - Backend and GraphQL API
+- [`packages/client`](/packages/bot-client) - API Client
 - [`packages/client-gql`](/packages/client-gql) - Client Side GraphQL Hooks
-- [`packages/bot-client`](/packages/bot-client) - Bot Client
 
 ## Contributions
 Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let us know what you are working on first that way we don't overwrite each other or have many people adding the same feature/solving the same issue. <br/>
