@@ -19,6 +19,7 @@ import Notification from './Notification';
 import { RelationalPagination } from '@utils/RelationalPagination';
 import { BCEntity, BCField } from '@root/bot-client-gen';
 import { PublicField } from '@utils/PublicField';
+import Connection from './Connection';
 
 @ObjectType()
 @Entity()
@@ -77,6 +78,10 @@ export default class User extends BaseEntity {
   @PublicField()
   verified: boolean;
 
+  /*@BCField({ type: 'Connection[]' })
+  @OneToMany(() => Connection, (connection) => connection.user)
+  @Column({ nullable: true })
+  connections: Connection; */
   @Column('simple-array')
   @Field(() => [Role])
   @BCField({ type: 'Role[]' })
