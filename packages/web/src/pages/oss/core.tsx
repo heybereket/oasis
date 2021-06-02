@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar, TeamMember } from '@oasis-sh/ui';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { login, logout } from '@lib/auth/login';
-import maintainers from '../../data/maintainers.json';
 export const CoreTeamPage: React.FC = () => {
   const { user, currentUserLoading } = useGetCurrentUser();
+  const [maintainers, setMaintainers] = useState<undefined | any[]>();
+
+  useEffect(() => {
+    async function getMaintainers() {
+      const response = await fetch(
+        'https://raw.githubusercontent.com/oasis-sh/oasis/staging/data/maintainers.json'
+      );
+      const resJson = await response.json();
+      setMaintainers(resJson);
+    }
+
+    getMaintainers();
+  }, []);
 
   return (
     <>
@@ -21,7 +33,7 @@ export const CoreTeamPage: React.FC = () => {
         </p>
       </div>
       <div className="flex flex-row justify-center flex-wrap mt-7 mx-auto max-w-7xl">
-        {maintainers.map((maintainer: any, key: any) => (
+        {maintainers?.map((maintainer: any, key: any) => (
           <TeamMember
             key={key}
             avatar={maintainer.avatar}
