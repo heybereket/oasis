@@ -2,19 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Navbar, TeamMember } from '@oasis-sh/ui';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { login, logout } from '@lib/auth/login';
-import Link from 'next/link';
+import { request } from '@utils/request';
+
 export const CoreTeamPage: React.FC = () => {
   const { user, currentUserLoading } = useGetCurrentUser();
   const [maintainers, setMaintainers] = useState<undefined | any[]>();
 
   useEffect(() => {
-    async function getMaintainers() {
-      const response = await fetch(
-        'https://raw.githubusercontent.com/oasis-sh/oasis/staging/data/maintainers.json'
-      );
-      const resJson = await response.json();
-      setMaintainers(resJson);
-    }
+    const getMaintainers = async () => {
+      const fetchMaintainers = request('https://raw.githubusercontent.com/oasis-sh/oasis/staging/data/maintainers.json').then((res: any) => res.json());
+      setMaintainers(await fetchMaintainers);
+    };
 
     getMaintainers();
   }, []);
@@ -35,17 +33,14 @@ export const CoreTeamPage: React.FC = () => {
       </div>
       <div className="flex flex-row justify-center flex-wrap mt-7 mx-auto max-w-7xl">
         {maintainers?.map((maintainer: any, key: any) => (
-          <Link href={`https://github.com/${maintainer.github}`} key={key}>
-            <a>
-              <TeamMember
-                avatar={maintainer.avatar}
-                bio={maintainer.bio}
-                github={maintainer.github}
-                name={maintainer.name}
-                role={maintainer.role}
-              />
-            </a>
-          </Link>
+          <TeamMember
+            key={key}
+            avatar={maintainer.avatar}
+            bio={maintainer.bio}
+            github={maintainer.github}
+            name={maintainer.name}
+            role={maintainer.role}
+          />
         ))}
       </div>
     </>

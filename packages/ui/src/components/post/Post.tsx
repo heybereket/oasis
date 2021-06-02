@@ -179,7 +179,6 @@ export const Post: React.FC<Props> = ({
         </header>
         <div className="font-medium mt-2 mb-6 text-xl break-words">
           {markdown(postData?.message ?? '')}
-          {/* <StyledMarkdown text={postData.message} isPost={true} /> */}
         </div>
       </div>
       <footer className="flex justify-between">

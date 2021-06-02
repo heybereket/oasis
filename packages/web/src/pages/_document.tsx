@@ -5,13 +5,8 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="theme-color" content="#5C91FC" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" href="/static/favicons/favicon.ico" />
-          <meta
-            name="description"
-            content="The social platform for developers"
-          />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"

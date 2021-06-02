@@ -37,7 +37,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
     onError: (e) => {
       console.log(e.message);
     },
-    // errorPolicy: 'none',
   });
 
   const { user, currentUserLoading } = useGetCurrentUser();
@@ -50,7 +49,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
     <>
       <SEO
         title="Feed"
-        description="💻 Oasis — the social platform for developers"
+        description="The social platform for developers"
       />
       <Navbar
         user={user}

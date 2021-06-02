@@ -97,7 +97,7 @@ export const Navbar: React.FC<INavbarProps> = ({
               className="rounded-lg bg-gray-700 h-10 text-sm font-bold pl-11 text-gray-500 w-80 focus:outline-none overflow-ellipsis"
             />
           </div>
-          <a href="/user/notifications">
+          <a href="/notifications">
             <Bell
               className="hidden sm-50:block cursor-pointer"
               onClick={() => setActiveTab(activeTabType.NOTIFICATIONS)}
