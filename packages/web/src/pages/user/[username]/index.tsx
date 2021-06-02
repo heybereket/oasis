@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import StyledMarkdown from '@markdown/StyledMarkdown';
+import StyledMarkdown from 'src/parser/StyledMarkdown';
 import { login, logout } from '@lib/login';
 import {
   GetUserByNameDocument,

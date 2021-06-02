@@ -2,7 +2,7 @@ import { NormalizedCacheObject } from '@apollo/client';
 import { initializeApollo } from './apolloClient';
 import { graphql, DocumentNode, print } from 'graphql';
 import { IncomingMessage } from 'http';
-import forceRequire from '@lib/require';
+import forceRequire from '@utils/require';
 
 type Query = {
   document: DocumentNode;
