@@ -30,7 +30,7 @@ export const createApp = async () => {
 
   if (nodeMajor < 20) {
     log.error(
-      `You are currently running on Node ${nodeMajor}. Oasis requires Node v15 or higher.`
+      `You are currently running on Node ${nodeMajor}. Oasis requires Node 15 or higher.`
     );
     exit(1);
   }
