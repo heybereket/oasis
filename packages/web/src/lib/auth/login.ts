@@ -1,20 +1,21 @@
 import { redirect } from '@utils/redirect';
 import { setCurrentUser } from '@lib/common/getCurrentUser';
+import { baseURL } from '../constants';
 
 export const login = (type: string): any => {
   window.localStorage.setItem('redirectPath', window.location.href);
   switch (type) {
     case 'github':
-      return redirect('/api/auth/github');
+      return redirect(`${baseURL}/api/auth/github`);
 
     case 'twitter':
-      return redirect('/api/auth/twitter');
+      return redirect(`${baseURL}/api/auth/twitter`);
 
     case 'google':
-      return redirect('/api/auth/google');
+      return redirect(`${baseURL}/api/auth/google`);
 
     case 'discord':
-      return redirect('/api/auth/discord');
+      return redirect(`${baseURL}/api/auth/discord`);
   }
 };
 
