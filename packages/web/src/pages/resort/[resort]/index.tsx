@@ -9,7 +9,7 @@ import { GetServerSideProps } from 'next';
 import React from 'react';
 import { Navbar, Container, ResortHeader } from '@oasis-sh/ui';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { login, logout } from '@lib/login';
+import { login, logout } from '@lib/auth/login';
 
 interface IResortProps {
   variables: GetResortByNameWithMembersQueryVariables;

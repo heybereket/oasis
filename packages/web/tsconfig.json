@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@public/*": ["public/*"],
-      "@markdown/*": ["src/parser/*"],
+      "@parser/*": ["src/parser/*"],
       "@lib/*": ["src/lib/*"],
       "@icons/*": ["src/icons"],
       "@styles/*": ["src/styles"],

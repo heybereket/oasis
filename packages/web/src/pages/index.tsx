@@ -2,8 +2,8 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import StyledMarkdown from 'src/parser/StyledMarkdown';
-import { login, logout } from '@lib/login';
+import StyledMarkdown from '@parser/markdown/StyledMarkdown';
+import { login, logout } from '@lib/auth/login';
 import { SEO } from '@shared/SEO';
 import {
   Navbar,
@@ -45,10 +45,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [likeDislikePost] = useLikeDislikePostMutation();
   const [deletePost] = useDeletePostMutation();
-
-  // if (!posts) {
-  //   return null;
-  // }
 
   return (
     <>

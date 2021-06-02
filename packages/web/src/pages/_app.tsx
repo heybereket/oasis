@@ -3,7 +3,7 @@ import '../styles/globals.css';
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from '@lib/common/apolloClient';
-import { AuthProvider } from '@lib/login/AuthProvider';
+import { AuthProvider } from '@lib/auth/AuthProvider';
 import { SEO } from '@shared/SEO';
 import { initSentry } from '@utils/sentry';
 

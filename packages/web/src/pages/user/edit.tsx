@@ -11,7 +11,7 @@ import { Navbar, Button, StyledFormikInput } from '@oasis-sh/ui';
 import React from 'react';
 import { apolloClient } from '@lib/common/apolloClient';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { login, logout } from '@lib/login';
+import { login, logout } from '@lib/auth/login';
 
 interface EditProfileProps {
   initialApolloState: any;

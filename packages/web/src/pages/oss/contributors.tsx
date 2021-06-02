@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Contributors } from '@oasis-sh/ui';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { login, logout } from '@lib/login';
+import { login, logout } from '@lib/auth/login';
 
 export const ContributorsPage: React.FC = () => {
   const { user, currentUserLoading } = useGetCurrentUser();
