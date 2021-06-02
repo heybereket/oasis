@@ -12,8 +12,7 @@ interface NavItemProps {
 export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
   const Icon = props.icon;
   const onClick = props.onClick;
-  const onClickRedirect = (event: any) => {
-      event.preventDefault();
+  const onClickRedirect = (_: any) => {
       onClick();
   };
 

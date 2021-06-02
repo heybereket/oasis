@@ -38,7 +38,8 @@ export const Navbar: React.FC<INavbarProps> = ({
     HOME = 'HOME',
     TOPICS = 'TOPICS',
     FRIENDS = 'FRIENDS',
-    SAVED = 'SAVED'
+    SAVED = 'SAVED',
+    NOTIFICATIONS = 'NOTIFICATIONS'
   }
 
   const [activeTab, setActiveTab] = useState(activeTabType.HOME);
@@ -65,21 +66,21 @@ export const Navbar: React.FC<INavbarProps> = ({
           </div>
 
           <div className="hidden md:flex space-x-3 h-full absolute top-0 md:left-48 ">
-            <NavItem name="Home" href="#" icon={Home}
+            <NavItem name="Home" href="/" icon={Home}
                 className={getIsActive(activeTabType.HOME)}
                 onClick={() => setActiveTab(activeTabType.HOME)}
             />
-            <NavItem name="Topics" href="#" icon={Topics}
+            <NavItem name="Topics" href="" icon={Topics}
                 className={getIsActive(activeTabType.TOPICS)}
                 onClick={() => setActiveTab(activeTabType.TOPICS)}
             />
             {user && (
               <>
-                <NavItem name="Friends" href="#" icon={Friends}
+                <NavItem name="Friends" href="" icon={Friends}
                     className={getIsActive(activeTabType.FRIENDS)}
                     onClick={() => setActiveTab(activeTabType.FRIENDS)}
                 />
-                <NavItem name="Saved" href="#" icon={Saved}
+                <NavItem name="Saved" href="" icon={Saved}
                     className={getIsActive(activeTabType.SAVED)}
                     onClick={() => setActiveTab(activeTabType.SAVED)}
                 />
@@ -96,7 +97,12 @@ export const Navbar: React.FC<INavbarProps> = ({
               className="rounded-lg bg-gray-700 h-10 text-sm font-bold pl-11 text-gray-500 w-80 focus:outline-none overflow-ellipsis"
             />
           </div>
-          <Bell className="hidden sm-50:block" />
+          <a href="/user/notifications">
+            <Bell
+              className="hidden sm-50:block cursor-pointer"
+              onClick={() => setActiveTab(activeTabType.NOTIFICATIONS)}
+            />
+          </a>
           {/* Improved the logic here  */}
           {currentUserLoading || !user ? (
             <Button
