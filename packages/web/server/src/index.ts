@@ -37,7 +37,7 @@ const start = Date.now();
       return handle(req, res);
     });
 
-    const PORT = parseInt(process.env.PORT as string, 10) || 3000;
+    const PORT = Number(process.env.PORT) || 3000;
 
     try {
       server.listen(PORT, () =>

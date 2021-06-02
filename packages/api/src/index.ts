@@ -28,7 +28,7 @@ export const createApp = async () => {
 
   const nodeMajor = Number(process.versions.node.split('.')[0]);
 
-  if (nodeMajor < 20) {
+  if (nodeMajor < 15) {
     log.error(
       `You are currently running on Node ${nodeMajor}. Oasis requires Node 15 or higher.`
     );
@@ -80,7 +80,7 @@ export const createApp = async () => {
 };
 
 if (require.main === module) {
-  const PORT = parseInt(process.env.PORT as string, 10) || 3000;
+  const PORT = Number(process.env.PORT) || 3000;
   createApp().then((app) => {
     if (!app) process.exit(1);
 
