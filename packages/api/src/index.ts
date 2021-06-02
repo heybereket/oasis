@@ -15,6 +15,7 @@ import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
 import { isProduction } from '@lib/constants';
 import * as log from '@lib/log';
+import { exit } from '@lib/exit';
 
 const RedisStore = connectRedis(expressSession);
 
@@ -23,6 +24,15 @@ export const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 export const createApp = async () => {
   if (!(await checkEnv())) {
     return undefined;
+  }
+
+  const nodeMajor = Number(process.versions.node.split('.')[0]);
+
+  if (nodeMajor < 20) {
+    log.error(
+      `You are currently running on Node ${nodeMajor}. Oasis requires Node v15 or higher.`
+    );
+    exit(1);
   }
 
   const app = express();
