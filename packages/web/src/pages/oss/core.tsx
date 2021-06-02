@@ -38,7 +38,7 @@ export const CoreTeamPage: React.FC = () => {
             key={key}
             avatar={maintainer.avatar}
             bio={maintainer.bio}
-            githubUsername={maintainer.github}
+            github={maintainer.github}
             name={maintainer.name}
             role={maintainer.role}
           />
