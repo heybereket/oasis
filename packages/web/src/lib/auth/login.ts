@@ -1,6 +1,7 @@
 import { redirect } from '@utils/redirect';
 import { setCurrentUser } from '@lib/common/getCurrentUser';
-import { baseURL } from '../constants';
+import { baseURL } from '@lib/constants';
+import { http } from '@utils/http';
 
 export const login = (type: string): any => {
   window.localStorage.setItem('redirectPath', window.location.href);
@@ -21,7 +22,7 @@ export const login = (type: string): any => {
 
 export const logout = async (): Promise<void> => {
   const response = await(
-    await fetch(`${baseURL}/api/auth/logout`, {
+    await http(`${baseURL}/api/auth/logout`, {
       headers: {
         Accept: 'application/json',
       },
