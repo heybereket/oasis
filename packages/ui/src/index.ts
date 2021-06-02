@@ -19,6 +19,7 @@ export { CreatePostInput } from './components/home/CreatePostInput';
 
 // OSS
 export { Contributors } from './components/oss/Contributors';
+export { TeamMember } from './components/oss/TeamMember';
 
 // Navbar
 export { DropdownItem } from './components/navbar/DropdownItem';
