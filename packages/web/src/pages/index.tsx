@@ -14,22 +14,22 @@ import {
   TrendingSection,
 } from '@oasis-sh/ui';
 import {
-  PaginatePostsDocument,
-  PaginatePostsQueryVariables,
   useLikeDislikePostMutation,
-  usePaginatePostsQuery,
   useMakePostMutation,
   GetCurrentUserDocument,
   useDeletePostMutation,
+  useFeedSortPostsQuery,
+  FeedSortPostsQueryVariables,
+  FeedSortPostsDocument,
 } from '@oasis-sh/client-gql';
 
 interface IndexPageProps {
   initialApolloState: any;
-  vars: PaginatePostsQueryVariables;
+  vars: FeedSortPostsQueryVariables;
 }
 
 const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
-  const postsQuery = usePaginatePostsQuery({
+  const postsQuery = useFeedSortPostsQuery({
     variables: vars,
   });
 
@@ -41,7 +41,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   });
 
   const { user, currentUserLoading } = useGetCurrentUser();
-  const posts = postsQuery.data?.paginatePosts;
+  const posts = postsQuery.data?.feedSortPosts;
 
   const [likeDislikePost] = useLikeDislikePostMutation();
   const [deletePost] = useDeletePostMutation();
@@ -83,7 +83,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               amountPerFetch={vars.postsLimit}
               StyledMarkdown={StyledMarkdown}
               user={user}
-              posts={posts}
+              posts={posts ?? []}
               createPost={createPost}
               likeDislikePost={likeDislikePost}
               deleteMutation={deletePost}
@@ -95,7 +95,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                       postsOffset: offset,
                     },
                   })
-                ).data.paginatePosts;
+                ).data.feedSortPosts;
 
                 console.log(newData);
                 return newData;
@@ -117,7 +117,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
   req,
 }) => {
-  const vars: PaginatePostsQueryVariables = {
+  const vars: FeedSortPostsQueryVariables = {
     postsLimit: 20,
     postsOffset: 0,
   };
@@ -125,7 +125,7 @@ export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
     props: {
       initialApolloState: await ssrRequest(req, [
         {
-          document: PaginatePostsDocument,
+          document: FeedSortPostsDocument,
           variables: vars,
         },
         {

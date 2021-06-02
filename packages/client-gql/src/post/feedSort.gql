@@ -1,0 +1,33 @@
+query FeedSortPosts($postsLimit: Float!, $postsOffset: Float!) {
+  feedSortPosts(limit: $postsLimit, offset: $postsOffset) {
+    author {
+      id
+      name
+      username
+      badges {
+        description
+        id
+        imagePath
+      }
+      avatar
+    }
+    createdAt
+    dislikes
+    id
+    lastEdited
+    likes
+    message
+    resort {
+      id
+      description
+      logo
+      name
+    }
+    comments(limit: 0, offset: 0) {
+      total
+    }
+    topics
+    isLiked
+    isDisliked
+  }
+}
