@@ -17,32 +17,34 @@ export class SearchResolver {
     @Arg('searchQuery') searchQuery: string,
     @Arg('limit') limit: number
   ) {
+    const lowerSearchQuery = searchQuery.toLowerCase();
+
     const posts = await Post.createQueryBuilder()
       .where('LOWER(message) LIKE :searchQuery', {
-        searchQuery: `%${searchQuery}%`,
+        searchQuery: `%${lowerSearchQuery}%`,
       })
       .limit(Math.floor(limit / AMOUNT_OF_SEARCH_TYPES))
       .getMany();
 
     const users = await User.createQueryBuilder()
       .where('LOWER(username) LIKE :searchQuery', {
-        searchQuery: `%${searchQuery}%`,
+        searchQuery: `%${lowerSearchQuery}%`,
       })
       .orWhere('LOWER(name) LIKE :searchQuery', {
-        searchQuery: `%${searchQuery}%`,
+        searchQuery: `%${lowerSearchQuery}%`,
       })
       .orWhere('LOWER(bio) LIKE :searchQuery', {
-        searchQuery: `%${searchQuery}%`,
+        searchQuery: `%${lowerSearchQuery}%`,
       })
       .limit(Math.floor(limit / AMOUNT_OF_SEARCH_TYPES))
       .getMany();
 
     const resorts = await Resort.createQueryBuilder()
       .where('LOWER(name) LIKE :searchQuery', {
-        searchQuery: `%${searchQuery}%`,
+        searchQuery: `%${lowerSearchQuery}%`,
       })
       .orWhere('LOWER(description) LIKE :searchQuery', {
-        searchQuery: `%${searchQuery}%`,
+        searchQuery: `%${lowerSearchQuery}%`,
       })
       .limit(Math.floor(limit / AMOUNT_OF_SEARCH_TYPES))
       .getMany();
