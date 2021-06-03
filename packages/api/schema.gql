@@ -233,7 +233,6 @@ type Query {
   paginateRepos(limit: Float!, offset: Float!): [Repo!]!
   paginateResorts(limit: Float!, offset: Float!): [Resort!]!
   paginateUsers(limit: Float!, offset: Float!): [User!]!
-  search(searchQuery: String!): [SearchResult!]!
 }
 
 type Repo {
@@ -274,8 +273,6 @@ enum Role {
   Moderator
   SuperAdmin
 }
-
-union SearchResult = Post | Resort | User
 
 input UpdateProfileInput {
   avatar: String

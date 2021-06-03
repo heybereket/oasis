@@ -1,0 +1,21 @@
+{
+  "name": "@oasis-sh/cli",
+  "version": "0.0.0",
+  "description": "The official cli for Oasis.",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rimraf dist/*"
+  },
+  "devDependencies": {
+    "@types/node-emoji": "^1",
+    "@types/yargs": "^17"
+  },
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "node-emoji": "^1.10.0",
+    "typescript": "^4.2.4",
+    "yargs": "^17.0.1"
+  }
+}
