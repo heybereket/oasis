@@ -3536,6 +3536,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@oasis-sh/cli@workspace:packages/cli":
+  version: 0.0.0-use.local
+  resolution: "@oasis-sh/cli@workspace:packages/cli"
+  dependencies:
+    "@types/node-emoji": ^1
+    "@types/yargs": ^17
+    chalk: ^4.1.1
+    node-emoji: ^1.10.0
+    typescript: ^4.2.4
+    yargs: ^17.0.1
+  languageName: unknown
+  linkType: soft
+
 "@oasis-sh/client@workspace:packages/client":
   version: 0.0.0-use.local
   resolution: "@oasis-sh/client@workspace:packages/client"
@@ -4865,6 +4878,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node-emoji@npm:^1":
+  version: 1.8.1
+  resolution: "@types/node-emoji@npm:1.8.1"
+  checksum: 66678006be9399a7c848167233e651f88a3391e5648995625d539db2d0c68da922c43ab329bd1262dd55e3674cb08ec0e8a9971358cabb0b5076398e64d1aa7e
+  languageName: node
+  linkType: hard
+
 "@types/node-fetch@npm:^2.5.10":
   version: 2.5.10
   resolution: "@types/node-fetch@npm:2.5.10"
@@ -5381,6 +5401,15 @@ __metadata:
   dependencies:
     "@types/yargs-parser": "*"
   checksum: 84b8f617742b4a86f334838152cbc8d2fae4cc2568a81c4d54a9a9c7a6dc926f4fb21c3cb9d34cad895ab4f020041e28bcfe16348a34d370a2833450750ccd66
+  languageName: node
+  linkType: hard
+
+"@types/yargs@npm:^17":
+  version: 17.0.0
+  resolution: "@types/yargs@npm:17.0.0"
+  dependencies:
+    "@types/yargs-parser": "*"
+  checksum: 92ea97fa209768b993d1a06b9f2453161fc7fc3b25211d1235d112bc960e57b180c0b8616eb10c3e89b5d1bc6add255b0b10e550165ee318560bc0531dfe13b3
   languageName: node
   linkType: hard
 
@@ -18057,7 +18086,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"node-emoji@npm:^1.8.1":
+"node-emoji@npm:^1.10.0, node-emoji@npm:^1.8.1":
   version: 1.10.0
   resolution: "node-emoji@npm:1.10.0"
   dependencies:
@@ -26949,6 +26978,21 @@ resolve@^2.0.0-next.3:
     y18n: ^5.0.5
     yargs-parser: ^20.2.2
   checksum: a79ce1f043021cd645de1ffebb6149541d382ba68f4a6b5eca5d2ad65af51893371bbd78e240dc3b6cf0cbb419511ba5bda715dec992e4266e6863ea49f14feb
+  languageName: node
+  linkType: hard
+
+"yargs@npm:^17.0.1":
+  version: 17.0.1
+  resolution: "yargs@npm:17.0.1"
+  dependencies:
+    cliui: ^7.0.2
+    escalade: ^3.1.1
+    get-caller-file: ^2.0.5
+    require-directory: ^2.1.1
+    string-width: ^4.2.0
+    y18n: ^5.0.5
+    yargs-parser: ^20.2.2
+  checksum: a7969b48d2dea129a7d4fcc3f13e88d4f94bacbd24f720b2ce19946fa9facc42cfed89c059d953091241f4e9e9000ed9dbf86e4bb4b6ceb3a26af10ddebdd0b2
   languageName: node
   linkType: hard
 

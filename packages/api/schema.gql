@@ -275,8 +275,6 @@ enum Role {
   SuperAdmin
 }
 
-union SearchResult = Post | Resort | User
-
 input UpdateProfileInput {
   avatar: String
   banner: String
