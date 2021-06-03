@@ -108,7 +108,7 @@ export const Navbar: React.FC<INavbarProps> = ({
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              redirect('/search?q=' + searchText.replace(' ', '+'));
+              redirect('/search?q=' + searchText.replace(/ /g, '+'));
             }}
           >
             <div className="hidden md-50:flex items-center relative">
