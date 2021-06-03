@@ -5,12 +5,12 @@ import { verify } from 'jsonwebtoken';
 
 export const createContext = async (req: Request): Promise<ContextType> => {
   let uid: string;
-
   if (req.headers.authorization) {
-    const [, type, token] = req.headers.authorization.split(' ');
+    const [type, token] = req.headers.authorization.split(' ');
     switch (type) {
       case 'BOT':
         uid = (verify(token, process.env.BOT_TOKEN_SECRET) as any).uid;
+        break;
       case 'VSC': {
         const data = verify(
           token,
@@ -22,6 +22,7 @@ export const createContext = async (req: Request): Promise<ContextType> => {
         if (user.vscTokenCount === data.count) {
           uid = data.uid;
         }
+        break;
       }
     }
   } else {
