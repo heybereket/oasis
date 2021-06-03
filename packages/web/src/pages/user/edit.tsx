@@ -3,7 +3,7 @@ import {
   UpdateProfileDocument,
   UpdateProfileInput,
   useGetCurrentUserQuery,
-} from '@oasis-sh/client-gql';
+} from '@oasis-sh/react-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { Formik, Form, Field } from 'formik';

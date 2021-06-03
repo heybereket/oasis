@@ -21,7 +21,7 @@ import {
   useFeedSortPostsQuery,
   FeedSortPostsQueryVariables,
   FeedSortPostsDocument,
-} from '@oasis-sh/client-gql';
+} from '@oasis-sh/react-gql';
 
 interface IndexPageProps {
   initialApolloState: any;
@@ -47,10 +47,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   return (
     <>
-      <SEO
-        title="Feed"
-        description="The social platform for developers"
-      />
+      <SEO title="Feed" description="The social platform for developers" />
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}

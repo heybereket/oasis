@@ -9,7 +9,7 @@ COPY ./package.json ./package.json
 COPY ./yarn.lock ./yarn.lock
 
 COPY ./packages/api/package.json ./packages/api/package.json
-COPY ./packages/client-gql/package.json ./packages/client-gql/package.json
+COPY ./packages/react-gql/package.json ./packages/react-gql/package.json
 COPY ./packages/ui/package.json ./packages/ui/package.json
 COPY ./packages/web/package.json ./packages/web/package.json
 
@@ -20,8 +20,8 @@ COPY ./packages/api ./packages/api
 COPY ./docker/docker-ormconfig.ts ./packages/api/src/ormconfig.ts
 RUN yarn workspace @oasis-sh/api build
 
-COPY ./packages/client-gql ./packages/client-gql
-RUN yarn workspace @oasis-sh/client-gql build
+COPY ./packages/react-gql ./packages/react-gql
+RUN yarn workspace @oasis-sh/react-gql build
 
 COPY ./packages/ui ./packages/ui
 RUN yarn workspace @oasis-sh/ui build

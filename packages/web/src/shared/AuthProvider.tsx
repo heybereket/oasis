@@ -1,4 +1,4 @@
-import { User } from '@oasis-sh/client-gql';
+import { User } from '@oasis-sh/react-gql';
 import { createContext, useState } from 'react';
 
 const AuthContext = createContext<{ user: User | undefined }>({

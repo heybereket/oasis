@@ -10,10 +10,10 @@ import {
   Topics,
   Profile as ProfileIcon,
   Logout as LogoutIcon,
-} from "../../icons";
-import React, { useRef, useState } from "react";
-import useOnClickOutside from "../../utils/hooks/useOnClickOutside";
-import { User } from "@oasis-sh/client-gql";
+} from '../../icons';
+import React, { useRef, useState } from 'react';
+import useOnClickOutside from '../../utils/hooks/useOnClickOutside';
+import { User } from '@oasis-sh/react-gql';
 
 interface INavbarProps {
   user?: User;
@@ -39,13 +39,13 @@ export const Navbar: React.FC<INavbarProps> = ({
     TOPICS = 'TOPICS',
     FRIENDS = 'FRIENDS',
     SAVED = 'SAVED',
-    NOTIFICATIONS = 'NOTIFICATIONS'
+    NOTIFICATIONS = 'NOTIFICATIONS',
   }
 
   const [activeTab, setActiveTab] = useState(activeTabType.HOME);
 
   const getIsActive = (type: activeTabType) => {
-    return activeTab === type ? "active" : "";
+    return activeTab === type ? 'active' : '';
   };
 
   return (
@@ -66,23 +66,35 @@ export const Navbar: React.FC<INavbarProps> = ({
           </div>
 
           <div className="hidden md:flex space-x-3 h-full absolute top-0 md:left-48 ">
-            <NavItem name="Home" href="/" icon={Home}
-                className={getIsActive(activeTabType.HOME)}
-                onClick={() => setActiveTab(activeTabType.HOME)}
+            <NavItem
+              name="Home"
+              href="/"
+              icon={Home}
+              className={getIsActive(activeTabType.HOME)}
+              onClick={() => setActiveTab(activeTabType.HOME)}
             />
-            <NavItem name="Topics" href="" icon={Topics}
-                className={getIsActive(activeTabType.TOPICS)}
-                onClick={() => setActiveTab(activeTabType.TOPICS)}
+            <NavItem
+              name="Topics"
+              href=""
+              icon={Topics}
+              className={getIsActive(activeTabType.TOPICS)}
+              onClick={() => setActiveTab(activeTabType.TOPICS)}
             />
             {user && (
               <>
-                <NavItem name="Friends" href="" icon={Friends}
-                    className={getIsActive(activeTabType.FRIENDS)}
-                    onClick={() => setActiveTab(activeTabType.FRIENDS)}
+                <NavItem
+                  name="Friends"
+                  href=""
+                  icon={Friends}
+                  className={getIsActive(activeTabType.FRIENDS)}
+                  onClick={() => setActiveTab(activeTabType.FRIENDS)}
                 />
-                <NavItem name="Saved" href="" icon={Saved}
-                    className={getIsActive(activeTabType.SAVED)}
-                    onClick={() => setActiveTab(activeTabType.SAVED)}
+                <NavItem
+                  name="Saved"
+                  href=""
+                  icon={Saved}
+                  className={getIsActive(activeTabType.SAVED)}
+                  onClick={() => setActiveTab(activeTabType.SAVED)}
                 />
               </>
             )}
@@ -109,7 +121,7 @@ export const Navbar: React.FC<INavbarProps> = ({
               size="sm"
               className="my-1"
               onClick={async () => {
-                await login("github");
+                await login('github');
               }}
             >
               Login
@@ -132,10 +144,7 @@ export const Navbar: React.FC<INavbarProps> = ({
                   <div className="flex absolute flex-col rounded-lg bg-gray-700 px-4 py-3 max-w-md z-50 right-0 mr-7">
                     <div className="flex flex-col justify-start items-start text-base text-gray-300">
                       <a href={`/user/${user?.username}`}>
-                        <DropdownItem
-                          name="Profile"
-                          icon={ProfileIcon}
-                        />
+                        <DropdownItem name="Profile" icon={ProfileIcon} />
                       </a>
                     </div>
                     <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">

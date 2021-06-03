@@ -4,7 +4,7 @@ import {
   GetResortByNameWithMembersQueryVariables,
   useGetResortByNameWithMembersQuery,
   useJoinResortMutation,
-} from '@oasis-sh/client-gql';
+} from '@oasis-sh/react-gql';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 import { Navbar, Container, ResortHeader } from '@oasis-sh/ui';

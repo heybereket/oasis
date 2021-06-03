@@ -3536,25 +3536,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@oasis-sh/client-gql@workspace:packages/client-gql":
-  version: 0.0.0-use.local
-  resolution: "@oasis-sh/client-gql@workspace:packages/client-gql"
-  dependencies:
-    "@apollo/client": ^3.3.19
-    "@graphql-codegen/cli": ^1.21.4
-    "@graphql-codegen/typescript": ^1.22.1
-    "@graphql-codegen/typescript-document-nodes": ^1.17.11
-    "@graphql-codegen/typescript-operations": ^1.18.0
-    "@graphql-codegen/typescript-react-apollo": ^2.2.4
-    "@types/rimraf": ^3.0.0
-    graphql: ^15.5.0
-    graphql-tag: ^2.12.4
-    npm-run-all: ^4.1.5
-    rimraf: ^3.0.2
-    typescript: ^4.2.4
-  languageName: unknown
-  linkType: soft
-
 "@oasis-sh/client@workspace:packages/client":
   version: 0.0.0-use.local
   resolution: "@oasis-sh/client@workspace:packages/client"
@@ -3646,6 +3627,25 @@ __metadata:
     workbox-routing: ^6.1.5
     workbox-strategies: ^6.1.5
     workbox-streams: ^6.1.5
+  languageName: unknown
+  linkType: soft
+
+"@oasis-sh/react-gql@workspace:packages/react-gql":
+  version: 0.0.0-use.local
+  resolution: "@oasis-sh/react-gql@workspace:packages/react-gql"
+  dependencies:
+    "@apollo/client": ^3.3.19
+    "@graphql-codegen/cli": ^1.21.4
+    "@graphql-codegen/typescript": ^1.22.1
+    "@graphql-codegen/typescript-document-nodes": ^1.17.11
+    "@graphql-codegen/typescript-operations": ^1.18.0
+    "@graphql-codegen/typescript-react-apollo": ^2.2.4
+    "@types/rimraf": ^3.0.0
+    graphql: ^15.5.0
+    graphql-tag: ^2.12.4
+    npm-run-all: ^4.1.5
+    rimraf: ^3.0.2
+    typescript: ^4.2.4
   languageName: unknown
   linkType: soft
 

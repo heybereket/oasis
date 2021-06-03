@@ -2,7 +2,7 @@ import {
   GetCurrentUserDocument,
   UpdateProfileInput,
   useGetCurrentUserQuery,
-} from '@oasis-sh/client-gql';
+} from '@oasis-sh/react-gql';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { Navbar } from '@oasis-sh/ui';
@@ -38,18 +38,17 @@ const NotificationPage: React.FC<NotificationPageProps> = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<NotificationPageProps> = async ({
-  req,
-}) => {
-  return {
-    props: {
-      initialApolloState: await ssrRequest(req, [
-        {
-          document: GetCurrentUserDocument,
-        },
-      ]),
-    },
+export const getServerSideProps: GetServerSideProps<NotificationPageProps> =
+  async ({ req }) => {
+    return {
+      props: {
+        initialApolloState: await ssrRequest(req, [
+          {
+            document: GetCurrentUserDocument,
+          },
+        ]),
+      },
+    };
   };
-};
 
 export default NotificationPage;

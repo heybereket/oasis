@@ -6,7 +6,7 @@ import {
   useLikeDislikePostMutation,
   User,
   useDeletePostMutation,
-} from '@oasis-sh/client-gql';
+} from '@oasis-sh/react-gql';
 import React from 'react';
 import Post from '../post/Post';
 

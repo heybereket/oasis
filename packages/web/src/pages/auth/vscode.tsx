@@ -1,7 +1,7 @@
 import { Button } from '@oasis-sh/ui';
 import { apiBaseURL } from '@lib/constants';
 import { login } from '@lib/auth/login';
-import { useGetCurrentUserQuery } from '@oasis-sh/client-gql';
+import { useGetCurrentUserQuery } from '@oasis-sh/react-gql';
 import { useEffect, useState } from 'react';
 
 const authTypes = ['github', 'discord', 'google', 'twitter'];

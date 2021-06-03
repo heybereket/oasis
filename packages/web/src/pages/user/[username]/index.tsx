@@ -15,7 +15,7 @@ import {
   useDeletePostMutation,
   useGetUsersCommentsLazyQuery,
   useLikeDislikeCommentMutation,
-} from '@oasis-sh/client-gql';
+} from '@oasis-sh/react-gql';
 import {
   About,
   Comments,

@@ -4,7 +4,7 @@ import {
   Comment as TComment,
   User,
   useLikeDislikeCommentMutation,
-} from '@oasis-sh/client-gql';
+} from '@oasis-sh/react-gql';
 import React from 'react';
 import Comment from '../comment/Comment';
 

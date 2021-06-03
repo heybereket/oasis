@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Post } from '../post/Post';
 import { CreatePostInput } from '../home/CreatePostInput';
-import { DeletePostMutationHookResult } from '@oasis-sh/client-gql';
+import { DeletePostMutationHookResult } from '@oasis-sh/react-gql';
 
 type DeleteMutation = DeletePostMutationHookResult[0];
 
