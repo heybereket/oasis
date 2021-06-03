@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import useOnClickOutside from '../../utils/hooks/useOnClickOutside';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 interface Props {
   open: boolean;

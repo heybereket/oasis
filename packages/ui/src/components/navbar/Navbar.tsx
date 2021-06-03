@@ -12,8 +12,9 @@ import {
   Logout as LogoutIcon,
 } from '../../icons';
 import React, { useRef, useState } from 'react';
-import useOnClickOutside from '../../utils/hooks/useOnClickOutside';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 import { User } from '@oasis-sh/react-gql';
+import { redirect } from '../../utils/redirect';
 
 interface INavbarProps {
   user?: User;
@@ -107,8 +108,7 @@ export const Navbar: React.FC<INavbarProps> = ({
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              window.location.href =
-                '/search?q=' + serachText.replace(' ', '%20');
+              redirect('/search?q=' + serachText.replace(' ', '%20'));
             }}
           >
             <div className="hidden md-50:flex items-center relative">

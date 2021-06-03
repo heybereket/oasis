@@ -3,7 +3,7 @@ import { DropdownItem } from '../navbar/DropdownItem';
 import { Post as TPost, Role, User } from '@oasis-sh/react-gql';
 import { formatDate, formatNumber } from '../../lib/format';
 import { ThreeDots } from '../../icons/other/ThreeDots';
-import useOnClickOutside from '../../utils/hooks/useOnClickOutside';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 import {
   Info,
   Trash,
