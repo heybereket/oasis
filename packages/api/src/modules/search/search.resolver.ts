@@ -25,23 +25,23 @@ export class SearchResolver {
       .getMany();
 
     const users = await User.createQueryBuilder()
-      .where('LOWER(username) LIKE :searchQuery', {
+      .where('LOWER(username) LIKE LOWER(:searchQuery)', {
         searchQuery: `%${searchQuery}%`,
       })
-      .orWhere('LOWER(name) LIKE :searchQuery', {
+      .orWhere('LOWER(name) LIKE LOWER(:searchQuery)', {
         searchQuery: `%${searchQuery}%`,
       })
-      .orWhere('LOWER(bio) LIKE :searchQuery', {
+      .orWhere('LOWER(bio) LIKE LOWER(:searchQuery)', {
         searchQuery: `%${searchQuery}%`,
       })
       .limit(Math.floor(limit / AMOUNT_OF_SEARCH_TYPES))
       .getMany();
 
     const resorts = await Resort.createQueryBuilder()
-      .where('LOWER(name) LIKE :searchQuery', {
+      .where('LOWER(name) LIKE LOWER(:searchQuery)', {
         searchQuery: `%${searchQuery}%`,
       })
-      .orWhere('LOWER(description) LIKE :searchQuery', {
+      .orWhere('LOWER(description) LIKE LOWER(:searchQuery)', {
         searchQuery: `%${searchQuery}%`,
       })
       .limit(Math.floor(limit / AMOUNT_OF_SEARCH_TYPES))
