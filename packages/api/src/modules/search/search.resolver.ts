@@ -18,30 +18,30 @@ export class SearchResolver {
     @Arg('limit') limit: number
   ) {
     const posts = await Post.createQueryBuilder()
-      .where('message LIKE :searchQuery', {
+      .where('message ILIKE :searchQuery', {
         searchQuery: `%${searchQuery}%`,
       })
       .limit(Math.floor(limit / AMOUNT_OF_SEARCH_TYPES))
       .getMany();
 
     const users = await User.createQueryBuilder()
-      .where('username LIKE :searchQuery', {
+      .where('username ILIKE :searchQuery', {
         searchQuery: `%${searchQuery}%`,
       })
-      .orWhere('name LIKE :searchQuery', {
+      .orWhere('name ILIKE :searchQuery', {
         searchQuery: `%${searchQuery}%`,
       })
-      .orWhere('bio LIKE :searchQuery', {
+      .orWhere('bio ILIKE :searchQuery', {
         searchQuery: `%${searchQuery}%`,
       })
       .limit(Math.floor(limit / AMOUNT_OF_SEARCH_TYPES))
       .getMany();
 
     const resorts = await Resort.createQueryBuilder()
-      .where('name LIKE :searchQuery', {
+      .where('name ILIKE :searchQuery', {
         searchQuery: `%${searchQuery}%`,
       })
-      .orWhere('description LIKE :searchQuery', {
+      .orWhere('description ILIKE :searchQuery', {
         searchQuery: `%${searchQuery}%`,
       })
       .limit(Math.floor(limit / AMOUNT_OF_SEARCH_TYPES))

@@ -32,7 +32,7 @@ export const Navbar: React.FC<INavbarProps> = ({
   defaultSearchText,
 }) => {
   const [isDropdownActive, setDropdownActive] = useState(false);
-  const [serachText, setSearchText] = useState(defaultSearchText ?? '');
+  const [searchText, setSearchText] = useState(defaultSearchText ?? '');
 
   const node = useRef(null);
   useOnClickOutside(node, () => setDropdownActive(false));
@@ -108,7 +108,7 @@ export const Navbar: React.FC<INavbarProps> = ({
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              redirect('/search?q=' + serachText.replace(' ', '%20'));
+              redirect('/search?q=' + searchText.replace(' ', '%20'));
             }}
           >
             <div className="hidden md-50:flex items-center relative">
@@ -117,7 +117,7 @@ export const Navbar: React.FC<INavbarProps> = ({
               <input
                 placeholder="Search for People, Posts, etc..."
                 className="rounded-lg bg-gray-700 h-10 text-sm font-bold pl-11 text-gray-400 w-80 focus:outline-none overflow-ellipsis"
-                value={serachText}
+                value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
               />
             </div>
