@@ -18,7 +18,7 @@ export class SearchResolver {
     @Arg('limit') limit: number
   ) {
     const posts = await Post.createQueryBuilder()
-      .where('LOWER(message) LIKE :searchQuery', {
+      .where('LOWER(message) LIKE LOWER(:searchQuery)', {
         searchQuery: `%${searchQuery}%`,
       })
       .limit(Math.floor(limit / AMOUNT_OF_SEARCH_TYPES))
