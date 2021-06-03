@@ -20,6 +20,7 @@ interface INavbarProps {
   currentUserLoading: boolean;
   login: (provider: string) => Promise<void>;
   logout: () => Promise<void>;
+  defaultSearchText?: string;
 }
 
 export const Navbar: React.FC<INavbarProps> = ({
@@ -27,8 +28,10 @@ export const Navbar: React.FC<INavbarProps> = ({
   user,
   login,
   logout,
+  defaultSearchText,
 }) => {
   const [isDropdownActive, setDropdownActive] = useState(false);
+  const [serachText, setSearchText] = useState(defaultSearchText ?? '');
 
   const node = useRef(null);
   useOnClickOutside(node, () => setDropdownActive(false));
@@ -101,14 +104,24 @@ export const Navbar: React.FC<INavbarProps> = ({
           </div>
         </div>
         <div className="flex justify-items-start items-center space-x-8 ml-4">
-          <div className="hidden md-50:flex items-center relative">
-            <Search className="absolute ml-3" />
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              window.location.href =
+                '/search?q=' + serachText.replace(' ', '%20');
+            }}
+          >
+            <div className="hidden md-50:flex items-center relative">
+              <Search className="absolute ml-3" />
 
-            <input
-              placeholder="Search for People, Posts, etc..."
-              className="rounded-lg bg-gray-700 h-10 text-sm font-bold pl-11 text-gray-500 w-80 focus:outline-none overflow-ellipsis"
-            />
-          </div>
+              <input
+                placeholder="Search for People, Posts, etc..."
+                className="rounded-lg bg-gray-700 h-10 text-sm font-bold pl-11 text-gray-400 w-80 focus:outline-none overflow-ellipsis"
+                value={serachText}
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+            </div>
+          </form>
           <a href="/notifications">
             <Bell
               className="hidden sm-50:block cursor-pointer"

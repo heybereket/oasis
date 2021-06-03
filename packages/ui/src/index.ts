@@ -71,3 +71,6 @@ export { Profile } from './icons/navbar/Profile';
 export { SmallUpArrow } from './icons/arrows/SmallUpArrow';
 export { UpArrow } from './icons/arrows/UpArrow';
 export { SmallDownArrow } from './icons/arrows/SmallDownArrow';
+
+// User
+export { User } from './components/user/User';
