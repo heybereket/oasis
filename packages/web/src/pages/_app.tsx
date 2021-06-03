@@ -18,7 +18,7 @@ export default function App({
     <ApolloProvider client={client}>
       <AuthProvider>
         <SEO
-          title="Home"
+          title="Home - Oasis"
           description="The social platform for developers"
           keywords="developers,ideas,discuss,fun,programming,graphql,typescript,nextjs,tailwindcss,react,apollo"
         />

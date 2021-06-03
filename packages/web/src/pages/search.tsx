@@ -1,3 +1,4 @@
+import React from 'react';
 import { login, logout } from '@lib/auth/login';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { ssrRequest } from '@lib/common/ssrRequest';
@@ -12,7 +13,7 @@ import {
 import { LargeUserCard, Navbar, Post, User as UserCard } from '@oasis-sh/ui';
 import StyledMarkdown from '@parser/markdown/StyledMarkdown';
 import { GetServerSideProps } from 'next';
-import React from 'react';
+import { SEO } from '@shared/SEO';
 
 type Props = {
   vars: SearchQueryVariables;
@@ -26,6 +27,9 @@ export const Search: React.FC<Props> = ({ vars }) => {
   }).data?.search;
   return (
     <>
+      <SEO
+        title={`${vars.searchQuery} - Oasis Search`}
+      />
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
