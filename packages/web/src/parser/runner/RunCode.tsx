@@ -81,7 +81,7 @@ export const RunCode: React.FC<Props> = ({
       <Modal
         open={isOpen}
         closeHandler={() => setOpen(false)}
-        modalClasses="w-screen lg:w-1/2"
+        className="w-screen lg:w-1/2 text-xl whitespace-pre-wrap"
       >
         {output}
       </Modal>
