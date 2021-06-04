@@ -3,25 +3,22 @@ import {
   app,
   screen,
   ipcMain,
-  shell,
-  Menu,
 } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import path from 'path';
 import {
-  ALLOWED_HOSTS,
   isLinux,
-  MENU_TEMPLATE,
   isMac,
   isWin,
   production,
 } from './lib/constants';
 import electronLogger from 'electron-log';
+import dotenv from 'dotenv';
 
-let mainWindow: BrowserWindow;
+dotenv.config();
+
+let win: BrowserWindow;
 let splash: BrowserWindow;
-
-let menu: Menu;
 const instanceLock = app.requestSingleInstanceLock();
 let shouldShowWindow = false;
 let windowShowInterval: NodeJS.Timeout;
@@ -32,55 +29,33 @@ autoUpdater.logger = electronLogger;
 autoUpdater.allowDowngrade = true;
 
 // Browser Window Configuration
-const createMainWindow = () => {
+const createWindow = () => {
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
-  mainWindow = new BrowserWindow({
+  win = new BrowserWindow({
     width: width,
     height: height,
-    autoHideMenuBar: true,
+    show: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
-    show: false,
   });
 
-  // applying custom menu
-  menu = Menu.buildFromTemplate(MENU_TEMPLATE);
-  Menu.setApplicationMenu(menu);
-  mainWindow.loadURL(production ? `https://dev.oasis.sh` : 'http://localhost:3000');
+  if (process.env.NODE_ENV === 'development'){
+    win.loadURL('http://localhost:3000');
+  } else {
+    win.loadURL('https://dev.oasis.sh');
+  }
 
-  mainWindow.once('ready-to-show', () => {
+  win.once('ready-to-show', () => {
     shouldShowWindow = true;
   });
 
-  // graceful exiting
-  mainWindow.on('closed', () => {
-    mainWindow.destroy();
+  // Force Close Application
+  win.on('closed', () => {
+    win.destroy();
   });
-
-  // handling external links
-  const handleLinks = (event: any, url: string) => {
-    let urlObj = new URL(url);
-    let urlHost = urlObj.hostname;
-    if (!ALLOWED_HOSTS.includes(urlHost)) {
-      event.preventDefault();
-      shell.openExternal(url);
-    } else {
-      if (
-        urlHost == ALLOWED_HOSTS[1] &&
-        urlObj.pathname !== '/login' &&
-        urlObj.pathname !== '/session' &&
-        urlObj.pathname !== '/sessions/two-factor'
-      ) {
-        event.preventDefault();
-        shell.openExternal(url);
-      }
-    }
-  };
-  mainWindow.webContents.on('new-window', handleLinks);
-  mainWindow.webContents.on('will-navigate', handleLinks);
 
   ipcMain.on('@app/version', (event, args) => {
     event.sender.send('@app/version', app.getVersion());
@@ -95,26 +70,26 @@ const createMainWindow = () => {
   });
 
   ipcMain.on('@app/quit', (event, args) => {
-    mainWindow.close();
+    win.close();
   });
   ipcMain.on('@app/maximize', (event, args) => {
     if (isMac) {
-      if (mainWindow.isFullScreenable()) {
-        mainWindow.setFullScreen(!mainWindow.isFullScreen());
+      if (win.isFullScreenable()) {
+        win.setFullScreen(!win.isFullScreen());
       }
     } else {
-      if (mainWindow.maximizable) {
-        if (mainWindow.isMaximized()) {
-          mainWindow.unmaximize();
+      if (win.maximizable) {
+        if (win.isMaximized()) {
+          win.unmaximize();
         } else {
-          mainWindow.maximize();
+          win.maximize();
         }
       }
     }
   });
   ipcMain.on('@app/minimize', (event, args) => {
-    if (mainWindow.minimizable) {
-      mainWindow.minimize();
+    if (win.minimizable) {
+      win.minimize();
     }
   });
 }
@@ -163,10 +138,10 @@ if (!instanceLock) {
     }
   });
   app.on('second-instance', (event, argv, workingDirectory) => {
-    if (mainWindow) {
-      if (process.env.hotReload) return mainWindow.close();
-      if (mainWindow.isMinimized()) mainWindow.restore();
-      mainWindow.focus();
+    if (win) {
+      if (process.env.hotReload) return win.close();
+      if (win.isMinimized()) win.restore();
+      win.focus();
     }
   });
 }
@@ -189,28 +164,31 @@ autoUpdater.on('download-progress', (progress) => {
 });
 autoUpdater.on('update-downloaded', () => {
   splash.webContents.send('relaunch');
-  // stop timeout that skips the update
-  if (skipUpdateTimeout) {
-    clearTimeout(skipUpdateTimeout);
-  }
-  setTimeout(() => {
-    autoUpdater.quitAndInstall();
-  }, 1000);
-});
-autoUpdater.on('update-not-available', () => {
-  skipUpdateCheck(splash);
-});
-app.on('window-all-closed', async () => {
-  app.exit();
-});
-app.on('activate', () => {
-  if (mainWindow === null) {
-    createMainWindow();
-  }
+    // stop timeout that skips the update
+    if (skipUpdateTimeout) {
+      clearTimeout(skipUpdateTimeout);
+    }
+    setTimeout(() => {
+      autoUpdater.quitAndInstall();
+    }, 1000);
+  });
+
+  autoUpdater.on('update-not-available', () => {
+    skipUpdateCheck(splash);
+  });
+
+  app.on('window-all-closed', async () => {
+    app.quit();
+  });
+
+  app.on('activate', () => {
+    if (win === null) {
+      createWindow();
+    }
 });
 
 function skipUpdateCheck(splash: BrowserWindow) {
-  createMainWindow();
+  createWindow();
   splash.webContents.send('notfound');
   if (isLinux || !production) {
     splash.webContents.send('skipCheck');
@@ -226,7 +204,7 @@ function skipUpdateCheck(splash: BrowserWindow) {
       setTimeout(() => {
 
        splash.destroy();
-        mainWindow.show();
+        win.show();
       }, 800);
     }
   }, 1000);
