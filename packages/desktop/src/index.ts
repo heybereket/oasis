@@ -54,7 +54,7 @@ function createMainWindow() {
   if (!__prod__) {
     mainWindow.webContents.openDevTools();
   }
-  mainWindow.loadURL(__prod__ ? `https://oasis.sh/` : 'http://localhost:3000');
+  mainWindow.loadURL(__prod__ ? `https://dev.oasis.sh` : 'http://localhost:3000');
 
   mainWindow.once('ready-to-show', () => {
     shouldShowWindow = true;
@@ -229,7 +229,7 @@ function skipUpdateCheck(splash: BrowserWindow) {
       splash.webContents.send('launch');
       clearInterval(windowShowInterval);
       setTimeout(() => {
- 
+
        splash.destroy();
         mainWindow.show();
       }, 800);

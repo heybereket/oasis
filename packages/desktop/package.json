@@ -4,9 +4,9 @@
   "description": "Oasis Desktop App",
   "main": "dist/index.js",
   "scripts": {
-    "compile": "tsc",
+    "build": "tsc",
     "watch": "tsc -w",
-    "start": "yarn compile && electron ./dist/index.js",
+    "start": "electron ./dist/index.js",
     "build:mac": "yarn compile && electron-builder --mac",
     "build:win": "yarn compile && electron-builder --win",
     "build:linux": "yarn compile && electron-builder --linux"
