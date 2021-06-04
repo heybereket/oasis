@@ -3604,6 +3604,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@oasis-sh/eslint-config@workspace:config/eslint-config":
+  version: 0.0.0-use.local
+  resolution: "@oasis-sh/eslint-config@workspace:config/eslint-config"
+  dependencies:
+    "@types/eslint": ^7
+    eslint: ^7.27.0
+  languageName: unknown
+  linkType: soft
+
 "@oasis-sh/mobile@workspace:packages/mobile":
   version: 0.0.0-use.local
   resolution: "@oasis-sh/mobile@workspace:packages/mobile"
@@ -11016,12 +11025,6 @@ __metadata:
   checksum: c49da32cd173570f2076f0d52b80761b2a876dfea2046bfc8c5dc84f76b70105e35b2fed10fe0a8487df14674d46bc30245f3a27e8838601c3c85e68f693f363
   languageName: node
   linkType: hard
-
-"eslint-config-69b95a@workspace:config/eslint-config":
-  version: 0.0.0-use.local
-  resolution: "eslint-config-69b95a@workspace:config/eslint-config"
-  languageName: unknown
-  linkType: soft
 
 "eslint-config-prettier@npm:^8.3.0":
   version: 8.3.0
