@@ -22,7 +22,7 @@ export const Modal: React.FC<Props> = ({
   return (
     <div className="bg-dim w-screen h-screen flex justify-center items-center fixed z-50 top-0 left-0">
       <div ref={modalRef} className={`fixed flex z-50 ${modalClasses}`}>
-        <div className="relative max-w-530 w-full bg-gray-700 p-10 rounded-2xl">
+        <div className="relative w-full bg-gray-700 p-10 rounded-2xl">
           <svg
             onClick={() => {
               closeHandler();
