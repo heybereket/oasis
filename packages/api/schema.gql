@@ -56,6 +56,11 @@ input MakeBadgeInput {
   name: String!
 }
 
+input MakeReportInput {
+  information: String
+  type: ReportType!
+}
+
 type Mutation {
   createBot(data: CreateBotInput!): String!
   createComment(data: NewCommentInput!, postId: String!): Boolean!
@@ -72,6 +77,8 @@ type Mutation {
   likeDislikeComment(commentId: String!, dislike: Boolean!, like: Boolean!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
+  makeReport(accuseId: String!, data: MakeReportInput!): Boolean!
+  markAsResolved(reportId: String!, resolved: Boolean!): Boolean!
   markNotificationAsRead(notificationId: String!): Boolean!
   refreshBotToken(botId: String!): String!
   updateProfile(data: UpdateProfileInput!): Boolean!
@@ -222,6 +229,7 @@ type Query {
   getComment(id: String!): Comment!
   getNotifications: [Notification!]
   getPost(id: String!): Post!
+  getQueue: [Report!]!
   getRepo(id: String!): Repo!
   getResort(id: String!): Resort!
   getResortByName(name: String!): Resort
@@ -253,6 +261,20 @@ type Repo {
   owner: User!
   stars: Float!
   url: String!
+}
+
+type Report {
+  accuse: User!
+  createdAt: String!
+  id: ID!
+  information: String
+  reporter: User!
+  resolved: Boolean!
+  type: String!
+}
+
+enum ReportType {
+  InappropriateContent
 }
 
 type Resort {
