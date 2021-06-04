@@ -30,11 +30,11 @@ autoUpdater.allowDowngrade = true;
 
 // Browser Window Configuration
 const createWindow = () => {
-  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+  const dimensions = screen.getPrimaryDisplay().workAreaSize;
 
   win = new BrowserWindow({
-    width: width,
-    height: height,
+    width: dimensions.width,
+    height: dimensions.height,
     show: false,
     webPreferences: {
       nodeIntegration: true,
@@ -42,7 +42,7 @@ const createWindow = () => {
     },
   });
 
-  if (process.env.NODE_ENV === 'development'){
+  if (process.env.NODE_ENV === 'development') {
     win.loadURL('http://localhost:3000');
     win.webContents.once('dom-ready', () => {
       win.webContents.openDevTools();
@@ -80,13 +80,11 @@ const createWindow = () => {
       if (win.isFullScreenable()) {
         win.setFullScreen(!win.isFullScreen());
       }
-    } else {
-      if (win.maximizable) {
-        if (win.isMaximized()) {
-          win.unmaximize();
-        } else {
-          win.maximize();
-        }
+    } else if (win.maximizable) {
+      if (win.isMaximized()) {
+        win.unmaximize();
+      } else {
+        win.maximize();
       }
     }
   });
@@ -95,9 +93,9 @@ const createWindow = () => {
       win.minimize();
     }
   });
-}
+};
 
-function createSpalshWindow() {
+const createSpalshWindow = () => {
   splash = new BrowserWindow({
     width: 300,
     height: 410,
@@ -124,7 +122,29 @@ function createSpalshWindow() {
       notfound: 'No updates found...',
     });
   });
-}
+};
+
+const skipUpdateCheck = (splash: BrowserWindow) => {
+  createWindow();
+  splash.webContents.send('notfound');
+  if (isLinux || !production) {
+    splash.webContents.send('skipCheck');
+  }
+  // stop timeout that skips the update
+  if (skipUpdateTimeout) {
+    clearTimeout(skipUpdateTimeout);
+  }
+  windowShowInterval = setInterval(() => {
+    if (shouldShowWindow) {
+      splash.webContents.send('launch');
+      clearInterval(windowShowInterval);
+      setTimeout(() => {
+        splash.destroy();
+        win.show();
+      }, 800);
+    }
+  }, 1000);
+};
 
 if (!instanceLock) {
   if (process.env.hotReload) {
@@ -157,7 +177,7 @@ autoUpdater.on('update-available', (info) => {
   }, 60000);
 });
 autoUpdater.on('download-progress', (progress) => {
-  let prog = Math.floor(progress.percent);
+  const prog = Math.floor(progress.percent);
   splash.webContents.send('percentage', prog);
   splash.setProgressBar(prog / 100);
   // stop timeout that skips the update
@@ -189,26 +209,3 @@ autoUpdater.on('update-downloaded', () => {
       createWindow();
     }
 });
-
-function skipUpdateCheck(splash: BrowserWindow) {
-  createWindow();
-  splash.webContents.send('notfound');
-  if (isLinux || !production) {
-    splash.webContents.send('skipCheck');
-  }
-  // stop timeout that skips the update
-  if (skipUpdateTimeout) {
-    clearTimeout(skipUpdateTimeout);
-  }
-  windowShowInterval = setInterval(() => {
-    if (shouldShowWindow) {
-      splash.webContents.send('launch');
-      clearInterval(windowShowInterval);
-      setTimeout(() => {
-
-       splash.destroy();
-        win.show();
-      }, 800);
-    }
-  }, 1000);
-}
