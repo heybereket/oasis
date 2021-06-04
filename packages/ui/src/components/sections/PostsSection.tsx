@@ -87,13 +87,11 @@ export const PostsSection: React.FC<Props> = ({
               }}
               currentUser={user}
               deletePost={(id) => {
-                deleteMutation
-                  ? deleteMutation({
-                      variables: {
-                        postId: id,
-                      },
-                    })
-                  : () => {};
+                deleteMutation({
+                  variables: {
+                    postId: id,
+                  },
+                });
                 window.location.reload();
               }}
             />

@@ -79,8 +79,7 @@ export const Comment: React.FC<Props> = ({
               <div className="flex flex-col items-center">
                 <SmallUpArrow
                   onClick={() => {
-                    likeComment ? likeComment() : () => {};
-                    console.log(likeState);
+                    if (likeComment) likeComment();
                     if (likeState === LikeDislikeState.LIKED) {
                       setLikeState(LikeDislikeState.NONE);
                       setLikes(likes - 1);
@@ -92,7 +91,6 @@ export const Comment: React.FC<Props> = ({
                       setLikeState(LikeDislikeState.LIKED);
                       setLikes(likes + 1);
                     }
-                    console.log(likeState);
                   }}
                   className={`cursor-pointer ${
                     likeState === LikeDislikeState.LIKED ? 'text-blue-400' : ''
@@ -103,7 +101,7 @@ export const Comment: React.FC<Props> = ({
                 </p>
                 <SmallDownArrow
                   onClick={() => {
-                    dislikeComment ? dislikeComment() : () => {};
+                    if (dislikeComment) dislikeComment();
                     if (likeState === LikeDislikeState.DISLIKED) {
                       setLikeState(LikeDislikeState.NONE);
                       setDislikes(dislikes - 1);
@@ -145,12 +143,11 @@ export const Comment: React.FC<Props> = ({
                           <DropdownItem
                             name="Delete"
                             icon={Trash}
-                            onClick={() =>
-                              // deleteComment
-                              //   ? deleteComment(commentData.id ?? '')
-                              //   : () => {}
-                              console.log('Deleted?')
-                            }
+                            // onClick={() =>
+                            //   // deleteComment
+                            //   //   ? deleteComment(commentData.id ?? '')
+                            //   //   : () => {}
+                            // }
                           />
                         </div>
                       )}
