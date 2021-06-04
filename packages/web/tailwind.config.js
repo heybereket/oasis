@@ -29,6 +29,7 @@ module.exports = {
       // 897px to 1280px (full desktop design)
       xl: '1281px',
       // 1281px and over (max-width the webpage content to 1280px with container and center it)
+      '2xl': '1500px',
     },
     extend: {
       minHeight: {
@@ -48,6 +49,7 @@ module.exports = {
         secondary: '#828282',
       },
       gridTemplateColumns: {
+        two: '370px 500px',
         three: '370px 570px 470px',
       },
       keyframes: {
