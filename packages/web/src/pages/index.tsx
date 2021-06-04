@@ -50,7 +50,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
       <SEO
         title="Feed - Oasis"
         description="The social platform for developers"
-        />
+      />
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
@@ -58,7 +58,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
         logout={logout}
       />
       <div className="flex flex-col items-center w-full">
-        <div className="z-10 relative px-6 grid grid-cols-1 lg:grid-cols-three gap-16">
+        <div className="z-10 relative px-6 grid grid-cols-1 lg:grid-cols-two 2xl:grid-cols-three gap-16">
           <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
             <div className="flex-shrink-0 w-full flex flex-col py-6 px-8 bg-gray-800 rounded-2xl">
               {user ? (
@@ -73,7 +73,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             </div>
             <FriendActivitySection />
           </div>
-          <div className="flex flex-col flex-1 w-full space-y-12 pb-12 mt-[33px]">
+          <div className="flex flex-col flex-1 space-y-12 pb-12 mt-[33px] w-full ">
             <PostsSection
               amountPerFetch={vars.postsLimit}
               StyledMarkdown={StyledMarkdown}
@@ -97,7 +97,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               }}
             />
           </div>
-          <div className="hidden lg:flex flex-col flex-1 sticky top-28 h-px">
+          <div className="hidden 2xl:flex flex-col flex-1 sticky top-28 h-px">
             <div className="w-full flex flex-col items-center">
               <TrendingSection />
               <FollowUserSection />
