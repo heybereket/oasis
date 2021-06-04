@@ -3594,9 +3594,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@oasis-sh/desktop@workspace:packages/desktop"
   dependencies:
+    "@types/eslint": ^7
     electron: ^13.1.0
     electron-log: ^4.3.5
     electron-updater: ^4.3.9
+    eslint: ^7.27.0
     pinst: ^2.1.6
     typescript: ^4.2.4
   languageName: unknown
@@ -4579,16 +4581,6 @@ __metadata:
     "@types/estree": "*"
     "@types/json-schema": "*"
   checksum: d7614357ba6d8d8af9b81d7a23e752482e6e8c88145aeb62b6d871a7b3eee519e47b9e27950bba0ff0f770631a2f985fc5dbc03cad6ac6f798e52a38c75c5e53
-  languageName: node
-  linkType: hard
-
-"@types/eslint@npm:^7.2.13":
-  version: 7.2.13
-  resolution: "@types/eslint@npm:7.2.13"
-  dependencies:
-    "@types/estree": "*"
-    "@types/json-schema": "*"
-  checksum: e55906fa72e6288bd129652c4b3aa992d7219481265e1651564ba0d5fbacf41e39f97252a9001549eac544e5465f7f93ae81844b1e291f6cbf17c17ec048f729
   languageName: node
   linkType: hard
 
@@ -11024,6 +11016,12 @@ __metadata:
   checksum: c49da32cd173570f2076f0d52b80761b2a876dfea2046bfc8c5dc84f76b70105e35b2fed10fe0a8487df14674d46bc30245f3a27e8838601c3c85e68f693f363
   languageName: node
   linkType: hard
+
+"eslint-config-69b95a@workspace:config/eslint-config":
+  version: 0.0.0-use.local
+  resolution: "eslint-config-69b95a@workspace:config/eslint-config"
+  languageName: unknown
+  linkType: soft
 
 "eslint-config-prettier@npm:^8.3.0":
   version: 8.3.0
@@ -18366,7 +18364,6 @@ fsevents@^1.2.7:
     "@commitlint/cli": ^12.1.2
     "@commitlint/config-conventional": ^12.1.2
     "@types/concurrently": ^6
-    "@types/eslint": ^7.2.13
     "@types/jest": ^26.0.23
     "@types/node": ^15.3.1
     commitizen: ^4.2.3
@@ -20512,6 +20509,12 @@ fsevents@^1.2.7:
   checksum: d39325775adce38e18213fd19656af4abd7672ef6b1e330437079bb237de011d49a70bfb56b35037603d30ef279cceddb33794f70168582d50845c2ade29968e
   languageName: node
   linkType: hard
+
+"prettier-config-60cee5@workspace:config/prettier-config":
+  version: 0.0.0-use.local
+  resolution: "prettier-config-60cee5@workspace:config/prettier-config"
+  languageName: unknown
+  linkType: soft
 
 "prettier-linter-helpers@npm:^1.0.0":
   version: 1.0.0
