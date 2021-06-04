@@ -6,11 +6,11 @@ export const isLinux =
   process.platform !== 'darwin' && process.platform !== 'win32';
 export const isWin = process.platform === 'win32';
 
-const REPO_URL = 'https://github.com/oasis-sh/desktop/';
-const DISCUSSION_URL = 'https://github.com/oasis-sh/desktop/discussions';
-const ISSUES_URL = 'https://github.com/oasis-sh/desktop/issues';
+const REPO_URL = 'https://github.com/oasis-sh/oasis';
+const DISCUSSION_URL = 'https://github.com/oasis-sh/oasis/discussions';
+const ISSUES_URL = 'https://github.com/oasis-sh/oasis/issues';
 
-export const ALLOWED_HOSTS = ['oasis.sh', 'github.com', 'localhost'];
+export const ALLOWED_HOSTS = ['dev.oasis.sh', 'oasis.sh', 'github.com', 'localhost'];
 
 export const MENU_TEMPLATE: any = [
   ...(isMac

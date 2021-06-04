@@ -7,9 +7,9 @@
     "build": "tsc",
     "watch": "tsc -w",
     "start": "electron ./dist/index.js",
-    "build:mac": "yarn compile && electron-builder --mac",
-    "build:win": "yarn compile && electron-builder --win",
-    "build:linux": "yarn compile && electron-builder --linux"
+    "build:mac": "yarn build && electron-builder --mac",
+    "build:win": "yarn build && electron-builder --win",
+    "build:linux": "yarn build && electron-builder --linux"
   },
   "devDependencies": {
     "electron": "^13.1.0",

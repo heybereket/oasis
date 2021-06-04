@@ -50,10 +50,6 @@ function createMainWindow() {
   // applying custom menu
   menu = Menu.buildFromTemplate(MENU_TEMPLATE);
   Menu.setApplicationMenu(menu);
-
-  if (!__prod__) {
-    mainWindow.webContents.openDevTools();
-  }
   mainWindow.loadURL(__prod__ ? `https://dev.oasis.sh` : 'http://localhost:3000');
 
   mainWindow.once('ready-to-show', () => {
