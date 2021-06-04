@@ -1,11 +1,9 @@
 import {
   BrowserWindow,
   app,
-  systemPreferences,
+  screen,
   ipcMain,
-  globalShortcut,
   shell,
-  Tray,
   Menu,
 } from 'electron';
 import { autoUpdater } from 'electron-updater';
@@ -16,15 +14,14 @@ import {
   MENU_TEMPLATE,
   isMac,
   isWin,
-} from './constants';
+  production,
+} from './lib/constants';
 import electronLogger from 'electron-log';
 
 let mainWindow: BrowserWindow;
 let splash: BrowserWindow;
 
 let menu: Menu;
-
-export const __prod__ = app.isPackaged;
 const instanceLock = app.requestSingleInstanceLock();
 let shouldShowWindow = false;
 let windowShowInterval: NodeJS.Timeout;
@@ -32,13 +29,15 @@ let skipUpdateTimeout: NodeJS.Timeout;
 
 electronLogger.transports.file.level = 'debug';
 autoUpdater.logger = electronLogger;
-// just in case we have to revert to a build
 autoUpdater.allowDowngrade = true;
 
-function createMainWindow() {
+// Browser Window Configuration
+const createMainWindow = () => {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+
   mainWindow = new BrowserWindow({
-    width: 560,
-    height: 1000,
+    width: width,
+    height: height,
     autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: true,
@@ -50,7 +49,7 @@ function createMainWindow() {
   // applying custom menu
   menu = Menu.buildFromTemplate(MENU_TEMPLATE);
   Menu.setApplicationMenu(menu);
-  mainWindow.loadURL(__prod__ ? `https://dev.oasis.sh` : 'http://localhost:3000');
+  mainWindow.loadURL(production ? `https://dev.oasis.sh` : 'http://localhost:3000');
 
   mainWindow.once('ready-to-show', () => {
     shouldShowWindow = true;
@@ -157,9 +156,9 @@ if (!instanceLock) {
 } else {
   app.on('ready', async () => {
     createSpalshWindow();
-    if (!__prod__) skipUpdateCheck(splash);
-    if (__prod__ && !isLinux) await autoUpdater.checkForUpdates();
-    if (isLinux && __prod__) {
+    if (!production) skipUpdateCheck(splash);
+    if (production && !isLinux) await autoUpdater.checkForUpdates();
+    if (isLinux && production) {
       skipUpdateCheck(splash);
     }
   });
@@ -213,7 +212,7 @@ app.on('activate', () => {
 function skipUpdateCheck(splash: BrowserWindow) {
   createMainWindow();
   splash.webContents.send('notfound');
-  if (isLinux || !__prod__) {
+  if (isLinux || !production) {
     splash.webContents.send('skipCheck');
   }
   // stop timeout that skips the update

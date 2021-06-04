@@ -1,16 +1,12 @@
 import { app, shell } from 'electron';
 import { autoUpdater } from 'electron-updater';
+import { REPO_URL, DISCUSSION_URL, ISSUES_URL } from './links';
 
 export const isMac = process.platform === 'darwin';
-export const isLinux =
-  process.platform !== 'darwin' && process.platform !== 'win32';
+export const isLinux = process.platform !== 'darwin' && process.platform !== 'win32';
 export const isWin = process.platform === 'win32';
-
-const REPO_URL = 'https://github.com/oasis-sh/oasis';
-const DISCUSSION_URL = 'https://github.com/oasis-sh/oasis/discussions';
-const ISSUES_URL = 'https://github.com/oasis-sh/oasis/issues';
-
 export const ALLOWED_HOSTS = ['dev.oasis.sh', 'oasis.sh', 'github.com', 'localhost'];
+export const production = app.isPackaged;
 
 export const MENU_TEMPLATE: any = [
   ...(isMac
