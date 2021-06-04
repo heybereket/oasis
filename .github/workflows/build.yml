@@ -27,6 +27,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 15
+      - name: Install dependencies
+        working-directory: packages/desktop
+        run: yarn install
+      - name: Compile Typescript
+        working-directory: packages/desktop
+        run: yarn build
 
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
