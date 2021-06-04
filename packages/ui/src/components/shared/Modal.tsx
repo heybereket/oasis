@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import ReactDOM from 'react-dom';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 interface Props {
@@ -19,7 +20,7 @@ export const Modal: React.FC<Props> = ({
   const modalRef = useRef<HTMLDivElement | null>(null);
   useOnClickOutside(modalRef, () => closeHandler());
 
-  return (
+  return ReactDOM.createPortal(
     <div className="bg-dim w-screen h-screen flex justify-center items-center fixed z-50 top-0 left-0">
       <div ref={modalRef} className={`fixed flex z-50 ${modalClasses}`}>
         <div className="relative w-full bg-gray-700 p-10 rounded-2xl">
@@ -42,6 +43,7 @@ export const Modal: React.FC<Props> = ({
           {children}
         </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById('modals') as Element
   );
 };
