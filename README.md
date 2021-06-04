@@ -8,7 +8,7 @@
 - [`packages/mobile`](/packages/mobile) - Capacitor/Ionic Mobile App
 - [`packages/ui`](/packages/ui) - UI Components
 - [`packages/api`](/packages/api) - Backend and GraphQL API
-- [`packages/reacct-gql`](/packages/react-gql) - React GraphQL Hooks
+- [`packages/react-gql`](/packages/react-gql) - React GraphQL Hooks
 - [`packages/client`](/packages/bot-client) - API Client
 
 ## Contributions
