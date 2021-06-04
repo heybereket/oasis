@@ -44,8 +44,11 @@ const createWindow = () => {
 
   if (process.env.NODE_ENV === 'development'){
     win.loadURL('http://localhost:3000');
+    win.webContents.once('dom-ready', () => {
+      win.webContents.openDevTools();
+    });
   } else {
-    win.loadURL('https://dev.oasis.sh');
+    win.loadURL('https://oasis.sh');
   }
 
   win.once('ready-to-show', () => {
