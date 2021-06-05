@@ -270,7 +270,7 @@ type Report {
   information: String
   reporter: User!
   resolved: Boolean!
-  type: String!
+  type: ReportType!
 }
 
 enum ReportType {

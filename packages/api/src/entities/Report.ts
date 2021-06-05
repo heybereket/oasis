@@ -22,12 +22,12 @@ export default class Report extends BaseEntity {
   resolved: boolean;
 
   @Column()
-  @Field()
+  @Field(() => ReportType)
   type: ReportType;
 
   @ManyToOne(() => User, (user: User) => user.reports)
   @Field(() => User)
-  reporter: User;
+  reporter: Promise<User>;
 
   @ManyToOne(() => User, (user) => user.filedReports)
   @Field(() => User)

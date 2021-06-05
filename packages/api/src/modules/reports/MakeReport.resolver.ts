@@ -19,11 +19,12 @@ export class MakeReportResolver {
     if (!accuse) throw new ApolloError('There is no person like that.');
     const report = Report.create();
     Report.merge(report, data);
+
     report.resolved = false;
-    report.reporter = await getUser();
+    report.reporter = Promise.resolve(await getUser());
     report.accuse = Promise.resolve(accuse);
     report.createdAt = String(Date.now());
-    console.log(report);
+
     report.save();
     return true;
   }

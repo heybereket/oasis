@@ -6,18 +6,11 @@ import { Arg, Authorized, Ctx, Query, Resolver, Root } from 'type-graphql';
 
 @Resolver()
 export class GetQueueResolver {
-  @Authorized()
+  // @Authorized(Role.Moderator)
   @Query(() => [Report])
-  async getQueue(@Ctx() { getUser }: ContextType) {
-    const user = await getUser();
-
-    // if (!user.roles.includes(Role.Moderator)) {
-    //   throw new ApolloError("You don't have permission to do that!");
-    // }
-
+  async getQueue() {
     return await Report.find({
       where: { resolved: false },
-      relations: ['accuse', 'reporter'],
     });
   }
 }
