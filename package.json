@@ -1,56 +1,56 @@
 {
-	"name": "oasis-sh",
-	"private": true,
-	"license": "MIT",
-	"workspaces": [
-		"packages/*",
-		"config/*"
-	],
-	"scripts": {
-		"build:all": "yarn build api && yarn build react-gql && yarn build ui && yarn build web",
-		"build:dev": "yarn build api && yarn build react-gql && yarn build ui",
-		"build:test": "yarn build api",
-		"build:desktop": "yarn build desktop",
-		"commit": "git add . && cz && git push",
-		"dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
-		"dev:api": "yarn workspace @oasis-sh/api run dev",
-		"start": "yarn workspace @oasis-sh/web run start",
-		"deploy:prod": "git add . && git commit -m 'chore(deploy): Merge staging -> prod' && git checkout prod && git merge staging && git push origin prod --force && git checkout staging",
-		"publish:bot": "yarn workspace @oasis-sh/bot-client run publish",
-		"lint": "yarn workspaces foreach --exclude @oasis-sh/react-gql -p run lint && yarn workspaces foreach --exclude @oasis-sh/react-gql -p run prettify",
-		"clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/react-gql,@oasis-sh/ui -p run clean",
-		"reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",
-		"rebuild": "yarn reinstall || yarn build:all",
-		"build": "yarn workspace @oasis-sh/$0 run build",
-		"setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
-		"prepare": "husky install",
-		"test:api:setup": "yarn build:test && yarn dev:api",
-		"test:api:run": "yarn workspace @oasis-sh/api test",
-		"test:cy": "yarn workspace @oasis-sh/web run cy:run"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "^12.1.2",
-		"@commitlint/config-conventional": "^12.1.2",
-		"@types/concurrently": "^6",
-		"@types/jest": "^26.0.23",
-		"@types/node": "^15.3.1",
-		"commitizen": "^4.2.3",
-		"concurrently": "^6.1.0",
-		"cz-conventional-changelog": "3.3.0",
-		"husky": "^6.0.0",
-		"jest": "^26.6.3",
-		"npm-run-all": "^4.1.5",
-		"rimraf": "^3.0.2",
-		"ts-jest": "^26.5.6"
-	},
-	"dependencies": {
-		"typeorm": "^0.2.33",
-		"typescript": "^4.2.4"
-	},
-	"config": {
-		"commitizen": {
-			"path": "./node_modules/cz-conventional-changelog",
-			"defaultScope": "global"
-		}
-	}
+  "name": "oasis-sh",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "config/*"
+  ],
+  "scripts": {
+    "build:all": "yarn build api && yarn build react-gql && yarn build ui && yarn build web",
+    "build:dev": "yarn build api && yarn build react-gql && yarn build ui",
+    "build:test": "yarn build api",
+    "build:desktop": "yarn build desktop",
+    "commit": "git add . && cz && git push",
+    "dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
+    "dev:api": "yarn workspace @oasis-sh/api run dev",
+    "start": "yarn workspace @oasis-sh/web run start",
+    "deploy:prod": "git add . && git commit -m 'chore(deploy): Merge staging -> prod' && git checkout prod && git merge staging && git push origin prod --force && git checkout staging",
+    "publish:bot": "yarn workspace @oasis-sh/bot-client run publish",
+    "lint": "yarn workspaces foreach --exclude @oasis-sh/react-gql -p run prettify && yarn workspaces foreach --exclude @oasis-sh/react-gql -p run lint",
+    "clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/react-gql,@oasis-sh/ui -p run clean",
+    "reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",
+    "rebuild": "yarn reinstall || yarn build:all",
+    "build": "yarn workspace @oasis-sh/$0 run build",
+    "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
+    "prepare": "husky install",
+    "test:api:setup": "yarn build:test && yarn dev:api",
+    "test:api:run": "yarn workspace @oasis-sh/api test",
+    "test:cy": "yarn workspace @oasis-sh/web run cy:run"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.2",
+    "@commitlint/config-conventional": "^12.1.2",
+    "@types/concurrently": "^6",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.3.1",
+    "commitizen": "^4.2.3",
+    "concurrently": "^6.1.0",
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.5.6"
+  },
+  "dependencies": {
+    "typeorm": "^0.2.33",
+    "typescript": "^4.2.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog",
+      "defaultScope": "global"
+    }
+  }
 }
