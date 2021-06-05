@@ -21,7 +21,7 @@ export const login = (type: string): any => {
 };
 
 export const logout = async (): Promise<void> => {
-  const response = await(
+  const response = await (
     await request(`${baseURL}/api/auth/logout`, {
       headers: {
         Accept: 'application/json',

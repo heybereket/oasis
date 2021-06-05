@@ -3,6 +3,7 @@ query getPost($id: String!) {
     author {
       id
       name
+      username
       badges {
         description
         id
@@ -22,7 +23,12 @@ query getPost($id: String!) {
       logo
       name
     }
+    comments(limit: 0, offset: 0) {
+      total
+    }
     topics
+    isLiked
+    isDisliked
   }
 }
 

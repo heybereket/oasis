@@ -6,14 +6,14 @@ interface Props {
   open: boolean;
   closeHandler: any;
   children?: React.ReactNode;
-  modalClasses?: string;
+  className?: string;
 }
 
 export const Modal: React.FC<Props> = ({
   open,
   closeHandler,
   children,
-  modalClasses,
+  className,
 }) => {
   if (typeof window === 'undefined' || !open) return null;
 
@@ -22,7 +22,7 @@ export const Modal: React.FC<Props> = ({
 
   return ReactDOM.createPortal(
     <div className="bg-dim w-screen h-screen flex justify-center items-center fixed z-50 top-0 left-0">
-      <div ref={modalRef} className={`fixed flex z-50 ${modalClasses}`}>
+      <div ref={modalRef} className={`fixed flex z-50 ${className}`}>
         <div className="relative w-full bg-gray-700 p-10 rounded-2xl">
           <svg
             onClick={() => {

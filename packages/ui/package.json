@@ -25,6 +25,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "moment": "^2.29.1",
     "node-sass": "^6.0.0",
     "prettier": "^2.3.0",
     "react": "^17.0.2",
@@ -39,8 +40,12 @@
     "build": "yarn clean && rollup -c",
     "build:watch": "rollup -cw",
     "lint": "eslint src --fix",
-    "prettify": "prettier --config .prettierrc --write src/{.,components,icons,lib,utils}/*.tsx src/{components,modules,pages,lib}/**/*.ts",
+    "prettify": "prettier --write src/{.,components,icons,lib,utils}/*.tsx src/{components,modules,pages,lib}/**/*.ts",
     "format": "prettier --write src",
     "clean": "rimraf dist"
+  },
+  "prettier": "@oasis-sh/prettier-config",
+  "eslintConfig": {
+    "extends": "@oasis-sh/eslint-config"
   }
 }

@@ -17,6 +17,7 @@ query Search($searchQuery: String! $limit: Float!) {
       displayName: name
     }
     ... on Post {
+      id
       message
       author {
         username

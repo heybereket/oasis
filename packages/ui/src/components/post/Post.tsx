@@ -86,7 +86,7 @@ export const Post: React.FC<Props> = ({
               <div className="flex flex-col items-center">
                 <SmallUpArrow
                   onClick={() => {
-                    likePost ? likePost() : () => {};
+                    if (likePost) likePost();
                     console.log(likeState);
                     if (likeState === LikeDislikeState.LIKED) {
                       setLikeState(LikeDislikeState.NONE);
@@ -110,7 +110,7 @@ export const Post: React.FC<Props> = ({
                 </p>
                 <SmallDownArrow
                   onClick={() => {
-                    dislikePost ? dislikePost() : () => {};
+                    if (dislikePost) dislikePost();
                     if (likeState === LikeDislikeState.DISLIKED) {
                       setLikeState(LikeDislikeState.NONE);
                       setDislikes(dislikes - 1);
@@ -136,7 +136,6 @@ export const Post: React.FC<Props> = ({
                   onClick={() => setDropdownActive(true)}
                 />
                 <div className="flex relative">
-                  {/* fixed the rendering logic here */}
                   {isDropdownActive && (
                     <div
                       className={`flex absolute flex-col rounded-lg bg-gray-700 px-4 py-3 max-w-md z-50 right-0 mt-7  ${
@@ -167,15 +166,6 @@ export const Post: React.FC<Props> = ({
                           onClick={() => {}}
                         />
                       </div>
-                      {/* <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
-                        <DropdownItem
-                          name="Logout"
-                          icon={LogoutIcon}
-                          onClick={async () => {
-                            await logout();
-                          }}
-                        />
-                      </div> */}
                     </div>
                   )}
                 </div>
@@ -187,13 +177,15 @@ export const Post: React.FC<Props> = ({
           {markdown(postData?.message ?? '')}
         </div>
       </div>
-      <footer className="flex justify-between">
-        <p className="text-sm font-semibold">{date}</p>
-        <div className="flex items-center space-x-2">
-          <p className="text-sm">{postData.comments.total} replies</p>
-          <Comments />
-        </div>
-      </footer>
+      <a href={'/post/' + postData.id}>
+        <footer className="flex justify-between">
+          <p className="text-sm font-medium">{date}</p>
+          <div className="flex items-center space-x-2">
+            <p className="text-sm">{postData.comments.total} replies</p>
+            <Comments />
+          </div>
+        </footer>
+      </a>
     </div>
   );
 };

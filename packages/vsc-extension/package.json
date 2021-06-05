@@ -46,7 +46,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "yarn run compile && yarn run lint",
-    "prettify": "prettier --config .prettierrc --write src/*.ts vsc-ui/src/*.ts vsc-ui/src/*.tsx",
+    "prettify": "prettier --write src/*.ts vsc-ui/src/*.ts vsc-ui/src/*.tsx",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "node ./out/test/runTest.js",
     "vite:build": "cd vsc-ui && vite build && cd ..",
@@ -54,6 +54,10 @@
     "server:start": "node server/dist/index.js",
     "server:dev": "ts-node-dev server/src/index.ts",
     "server:build": "tsc -p server"
+  },
+  "prettier": "@oasis-sh/prettier-config",
+  "eslintConfig": {
+    "extends": "@oasis-sh/eslint-config"
   },
   "dependencies": {
     "node-fetch": "^2.6.1",
