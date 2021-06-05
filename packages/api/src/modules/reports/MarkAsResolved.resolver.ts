@@ -1,8 +1,6 @@
 import Report from '@entities/Report';
 import { Role } from '@modules/user/Roles';
-import { ContextType } from '@root/apolloServer';
-import { ApolloError } from 'apollo-server-express';
-import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
+import { Arg, Authorized, Mutation, Resolver } from 'type-graphql';
 
 @Resolver()
 export class MarkAsResolvedResolver {
