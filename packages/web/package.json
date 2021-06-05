@@ -54,6 +54,7 @@
 		"eslint": "^7.27.0",
 		"eslint-plugin-react": "^7.24.0",
 		"eslint-plugin-react-hooks": "latest",
+		"moment-timezone": "^0.5.33",
 		"node-fetch": "^2.6.1",
 		"postcss": "^8.3.0",
 		"prettier": "2.3.0",

@@ -5,6 +5,7 @@ import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import StyledMarkdown from '@parser/markdown/StyledMarkdown';
 import { login, logout } from '@lib/auth/login';
 import { SEO } from '@shared/SEO';
+import moment from 'moment-timezone';
 import {
   Navbar,
   FollowUserSection,
@@ -41,6 +42,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const { user, currentUserLoading } = useGetCurrentUser();
   const posts = postsQuery.data?.feedSortPosts;
+  const timezone = moment.tz.guess();
 
   const [likeDislikePost] = useLikeDislikePostMutation();
   const [deletePost] = useDeletePostMutation();
@@ -79,6 +81,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               StyledMarkdown={StyledMarkdown}
               user={user}
               posts={posts ?? []}
+              timezone={timezone}
               createPost={createPost}
               likeDislikePost={likeDislikePost}
               deleteMutation={deletePost}
