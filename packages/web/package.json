@@ -11,7 +11,7 @@
 		"clean": "rimraf .next/*",
 		"setup:remote": "yarn clean || echo \"API_MODE='remote'\\\nNEXT_PUBLIC_BASE_URL='http://localhost:3000'\" > .env",
 		"cy:install": "cypress install",
-		"cy:run": "cypress run --headless --browser chrome",
+		"cy:run": "cypress run --browser chrome",
 		"cy:open": "cypress open --browser chrome"
 	},
 	"prettier": "@oasis-sh/prettier-config",
@@ -60,6 +60,8 @@
 		"prettier": "2.3.0",
 		"pretty-ms": "^7.0.1",
 		"rimraf": "^3.0.2",
-		"ts-node": "^10.0.0"
+		"ts-loader": "^9.2.2",
+		"ts-node": "^10.0.0",
+		"webpack": "^5.38.1"
 	}
 }

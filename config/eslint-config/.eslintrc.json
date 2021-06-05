@@ -172,7 +172,6 @@
     "no-sequences": "error",
     "no-spaced-func": "off",
     "no-sync": "error",
-    "no-tabs": "error",
     "no-template-curly-in-string": "error",
     "no-throw-literal": "error",
     "no-trailing-spaces": "error",
