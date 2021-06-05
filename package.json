@@ -9,6 +9,7 @@
 	"scripts": {
 		"build:all": "yarn build api && yarn build react-gql && yarn build ui && yarn build web",
 		"build:dev": "yarn build api && yarn build react-gql && yarn build ui",
+		"build:test": "yarn build api",
 		"build:desktop": "yarn build desktop",
 		"commit": "git add . && cz && git push",
 		"dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
@@ -23,7 +24,8 @@
 		"build": "yarn workspace @oasis-sh/$0 run build",
 		"setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
 		"prepare": "husky install",
-		"test": "jest --silent",
+		"test:api:setup": "yarn build:test && yarn dev:api",
+		"test:api:run": "yarn workspace @oasis-sh/api test",
 		"test:cy": "yarn workspace @oasis-sh/web run cy:run"
 	},
 	"devDependencies": {
