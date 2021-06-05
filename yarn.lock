@@ -3762,6 +3762,7 @@ __metadata:
     eslint-plugin-react: ^7.24.0
     eslint-plugin-react-hooks: ^4.2.0
     moment: ^2.29.1
+    moment-timezone: ^0.5.33
     node-sass: ^6.0.0
     prettier: ^2.3.0
     react: ^17.0.2
@@ -3831,6 +3832,7 @@ __metadata:
     express: ^4.17.1
     formik: ^2.2.6
     github-markdown-css: ^4.0.0
+    moment-timezone: ^0.5.33
     next: latest
     node-fetch: ^2.6.1
     postcss: ^8.3.0
@@ -17843,7 +17845,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.29.1":
+"moment-timezone@npm:^0.5.33":
+  version: 0.5.33
+  resolution: "moment-timezone@npm:0.5.33"
+  dependencies:
+    moment: ">= 2.9.0"
+  checksum: d4e72a3514a2885ab26b1cbc640e2f4785c997f9de28bb48bf3994ef137b0a560ca8f07eb07f11121e1223eef0c3bce4bc647b911111481a6a066bbc61285f99
+  languageName: node
+  linkType: hard
+
+"moment@npm:>= 2.9.0, moment@npm:^2.29.1":
   version: 2.29.1
   resolution: "moment@npm:2.29.1"
   checksum: 86729013febf7160de5b93da69273dd304d674b0224f9544b3abd09a87671ddd2cdd57598261ce57588910d63747ffd5590965e83c790d8bf327083c0e0a06e0
