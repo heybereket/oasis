@@ -21,7 +21,7 @@ export const formatNumber = (num: number) => {
 
 // Format Date
 export const formatDate = (createdAt: string): string => {
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const timezone = moment.tz.guess();
   const day = moment(Number(createdAt)).fromNow();
   const time = moment(Number(createdAt)).tz(timezone).format('h:mm A');
 
