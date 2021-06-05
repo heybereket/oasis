@@ -115,24 +115,31 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
   req,
 }) => {
-  const vars: FeedSortPostsQueryVariables = {
-    postsLimit: 20,
-    postsOffset: 0,
-  };
-  return {
-    props: {
-      initialApolloState: await ssrRequest(req, [
-        {
-          document: FeedSortPostsDocument,
-          variables: vars,
-        },
-        {
-          document: GetCurrentUserDocument,
-        },
-      ]),
-      vars,
-    },
-  };
+  try {
+    const vars: FeedSortPostsQueryVariables = {
+      postsLimit: 20,
+      postsOffset: 0,
+    };
+    return {
+      props: {
+        initialApolloState: await ssrRequest(req, [
+          {
+            document: FeedSortPostsDocument,
+            variables: vars,
+          },
+          {
+            document: GetCurrentUserDocument,
+          },
+        ]),
+        vars,
+      },
+    };
+  } catch (err) {
+    return {
+      // Should never happen
+      props: {} as never,
+    };
+  }
 };
 
 export default HomePage;
