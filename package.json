@@ -22,7 +22,8 @@
     "rebuild": "yarn reinstall || yarn build:all",
     "build": "yarn workspace @oasis-sh/$0 run build",
     "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest --silent"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.2",
