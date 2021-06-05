@@ -15,7 +15,6 @@ import {
 interface Props {
   post: TPost;
   currentUser?: User;
-  timezone?: string;
   likePost?: () => any;
   dislikePost?: () => any;
   deletePost?: (id: string) => any;
@@ -37,9 +36,8 @@ export const Post: React.FC<Props> = ({
   bgColorOveride,
   deletePost,
   currentUser,
-  timezone
 }) => {
-  const date = formatDate(postData.createdAt, timezone);
+  const date = formatDate(postData.createdAt);
 
   const [likes, setLikes] = useState(postData.likes);
   const [dislikes, setDislikes] = useState(postData.dislikes);

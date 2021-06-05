@@ -11,7 +11,6 @@ interface Props {
   likeDislikePost: (variable: object) => void;
   user: any;
   posts: any;
-  timezone: string;
   StyledMarkdown: any;
   deleteMutation: DeleteMutation;
   fetch: (limit: number, offset: number) => Promise<any>;
@@ -22,7 +21,6 @@ export const PostsSection: React.FC<Props> = ({
   likeDislikePost,
   user,
   posts,
-  timezone,
   StyledMarkdown,
   deleteMutation,
   fetch,
@@ -66,7 +64,6 @@ export const PostsSection: React.FC<Props> = ({
           <div className="mb-6" key={index}>
             <Post
               post={post}
-              timezone={timezone}
               markdown={(text) => {
                 return <StyledMarkdown text={text} isPost={true} />;
               }}

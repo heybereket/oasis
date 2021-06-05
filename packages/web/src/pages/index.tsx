@@ -5,7 +5,6 @@ import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import StyledMarkdown from '@parser/markdown/StyledMarkdown';
 import { login, logout } from '@lib/auth/login';
 import { SEO } from '@shared/SEO';
-import moment from 'moment-timezone';
 import {
   Navbar,
   FollowUserSection,
@@ -42,7 +41,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const { user, currentUserLoading } = useGetCurrentUser();
   const posts = postsQuery.data?.feedSortPosts;
-  const timezone = moment.tz.guess();
 
   const [likeDislikePost] = useLikeDislikePostMutation();
   const [deletePost] = useDeletePostMutation();
@@ -81,7 +79,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               StyledMarkdown={StyledMarkdown}
               user={user}
               posts={posts ?? []}
-              timezone={timezone}
               createPost={createPost}
               likeDislikePost={likeDislikePost}
               deleteMutation={deletePost}
@@ -115,31 +112,24 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
   req,
 }) => {
-  try {
-    const vars: FeedSortPostsQueryVariables = {
-      postsLimit: 20,
-      postsOffset: 0,
-    };
-    return {
-      props: {
-        initialApolloState: await ssrRequest(req, [
-          {
-            document: FeedSortPostsDocument,
-            variables: vars,
-          },
-          {
-            document: GetCurrentUserDocument,
-          },
-        ]),
-        vars,
-      },
-    };
-  } catch (err) {
-    return {
-      // Should never happen
-      props: {} as never,
-    };
-  }
+  const vars: FeedSortPostsQueryVariables = {
+    postsLimit: 20,
+    postsOffset: 0,
+  };
+  return {
+    props: {
+      initialApolloState: await ssrRequest(req, [
+        {
+          document: FeedSortPostsDocument,
+          variables: vars,
+        },
+        {
+          document: GetCurrentUserDocument,
+        },
+      ]),
+      vars,
+    },
+  };
 };
 
 export default HomePage;
