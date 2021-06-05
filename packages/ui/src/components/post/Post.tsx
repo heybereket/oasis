@@ -179,7 +179,7 @@ export const Post: React.FC<Props> = ({
       </div>
       <a href={'/post/' + postData.id}>
         <footer className="flex justify-between">
-          <p className="text-sm font-semibold">{date}</p>
+          <p className="text-sm font-medium">{date}</p>
           <div className="flex items-center space-x-2">
             <p className="text-sm">{postData.comments.total} replies</p>
             <Comments />

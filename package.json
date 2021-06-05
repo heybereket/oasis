@@ -9,6 +9,7 @@
   "scripts": {
     "build:all": "yarn build api && yarn build react-gql && yarn build ui && yarn build web",
     "build:dev": "yarn build api && yarn build react-gql && yarn build ui",
+    "build:desktop": "yarn build desktop",
     "commit": "git add . && cz && git push",
     "dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
     "dev:api": "yarn workspace @oasis-sh/api run dev",
