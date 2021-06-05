@@ -1,5 +1,0 @@
-{
-  "extends": [
-    "@oasis-sh/eslint-config"
-  ]
-}

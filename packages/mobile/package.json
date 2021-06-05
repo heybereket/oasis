@@ -18,7 +18,9 @@
     "@types/react-dom": "^16.9.10",
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
+    "eslint": "^7.28.0",
     "ionicons": "^5.4.0",
+    "prettier": "^2.3.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router": "^5.2.0",
@@ -45,11 +47,9 @@
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "prettier": "@oasis-sh/prettier-config",
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "@oasis-sh/eslint-config"
   },
   "browserslist": {
     "production": [
@@ -66,6 +66,8 @@
   "devDependencies": {
     "@babel/preset-react": "^7.13.13",
     "@capacitor/cli": "3.0.0",
+    "@types/eslint": "^7",
+    "@types/prettier": "^2",
     "@types/tailwindcss": "^2",
     "@types/webpack-dev-server": "^3",
     "html-webpack-plugin": "^5.3.1",

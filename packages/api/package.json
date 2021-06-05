@@ -17,7 +17,7 @@
     "db:setup": "node dist/test-utils/setup.js",
     "test": "yarn db:setup && jest",
     "clean": "rimraf dist",
-    "prettify": "prettier --config .prettierrc --write src/{.,entities,modules,lib,utils}/*.ts",
+    "prettify": "prettier --write src/{.,entities,modules,lib,utils}/*.ts",
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
   },
   "keywords": [],
@@ -40,6 +40,8 @@
     "@types/rimraf": "^3.0.0",
     "@types/spotify-web-api-node": "^5.0.2",
     "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
     "chalk": "^4.1.1",
     "concurrently": "^6.1.0",
     "eslint": "^7.27.0",

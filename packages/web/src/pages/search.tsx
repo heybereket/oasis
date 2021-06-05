@@ -27,9 +27,7 @@ export const Search: React.FC<Props> = ({ vars }) => {
   }).data?.search;
   return (
     <>
-      <SEO
-        title={`${vars.searchQuery} - Oasis Search`}
-      />
+      <SEO title={`${vars.searchQuery} - Oasis Search`} />
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}

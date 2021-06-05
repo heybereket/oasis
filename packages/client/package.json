@@ -17,6 +17,10 @@
     "dev": "run-p \"watch:gen\" \"watch:tsc\"",
     "clean": "rimraf dist/*"
   },
+  "prettier": "@oasis-sh/prettier-config",
+  "eslintConfig": {
+    "extends": "@oasis-sh/eslint-config"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -33,9 +37,11 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.4",
     "@graphql-codegen/typescript": "^1.22.1",
+    "@types/eslint": "^7",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.6.0",
     "@types/node-fetch": "^2.5.10",
+    "@types/prettier": "^2",
     "dotenv": "^10.0.0",
     "jest": "^26.6.3",
     "ts-jest": "^27.0.1",
@@ -44,6 +50,8 @@
   },
   "dependencies": {
     "ee-ts": "^1.0.2",
-    "node-fetch": "^2.6.1"
+    "eslint": "^7.28.0",
+    "node-fetch": "^2.6.1",
+    "prettier": "^2.3.0"
   }
 }
