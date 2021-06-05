@@ -177,13 +177,15 @@ export const Post: React.FC<Props> = ({
           {markdown(postData?.message ?? '')}
         </div>
       </div>
-      <footer className="flex justify-between">
-        <p className="text-sm font-semibold">{date}</p>
-        <div className="flex items-center space-x-2">
-          <p className="text-sm">{postData.comments.total} replies</p>
-          <Comments />
-        </div>
-      </footer>
+      <a href={'/post/' + postData.id}>
+        <footer className="flex justify-between">
+          <p className="text-sm font-semibold">{date}</p>
+          <div className="flex items-center space-x-2">
+            <p className="text-sm">{postData.comments.total} replies</p>
+            <Comments />
+          </div>
+        </footer>
+      </a>
     </div>
   );
 };
