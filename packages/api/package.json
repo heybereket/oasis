@@ -20,9 +20,10 @@
     "prettify": "prettier --write src/{.,entities,modules,lib,utils}/*.ts",
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
   },
-  "keywords": [],
-  "author": "oasis.sh",
-  "license": "MIT",
+  "prettier": "@oasis-sh/prettier-config",
+  "eslintConfig": {
+    "extends": "@oasis-sh/eslint-config"
+  },
   "devDependencies": {
     "@types/concurrently": "^6.0.1",
     "@types/connect-redis": "^0.0.16",
