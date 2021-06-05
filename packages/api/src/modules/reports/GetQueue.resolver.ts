@@ -6,7 +6,7 @@ import { Arg, Authorized, Ctx, Query, Resolver, Root } from 'type-graphql';
 
 @Resolver()
 export class GetQueueResolver {
-  // @Authorized(Role.Moderator)
+  @Authorized(Role.Moderator)
   @Query(() => [Report])
   async getQueue() {
     return await Report.find({

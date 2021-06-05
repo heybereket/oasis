@@ -6,7 +6,7 @@ import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 
 @Resolver()
 export class MarkAsResolvedResolver {
-  // @Authorized(Role.Moderator)
+  @Authorized(Role.Moderator)
   @Mutation(() => Boolean)
   async markAsResolved(
     @Arg('reportId') reportId: string,
