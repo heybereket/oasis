@@ -7,7 +7,9 @@ import {
   GetPostDocument,
   GetPostQueryVariables,
   Post as TPost,
+  useDeletePostMutation,
   useGetPostQuery,
+  useLikeDislikePostMutation,
 } from '@oasis-sh/react-gql';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { SEO } from '@shared/SEO';
@@ -21,14 +23,16 @@ type Props = {
 export const PostPage: React.FC<Props> = ({ vars }) => {
   const { user, currentUserLoading } = useGetCurrentUser();
   const postData = useGetPostQuery({ variables: vars }).data?.getPost;
+  const [deletePost] = useDeletePostMutation();
+  const [likeDislikePost] = useLikeDislikePostMutation();
 
   return (
     <>
-      {/* <SEO
-        title={data?.name ? data?.name : data?.username}
-        metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
-        metaImg={data?.avatar}
-      /> */}
+      <SEO
+        title={(postData?.author.name ?? '') + "'s Post"}
+        metaDesc={postData?.message}
+        metaImg={postData?.author.avatar}
+      />
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
@@ -39,6 +43,26 @@ export const PostPage: React.FC<Props> = ({ vars }) => {
         <Post
           markdown={(text) => <StyledMarkdown isPost={true} text={text} />}
           post={postData as TPost}
+          currentUser={user}
+          deletePost={(id) => deletePost({ variables: { postId: id } })}
+          dislikePost={() =>
+            likeDislikePost({
+              variables: {
+                dislike: true,
+                like: false,
+                postId: postData?.id ?? '',
+              },
+            })
+          }
+          likePost={() =>
+            likeDislikePost({
+              variables: {
+                dislike: false,
+                like: true,
+                postId: postData?.id ?? '',
+              },
+            })
+          }
         />
       </div>
     </>

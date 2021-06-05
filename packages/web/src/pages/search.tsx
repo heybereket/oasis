@@ -35,7 +35,7 @@ export const Search: React.FC<Props> = ({ vars }) => {
         logout={logout}
         defaultSearchText={vars.searchQuery}
       />
-      <div className="flex flex-col justify-center md-50:w-72 mx-auto">
+      <div className="flex flex-col justify-center w-full max-w-580 mx-auto">
         {searchResult?.map((res, idx) => (
           <div key={idx} className="w-full">
             {(() => {
