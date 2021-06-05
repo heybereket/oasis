@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 // Abbreviate Number
 export const abbreviateNumber = (num: number) => {
@@ -21,8 +21,9 @@ export const formatNumber = (num: number) => {
 
 // Format Date
 export const formatDate = (createdAt: string): string => {
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const day = moment(Number(createdAt)).fromNow();
-  const time = moment(Number(createdAt)).locale('en').format('h:mm A');
+  const time = moment(Number(createdAt)).tz(timezone).format('h:mm A');
 
   return `${time} • ${day}`;
 };
