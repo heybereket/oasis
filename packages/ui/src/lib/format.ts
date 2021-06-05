@@ -23,7 +23,7 @@ export const formatNumber = (num: number) => {
 export const formatDate = (createdAt: string): string => {
   const timezone = moment.tz.guess();
   const day = moment(Number(createdAt)).fromNow();
-  const time = moment(Number(createdAt)).tz(timezone).format('h:mm A');
+  const time = moment(Number(createdAt)).tz(String(timezone)).format('h:mm A');
 
   return `${time} • ${day}`;
 };
