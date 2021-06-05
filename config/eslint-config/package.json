@@ -1,0 +1,11 @@
+{
+  "name": "@oasis-sh/eslint-config",
+  "description": "ESLint Configuration for Oasis..",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/eslint": "^7"
+  },
+  "dependencies": {
+    "eslint": "^7.27.0"
+  }
+}

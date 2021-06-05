@@ -3,25 +3,22 @@ import {
   app,
   screen,
   ipcMain,
-  shell,
-  Menu,
 } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import path from 'path';
 import {
-  ALLOWED_HOSTS,
   isLinux,
-  MENU_TEMPLATE,
   isMac,
   isWin,
   production,
 } from './lib/constants';
 import electronLogger from 'electron-log';
+import dotenv from 'dotenv';
 
-let mainWindow: BrowserWindow;
+dotenv.config();
+
+let win: BrowserWindow;
 let splash: BrowserWindow;
-
-let menu: Menu;
 const instanceLock = app.requestSingleInstanceLock();
 let shouldShowWindow = false;
 let windowShowInterval: NodeJS.Timeout;
@@ -32,55 +29,36 @@ autoUpdater.logger = electronLogger;
 autoUpdater.allowDowngrade = true;
 
 // Browser Window Configuration
-const createMainWindow = () => {
-  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+const createWindow = () => {
+  const dimensions = screen.getPrimaryDisplay().workAreaSize;
 
-  mainWindow = new BrowserWindow({
-    width: width,
-    height: height,
-    autoHideMenuBar: true,
+  win = new BrowserWindow({
+    width: dimensions.width,
+    height: dimensions.height,
+    show: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
-    show: false,
   });
 
-  // applying custom menu
-  menu = Menu.buildFromTemplate(MENU_TEMPLATE);
-  Menu.setApplicationMenu(menu);
-  mainWindow.loadURL(production ? `https://dev.oasis.sh` : 'http://localhost:3000');
+  if (process.env.NODE_ENV === 'development') {
+    win.loadURL('http://localhost:3000');
+    win.webContents.once('dom-ready', () => {
+      win.webContents.openDevTools();
+    });
+  } else {
+    win.loadURL('https://oasis.sh');
+  }
 
-  mainWindow.once('ready-to-show', () => {
+  win.once('ready-to-show', () => {
     shouldShowWindow = true;
   });
 
-  // graceful exiting
-  mainWindow.on('closed', () => {
-    mainWindow.destroy();
+  // Force Close Application
+  win.on('closed', () => {
+    win.destroy();
   });
-
-  // handling external links
-  const handleLinks = (event: any, url: string) => {
-    let urlObj = new URL(url);
-    let urlHost = urlObj.hostname;
-    if (!ALLOWED_HOSTS.includes(urlHost)) {
-      event.preventDefault();
-      shell.openExternal(url);
-    } else {
-      if (
-        urlHost == ALLOWED_HOSTS[1] &&
-        urlObj.pathname !== '/login' &&
-        urlObj.pathname !== '/session' &&
-        urlObj.pathname !== '/sessions/two-factor'
-      ) {
-        event.preventDefault();
-        shell.openExternal(url);
-      }
-    }
-  };
-  mainWindow.webContents.on('new-window', handleLinks);
-  mainWindow.webContents.on('will-navigate', handleLinks);
 
   ipcMain.on('@app/version', (event, args) => {
     event.sender.send('@app/version', app.getVersion());
@@ -95,31 +73,29 @@ const createMainWindow = () => {
   });
 
   ipcMain.on('@app/quit', (event, args) => {
-    mainWindow.close();
+    win.close();
   });
   ipcMain.on('@app/maximize', (event, args) => {
     if (isMac) {
-      if (mainWindow.isFullScreenable()) {
-        mainWindow.setFullScreen(!mainWindow.isFullScreen());
+      if (win.isFullScreenable()) {
+        win.setFullScreen(!win.isFullScreen());
       }
-    } else {
-      if (mainWindow.maximizable) {
-        if (mainWindow.isMaximized()) {
-          mainWindow.unmaximize();
-        } else {
-          mainWindow.maximize();
-        }
+    } else if (win.maximizable) {
+      if (win.isMaximized()) {
+        win.unmaximize();
+      } else {
+        win.maximize();
       }
     }
   });
   ipcMain.on('@app/minimize', (event, args) => {
-    if (mainWindow.minimizable) {
-      mainWindow.minimize();
+    if (win.minimizable) {
+      win.minimize();
     }
   });
-}
+};
 
-function createSpalshWindow() {
+const createSpalshWindow = () => {
   splash = new BrowserWindow({
     width: 300,
     height: 410,
@@ -146,7 +122,29 @@ function createSpalshWindow() {
       notfound: 'No updates found...',
     });
   });
-}
+};
+
+const skipUpdateCheck = (splash: BrowserWindow) => {
+  createWindow();
+  splash.webContents.send('notfound');
+  if (isLinux || !production) {
+    splash.webContents.send('skipCheck');
+  }
+  // stop timeout that skips the update
+  if (skipUpdateTimeout) {
+    clearTimeout(skipUpdateTimeout);
+  }
+  windowShowInterval = setInterval(() => {
+    if (shouldShowWindow) {
+      splash.webContents.send('launch');
+      clearInterval(windowShowInterval);
+      setTimeout(() => {
+        splash.destroy();
+        win.show();
+      }, 800);
+    }
+  }, 1000);
+};
 
 if (!instanceLock) {
   if (process.env.hotReload) {
@@ -163,10 +161,10 @@ if (!instanceLock) {
     }
   });
   app.on('second-instance', (event, argv, workingDirectory) => {
-    if (mainWindow) {
-      if (process.env.hotReload) return mainWindow.close();
-      if (mainWindow.isMinimized()) mainWindow.restore();
-      mainWindow.focus();
+    if (win) {
+      if (process.env.hotReload) return win.close();
+      if (win.isMinimized()) win.restore();
+      win.focus();
     }
   });
 }
@@ -179,7 +177,7 @@ autoUpdater.on('update-available', (info) => {
   }, 60000);
 });
 autoUpdater.on('download-progress', (progress) => {
-  let prog = Math.floor(progress.percent);
+  const prog = Math.floor(progress.percent);
   splash.webContents.send('percentage', prog);
   splash.setProgressBar(prog / 100);
   // stop timeout that skips the update
@@ -189,45 +187,25 @@ autoUpdater.on('download-progress', (progress) => {
 });
 autoUpdater.on('update-downloaded', () => {
   splash.webContents.send('relaunch');
-  // stop timeout that skips the update
-  if (skipUpdateTimeout) {
-    clearTimeout(skipUpdateTimeout);
-  }
-  setTimeout(() => {
-    autoUpdater.quitAndInstall();
-  }, 1000);
-});
-autoUpdater.on('update-not-available', () => {
-  skipUpdateCheck(splash);
-});
-app.on('window-all-closed', async () => {
-  app.exit();
-});
-app.on('activate', () => {
-  if (mainWindow === null) {
-    createMainWindow();
-  }
-});
-
-function skipUpdateCheck(splash: BrowserWindow) {
-  createMainWindow();
-  splash.webContents.send('notfound');
-  if (isLinux || !production) {
-    splash.webContents.send('skipCheck');
-  }
-  // stop timeout that skips the update
-  if (skipUpdateTimeout) {
-    clearTimeout(skipUpdateTimeout);
-  }
-  windowShowInterval = setInterval(() => {
-    if (shouldShowWindow) {
-      splash.webContents.send('launch');
-      clearInterval(windowShowInterval);
-      setTimeout(() => {
-
-       splash.destroy();
-        mainWindow.show();
-      }, 800);
+    // stop timeout that skips the update
+    if (skipUpdateTimeout) {
+      clearTimeout(skipUpdateTimeout);
     }
-  }, 1000);
-}
+    setTimeout(() => {
+      autoUpdater.quitAndInstall();
+    }, 1000);
+  });
+
+  autoUpdater.on('update-not-available', () => {
+    skipUpdateCheck(splash);
+  });
+
+  app.on('window-all-closed', async () => {
+    app.quit();
+  });
+
+  app.on('activate', () => {
+    if (win === null) {
+      createWindow();
+    }
+});
