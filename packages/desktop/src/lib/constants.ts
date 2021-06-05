@@ -3,9 +3,15 @@ import { autoUpdater } from 'electron-updater';
 import { REPO_URL, DISCUSSION_URL, ISSUES_URL } from './links';
 
 export const isMac = process.platform === 'darwin';
-export const isLinux = process.platform !== 'darwin' && process.platform !== 'win32';
+export const isLinux =
+  process.platform !== 'darwin' && process.platform !== 'win32';
 export const isWin = process.platform === 'win32';
-export const ALLOWED_HOSTS = ['dev.oasis.sh', 'oasis.sh', 'github.com', 'localhost'];
+export const ALLOWED_HOSTS = [
+  'dev.oasis.sh',
+  'oasis.sh',
+  'github.com',
+  'localhost',
+];
 export const production = app.isPackaged;
 
 export const MENU_TEMPLATE: any = [

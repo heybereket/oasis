@@ -1,1 +1,11 @@
-{}
+{
+  "name": "@oasis-sh/prettier-config",
+  "description": "Prettier Configuration for Oasis.",
+  "main": "index.js",
+  "dependencies": {
+    "prettier": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/prettier": "^2"
+  }
+}
