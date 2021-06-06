@@ -1,7 +1,7 @@
-import { BrowserWindow, app, screen, ipcMain } from 'electron';
+import { BrowserWindow, app, screen } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import path from 'path';
-import { isLinux, isMac, isWin, production } from './lib/constants';
+import { isLinux, production } from './lib/constants';
 import electronLogger from 'electron-log';
 import dotenv from 'dotenv';
 
@@ -59,43 +59,9 @@ const createWindow = () => {
   win.on('closed', () => {
     win.destroy();
   });
-
-  ipcMain.on('@app/version', (event, args) => {
-    event.sender.send('@app/version', app.getVersion());
-  });
-
-  ipcMain.on('@app/hostPlatform', (event, args) => {
-    event.sender.send('@app/hostPlatform', {
-      isLinux,
-      isMac,
-      isWin,
-    });
-  });
-
-  ipcMain.on('@app/quit', (event, args) => {
-    win.close();
-  });
-  ipcMain.on('@app/maximize', (event, args) => {
-    if (isMac) {
-      if (win.isFullScreenable()) {
-        win.setFullScreen(!win.isFullScreen());
-      }
-    } else if (win.maximizable) {
-      if (win.isMaximized()) {
-        win.unmaximize();
-      } else {
-        win.maximize();
-      }
-    }
-  });
-  ipcMain.on('@app/minimize', (event, args) => {
-    if (win.minimizable) {
-      win.minimize();
-    }
-  });
 };
 
-const createSpalshWindow = () => {
+const createSplash = () => {
   splash = new BrowserWindow({
     width: 300,
     height: 410,
@@ -153,7 +119,7 @@ if (!instanceLock) {
   app.exit();
 } else {
   app.on('ready', async () => {
-    createSpalshWindow();
+    createSplash();
     if (!production) skipUpdateCheck(splash);
     if (production && !isLinux) await autoUpdater.checkForUpdates();
     if (isLinux && production) {
