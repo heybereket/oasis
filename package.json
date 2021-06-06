@@ -17,6 +17,7 @@
     "publish:bot": "yarn workspace @oasis-sh/bot-client run publish",
     "lint": "yarn workspaces foreach --exclude @oasis-sh/react-gql -p run prettify && yarn workspaces foreach --exclude @oasis-sh/react-gql -p run lint",
     "clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/react-gql,@oasis-sh/ui -p run clean",
+    "upgrade": "yarn upgrade-interactive",
     "reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",
     "rebuild": "yarn reinstall || yarn build:all",
     "build": "yarn workspace @oasis-sh/$0 run build",
