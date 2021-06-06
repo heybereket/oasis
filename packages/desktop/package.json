@@ -1,33 +1,33 @@
 {
-	"name": "@oasis-sh/desktop",
-	"version": "1.0.0",
-	"description": "Oasis Desktop App",
-	"main": "dist/index.js",
-	"scripts": {
-		"build": "tsc",
-		"watch": "tsc -w",
-		"start": "electron ./dist/index.js",
-		"build:mac": "yarn build && electron-builder --mac",
-		"build:win": "yarn build && electron-builder --win",
-		"build:linux": "yarn build && electron-builder --linux",
-		"prettify": "prettier --write src/{.,entities,modules,lib,utils}/*.ts",
-		"lint": "yarn run eslint . --ext ts --ext tsx --ext js"
-	},
-	"prettier": "@oasis-sh/prettier-config",
-	"eslintConfig": {
-		"extends": "@oasis-sh/eslint-config"
-	},
-	"devDependencies": {
-		"@types/eslint": "^7",
-		"@types/prettier": "^2",
-		"electron": "^13.1.0",
-		"pinst": "^2.1.6",
-		"typescript": "^4.2.4"
-	},
-	"dependencies": {
-		"electron-log": "^4.3.5",
-		"electron-updater": "^4.3.9",
-		"eslint": "^7.27.0",
-		"prettier": "^2.3.0"
-	}
+  "name": "@oasis-sh/desktop",
+  "version": "1.0.0",
+  "description": "Oasis Desktop App",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start": "electron ./dist/index.js",
+    "build:mac": "yarn build && electron-builder --mac",
+    "build:win": "yarn build && electron-builder --win",
+    "build:linux": "yarn build && electron-builder --linux",
+    "prettify": "prettier --write src/{.,entities,modules,lib,utils}/*.ts",
+    "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
+  },
+  "prettier": "@oasis-sh/prettier-config",
+  "eslintConfig": {
+    "extends": "@oasis-sh/eslint-config"
+  },
+  "devDependencies": {
+    "@types/eslint": "^7",
+    "@types/prettier": "^2",
+    "electron": "^13.1.0",
+    "pinst": "^2.1.6",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "electron-log": "^4.3.5",
+    "electron-updater": "^4.3.9",
+    "eslint": "^7.27.0",
+    "prettier": "^2.3.0"
+  }
 }
