@@ -4,7 +4,7 @@
   "main": "index.js",
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.4",
-    "@types/eslint": "^7",
+    "@types/eslint": "^7.2.13",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "eslint-plugin-react": "^7.24.0",
