@@ -7,7 +7,7 @@
       "@modules/*": ["src/modules/*"],
       "@parser/*": ["src/parser/*"],
       "@shared/*": ["src/shared/*"],
-      "@utils/*": ["src/utils/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -24,6 +24,6 @@
     "jsx": "preserve",
     "preserveWatchOutput": true
   },
-  "exclude": ["node_modules", ".next", "out"],
+  "exclude": ["node_modules", ".next", "out", "cypress"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"]
 }
