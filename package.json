@@ -9,7 +9,6 @@
   "scripts": {
     "build:all": "yarn build api && yarn build react-gql && yarn build ui && yarn build web",
     "build:dev": "yarn build api && yarn build react-gql && yarn build ui",
-    "build:test": "yarn build api",
     "commit": "git add . && cz && git push",
     "dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
     "dev:api": "yarn workspace @oasis-sh/api run dev",
@@ -22,10 +21,10 @@
     "rebuild": "yarn reinstall || yarn build:all",
     "build": "yarn workspace @oasis-sh/$0 run build",
     "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
-    "prepare": "husky install",
-    "test:api:setup": "yarn build:test && TESTING=true yarn dev:api",
-    "test:api:run": "yarn workspace @oasis-sh/api test",
-    "test:cy": "yarn workspace @oasis-sh/web run cy:run"
+    "test:api:setup": "yarn build api && TESTING=true yarn dev:api",
+    "test:api": "yarn workspace @oasis-sh/api test",
+    "test:cy": "yarn workspace @oasis-sh/web run cy:run",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.2",
