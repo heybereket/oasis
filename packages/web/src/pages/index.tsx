@@ -112,7 +112,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars, timezone }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
+export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
   req,
 }) => {
   const vars: FeedSortPostsQueryVariables = {
