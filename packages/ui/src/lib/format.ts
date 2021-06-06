@@ -21,8 +21,10 @@ export const formatNumber = (num: number) => {
 
 // Format Date
 export const formatDate = (createdAt: string): string => {
+  const timezone = moment.tz.guess();
+  console.log(timezone);
   const day = moment(Number(createdAt)).fromNow();
-  const time = moment(Number(createdAt)).format('h:mm A');
+  const time = moment(Number(createdAt)).tz(timezone).format('h:mm A');
 
   return `${time} • ${day}`;
 };
