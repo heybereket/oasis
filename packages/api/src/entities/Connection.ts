@@ -1,5 +1,13 @@
-import { BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import {
+  BaseEntity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  Entity,
+} from 'typeorm';
 import User from './User';
+
+@Entity()
 export default class Connection extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
