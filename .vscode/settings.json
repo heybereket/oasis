@@ -1,15 +1,7 @@
 {
-    "editor.tabSize": 2,
-    "git.ignoreLimitWarning": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "prettier.singleQuote": true,
-    "css.lint.unknownAtRules": "ignore",
-     "editor.codeActionsOnSave": {
-        "source.fixAll": true
-    },
-    "cSpell.words": [
-        "prefetch"
-    ],
-    "prettier.configPath": "./config/prettier-config/index.js",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "debug.javascript.unmapMissingSources": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.configPath": "./config/prettier-config/index.js",
 }
