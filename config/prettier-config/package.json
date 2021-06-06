@@ -6,6 +6,6 @@
     "prettier": "^2.3.0"
   },
   "devDependencies": {
-    "@types/prettier": "^2"
+    "@types/prettier": "^2.2.3"
   }
 }
