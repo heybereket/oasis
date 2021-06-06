@@ -23,7 +23,7 @@
     "build": "yarn workspace @oasis-sh/$0 run build",
     "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
     "prepare": "husky install",
-    "test:api:setup": "yarn build:test && yarn dev:api",
+    "test:api:setup": "yarn build:test && TESTING=true yarn dev:api",
     "test:api:run": "yarn workspace @oasis-sh/api test",
     "test:cy": "yarn workspace @oasis-sh/web run cy:run"
   },

@@ -1,17 +1,7 @@
-import {
-  BrowserWindow,
-  app,
-  screen,
-  ipcMain,
-} from 'electron';
+import { BrowserWindow, app, screen, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import path from 'path';
-import {
-  isLinux,
-  isMac,
-  isWin,
-  production,
-} from './lib/constants';
+import { isLinux, isMac, isWin, production } from './lib/constants';
 import electronLogger from 'electron-log';
 import dotenv from 'dotenv';
 
@@ -42,13 +32,22 @@ const createWindow = () => {
     },
   });
 
-  if (process.env.NODE_ENV === 'development') {
-    win.loadURL('http://localhost:3000');
-    win.webContents.once('dom-ready', () => {
-      win.webContents.openDevTools();
-    });
-  } else {
-    win.loadURL('https://oasis.sh');
+  switch (process.env.SERVER ?? 'prod') {
+    case 'local': {
+      win.loadURL('http://localhost:3000');
+      win.webContents.once('dom-ready', () => {
+        win.webContents.openDevTools();
+      });
+      break;
+    }
+
+    case 'staging': {
+      win.loadURL('https://dev.oasis.sh');
+    }
+
+    case 'prod': {
+      win.loadURL('https://oasis.sh');
+    }
   }
 
   win.once('ready-to-show', () => {
@@ -187,25 +186,25 @@ autoUpdater.on('download-progress', (progress) => {
 });
 autoUpdater.on('update-downloaded', () => {
   splash.webContents.send('relaunch');
-    // stop timeout that skips the update
-    if (skipUpdateTimeout) {
-      clearTimeout(skipUpdateTimeout);
-    }
-    setTimeout(() => {
-      autoUpdater.quitAndInstall();
-    }, 1000);
-  });
+  // stop timeout that skips the update
+  if (skipUpdateTimeout) {
+    clearTimeout(skipUpdateTimeout);
+  }
+  setTimeout(() => {
+    autoUpdater.quitAndInstall();
+  }, 1000);
+});
 
-  autoUpdater.on('update-not-available', () => {
-    skipUpdateCheck(splash);
-  });
+autoUpdater.on('update-not-available', () => {
+  skipUpdateCheck(splash);
+});
 
-  app.on('window-all-closed', async () => {
-    app.quit();
-  });
+app.on('window-all-closed', async () => {
+  app.quit();
+});
 
-  app.on('activate', () => {
-    if (win === null) {
-      createWindow();
-    }
+app.on('activate', () => {
+  if (win === null) {
+    createWindow();
+  }
 });
