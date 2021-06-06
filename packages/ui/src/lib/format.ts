@@ -26,5 +26,5 @@ export const formatDate = (createdAt: string): string => {
   const day = moment(Number(createdAt)).fromNow();
   const time = moment(Number(createdAt)).tz(timezone).format('h:mm A');
 
-  return `${time} • ${day}`;
+  return `${time} • ${day} ${timezone}`;
 };
