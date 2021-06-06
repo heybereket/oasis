@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { DropdownItem } from '../navbar/DropdownItem';
 import { Post as TPost, Role, User } from '@oasis-sh/react-gql';
 import { formatDate, formatNumber } from '../../lib/format';
@@ -15,7 +15,6 @@ import {
 interface Props {
   post: TPost;
   currentUser?: User;
-  timezone?: string;
   likePost?: () => any;
   dislikePost?: () => any;
   deletePost?: (id: string) => any;
@@ -37,9 +36,12 @@ export const Post: React.FC<Props> = ({
   bgColorOveride,
   deletePost,
   currentUser,
-  timezone
 }) => {
-  const date = formatDate(postData.createdAt, timezone);
+  const [date, setDate] = useState('');
+
+  useEffect(() => {
+    setDate(formatDate(postData.createdAt));
+  }, []);
 
   const [likes, setLikes] = useState(postData.likes);
   const [dislikes, setDislikes] = useState(postData.dislikes);

@@ -1,11 +1,10 @@
 import React from 'react';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import StyledMarkdown from '@parser/markdown/StyledMarkdown';
 import { login, logout } from '@lib/auth/login';
 import { SEO } from '@shared/SEO';
-import moment from 'moment-timezone';
 import {
   Navbar,
   FollowUserSection,
@@ -26,11 +25,10 @@ import {
 
 interface IndexPageProps {
   initialApolloState: any;
-  timezone: string;
   vars: FeedSortPostsQueryVariables;
 }
 
-const HomePage: React.FC<IndexPageProps> = ({ vars, timezone }) => {
+const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   const postsQuery = useFeedSortPostsQuery({
     variables: vars,
   });
@@ -81,7 +79,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars, timezone }) => {
               StyledMarkdown={StyledMarkdown}
               user={user}
               posts={posts ?? []}
-              timezone={timezone}
               createPost={createPost}
               likeDislikePost={likeDislikePost}
               deleteMutation={deletePost}
@@ -119,7 +116,6 @@ export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
     postsLimit: 20,
     postsOffset: 0,
   };
-  const timezone: string = moment.tz.guess();
   return {
     props: {
       initialApolloState: await ssrRequest(req, [
@@ -132,7 +128,6 @@ export const getServerSideProps: GetServerSideProps<IndexPageProps> = async ({
         },
       ]),
       vars,
-      timezone,
     },
   };
 };
