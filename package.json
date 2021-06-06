@@ -25,6 +25,7 @@
     "prepare": "husky install",
     "test:api:setup": "yarn build:test && TESTING=true yarn dev:api",
     "test:api:run": "yarn workspace @oasis-sh/api test",
+    "test:cy:run-web": "TESTING=true concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
     "test:cy": "yarn workspace @oasis-sh/web run cy:run"
   },
   "devDependencies": {

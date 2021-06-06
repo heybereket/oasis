@@ -1,7 +1,14 @@
 // <reference types="Cypress" />
 
-context('Main page', () => {
-	it('visit successfully', () => {
-		cy.visit('/');
-	});
+import { loginWithTesting } from '../utils/loginAsTesting';
+
+context('Feed page', () => {
+  beforeEach(() => {
+    loginWithTesting();
+  });
+
+  it('Navbar has user info', () => {
+    cy.visit('/');
+    cy.get('#navbar-user-avatar').should('have.attr', 'alt', '@testing');
+  });
 });
