@@ -3,12 +3,11 @@
     "baseUrl": ".",
     "paths": {
       "@public/*": ["public/*"],
-      "@parser/*": ["src/parser/*"],
       "@lib/*": ["src/lib/*"],
-      "@icons/*": ["src/icons"],
-      "@styles/*": ["src/styles"],
+      "@modules/*": ["src/modules/*"],
+      "@parser/*": ["src/parser/*"],
+      "@shared/*": ["src/shared/*"],
       "@utils/*": ["src/utils/*"],
-      "@shared/*": ["src/shared/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
