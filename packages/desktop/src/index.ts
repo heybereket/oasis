@@ -43,6 +43,7 @@ const createWindow = () => {
 
     case 'staging': {
       win.loadURL('https://dev.oasis.sh');
+      break;
     }
 
     case 'prod': {
