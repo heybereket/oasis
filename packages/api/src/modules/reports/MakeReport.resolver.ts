@@ -17,6 +17,7 @@ export class MakeReportResolver {
   ) {
     const accuse = await User.findOne(accuseId);
     if (!accuse) throw new ApolloError('There is no person like that.');
+    if ((await getUser()).id === accuseId) throw new ApolloError('You can\'t report yourself.');
     const report = Report.create();
     Report.merge(report, data);
 
