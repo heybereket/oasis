@@ -1,7 +1,6 @@
 import User from '@entities/User';
 import { Role } from '@modules/user/Roles';
 import { getConnection } from 'typeorm';
-import { v4 as uuid } from 'uuid';
 
 export const seedDatabase = async () => {
   // Clear Database
