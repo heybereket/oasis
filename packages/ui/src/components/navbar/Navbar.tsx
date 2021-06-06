@@ -151,6 +151,7 @@ export const Navbar: React.FC<INavbarProps> = ({
                 onClick={() => {
                   setDropdownActive((current) => !current);
                 }}
+                id="navbar-user-avatar"
               />
               <div className="flex">
                 {isDropdownActive && (

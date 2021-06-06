@@ -26,3 +26,6 @@ yarn-error.log*
 *.sqlite
 
 /server/dist
+
+# cypres
+cypress/screenshots

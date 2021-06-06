@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { DropdownItem } from '../navbar/DropdownItem';
 import { Post as TPost, Role, User } from '@oasis-sh/react-gql';
 import { formatDate, formatNumber } from '../../lib/format';
@@ -37,7 +37,11 @@ export const Post: React.FC<Props> = ({
   deletePost,
   currentUser,
 }) => {
-  const date = formatDate(postData.createdAt);
+  const [date, setDate] = useState('');
+
+  useEffect(() => {
+    setDate(formatDate(postData.createdAt));
+  }, []);
 
   const [likes, setLikes] = useState(postData.likes);
   const [dislikes, setDislikes] = useState(postData.dislikes);
