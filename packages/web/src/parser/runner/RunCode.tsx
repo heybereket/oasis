@@ -35,7 +35,7 @@ export const RunCode: React.FC<Props> = ({
       }
     }
     setLanguage(languageTemp);
-  }, []);
+  }, [runtimes]);
 
   return (
     <div className="relative">
