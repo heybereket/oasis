@@ -23,7 +23,7 @@
 		"@sentry/react": "^6.5.0",
 		"@sentry/tracing": "^6.5.0",
 		"express": "^4.17.1",
-		"formik": "^2.2.6",
+		"formik": "^2.2.9",
 		"github-markdown-css": "^4.0.0",
 		"next": "latest",
 		"react": "^17.0.2",
