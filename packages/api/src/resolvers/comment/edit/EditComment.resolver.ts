@@ -3,7 +3,7 @@ import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/apolloServer';
 import Comment from '@entities/Comment';
 import { hasPermission } from '@utils/common/hasPermission';
-import { Role } from '@modules/user/Roles';
+import { Role } from '@typings/Roles';
 import EditCommentInput from './EditCommentInput';
 
 // @bcg-resolver(mutation, editComment, comment)

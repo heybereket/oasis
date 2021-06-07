@@ -1,5 +1,5 @@
 import User from '@entities/User';
-import { Role } from '@modules/user/Roles';
+import { Role } from '@root/types/Roles';
 import { getConnection } from 'typeorm';
 
 export const reporteeUserId = 'reporteeId';

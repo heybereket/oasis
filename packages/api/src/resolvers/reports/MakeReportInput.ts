@@ -1,6 +1,6 @@
-import { IsOptional, IsUrl, IsNotEmpty, Length } from 'class-validator';
+import { IsOptional, IsNotEmpty, Length } from 'class-validator';
 import { InputType, Field } from 'type-graphql';
-import { ReportType } from '../../modules/reports/ReportTypes';
+import { ReportType } from '@typings/Reports';
 
 @InputType()
 export default class MakeReportInput {
