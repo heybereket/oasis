@@ -17,6 +17,17 @@ export const seedDatabase = async () => {
 
   user.save();
 
+  // Create a second user
+  const user2 = User.create();
+  user2.avatar = '';
+  user2.id = 'secondaryUserId';
+  user2.name = 'testing user 2';
+  user2.username = 'testing2';
+  user2.verified = false;
+  user2.createdAt = String(Date.now());
+
+  user2.save();
+
   // Create Admin User
   const adminUser = User.create();
   adminUser.avatar = '';
