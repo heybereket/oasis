@@ -1,6 +1,6 @@
 import React from 'react';
-import { Sidebar } from '../home/Sidebar';
-import { FollowUser } from '../home/FollowUser';
+import { Sidebar } from './Sidebar';
+import { FollowUser } from './FollowUser';
 
 export const FollowUserSection: React.FC<any> = () => {
   return (
