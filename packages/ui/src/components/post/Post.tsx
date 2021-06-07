@@ -41,6 +41,7 @@ export const Post: React.FC<Props> = ({
 
   const [likes, setLikes] = useState(postData.likes);
   const [dislikes, setDislikes] = useState(postData.dislikes);
+  const formattedVotes = formatNumber(likes - dislikes);
 
   const [likeState, setLikeState] = useState<LikeDislikeState>(
     postData.isLiked
@@ -106,7 +107,7 @@ export const Post: React.FC<Props> = ({
                   }`}
                 />
                 <p className="font-bold bg-gray-700 px-2 rounded-full">
-                  {Number(formatNumber(likes)) - Number(formatNumber(dislikes))}
+                  {formattedVotes}
                 </p>
                 <SmallDownArrow
                   onClick={() => {
