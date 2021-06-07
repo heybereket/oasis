@@ -21,7 +21,7 @@
 	"dependencies": {
 		"@next/bundle-analyzer": "^10.2.3",
 		"@sentry/react": "^6.5.0",
-		"@sentry/tracing": "^6.5.0",
+		"@sentry/tracing": "^6.5.1",
 		"express": "^4.17.1",
 		"formik": "^2.2.6",
 		"github-markdown-css": "^4.0.0",
