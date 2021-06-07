@@ -1,7 +1,7 @@
 import User from '@entities/User';
 import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from 'type-graphql';
 import { checkUsername } from '@utils/auth/checkUsername';
-import UpdateProfileInput from '@root/resolvers/user/update-profile/UpdateProfileInput';
+import UpdateProfileInput from './UpdateProfileInput';
 import { ContextType } from '@root/apolloServer';
 import { ApolloError } from 'apollo-server-errors';
 

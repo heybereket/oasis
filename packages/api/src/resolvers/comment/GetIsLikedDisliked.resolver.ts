@@ -1,5 +1,4 @@
 import Comment from '@entities/Comment';
-import Post from '@entities/Post';
 import { ContextType } from '@root/apolloServer';
 import { Ctx, FieldResolver, Resolver, Root } from 'type-graphql';
 

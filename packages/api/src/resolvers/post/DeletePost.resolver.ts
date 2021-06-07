@@ -3,7 +3,7 @@ import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/apolloServer';
 import Post from '@entities/Post';
 import { hasPermission } from '@utils/common/hasPermission';
-import { Role } from '@root/types/Roles';
+import { Role } from '@typings/Roles';
 
 // @bcg-resolver(mutation, deletePost, post)
 

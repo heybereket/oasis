@@ -6,7 +6,6 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryColumn,
-  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Field, ID, ObjectType } from 'type-graphql';
 import User from '@entities/User';
