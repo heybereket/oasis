@@ -26,7 +26,7 @@ const start = Date.now();
 
   app.prepare().then(() => {
     if (process.env.NODE_ENV === 'production') {
-      server.get('/service-worker.js', function(req, res) {
+      server.get('/service-worker.js', (req, res) => {
         res.sendFile(
           path.resolve(__dirname, '../../.next', 'service-worker.js')
         );
@@ -34,7 +34,7 @@ const start = Date.now();
     }
 
     server.all('*', (req, res) => {
-      return handle(req, res);
+      return handle(req, res as any);
     });
 
     const PORT = Number(process.env.PORT) || 3000;
