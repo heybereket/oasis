@@ -5,7 +5,6 @@ export const createResolver = (
   suffix: string,
   entity: typeof BaseEntity
 ): any => {
-  const entityKey = entity.name.toLowerCase() + 's';
   @Resolver()
   class BaseResolver {
     @Query(() => [entity], {
