@@ -4,7 +4,7 @@ import { ContextType } from '@root/apolloServer';
 import Post from '@entities/Post';
 import { hasPermission } from '@utils/common/hasPermission';
 import { Role } from '@modules/user/Roles';
-import EditPostInput from '@modules/post/edit/EditPostInput';
+import EditPostInput from './EditPostInput';
 
 // @bcg-resolver(mutation, editPost, post)
 

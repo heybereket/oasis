@@ -3,7 +3,7 @@ import User from '@entities/User';
 import { ContextType } from '@root/apolloServer';
 import { ApolloError } from 'apollo-server-express';
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
-import MakeReportInput from '../../modules/reports/MakeReportInput';
+import MakeReportInput from './MakeReportInput';
 
 @Resolver()
 export class MakeReportResolver {

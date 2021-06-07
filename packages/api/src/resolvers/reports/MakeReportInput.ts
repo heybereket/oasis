@@ -1,7 +1,6 @@
-import User from '@entities/User';
 import { IsOptional, IsUrl, IsNotEmpty, Length } from 'class-validator';
 import { InputType, Field } from 'type-graphql';
-import { ReportType } from './ReportTypes';
+import { ReportType } from '../../modules/reports/ReportTypes';
 
 @InputType()
 export default class MakeReportInput {

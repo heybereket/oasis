@@ -4,7 +4,7 @@ import { ContextType } from '@root/apolloServer';
 import Comment from '@entities/Comment';
 import { hasPermission } from '@utils/common/hasPermission';
 import { Role } from '@modules/user/Roles';
-import EditCommentInput from '@modules/comment/edit/EditCommentInput';
+import EditCommentInput from './EditCommentInput';
 
 // @bcg-resolver(mutation, editComment, comment)
 
