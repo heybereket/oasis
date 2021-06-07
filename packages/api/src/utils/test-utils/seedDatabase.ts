@@ -2,6 +2,8 @@ import User from '@entities/User';
 import { Role } from '@modules/user/Roles';
 import { getConnection } from 'typeorm';
 
+export const reporteeUserId = 'reporteeId';
+
 export const seedDatabase = async () => {
   // Clear Database
   const connection = getConnection();
@@ -17,16 +19,16 @@ export const seedDatabase = async () => {
 
   user.save();
 
-  // Create a second user
-  const user2 = User.create();
-  user2.avatar = '';
-  user2.id = 'secondaryUserId';
-  user2.name = 'testing user 2';
-  user2.username = 'testing2';
-  user2.verified = false;
-  user2.createdAt = String(Date.now());
+  // Create a reportee user
+  const reportee = User.create();
+  reportee.id = reporteeUserId;
+  reportee.avatar = '';
+  reportee.name = 'reportee';
+  reportee.username = 'reportee';
+  reportee.verified = false;
+  reportee.createdAt = String(Date.now());
 
-  user2.save();
+  reportee.save();
 
   // Create Admin User
   const adminUser = User.create();

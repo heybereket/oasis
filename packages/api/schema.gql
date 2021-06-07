@@ -77,7 +77,7 @@ type Mutation {
   likeDislikeComment(commentId: String!, dislike: Boolean!, like: Boolean!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
-  makeReport(accuseId: String!, data: MakeReportInput!): Boolean!
+  makeReport(data: MakeReportInput!, reporteeId: String!): Boolean!
   markAsResolved(reportId: String!, resolved: Boolean!): Boolean!
   markNotificationAsRead(notificationId: String!): Boolean!
   refreshBotToken(botId: String!): String!
@@ -264,10 +264,10 @@ type Repo {
 }
 
 type Report {
-  accuse: User!
   createdAt: String!
   id: ID!
   information: String
+  reportee: User!
   reporter: User!
   resolved: Boolean!
   type: ReportType!

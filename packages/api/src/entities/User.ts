@@ -87,10 +87,10 @@ export default class User extends BaseEntity {
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
 
-  @OneToMany(() => Report, (report) => report.reporter)
+  @OneToMany(() => Report, (report) => report.reportee)
   reports: Promise<Report[]>;
 
-  @OneToMany(() => Report, (report) => report.accuse)
+  @OneToMany(() => Report, (report) => report.reporter)
   filedReports: Promise<Report[]>;
 
   @RelationalPagination(() => User, () => Post, 'likers')

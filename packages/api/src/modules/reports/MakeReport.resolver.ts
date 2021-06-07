@@ -4,7 +4,6 @@ import { ContextType } from '@root/apolloServer';
 import { ApolloError } from 'apollo-server-express';
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import MakeReportInput from './MakeReportInput';
-import { ReportType } from './ReportTypes';
 
 @Resolver()
 export class MakeReportResolver {
@@ -12,18 +11,18 @@ export class MakeReportResolver {
   @Mutation(() => Boolean)
   async makeReport(
     @Ctx() { getUser }: ContextType,
-    @Arg('accuseId') accuseId: string,
+    @Arg('reporteeId') reporteeId: string,
     @Arg('data') data: MakeReportInput
   ) {
-    const accuse = await User.findOne(accuseId);
-    if (!accuse) throw new ApolloError('There is no person like that.');
-    if ((await getUser()).id === accuseId) throw new ApolloError('You can\'t report yourself.');
+    const reportee = await User.findOne(reporteeId);
+    if (!reportee) throw new ApolloError('That person does not exist.');
+    if ((await getUser()).id === reporteeId) throw new ApolloError("You can't report yourself.");
     const report = Report.create();
     Report.merge(report, data);
 
     report.resolved = false;
     report.reporter = Promise.resolve(await getUser());
-    report.accuse = Promise.resolve(accuse);
+    report.reportee = Promise.resolve(reportee);
     report.createdAt = String(Date.now());
 
     report.save();

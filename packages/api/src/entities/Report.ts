@@ -31,7 +31,7 @@ export default class Report extends BaseEntity {
 
   @ManyToOne(() => User, (user) => user.filedReports)
   @Field(() => User)
-  accuse: Promise<User>;
+  reportee: Promise<User>;
 
   @Column({ nullable: true })
   @Field({ nullable: true })

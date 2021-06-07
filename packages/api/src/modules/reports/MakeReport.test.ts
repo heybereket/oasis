@@ -1,4 +1,5 @@
 import { createClient } from '@utils/test-utils/gql-request';
+import { reporteeUserId } from '@utils/test-utils/seedDatabase';
 import { gql } from 'apollo-server-express';
 
 describe('MakeReport mutation test', () => {
@@ -6,7 +7,7 @@ describe('MakeReport mutation test', () => {
     const createReportMutation = gql`
       mutation CreateReport($id: String!) {
         makeReport(
-          accuseId: $id
+          reporteeId: $id
           data: { type: InappropriateContent, information: "Test Report" }
         )
       }
@@ -15,7 +16,7 @@ describe('MakeReport mutation test', () => {
     const res = (
       await createClient().mutate({
         mutation: createReportMutation,
-        variables: { id: 'secondaryUserId' },
+        variables: { id: reporteeUserId },
       })
     ).data.makeReport;
 
