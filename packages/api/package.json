@@ -49,7 +49,7 @@
     "eslint": "^7.27.0",
     "jest": "^27.0.4",
     "nanoid": "^3.1.23",
-    "prettier": "^2.3.0",
+    "prettier": "^2.3.1",
     "sqlite3": "^5.0.2",
     "ts-node": "^10.0.0",
     "ts-node-dev": "^1.1.6",
@@ -78,7 +78,7 @@
     "spotify-web-api-node": "^5.0.2",
     "tslib": "^2.2.0",
     "type-graphql": "^1.1.1",
-    "typeorm": "^0.2.33",
+    "typeorm": "^0.2.34",
     "uuid": "^8.3.2"
   }
 }
