@@ -14,14 +14,11 @@ export const ssrRequest = async (
   queries: Query[]
 ): Promise<NormalizedCacheObject | void> => {
   if (process.env.API_MODE === 'remote') return {};
-  const { createContext, getSchema } = forceRequire(
-    '@oasis-sh/api/dist/utils/web-utils'
-  );
 
+  const { getSchema } = forceRequire('@oasis-sh/api/dist/utils/files/getSchema');
+  const { createContext } = forceRequire('@oasis-sh/api/dist/utils/auth/createContext');
   const schema = await getSchema();
-
   const apolloClient = initializeApollo();
-
   const contextValue = await createContext(req);
 
   // For every document, do the following
