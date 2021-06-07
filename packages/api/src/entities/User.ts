@@ -18,6 +18,7 @@ import Resort from './Resort';
 import Notification from './Notification';
 import { RelationalPagination } from '@utils/RelationalPagination';
 import Report from './Report';
+import Connection from './Connection';
 
 @ObjectType()
 @Entity()
@@ -162,4 +163,7 @@ export default class User extends BaseEntity {
   @RelationalPagination(() => User, () => User, 'following')
   @ManyToMany(() => User, (user) => user.following)
   followers: Promise<User[]>;
+
+  @OneToMany(() => Connection, (connection) => connection.user)
+  connections: Promise<Connection[]>;
 }

@@ -15,10 +15,10 @@
     "extends": "@oasis-sh/eslint-config"
   },
   "devDependencies": {
-    "@types/eslint": "^7",
-    "@types/node-emoji": "^1",
-    "@types/prettier": "^2",
-    "@types/yargs": "^17"
+    "@types/eslint": "^7.2.13",
+    "@types/node-emoji": "^1.8.1",
+    "@types/prettier": "^2.2.3",
+    "@types/yargs": "^17.0.0"
   },
   "dependencies": {
     "chalk": "^4.1.1",
