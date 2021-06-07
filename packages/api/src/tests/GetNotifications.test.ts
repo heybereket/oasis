@@ -1,4 +1,4 @@
-import { createClient } from '@utils/test-utils/gql-request';
+import { createClient } from '@utils/testing/gql-request';
 import { gql } from 'apollo-server-express';
 
 describe('GetNotifications query test', () => {

@@ -1,5 +1,5 @@
-import { createClient } from '@utils/test-utils/gql-request';
-import { reporteeUserId } from '@utils/test-utils/seedDatabase';
+import { createClient } from '@utils/testing/gql-request';
+import { reporteeUserId } from '@utils/testing/seedDatabase';
 import { gql } from 'apollo-server-express';
 
 describe('MakeReport mutation test', () => {

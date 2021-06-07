@@ -8,7 +8,7 @@ import { createApolloServer } from '@root/apolloServer';
 import authRouter from '@modules/auth';
 import connectionRouter from '@modules/connections';
 import expressSession from 'express-session';
-import { redisClient } from '@utils/sessions/redis';
+import { redisClient } from '@utils/redis';
 import connectRedis from 'connect-redis';
 import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
@@ -16,7 +16,7 @@ import { isProduction } from '@lib/constants';
 import * as log from '@lib/log';
 import { exit } from '@lib/exit';
 import { joinRoot } from '@utils/common/rootPath';
-import { seedDatabase } from '@utils/test-utils/seedDatabase';
+import { seedDatabase } from '@utils/testing/seedDatabase';
 
 const RedisStore = connectRedis(expressSession);
 

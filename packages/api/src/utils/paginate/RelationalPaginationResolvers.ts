@@ -1,4 +1,4 @@
-import { mapping } from '@utils/RelationalPagination';
+import { mapping } from '@utils/paginate/RelationalPagination';
 import { Arg, FieldResolver, Resolver, Root } from 'type-graphql';
 import { BaseEntity } from 'typeorm';
 import { PaginatedResponse } from './PaginationResponse';

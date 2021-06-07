@@ -9,7 +9,7 @@ import {
 import { Field, ID, ObjectType } from 'type-graphql';
 import Post from '@entities/Post';
 import User from '@entities/User';
-import { RelationalPagination } from '@utils/RelationalPagination';
+import { RelationalPagination } from '@utils/paginate/RelationalPagination';
 
 @ObjectType()
 @Entity()

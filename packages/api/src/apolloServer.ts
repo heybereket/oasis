@@ -7,7 +7,7 @@ import {
 } from 'graphql-query-complexity';
 import User from '@entities/User';
 import { createContext } from '@utils/auth/createContext';
-import { getSchema } from '@utils/getSchema';
+import { getSchema } from '@utils/files/getSchema';
 
 export type ContextType = {
   hasAuth: boolean;

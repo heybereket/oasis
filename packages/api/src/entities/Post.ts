@@ -11,7 +11,7 @@ import { Field, ID, ObjectType } from 'type-graphql';
 import User from '@entities/User';
 import Comment from '@entities/Comment';
 import Resort from '@entities/Resort';
-import { RelationalPagination } from '@utils/RelationalPagination';
+import { RelationalPagination } from '@utils/paginate/RelationalPagination';
 
 @ObjectType()
 @Entity()
