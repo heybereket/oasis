@@ -53,7 +53,6 @@ export class CreateBotResolver {
     bot.createdAt = String(Date.now());
     bot.verified = false;
     bot.roles = [];
-    bot.repos = Promise.resolve([]);
     bot.posts = Promise.resolve([]);
     bot.comments = Promise.resolve([]);
     bot.badges = Promise.resolve([]);

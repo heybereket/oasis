@@ -9,7 +9,6 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import Repo from '@entities/Repo';
 import Post from '@entities/Post';
 import Badge from '@entities/Badge';
 import { Role } from '@modules/user/Roles';
@@ -78,10 +77,6 @@ export default class User extends BaseEntity {
   @Column('simple-array')
   @Field(() => [Role])
   roles: Role[] = [];
-
-  @Field(() => [Repo], { nullable: true, complexity: 5 })
-  @OneToMany(() => Repo, (repo) => repo.owner)
-  repos: Promise<Repo[]>;
 
   // @Field(() => [Post], { nullable: true, complexity: 5 })
   @RelationalPagination(() => User, () => Post, 'author')

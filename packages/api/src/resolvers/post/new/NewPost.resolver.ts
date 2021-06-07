@@ -1,7 +1,7 @@
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/apolloServer';
 import Post from '@entities/Post';
-import NewPostInput from './NewPostInput';
+import NewPostInput from '@modules/post/new/NewPostInput';
 import { customAlphabet } from 'nanoid';
 
 // @bcg-resolver(mutation, createPost, post)

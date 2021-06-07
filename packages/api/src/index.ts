@@ -8,7 +8,7 @@ import { createApolloServer } from '@root/apolloServer';
 import authRouter from '@modules/auth';
 import connectionRouter from '@modules/connections';
 import expressSession from 'express-session';
-import { createClient } from 'redis';
+import { redisClient } from '@utils/sessions/redis';
 import connectRedis from 'connect-redis';
 import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
@@ -19,8 +19,6 @@ import { joinRoot } from '@utils/common/rootPath';
 import { seedDatabase } from '@utils/test-utils/seedDatabase';
 
 const RedisStore = connectRedis(expressSession);
-
-export const redisClient = createClient(process.env.OASIS_API_REDIS_URL);
 
 export const createApp = async () => {
   if (!(await checkEnv())) {
@@ -66,7 +64,9 @@ export const createApp = async () => {
   /* Express-Session configuration */
   app.use(
     expressSession({
-      store: new RedisStore({ client: redisClient }),
+      store: new RedisStore({
+        client: redisClient,
+      }),
       secret: process.env.OASIS_API_SESSION_SECRET,
       resave: false,
       saveUninitialized: true,

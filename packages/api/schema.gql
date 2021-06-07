@@ -230,7 +230,6 @@ type Query {
   getNotifications: [Notification!]
   getPost(id: String!): Post!
   getQueue: [Report!]!
-  getRepo(id: String!): Repo!
   getResort(id: String!): Resort!
   getResortByName(name: String!): Resort
   getUser(id: String!): User!
@@ -238,29 +237,9 @@ type Query {
   paginateBadges(limit: Float!, offset: Float!): [Badge!]!
   paginateComments(limit: Float!, offset: Float!): [Comment!]!
   paginatePosts(limit: Float!, offset: Float!): [Post!]!
-  paginateRepos(limit: Float!, offset: Float!): [Repo!]!
   paginateResorts(limit: Float!, offset: Float!): [Resort!]!
   paginateUsers(limit: Float!, offset: Float!): [User!]!
   search(limit: Float!, searchQuery: String!): [SearchResult!]!
-}
-
-type Repo {
-  active: Boolean!
-
-  """
-  Time when the repo was added (the number of milliseconds passed since Unix epoch 1970-01-01T00:00:00Z)
-  """
-  date_added: String!
-  desc: String!
-  full_name: String!
-  github_owner: String!
-  id: ID!
-  issues: Float!
-  language: String!
-  name: String!
-  owner: User!
-  stars: Float!
-  url: String!
 }
 
 type Report {
@@ -330,7 +309,6 @@ type User {
   name: String
   ownedResorts: [Resort!]
   posts(limit: Float!, offset: Float!): PaginatedPostFromUser_authorResponse!
-  repos: [Repo!]
   roles: [Role!]!
   twitter: String
   url: String

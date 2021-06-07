@@ -7,7 +7,7 @@ import { promisify } from 'util';
 const glob = promisify(_glob);
 
 export const getSchema = async () => {
-  const filenames = await glob(joinRoot('./modules/**/*.resolver.js'));
+  const filenames = await glob(joinRoot('./resolvers/**/*.resolver.js'));
 
   filenames.push(joinRoot('./utils/RelationalPaginationResolvers.js'));
 

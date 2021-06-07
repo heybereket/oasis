@@ -1,4 +1,3 @@
-import User from '@entities/User';
 import { Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/apolloServer';
 import { NoBot } from '@utils/auth/NoBot';

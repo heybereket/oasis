@@ -1,6 +1,6 @@
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/apolloServer';
-import CreateResortInput from './CreateResortInput';
+import CreateResortInput from '@modules/resort/create/CreateResortInput';
 import Resort from '@entities/Resort';
 
 @Resolver()
