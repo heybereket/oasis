@@ -1,17 +1,17 @@
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/apolloServer';
 import Post from '@entities/Post';
-import NewPostInput from './NewPostInput';
 import { customAlphabet } from 'nanoid';
+import CreatePostInput from './CreatePostInput';
 
 // @bcg-resolver(mutation, createPost, post)
 
 @Resolver()
-export class NewPostResolver {
+export class CreatePostResolver {
   @Mutation(() => Boolean)
   @Authorized()
   async createPost(
-    @Arg('data') data: NewPostInput,
+    @Arg('data') data: CreatePostInput,
     @Ctx() { getUser }: ContextType
   ) {
     const newPost = Post.create();
