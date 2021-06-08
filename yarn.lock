@@ -3581,10 +3581,10 @@ __metadata:
     sqlite3: ^5.0.2
     ts-node: ^10.0.0
     ts-node-dev: ^1.1.6
-    tsc-alias: ^1.2.11
+    tsc-alias: ^1.3.2
     tslib: ^2.2.0
     type-graphql: ^1.1.1
-    typeorm: ^0.2.33
+    typeorm: ^0.2.34
     typescript: ^4.2.4
     uuid: ^8.3.2
   languageName: unknown
@@ -3636,7 +3636,7 @@ __metadata:
   dependencies:
     "@types/eslint": ^7.2.13
     "@types/prettier": ^2.2.3
-    electron: ^13.1.0
+    electron: ^13.1.1
     electron-log: ^4.3.5
     electron-updater: ^4.3.9
     eslint: ^7.27.0
@@ -3703,7 +3703,7 @@ __metadata:
     react-router-dom: ^5.2.0
     react-scripts: 4.0.3
     tailwindcss: ^2.1.4
-    ts-loader: ^9.2.2
+    ts-loader: ^9.2.3
     typescript: ^4.1.3
     web-vitals: ^2.0.1
     webpack: ^5.37.1
@@ -3859,11 +3859,11 @@ __metadata:
     remark-gfm: ^1.0.0
     rimraf: ^3.0.2
     tailwindcss: ^2.1.4
-    ts-loader: ^9.2.2
+    ts-loader: ^9.2.3
     ts-node: ^10.0.0
     typescript: ^4.2.4
     webpack: ^5.38.1
-    zustand: ^3.5.1
+    zustand: ^3.5.2
   languageName: unknown
   linkType: soft
 
@@ -10837,16 +10837,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:^13.1.0":
-  version: 13.1.0
-  resolution: "electron@npm:13.1.0"
+"electron@npm:^13.1.1":
+  version: 13.1.1
+  resolution: "electron@npm:13.1.1"
   dependencies:
     "@electron/get": ^1.0.1
     "@types/node": ^14.6.2
     extract-zip: ^1.0.3
   bin:
     electron: cli.js
-  checksum: d27030290daaccdf7e8f49b13e5abf20cfcb6b3ea12221d8989dcb3208bcbc0d6a96657ab9a711cfa6a8b4cf43ffff9f2b48a2a131b666b8e3b4cab5e5f89531
+  checksum: 21875e8cb04f992c93b06cd47cc94b89bb14d144e4d5eda0fbdba214d0d6d307c87efe93a57fdc0c7160a8cf49460656d50c7532e2c16d57e04fa69bf2cbfabf
   languageName: node
   linkType: hard
 
@@ -18686,7 +18686,7 @@ fsevents@^1.2.7:
     npm-run-all: ^4.1.5
     rimraf: ^3.0.2
     ts-jest: ^27.0.3
-    typeorm: ^0.2.33
+    typeorm: ^0.2.34
     typescript: ^4.2.4
   languageName: unknown
   linkType: soft
@@ -24784,9 +24784,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"ts-loader@npm:^9.2.2":
-  version: 9.2.2
-  resolution: "ts-loader@npm:9.2.2"
+"ts-loader@npm:^9.2.3":
+  version: 9.2.3
+  resolution: "ts-loader@npm:9.2.3"
   dependencies:
     chalk: ^4.1.0
     enhanced-resolve: ^5.0.0
@@ -24795,7 +24795,7 @@ resolve@^2.0.0-next.3:
   peerDependencies:
     typescript: "*"
     webpack: ^5.0.0
-  checksum: 448807877b051ac890a036ae9feb11eb988436d3faa459a3437d970da96d7ce337f29cf8b018e5051e575017e6dc0f0cd70b8ddbdaa780904d015176e7ae4146
+  checksum: 10727f5b0e773e2e28196c7e527646690324b99d4e44fac1e12d685b39fbe3530a04e71de396b1c572c462cb3318d6884deca7d091f47173a625b26cda7e28b0
   languageName: node
   linkType: hard
 
@@ -24899,9 +24899,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tsc-alias@npm:^1.2.11":
-  version: 1.2.11
-  resolution: "tsc-alias@npm:1.2.11"
+"tsc-alias@npm:^1.3.2":
+  version: 1.3.2
+  resolution: "tsc-alias@npm:1.3.2"
   dependencies:
     "@jfonx/console-utils": ^1.0.3
     "@jfonx/file-utils": ^3.0.1
@@ -24912,7 +24912,7 @@ resolve@^2.0.0-next.3:
     normalize-path: ^3.0.0
   bin:
     tsc-alias: dist/bin/index.js
-  checksum: 90aff40609adf845eca89ccbda684548323cdbc9a81b66cecfeeea47f2297fc39b52ff5d21de8aff2c14a9313b31aac5465d3e276937e38f3c9171f569aedce4
+  checksum: f38201ce7bf8a4c6a986cd04fb3c4ce44b133ce50c0eae0f97e231a353df9e242a2e6dc2b37bb9918f0ebde3e7f38e8de1e5ab53735730eba83e9991859eebd5
   languageName: node
   linkType: hard
 
@@ -25156,9 +25156,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"typeorm@npm:^0.2.33":
-  version: 0.2.33
-  resolution: "typeorm@npm:0.2.33"
+"typeorm@npm:^0.2.34":
+  version: 0.2.34
+  resolution: "typeorm@npm:0.2.34"
   dependencies:
     "@sqltools/formatter": ^1.2.2
     app-root-path: ^3.0.0
@@ -25179,7 +25179,7 @@ resolve@^2.0.0-next.3:
     zen-observable-ts: ^1.0.0
   bin:
     typeorm: cli.js
-  checksum: b9a9425c98f7b52d0ebe5e9e2311ebb4d131b5cf378d55d0d181bcb55dc2258f7a169c4af9a14b04ba62221124612755f936209c5bb4162bda3a083d64f01600
+  checksum: 1bf2488a19fcea08d3f53ecf2ae3877837e83814388cab053ab0e18b58d92e81977d8b0eef6afab155a22911f28aba074ecac7a91c672be3b93f935c4d60d81a
   languageName: node
   linkType: hard
 
@@ -27127,12 +27127,15 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"zustand@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "zustand@npm:3.5.1"
+"zustand@npm:^3.5.2":
+  version: 3.5.2
+  resolution: "zustand@npm:3.5.2"
   peerDependencies:
     react: ">=16.8"
-  checksum: fdd1e6caaecbb0c3b7e869064752ace7113a16eabca56ab2f8cae6b1a0588ead08662289b7b7dde6a550d9ddf30881af370292406ca0b37d6d5d78a93e7db2b2
+  peerDependenciesMeta:
+    react:
+      optional: true
+  checksum: f5df58852571142d7448ba09b259843d38c5e6b2313d7a864a868bfb7e4e16182e80ffc381a2124958dfc625e710182ec917d849c3286c1c067c981a9095e2f5
   languageName: node
   linkType: hard
 
