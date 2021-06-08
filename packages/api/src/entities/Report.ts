@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { ReportType } from '@modules/reports/ReportTypes';
+import { ReportType } from '@typings/Reports';
 import { Field, ID, ObjectType } from 'type-graphql';
 import {
   BaseEntity,

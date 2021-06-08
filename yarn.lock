@@ -3573,7 +3573,7 @@ __metadata:
     passport-google-oauth20: ^2.0.0
     passport-twitter: ^1.0.4
     pg: ^8.6.0
-    prettier: ^2.3.0
+    prettier: ^2.3.1
     redis: ^3.1.2
     reflect-metadata: ^0.1.13
     rimraf: ^3.0.2
@@ -3601,7 +3601,7 @@ __metadata:
     chalk: ^4.1.1
     eslint: ^7.28.0
     node-emoji: ^1.10.0
-    prettier: ^2.3.0
+    prettier: ^2.3.1
     typescript: ^4.2.4
     yargs: ^17.0.1
   languageName: unknown
@@ -3623,8 +3623,8 @@ __metadata:
     eslint: ^7.28.0
     jest: ^26.6.3
     node-fetch: ^2.6.1
-    prettier: ^2.3.0
-    ts-jest: ^27.0.1
+    prettier: ^2.3.1
+    ts-jest: ^27.0.3
     ts-node: ^10.0.0
     typescript: ^4.2.4
   languageName: unknown
@@ -3641,7 +3641,7 @@ __metadata:
     electron-updater: ^4.3.9
     eslint: ^7.27.0
     pinst: ^2.1.6
-    prettier: ^2.3.0
+    prettier: ^2.3.1
     typescript: ^4.2.4
   languageName: unknown
   linkType: soft
@@ -3678,7 +3678,7 @@ __metadata:
     "@capacitor/keyboard": 1.0.0
     "@ionic/react": ^5.6.8
     "@ionic/react-router": ^5.6.8
-    "@testing-library/jest-dom": ^5.11.9
+    "@testing-library/jest-dom": ^5.13.0
     "@testing-library/react": ^11.2.5
     "@testing-library/user-event": ^13.1.9
     "@types/eslint": ^7.2.13
@@ -3696,7 +3696,7 @@ __metadata:
     ionicons: ^5.4.0
     postcss: ^8.3.0
     postcss-loader: ^5.3.0
-    prettier: ^2.3.0
+    prettier: ^2.3.1
     react: ^17.0.1
     react-dom: ^17.0.1
     react-router: ^5.2.0
@@ -3730,7 +3730,7 @@ __metadata:
   resolution: "@oasis-sh/prettier-config@workspace:config/prettier-config"
   dependencies:
     "@types/prettier": ^2.2.3
-    prettier: ^2.3.0
+    prettier: ^2.3.1
   languageName: unknown
   linkType: soft
 
@@ -3777,7 +3777,7 @@ __metadata:
     moment: ^2.29.1
     moment-timezone: ^0.5.33
     node-sass: ^6.0.0
-    prettier: ^2.3.0
+    prettier: ^2.3.1
     react: ^17.0.2
     react-dom: ^17.0.2
     rollup: ^2.48.0
@@ -3809,7 +3809,7 @@ __metadata:
     eslint: ^7.27.0
     glob: ^7.1.7
     node-fetch: ^2.6.1
-    prettier: ^2.3.0
+    prettier: ^2.3.1
     react: ^17.0.2
     react-dom: ^17.0.2
     typescript: ^4.2.4
@@ -3826,8 +3826,8 @@ __metadata:
     "@babel/eslint-parser": ^7.14.4
     "@cypress/webpack-preprocessor": ^5.9.0
     "@next/bundle-analyzer": ^10.2.3
-    "@sentry/react": ^6.5.0
-    "@sentry/tracing": ^6.5.0
+    "@sentry/react": ^6.5.1
+    "@sentry/tracing": ^6.5.1
     "@types/express": ^4.17.12
     "@types/node": ^15.12.1
     "@types/node-fetch": ^2.5.10
@@ -3843,13 +3843,13 @@ __metadata:
     eslint-plugin-react: ^7.24.0
     eslint-plugin-react-hooks: latest
     express: ^4.17.1
-    formik: ^2.2.6
+    formik: ^2.2.9
     github-markdown-css: ^4.0.0
     moment-timezone: ^0.5.33
     next: latest
     node-fetch: ^2.6.1
     postcss: ^8.3.0
-    prettier: 2.3.0
+    prettier: 2.3.1
     pretty-ms: ^7.0.1
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -4109,96 +4109,96 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:6.5.0":
-  version: 6.5.0
-  resolution: "@sentry/browser@npm:6.5.0"
+"@sentry/browser@npm:6.5.1":
+  version: 6.5.1
+  resolution: "@sentry/browser@npm:6.5.1"
   dependencies:
-    "@sentry/core": 6.5.0
-    "@sentry/types": 6.5.0
-    "@sentry/utils": 6.5.0
+    "@sentry/core": 6.5.1
+    "@sentry/types": 6.5.1
+    "@sentry/utils": 6.5.1
     tslib: ^1.9.3
-  checksum: 46dd51b23dc937b5f0474930d8b02d00360edaf5f8084e5628f208113df9847f9eb5b62eebdaaedd70804a83f4e3fc4c908d63e5d4e53736e3cce46ae977969d
+  checksum: 71577dfab1e5ff2291ef6ccdacb27693188d92e83cbfa61d86e0854fa2a1acd5b628c603c2bb51c022fcf6aa411011292209502bccb30b83c781e7bd0f98a76c
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:6.5.0":
-  version: 6.5.0
-  resolution: "@sentry/core@npm:6.5.0"
+"@sentry/core@npm:6.5.1":
+  version: 6.5.1
+  resolution: "@sentry/core@npm:6.5.1"
   dependencies:
-    "@sentry/hub": 6.5.0
-    "@sentry/minimal": 6.5.0
-    "@sentry/types": 6.5.0
-    "@sentry/utils": 6.5.0
+    "@sentry/hub": 6.5.1
+    "@sentry/minimal": 6.5.1
+    "@sentry/types": 6.5.1
+    "@sentry/utils": 6.5.1
     tslib: ^1.9.3
-  checksum: a7ed1d8bb52d0463d9184ce6ff2c6e356828cdfd31b3eeec7aa0006a083c7d5305b42a1364b5df790e40dd45933dfd0258dcf5e0fb8348b269656ee30bbd22b7
+  checksum: 10d6f1398435bde3eda221d781a8b38c4f0cdf1790e2f891f2bf1af688888120ecff4a59f0e2c4cb9693d41bf92579e1e547248e5e53f74d5ff2da17c4a77eb8
   languageName: node
   linkType: hard
 
-"@sentry/hub@npm:6.5.0":
-  version: 6.5.0
-  resolution: "@sentry/hub@npm:6.5.0"
+"@sentry/hub@npm:6.5.1":
+  version: 6.5.1
+  resolution: "@sentry/hub@npm:6.5.1"
   dependencies:
-    "@sentry/types": 6.5.0
-    "@sentry/utils": 6.5.0
+    "@sentry/types": 6.5.1
+    "@sentry/utils": 6.5.1
     tslib: ^1.9.3
-  checksum: 4196eead13a1d072f2b0ea8f0d6da475fed8a1e3b8d845c6093c26d6d8ff7aa386da5bc9055cf6cd9b967e690b45847ac58a0ae439e7ba6013112c371c188ed2
+  checksum: e5d364c76ccade469f3bd20b74ceebf8c4b0c67b4315ef997bf3c44bc0455117bb512eac34d011ce8104da8feea92e98cb0c39ea232f02a2ff1dfc9be971574d
   languageName: node
   linkType: hard
 
-"@sentry/minimal@npm:6.5.0":
-  version: 6.5.0
-  resolution: "@sentry/minimal@npm:6.5.0"
+"@sentry/minimal@npm:6.5.1":
+  version: 6.5.1
+  resolution: "@sentry/minimal@npm:6.5.1"
   dependencies:
-    "@sentry/hub": 6.5.0
-    "@sentry/types": 6.5.0
+    "@sentry/hub": 6.5.1
+    "@sentry/types": 6.5.1
     tslib: ^1.9.3
-  checksum: 72e4f204de67a1d4a6672b8c0a623fa62d6499eb78f5c22fea4f51570d3f94af291ad9c3263e29e3034587d48c0b766b403968e81575b68bba1792fe328a303f
+  checksum: be2122ce9b85507d60049514a4933c9a5520200c6a67fafc8607041ab746ae0a563862fe48962a2f296ac4b0fce2538eb114ef7c0a748bebe8c454499ff0c37d
   languageName: node
   linkType: hard
 
-"@sentry/react@npm:^6.5.0":
-  version: 6.5.0
-  resolution: "@sentry/react@npm:6.5.0"
+"@sentry/react@npm:^6.5.1":
+  version: 6.5.1
+  resolution: "@sentry/react@npm:6.5.1"
   dependencies:
-    "@sentry/browser": 6.5.0
-    "@sentry/minimal": 6.5.0
-    "@sentry/types": 6.5.0
-    "@sentry/utils": 6.5.0
+    "@sentry/browser": 6.5.1
+    "@sentry/minimal": 6.5.1
+    "@sentry/types": 6.5.1
+    "@sentry/utils": 6.5.1
     hoist-non-react-statics: ^3.3.2
     tslib: ^1.9.3
   peerDependencies:
     react: 15.x || 16.x || 17.x
-  checksum: 289701383eb74d07a7d8383a8afb49100357dc3daa5c00ca2a56fda3abf9d60535c73a87519eb8e9659f00646c59278c14e12815a32bfa207e7d62b97148de59
+  checksum: 45dc0372d1dfac5c76e75383d4c460b98759aa930a13d642ccf915e6a5f33a45a0ab7218dd12e1a6a697200b0260ea14612f42cd9faada5ee9571837f6255471
   languageName: node
   linkType: hard
 
-"@sentry/tracing@npm:^6.5.0":
-  version: 6.5.0
-  resolution: "@sentry/tracing@npm:6.5.0"
+"@sentry/tracing@npm:^6.5.1":
+  version: 6.5.1
+  resolution: "@sentry/tracing@npm:6.5.1"
   dependencies:
-    "@sentry/hub": 6.5.0
-    "@sentry/minimal": 6.5.0
-    "@sentry/types": 6.5.0
-    "@sentry/utils": 6.5.0
+    "@sentry/hub": 6.5.1
+    "@sentry/minimal": 6.5.1
+    "@sentry/types": 6.5.1
+    "@sentry/utils": 6.5.1
     tslib: ^1.9.3
-  checksum: cc28025f4078d43ccff02a2130642428bbe96cf202c7700b5fc68e765071b509ef68aec98d37941a79dffa4501574bd98513e512f8c7aeea4036d8225dedf964
+  checksum: 63dd807a4ff2ff9a5fc01d921f3452c41a842bb10d0095549c5dc04fe2cfe2872620af9556d3ec0ac293eed83fe44cc2ec0dc62296e18e1d7aeed0f1ab5e1eba
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:6.5.0":
-  version: 6.5.0
-  resolution: "@sentry/types@npm:6.5.0"
-  checksum: a4ff3ccd5707e9b1211583cc11523e93fbe9160f27cc47f6c279a178facab4d6e09fafd237e41d5d7c2ceee667be139291f0eb41d477e3110751be6a9b448fa3
+"@sentry/types@npm:6.5.1":
+  version: 6.5.1
+  resolution: "@sentry/types@npm:6.5.1"
+  checksum: b89b4c3c1e42386e6fb9b5388eb1190a65d6867be6103f8dd028ec9a0b5176cddedf7fb24b3e4e22f28b091706179350c8cf872ec8d4ea7a08e15f188191f36b
   languageName: node
   linkType: hard
 
-"@sentry/utils@npm:6.5.0":
-  version: 6.5.0
-  resolution: "@sentry/utils@npm:6.5.0"
+"@sentry/utils@npm:6.5.1":
+  version: 6.5.1
+  resolution: "@sentry/utils@npm:6.5.1"
   dependencies:
-    "@sentry/types": 6.5.0
+    "@sentry/types": 6.5.1
     tslib: ^1.9.3
-  checksum: 85667c2227326043e555b6c53e34cb33a427088a8eb33d30ae3920b6fa86b11c453764b1093f730bd8ff7579b754783cac836066627b4195a2cc39f9a168e69d
+  checksum: ff9698e8acd667adc09d6cafa97bdb1adf9d41aa5594c091396fff18872d6ff23e17ce0fb2ed49b24ef5e4544b90b88ccc9fea2c17f41ac0dfdcf01078ffc231
   languageName: node
   linkType: hard
 
@@ -4418,9 +4418,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/jest-dom@npm:^5.11.9":
-  version: 5.12.0
-  resolution: "@testing-library/jest-dom@npm:5.12.0"
+"@testing-library/jest-dom@npm:^5.13.0":
+  version: 5.13.0
+  resolution: "@testing-library/jest-dom@npm:5.13.0"
   dependencies:
     "@babel/runtime": ^7.9.2
     "@types/testing-library__jest-dom": ^5.9.1
@@ -4430,7 +4430,7 @@ __metadata:
     css.escape: ^1.5.1
     lodash: ^4.17.15
     redent: ^3.0.0
-  checksum: 8bffa1c4113fbcdeb2aad1be48054ab46ee73da3b9b8a588e7e635e96f06ffe221689dfa494d2ac06520350ab7aa1fa2e2565aa30b02dd34c8d086072ba9ed57
+  checksum: 6ac64359265d96aa93114d98e651e8a24af0db51f01e858990bb2e90025fcacc00826abd4e8c333a7274b38113447bf13b52453ad692a2f4c731eba4781a8692
   languageName: node
   linkType: hard
 
@@ -12524,20 +12524,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formik@npm:^2.2.6":
-  version: 2.2.8
-  resolution: "formik@npm:2.2.8"
+"formik@npm:^2.2.9":
+  version: 2.2.9
+  resolution: "formik@npm:2.2.9"
   dependencies:
     deepmerge: ^2.1.1
     hoist-non-react-statics: ^3.3.0
-    lodash: ^4.17.14
-    lodash-es: ^4.17.14
+    lodash: ^4.17.21
+    lodash-es: ^4.17.21
     react-fast-compare: ^2.0.1
     tiny-warning: ^1.0.2
     tslib: ^1.10.0
   peerDependencies:
     react: ">=16.8.0"
-  checksum: 3df5ccd9770381415f4de623d5bccc4ed8de82068ab093babe2ea7d6934dcbf411b2aa32b4b799f50f1a8e234774e46dca8bdba8b293003900ee4cd7b4291164
+  checksum: ff8db894ccbb23660ffb0455341ce679b1069233742f2a0e7b8c790a12231b60057c6e48ea21d4b3ee3db371c8785365c13ddfeaf1d45d111a4f7312891b5e75
   languageName: node
   linkType: hard
 
@@ -15928,7 +15928,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jest-util@npm:^26.1.0, jest-util@npm:^26.6.0, jest-util@npm:^26.6.2":
+"jest-util@npm:^26.6.0, jest-util@npm:^26.6.2":
   version: 26.6.2
   resolution: "jest-util@npm:26.6.2"
   dependencies:
@@ -16807,7 +16807,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"lodash-es@npm:^4.17.14":
+"lodash-es@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash-es@npm:4.17.21"
   checksum: ff0e7bb9595594d8b9c32fbe15912eaeefd83266f6e6872fbc498533cf8c2f039d12d37034b33965f1c04ef66ec1d6da83377c77e84e14c51a137901bb50865e
@@ -18685,7 +18685,7 @@ fsevents@^1.2.7:
     jest: ^26.6.3
     npm-run-all: ^4.1.5
     rimraf: ^3.0.2
-    ts-jest: ^26.5.6
+    ts-jest: ^27.0.3
     typeorm: ^0.2.33
     typescript: ^4.2.4
   languageName: unknown
@@ -20831,12 +20831,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.3.0, prettier@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "prettier@npm:2.3.0"
+"prettier@npm:2.3.1, prettier@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "prettier@npm:2.3.1"
   bin:
     prettier: bin-prettier.js
-  checksum: 652640cc8b71bc5277cfb8bf6f161783ca588efcf683c3d630837b39da8d57fef35c9e00ae5855a8e3c75136c42274046c913cc2b2d2968558315f31c6a26981
+  checksum: 9b4a695b87ce5f510fc20feec01cce7371f0fa0b92ffe79d543f6be52e2004c532861629de4d7ab1c577e1f649dce3cfccd62cb2ca6526b1da8d9c63eb84bf36
   languageName: node
   linkType: hard
 
@@ -24761,32 +24761,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^26.5.6":
-  version: 26.5.6
-  resolution: "ts-jest@npm:26.5.6"
-  dependencies:
-    bs-logger: 0.x
-    buffer-from: 1.x
-    fast-json-stable-stringify: 2.x
-    jest-util: ^26.1.0
-    json5: 2.x
-    lodash: 4.x
-    make-error: 1.x
-    mkdirp: 1.x
-    semver: 7.x
-    yargs-parser: 20.x
-  peerDependencies:
-    jest: ">=26 <27"
-    typescript: ">=3.8 <5.0"
-  bin:
-    ts-jest: cli.js
-  checksum: fd32a8b256091d45d850c491fd090f74a368d44bccc8fedfa0dd074757727e7f07621eb2a69ebf081428f44a357a879237a2cf0aef970896410d454d0bf87ac6
-  languageName: node
-  linkType: hard
-
-"ts-jest@npm:^27.0.1":
-  version: 27.0.1
-  resolution: "ts-jest@npm:27.0.1"
+"ts-jest@npm:^27.0.3":
+  version: 27.0.3
+  resolution: "ts-jest@npm:27.0.3"
   dependencies:
     bs-logger: 0.x
     buffer-from: 1.x
@@ -24803,7 +24780,7 @@ resolve@^2.0.0-next.3:
     typescript: ">=3.8 <5.0"
   bin:
     ts-jest: cli.js
-  checksum: 12ae908f941298725d9f6aca39f36a374cb1146c97cb1efb7aa9c15968e4be343d476811167d86804061231ff7cd7164f036ed413da21340e1c5758712a75173
+  checksum: a63f3a8620a16335d745f22377a9cc118129d28a5b122c609a7c6aabbb8048c85733c771a0dd39b136e8a75401473409452bdd3c5b9e3b85317c2e3f3ac03267
   languageName: node
   linkType: hard
 

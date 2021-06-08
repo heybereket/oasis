@@ -1,7 +1,0 @@
-{
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "debug.javascript.unmapMissingSources": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.configPath": "./config/prettier-config/index.js",
-}

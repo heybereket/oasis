@@ -19,34 +19,26 @@ const start = Date.now();
 
 (async () => {
   const server = await getServer(process.env.API_MODE as string);
+  const PORT = Number(process.env.PORT) || 3000;
 
   if (!server) {
     exit(1);
   }
 
+  server.all('*', (req, res) => {
+    return handle(req, res as any);
+  });
+
   app.prepare().then(() => {
-    if (process.env.NODE_ENV === 'production') {
-      server.get('/service-worker.js', function(req, res) {
-        res.sendFile(
-          path.resolve(__dirname, '../../.next', 'service-worker.js')
+    try {
+      server.listen(PORT, (err?: any) => {
+        if (err) throw err;
+        log.ready(
+          `ready in ${ms(Date.now() - start)} on http://localhost:${PORT}`
         );
       });
-    }
-
-    server.all('*', (req, res) => {
-      return handle(req, res);
-    });
-
-    const PORT = Number(process.env.PORT) || 3000;
-
-    try {
-      server.listen(PORT, () =>
-        log.ready(
-          `Ready in ${ms(Date.now() - start)} on http://localhost:${PORT}`
-        )
-      );
     } catch (err) {
-      if (err) throw err;
+      log.error(err);
     }
   });
 })();

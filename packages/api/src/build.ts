@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { getSchema } from '@utils/getSchema';
+import { getSchema } from '@utils/files/getSchema';
 import { config } from 'dotenv';
 config();
 

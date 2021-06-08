@@ -1,4 +1,4 @@
-import { NotificationType } from '@modules/notification/Notifications';
+import { NotificationType } from '@typings/Notifications';
 import { Field, ID, ObjectType } from 'type-graphql';
 import {
   BaseEntity,

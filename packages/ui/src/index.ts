@@ -12,10 +12,15 @@ export { Modal } from './components/shared/Modal';
 export { Loading } from './components/shared/Loading';
 
 // Home
-export { FollowUser } from './components/home/FollowUser';
-export { FriendActivity } from './components/home/FriendActivity';
-export { Sidebar } from './components/home/Sidebar';
 export { CreatePostInput } from './components/home/CreatePostInput';
+export { FollowUser } from './components/home/FollowUser';
+export { FollowUserSection } from './components/home/FollowUserSection';
+export { FriendActivity } from './components/home/FriendActivity';
+export { FriendActivitySection } from './components/home/FriendActivitySection';
+export { PostsSection } from './components/home/PostsSection';
+export { ProfileSection } from './components/home/ProfileSection';
+export { Sidebar } from './components/home/Sidebar';
+export { TrendingSection } from './components/home/TrendingSection';
 
 // OSS
 export { Contributors } from './components/oss/Contributors';
@@ -46,11 +51,6 @@ export { ResortCard } from './components/resort/ResortCard';
 export { ResortHeader } from './components/resort/ResortHeader';
 
 // Sections
-export { FollowUserSection } from './components/sections/FollowUserSection';
-export { FriendActivitySection } from './components/sections/FriendActivitySection';
-export { ProfileSection } from './components/sections/ProfileSection';
-export { PostsSection } from './components/sections/PostsSection';
-export { TrendingSection } from './components/sections/TrendingSection';
 
 // Icons
 export { About } from './icons/navbar/About';

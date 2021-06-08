@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 import Post from '@entities/Post';
 import User from './User';
-import { RelationalPagination } from '@utils/RelationalPagination';
+import { RelationalPagination } from '@utils/paginate/RelationalPagination';
 
 @ObjectType()
 @Entity()

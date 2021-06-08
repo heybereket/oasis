@@ -17,7 +17,7 @@
     "db:setup": "node dist/test-utils/setup.js",
     "test": "jest -c ./dist/jest.config.js",
     "clean": "rimraf dist",
-    "prettify": "prettier --write src/{.,entities,modules,lib,utils}/*.ts",
+    "prettify": "prettier --write src/{.,lib,entities,modules,resolvers,utils}/*.ts",
     "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
   },
   "prettier": "@oasis-sh/prettier-config",
@@ -49,7 +49,7 @@
     "eslint": "^7.27.0",
     "jest": "^27.0.4",
     "nanoid": "^3.1.23",
-    "prettier": "^2.3.0",
+    "prettier": "^2.3.1",
     "sqlite3": "^5.0.2",
     "ts-node": "^10.0.0",
     "ts-node-dev": "^1.1.6",
