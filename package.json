@@ -29,12 +29,12 @@
     "test:cy": "yarn workspace @oasis-sh/web run cy:run"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.2",
-    "@commitlint/config-conventional": "^12.1.2",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@types/concurrently": "^6.2.0",
     "@types/jest": "^26.0.23",
-    "@types/node": "^15.12.1",
-    "commitizen": "^4.2.3",
+    "@types/node": "^15.12.2",
+    "commitizen": "^4.2.4",
     "concurrently": "^6.1.0",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^6.0.0",
