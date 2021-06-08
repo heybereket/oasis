@@ -9,9 +9,9 @@ export class DeletePostResolver {
     @Arg('offset') offset: number
   ) {
     return await Post.createQueryBuilder('post')
-      .addSelect('COUNT(likers.*) - COUNT(dislikers.*) as likes')
+      .addSelect('COUNT(likers.*) as likes')
       .leftJoin('post.likers', 'likers')
-      .leftJoin('post.dislikers', 'dislikers')
+      // .leftJoin('post.dislikers', 'dislikers')
       .groupBy('post.id')
       .orderBy('likes', 'DESC')
       .addOrderBy('post.createdAt', 'DESC')
