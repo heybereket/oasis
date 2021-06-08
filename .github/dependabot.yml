@@ -4,16 +4,4 @@ updates:
   directory: "/"
   schedule:
     interval: "daily"
-- package-ecosystem: npm
-  directory: "/packages/web"
-  schedule:
-    interval: "daily"
-- package-ecosystem: npm
-  directory: "/packages/api"
-  schedule:
-    interval: "daily"
-- package-ecosystem: npm
-  directory: "/packages/client-gql"
-  schedule:
-    interval: "daily"
   target-branch: staging

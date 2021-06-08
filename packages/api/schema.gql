@@ -56,6 +56,11 @@ input MakeBadgeInput {
   name: String!
 }
 
+input MakeReportInput {
+  information: String
+  type: ReportType!
+}
+
 type Mutation {
   createBot(data: CreateBotInput!): String!
   createComment(data: NewCommentInput!, postId: String!): Boolean!
@@ -72,6 +77,8 @@ type Mutation {
   likeDislikeComment(commentId: String!, dislike: Boolean!, like: Boolean!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
+  makeReport(data: MakeReportInput!, reporteeId: String!): Boolean!
+  markAsResolved(reportId: String!, resolved: Boolean!): Boolean!
   markNotificationAsRead(notificationId: String!): Boolean!
   refreshBotToken(botId: String!): String!
   updateProfile(data: UpdateProfileInput!): Boolean!
@@ -222,7 +229,7 @@ type Query {
   getComment(id: String!): Comment!
   getNotifications: [Notification!]
   getPost(id: String!): Post!
-  getRepo(id: String!): Repo!
+  getQueue: [Report!]!
   getResort(id: String!): Resort!
   getResortByName(name: String!): Resort
   getUser(id: String!): User!
@@ -230,29 +237,23 @@ type Query {
   paginateBadges(limit: Float!, offset: Float!): [Badge!]!
   paginateComments(limit: Float!, offset: Float!): [Comment!]!
   paginatePosts(limit: Float!, offset: Float!): [Post!]!
-  paginateRepos(limit: Float!, offset: Float!): [Repo!]!
   paginateResorts(limit: Float!, offset: Float!): [Resort!]!
   paginateUsers(limit: Float!, offset: Float!): [User!]!
   search(limit: Float!, searchQuery: String!): [SearchResult!]!
 }
 
-type Repo {
-  active: Boolean!
-
-  """
-  Time when the repo was added (the number of milliseconds passed since Unix epoch 1970-01-01T00:00:00Z)
-  """
-  date_added: String!
-  desc: String!
-  full_name: String!
-  github_owner: String!
+type Report {
+  createdAt: String!
   id: ID!
-  issues: Float!
-  language: String!
-  name: String!
-  owner: User!
-  stars: Float!
-  url: String!
+  information: String
+  reportee: User!
+  reporter: User!
+  resolved: Boolean!
+  type: ReportType!
+}
+
+enum ReportType {
+  InappropriateContent
 }
 
 type Resort {
@@ -308,7 +309,6 @@ type User {
   name: String
   ownedResorts: [Resort!]
   posts(limit: Float!, offset: Float!): PaginatedPostFromUser_authorResponse!
-  repos: [Repo!]
   roles: [Role!]!
   twitter: String
   url: String

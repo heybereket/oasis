@@ -45,3 +45,13 @@ export default ormconfig;
 1. To run the API you will first need to build it by running `yarn build`
 2. To sync the schema run `yarn workspace @oasis/api typeorm:cli schema:sync` (This may result in data loss).
 3. If you want to run the api by itself you can run `yarn dev:api`, if you would like to run the api with the website follow the instructions in [the web quickstart guide](Web-Quick-Start)
+
+## Testing
+**Any new code without tests will be denied**
+1. To test the api you will need to have the api running as defined in the next step
+2. Start the api by running `yarn test:api:setup` in root
+3. Open a new terminal and run `yarn test:api:run` to run the tests
+4. To write new tests make a new file with the extension `.test.ts` in the same directory as the code you want to test
+**Tips**
+1. If you want to rerun tests but you didn't make any changes in your code you will need to rerun `yarn test:api:setup`
+2. It's recommended to use the `--watch` flag when running `yarn test:api:setup` as it will auto-detect changes and restart the testing server for you

@@ -41,6 +41,7 @@ export const Post: React.FC<Props> = ({
 
   const [likes, setLikes] = useState(postData.likes);
   const [dislikes, setDislikes] = useState(postData.dislikes);
+  const formattedVotes = formatNumber(likes - dislikes);
 
   const [likeState, setLikeState] = useState<LikeDislikeState>(
     postData.isLiked
@@ -106,7 +107,7 @@ export const Post: React.FC<Props> = ({
                   }`}
                 />
                 <p className="font-bold bg-gray-700 px-2 rounded-full">
-                  {Number(formatNumber(likes)) - Number(formatNumber(dislikes))}
+                  {formattedVotes}
                 </p>
                 <SmallDownArrow
                   onClick={() => {
@@ -177,13 +178,15 @@ export const Post: React.FC<Props> = ({
           {markdown(postData?.message ?? '')}
         </div>
       </div>
-      <footer className="flex justify-between">
-        <p className="text-sm font-semibold">{date}</p>
-        <div className="flex items-center space-x-2">
-          <p className="text-sm">{postData.comments.total} replies</p>
-          <Comments />
-        </div>
-      </footer>
+      <a href={'/post/' + postData.id}>
+        <footer className="flex justify-between">
+          <p className="text-sm font-medium">{date}</p>
+          <div className="flex items-center space-x-2">
+            <p className="text-sm">{postData.comments.total} replies</p>
+            <Comments />
+          </div>
+        </footer>
+      </a>
     </div>
   );
 };

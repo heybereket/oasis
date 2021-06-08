@@ -24,6 +24,10 @@ export const createContext = async (req: Request): Promise<ContextType> => {
         }
         break;
       }
+      case 'TESTING': {
+        if (process.env.TESTING !== 'true') break;
+        uid = (await User.find({ where: { username: token } }))[0].id;
+      }
     }
   } else {
     uid = (req.session as any)?.passport?.user?.id;

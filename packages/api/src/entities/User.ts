@@ -9,14 +9,15 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import Repo from '@entities/Repo';
 import Post from '@entities/Post';
 import Badge from '@entities/Badge';
-import { Role } from '@modules/user/Roles';
+import { Role } from '@typings/Roles';
 import Comment from '@entities/Comment';
 import Resort from './Resort';
 import Notification from './Notification';
-import { RelationalPagination } from '@utils/RelationalPagination';
+import { RelationalPagination } from '@utils/paginate/RelationalPagination';
+import Report from './Report';
+import Connection from './Connection';
 
 @ObjectType()
 @Entity()
@@ -77,14 +78,16 @@ export default class User extends BaseEntity {
   @Field(() => [Role])
   roles: Role[] = [];
 
-  @Field(() => [Repo], { nullable: true, complexity: 5 })
-  @OneToMany(() => Repo, (repo) => repo.owner)
-  repos: Promise<Repo[]>;
-
   // @Field(() => [Post], { nullable: true, complexity: 5 })
   @RelationalPagination(() => User, () => Post, 'author')
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
+
+  @OneToMany(() => Report, (report) => report.reportee)
+  reports: Promise<Report[]>;
+
+  @OneToMany(() => Report, (report) => report.reporter)
+  filedReports: Promise<Report[]>;
 
   @RelationalPagination(() => User, () => Post, 'likers')
   @ManyToMany(() => Post, (post) => post.likers)
@@ -155,4 +158,7 @@ export default class User extends BaseEntity {
   @RelationalPagination(() => User, () => User, 'following')
   @ManyToMany(() => User, (user) => user.following)
   followers: Promise<User[]>;
+
+  @OneToMany(() => Connection, (connection) => connection.user)
+  connections: Promise<Connection[]>;
 }

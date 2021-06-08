@@ -1,4 +1,4 @@
-import { Role } from '@modules/user/Roles';
+import { Role } from '@typings/Roles';
 
 const order = [Role.SuperAdmin, Role.Admin, Role.Moderator];
 

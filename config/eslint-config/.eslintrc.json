@@ -24,6 +24,7 @@
       "version": "detect"
     }
   },
+  "ignorePatterns": [".next/", "dist/", "out/"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",
@@ -172,7 +173,6 @@
     "no-sequences": "error",
     "no-spaced-func": "off",
     "no-sync": "error",
-    "no-tabs": "error",
     "no-template-curly-in-string": "error",
     "no-throw-literal": "error",
     "no-trailing-spaces": "error",

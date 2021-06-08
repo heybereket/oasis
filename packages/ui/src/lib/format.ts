@@ -1,3 +1,5 @@
+import moment from 'moment-timezone';
+
 // Abbreviate Number
 export const abbreviateNumber = (num: number) => {
   if (num < 1e3) return num;
@@ -18,19 +20,10 @@ export const formatNumber = (num: number) => {
 };
 
 // Format Date
-export const formatDate = (createdAt: string): string => {
-  const date = new Date(Number(createdAt));
+export const formatDate = (createdAt: string) => {
+  const timezone = moment.tz.guess();
+  const day = moment(Number(createdAt)).fromNow();
+  const time = moment.utc(Number(createdAt)).tz(timezone).format('h:mm A');
 
-  const time = date.toLocaleTimeString([], {
-    hour: 'numeric',
-    minute: '2-digit',
-  });
-
-  const month = date.toLocaleString('default', { month: 'long' });
-  const day = date.getDate();
-  const ord =
-    (day === 1 && 'st') || (day === 2 && 'nd') || (day === 3 && 'rd') || 'th';
-  const year = date.getFullYear();
-
-  return `${time} • ${month} ${day}${ord} ${year}`;
+  return `${time} • ${day}`;
 };

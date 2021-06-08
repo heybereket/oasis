@@ -10,7 +10,9 @@ export const CoreTeamPage: React.FC = () => {
 
   useEffect(() => {
     const getMaintainers = async () => {
-      const fetchMaintainers = request('https://raw.githubusercontent.com/oasis-sh/oasis/staging/data/maintainers.json').then((res: any) => res.json());
+      const fetchMaintainers = request(
+        'https://raw.githubusercontent.com/oasis-sh/oasis/staging/data/maintainers.json'
+      ).then((res: any) => res.json());
       setMaintainers(await fetchMaintainers);
     };
 

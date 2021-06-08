@@ -27,9 +27,7 @@ export const Search: React.FC<Props> = ({ vars }) => {
   }).data?.search;
   return (
     <>
-      <SEO
-        title={`${vars.searchQuery} - Oasis Search`}
-      />
+      <SEO title={`${vars.searchQuery} - Oasis Search`} />
       <Navbar
         user={user}
         currentUserLoading={currentUserLoading}
@@ -37,7 +35,7 @@ export const Search: React.FC<Props> = ({ vars }) => {
         logout={logout}
         defaultSearchText={vars.searchQuery}
       />
-      <div className="flex flex-col justify-center md-50:w-72 mx-auto">
+      <div className="flex flex-col justify-center w-full max-w-580 mx-auto">
         {searchResult?.map((res, idx) => (
           <div key={idx} className="w-full">
             {(() => {
@@ -109,3 +107,4 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 };
 
 export default Search;
+
