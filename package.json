@@ -29,22 +29,22 @@
     "test:cy": "yarn workspace @oasis-sh/web run cy:run"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.2",
-    "@commitlint/config-conventional": "^12.1.2",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@types/concurrently": "^6.2.0",
     "@types/jest": "^26.0.23",
-    "@types/node": "^15.12.1",
-    "commitizen": "^4.2.3",
-    "concurrently": "^6.1.0",
+    "@types/node": "^15.12.2",
+    "commitizen": "^4.2.4",
+    "concurrently": "^6.2.0",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^6.0.0",
-    "jest": "^26.6.3",
+    "jest": "^27.0.4",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.3"
   },
   "dependencies": {
-    "typeorm": "^0.2.33",
+    "typeorm": "^0.2.34",
     "typescript": "^4.2.4"
   },
   "config": {
