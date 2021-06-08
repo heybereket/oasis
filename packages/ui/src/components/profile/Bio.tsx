@@ -20,7 +20,7 @@ export const Bio: React.FC<Props> = ({
   return (
     <>
       <div
-        className={`mt-${marginTop} bg-gray-800 rounded-xl py-6 px-6 max-w-full w-100vw`}
+        className={`mt-${marginTop} bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]`}
       >
         <h4 className="font-extrabold">About {name}</h4>
         {bio !== null ? (
