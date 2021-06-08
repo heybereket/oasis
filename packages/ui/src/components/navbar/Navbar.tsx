@@ -54,7 +54,7 @@ export const Navbar: React.FC<INavbarProps> = ({
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-gray-900 flex items-center justify-between px-4 sm-50:px-6 md:px-8 py-4">
+      <nav className="max-w-nav w-full mx-auto sticky top-0 z-50 bg-gray-900 flex items-center justify-between px-4 sm-50:px-6 md:px-8 py-4">
         <div className="flex justify-items-start items-center">
           <div className="mr-3">
             <a href="/" className="block md:hidden">
