@@ -32,11 +32,6 @@ input CreateBotInput {
   username: String!
 }
 
-input CreatePostInput {
-  message: String!
-  topics: [String!]!
-}
-
 input CreateResortInput {
   banner: String!
   category: String!
@@ -69,7 +64,7 @@ input MakeReportInput {
 type Mutation {
   createBot(data: CreateBotInput!): String!
   createComment(data: NewCommentInput!, postId: String!): Boolean!
-  createPost(data: CreatePostInput!): Boolean!
+  createPost(data: NewPostInput!): Boolean!
   createResort(data: CreateResortInput!): Boolean!
   deleteAccount: Boolean!
   deletePost(postId: String!): Boolean!
@@ -91,6 +86,11 @@ type Mutation {
 
 input NewCommentInput {
   content: String!
+}
+
+input NewPostInput {
+  message: String!
+  topics: [String!]!
 }
 
 type Notification {

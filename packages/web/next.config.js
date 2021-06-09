@@ -52,18 +52,20 @@ module.exports = withBundleAnalyzer({
       },
     ];
   },
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: '/u/:username',
         destination: '/user/:username',
-        permanent: true,
       },
       {
         source: '/r/:resort',
         destination: '/resort/:resort',
-        permanent: true,
       },
+    ];
+  },
+  async redirects() {
+    return [
       {
         source: '/oss/github',
         destination: 'https://github.com/oasis-sh/oasis',
@@ -71,14 +73,7 @@ module.exports = withBundleAnalyzer({
       },
     ];
   },
-  webpack: (config, { isServer }) => {
-    // Fixes npm packages that depend on `fs` module
-    // if (!isServer) {
-    //   config.node = {
-    //     fs: 'empty',
-    //   };
-    // }
-
+  webpack: (config) => {
     return config;
   },
   env: {
