@@ -52,18 +52,20 @@ module.exports = withBundleAnalyzer({
       },
     ];
   },
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: '/u/:username',
         destination: '/user/:username',
-        permanent: true,
       },
       {
         source: '/r/:resort',
         destination: '/resort/:resort',
-        permanent: true,
       },
+    ];
+  },
+  async redirects() {
+    return [
       {
         source: '/oss/github',
         destination: 'https://github.com/oasis-sh/oasis',
