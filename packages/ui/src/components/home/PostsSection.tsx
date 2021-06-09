@@ -33,7 +33,7 @@ export const PostsSection: React.FC<Props> = ({
           avatarUrl={user.avatar}
           onSubmit={(value: string) => {
             createPost({ variables: { message: value, topics: [] } });
-            window.location.reload();
+            // window.location.reload();
           }}
         />
       )}

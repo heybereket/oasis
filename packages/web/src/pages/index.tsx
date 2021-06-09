@@ -37,6 +37,9 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
     onError: (e) => {
       console.log(e.message);
     },
+    onCompleted: () => {
+      window.location.reload();
+    },
   });
 
   const { user, currentUserLoading } = useGetCurrentUser();
