@@ -10,6 +10,7 @@ export { StyledFormikInput } from './components/shared/FormikInput';
 export { Input } from './components/shared/Input';
 export { Modal } from './components/shared/Modal';
 export { Loading } from './components/shared/Loading';
+export { InfiniteScrollWrapper } from './components/shared/InfiniteScrollWrapper';
 
 // Home
 export { CreatePostInput } from './components/home/CreatePostInput';
