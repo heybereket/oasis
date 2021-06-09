@@ -6,6 +6,7 @@ module.exports = {
     flexShrink: {
       0: 0,
     },
+
     fontFamily: {
       sans: [
         'Inter',
@@ -41,6 +42,8 @@ module.exports = {
         580: '580px',
         530: '530px',
         200: '200px',
+        'nav': '112rem'
+
       },
       backgroundColor: {
         resortSecondary: '#141923',

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import React from 'react';
 import { Post } from '../post/Post';
 import { CreatePostInput } from '../home/CreatePostInput';
 import { DeletePostMutationHookResult } from '@oasis-sh/react-gql';
+import { InfiniteScrollWrapper } from '../shared/InfiniteScrollWrapper';
 
 type DeleteMutation = DeletePostMutationHookResult[0];
 
@@ -26,10 +26,6 @@ export const PostsSection: React.FC<Props> = ({
   fetch,
   amountPerFetch,
 }) => {
-  const [items, setItems] = useState<any>(posts);
-  const limit = amountPerFetch;
-  const [offset, setOffset] = useState<number>(posts.length);
-  const [hasMore, setHasMore] = useState(true);
   return (
     <>
       {user && (
@@ -41,26 +37,11 @@ export const PostsSection: React.FC<Props> = ({
           }}
         />
       )}
-      <InfiniteScroll
-        dataLength={items.length}
-        next={async () => {
-          const newData = await fetch(limit, offset);
-          if (newData.length === 0) {
-            setHasMore(false);
-          } else {
-            setItems([...items, ...newData]);
-            setOffset(offset + limit);
-          }
-        }}
-        hasMore={hasMore}
-        loader={null}
-        endMessage={
-          <p style={{ textAlign: 'center' }}>
-            <b>Yay! You have seen it all</b>
-          </p>
-        }
-      >
-        {items.map((post: any, index: number) => (
+      <InfiniteScrollWrapper
+        fetch={fetch}
+        amountPerFetch={amountPerFetch}
+        defaultItems={posts}
+        renderComponent={(post, index) => (
           <div className="mb-6" key={index}>
             <Post
               post={post}
@@ -96,8 +77,8 @@ export const PostsSection: React.FC<Props> = ({
               }}
             />
           </div>
-        ))}
-      </InfiniteScroll>
+        )}
+      />
     </>
   );
 };
