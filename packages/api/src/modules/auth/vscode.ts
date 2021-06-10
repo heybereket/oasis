@@ -24,7 +24,7 @@ export default function VSCodeAuth() {
       res.send({ authId });
     } catch (e) {
       console.log(e);
-      res.send('ERROR: ' + e.message);
+      res.send('ERROR: Error while granting access');
     }
   });
 
