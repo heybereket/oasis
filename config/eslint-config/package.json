@@ -3,7 +3,7 @@
   "description": "ESLint Configuration for Oasis.",
   "main": "index.js",
   "devDependencies": {
-    "@babel/eslint-parser": "^7.14.4",
+    "@babel/eslint-parser": "^7.14.5",
     "@types/eslint": "^7.2.13",
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
