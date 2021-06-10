@@ -12,7 +12,7 @@ import { redisClient } from '@utils/config/redis';
 import connectRedis from 'connect-redis';
 import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
-import { sessionSecret, isProduction } from '@lib/constants';
+import { sessionSecret, isProduction, PORT } from '@lib/constants';
 import * as log from '@lib/log';
 import { exit } from '@lib/exit';
 import { joinRoot } from '@utils/common/rootPath';
@@ -98,7 +98,6 @@ export const createApp = async () => {
 };
 
 if (require.main === module) {
-  const PORT = Number(process.env.PORT) || 3000;
   createApp().then((app) => {
     if (!app) process.exit(1);
 
