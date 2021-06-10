@@ -72,8 +72,6 @@ export default async function checkEnv(): Promise<boolean> {
     ...checkOAuthEnvs('GOOGLE'), // Google
     ...checkOAuthEnvs('SPOTIFY'), // Google
 
-    /* Extra props */
-    checkRequiredEnv('OASIS_API_SESSION_SECRET', true),
   ]) if (!(await requiredEnvChecker(true))) return false;
   return true;
 }
