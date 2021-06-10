@@ -59,8 +59,8 @@ export default ormconfig;
 ## TypeORM Migrations
 ```bash
 # Generate a Migration command via the TypeORM Cli
-$ yarn workspace @oasis-sh/api typeorm:generate_migration <name>
+$ yarn typeorm:generate_migration <name>
 
 # Run the Migration
-$ yarn workspace @oasis-sh/api typeorm:run_migrations
+$ yarn typeorm:run_migrations
 ```
