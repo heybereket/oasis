@@ -1,4 +1,4 @@
-# 🔨 Contributing to Oasis
+# Contributing to Oasis
 
 ## Getting Started
 Oasis is actively open to new contributions. If you would like to contribute, follow the instructions for the package(s) you are looking to set up in [docs/packages](./packages). We also highly recommend taking a look at our [issues](https://github.com/oasis-sh/oasis/issues) for anything interesting that may seem fitting for you to work on before deciding to add any new features.
@@ -46,17 +46,8 @@ $ yarn prettify
 $ yarn lint
 ```
 
-## TypeORM Migrations
-```bash
-# Generate a Migration command via the TypeORM Cli
-$ yarn workspace @oasis-sh/api typeorm:generate_migration <name>
-
-# Run the Migration
-$ yarn workspace @oasis-sh/api typeorm:run_migrations
-```
-
 ## Frequently Asked Questions
 
 **How can I add a translation?** <br>
 If you would like to add a language to Oasis, feel free to edit the [locales](packages/web/public/locales) directory. <br/>
-We are always open to making Oasis more accessible by adding languages.## Frequently Asked Questions
+We are always open to making Oasis more accessible by adding languages.

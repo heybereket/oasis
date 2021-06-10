@@ -35,7 +35,7 @@ export const ProfileSection: React.FC<Props> = ({
           </div>
           <a
             className="flex items-center space-x-0.5 mt-2"
-            href={`/user/${user?.username}`}
+            href={`/u/${user?.username}`}
           >
             <p className="font-bold text-lg text-primary">View Profile</p>
             <RightArrow className="text-primary" />

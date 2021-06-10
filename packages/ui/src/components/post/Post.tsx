@@ -65,7 +65,7 @@ export const Post: React.FC<Props> = ({
         <header className="flex items-center space-x-4">
           <a
             className="w-11 h-11 flex-none"
-            href={`/user/${postData.author.username}`}
+            href={`/u/${postData.author.username}`}
           >
             <img
               src={postData.author.avatar}
@@ -75,7 +75,7 @@ export const Post: React.FC<Props> = ({
             />
           </a>
           <div className="flex items-center justify-between w-full">
-            <a href={`/user/${postData.author.username}`}>
+            <a href={`/u/${postData.author.username}`}>
               <div>
                 <p className="text-xl font-bold">{postData.author.name}</p>
                 <p className="-mt-1 text-light font-bold">

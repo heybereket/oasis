@@ -36,7 +36,7 @@ jobs:
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v1.9.0
       with:
-        registry: docker.pkg.github.com
+        registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN  }}
 
@@ -46,8 +46,8 @@ jobs:
         push: true
         context: .
         tags: |
-          docker.pkg.github.com/oasis-sh/oasis/oasis:${{ github.sha }}
-          docker.pkg.github.com/oasis-sh/oasis/oasis:latest
+          ghcr.io/oasis-sh/oasis:${{ github.sha }}
+          ghcr.io/oasis-sh/oasis:latest
 
   deploy:
     needs: [build]
@@ -57,7 +57,7 @@ jobs:
         uses: fifsky/ssh-action@v0.0.5
         with:
           command: |
-            docker pull docker.pkg.github.com/oasis-sh/oasis/oasis:latest
+            docker pull ghcr.io/oasis-sh/oasis:latest
             cd /opt/oasis/docker/staging
             docker-compose stop web
             docker-compose rm -f web
