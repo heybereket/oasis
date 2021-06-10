@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.13.13",
-    "@capacitor/cli": "3.0.0",
+    "@capacitor/cli": "3.0.1",
     "@types/eslint": "^7.2.13",
     "@types/prettier": "^2.2.3",
     "@types/tailwindcss": "^2.0.5",
