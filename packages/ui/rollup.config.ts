@@ -15,8 +15,9 @@ export default {
   ],
   plugins: [
     peerDepsExternal(),
-    resolve(),
-    commonjs(),
+    json(),
     typescript(),
-    json()],
+    commonjs(),
+    resolve(),
+  ],
 };
