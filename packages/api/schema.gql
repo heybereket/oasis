@@ -67,6 +67,7 @@ input MakeReportInput {
 }
 
 type Mutation {
+  banUser(UserId: String!, endDate: String!): Boolean!
   createBot(data: CreateBotInput!): String!
   createComment(data: NewCommentInput!, postId: String!): Boolean!
   createPost(data: CreatePostInput!): Boolean!

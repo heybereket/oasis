@@ -161,4 +161,7 @@ export default class User extends BaseEntity {
 
   @OneToMany(() => Connection, (connection) => connection.user)
   connections: Promise<Connection[]>;
+
+  @Column({ nullable: true })
+  banExiration?: string;
 }
