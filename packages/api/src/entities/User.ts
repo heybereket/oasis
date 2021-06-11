@@ -18,7 +18,7 @@ import Notification from './Notification';
 import { RelationalPagination } from '@utils/paginate/RelationalPagination';
 import Report from './Report';
 import Connection from './Connection';
-import { SelfOnly } from '@root/middleware/SelfOnly';
+import { SelfOnly } from '@middleware/SelfOnly';
 
 @ObjectType()
 @Entity()
