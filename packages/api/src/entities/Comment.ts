@@ -5,11 +5,13 @@ import {
   Column,
   ManyToOne,
   ManyToMany,
+  OneToMany,
 } from 'typeorm';
 import { Field, ID, ObjectType } from 'type-graphql';
 import Post from '@entities/Post';
 import User from '@entities/User';
 import { RelationalPagination } from '@utils/paginate/RelationalPagination';
+import Report from './Report';
 
 @ObjectType()
 @Entity()
@@ -45,4 +47,7 @@ export default class Comment extends BaseEntity {
   @RelationalPagination(() => Comment, () => User, 'dislikedComments')
   @ManyToMany(() => User, (user) => user.dislikedComments)
   dislikers: Promise<User[]>;
+
+  @OneToMany(() => Report, (report) => report.comment)
+  filedReports: Promise<Report[]>;
 }

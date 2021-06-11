@@ -12,6 +12,7 @@ import User from '@entities/User';
 import Comment from '@entities/Comment';
 import Resort from '@entities/Resort';
 import { RelationalPagination } from '@utils/paginate/RelationalPagination';
+import Report from './Report';
 
 @ObjectType()
 @Entity()
@@ -58,4 +59,7 @@ export default class Post extends BaseEntity {
   @Field(() => Resort, { nullable: true, complexity: 1 })
   @ManyToOne(() => Resort, (resort) => resort.posts, { nullable: true })
   resort: Promise<Resort>;
+
+  @OneToMany(() => Report, (report) => report.post)
+  filedReports: Promise<Report[]>;
 }

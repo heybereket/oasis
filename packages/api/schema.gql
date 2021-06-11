@@ -82,7 +82,7 @@ type Mutation {
   likeDislikeComment(commentId: String!, dislike: Boolean!, like: Boolean!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
-  makeReport(data: MakeReportInput!, reporteeId: String!): Boolean!
+  makeReport(data: MakeReportInput!, reporteeData: ReportedEntityInput!): Boolean!
   markAsResolved(reportId: String!, resolved: Boolean!): Boolean!
   markNotificationAsRead(notificationId: String!): Boolean!
   refreshBotToken(botId: String!): String!
@@ -243,17 +243,27 @@ type Query {
 }
 
 type Report {
+  comment: Comment
   createdAt: String!
   id: ID!
   information: String
-  reportee: User!
+  post: Post
   reporter: User!
   resolved: Boolean!
+  resort: Resort
   type: ReportType!
+  user: User
 }
 
 enum ReportType {
   InappropriateContent
+}
+
+input ReportedEntityInput {
+  commentId: String
+  postId: String
+  resortId: String
+  userId: String
 }
 
 type Resort {
