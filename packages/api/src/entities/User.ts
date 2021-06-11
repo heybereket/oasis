@@ -18,6 +18,7 @@ import Notification from './Notification';
 import { RelationalPagination } from '@utils/paginate/RelationalPagination';
 import Report from './Report';
 import Connection from './Connection';
+import { SelfOnly } from '@root/middleware/SelfOnly';
 
 @ObjectType()
 @Entity()
@@ -163,5 +164,7 @@ export default class User extends BaseEntity {
   connections: Promise<Connection[]>;
 
   @Column({ nullable: true })
+  @Field({ nullable: true })
+  @SelfOnly()
   banExiration?: string;
 }
