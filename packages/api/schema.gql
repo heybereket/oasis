@@ -300,6 +300,7 @@ input UpdateProfileInput {
 type User {
   avatar: String!
   badges: [Badge!]
+  banExiration: String
   banner: String
   bio: String
   botOwner: User
