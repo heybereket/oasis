@@ -83,10 +83,10 @@ export default class User extends BaseEntity {
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
 
-  @OneToMany(() => Report, (report) => report.reportee)
-  reports: Promise<Report[]>;
-
   @OneToMany(() => Report, (report) => report.reporter)
+  reportsMade: Promise<Report[]>;
+
+  @OneToMany(() => Report, (report) => report.user)
   filedReports: Promise<Report[]>;
 
   @RelationalPagination(() => User, () => Post, 'likers')
@@ -161,4 +161,7 @@ export default class User extends BaseEntity {
 
   @OneToMany(() => Connection, (connection) => connection.user)
   connections: Promise<Connection[]>;
+
+  @Column({ nullable: true })
+  banExiration?: string;
 }

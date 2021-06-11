@@ -12,6 +12,7 @@ import {
 import Post from '@entities/Post';
 import User from './User';
 import { RelationalPagination } from '@utils/paginate/RelationalPagination';
+import Report from './Report';
 
 @ObjectType()
 @Entity()
@@ -57,4 +58,7 @@ export default class Resort extends BaseEntity {
   @JoinTable()
   @RelationalPagination(() => Resort, () => User, 'joinedResorts')
   members: Promise<User[]>;
+
+  @OneToMany(() => Report, (report) => report.resort)
+  filedReports: Promise<Report[]>;
 }
