@@ -4,6 +4,7 @@ export const colors = {
   error: chalk.red('error') + ' -',
   ready: chalk.green('ready') + ' -',
   warn: chalk.yellow('warn') + ' -',
+  event: chalk.magenta('event') + ' -',
 };
 
 // Ready, no issues
@@ -18,4 +19,8 @@ export const error = (...message: string[]) => {
 
 export const warn = (...message: string[]) => {
   console.warn(colors.warn, ...message);
+};
+
+export const event = (...message: string[]) => {
+  console.log(colors.event, ...message);
 };
