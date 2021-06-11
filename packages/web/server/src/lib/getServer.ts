@@ -1,14 +1,15 @@
 import express, { Express } from 'express';
 
 export const getServer = async (apiMode: string): Promise<Express> => {
+  const app = express();
+
   if (apiMode === 'local') {
     /* eslint-disable @typescript-eslint/ban-ts-comment */
     // @ts-ignore
     return import('@oasis-sh/api').then(
-      async ({ createApp }) => await createApp()
+      async ({ initializeServer }) => await initializeServer()
     );
   }
 
-  const app = express();
   return app;
 };

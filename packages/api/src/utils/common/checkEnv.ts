@@ -1,4 +1,5 @@
 import * as log from '@lib/log';
+import { exit } from '@lib/exit';
 
 type EnvValidationFn = (logError: boolean) => Promise<boolean>;
 
@@ -72,6 +73,6 @@ export default async function checkEnv(): Promise<boolean> {
     ...checkOAuthEnvs('GOOGLE'), // Google
     ...checkOAuthEnvs('SPOTIFY'), // Google
 
-  ]) if (!(await requiredEnvChecker(true))) return false;
+  ]) if (!(await requiredEnvChecker(true))) return exit(1);
   return true;
 }
