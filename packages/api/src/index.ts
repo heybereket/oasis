@@ -7,7 +7,7 @@ import connectionRouter from '@modules/connections';
 import expressSession from 'express-session';
 import { redisStore, redisClient } from '@services/redis';
 import passport from 'passport';
-import checkEnv from '@utils/common/checkEnv';
+import { checkEnv } from '@utils/common/checkEnv';
 import { sessionSecret, isProduction, PORT } from '@lib/constants';
 import * as log from '@lib/log';
 import { checkNodeMajor } from '@lib/nodeMajor';
