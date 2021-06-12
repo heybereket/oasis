@@ -1,6 +1,7 @@
 import { NotificationType } from '@typings/Notifications';
 import { Field, ID, ObjectType } from 'type-graphql';
 import {
+  AfterInsert,
   BaseEntity,
   Column,
   Entity,
@@ -35,4 +36,9 @@ export default class Notification extends BaseEntity {
   @Field()
   @Column()
   read: boolean;
+
+  @AfterInsert()
+  x() {
+    console.log(this);
+  }
 }

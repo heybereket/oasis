@@ -2,6 +2,8 @@ import User from '@entities/User';
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/apolloServer';
 import { ApolloError } from 'apollo-server-errors';
+import { NotificationType } from '@typings/Notifications';
+import { createNotification } from '@utils/index';
 
 @Resolver()
 export default class FollowUserResolver {
@@ -23,6 +25,13 @@ export default class FollowUserResolver {
     user.following = Promise.resolve([...(await user.following), userToFollow]);
 
     user.save();
+
+    createNotification({
+      userId: userToFollow.id,
+      performerId: user.id,
+      type: NotificationType.Follow,
+    });
+
     return true;
   }
 }

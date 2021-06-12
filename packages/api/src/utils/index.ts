@@ -42,5 +42,6 @@ export const createNotification = async ({ userId, performerId, type }) => {
   notification.performer = Promise.resolve(await User.findOne(performerId));
   notification.type = type;
   notification.read = false;
+  notification.createdAt = String(Date.now());
   notification.save();
 };
