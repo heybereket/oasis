@@ -17,7 +17,7 @@ export default (passport: PassportStatic): Router => {
   if (process.env.OASIS_API_DISCORD_CLIENT_ID) authRouter.use('/discord', DiscordAuth(passport));
   if (process.env.OASIS_API_GOOGLE_CLIENT_ID) authRouter.use('/google', GoogleAuth(passport));
 
-  /** Internal actions. */
+  // Logout Route
   authRouter.get('/logout', (req, res) => {
     req.logout();
 
