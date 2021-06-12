@@ -1,109 +1,81 @@
 import 'reflect-metadata';
 import { config } from 'dotenv';
-config();
-
 import express from 'express';
-import { ConnectionOptions, createConnection } from 'typeorm';
-import { createApolloServer } from '@root/apolloServer';
+import { createApolloServer } from '@root/server';
 import authRouter from '@modules/auth';
 import connectionRouter from '@modules/connections';
 import expressSession from 'express-session';
-import { redisClient } from '@utils/redis';
-import connectRedis from 'connect-redis';
+import { redisStore, redisClient } from '@services/redis';
 import passport from 'passport';
-import checkEnv from '@utils/common/checkEnv';
-import { isProduction } from '@lib/constants';
+import { checkEnv } from '@utils/common/checkEnv';
+import { sessionSecret, isProduction, PORT } from '@lib/constants';
 import * as log from '@lib/log';
-import { exit } from '@lib/exit';
-import { joinRoot } from '@utils/common/rootPath';
-import { seedDatabase } from '@utils/testing/seedDatabase';
+import { checkNodeMajor } from '@lib/nodeMajor';
+import { getDatabase } from '@services/database';
 
-const RedisStore = connectRedis(expressSession);
+config();
 
-export const createApp = async () => {
-  if (!(await checkEnv())) {
-    return undefined;
-  }
+export const initializeServer = async () => {
+  try {
+    await checkEnv();
+    await getDatabase();
+    checkNodeMajor(15);
 
-  const nodeMajor = Number(process.versions.node.split('.')[0]);
+    const app = express();
+    app.disable('x-powered-by');
 
-  if (nodeMajor < 15) {
-    log.error(
-      `You are currently running on Node ${nodeMajor}. Oasis requires Node 15 or higher.`
+    if (process.env.OASIS_API_TRUST_PROXY === 'true') {
+      app.set('trust proxy', 1);
+    }
+
+    const apolloServer = await createApolloServer();
+
+    // Express-Session configuration
+    app.use(
+      expressSession({
+        store: new redisStore({
+          client: redisClient,
+        }),
+        secret: sessionSecret,
+        resave: false,
+        saveUninitialized: true,
+        cookie: {
+          secure: isProduction,
+          maxAge: null,
+          signed: true,
+          sameSite: 'lax',
+        },
+      })
     );
-    exit(1);
-  }
 
-  const app = express();
-  app.disable('x-powered-by');
+    // Passport configuration
+    app.use(passport.initialize());
+    app.use(passport.session());
+    passport.serializeUser((user, done) => done(null, user));
+    passport.deserializeUser((user, done) => done(null, user));
 
-  if (process.env.OASIS_API_TRUST_PROXY === 'true') {
-    app.set('trust proxy', 1);
-  }
+    // Authentication API
+    app.use('/api/auth', authRouter(passport));
 
-  let ormconfig: ConnectionOptions;
-  if (process.env.TESTING === 'true') {
-    ormconfig = {
-      type: 'sqlite',
-      database: 'testing.sqlite',
-      entities: [joinRoot('./entities/*.*')],
-      synchronize: true,
-    };
-  } else {
-    ormconfig = require('@root/ormconfig').default;
-  }
+    // Connection API
+    app.use('/api/connection', connectionRouter());
 
-  await createConnection(ormconfig);
+    // Apollo GraphQL Server
+    apolloServer.applyMiddleware({ app });
 
-  if (process.env.TESTING === 'true') {
-    seedDatabase();
-  }
+    log.event('api started successfully');
+    return app;
+  } catch (err) {
+      log.error(err);
+    }
+  };
 
-  const apolloServer = await createApolloServer();
+  if (require.main === module) {
+    initializeServer().then((app) => {
+      if (!app) process.exit(1);
 
-  /* Express-Session configuration */
-  app.use(
-    expressSession({
-      store: new RedisStore({
-        client: redisClient,
-      }),
-      secret: process.env.OASIS_API_SESSION_SECRET,
-      resave: false,
-      saveUninitialized: true,
-      cookie: {
-        secure: isProduction,
-        maxAge: null,
-        signed: true,
-        sameSite: 'lax',
-      },
-    })
-  );
-
-  /* Passport configuration */
-  app.use(passport.initialize());
-  app.use(passport.session());
-  passport.serializeUser((user, done) => done(null, user));
-  passport.deserializeUser((user, done) => done(null, user));
-
-  /* Authentication API */
-  app.use('/api/auth', authRouter(passport));
-
-  /* Connection API */
-  app.use('/api/connection', connectionRouter());
-
-  /* Apollo GraphQL Server */
-  apolloServer.applyMiddleware({ app });
-
-  return app;
-};
-
-if (require.main === module) {
-  const PORT = Number(process.env.PORT) || 3000;
-  createApp().then((app) => {
-    if (!app) process.exit(1);
-
-    app.listen(PORT, () =>
-      log.ready(`Ready on http://localhost:${PORT}/graphql`)
-    );
-  });
+      app.listen(PORT, () =>
+        log.ready(`ready on http://localhost:${PORT}/graphql`)
+      );
+    });
 }

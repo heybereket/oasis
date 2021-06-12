@@ -52,6 +52,11 @@ export type CreateBotInput = {
   username: Scalars['String'];
 };
 
+export type CreatePostInput = {
+  message: Scalars['String'];
+  topics: Array<Scalars['String']>;
+};
+
 export type CreateResortInput = {
   banner: Scalars['String'];
   category: Scalars['String'];
@@ -76,7 +81,13 @@ export type MakeBadgeInput = {
   name: Scalars['String'];
 };
 
+export type MakeReportInput = {
+  information?: Maybe<Scalars['String']>;
+  type: ReportType;
+};
+
 export type Mutation = {
+  banUser: Scalars['Boolean'];
   createBot: Scalars['String'];
   createComment: Scalars['Boolean'];
   createPost: Scalars['Boolean'];
@@ -92,9 +103,17 @@ export type Mutation = {
   likeDislikeComment: Scalars['Boolean'];
   makeAdmin: Scalars['Boolean'];
   makeBadge: Scalars['Boolean'];
+  makeReport: Scalars['Boolean'];
+  markAsResolved: Scalars['Boolean'];
   markNotificationAsRead: Scalars['Boolean'];
   refreshBotToken: Scalars['String'];
   updateProfile: Scalars['Boolean'];
+};
+
+
+export type MutationBanUserArgs = {
+  UserId: Scalars['String'];
+  endDate: Scalars['String'];
 };
 
 
@@ -110,7 +129,7 @@ export type MutationCreateCommentArgs = {
 
 
 export type MutationCreatePostArgs = {
-  data: NewPostInput;
+  data: CreatePostInput;
 };
 
 
@@ -177,6 +196,18 @@ export type MutationMakeBadgeArgs = {
 };
 
 
+export type MutationMakeReportArgs = {
+  data: MakeReportInput;
+  reporteeData: ReportedEntityInput;
+};
+
+
+export type MutationMarkAsResolvedArgs = {
+  reportId: Scalars['String'];
+  resolved: Scalars['Boolean'];
+};
+
+
 export type MutationMarkNotificationAsReadArgs = {
   notificationId: Scalars['String'];
 };
@@ -193,11 +224,6 @@ export type MutationUpdateProfileArgs = {
 
 export type NewCommentInput = {
   content: Scalars['String'];
-};
-
-export type NewPostInput = {
-  message: Scalars['String'];
-  topics: Array<Scalars['String']>;
 };
 
 export type Notification = {
@@ -348,12 +374,13 @@ export type PostLikersArgs = {
 
 export type Query = {
   currentUser?: Maybe<User>;
+  feedSortPosts: Array<Post>;
   getAvailableUsername: Scalars['String'];
   getBadge: Badge;
   getComment: Comment;
   getNotifications?: Maybe<Array<Notification>>;
   getPost: Post;
-  getRepo: Repo;
+  getQueue: Array<Report>;
   getResort: Resort;
   getResortByName?: Maybe<Resort>;
   getUser: User;
@@ -361,9 +388,15 @@ export type Query = {
   paginateBadges: Array<Badge>;
   paginateComments: Array<Comment>;
   paginatePosts: Array<Post>;
-  paginateRepos: Array<Repo>;
   paginateResorts: Array<Resort>;
   paginateUsers: Array<User>;
+  search: Array<SearchResult>;
+};
+
+
+export type QueryFeedSortPostsArgs = {
+  limit: Scalars['Float'];
+  offset: Scalars['Float'];
 };
 
 
@@ -383,11 +416,6 @@ export type QueryGetCommentArgs = {
 
 
 export type QueryGetPostArgs = {
-  id: Scalars['String'];
-};
-
-
-export type QueryGetRepoArgs = {
   id: Scalars['String'];
 };
 
@@ -430,12 +458,6 @@ export type QueryPaginatePostsArgs = {
 };
 
 
-export type QueryPaginateReposArgs = {
-  limit: Scalars['Float'];
-  offset: Scalars['Float'];
-};
-
-
 export type QueryPaginateResortsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
@@ -447,20 +469,34 @@ export type QueryPaginateUsersArgs = {
   offset: Scalars['Float'];
 };
 
-export type Repo = {
-  active: Scalars['Boolean'];
-  /** Time when the repo was added (the number of milliseconds passed since Unix epoch 1970-01-01T00:00:00Z) */
-  date_added: Scalars['String'];
-  desc: Scalars['String'];
-  full_name: Scalars['String'];
-  github_owner: Scalars['String'];
+
+export type QuerySearchArgs = {
+  limit: Scalars['Float'];
+  searchQuery: Scalars['String'];
+};
+
+export type Report = {
+  comment?: Maybe<Comment>;
+  createdAt: Scalars['String'];
   id: Scalars['ID'];
-  issues: Scalars['Float'];
-  language: Scalars['String'];
-  name: Scalars['String'];
-  owner: User;
-  stars: Scalars['Float'];
-  url: Scalars['String'];
+  information?: Maybe<Scalars['String']>;
+  post?: Maybe<Post>;
+  reporter: User;
+  resolved: Scalars['Boolean'];
+  resort?: Maybe<Resort>;
+  type: ReportType;
+  user?: Maybe<User>;
+};
+
+export const enum ReportType {
+  InappropriateContent = 'InappropriateContent'
+};
+
+export type ReportedEntityInput = {
+  commentId?: Maybe<Scalars['String']>;
+  postId?: Maybe<Scalars['String']>;
+  resortId?: Maybe<Scalars['String']>;
+  userId?: Maybe<Scalars['String']>;
 };
 
 export type Resort = {
@@ -495,6 +531,8 @@ export const enum Role {
   SuperAdmin = 'SuperAdmin'
 };
 
+export type SearchResult = Post | Resort | User;
+
 export type UpdateProfileInput = {
   avatar?: Maybe<Scalars['String']>;
   banner?: Maybe<Scalars['String']>;
@@ -506,6 +544,7 @@ export type UpdateProfileInput = {
 export type User = {
   avatar: Scalars['String'];
   badges?: Maybe<Array<Badge>>;
+  banExiration?: Maybe<Scalars['String']>;
   banner?: Maybe<Scalars['String']>;
   bio?: Maybe<Scalars['String']>;
   botOwner?: Maybe<User>;
@@ -526,7 +565,6 @@ export type User = {
   name?: Maybe<Scalars['String']>;
   ownedResorts?: Maybe<Array<Resort>>;
   posts: PaginatedPostFromUser_AuthorResponse;
-  repos?: Maybe<Array<Repo>>;
   roles: Array<Role>;
   twitter?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;

@@ -1,4 +1,4 @@
-import { Role } from '@typings/Roles';
+import { Role } from '@enums/Roles';
 
 const order = [Role.SuperAdmin, Role.Admin, Role.Moderator];
 

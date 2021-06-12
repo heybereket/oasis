@@ -7,22 +7,16 @@ import {
   User,
   Resort,
   Comment,
-  Repo,
   Badge,
+  Query,
 } from './generated/types';
+import { relations } from './generated/relations';
+import { QueryBuilder } from './query-builder';
 
-type EntityKey =
-  | 'badge'
-  | 'comment'
-  | 'post'
-  | 'repo'
-  | 'resort'
-  | 'user'
-  | 'bot';
+type EntityKey = 'badge' | 'comment' | 'post' | 'resort' | 'user' | 'bot';
 
 interface EntityKeyMap {
   badge?: Badge;
-  repo?: Repo;
   comment?: Comment;
   resort?: Resort;
   post?: Post;
@@ -55,7 +49,7 @@ export default class BaseClient extends EventEmitter<Events> {
       headers: {
         accept: '*/*',
         'content-type': 'application/json',
-        authorization: `Bearer BOT ${this.options.token}`,
+        authorization: `BOT ${this.options.token}`,
       },
       body: JSON.stringify({
         query,
@@ -76,9 +70,28 @@ export default class BaseClient extends EventEmitter<Events> {
     return extractor(data);
   }
 
-  getSelections(key: string) {
-    const sels = this.options.selections?.[key] || [];
+  getSelections(key: string): string {
+    const sels: string[] = this.options.selections?.[key] || [];
 
-    return sels;
+    const localRelations = relations[key];
+
+    const str = sels
+      .map((sel) => {
+        if (!(sel in localRelations)) return sel;
+        const otherType: string = localRelations[sel];
+
+        return !otherType.endsWith('[]')
+          ? this.getSelections(otherType)
+          : `${sel} { hasMore, total, items { ${this.getSelections(
+              otherType.slice(0, -2)
+            )} } }`;
+      })
+      .join(', ');
+
+    return str;
+  }
+
+  createQueryBuilder<T extends keyof Query>(resolver: T) {
+    return new QueryBuilder(this, resolver);
   }
 }

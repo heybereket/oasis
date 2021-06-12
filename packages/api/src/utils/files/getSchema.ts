@@ -3,6 +3,7 @@ import { joinRoot } from '@utils/common/rootPath';
 import { customAuthChecker } from '@utils/auth/authChecker';
 import { glob as _glob } from 'glob';
 import { promisify } from 'util';
+import { NotBanned } from '@root/middleware/NotBanned';
 
 const glob = promisify(_glob);
 
@@ -19,6 +20,7 @@ export const getSchema = async () => {
     resolvers,
     emitSchemaFile: joinRoot('../schema.gql'),
     authChecker: customAuthChecker,
+    globalMiddlewares: [NotBanned(false)],
   });
 };
 

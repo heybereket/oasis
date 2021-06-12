@@ -1,11 +1,11 @@
 import * as log from '@lib/log';
+import { exit } from '@lib/exit';
 
 type EnvValidationFn = (logError: boolean) => Promise<boolean>;
 
 const checkRequiredEnv = (
   envProp: string,
   required: boolean,
-  additionalValidation?: () => Promise<string | void>
 ): EnvValidationFn => {
   return async (logError: boolean) => {
     const isValid: boolean =
@@ -25,21 +25,6 @@ const checkRequiredEnv = (
       }
     }
 
-    // If the additionalValidation property is set, we'll call that to validate the env property.
-    if (additionalValidation) {
-      const additionalValidationError = await additionalValidation();
-      // The additionalValidation function returns a string (i.e. an error message) if there's an issue,
-      // or a 'nullish' (i.e. undefined) value if not.
-      // Hence if there is error, we will print it and return false to indicate the env check failed.
-      if (additionalValidationError) {
-        if (logError) log.error(`${additionalValidationError}`);
-
-        return false;
-      }
-    }
-
-    // Assuming all the other criteria has passed (i.e. we haven't returned false early), we know it's
-    // all good!
     return true;
   };
 };
@@ -60,20 +45,18 @@ const checkTwitterOAuthEnvs = (serviceName: string) => {
   ];
 };
 
-export default async function checkEnv(): Promise<boolean> {
+export const checkEnv = async (): Promise<boolean> => {
   for (const requiredEnvChecker of [
-    /* Redis and dependencies */
+    // Redis Connection URL
     checkRequiredEnv('OASIS_API_REDIS_URL', true),
 
-    /* OAuth Credentials */
-    ...checkOAuthEnvs('GITHUB'), // GitHub
-    ...checkTwitterOAuthEnvs('TWITTER'), // Twitter
-    ...checkOAuthEnvs('DISCORD'), // Discord
-    ...checkOAuthEnvs('GOOGLE'), // Google
-    ...checkOAuthEnvs('SPOTIFY'), // Google
+    // OAuth Credentials
+    ...checkOAuthEnvs('GITHUB'),
+    ...checkTwitterOAuthEnvs('TWITTER'),
+    ...checkOAuthEnvs('DISCORD'),
+    ...checkOAuthEnvs('GOOGLE'),
+    ...checkOAuthEnvs('SPOTIFY'),
 
-    /* Extra props */
-    checkRequiredEnv('OASIS_API_SESSION_SECRET', true),
-  ]) if (!(await requiredEnvChecker(true))) return false;
+  ]) if (!(await requiredEnvChecker(true))) return exit(1);
   return true;
-}
+};

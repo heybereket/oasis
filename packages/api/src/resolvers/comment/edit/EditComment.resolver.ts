@@ -1,9 +1,9 @@
 import { ApolloError } from 'apollo-server-errors';
 import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import Comment from '@entities/Comment';
 import { hasPermission } from '@utils/common/hasPermission';
-import { Role } from '@typings/Roles';
+import { Role } from '@enums/Roles';
 import EditCommentInput from './EditCommentInput';
 
 // @bcg-resolver(mutation, editComment, comment)

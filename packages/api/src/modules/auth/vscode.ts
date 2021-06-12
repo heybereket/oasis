@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { redisClient } from '@utils/redis';
+import { redisClient } from '@services/redis';
 import { sign } from 'jsonwebtoken';
 import User from '@entities/User';
 
@@ -24,7 +24,7 @@ export default function VSCodeAuth() {
       res.send({ authId });
     } catch (e) {
       console.log(e);
-      res.send('ERROR: ' + e.message);
+      res.send('ERROR: Error while granting access');
     }
   });
 

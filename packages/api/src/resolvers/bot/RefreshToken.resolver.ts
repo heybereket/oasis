@@ -1,5 +1,5 @@
 import User from '@entities/User';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import { NoBot } from '@utils/auth/NoBot';
 import { ApolloError } from 'apollo-server-express';
 import { v4 as uuidv4 } from 'uuid';

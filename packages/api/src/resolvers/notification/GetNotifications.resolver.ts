@@ -1,5 +1,5 @@
 import { Query, Resolver, Ctx, Authorized } from 'type-graphql';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import Notification from '@entities/Notification';
 import { NoBot } from '@utils/auth/NoBot';
 

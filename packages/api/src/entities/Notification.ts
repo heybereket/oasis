@@ -1,4 +1,4 @@
-import { NotificationType } from '@typings/Notifications';
+import { NotificationType } from '@enums/Notifications';
 import { Field, ID, ObjectType } from 'type-graphql';
 import {
   BaseEntity,
@@ -30,7 +30,7 @@ export default class Notification extends BaseEntity {
 
   @Field(() => User, { nullable: true })
   @ManyToOne(() => User, { nullable: true })
-  performer: Promise<User>;
+  performer?: Promise<User>;
 
   @Field()
   @Column()

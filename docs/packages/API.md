@@ -55,3 +55,12 @@ export default ormconfig;
 **Tips**
 1. If you want to rerun tests but you didn't make any changes in your code you will need to rerun `yarn test:api:setup`
 2. It's recommended to use the `--watch` flag when running `yarn test:api:setup` as it will auto-detect changes and restart the testing server for you
+
+## TypeORM Migrations
+```bash
+# Generate a Migration command via the TypeORM Cli
+$ yarn typeorm:generate_migration <name>
+
+# Run the Migration
+$ yarn typeorm:run_migrations
+```
