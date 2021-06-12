@@ -4,6 +4,7 @@ import { customAuthChecker } from '@utils/auth/authChecker';
 import { glob as _glob } from 'glob';
 import { promisify } from 'util';
 import { NotBanned } from '@root/middleware/NotBanned';
+import { RateLimit } from '@middleware/RateLimit';
 
 const glob = promisify(_glob);
 
@@ -20,7 +21,7 @@ export const createSchema = async () => {
     resolvers,
     emitSchemaFile: joinRoot('../schema.gql'),
     authChecker: customAuthChecker,
-    globalMiddlewares: [NotBanned(false)],
+    globalMiddlewares: [NotBanned(false), RateLimit()],
   });
 };
 
