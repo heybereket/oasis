@@ -6,8 +6,7 @@ import { createApolloServer } from '@root/apolloServer';
 import authRouter from '@modules/auth';
 import connectionRouter from '@modules/connections';
 import expressSession from 'express-session';
-import { redisClient } from '@service/redis';
-import connectRedis from 'connect-redis';
+import { redisStore, redisClient } from '@service/redis';
 import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
 import { sessionSecret, isProduction, PORT } from '@lib/constants';
@@ -17,7 +16,6 @@ import { joinRoot } from '@utils/common/rootPath';
 import { seedDatabase } from '@utils/testing/seedDatabase';
 
 config();
-const RedisStore = connectRedis(expressSession);
 
 export const initializeServer = async () => {
   try {
@@ -54,7 +52,7 @@ export const initializeServer = async () => {
     // Express-Session configuration
     app.use(
       expressSession({
-        store: new RedisStore({
+        store: new redisStore({
           client: redisClient,
         }),
         secret: sessionSecret,
