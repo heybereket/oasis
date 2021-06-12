@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 import { config } from 'dotenv';
 import express from 'express';
-import { ConnectionOptions, createConnection } from 'typeorm';
 import { createApolloServer } from '@root/apolloServer';
 import authRouter from '@modules/auth';
 import connectionRouter from '@modules/connections';
@@ -12,8 +11,7 @@ import checkEnv from '@utils/common/checkEnv';
 import { sessionSecret, isProduction, PORT } from '@lib/constants';
 import * as log from '@lib/log';
 import { checkNodeMajor } from '@lib/nodeMajor';
-import { joinRoot } from '@utils/common/rootPath';
-import { seedDatabase } from '@utils/testing/seedDatabase';
+import { getDatabase } from '@service/database';
 
 config();
 
@@ -29,23 +27,7 @@ export const initializeServer = async () => {
       app.set('trust proxy', 1);
     }
 
-    let ormconfig: ConnectionOptions;
-    if (process.env.TESTING === 'true') {
-      ormconfig = {
-        type: 'sqlite',
-        database: 'testing.sqlite',
-        entities: [joinRoot('./entities/*.*')],
-        synchronize: true,
-      };
-    } else {
-      ormconfig = require('@root/ormconfig').default;
-    }
-
-    await createConnection(ormconfig);
-
-    if (process.env.TESTING === 'true') {
-      seedDatabase();
-    }
+    await getDatabase();
 
     const apolloServer = await createApolloServer();
 
@@ -82,7 +64,7 @@ export const initializeServer = async () => {
     // Apollo GraphQL Server
     apolloServer.applyMiddleware({ app });
 
-    log.event("started api successfully");
+    log.event('api started successfully');
     return app;
   } catch (err) {
       log.error(err);
