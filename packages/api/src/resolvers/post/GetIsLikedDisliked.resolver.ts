@@ -1,5 +1,5 @@
 import Post from '@entities/Post';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import { Ctx, FieldResolver, Resolver, Root } from 'type-graphql';
 
 @Resolver(() => Post)

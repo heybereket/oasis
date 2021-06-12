@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { config } from 'dotenv';
 import express from 'express';
-import { createApolloServer } from '@root/apolloServer';
+import { createApolloServer } from '@root/server';
 import authRouter from '@modules/auth';
 import connectionRouter from '@modules/connections';
 import expressSession from 'express-session';

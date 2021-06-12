@@ -8,6 +8,7 @@ import {
 import User from '@entities/User';
 import { createContext } from '@utils/auth/createContext';
 import { getSchema } from '@utils/files/getSchema';
+import { complexityLimit } from '@lib/constants';
 
 export type ContextType = {
   hasAuth: boolean;
@@ -37,7 +38,7 @@ export const createApolloServer = async () => {
               ],
             });
 
-            if (complexity > 50) {
+            if (complexity > complexityLimit) {
               throw new ApolloError('Query complexity was bigger than 50!');
             }
           },

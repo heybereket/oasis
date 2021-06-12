@@ -1,6 +1,6 @@
 import { ApolloError } from 'apollo-server-errors';
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import Comment from '@entities/Comment';
 import Post from '@entities/Post';
 import NewCommentInput from './NewCommentInput';

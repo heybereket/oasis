@@ -1,6 +1,6 @@
 import User from '@entities/User';
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import { ApolloError } from 'apollo-server-errors';
 
 @Resolver()

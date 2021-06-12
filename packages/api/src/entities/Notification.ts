@@ -1,4 +1,4 @@
-import { NotificationType } from '@typings/Notifications';
+import { NotificationType } from '@enums/Notifications';
 import { Field, ID, ObjectType } from 'type-graphql';
 import {
   BaseEntity,

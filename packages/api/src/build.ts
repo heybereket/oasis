@@ -4,6 +4,7 @@ import * as log from '@lib/log';
 import { exit } from '@lib/exit';
 
 try {
+  log.event('compiling api...');
   getSchema();
   log.event('successfully compiled api');
   process.exit();

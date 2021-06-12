@@ -6,4 +6,6 @@ export enum NotificationType {
   Reply = 'REPLY',
 }
 
-registerEnumType(NotificationType, { name: 'NotificationType' });
+registerEnumType(NotificationType, {
+  name: 'NotificationType'
+});

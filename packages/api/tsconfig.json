@@ -7,7 +7,7 @@
       "@middleware/*": ["src/middleware/*"],
       "@modules/*": ["src/modules/*"],
       "@services/*": ["src/services/*"],
-      "@typings/*": ["src/typings/*"],
+      "@enums/*": ["src/enums/*"],
       "@utils/*": ["src/utils/*"],
       "@root/*": ["src/*"]
     },
