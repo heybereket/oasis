@@ -7,7 +7,7 @@ import {
 } from 'graphql-query-complexity';
 import User from '@entities/User';
 import { createContext } from '@utils/auth/createContext';
-import { getSchema } from '@utils/files/getSchema';
+import { createSchema } from '@utils/files/createSchema';
 import { complexityLimit } from '@lib/constants';
 
 export type ContextType = {
@@ -17,7 +17,7 @@ export type ContextType = {
 };
 
 export const createApolloServer = async () => {
-  const schema = await getSchema();
+  const schema = await createSchema();
 
   return new ApolloServer({
     schema,

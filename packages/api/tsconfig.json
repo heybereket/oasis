@@ -5,7 +5,7 @@
       "@entities/*": ["src/entities/*"],
       "@lib/*": ["src/lib/*"],
       "@middleware/*": ["src/middleware/*"],
-      "@modules/*": ["src/modules/*"],
+      "@auth/*": ["src/auth/*"],
       "@services/*": ["src/services/*"],
       "@enums/*": ["src/enums/*"],
       "@utils/*": ["src/utils/*"],
