@@ -8,7 +8,7 @@ import createQueryComplexityValidator, {
 import User from '@entities/User';
 import { createContext } from '@utils/auth/createContext';
 import { createSchema } from '@utils/files/createSchema';
-import { complexityLimit } from '@lib/constants';
+import { isDevelopment, complexityLimit } from '@lib/constants';
 
 export type ContextType = {
   hasAuth: boolean;
@@ -22,6 +22,9 @@ export const createApolloServer = async () => {
 
   return new ApolloServer({
     schema,
+    tracing: true,
+    playground: true,
+    introspection: isDevelopment,
     context: async ({ req }: { req: Request }) => createContext(req),
     plugins: [
       {
@@ -45,7 +48,5 @@ export const createApolloServer = async () => {
         }),
       },
     ],
-    playground: true,
-    introspection: true,
   });
 };
