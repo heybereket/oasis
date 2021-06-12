@@ -22,7 +22,6 @@ export const createApolloServer = async () => {
   return new ApolloServer({
     schema,
     tracing: true,
-    cacheControl: true,
     playground: true,
     introspection: isDevelopment,
     context: async ({ req }: { req: Request }) => createContext(req),
