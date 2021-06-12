@@ -5,13 +5,13 @@ import { createApolloServer } from '@root/apolloServer';
 import authRouter from '@modules/auth';
 import connectionRouter from '@modules/connections';
 import expressSession from 'express-session';
-import { redisStore, redisClient } from '@service/redis';
+import { redisStore, redisClient } from '@services/redis';
 import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';
 import { sessionSecret, isProduction, PORT } from '@lib/constants';
 import * as log from '@lib/log';
 import { checkNodeMajor } from '@lib/nodeMajor';
-import { getDatabase } from '@service/database';
+import { getDatabase } from '@services/database';
 
 config();
 
@@ -76,7 +76,7 @@ export const initializeServer = async () => {
       if (!app) process.exit(1);
 
       app.listen(PORT, () =>
-        log.ready(`Ready on http://localhost:${PORT}/graphql`)
+        log.ready(`ready on http://localhost:${PORT}/graphql`)
       );
     });
 }

@@ -6,7 +6,7 @@
       "@lib/*": ["src/lib/*"],
       "@middleware/*": ["src/middleware/*"],
       "@modules/*": ["src/modules/*"],
-      "@service/*": ["src/service/*"],
+      "@services/*": ["src/services/*"],
       "@typings/*": ["src/typings/*"],
       "@utils/*": ["src/utils/*"],
       "@root/*": ["src/*"]

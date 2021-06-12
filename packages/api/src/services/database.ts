@@ -23,7 +23,7 @@ export const getDatabase = async () => {
 
   try {
     await createConnection(ormconfig);
-    log.event('[api] connected to database');
+    log.event('connected to database');
   } catch(err) {
     log.error(`TypeORM connection error: ${err}`);
   }
