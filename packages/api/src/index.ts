@@ -6,7 +6,7 @@ import { createApolloServer } from '@root/apolloServer';
 import authRouter from '@modules/auth';
 import connectionRouter from '@modules/connections';
 import expressSession from 'express-session';
-import { redisClient } from '@utils/config/redis';
+import { redisClient } from '@service/redis';
 import connectRedis from 'connect-redis';
 import passport from 'passport';
 import checkEnv from '@utils/common/checkEnv';

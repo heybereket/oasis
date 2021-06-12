@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { redisClient } from '@utils/config/redis';
+import { redisClient } from '@service/redis';
 import { sign } from 'jsonwebtoken';
 import User from '@entities/User';
 
