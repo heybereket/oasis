@@ -12,6 +12,8 @@ import User from './User';
 import Post from './Post';
 import Comment from './Comment';
 import Resort from './Resort';
+import Question from './Question';
+import Answer from './Answer';
 
 @ObjectType()
 @Entity()
@@ -40,6 +42,14 @@ export default class Report extends BaseEntity {
   @ManyToOne(() => Post, (post) => post.filedReports)
   @Field(() => Post, { nullable: true })
   post?: Promise<Post>;
+
+  @ManyToOne(() => Question, (question) => question.filedReports)
+  @Field(() => Question, { nullable: true })
+  question?: Promise<Question>;
+
+  @ManyToOne(() => Answer, (answer) => answer.filedReports)
+  @Field(() => Answer, { nullable: true })
+  answer?: Promise<Answer>;
 
   @ManyToOne(() => Comment, (comment) => comment.filedReports)
   @Field(() => Comment, { nullable: true })

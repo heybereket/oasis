@@ -19,6 +19,8 @@ import { RelationalPagination } from '@utils/paginate/RelationalPagination';
 import Report from './Report';
 import Connection from './Connection';
 import { SelfOnly } from '@middleware/SelfOnly';
+import Question from './Question';
+import Answer from './Answer';
 
 @ObjectType()
 @Entity()
@@ -84,6 +86,14 @@ export default class User extends BaseEntity {
   @OneToMany(() => Post, (post) => post.author)
   posts?: Promise<Post[]>;
 
+  @RelationalPagination(() => Question, () => Answer, 'author')
+  @OneToMany(() => Question, (question) => question.author)
+  questions?: Promise<Question[]>;
+
+  @RelationalPagination(() => User, () => Answer, 'author')
+  @OneToMany(() => Answer, (answer) => answer.author)
+  answers?: Promise<Answer[]>;
+
   @OneToMany(() => Report, (report) => report.reporter)
   reportsMade: Promise<Report[]>;
 
@@ -109,6 +119,26 @@ export default class User extends BaseEntity {
   @ManyToMany(() => Comment, (comment) => comment.dislikers)
   @JoinTable()
   dislikedComments: Promise<Comment[]>;
+
+  @RelationalPagination(() => User, () => Question, 'upvoters')
+  @ManyToMany(() => Question, (question) => question.upvoters)
+  @JoinTable()
+  upvotedQuestions: Promise<Question[]>;
+
+  @RelationalPagination(() => User, () => Question, 'downvoters')
+  @ManyToMany(() => Question, (question) => question.downvoters)
+  @JoinTable()
+  downvotedQuestions: Promise<Question[]>;
+
+  @RelationalPagination(() => User, () => Answer, 'upvoters')
+  @ManyToMany(() => Answer, (answer) => answer.upvoters)
+  @JoinTable()
+  upvotedAnswers: Promise<Answer[]>;
+
+  @RelationalPagination(() => User, () => Answer, 'downvoters')
+  @ManyToMany(() => Answer, (answer) => answer.downvoters)
+  @JoinTable()
+  downvotedAnswers: Promise<Answer[]>;
 
   @OneToMany(() => Notification, (notification) => notification.user, {
     nullable: true,
