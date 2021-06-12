@@ -20,7 +20,7 @@ export const getDatabase = async () => {
 
   try {
     await createConnection(ormconfig);
-    log.event(`connected to ${ormconfig.type} database`);
+    log.event(`successfully connected to ${ormconfig.type} database`);
   } catch(err) {
     log.error(`failed to connect to database: ${err}`);
   }
