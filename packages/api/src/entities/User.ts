@@ -112,7 +112,7 @@ export default class User extends BaseEntity {
   @OneToMany(() => Notification, (notification) => notification.user, {
     nullable: true,
   })
-  notifications: Notification[];
+  notifications?: Notification[];
 
   @Field(() => [Resort], { nullable: true, complexity: 5 })
   @OneToMany(() => Resort, (resort) => resort.owner)

@@ -1,5 +1,6 @@
 import {
   BaseEntity,
+  BeforeUpdate,
   Column,
   Entity,
   ManyToMany,

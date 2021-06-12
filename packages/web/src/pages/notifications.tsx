@@ -1,30 +1,26 @@
-import {
-  GetCurrentUserDocument,
-  UpdateProfileInput,
-  useGetCurrentUserQuery,
-} from '@oasis-sh/react-gql';
-import { GetServerSideProps } from 'next';
-import { ssrRequest } from '@lib/common/ssrRequest';
-import { Navbar } from '@oasis-sh/ui';
+import { Navbar, NotificationBlock, NotificationWrapper } from '@oasis-sh/ui';
 import React from 'react';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { login, logout } from '@lib/auth/login';
+import { useGetNotificationsQuery, useMarkNotificationAsReadMutation } from '@oasis-sh/react-gql';
+import { useRouter } from 'next/router';
 
-interface NotificationPageProps {
-  initialApolloState: any;
-}
+interface NotificationPageProps {}
 
-const NotificationPage: React.FC<NotificationPageProps> = () => {
-  const origData = useGetCurrentUserQuery().data?.currentUser;
-  const initialValues: UpdateProfileInput = {
-    avatar: origData?.avatar,
-    bio: origData?.bio,
-    banner: origData?.banner,
-    name: origData?.name,
-    username: origData?.username,
-  };
-
+const NotificationPage: React.FC<NotificationPageProps> | any = () => {
   const { user, currentUserLoading } = useGetCurrentUser();
+  const { data, loading, error } = useGetNotificationsQuery();
+
+  const router = useRouter();
+
+  const [markNotificationAsRead] = useMarkNotificationAsReadMutation();
+  if (data?.getNotifications) data.getNotifications.forEach((notification) => {
+    markNotificationAsRead({ variables: { notificationId: notification.id } });
+  });
+
+  if (error) {
+    router.push('/');
+  }
 
   return (
     <>
@@ -34,21 +30,25 @@ const NotificationPage: React.FC<NotificationPageProps> = () => {
         login={login}
         logout={logout}
       />
+      <div className="flex flex-row justify-center mt-12 mb-4">
+        <div style={{ width: 573 }}>
+          <NotificationWrapper>
+            { loading && <h1 className="text-2xl">Loading...</h1> }
+            { data?.getNotifications ? data.getNotifications.map((value: any) =>
+              <NotificationBlock
+                key={value.id}
+                avatar={value.performer?.avatar}
+                name={value.performer?.name}
+                type={value.type}
+                username={value.performer?.username}
+                read={value.read}
+              />
+            ) : <h5>{"Uh, oh. Seems like you don't have any notifications. Too bad."}</h5>}
+          </NotificationWrapper>
+        </div>
+      </div>
     </>
   );
 };
-
-export const getServerSideProps: GetServerSideProps<NotificationPageProps> =
-  async ({ req }) => {
-    return {
-      props: {
-        initialApolloState: await ssrRequest(req, [
-          {
-            document: GetCurrentUserDocument,
-          },
-        ]),
-      },
-    };
-  };
 
 export default NotificationPage;

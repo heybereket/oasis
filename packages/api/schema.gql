@@ -96,16 +96,18 @@ input NewCommentInput {
 type Notification {
   createdAt: String!
   id: ID!
-  performer: User
+  performer: User!
   read: Boolean!
   type: NotificationType!
   user: User!
 }
 
 enum NotificationType {
+  Comment
   Follow
-  Like
-  Reply
+  LikeComment
+  LikePost
+  ReplyComment
 }
 
 type PaginatedCommentFromPost_postResponse {

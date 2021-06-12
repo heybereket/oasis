@@ -17,7 +17,7 @@ import { User } from '@oasis-sh/react-gql';
 import { redirect } from '../../utils/redirect';
 
 interface INavbarProps {
-  user?: User;
+  user?: User | undefined;
   currentUserLoading: boolean;
   login: (provider: string) => Promise<void>;
   logout: () => Promise<void>;
@@ -122,12 +122,14 @@ export const Navbar: React.FC<INavbarProps> = ({
               />
             </div>
           </form>
-          <a href="/notifications">
-            <Bell
-              className="hidden sm-50:block cursor-pointer"
-              onClick={() => setActiveTab(activeTabType.NOTIFICATIONS)}
-            />
-          </a>
+          { user &&
+            <a href="/notifications">
+              <Bell
+                className="hidden sm-50:block cursor-pointer"
+                onClick={() => setActiveTab(activeTabType.NOTIFICATIONS)}
+              />
+            </a>
+          }
           {/* Improved the logic here  */}
           {currentUserLoading || !user ? (
             <Button

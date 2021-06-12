@@ -1,0 +1,12 @@
+query getNotifications {
+  getNotifications {
+    read
+    id
+    performer {
+      name
+      avatar
+      username
+    }
+    type
+  }
+}
