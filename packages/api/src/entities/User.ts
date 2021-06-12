@@ -25,27 +25,27 @@ import { SelfOnly } from '@middleware/SelfOnly';
 export default class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
-  id: string;
+  id?: string;
 
   @Column()
   @Field()
-  avatar: string;
+  avatar?: string;
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  banner: string;
+  banner?: string;
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  username: string;
+  username?: string;
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  name: string;
+  name?: string;
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  bio: string;
+  bio?: string;
 
   @Column()
   @Field()
@@ -53,23 +53,23 @@ export default class User extends BaseEntity {
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  discord: string;
+  discord?: string;
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  github: string;
+  github?: string;
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  google: string;
+  google?: string;
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  twitter: string;
+  twitter?: string;
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  url: string;
+  url?: string;
 
   @Column()
   @Field()
@@ -82,7 +82,7 @@ export default class User extends BaseEntity {
   // @Field(() => [Post], { nullable: true, complexity: 5 })
   @RelationalPagination(() => User, () => Post, 'author')
   @OneToMany(() => Post, (post) => post.author)
-  posts: Promise<Post[]>;
+  posts?: Promise<Post[]>;
 
   @OneToMany(() => Report, (report) => report.reporter)
   reportsMade: Promise<Report[]>;
@@ -113,11 +113,11 @@ export default class User extends BaseEntity {
   @OneToMany(() => Notification, (notification) => notification.user, {
     nullable: true,
   })
-  notifications: Notification[];
+  notifications?: Notification[];
 
   @Field(() => [Resort], { nullable: true, complexity: 5 })
   @OneToMany(() => Resort, (resort) => resort.owner)
-  ownedResorts: Promise<Resort[]>;
+  ownedResorts?: Promise<Resort[]>;
 
   // @Field(() => [Comment], { nullable: true, complexity: 5 })
   @RelationalPagination(() => User, () => Comment, 'author')
@@ -131,22 +131,22 @@ export default class User extends BaseEntity {
 
   @Field({ nullable: true })
   @Column({ nullable: true })
-  isBot: boolean;
+  isBot?: boolean;
 
   @Field(() => User, { nullable: true })
   @ManyToOne(() => User, (user) => user.bots, { nullable: true })
-  botOwner: Promise<User>;
+  botOwner?: Promise<User>;
 
   // @Field(() => [User], { nullable: true })
   @RelationalPagination(() => User, () => User, 'botOwner')
   @OneToMany(() => User, (user) => user.botOwner, { nullable: true })
-  bots: Promise<User[]>;
+  bots?: Promise<User[]>;
 
   @Column({ nullable: true })
-  botTokenId: string;
+  botTokenId?: string;
 
   @Column({ nullable: true })
-  vscTokenCount: number;
+  vscTokenCount?: number;
 
   @ManyToMany(() => Resort, (resort) => resort.members)
   joinedResorts: Promise<Resort[]>;

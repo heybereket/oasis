@@ -30,7 +30,7 @@ export default class Comment extends BaseEntity {
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  lastEdited: string;
+  lastEdited?: string;
 
   @Field(() => Post, { complexity: 1 })
   @ManyToOne(() => Post, (post) => post.comments, { onDelete: 'CASCADE' })

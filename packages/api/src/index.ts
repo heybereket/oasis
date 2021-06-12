@@ -7,7 +7,7 @@ import connectionRouter from '@modules/connections';
 import expressSession from 'express-session';
 import { redisStore, redisClient } from '@services/redis';
 import passport from 'passport';
-import checkEnv from '@utils/common/checkEnv';
+import { checkEnv } from '@utils/common/checkEnv';
 import { sessionSecret, isProduction, PORT } from '@lib/constants';
 import * as log from '@lib/log';
 import { checkNodeMajor } from '@lib/nodeMajor';
@@ -18,6 +18,7 @@ config();
 export const initializeServer = async () => {
   try {
     await checkEnv();
+    await getDatabase();
     checkNodeMajor(15);
 
     const app = express();
@@ -26,8 +27,6 @@ export const initializeServer = async () => {
     if (process.env.OASIS_API_TRUST_PROXY === 'true') {
       app.set('trust proxy', 1);
     }
-
-    await getDatabase();
 
     const apolloServer = await createApolloServer();
 

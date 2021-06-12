@@ -35,19 +35,19 @@ export default class Report extends BaseEntity {
 
   @ManyToOne(() => User, (user) => user.filedReports)
   @Field(() => User, { nullable: true })
-  user: Promise<User>;
+  user?: Promise<User>;
 
   @ManyToOne(() => Post, (post) => post.filedReports)
   @Field(() => Post, { nullable: true })
-  post: Promise<Post>;
+  post?: Promise<Post>;
 
   @ManyToOne(() => Comment, (comment) => comment.filedReports)
   @Field(() => Comment, { nullable: true })
-  comment: Promise<Comment>;
+  comment?: Promise<Comment>;
 
   @ManyToOne(() => Resort, (resort) => resort.filedReports)
   @Field(() => Resort, { nullable: true })
-  resort: Promise<Resort>;
+  resort?: Promise<Resort>;
 
   @Column({ nullable: true })
   @Field({ nullable: true })

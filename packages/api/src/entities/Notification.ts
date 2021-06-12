@@ -30,7 +30,7 @@ export default class Notification extends BaseEntity {
 
   @Field(() => User, { nullable: true })
   @ManyToOne(() => User, { nullable: true })
-  performer: Promise<User>;
+  performer?: Promise<User>;
 
   @Field()
   @Column()
