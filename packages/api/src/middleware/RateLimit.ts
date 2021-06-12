@@ -3,8 +3,7 @@ import { redisClient } from '@services/redis';
 import { promisify } from 'util';
 import { MiddlewareFn } from 'type-graphql';
 import { ApolloError } from 'apollo-server-express';
-
-const ONE_HOUR = 60 * 60;
+import { rateLimitTime } from '@lib/constants';
 
 export const RateLimit: () => MiddlewareFn<ContextType> =
   (limitForAnonUser = 500, limitForUser = 500) =>
@@ -30,7 +29,7 @@ export const RateLimit: () => MiddlewareFn<ContextType> =
       );
     } else if (Number.isNaN(old)) {
       // Redis doesnt use promise based calls
-      await promisify(redisClient.expire).bind(redisClient)(key, ONE_HOUR);
+      await promisify(redisClient.expire).bind(redisClient)(key, rateLimitTime);
     }
 
     return next();
