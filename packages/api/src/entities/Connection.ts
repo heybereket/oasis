@@ -13,7 +13,7 @@ export default class Connection extends BaseEntity {
   id: string;
 
   @Column()
-  token: string;
+  accessToken: string;
 
   @Column()
   refreshToken: string;
