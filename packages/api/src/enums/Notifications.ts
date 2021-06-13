@@ -9,5 +9,5 @@ export enum NotificationType {
 }
 
 registerEnumType(NotificationType, {
-  name: 'NotificationType'
+  name: 'NotificationType',
 });

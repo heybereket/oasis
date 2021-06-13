@@ -22,7 +22,9 @@ export const ContributorsPage: React.FC = () => {
       <div className="container mx-auto">
         <div className="text-center">
           <h1>Oasis Contributors</h1>
-          <h4 className="text-gray-700">Thank you to everyone that has contributed to Oasis {'<3'}</h4>
+          <h4 className="text-gray-700">
+            Thank you to everyone that has contributed to Oasis {'<3'}
+          </h4>
         </div>
         <Contributors />
       </div>

@@ -107,4 +107,3 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 };
 
 export default Search;
-

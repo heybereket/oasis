@@ -2,7 +2,10 @@ import { Navbar, NotificationBlock, NotificationWrapper } from '@oasis-sh/ui';
 import React from 'react';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { login, logout } from '@lib/auth/login';
-import { useGetNotificationsQuery, useMarkNotificationAsReadMutation } from '@oasis-sh/react-gql';
+import {
+  useGetNotificationsQuery,
+  useMarkNotificationAsReadMutation,
+} from '@oasis-sh/react-gql';
 import { useRouter } from 'next/router';
 
 interface NotificationPageProps {}
@@ -14,9 +17,13 @@ const NotificationPage: React.FC<NotificationPageProps> | any = () => {
   const router = useRouter();
 
   const [markNotificationAsRead] = useMarkNotificationAsReadMutation();
-  if (data?.getNotifications) data.getNotifications.forEach((notification) => {
-    markNotificationAsRead({ variables: { notificationId: notification.id } });
-  });
+  if (data?.getNotifications) {
+    data.getNotifications.forEach((notification) => {
+      markNotificationAsRead({
+        variables: { notificationId: notification.id },
+      });
+    });
+  }
 
   if (error) {
     router.push('/');
@@ -33,17 +40,25 @@ const NotificationPage: React.FC<NotificationPageProps> | any = () => {
       <div className="flex flex-row justify-center mt-12 mb-4">
         <div style={{ width: 573 }}>
           <NotificationWrapper>
-            { loading && <h1 className="text-2xl">Loading...</h1> }
-            { data?.getNotifications ? data.getNotifications.map((value: any) =>
-              <NotificationBlock
-                key={value.id}
-                avatar={value.performer?.avatar}
-                name={value.performer?.name}
-                type={value.type}
-                username={value.performer?.username}
-                read={value.read}
-              />
-            ) : <h5>{"Uh, oh. Seems like you don't have any notifications. Too bad."}</h5>}
+            {loading && <h1 className="text-2xl">Loading...</h1>}
+            {data?.getNotifications ? (
+              data.getNotifications.map((value: any) => (
+                <NotificationBlock
+                  key={value.id}
+                  avatar={value.performer?.avatar}
+                  name={value.performer?.name}
+                  type={value.type}
+                  username={value.performer?.username}
+                  read={value.read}
+                />
+              ))
+            ) : (
+              <h5>
+                {
+                  "Uh, oh. Seems like you don't have any notifications. Too bad."
+                }
+              </h5>
+            )}
           </NotificationWrapper>
         </div>
       </div>
