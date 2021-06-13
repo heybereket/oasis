@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
-  purge: ['./src/**/*.tsx', '../ui/**/*.tsx'],
+  purge: ['./src/**/*.{tsx,jsx,js,ts}', '../ui/**/*.{tsx,jsx,js,ts}'],
   theme: {
     flexShrink: {
       0: 0,
@@ -42,8 +42,7 @@ module.exports = {
         580: '580px',
         530: '530px',
         200: '200px',
-        'nav': '112rem'
-
+        nav: '112rem',
       },
       backgroundColor: {
         resortSecondary: '#141923',
