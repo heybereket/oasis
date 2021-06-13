@@ -23,6 +23,7 @@ export const createApolloServer = async () => {
   return new ApolloServer({
     schema,
     tracing: true,
+    introspection: true,
     playground: {
       settings: {
         ['request.credentials']: 'same-origin',
