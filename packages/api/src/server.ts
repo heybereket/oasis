@@ -7,7 +7,8 @@ import {
 } from 'graphql-query-complexity';
 import User from '@entities/User';
 import { createContext } from '@utils/auth/createContext';
-import { getSchema } from '@utils/files/getSchema';
+import { createSchema } from '@utils/files/createSchema';
+import { isDevelopment, complexityLimit } from '@lib/constants';
 
 export type ContextType = {
   hasAuth: boolean;
@@ -16,12 +17,14 @@ export type ContextType = {
 };
 
 export const createApolloServer = async () => {
-  const schema = await getSchema();
+  const schema = await createSchema();
 
   return new ApolloServer({
     schema,
+    tracing: true,
+    playground: true,
+    introspection: isDevelopment,
     context: async ({ req }: { req: Request }) => createContext(req),
-    // validationRules: [],
     plugins: [
       {
         requestDidStart: () => ({
@@ -37,14 +40,12 @@ export const createApolloServer = async () => {
               ],
             });
 
-            if (complexity > 50) {
+            if (complexity > complexityLimit) {
               throw new ApolloError('Query complexity was bigger than 50!');
             }
           },
         }),
       },
     ],
-    playground: true,
-    introspection: true,
   });
 };

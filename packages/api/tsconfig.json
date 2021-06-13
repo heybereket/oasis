@@ -4,8 +4,10 @@
     "paths": {
       "@entities/*": ["src/entities/*"],
       "@lib/*": ["src/lib/*"],
-      "@modules/*": ["src/modules/*"],
-      "@typings/*": ["src/typings/*"],
+      "@middleware/*": ["src/middleware/*"],
+      "@auth/*": ["src/auth/*"],
+      "@services/*": ["src/services/*"],
+      "@enums/*": ["src/enums/*"],
       "@utils/*": ["src/utils/*"],
       "@root/*": ["src/*"]
     },

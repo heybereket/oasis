@@ -8,4 +8,6 @@ export enum NotificationType {
   ReplyComment = 'REPLY_COMMENT',
 }
 
-registerEnumType(NotificationType, { name: 'NotificationType' });
+registerEnumType(NotificationType, {
+  name: 'NotificationType'
+});

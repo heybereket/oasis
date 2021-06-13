@@ -1,6 +1,6 @@
 import Resort from '@entities/Resort';
 import User from '@entities/User';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import {
   Arg,
   Authorized,

@@ -1,7 +1,7 @@
 import { Arg, Resolver, Authorized, Ctx, Mutation } from 'type-graphql';
 import Resort from '@entities/Resort';
 import { ApolloError } from 'apollo-server-errors';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 
 // @bcg-resolver(mutation, joinResort, resort)
 

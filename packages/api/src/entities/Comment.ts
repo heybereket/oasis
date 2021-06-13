@@ -6,13 +6,15 @@ import {
   ManyToOne,
   ManyToMany,
   AfterInsert,
+  OneToMany,
 } from 'typeorm';
 import { Field, ID, ObjectType } from 'type-graphql';
 import Post from '@entities/Post';
 import User from '@entities/User';
 import { RelationalPagination } from '@utils/paginate/RelationalPagination';
 import { createNotification } from '@utils/index';
-import { NotificationType } from '@typings/Notifications';
+import { NotificationType } from '@enums/Notifications';
+import Report from './Report';
 
 @ObjectType()
 @Entity()
@@ -31,7 +33,7 @@ export default class Comment extends BaseEntity {
 
   @Column({ nullable: true })
   @Field({ nullable: true })
-  lastEdited: string;
+  lastEdited?: string;
 
   @Field(() => Post, { complexity: 1 })
   @ManyToOne(() => Post, (post) => post.comments, { onDelete: 'CASCADE' })
@@ -48,6 +50,9 @@ export default class Comment extends BaseEntity {
   @RelationalPagination(() => Comment, () => User, 'dislikedComments')
   @ManyToMany(() => User, (user) => user.dislikedComments)
   dislikers: Promise<User[]>;
+
+  @OneToMany(() => Report, (report) => report.comment)
+  filedReports: Promise<Report[]>;
 
   @AfterInsert()
   async notification() {
