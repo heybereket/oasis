@@ -4,8 +4,7 @@ import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 interface Props {
   open: boolean;
-  closeHandler: any;
-  children?: React.ReactNode;
+  closeHandler: () => void;
   className?: string;
 }
 

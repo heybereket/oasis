@@ -10,6 +10,7 @@ import {
   useDeletePostMutation,
   useGetPostQuery,
   useLikeDislikePostMutation,
+  useReportEntityMutation,
 } from '@oasis-sh/react-gql';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { SEO } from '@shared/SEO';
@@ -25,6 +26,7 @@ export const PostPage: React.FC<Props> = ({ vars }) => {
   const postData = useGetPostQuery({ variables: vars }).data?.getPost;
   const [deletePost] = useDeletePostMutation();
   const [likeDislikePost] = useLikeDislikePostMutation();
+  const [reportPost] = useReportEntityMutation();
 
   return (
     <>
@@ -63,6 +65,7 @@ export const PostPage: React.FC<Props> = ({ vars }) => {
               },
             })
           }
+          reportPost={reportPost}
         />
       </div>
     </>

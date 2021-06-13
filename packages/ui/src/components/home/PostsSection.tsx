@@ -1,7 +1,10 @@
 import React from 'react';
 import { Post } from '../post/Post';
 import { CreatePostInput } from '../home/CreatePostInput';
-import { DeletePostMutationHookResult } from '@oasis-sh/react-gql';
+import {
+  DeletePostMutationHookResult,
+  ReportEntityMutationHookResult,
+} from '@oasis-sh/react-gql';
 import { InfiniteScrollWrapper } from '../shared/InfiniteScrollWrapper';
 
 type DeleteMutation = DeletePostMutationHookResult[0];
@@ -15,7 +18,9 @@ interface Props {
   deleteMutation: DeleteMutation;
   fetch: (limit: number, offset: number) => Promise<any>;
   amountPerFetch: number;
+  reportPost?: ReportEntityMutationHookResult[0];
 }
+
 export const PostsSection: React.FC<Props> = ({
   createPost,
   likeDislikePost,
@@ -25,6 +30,7 @@ export const PostsSection: React.FC<Props> = ({
   deleteMutation,
   fetch,
   amountPerFetch,
+  reportPost,
 }) => {
   return (
     <>
@@ -75,6 +81,7 @@ export const PostsSection: React.FC<Props> = ({
                 });
                 window.location.reload();
               }}
+              reportPost={reportPost}
             />
           </div>
         )}
