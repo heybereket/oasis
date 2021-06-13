@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { DropdownItem } from '../navbar/DropdownItem';
 import { Comment as TComment, Role, User } from '@oasis-sh/react-gql';
-import { formatDate } from '../../lib/format';
+import { formatDate } from '@oasis-sh/utils';
 import { ThreeDots } from '../../icons/other/ThreeDots';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import { Info, Trash, SmallDownArrow, SmallUpArrow } from '../../icons';
