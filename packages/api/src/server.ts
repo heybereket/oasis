@@ -1,6 +1,6 @@
 import { ApolloError, ApolloServer } from 'apollo-server-express';
 import type { Request } from 'express';
-import {
+import createQueryComplexityValidator, {
   fieldExtensionsEstimator,
   simpleEstimator,
   getComplexity,
@@ -8,12 +8,13 @@ import {
 import User from '@entities/User';
 import { createContext } from '@utils/auth/createContext';
 import { createSchema } from '@utils/files/createSchema';
-import { isDevelopment, complexityLimit } from '@lib/constants';
+import { complexityLimit } from '@lib/constants';
 
 export type ContextType = {
   hasAuth: boolean;
   uid: string;
   getUser: () => Promise<User>;
+  req: Request;
 };
 
 export const createApolloServer = async () => {
@@ -22,8 +23,12 @@ export const createApolloServer = async () => {
   return new ApolloServer({
     schema,
     tracing: true,
-    playground: true,
-    introspection: isDevelopment,
+    introspection: true,
+    playground: {
+      settings: {
+        ['request.credentials']: 'same-origin',
+      },
+    },
     context: async ({ req }: { req: Request }) => createContext(req),
     plugins: [
       {

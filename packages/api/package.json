@@ -16,8 +16,8 @@
     "db:setup": "node dist/test-utils/setup.js",
     "test": "jest -c ./dist/jest.config.js",
     "clean": "rimraf dist",
-    "prettify": "prettier --write src/{.,lib,entities,modules,resolvers,utils}/*.ts",
-    "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
+    "prettify": "prettier --write src/{.,auth,entities,enums,middleware,resolvers,services,utils}/*.ts",
+    "lint": "yarn run eslint . --ext ts"
   },
   "prettier": "@oasis-sh/prettier-config",
   "eslintConfig": {
