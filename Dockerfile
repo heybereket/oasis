@@ -10,8 +10,8 @@ COPY ./yarn.lock ./yarn.lock
 
 COPY ./packages/api/package.json ./packages/api/package.json
 COPY ./packages/react-gql/package.json ./packages/react-gql/package.json
-COPY ./packages/ui/package.json ./packages/ui/package.json
 COPY ./packages/utils/package.json ./packages/utils/package.json
+COPY ./packages/ui/package.json ./packages/ui/package.json
 COPY ./packages/web/package.json ./packages/web/package.json
 
 
@@ -24,11 +24,11 @@ RUN yarn workspace @oasis-sh/api build
 COPY ./packages/react-gql ./packages/react-gql
 RUN yarn workspace @oasis-sh/react-gql build
 
-COPY ./packages/ui ./packages/ui
-RUN yarn workspace @oasis-sh/ui build
-
 COPY ./packages/utils ./packages/utils
 RUN yarn workspace @oasis-sh/utils build
+
+COPY ./packages/ui ./packages/ui
+RUN yarn workspace @oasis-sh/ui build
 
 COPY ./packages/web ./packages/web
 RUN yarn workspace @oasis-sh/web build
