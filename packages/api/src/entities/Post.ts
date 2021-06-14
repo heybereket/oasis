@@ -63,4 +63,8 @@ export default class Post extends BaseEntity {
 
   @OneToMany(() => Report, (report) => report.post)
   filedReports: Promise<Report[]>;
+
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  imageName?: string;
 }
