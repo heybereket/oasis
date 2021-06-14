@@ -3858,7 +3858,6 @@ __metadata:
     express-fileupload: ^1.2.1
     express-session: ^1.17.2
     graphql-query-complexity: ^0.8.1
-    graphql-upload: ^12.0.0
     jest: ^27.0.4
     jsonwebtoken: ^8.5.1
     nanoid: ^3.1.23
@@ -12867,13 +12866,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-capacitor@npm:^6.2.0":
-  version: 6.2.0
-  resolution: "fs-capacitor@npm:6.2.0"
-  checksum: 015a34427d7b83eb484d4d7514f0cfc6e6be66abc91f4da11f1171a195250b5ebb22894011b4f074cbad507b5d82486896371186158eb1ecefaa2156e7a6ff50
-  languageName: node
-  linkType: hard
-
 "fs-extra@npm:8.1.0, fs-extra@npm:^8.1.0":
   version: 8.1.0
   resolution: "fs-extra@npm:8.1.0"
@@ -13570,21 +13562,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"graphql-upload@npm:^12.0.0":
-  version: 12.0.0
-  resolution: "graphql-upload@npm:12.0.0"
-  dependencies:
-    busboy: ^0.3.1
-    fs-capacitor: ^6.2.0
-    http-errors: ^1.8.0
-    isobject: ^4.0.0
-    object-path: ^0.11.5
-  peerDependencies:
-    graphql: 0.13.1 - 15
-  checksum: cbfaa3276aa4d9e3513b030103c66a99b157976baaf717e54fe587f140218cc6906c21caf784da46ae13341d8d1477c4fbcc2596ca69e81f2a240bb5df6798a6
-  languageName: node
-  linkType: hard
-
 "graphql-ws@npm:^4.4.1":
   version: 4.5.1
   resolution: "graphql-ws@npm:4.5.1"
@@ -14065,7 +14042,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"http-errors@npm:^1.7.3, http-errors@npm:^1.8.0":
+"http-errors@npm:^1.7.3":
   version: 1.8.0
   resolution: "http-errors@npm:1.8.0"
   dependencies:
@@ -15308,13 +15285,6 @@ fsevents@^1.2.7:
   version: 3.0.1
   resolution: "isobject@npm:3.0.1"
   checksum: b537a9ccdd8d40ec552fe7ff5db3731f1deb77581adf9beb8ae812f8d08acfa0e74b193159ac50fb01084d7ade06d114077f984e21b8340531241bf85be9a0ab
-  languageName: node
-  linkType: hard
-
-"isobject@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "isobject@npm:4.0.0"
-  checksum: bfc8e8f6e2bebf7d85e4bec91497e24f87e6b33576d03e223ff6ce1679f5a7dc6f357fdb3e1c6c6d85fc6f0feac26acca9e9e7b0ab473ea60fa3f838c203ee01
   languageName: node
   linkType: hard
 
@@ -19092,7 +19062,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"object-path@npm:^0.11.4, object-path@npm:^0.11.5":
+"object-path@npm:^0.11.4":
   version: 0.11.5
   resolution: "object-path@npm:0.11.5"
   checksum: a2be57f65eb247161763280e857ddbafcfbb41ad7cfcfb0a78aca2e8adb990a7b5afe6b182c20baf0e218e541ec75c1807fd04d50e3049920c2ec65e6eb9c900
