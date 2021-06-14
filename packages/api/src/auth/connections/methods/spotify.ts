@@ -59,6 +59,15 @@ export default (): Router => {
       res.status(400).send('Error');
     }
   });
+  router.get('/currentplayingtrack', async (req, res) => {
+    try {
+      const result = await spotifyApi.getMyCurrentPlayingTrack();
+      console.log(result.body);
+      res.status(200).send(result.body);
+    } catch (err) {
+      res.status(400).send(err);
+    }
+  });
 
   return router;
 };
