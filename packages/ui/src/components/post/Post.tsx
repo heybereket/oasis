@@ -7,7 +7,7 @@ import {
   User,
   ReportEntityMutationHookResult,
 } from '@oasis-sh/react-gql';
-import { formatDate, formatNumber } from '@oasis-sh/utils';
+import { formatDate, formatNumber } from '@oasis-sh/shared';
 import { ThreeDots } from '../../icons/other/ThreeDots';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import {

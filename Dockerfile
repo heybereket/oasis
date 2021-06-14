@@ -24,8 +24,8 @@ RUN yarn workspace @oasis-sh/api build
 COPY ./packages/react-gql ./packages/react-gql
 RUN yarn workspace @oasis-sh/react-gql build
 
-COPY ./packages/utils ./packages/utils
-RUN yarn workspace @oasis-sh/utils build
+COPY ./packages/shared ./packages/shared
+RUN yarn workspace @oasis-sh/shared build
 
 COPY ./packages/ui ./packages/ui
 RUN yarn workspace @oasis-sh/ui build

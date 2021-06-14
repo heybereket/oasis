@@ -4046,6 +4046,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@oasis-sh/shared@workspace:packages/shared":
+  version: 0.0.0-use.local
+  resolution: "@oasis-sh/shared@workspace:packages/shared"
+  dependencies:
+    "@types/eslint": ^7.2.13
+    "@types/prettier": ^2.3.0
+    eslint: ^7.28.0
+    moment: ^2.29.1
+    prettier: ^2.3.1
+    typescript: 4.2.4
+  peerDependencies:
+    react: ^17.0.2
+    react-dom: ^17.0.2
+  languageName: unknown
+  linkType: soft
+
 "@oasis-sh/ui@workspace:packages/ui":
   version: 0.0.0-use.local
   resolution: "@oasis-sh/ui@workspace:packages/ui"
@@ -4077,22 +4093,6 @@ __metadata:
     rollup-plugin-dts: ^3.0.2
     rollup-plugin-peer-deps-external: ^2.2.4
     rollup-plugin-typescript2: ^0.30.0
-    typescript: 4.2.4
-  peerDependencies:
-    react: ^17.0.2
-    react-dom: ^17.0.2
-  languageName: unknown
-  linkType: soft
-
-"@oasis-sh/utils@workspace:packages/utils":
-  version: 0.0.0-use.local
-  resolution: "@oasis-sh/utils@workspace:packages/utils"
-  dependencies:
-    "@types/eslint": ^7.2.13
-    "@types/prettier": ^2.3.0
-    eslint: ^7.28.0
-    moment: ^2.29.1
-    prettier: ^2.3.1
     typescript: 4.2.4
   peerDependencies:
     react: ^17.0.2
