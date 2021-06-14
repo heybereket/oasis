@@ -16,8 +16,8 @@
     "db:setup": "node dist/test-utils/setup.js",
     "test": "jest -c ./dist/jest.config.js",
     "clean": "rimraf dist",
-    "prettify": "prettier --write src/{.,lib,entities,modules,resolvers,utils}/*.ts",
-    "lint": "yarn run eslint . --ext ts --ext tsx --ext js"
+    "prettify": "prettier --write src/{.,auth,entities,enums,middleware,resolvers,services,utils}/*.ts",
+    "lint": "yarn run eslint . --ext ts"
   },
   "prettier": "@oasis-sh/prettier-config",
   "eslintConfig": {
@@ -42,6 +42,7 @@
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
+    "aws-sdk": "^2.927.0",
     "chalk": "^4.1.1",
     "concurrently": "^6.2.0",
     "cross-fetch": "^3.1.4",

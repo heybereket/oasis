@@ -1,5 +1,6 @@
 import React from 'react';
 import { RightArrow } from '../../icons';
+import { CustomLink } from '../../providers/CustomLink';
 type Props = {
   user: any;
   currentUserLoading: boolean;
@@ -33,13 +34,15 @@ export const ProfileSection: React.FC<Props> = ({
               <p>Your bio has not been set.</p>
             )}
           </div>
-          <a
+          <CustomLink
             className="flex items-center space-x-0.5 mt-2"
             href={`/u/${user?.username}`}
           >
-            <p className="font-bold text-lg text-primary">View Profile</p>
-            <RightArrow className="text-primary" />
-          </a>
+            <>
+              <p className="font-bold text-lg text-primary">View Profile</p>
+              <RightArrow className="text-primary" />
+            </>
+          </CustomLink>
         </>
       )}
     </>

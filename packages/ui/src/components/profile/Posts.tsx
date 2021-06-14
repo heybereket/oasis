@@ -6,6 +6,7 @@ import {
   useLikeDislikePostMutation,
   User,
   useDeletePostMutation,
+  ReportEntityMutationHookResult,
 } from '@oasis-sh/react-gql';
 import React from 'react';
 import Post from '../post/Post';
@@ -20,6 +21,7 @@ type Props = {
   deletePost: ReturnType<typeof useDeletePostMutation>[0];
   markdown: (text: string) => JSX.Element;
   currentUser?: User;
+  reportPost?: ReportEntityMutationHookResult[0];
 };
 
 export const Posts: React.FC<Props> = ({
@@ -29,6 +31,7 @@ export const Posts: React.FC<Props> = ({
   likeDislikePost,
   currentUser,
   deletePost,
+  reportPost,
 }) => {
   return (
     <>
@@ -73,6 +76,7 @@ export const Posts: React.FC<Props> = ({
                 });
                 window.location.reload();
               }}
+              reportPost={reportPost}
             />
           </div>
         ))}

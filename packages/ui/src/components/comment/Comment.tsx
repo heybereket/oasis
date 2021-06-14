@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { DropdownItem } from '../navbar/DropdownItem';
 import { Comment as TComment, Role, User } from '@oasis-sh/react-gql';
-import { formatDate } from '../../lib/format';
+import { formatDate } from '@oasis-sh/shared';
 import { ThreeDots } from '../../icons/other/ThreeDots';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import { Info, Trash, SmallDownArrow, SmallUpArrow } from '../../icons';
+import { CustomLink } from '../../providers/CustomLink';
 
 interface Props {
   comment: TComment;
@@ -55,7 +56,7 @@ export const Comment: React.FC<Props> = ({
     >
       <div>
         <header className="flex items-center space-x-4">
-          <a
+          <CustomLink
             className="w-11 h-11 flex-none"
             href={`/user/${commentData.author.username}`}
           >
@@ -65,16 +66,16 @@ export const Comment: React.FC<Props> = ({
               loading="lazy"
               className="flex-none bg-gray-600 rounded-full w-11 h-11"
             />
-          </a>
+          </CustomLink>
           <div className="flex items-center justify-between w-full">
-            <a href={`/user/${commentData.author.username}`}>
+            <CustomLink href={`/user/${commentData.author.username}`}>
               <div>
                 <p className="text-xl font-bold">{commentData.author.name}</p>
                 <p className="-mt-1 text-light font-bold">
                   @{commentData.author.username}
                 </p>
               </div>
-            </a>
+            </CustomLink>
             <div className="flex flex-row">
               <div className="flex flex-col items-center">
                 <SmallUpArrow

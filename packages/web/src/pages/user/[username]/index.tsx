@@ -15,6 +15,7 @@ import {
   useDeletePostMutation,
   useGetUsersCommentsLazyQuery,
   useLikeDislikeCommentMutation,
+  useReportEntityMutation,
 } from '@oasis-sh/react-gql';
 import {
   About,
@@ -94,6 +95,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
     },
   });
 
+  const [reportPost] = useReportEntityMutation();
+
   const CenterColumnComponent: React.FC = () => {
     switch (tabState) {
       case CenterColumnTabState.AboutTab:
@@ -125,6 +128,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
               likeDislikePost={likeDislikePost}
               currentUser={user}
               deletePost={deletePost}
+              reportPost={reportPost}
             />
           );
         }
@@ -144,6 +148,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
               likedPosts={likedPostsData.data?.getUserByName}
               likeDislikePost={likeDislikePost}
               deletePost={deletePost}
+              reportPost={reportPost}
             />
           );
         }
@@ -371,4 +376,3 @@ export const getServerSideProps: GetServerSideProps = async ({
 };
 
 export default Profile;
-

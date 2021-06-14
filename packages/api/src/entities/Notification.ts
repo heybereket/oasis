@@ -1,6 +1,7 @@
 import { NotificationType } from '@enums/Notifications';
 import { Field, ID, ObjectType } from 'type-graphql';
 import {
+  AfterInsert,
   BaseEntity,
   Column,
   Entity,
@@ -25,14 +26,19 @@ export default class Notification extends BaseEntity {
   type: NotificationType;
 
   @Field(() => User)
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, (user) => user.notifications)
   user: Promise<User>;
 
-  @Field(() => User, { nullable: true })
-  @ManyToOne(() => User, { nullable: true })
-  performer?: Promise<User>;
+  @Field(() => User)
+  @ManyToOne(() => User)
+  performer: Promise<User>;
 
   @Field()
   @Column()
   read: boolean;
+
+  @AfterInsert()
+  x() {
+    console.log(this);
+  }
 }

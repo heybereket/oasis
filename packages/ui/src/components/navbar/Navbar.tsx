@@ -15,9 +15,10 @@ import React, { useRef, useState } from 'react';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import { User } from '@oasis-sh/react-gql';
 import { redirect } from '../../utils/redirect';
+import { CustomLink } from '../../providers/CustomLink';
 
 interface INavbarProps {
-  user?: User;
+  user?: User | undefined;
   currentUserLoading: boolean;
   login: (provider: string) => Promise<void>;
   logout: () => Promise<void>;
@@ -57,16 +58,16 @@ export const Navbar: React.FC<INavbarProps> = ({
       <nav className="max-w-nav w-full mx-auto sticky top-0 z-50 bg-gray-900 flex items-center justify-between px-4 sm-50:px-6 md:px-8 py-4">
         <div className="flex justify-items-start items-center">
           <div className="mr-3">
-            <a href="/" className="block md:hidden">
+            <CustomLink href="/" className="block md:hidden">
               <img src="/static/Logo.svg" alt="Oasis Logo" className="w-9" />
-            </a>
-            <a href="/" className="hidden md:block">
+            </CustomLink>
+            <CustomLink href="/" className="hidden md:block">
               <img
                 src="/static/OasisLogo.svg"
                 alt="Oasis Logo"
                 className="w-28 mr-8 pb-1"
               />
-            </a>
+            </CustomLink>
           </div>
 
           <div className="hidden md:flex space-x-3 h-full absolute top-0 md:left-48 ">
@@ -122,12 +123,14 @@ export const Navbar: React.FC<INavbarProps> = ({
               />
             </div>
           </form>
-          <a href="/notifications">
-            <Bell
-              className="hidden sm-50:block cursor-pointer"
-              onClick={() => setActiveTab(activeTabType.NOTIFICATIONS)}
-            />
-          </a>
+          {user && (
+            <CustomLink href="/notifications">
+              <Bell
+                className="hidden sm-50:block cursor-pointer"
+                onClick={() => setActiveTab(activeTabType.NOTIFICATIONS)}
+              />
+            </CustomLink>
+          )}
           {/* Improved the logic here  */}
           {currentUserLoading || !user ? (
             <Button
@@ -157,9 +160,9 @@ export const Navbar: React.FC<INavbarProps> = ({
                 {isDropdownActive && (
                   <div className="flex absolute flex-col rounded-lg bg-gray-700 px-4 py-3 max-w-md z-50 right-0 mr-7">
                     <div className="flex flex-col justify-start items-start text-base text-gray-300">
-                      <a href={`/u/${user?.username}`}>
+                      <CustomLink href={`/u/${user?.username}`}>
                         <DropdownItem name="Profile" icon={ProfileIcon} />
-                      </a>
+                      </CustomLink>
                     </div>
                     <div className="flex flex-col justify-start items-start text-base text-gray-300 mt-3">
                       <DropdownItem

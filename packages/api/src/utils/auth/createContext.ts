@@ -33,5 +33,5 @@ export const createContext = async (req: Request): Promise<ContextType> => {
     uid = (req.session as any)?.passport?.user?.id;
   }
 
-  return { hasAuth: !!uid, uid, getUser: () => User.findOne(uid) };
+  return { hasAuth: !!uid, uid, getUser: () => User.findOne(uid), req };
 };

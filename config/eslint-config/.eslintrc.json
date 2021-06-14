@@ -187,7 +187,7 @@
     "@typescript-eslint/no-use-before-define": "error",
     "no-useless-backreference": "error",
     "no-useless-call": "error",
-    "no-useless-computed-key": "error",
+    "no-useless-computed-key": "off",
     "no-useless-concat": "error",
     "no-useless-constructor": "off",
     "no-useless-rename": "error",

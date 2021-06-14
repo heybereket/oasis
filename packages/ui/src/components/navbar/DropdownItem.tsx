@@ -1,4 +1,5 @@
 import React, { MouseEventHandler } from 'react';
+import { CustomLink } from '../../providers/CustomLink';
 
 interface DropdownItemProps {
   name: string;
@@ -16,9 +17,9 @@ export const DropdownItem: React.FC<DropdownItemProps> = (props) => {
       onClick={props.onClick}
     >
       <Icon />
-      <a href={props.href} className="font-medium text-white">
+      <CustomLink href={props.href} className="font-medium text-white">
         {props.name}
-      </a>
+      </CustomLink>
     </div>
   );
 };
