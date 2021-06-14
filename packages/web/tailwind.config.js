@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
-  purge: ['./src/**/*.{tsx,jsx,js,ts}', '../ui/**/*.{tsx,jsx,js,ts}'],
+  purge: ['./src/**/*.{tsx,jsx,js,ts}', '../ui/**/*.{tsx,jsx,js,ts}', '../mobile/**/*.{tsx,jsx,js,ts}'],
   theme: {
     flexShrink: {
       0: 0,
