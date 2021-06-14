@@ -5,13 +5,13 @@ import { createApolloServer } from '@root/server';
 import authRouter from '@auth/oauth';
 import connectionRouter from '@auth/connections';
 import expressSession from 'express-session';
-import { redisStore, redisClient } from '@services/redis';
+import { redisStore, redisClient } from '@config/redis';
 import passport from 'passport';
 import { checkEnv } from '@utils/common/checkEnv';
 import { sessionSecret, isProduction, PORT } from '@lib/constants';
 import * as log from '@lib/log';
 import { checkNodeMajor } from '@lib/nodeMajor';
-import { getDatabase } from '@services/database';
+import { getDatabase } from '@config/database';
 
 config();
 

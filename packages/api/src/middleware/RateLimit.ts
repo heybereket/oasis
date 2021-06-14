@@ -1,5 +1,5 @@
 import { ContextType } from '@root/server';
-import { redisClient } from '@services/redis';
+import { redisClient } from '@config/redis';
 import { promisify } from 'util';
 import { MiddlewareFn } from 'type-graphql';
 import { ApolloError } from 'apollo-server-express';
