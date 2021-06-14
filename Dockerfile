@@ -10,7 +10,7 @@ COPY ./yarn.lock ./yarn.lock
 
 COPY ./packages/api/package.json ./packages/api/package.json
 COPY ./packages/react-gql/package.json ./packages/react-gql/package.json
-COPY ./packages/utils/package.json ./packages/utils/package.json
+COPY ./packages/shared/package.json ./packages/shared/package.json
 COPY ./packages/ui/package.json ./packages/ui/package.json
 COPY ./packages/web/package.json ./packages/web/package.json
 
