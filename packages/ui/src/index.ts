@@ -80,3 +80,7 @@ export { SmallDownArrow } from './icons/arrows/SmallDownArrow';
 
 // User
 export { User } from './components/user/User';
+
+// Providers
+export { LinkProvider } from './providers/LinkProvider';
+export { LinkContext } from './providers/LinkProvider';

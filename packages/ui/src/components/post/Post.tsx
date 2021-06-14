@@ -18,6 +18,7 @@ import {
   Comments,
 } from '../../icons';
 import { Modal } from '../..';
+import { CustomLink } from '../../providers/CustomLink';
 
 interface Props {
   post: TPost;
@@ -77,7 +78,7 @@ export const Post: React.FC<Props> = ({
       >
         <div>
           <header className="flex items-center space-x-4">
-            <a
+            <CustomLink
               className="w-11 h-11 flex-none"
               href={`/u/${postData.author.username}`}
             >
@@ -87,16 +88,16 @@ export const Post: React.FC<Props> = ({
                 loading="lazy"
                 className="flex-none bg-gray-600 rounded-full w-11 h-11"
               />
-            </a>
+            </CustomLink>
             <div className="flex items-center justify-between w-full">
-              <a href={`/u/${postData.author.username}`}>
+              <CustomLink href={`/u/${postData.author.username}`}>
                 <div>
                   <p className="text-xl font-bold">{postData.author.name}</p>
                   <p className="-mt-1 text-light font-bold">
                     @{postData.author.username}
                   </p>
                 </div>
-              </a>
+              </CustomLink>
               <div className="flex flex-row">
                 <div className="flex flex-col items-center">
                   <SmallUpArrow
@@ -197,7 +198,7 @@ export const Post: React.FC<Props> = ({
             {markdown(postData?.message ?? '')}
           </div>
         </div>
-        <a href={'/post/' + postData.id}>
+        <CustomLink href={'/post/' + postData.id}>
           <footer className="flex justify-between">
             <p className="text-sm font-medium">{date}</p>
             <div className="flex items-center space-x-2">
@@ -205,7 +206,7 @@ export const Post: React.FC<Props> = ({
               <Comments />
             </div>
           </footer>
-        </a>
+        </CustomLink>
       </div>
       <Modal
         closeHandler={() => {
