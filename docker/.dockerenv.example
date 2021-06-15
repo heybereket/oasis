@@ -45,6 +45,17 @@ OASIS_API_SPOTIFY_CLIENT_SECRET=
 OASIS_API_SPOTIFY_CLIENT_SECRET=
 OASIS_API_SPOTIFY_CALLBACK_URL=
 
+# AWS Credentials (Optional)
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_ENDPOINT=
+AWS_S3_BUCKET=
+
+# Image Storage Options
+# STORE_IMAGES_ON_S3 requires AWS Credentials
+STORE_IMAGES_LOCALLY=true
+STORE_IMAGES_ON_S3=false
+
 # Database Options
 # Should be Postgres as that is used for prod and testing, Can be any db though
 DATABASE_TYPE=postgres
