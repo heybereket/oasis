@@ -14,7 +14,7 @@ import User from './User';
 @Entity()
 export default class Notification extends BaseEntity {
   @Field()
-  @Column({ type: 'date' })
+  @Column()
   createdAt: string;
 
   @PrimaryGeneratedColumn('uuid')
