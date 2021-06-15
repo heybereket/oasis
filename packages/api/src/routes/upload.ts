@@ -32,10 +32,12 @@ export const Upload = (): Router => {
 
     if (file.size > THREE_MB) {
       res.send('File cannot be larger than 3 mb').status(400);
+      return;
     }
 
     if (file.mimetype.split('/')[0] !== 'image') {
       res.send('Only image uploads are allowed').status(400);
+      return;
     }
 
     const { ext } = parse(file.name);
