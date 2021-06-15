@@ -1,13 +1,25 @@
 import s3 from '@config/s3';
+import { createContext } from '@utils/auth/createContext';
 import { joinRoot } from '@utils/common/rootPath';
 import { S3 } from 'aws-sdk';
 import { Router } from 'express';
-import { writeFileSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { parse } from 'path';
 import { v4 } from 'uuid';
 
 export const Upload = (): Router => {
   const uploadRouter = Router();
+
+  // Require auth to upload
+  uploadRouter.use(async (req, res, next) => {
+    const context = await createContext(req);
+
+    if (context.hasAuth) {
+      next();
+    } else {
+      res.send('401 Unauthorized').status(401);
+    }
+  });
 
   uploadRouter.post('/', (req, res) => {
     let file = req.files?.file;
@@ -38,6 +50,12 @@ export const Upload = (): Router => {
         }
       });
     } else if (process.env.STORE_IMAGES_LOCALLY === 'true') {
+      // Check if folder exists
+      if (!existsSync(joinRoot('..', 'images'))) {
+        // If it doesnt make it
+        mkdirSync(joinRoot('..', 'images'));
+      }
+
       writeFileSync(joinRoot('..', 'images', filename), file.data);
       res.send(filename);
     } else {
