@@ -9,18 +9,26 @@ export const createContext = async (req: Request): Promise<ContextType> => {
     const [type, token] = req.headers.authorization.split(' ');
     switch (type) {
       case 'BOT':
-        uid = (verify(token, process.env.BOT_TOKEN_SECRET) as any).uid;
+        try {
+          uid = (verify(token, process.env.BOT_TOKEN_SECRET) as any).uid;
+        } catch (e) {
+          uid = undefined;
+        }
         break;
       case 'VSC': {
-        const data = verify(
-          token,
-          process.env.VSCODE_ACCESS_TOKEN_SECRET
-        ) as any;
+        try {
+          const data = verify(
+            token,
+            process.env.VSCODE_ACCESS_TOKEN_SECRET
+          ) as any;
 
-        const user = await User.findOne(data.uid);
+          const user = await User.findOne(data.uid);
 
-        if (user.vscTokenCount === data.count) {
-          uid = data.uid;
+          if (user.vscTokenCount === data.count) {
+            uid = data.uid;
+          }
+        } catch (e) {
+          uid = undefined;
         }
         break;
       }
