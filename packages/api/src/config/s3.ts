@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk';
 
-export const getS3 = () =>
+export default () =>
   new AWS.S3({
     credentials: {
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
