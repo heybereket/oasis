@@ -28,8 +28,9 @@ export const Upload = (): Router => {
         ACL: 'public-read',
       };
 
-      s3.upload(uploadParams, (err, data) => {
+      s3().upload(uploadParams, (err, data) => {
         if (err) {
+          console.error(err);
           res.send('An error occured').status(500);
         }
         if (data) {
