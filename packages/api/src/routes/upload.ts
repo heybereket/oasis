@@ -7,6 +7,8 @@ import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { parse } from 'path';
 import { v4 } from 'uuid';
 
+const THREE_MB = 3145728;
+
 export const Upload = (): Router => {
   const uploadRouter = Router();
 
@@ -26,6 +28,14 @@ export const Upload = (): Router => {
 
     if (Array.isArray(file)) {
       file = file[0];
+    }
+
+    if (file.size > THREE_MB) {
+      res.send('File cannot be larger than 3 mb').status(400);
+    }
+
+    if (file.mimetype.split('/')[0] !== 'image') {
+      res.send('Only image uploads are allowed').status(400);
     }
 
     const { ext } = parse(file.name);
