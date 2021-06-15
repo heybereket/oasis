@@ -6,9 +6,6 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 module.exports = withBundleAnalyzer({
-  future: {
-    webpack5: true,
-  },
   poweredByHeader: false,
   reactStrictMode: true,
   headers() {

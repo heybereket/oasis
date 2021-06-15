@@ -25,7 +25,7 @@
     "express": "^4.17.1",
     "formik": "^2.2.9",
     "github-markdown-css": "^4.0.0",
-    "next": "^10.2.3",
+    "next": "^11.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-infinite-scroll-component": "^6.1.0",
