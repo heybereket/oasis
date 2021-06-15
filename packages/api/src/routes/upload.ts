@@ -1,6 +1,5 @@
-import { getS3 } from '@config/s3';
+import s3 from '@config/s3';
 import { joinRoot } from '@utils/common/rootPath';
-import { S3 } from 'aws-sdk';
 import { Router } from 'express';
 import { writeFileSync } from 'fs';
 import { parse } from 'path';
@@ -21,21 +20,17 @@ export const Upload = (): Router => {
     const filename = v4() + ext;
 
     if (process.env.STORE_IMAGES_ON_S3 === 'true') {
-      const s3 = getS3();
-
-      const uploadParams: S3.PutObjectRequest = {
+      const upload = s3.upload({
         Bucket: process.env.AWS_S3_BUCKET,
         Key: filename,
         Body: file.data,
         ACL: 'public-read',
-      };
+        CacheControl: 'max-age=2592000'
+      });
 
-      s3.upload(uploadParams, (err, data) => {
+      upload.send(err => {
         if (err) {
           res.send('An error occured').status(500);
-        }
-        if (data) {
-          res.send(filename);
         }
       });
     } else if (process.env.STORE_IMAGES_LOCALLY === 'true') {
