@@ -33,6 +33,7 @@ input CreateBotInput {
 }
 
 input CreatePostInput {
+  imageName: String
   message: String!
   topics: [String!]!
 }
@@ -214,6 +215,7 @@ type Post {
   dislikers(limit: Float!, offset: Float!): PaginatedUserFromPost_dislikedPostsResponse!
   dislikes: Float!
   id: ID!
+  imageName: String
   isDisliked: Boolean!
   isLiked: Boolean!
   lastEdited: String

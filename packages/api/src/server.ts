@@ -24,9 +24,10 @@ export const createApolloServer = async () => {
     schema,
     tracing: true,
     introspection: true,
+    // uploads: false,
     playground: {
       settings: {
-        ['request.credentials']: 'same-origin',
+        'request.credentials': 'same-origin',
       },
     },
     context: async ({ req }: { req: Request }) => createContext(req),

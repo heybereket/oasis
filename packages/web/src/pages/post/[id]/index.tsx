@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   req,
 }) => {
   const vars: GetPostQueryVariables = {
-    id: query.postId as string,
+    id: query.id as string,
   };
   return {
     props: {
