@@ -1,5 +1,5 @@
 import Report from '@entity/Report';
-import { Role } from '@enum/Roles';
+import { Role } from '@enums/Roles';
 import { Authorized, Query, Resolver } from 'type-graphql';
 
 @Resolver()

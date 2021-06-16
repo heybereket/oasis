@@ -1,6 +1,6 @@
 import { Arg, Authorized, Mutation, Resolver } from 'type-graphql';
 import User from '@entity/User';
-import { Role } from '@root/enum/Roles';
+import { Role } from '@enums/Roles';
 
 @Resolver()
 export class MakeAdminResolver {

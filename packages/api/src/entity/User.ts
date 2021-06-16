@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 import Post from '@entity/Post';
 import Badge from '@entity/Badge';
-import { Role } from '@enum/Roles';
+import { Role } from '@enums/Roles';
 import Comment from '@entity/Comment';
 import Resort from './Resort';
 import Notification from './Notification';

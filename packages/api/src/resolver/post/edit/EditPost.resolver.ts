@@ -3,7 +3,7 @@ import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/server';
 import Post from '@entity/Post';
 import { hasPermission } from '@utils/common/hasPermission';
-import { Role } from '@enum/Roles';
+import { Role } from '@enums/Roles';
 import EditPostInput from './EditPostInput';
 
 @Resolver()

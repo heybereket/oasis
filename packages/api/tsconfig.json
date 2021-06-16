@@ -7,7 +7,7 @@
       "@middleware/*": ["src/middleware/*"],
       "@auth/*": ["src/auth/*"],
       "@config/*": ["src/config/*"],
-      "@enum/*": ["src/enum/*"],
+      "@enums/*": ["src/enums/*"],
       "@utils/*": ["src/utils/*"],
       "@root/*": ["src/*"]
     },
