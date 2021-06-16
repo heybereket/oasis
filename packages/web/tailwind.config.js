@@ -1,7 +1,11 @@
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
-  purge: ['./src/**/*.{tsx,jsx,js,ts}', '../ui/**/*.{tsx,jsx,js,ts}', '../mobile/**/*.{tsx,jsx,js,ts}'],
+  purge: [
+    './src/**/*.{tsx,jsx,js,ts}',
+    '../ui/**/*.{tsx,jsx,js,ts}',
+    '../mobile/**/*.{tsx,jsx,js,ts}',
+  ],
   theme: {
     flexShrink: {
       0: 0,
@@ -51,6 +55,7 @@ module.exports = {
         secondary: '#828282',
       },
       gridTemplateColumns: {
+        'three-new': '280px 1fr 280px',
         two: '370px 500px',
         three: '370px 570px 470px',
       },
@@ -92,6 +97,10 @@ module.exports = {
           700: 'var(--color-gray-700)',
           800: 'var(--color-gray-800)',
           900: 'var(--color-gray-900)',
+          light: '#2F343F',
+          dark: '#232831',
+          '2dark': '#202225',
+          text: '#BDBDBD',
         },
         primary: {
           DEFAULT: 'var(--color-primary)',
@@ -100,11 +109,10 @@ module.exports = {
         },
         light: 'var(--color-text-light)',
         dim: 'rgba(0,0,0,0.6)',
+        'home-bg': '#2F343F',
+        'home-sides': '#232831',
       },
     },
   },
-  plugins: [
-    require('tailwind-scrollbar'),
-    require('@tailwindcss/typography')
-  ],
+  plugins: [require('tailwind-scrollbar'), require('@tailwindcss/typography')],
 };

@@ -19,6 +19,7 @@ export { FollowUserSection } from './components/home/FollowUserSection';
 export { FriendActivity } from './components/home/FriendActivity';
 export { FriendActivitySection } from './components/home/FriendActivitySection';
 export { PostsSection } from './components/home/PostsSection';
+export { NewPostsSection } from './components/home/NewPostsSection';
 export { ProfileSection } from './components/home/ProfileSection';
 export { Sidebar } from './components/home/Sidebar';
 export { TrendingSection } from './components/home/TrendingSection';
@@ -30,10 +31,12 @@ export { TeamMember } from './components/oss/TeamMember';
 // Navbar
 export { DropdownItem } from './components/navbar/DropdownItem';
 export { Navbar } from './components/navbar/Navbar';
+export { HomeTopBar } from './components/navbar/HomeTopBar';
 export { NavItem } from './components/navbar/NavItem';
 
 // Post
 export { Post } from './components/post/Post';
+export { NewPost } from './components/post/NewPost';
 
 // Profile
 export { LargeUserCard } from './components/profile/large/UserCard';
