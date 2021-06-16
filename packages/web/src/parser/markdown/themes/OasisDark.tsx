@@ -275,7 +275,6 @@ export default {
   },
   'pre[class*="language-"] > code[class*="language-"]': {
     position: 'relative',
-    zIndex: '1',
   },
   '.line-highlight': {
     position: 'absolute',
@@ -285,7 +284,6 @@ export default {
     marginTop: '1em',
     background: 'var(--color-gray-900)',
     boxShadow: 'inset 5px 0 0 #f7d87c',
-    zIndex: '0',
     pointerEvents: 'none',
     lineHeight: 'inherit',
     whiteSpace: 'pre',

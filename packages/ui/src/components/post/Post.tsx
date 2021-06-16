@@ -72,7 +72,7 @@ export const Post: React.FC<Props> = ({
   return (
     <>
       <div
-        className={`shadow-lg w-full ${
+        className={`w-full ${
           bgColorOveride ?? 'bg-gray-800'
         } px-5 pt-2 pb-4 rounded-2xl flex flex-col justify-between`}
       >

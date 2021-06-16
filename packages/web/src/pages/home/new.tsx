@@ -111,8 +111,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                       },
                     })
                   ).data.feedSortPosts;
-
-                  console.log(newData);
                   return newData;
                 }}
                 reportPost={reportPost}
@@ -120,7 +118,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             </div>
           </div>
           {/* Right Column */}
-          <div className="hidden 2xl:flex flex-col flex-1 sticky top-0 h-full bg-home-sides">
+          <div className="hidden 2xl:flex flex-col flex-1 sticky top-0 h-full bg-gray-dark">
             <div className="w-full flex flex-col items-center sticky top-0 p-5 pt-16">
               {user ? (
                 <ProfileSection
