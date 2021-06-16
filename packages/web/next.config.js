@@ -6,8 +6,8 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 module.exports = withBundleAnalyzer({
-  future: {
-    webpack5: true,
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   poweredByHeader: false,
   reactStrictMode: true,

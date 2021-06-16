@@ -13,4 +13,4 @@ export const sessionSecret =
   process.env.OASIS_API_SESSION_SECRET || 'oasis_session';
 
 // Regex Patterns
-export const usernameRegex = /^(?=.{2,15}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
+export const usernameRegex = /^[a-zA-Z0-9_.-]{3,15}$/;
