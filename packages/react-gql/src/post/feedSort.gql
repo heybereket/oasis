@@ -29,5 +29,6 @@ query FeedSortPosts($postsLimit: Float!, $postsOffset: Float!) {
     topics
     isLiked
     isDisliked
+    imageName
   }
 }

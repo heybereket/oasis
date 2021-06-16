@@ -197,6 +197,15 @@ export const Post: React.FC<Props> = ({
           <div className="font-medium mt-2 mb-6 text-xl break-words">
             {markdown(postData?.message ?? '')}
           </div>
+          {postData?.imageName && (
+            <div className="w-full">
+              <img
+                src={postData?.imageName}
+                alt="Post Image"
+                className="w-full"
+              />
+            </div>
+          )}
         </div>
         <CustomLink href={'/post/' + postData.id}>
           <footer className="flex justify-between">
