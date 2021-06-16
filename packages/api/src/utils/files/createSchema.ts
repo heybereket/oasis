@@ -8,7 +8,7 @@ import { NotBanned } from '@root/middleware/NotBanned';
 const glob = promisify(_glob);
 
 export const createSchema = async () => {
-  const filenames = await glob(joinRoot('./resolvers/**/*.resolver.js'));
+  const filenames = await glob(joinRoot('./resolver/**/*.resolver.js'));
 
   filenames.push(joinRoot('./utils/paginate/RelationalPaginationResolvers.js'));
 

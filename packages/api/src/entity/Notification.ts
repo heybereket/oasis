@@ -1,4 +1,4 @@
-import { NotificationType } from '@enums/Notifications';
+import { NotificationType } from '@enum/Notifications';
 import { Field, ID, ObjectType } from 'type-graphql';
 import {
   AfterInsert,

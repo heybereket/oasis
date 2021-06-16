@@ -1,6 +1,6 @@
 import { Arg, Authorized, Mutation, Resolver } from 'type-graphql';
 import Badge from '@entity/Badge';
-import { Role } from '@enums/Roles';
+import { Role } from '@enum/Roles';
 import User from '@entity/User';
 
 @Resolver()

@@ -1,6 +1,6 @@
 import { IsOptional, IsNotEmpty, Length } from 'class-validator';
 import { InputType, Field } from 'type-graphql';
-import { ReportType } from '@enums/Reports';
+import { ReportType } from '@enum/Reports';
 
 @InputType()
 export default class MakeReportInput {

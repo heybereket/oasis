@@ -2,7 +2,7 @@ import User from '@root/entity/User';
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/server';
 import { ApolloError } from 'apollo-server-errors';
-import { NotificationType } from '@enums/Notifications';
+import { NotificationType } from '@root/enum/Notifications';
 import { createNotification } from '@utils/index';
 
 @Resolver()

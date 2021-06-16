@@ -13,7 +13,7 @@ import Post from '@entity/Post';
 import User from '@entity/User';
 import { RelationalPagination } from '@utils/paginate/RelationalPagination';
 import { createNotification } from '@utils/index';
-import { NotificationType } from '@enums/Notifications';
+import { NotificationType } from '@enum/Notifications';
 import Report from './Report';
 
 @ObjectType()

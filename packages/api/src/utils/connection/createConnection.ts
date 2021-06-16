@@ -1,5 +1,5 @@
 import { createContext } from '@utils/auth/createContext';
-import Connection from '@entities/Connection';
+import Connection from '@entity/Connection';
 import { Request } from 'express';
 import * as log from '@lib/log';
 

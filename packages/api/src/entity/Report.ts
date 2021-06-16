@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { ReportType } from '@enums/Reports';
+import { ReportType } from '@enum/Reports';
 import { Field, ID, ObjectType } from 'type-graphql';
 import {
   BaseEntity,

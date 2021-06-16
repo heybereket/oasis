@@ -1,6 +1,6 @@
 import { Arg, Authorized, Mutation, Resolver } from 'type-graphql';
 import User from '@entity/User';
-import { Role } from '@enums/Roles';
+import { Role } from '@root/enum/Roles';
 import { ApolloError } from 'apollo-server-errors';
 
 @Resolver()
