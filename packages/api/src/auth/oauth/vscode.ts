@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { redisClient } from '@config/redis';
 import { sign } from 'jsonwebtoken';
-import User from '@entity/User';
+import User from '@entities/User';
 
 export default function VSCodeAuth() {
   const router = Router();

@@ -1,5 +1,5 @@
 import { ContextType } from '@root/server';
-import User from '@entity/User';
+import User from '@entities/User';
 import { Request } from 'express';
 import { verify } from 'jsonwebtoken';
 

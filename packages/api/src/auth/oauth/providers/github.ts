@@ -1,12 +1,12 @@
 import { Router } from 'express';
 import { Strategy } from 'passport-github2';
-import User from '@entity/User';
+import User from '@entities/User';
 import { v4 as uuid } from 'uuid';
 import { checkUsername } from '@utils/auth/checkUsername';
 import { http } from '@utils/common/http';
 import { searchJSON } from '@utils/index';
 import { PassportStatic } from 'passport';
-import Badge from '@entity/Badge';
+import Badge from '@entities/Badge';
 
 export default (passport: PassportStatic): Router => {
   passport.use(

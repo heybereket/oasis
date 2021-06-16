@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@entity/*": ["src/entity/*"],
+      "@entities/*": ["src/entities/*"],
       "@lib/*": ["src/lib/*"],
       "@middleware/*": ["src/middleware/*"],
       "@auth/*": ["src/auth/*"],

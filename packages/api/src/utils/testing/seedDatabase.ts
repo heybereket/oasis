@@ -1,4 +1,4 @@
-import User from '@entity/User';
+import User from '@entities/User';
 import { Role } from '@enums/Roles';
 import { getConnection } from 'typeorm';
 

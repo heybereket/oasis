@@ -1,5 +1,5 @@
-import Notification from '@entity/Notification';
-import User from '@entity/User';
+import Notification from '@entities/Notification';
+import User from '@entities/User';
 
 // Generate a random number (digits customizable)
 export const generatedNumber = (n = 10) => {
