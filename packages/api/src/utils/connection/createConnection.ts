@@ -1,4 +1,4 @@
-import { createContext } from '../auth/createContext';
+import { createContext } from '@utils/auth/createContext';
 import Connection from '@entities/Connection';
 import { Request } from 'express';
 import * as log from '@lib/log';
