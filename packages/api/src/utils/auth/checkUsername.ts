@@ -1,4 +1,4 @@
-import User from '@entities/User';
+import User from '@entity/User';
 import { getRepository } from 'typeorm';
 import { generatedNumber } from '@utils/index';
 import { usernameRegex } from '@lib/constants';
