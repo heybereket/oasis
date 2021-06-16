@@ -14,8 +14,8 @@ const createConnection = async (
       (await createContext(request)).getUser()
     );
     const connection = await Connection.create({
-      accessToken: accessToken,
-      refreshToken: refreshToken,
+      accessToken,
+      refreshToken,
       connectionMethod: method,
       user: userPromise,
     }).save();
