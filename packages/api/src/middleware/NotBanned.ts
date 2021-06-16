@@ -1,6 +1,6 @@
 import { MiddlewareFn } from 'type-graphql';
 import { ContextType } from '@root/server';
-import User from '@entities/User';
+import User from '@entity/User';
 import { ApolloError } from 'apollo-server-errors';
 
 export function NotBanned(force: boolean): MiddlewareFn {

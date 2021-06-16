@@ -1,5 +1,5 @@
-import User from '@entities/User';
-import { Role } from '@enums/Roles';
+import User from '@entity/User';
+import { Role } from '@enum/Roles';
 import { getConnection } from 'typeorm';
 
 export const reporteeUserId = 'reporteeId';

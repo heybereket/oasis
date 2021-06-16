@@ -1,11 +1,7 @@
+import { fieldExtensionsEstimator, simpleEstimator, getComplexity } from 'graphql-query-complexity';
 import { ApolloError, ApolloServer } from 'apollo-server-express';
 import type { Request } from 'express';
-import createQueryComplexityValidator, {
-  fieldExtensionsEstimator,
-  simpleEstimator,
-  getComplexity,
-} from 'graphql-query-complexity';
-import User from '@entities/User';
+import User from '@entity/User';
 import { createContext } from '@utils/auth/createContext';
 import { createSchema } from '@utils/files/createSchema';
 import { complexityLimit } from '@lib/constants';

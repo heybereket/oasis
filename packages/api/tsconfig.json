@@ -2,12 +2,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@entities/*": ["src/entities/*"],
+      "@entity/*": ["src/entity/*"],
       "@lib/*": ["src/lib/*"],
       "@middleware/*": ["src/middleware/*"],
       "@auth/*": ["src/auth/*"],
       "@config/*": ["src/config/*"],
-      "@enums/*": ["src/enums/*"],
+      "@enum/*": ["src/enum/*"],
       "@utils/*": ["src/utils/*"],
       "@root/*": ["src/*"]
     },
