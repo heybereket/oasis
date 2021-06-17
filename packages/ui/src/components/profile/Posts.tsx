@@ -64,7 +64,7 @@ export const Posts: React.FC<Props> = ({
                     postId: post.id,
                   },
                 });
-                window.location.reload();
+                // window.location.reload();
               }}
               dislikePost={() => {
                 likeDislikePost({
@@ -74,7 +74,7 @@ export const Posts: React.FC<Props> = ({
                     postId: post.id,
                   },
                 });
-                window.location.reload();
+                // window.location.reload();
               }}
               reportPost={reportPost}
             />
