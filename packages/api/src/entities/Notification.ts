@@ -36,9 +36,4 @@ export default class Notification extends BaseEntity {
   @Field()
   @Column()
   read: boolean;
-
-  @AfterInsert()
-  x() {
-    console.log(this);
-  }
 }
