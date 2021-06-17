@@ -97,6 +97,8 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
   const [reportPost] = useReportEntityMutation();
 
+  const viewingOwnProfile = data?.id === user?.id;
+
   const CenterColumnComponent: React.FC = () => {
     switch (tabState) {
       case CenterColumnTabState.AboutTab:
@@ -234,13 +236,15 @@ const Profile: React.FC<ProfileProps> = (props) => {
             </div>
             {/* Right Side */}
             <div className="col-span-4 transform translate-y-16 flex flex-col">
-              <div className="grid md:grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 gap-2 ">
-                <Button
-                  color="gray"
-                  className="md:row-span-1 lg:col-span-1 text-sm"
-                >
-                  Send Message
-                </Button>
+              <div className={`grid lg:grid-rows-1 ${viewingOwnProfile ? "lg:grid-cols-1 md:grid-rows-1" : "lg:grid-cols-2 md:grid-rows-2"} gap-2`}>
+                {!viewingOwnProfile &&
+                  <Button
+                    color="gray"
+                    className="md:row-span-1 lg:col-span-1 text-sm"
+                  >
+                    Send Message
+                  </Button>
+                }
                 <Button
                   color="primary"
                   className="md:row-span-1 lg:col-span-1 text-sm"
@@ -250,7 +254,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                     }
                   }}
                 >
-                  {data?.id === user?.id
+                  {viewingOwnProfile
                     ? 'Edit Profile'
                     : `Follow @${data?.username}`}
                 </Button>
@@ -288,9 +292,11 @@ const Profile: React.FC<ProfileProps> = (props) => {
             posts={data?.posts.total}
           />
           <div className="grid grid-cols-2 mt-6 w-full max-w-sm gap-1 md:gap-2">
-            <Button color="gray" className="col-span-2 md:col-span-1 text-sm">
-              Send Message
-            </Button>
+            {!viewingOwnProfile &&
+              <Button color="gray" className="col-span-2 md:col-span-1 text-sm">
+                Send Message
+              </Button>
+            }
             <Button
               color="primary"
               className="col-span-2 md:col-span-1 text-sm"
@@ -300,7 +306,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 }
               }}
             >
-              {data?.id === user?.id
+              {viewingOwnProfile
                 ? 'Edit Profile'
                 : `Follow @${data?.username}`}
             </Button>
