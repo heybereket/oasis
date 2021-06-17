@@ -92,8 +92,6 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
 
   const [reportPost] = useReportEntityMutation();
 
-  const viewingOwnProfile = data?.id === user?.id;
-
   useEffect(() => console.log('Remounted'), []);
   switch (tabState) {
     case CenterColumnTabState.AboutTab:
@@ -192,6 +190,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
   const [tabState, setTabState] = useState<CenterColumnTabState>(
     CenterColumnTabState.AboutTab
   );
+
+  const viewingOwnProfile = data?.id === user?.id;
+
 
   return (
     <>
@@ -313,7 +314,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
             following={data?.following.total}
             posts={data?.posts.total}
           />
-          <div className="grid grid-cols-2 mt-6 w-full max-w-sm gap-1 md:gap-2">
+          <div className={`grid ${viewingOwnProfile ? "grid-cols-1" : "grid-cols-2"} mt-6 w-full max-w-sm gap-1 md:gap-2`}>
             {!viewingOwnProfile &&
               <Button color="gray" className="col-span-2 md:col-span-1 text-sm">
                 Send Message
