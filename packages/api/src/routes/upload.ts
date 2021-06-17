@@ -6,6 +6,7 @@ import { Router } from 'express';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { parse } from 'path';
 import { v4 } from 'uuid';
+import sharp from 'sharp';
 
 const THREE_MB = 3145728;
 
@@ -23,7 +24,7 @@ export const Upload = (): Router => {
     }
   });
 
-  uploadRouter.post('/', (req, res) => {
+  uploadRouter.post('/', async (req, res) => {
     let file = req.files?.file;
 
     if (Array.isArray(file)) {
@@ -40,15 +41,17 @@ export const Upload = (): Router => {
       return;
     }
 
-    const { ext } = parse(file.name);
+    const filename = v4() + '.webp';
 
-    const filename = v4() + ext;
+    const webPBuffer = await sharp(file.data, { pages: -1 })
+      .webp({ quality: 50 })
+      .toBuffer();
 
     if (process.env.STORE_IMAGES_ON_S3 === 'true') {
       const uploadParams: S3.PutObjectRequest = {
         Bucket: process.env.AWS_S3_BUCKET,
         Key: filename,
-        Body: file.data,
+        Body: webPBuffer,
         ACL: 'public-read',
       };
 
@@ -68,7 +71,7 @@ export const Upload = (): Router => {
         mkdirSync(joinRoot('..', 'images'));
       }
 
-      writeFileSync(joinRoot('..', 'images', filename), file.data);
+      writeFileSync(joinRoot('..', 'images', filename), webPBuffer);
       res.send(filename);
     } else {
       res.send('Storage method is not configured').status(500);
