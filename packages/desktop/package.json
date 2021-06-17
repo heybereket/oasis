@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "electron-log": "^4.3.5",
-    "electron-updater": "^4.3.10",
+    "electron-updater": "^4.3.9",
     "eslint": "^7.28.0",
     "prettier": "^2.3.1"
   }
