@@ -4,11 +4,13 @@ import { joinRoot } from '@utils/common/rootPath';
 import { S3 } from 'aws-sdk';
 import { Router } from 'express';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
-import { parse } from 'path';
 import { v4 } from 'uuid';
 import sharp from 'sharp';
+import { redisClient } from '@config/redis';
 
 const THREE_MB = 3145728;
+const UPLOAD_LIMIT = 20;
+const ONE_HR_IN_SECS = 60 * 60;
 
 export const Upload = (): Router => {
   const uploadRouter = Router();
@@ -20,7 +22,7 @@ export const Upload = (): Router => {
     if (context.hasAuth) {
       next();
     } else {
-      res.send('401 Unauthorized').status(401);
+      res.status(401).send('401 Unauthorized');
     }
   });
 
@@ -32,12 +34,22 @@ export const Upload = (): Router => {
     }
 
     if (file.size > THREE_MB) {
-      res.send('File cannot be larger than 3 mb').status(400);
+      res.status(400).send('File cannot be larger than 3 mb');
       return;
     }
 
     if (file.mimetype.split('/')[0] !== 'image') {
-      res.send('Only image uploads are allowed').status(400);
+      res.status(400).send('Only image uploads are allowed');
+      return;
+    }
+
+    const context = await createContext(req);
+    // check rateLimit
+    const oldLimit = Number.parseInt(
+      await redisClient.get(`rate:upload:${context.uid}`)
+    );
+    if (oldLimit > UPLOAD_LIMIT) {
+      res.status(429).send('RATE_LIMIT: Try again later');
       return;
     }
 
@@ -58,7 +70,7 @@ export const Upload = (): Router => {
       s3().upload(uploadParams, (err, data) => {
         if (err) {
           console.error(err);
-          res.send('An error occured').status(500);
+          res.status(500).send('An error occured');
         }
         if (data) {
           res.send(filename);
@@ -74,7 +86,17 @@ export const Upload = (): Router => {
       writeFileSync(joinRoot('..', 'images', filename), webPBuffer);
       res.send(filename);
     } else {
-      res.send('Storage method is not configured').status(500);
+      res.status(500).send('Storage method is not configured');
+    }
+
+    if (Number.isNaN(oldLimit)) {
+      redisClient.set(`rate:upload:${context.uid}`, 1, 'EX', ONE_HR_IN_SECS);
+    } else {
+      redisClient.set(
+        `rate:upload:${context.uid}`,
+        (oldLimit + 1).toString(),
+        'KEEPTTL'
+      );
     }
   });
 
