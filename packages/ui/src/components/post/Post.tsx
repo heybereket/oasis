@@ -202,6 +202,7 @@ export const Post: React.FC<Props> = ({
               <img
                 src={postData?.imageName}
                 alt="Post Image"
+                loading="lazy"
                 className="w-full"
               />
             </div>

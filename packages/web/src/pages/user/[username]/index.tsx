@@ -16,6 +16,10 @@ import {
   useGetUsersCommentsLazyQuery,
   useLikeDislikeCommentMutation,
   useReportEntityMutation,
+  GetUsersPostsQueryResult,
+  GetUsersPostsQuery,
+  GetUserByNameQuery,
+  User,
 } from '@oasis-sh/react-gql';
 import {
   About,
@@ -36,13 +40,7 @@ import {
   CommentsTab as CommentsCenterTab,
 } from '@oasis-sh/ui';
 import { SEO } from 'src/shared/SEO';
-import { useState } from 'react';
-
-interface ProfileProps {
-  initialApolloState: any;
-  username: string;
-  vars: GetUserByNameQueryVariables;
-}
+import { useState, useEffect } from 'react';
 
 enum CenterColumnTabState {
   AboutTab,
@@ -51,25 +49,22 @@ enum CenterColumnTabState {
   CommentsTab,
 }
 
-const Profile: React.FC<ProfileProps> = (props) => {
-  const data = useGetUserByNameQuery({
-    variables: props.vars,
-  }).data?.getUserByName;
+interface CenterColumnProps {
+  tabState: CenterColumnTabState;
+  props: ProfileProps;
+  data: GetUserByNameQuery['getUserByName'];
+  user?: User;
+}
 
-  const [follow] = useFollowUserMutation({
-    variables: { userId: data?.id ?? '' },
-  });
-
-  const [deletePost] = useDeletePostMutation();
-
-  const { user, currentUserLoading } = useGetCurrentUser();
-
-  const [tabState, setTabState] = useState<CenterColumnTabState>(
-    CenterColumnTabState.AboutTab
-  );
-
+const CenterColumnComponent: React.FC<CenterColumnProps> = ({
+  tabState,
+  props,
+  data,
+  user,
+}) => {
   const [likeDislikePost] = useLikeDislikePostMutation();
   const [likeDislikeComment] = useLikeDislikeCommentMutation();
+  const [deletePost] = useDeletePostMutation();
 
   const [getPosts, postsData] = useGetUsersPostsLazyQuery({
     variables: {
@@ -99,83 +94,104 @@ const Profile: React.FC<ProfileProps> = (props) => {
 
   const viewingOwnProfile = data?.id === user?.id;
 
-  const CenterColumnComponent: React.FC = () => {
-    switch (tabState) {
-      case CenterColumnTabState.AboutTab:
+  useEffect(() => console.log('Remounted'), []);
+  switch (tabState) {
+    case CenterColumnTabState.AboutTab:
+      return (
+        <Bio
+          bio={data?.bio}
+          name={data?.name}
+          username={data?.username}
+          badges={data?.badges}
+          marginTop="8"
+          markdown={(text) => {
+            return <StyledMarkdown isBio={true} text={text} />;
+          }}
+        />
+      );
+
+    case CenterColumnTabState.PostsTab:
+      if (!postsData.called) {
+        getPosts();
+        return <div></div>;
+      } else {
         return (
-          <Bio
-            bio={data?.bio}
-            name={data?.name}
-            username={data?.username}
-            badges={data?.badges}
-            marginTop="8"
-            markdown={(text) => {
-              return <StyledMarkdown isBio={true} text={text} />;
-            }}
+          <PostsTabItem
+            markdown={(text: any) => (
+              <StyledMarkdown text={text} isBio={false} isPost={true} />
+            )}
+            posts={postsData.data?.userOnlyPosts}
+            likedPosts={null}
+            likeDislikePost={likeDislikePost}
+            currentUser={user}
+            deletePost={deletePost}
+            reportPost={reportPost}
           />
         );
+      }
 
-      case CenterColumnTabState.PostsTab:
-        if (!postsData.called) {
-          getPosts();
-          return <div></div>;
-        } else {
-          return (
-            <PostsTabItem
-              markdown={(text: any) => (
-                <StyledMarkdown text={text} isBio={false} isPost={true} />
-              )}
-              posts={postsData.data?.userOnlyPosts}
-              likedPosts={null}
-              likeDislikePost={likeDislikePost}
-              currentUser={user}
-              deletePost={deletePost}
-              reportPost={reportPost}
-            />
-          );
-        }
+    case CenterColumnTabState.LikesTab:
+      if (!likedPostsData.called) {
+        getLikedPosts();
+        return <div />;
+      } else {
+        return (
+          <PostsTabItem
+            markdown={(text: any) => (
+              <StyledMarkdown text={text} isBio={false} isPost={true} />
+            )}
+            currentUser={user}
+            posts={null}
+            likedPosts={likedPostsData.data?.getUserByName}
+            likeDislikePost={likeDislikePost}
+            deletePost={deletePost}
+            reportPost={reportPost}
+          />
+        );
+      }
 
-      case CenterColumnTabState.LikesTab:
-        if (!likedPostsData.called) {
-          getLikedPosts();
-          return <div />;
-        } else {
-          return (
-            <PostsTabItem
-              markdown={(text: any) => (
-                <StyledMarkdown text={text} isBio={false} isPost={true} />
-              )}
-              currentUser={user}
-              posts={null}
-              likedPosts={likedPostsData.data?.getUserByName}
-              likeDislikePost={likeDislikePost}
-              deletePost={deletePost}
-              reportPost={reportPost}
-            />
-          );
-        }
+    case CenterColumnTabState.CommentsTab:
+      if (!commentsData.called) {
+        getComments();
+        return <div />;
+      } else {
+        return (
+          <CommentsCenterTab
+            comments={commentsData.data?.userOnlyComments}
+            likeDislikeComment={likeDislikeComment}
+            markdown={(text) => (
+              <StyledMarkdown text={text} isBio={false} isPost={true} />
+            )}
+            currentUser={user}
+          />
+        );
+      }
 
-      case CenterColumnTabState.CommentsTab:
-        if (!commentsData.called) {
-          getComments();
-          return <div />;
-        } else {
-          return (
-            <CommentsCenterTab
-              comments={commentsData.data?.userOnlyComments}
-              likeDislikeComment={likeDislikeComment}
-              markdown={(text) => (
-                <StyledMarkdown text={text} isBio={false} isPost={true} />
-              )}
-              currentUser={user}
-            />
-          );
-        }
+    default:
+      return <div></div>;
+  }
+};
 
-      default:
-        return <div></div>;
-    }
-  };
+interface ProfileProps {
+  initialApolloState: any;
+  username: string;
+  vars: GetUserByNameQueryVariables;
+}
+
+const Profile: React.FC<ProfileProps> = (props) => {
+  const data = useGetUserByNameQuery({
+    variables: props.vars,
+  }).data?.getUserByName;
+
+  const [follow] = useFollowUserMutation({
+    variables: { userId: data?.id ?? '' },
+  });
+
+  const { user, currentUserLoading } = useGetCurrentUser();
+
+  const [tabState, setTabState] = useState<CenterColumnTabState>(
+    CenterColumnTabState.AboutTab
+  );
 
   return (
     <>
@@ -231,7 +247,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
                     }
                   />
                 </div>
-                <CenterColumnComponent />
+                <CenterColumnComponent
+                  key="CenterColumn"
+                  props={props}
+                  tabState={tabState}
+                  data={data}
+                  user={user}
+                />
               </div>
             </div>
             {/* Right Side */}
@@ -339,7 +361,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 onClick={() => setTabState(CenterColumnTabState.CommentsTab)}
               />
             </div>
-            <CenterColumnComponent />
+            <CenterColumnComponent
+              key="CenterColumn"
+              props={props}
+              tabState={tabState}
+              data={data}
+              user={user}
+            />
             {/* <Bio
               badges={data?.badges}
               bio={data?.bio}
