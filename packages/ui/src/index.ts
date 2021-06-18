@@ -24,6 +24,10 @@ export { ProfileSection } from './components/home/ProfileSection';
 export { Sidebar } from './components/home/Sidebar';
 export { TrendingSection } from './components/home/TrendingSection';
 
+// New Home
+export { LeftSidebarItem } from './components/home/LeftSidebar';
+export { LeftSidebarTitle } from './components/home/LeftSidebar';
+
 // OSS
 export { Contributors } from './components/oss/Contributors';
 export { TeamMember } from './components/oss/TeamMember';

@@ -13,6 +13,9 @@ import {
   ProfileSection,
   TrendingSection,
   HomeTopBar,
+  LeftSidebarItem,
+  LeftSidebarTitle,
+  Profile,
 } from '@oasis-sh/ui';
 import {
   useLikeDislikePostMutation,
@@ -59,9 +62,9 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
         description="The social platform for developers"
       />
       <div className="flex flex-col items-center w-full bg-gray-light">
-        <div className="grid w-full grid-cols-1 2xl:grid-cols-three-new">
+        <div className="grid w-full lg:grid-cols-12">
           {/* Left Column */}
-          <div className="hidden 2xl:flex flex-col flex-1 h-full bg-gray-dark">
+          <div className="lg:col-span-2 2xl:col-span-2 hidden lg:flex flex-col bg-gray-dark h-screen sticky top-0">
             <div className="sticky top-0 p-5">
               <Link href="/">
                 <img
@@ -70,23 +73,56 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                   className="w-28 pb-5"
                 />
               </Link>
-              <div>
+              <div className="flex flex-col">
                 <div>
-                  <p className="text-gray-text text-xl font-bold">FEED</p>
+                  <LeftSidebarTitle name="Feed" />
+                  <LeftSidebarItem
+                    name="Your Feed"
+                    icon={<Profile />}
+                    active={false}
+                  />
+                  <LeftSidebarItem
+                    name="Featured"
+                    icon={<Profile />}
+                    active={false}
+                  />
                 </div>
-                <div>
-                  <p className="text-gray-text text-xl font-bold">POSTS</p>
+                <div className="mt-4">
+                  <LeftSidebarTitle name="Posts" />
+                  <LeftSidebarItem
+                    name="Latest"
+                    icon={<Profile />}
+                    active={false}
+                  />
+                  <LeftSidebarItem
+                    name="Trending"
+                    icon={<Profile />}
+                    active={false}
+                  />
+                  <LeftSidebarItem
+                    name="Most Upvoted"
+                    icon={<Profile />}
+                    active={false}
+                  />
                 </div>
-                <div>
-                  <p className="text-gray-text text-xl font-bold">
-                    YOUR RESORTS
-                  </p>
+                <div className="mt-4">
+                  <LeftSidebarTitle name="Your Resorts" />
+                  <LeftSidebarItem
+                    name="feed"
+                    icon={<Profile />}
+                    active={false}
+                  />
+                  <LeftSidebarItem
+                    name="feed"
+                    icon={<Profile />}
+                    active={false}
+                  />
                 </div>
               </div>
             </div>
           </div>
           {/* Center Column */}
-          <div className="flex flex-col flex-1 space-y-12 pb-12 w-full h-full">
+          <div className="lg:col-span-7 2xl:col-span-8 flex flex-col flex-1 space-y-12 pb-12 w-full h-full">
             <HomeTopBar
               user={user}
               currentUserLoading={currentUserLoading}
@@ -118,7 +154,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
             </div>
           </div>
           {/* Right Column */}
-          <div className="hidden 2xl:flex flex-col flex-1 sticky top-0 h-full bg-gray-dark">
+          <div className="lg:col-span-3 2xl:col-span-2 hidden lg:flex flex-col bg-gray-dark h-screen sticky top-0">
             <div className="w-full flex flex-col items-center sticky top-0 p-5 pt-16">
               {user ? (
                 <ProfileSection

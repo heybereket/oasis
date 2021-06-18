@@ -101,6 +101,7 @@ module.exports = {
           dark: '#141923',
           '2dark': '#202225',
           text: '#BDBDBD',
+          bg: '#232936',
         },
         primary: {
           DEFAULT: 'var(--color-primary)',
