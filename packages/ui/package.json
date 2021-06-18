@@ -47,5 +47,10 @@
   "prettier": "@oasis-sh/prettier-config",
   "eslintConfig": {
     "extends": "@oasis-sh/eslint-config"
+  },
+  "dependencies": {
+    "i18next": "^20.3.2",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "react-i18next": "^11.11.0"
   }
 }
