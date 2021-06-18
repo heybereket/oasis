@@ -1,6 +1,9 @@
 import React from 'react';
 import { RightArrow } from '../../icons';
 import { CustomLink } from '../../providers/CustomLink';
+import { useTranslation } from 'react-i18next';
+import '../../locales/i18n';
+
 type Props = {
   user: any;
   currentUserLoading: boolean;
@@ -12,6 +15,7 @@ export const ProfileSection: React.FC<Props> = ({
   currentUserLoading,
   StyledMarkdown,
 }) => {
+  const { t } = useTranslation();
   return (
     <>
       {currentUserLoading || (
@@ -39,7 +43,7 @@ export const ProfileSection: React.FC<Props> = ({
             href={`/u/${user?.username}`}
           >
             <>
-              <p className="font-bold text-lg text-primary">View Profile</p>
+              <p className="font-bold text-lg text-primary">{t('profileCard.view')}</p>
               <RightArrow className="text-primary" />
             </>
           </CustomLink>
