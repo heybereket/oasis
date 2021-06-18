@@ -1,3 +1,5 @@
+export { initTranslations } from './locales/i18n';
+
 // Components
 // Comments
 export { Comment } from './components/comment/Comment';

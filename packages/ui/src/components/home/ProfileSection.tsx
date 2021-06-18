@@ -1,6 +1,8 @@
 import React from 'react';
 import { RightArrow } from '../../icons';
 import { CustomLink } from '../../providers/CustomLink';
+import { useTranslation } from 'react-i18next';
+
 type Props = {
   user: any;
   currentUserLoading: boolean;
