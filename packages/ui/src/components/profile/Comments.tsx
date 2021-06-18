@@ -7,6 +7,7 @@ import {
 } from '@oasis-sh/react-gql';
 import React from 'react';
 import Comment from '../comment/Comment';
+import TabData from './TabData';
 
 type UsersCommentType = GetUsersCommentsQuery['userOnlyComments'];
 
@@ -29,7 +30,8 @@ export const Comments: React.FC<Props> = ({
       <div
         className={`mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]`}
       >
-        {comments?.comments.items.map((comment, index) => (
+        {comments?.comments.items.length
+        ? comments?.comments.items.map((comment, index) => (
           <div key={index} className="mb-6">
             <Comment
               comment={comment as TComment}
@@ -58,7 +60,12 @@ export const Comments: React.FC<Props> = ({
               }}
             />
           </div>
-        ))}
+        ))
+        : <TabData
+            title={`${currentUser?.name}'s Comments`}
+            content={`@${currentUser?.username} does not have any comments.`}
+          />
+        }
       </div>
     </>
   );

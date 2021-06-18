@@ -8,6 +8,7 @@ import {
 } from '@oasis-sh/react-gql';
 import React from 'react';
 import Post from '../post/Post';
+import TabData from './TabData';
 import { InfiniteScrollWrapper } from '../shared/InfiniteScrollWrapper';
 
 type Props = {
@@ -18,6 +19,7 @@ type Props = {
   currentUser?: User;
   reportPost?: ReportEntityMutationHookResult[0];
   fetch: (limit: number, offset: number) => Promise<TPost[]>;
+  isInUpvotesTab?: boolean
 };
 
 export const Posts: React.FC<Props> = ({
@@ -28,13 +30,15 @@ export const Posts: React.FC<Props> = ({
   deletePost,
   reportPost,
   fetch,
+  isInUpvotesTab
 }) => {
   return (
     <>
       <div
         className={`mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]`}
       >
-        <InfiniteScrollWrapper
+        {posts.length
+        ? <InfiniteScrollWrapper
           amountPerFetch={10}
           defaultItems={posts}
           fetch={fetch}
@@ -76,6 +80,17 @@ export const Posts: React.FC<Props> = ({
             </div>
           )}
         />
+        : (!isInUpvotesTab
+          ? <TabData
+              title={`${currentUser?.name}'s Posts`}
+              content={`@${currentUser?.username} currently does not have any posts.`}
+            />
+            : <TabData
+              title={`${currentUser?.name}'s Upvotes`}
+              content={`@${currentUser?.username} currently has not upvoted any posts.`}
+            />
+          )
+        }
       </div>
     </>
   );

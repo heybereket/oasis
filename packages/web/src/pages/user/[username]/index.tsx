@@ -148,6 +148,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
       } else {
         return (
           <PostsTabItem
+            isInUpvotesTab
             markdown={(text: any) => (
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}
