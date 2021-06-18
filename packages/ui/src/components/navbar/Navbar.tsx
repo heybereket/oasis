@@ -1,21 +1,22 @@
-import { NavItem } from '../navbar/NavItem';
-import { DropdownItem } from '../navbar/DropdownItem';
-import { Button } from '../shared/Button';
 import {
   Bell,
   Friends,
   Home,
-  Search,
-  Saved,
-  Topics,
-  Profile as ProfileIcon,
   Logout as LogoutIcon,
+  Profile as ProfileIcon,
+  Saved,
+  Search,
+  Topics,
 } from '../../icons';
 import React, { useRef, useState } from 'react';
-import useOnClickOutside from '../../hooks/useOnClickOutside';
+
+import { Button } from '../shared/Button';
+import { CustomLink } from '../../providers/CustomLink';
+import { DropdownItem } from '../navbar/DropdownItem';
+import { NavItem } from '../navbar/NavItem';
 import { User } from '@oasis-sh/react-gql';
 import { redirect } from '../../utils/redirect';
-import { CustomLink } from '../../providers/CustomLink';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 interface INavbarProps {
   user?: User | undefined;

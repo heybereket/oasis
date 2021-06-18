@@ -1,14 +1,15 @@
-import { AppProps } from 'next/app';
 import '../styles/globals.css';
-import Head from 'next/head';
+
 import { ApolloProvider } from '@apollo/client';
-import { useApollo } from '@lib/common/apolloClient';
+import { AppProps } from 'next/app';
 import { AuthProvider } from '@shared/AuthProvider';
+import Head from 'next/head';
+import Link from 'next/link';
+import { LinkProvider } from '@oasis-sh/ui';
+import { RuntimesProvider } from '@shared/PistonRuntimesProvider';
 import { SEO } from '@shared/SEO';
 import { initSentry } from '@utils/sentry';
-import { RuntimesProvider } from '@shared/PistonRuntimesProvider';
-import { LinkProvider } from '@oasis-sh/ui';
-import Link from 'next/link';
+import { useApollo } from '@lib/common/apolloClient';
 
 initSentry();
 export default function App({
@@ -24,7 +25,7 @@ export default function App({
           <LinkProvider
             link={(children, href, className) => (
               <div className={`inline cursor-pointer ${className}`}>
-                <Link href={href ?? '#'}>{children}</Link>
+                <Link href={href ?? '#'} passHref><a>{children}</a></Link>
               </div>
             )}
           >
