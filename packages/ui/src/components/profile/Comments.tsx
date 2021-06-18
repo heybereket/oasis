@@ -1,21 +1,22 @@
 // import StyledMarkdown from '../../../../web/src/components/markdown/StyledMarkdown';
 import {
-  GetUsersCommentsQuery,
   Comment as TComment,
   User,
+  ReportEntityMutationHookResult,
   useLikeDislikeCommentMutation,
 } from '@oasis-sh/react-gql';
 import React from 'react';
 import Comment from '../comment/Comment';
-
-type UsersCommentType = GetUsersCommentsQuery['userOnlyComments'];
+import { InfiniteScrollWrapper } from '../shared/InfiniteScrollWrapper';
 
 type Props = {
-  comments: UsersCommentType | undefined | null;
+  comments: TComment[];
   likeDislikeComment: ReturnType<typeof useLikeDislikeCommentMutation>[0];
-  // deletePost: ReturnType<typeof use>[0];
+  // deleteComment: ReturnType<typeof useDeletePostMutation>[0];
   markdown: (text: string) => JSX.Element;
   currentUser?: User;
+  reportComment?: ReportEntityMutationHookResult[0];
+  fetch: (limit: number, offset: number) => Promise<TComment[]>;
 };
 
 export const Comments: React.FC<Props> = ({
@@ -23,42 +24,56 @@ export const Comments: React.FC<Props> = ({
   markdown,
   likeDislikeComment,
   currentUser,
+  reportComment,
+  fetch,
 }) => {
   return (
     <>
       <div
         className={`mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]`}
       >
-        {comments?.comments.items.map((comment, index) => (
-          <div key={index} className="mb-6">
-            <Comment
-              comment={comment as TComment}
-              currentUser={currentUser}
-              markdown={markdown}
-              bgColorOveride="bg-gray-900"
-              likeComment={() => {
-                likeDislikeComment({
-                  variables: {
-                    commentId: comment.id,
-                    dislike: false,
-                    like: true,
-                  },
-                });
-                window.location.reload();
-              }}
-              dislikeComment={() => {
-                likeDislikeComment({
-                  variables: {
-                    commentId: comment.id,
-                    dislike: true,
-                    like: false,
-                  },
-                });
-                window.location.reload();
-              }}
-            />
-          </div>
-        ))}
+        <InfiniteScrollWrapper
+          amountPerFetch={10}
+          defaultItems={comments}
+          fetch={fetch}
+          renderComponent={(comment, index) => (
+            <div key={index} className="mb-6">
+              <Comment
+                comment={comment as TComment}
+                currentUser={currentUser}
+                // deletePost={(id) => {
+                //   deletePost({
+                //     variables: { postId: id },
+                //   });
+                //   window.location.reload();
+                // }}
+                markdown={markdown}
+                bgColorOveride={'bg-gray-900'}
+                likeComment={() => {
+                  likeDislikeComment({
+                    variables: {
+                      dislike: false,
+                      like: true,
+                      commentId: comment.id,
+                    },
+                  });
+                  // window.location.reload();
+                }}
+                dislikeComment={() => {
+                  likeDislikeComment({
+                    variables: {
+                      dislike: true,
+                      like: false,
+                      commentId: comment.id,
+                    },
+                  });
+                  // window.location.reload();
+                }}
+                reportComment={reportComment}
+              />
+            </div>
+          )}
+        />
       </div>
     </>
   );

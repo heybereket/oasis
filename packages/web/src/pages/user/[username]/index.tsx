@@ -21,6 +21,7 @@ import {
   GetUserByNameQuery,
   User,
   Post as TPost,
+  Comment as TComment,
 } from '@oasis-sh/react-gql';
 import {
   About,
@@ -91,7 +92,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
     },
   });
 
-  const [reportPost] = useReportEntityMutation();
+  const [reportEntity] = useReportEntityMutation();
 
   useEffect(() => console.log('Remounted'), []);
   switch (tabState) {
@@ -125,7 +126,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
             likeDislikePost={likeDislikePost}
             currentUser={user}
             deletePost={deletePost}
-            reportPost={reportPost}
+            reportPost={reportEntity}
             fetch={async (limit, offset) => {
               const newData = (
                 await postsData.fetchMore({
@@ -158,7 +159,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
             }
             likeDislikePost={likeDislikePost}
             deletePost={deletePost}
-            reportPost={reportPost}
+            reportPost={reportEntity}
             fetch={async (limit, offset) => {
               const newData = (
                 await likedPostsData.fetchMore({
@@ -181,12 +182,27 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
       } else {
         return (
           <CommentsCenterTab
-            comments={commentsData.data?.userOnlyComments}
+            comments={
+              (commentsData.data?.userOnlyComments?.comments
+                .items as TComment[]) ?? []
+            }
             likeDislikeComment={likeDislikeComment}
             markdown={(text) => (
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}
             currentUser={user}
+            reportComment={reportEntity}
+            fetch={async (limit, offset) => {
+              const newData = (
+                await commentsData.fetchMore({
+                  variables: {
+                    commentsLimit: limit,
+                    commentsOffset: offset,
+                  },
+                })
+              ).data.userOnlyComments?.comments.items as TComment[];
+              return newData;
+            }}
           />
         );
       }
