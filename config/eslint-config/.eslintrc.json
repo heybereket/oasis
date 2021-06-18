@@ -172,7 +172,7 @@
     "no-self-compare": "error",
     "no-sequences": "error",
     "no-spaced-func": "off",
-    "no-sync": "error",
+    "no-sync": "off",
     "no-template-curly-in-string": "error",
     "no-throw-literal": "error",
     "no-trailing-spaces": "error",
