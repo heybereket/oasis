@@ -17,6 +17,7 @@ type Props = {
   currentUser?: User;
   reportComment?: ReportEntityMutationHookResult[0];
   fetch: (limit: number, offset: number) => Promise<TComment[]>;
+  bgColorOveride?: string;
 };
 
 export const Comments: React.FC<Props> = ({
@@ -26,55 +27,52 @@ export const Comments: React.FC<Props> = ({
   currentUser,
   reportComment,
   fetch,
+  bgColorOveride,
 }) => {
   return (
     <>
-      <div
-        className={`mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]`}
-      >
-        <InfiniteScrollWrapper
-          amountPerFetch={10}
-          defaultItems={comments}
-          fetch={fetch}
-          renderComponent={(comment, index) => (
-            <div key={index} className="mb-6">
-              <Comment
-                comment={comment as TComment}
-                currentUser={currentUser}
-                // deletePost={(id) => {
-                //   deletePost({
-                //     variables: { postId: id },
-                //   });
-                //   window.location.reload();
-                // }}
-                markdown={markdown}
-                bgColorOveride={'bg-gray-900'}
-                likeComment={() => {
-                  likeDislikeComment({
-                    variables: {
-                      dislike: false,
-                      like: true,
-                      commentId: comment.id,
-                    },
-                  });
-                  // window.location.reload();
-                }}
-                dislikeComment={() => {
-                  likeDislikeComment({
-                    variables: {
-                      dislike: true,
-                      like: false,
-                      commentId: comment.id,
-                    },
-                  });
-                  // window.location.reload();
-                }}
-                reportComment={reportComment}
-              />
-            </div>
-          )}
-        />
-      </div>
+      <InfiniteScrollWrapper
+        amountPerFetch={10}
+        defaultItems={comments}
+        fetch={fetch}
+        renderComponent={(comment, index) => (
+          <div key={index} className="mb-6">
+            <Comment
+              comment={comment as TComment}
+              currentUser={currentUser}
+              // deletePost={(id) => {
+              //   deletePost({
+              //     variables: { postId: id },
+              //   });
+              //   window.location.reload();
+              // }}
+              markdown={markdown}
+              bgColorOveride={bgColorOveride ?? 'bg-gray-900'}
+              likeComment={() => {
+                likeDislikeComment({
+                  variables: {
+                    dislike: false,
+                    like: true,
+                    commentId: comment.id,
+                  },
+                });
+                // window.location.reload();
+              }}
+              dislikeComment={() => {
+                likeDislikeComment({
+                  variables: {
+                    dislike: true,
+                    like: false,
+                    commentId: comment.id,
+                  },
+                });
+                // window.location.reload();
+              }}
+              reportComment={reportComment}
+            />
+          </div>
+        )}
+      />
     </>
   );
 };
