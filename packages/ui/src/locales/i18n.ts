@@ -9,7 +9,8 @@ const resources = {
   }
 };
 
-i18n
+export const initTranslations = () => {
+  i18n
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
@@ -25,6 +26,7 @@ i18n
     interpolation: {
       escapeValue: false // not needed for react as it escapes by default
     }
-  });
+});
+};
 
-export default i18n;
+

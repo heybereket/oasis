@@ -2,7 +2,6 @@ import React from 'react';
 import { RightArrow } from '../../icons';
 import { CustomLink } from '../../providers/CustomLink';
 import { useTranslation } from 'react-i18next';
-import '../../locales/i18n';
 
 type Props = {
   user: any;

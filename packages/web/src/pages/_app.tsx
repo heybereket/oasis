@@ -1,21 +1,19 @@
 import '../styles/globals.css';
-
 import { ApolloProvider } from '@apollo/client';
 import { AppProps } from 'next/app';
 import { AuthProvider } from '@shared/AuthProvider';
 import Head from 'next/head';
 import Link from 'next/link';
-import { LinkProvider } from '@oasis-sh/ui';
+import { LinkProvider, initTranslations } from '@oasis-sh/ui';
 import { RuntimesProvider } from '@shared/PistonRuntimesProvider';
 import { SEO } from '@shared/SEO';
 import { initSentry } from '@utils/sentry';
 import { useApollo } from '@lib/common/apolloClient';
 
 initSentry();
-export default function App({
-  Component,
-  pageProps,
-}: AppProps): React.ReactNode {
+initTranslations();
+
+export default function App({ Component, pageProps }: AppProps) {
   const client = useApollo(pageProps.initialApolloState);
 
   return (
