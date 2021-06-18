@@ -96,8 +96,6 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                     },
                   })
                 ).data.feedSortPosts;
-
-                console.log(newData);
                 return newData;
               }}
               reportPost={reportPost}
