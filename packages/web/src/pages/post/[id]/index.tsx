@@ -1,16 +1,21 @@
 import React from 'react';
-import { Navbar, Post } from '@oasis-sh/ui';
+import { Navbar, Post, CommentsTab } from '@oasis-sh/ui';
 import StyledMarkdown from '@parser/markdown/StyledMarkdown';
 import { GetServerSideProps } from 'next';
 import {
   GetCurrentUserDocument,
+  GetPostCommentsDocument,
+  GetPostCommentsQueryVariables,
   GetPostDocument,
   GetPostQueryVariables,
   Post as TPost,
+  Comment as TComment,
   useDeletePostMutation,
+  useGetPostCommentsQuery,
   useGetPostQuery,
   useLikeDislikePostMutation,
   useReportEntityMutation,
+  useLikeDislikeCommentMutation,
 } from '@oasis-sh/react-gql';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { SEO } from '@shared/SEO';
@@ -18,15 +23,21 @@ import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { login, logout } from '@lib/auth/login';
 
 type Props = {
-  vars: GetPostQueryVariables;
+  PostVars: GetPostQueryVariables;
+  CommentVars: GetPostCommentsQueryVariables;
 };
 
-export const PostPage: React.FC<Props> = ({ vars }) => {
+export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
   const { user, currentUserLoading } = useGetCurrentUser();
-  const postData = useGetPostQuery({ variables: vars }).data?.getPost;
+
+  const postData = useGetPostQuery({ variables: PostVars }).data?.getPost;
+  const comments = useGetPostCommentsQuery({ variables: CommentVars });
+  const commentsData = comments.data?.getPost.comments.items;
+
   const [deletePost] = useDeletePostMutation();
   const [likeDislikePost] = useLikeDislikePostMutation();
-  const [reportPost] = useReportEntityMutation();
+  const [reportEntity] = useReportEntityMutation();
+  const [likeDislikeComment] = useLikeDislikeCommentMutation();
 
   return (
     <>
@@ -65,8 +76,28 @@ export const PostPage: React.FC<Props> = ({ vars }) => {
               },
             })
           }
-          reportPost={reportPost}
+          reportPost={reportEntity}
         />
+        <div className="w-full pl-5 mt-6">
+          <CommentsTab
+            comments={(commentsData ?? []) as TComment[]}
+            fetch={async (limit, offset) => {
+              return (
+                await comments.fetchMore({
+                  variables: {
+                    commentsLimit: limit,
+                    commentsOffset: offset,
+                  },
+                })
+              ).data.getPost.comments.items as TComment[];
+            }}
+            likeDislikeComment={likeDislikeComment}
+            markdown={(text) => <StyledMarkdown text={text} isPost={true} />}
+            currentUser={user}
+            reportComment={reportEntity}
+            bgColorOveride="bg-gray-800"
+          />
+        </div>
       </div>
     </>
   );
@@ -76,16 +107,26 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   query,
   req,
 }) => {
-  const vars: GetPostQueryVariables = {
+  const PostVars: GetPostQueryVariables = {
     id: query.id as string,
+  };
+  const CommentVars: GetPostCommentsQueryVariables = {
+    commentsLimit: 10,
+    commentsOffset: 0,
+    postId: query.id as string,
   };
   return {
     props: {
-      vars,
+      PostVars,
+      CommentVars,
       initialApolloState: await ssrRequest(req, [
         {
           document: GetPostDocument,
-          variables: vars,
+          variables: PostVars,
+        },
+        {
+          document: GetPostCommentsDocument,
+          variables: CommentVars,
         },
         {
           document: GetCurrentUserDocument,

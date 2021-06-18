@@ -116,29 +116,33 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
         return <div></div>;
       } else {
         return (
-          <PostsTabItem
-            markdown={(text: any) => (
-              <StyledMarkdown text={text} isBio={false} isPost={true} />
-            )}
-            posts={
-              (postsData.data?.userOnlyPosts?.posts.items as TPost[]) ?? []
-            }
-            likeDislikePost={likeDislikePost}
-            currentUser={user}
-            deletePost={deletePost}
-            reportPost={reportEntity}
-            fetch={async (limit, offset) => {
-              const newData = (
-                await postsData.fetchMore({
-                  variables: {
-                    postsLimit: limit,
-                    postsOffset: offset,
-                  },
-                })
-              ).data.userOnlyPosts?.posts.items as TPost[];
-              return newData;
-            }}
-          />
+          <div
+            className={`mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]`}
+          >
+            <PostsTabItem
+              markdown={(text: any) => (
+                <StyledMarkdown text={text} isBio={false} isPost={true} />
+              )}
+              posts={
+                (postsData.data?.userOnlyPosts?.posts.items as TPost[]) ?? []
+              }
+              likeDislikePost={likeDislikePost}
+              currentUser={user}
+              deletePost={deletePost}
+              reportPost={reportEntity}
+              fetch={async (limit, offset) => {
+                const newData = (
+                  await postsData.fetchMore({
+                    variables: {
+                      postsLimit: limit,
+                      postsOffset: offset,
+                    },
+                  })
+                ).data.userOnlyPosts?.posts.items as TPost[];
+                return newData;
+              }}
+            />
+          </div>
         );
       }
 
