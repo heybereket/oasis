@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 interface Props {
@@ -17,6 +17,13 @@ export const InfiniteScrollWrapper: React.FC<Props> = ({
   const limit = amountPerFetch;
   const [offset, setOffset] = useState<number>(defaultItems.length);
   const [hasMore, setHasMore] = useState(true);
+
+  // If default items arent set on first render
+  useEffect(() => {
+    setItems(defaultItems);
+    setOffset(defaultItems.length);
+  }, [defaultItems]);
+
   return (
     <>
       <InfiniteScroll
