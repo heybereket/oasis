@@ -33,10 +33,7 @@ export const Posts: React.FC<Props> = ({
   isInUpvotesTab
 }) => {
   return (
-    <>
-      <div
-        className={`mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]`}
-      >
+      <div className={isInUpvotesTab ? `mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]` : ''}>
         {posts.length
         ? <InfiniteScrollWrapper
           amountPerFetch={10}
@@ -92,6 +89,5 @@ export const Posts: React.FC<Props> = ({
           )
         }
       </div>
-    </>
   );
 };
