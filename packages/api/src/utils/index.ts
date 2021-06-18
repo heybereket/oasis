@@ -37,9 +37,23 @@ export const getShortMonth = () => {
 };
 
 export const createNotification = async ({ userId, performerId, type }) => {
+  const user = await User.findOne(userId);
+  const performer = await User.findOne(performerId);
+  const prevNotifs = (
+    await Notification.find({
+      where: {
+        user,
+        performer,
+        type,
+      },
+    })
+  ).length;
+  if (prevNotifs >= 1) {
+    return;
+  }
   const notification = Notification.create();
-  notification.user = Promise.resolve(await User.findOne(userId));
-  notification.performer = Promise.resolve(await User.findOne(performerId));
+  notification.user = Promise.resolve(user);
+  notification.performer = Promise.resolve(performer);
   notification.type = type;
   notification.read = false;
   notification.createdAt = String(Date.now());

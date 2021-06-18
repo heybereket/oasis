@@ -20,6 +20,8 @@ import {
   GetUsersPostsQuery,
   GetUserByNameQuery,
   User,
+  Post as TPost,
+  Comment as TComment,
 } from '@oasis-sh/react-gql';
 import {
   About,
@@ -90,7 +92,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
     },
   });
 
-  const [reportPost] = useReportEntityMutation();
+  const [reportEntity] = useReportEntityMutation();
 
   useEffect(() => console.log('Remounted'), []);
   switch (tabState) {
@@ -118,12 +120,24 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
             markdown={(text: any) => (
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}
-            posts={postsData.data?.userOnlyPosts}
-            likedPosts={null}
+            posts={
+              (postsData.data?.userOnlyPosts?.posts.items as TPost[]) ?? []
+            }
             likeDislikePost={likeDislikePost}
             currentUser={user}
             deletePost={deletePost}
-            reportPost={reportPost}
+            reportPost={reportEntity}
+            fetch={async (limit, offset) => {
+              const newData = (
+                await postsData.fetchMore({
+                  variables: {
+                    postsLimit: limit,
+                    postsOffset: offset,
+                  },
+                })
+              ).data.userOnlyPosts?.posts.items as TPost[];
+              return newData;
+            }}
           />
         );
       }
@@ -139,11 +153,24 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}
             currentUser={user}
-            posts={null}
-            likedPosts={likedPostsData.data?.getUserByName}
+            posts={
+              (likedPostsData.data?.getUserByName?.likedPosts
+                .items as TPost[]) ?? []
+            }
             likeDislikePost={likeDislikePost}
             deletePost={deletePost}
-            reportPost={reportPost}
+            reportPost={reportEntity}
+            fetch={async (limit, offset) => {
+              const newData = (
+                await likedPostsData.fetchMore({
+                  variables: {
+                    postsLimit: limit,
+                    postsOffset: offset,
+                  },
+                })
+              ).data.getUserByName?.likedPosts.items as TPost[];
+              return newData;
+            }}
           />
         );
       }
@@ -155,12 +182,27 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
       } else {
         return (
           <CommentsCenterTab
-            comments={commentsData.data?.userOnlyComments}
+            comments={
+              (commentsData.data?.userOnlyComments?.comments
+                .items as TComment[]) ?? []
+            }
             likeDislikeComment={likeDislikeComment}
             markdown={(text) => (
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}
             currentUser={user}
+            reportComment={reportEntity}
+            fetch={async (limit, offset) => {
+              const newData = (
+                await commentsData.fetchMore({
+                  variables: {
+                    commentsLimit: limit,
+                    commentsOffset: offset,
+                  },
+                })
+              ).data.userOnlyComments?.comments.items as TComment[];
+              return newData;
+            }}
           />
         );
       }
@@ -192,7 +234,6 @@ const Profile: React.FC<ProfileProps> = (props) => {
   );
 
   const viewingOwnProfile = data?.id === user?.id;
-
 
   return (
     <>
@@ -259,15 +300,21 @@ const Profile: React.FC<ProfileProps> = (props) => {
             </div>
             {/* Right Side */}
             <div className="col-span-4 transform translate-y-16 flex flex-col">
-              <div className={`grid lg:grid-rows-1 ${viewingOwnProfile ? "lg:grid-cols-1 md:grid-rows-1" : "lg:grid-cols-2 md:grid-rows-2"} gap-2`}>
-                {!viewingOwnProfile &&
+              <div
+                className={`grid lg:grid-rows-1 ${
+                  viewingOwnProfile
+                    ? 'lg:grid-cols-1 md:grid-rows-1'
+                    : 'lg:grid-cols-2 md:grid-rows-2'
+                } gap-2`}
+              >
+                {!viewingOwnProfile && (
                   <Button
                     color="gray"
                     className="md:row-span-1 lg:col-span-1 text-sm"
                   >
                     Send Message
                   </Button>
-                }
+                )}
                 <Button
                   color="primary"
                   className="md:row-span-1 lg:col-span-1 text-sm"
@@ -314,12 +361,16 @@ const Profile: React.FC<ProfileProps> = (props) => {
             following={data?.following.total}
             posts={data?.posts.total}
           />
-          <div className={`grid ${viewingOwnProfile ? "grid-cols-1" : "grid-cols-2"} mt-6 w-full max-w-sm gap-1 md:gap-2`}>
-            {!viewingOwnProfile &&
+          <div
+            className={`grid ${
+              viewingOwnProfile ? 'grid-cols-1' : 'grid-cols-2'
+            } mt-6 w-full max-w-sm gap-1 md:gap-2`}
+          >
+            {!viewingOwnProfile && (
               <Button color="gray" className="col-span-2 md:col-span-1 text-sm">
                 Send Message
               </Button>
-            }
+            )}
             <Button
               color="primary"
               className="col-span-2 md:col-span-1 text-sm"
@@ -329,9 +380,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 }
               }}
             >
-              {viewingOwnProfile
-                ? 'Edit Profile'
-                : `Follow @${data?.username}`}
+              {viewingOwnProfile ? 'Edit Profile' : `Follow @${data?.username}`}
             </Button>
           </div>
 

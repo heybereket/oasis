@@ -15,7 +15,7 @@ export const ProfileSection: React.FC<Props> = ({
   return (
     <>
       {currentUserLoading || (
-        <>
+        <div>
           <div className="flex items-center space-x-4">
             <img
               src={user?.avatar}
@@ -43,7 +43,7 @@ export const ProfileSection: React.FC<Props> = ({
               <RightArrow className="text-primary" />
             </>
           </CustomLink>
-        </>
+        </div>
       )}
     </>
   );
