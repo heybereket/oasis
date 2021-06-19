@@ -72,7 +72,7 @@ export { Comments } from './icons/posts/Comments';
 export { DownArrow } from './icons/arrows/DownArrow';
 export { Friends } from './icons/navbar/Friends';
 export { Home } from './icons/navbar/Home';
-export { Like } from './icons/posts/Like';
+export { Upvote } from './icons/posts/Like';
 export { Logout } from './icons/navbar/Logout';
 export { Search } from './icons/navbar/Search';
 export { Posts } from './icons/navbar/Posts';

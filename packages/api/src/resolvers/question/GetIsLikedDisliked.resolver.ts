@@ -1,19 +1,19 @@
-import Post from '@entities/Post';
+import Question from '@entities/Question';
 import { ContextType } from '@root/server';
 import { Ctx, FieldResolver, Resolver, Root } from 'type-graphql';
 
-@Resolver(() => Post)
+@Resolver(() => Question)
 export class GetIsUpvotedDownvotedResolver {
   @FieldResolver(() => Boolean)
   async isUpvoted(
-    @Root() post: Post,
+    @Root() question: Question,
     @Ctx() { getUser, hasAuth }: ContextType
   ) {
     if (hasAuth) {
       const user = await getUser();
       let retValue = false;
-      (await user.likedPosts).forEach((res) => {
-        if (res.id === post.id) {
+      (await user.likedQuestions).forEach((res) => {
+        if (res.id === question.id) {
           retValue = true;
         }
       });
@@ -25,14 +25,14 @@ export class GetIsUpvotedDownvotedResolver {
 
   @FieldResolver(() => Boolean)
   async isDownvoted(
-    @Root() post: Post,
+    @Root() question: Question,
     @Ctx() { getUser, hasAuth }: ContextType
   ) {
     if (hasAuth) {
       const user = await getUser();
       let retValue = false;
-      (await user.downvotedPosts).forEach((res) => {
-        if (res.id === post.id) {
+      (await user.downvotedQuestions).forEach((res) => {
+        if (res.id === question.id) {
           retValue = true;
         }
       });

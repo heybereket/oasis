@@ -13,24 +13,24 @@ import { ContextType } from '@root/server';
 import User from '@entities/User';
 import Comment from '@entities/Comment';
 
-// @bcg-resolver(mutation, likeDislikeComment, comment)
+// @bcg-resolver(mutation, likeDownvoteComment, comment)
 
 @Resolver(() => Comment)
-export class LikeDislikeCommentResolver {
+export class UpvoteDownvoteCommentResolver {
   @Mutation(() => Boolean)
   @Authorized()
-  async likeDislikeComment(
+  async likeDownvoteComment(
     @Arg('commentId') commentId: string,
     @Arg('like') like: boolean,
-    @Arg('dislike') dislike: boolean,
+    @Arg('downvote') downvote: boolean,
     @Ctx() { getUser }: ContextType
   ) {
     const comment = await Comment.findOne(commentId);
 
     if (!comment) throw new ApolloError('Comment not found');
 
-    if ((like && dislike) || (!like && !dislike)) {
-      throw new ApolloError('Please select like or dislike');
+    if ((like && downvote) || (!like && !downvote)) {
+      throw new ApolloError('Please select like or downvote');
     }
 
     const user = await getUser();
@@ -46,33 +46,36 @@ export class LikeDislikeCommentResolver {
       }
     });
 
-    const dislikedComments = await user.dislikedComments;
-    let alreadydisliked = false;
-    const dislikedCommentsMinusNew: Comment[] = [];
-    dislikedComments.forEach((comment) => {
+    const downvotedComments = await user.downvotedComments;
+    let alreadydownvoted = false;
+    const downvotedCommentsMinusNew: Comment[] = [];
+    downvotedComments.forEach((comment) => {
       if (comment.id === commentId) {
-        alreadydisliked = true;
+        alreadydownvoted = true;
       } else {
-        dislikedCommentsMinusNew.push(comment);
+        downvotedCommentsMinusNew.push(comment);
       }
     });
     if (like) {
       if (!alreadyliked) {
-        if (alreadydisliked) {
-          user.dislikedComments = Promise.resolve(dislikedCommentsMinusNew);
+        if (alreadydownvoted) {
+          user.downvotedComments = Promise.resolve(downvotedCommentsMinusNew);
         }
         user.likedComments = Promise.resolve([...likedComments, comment]);
       } else {
         user.likedComments = Promise.resolve(likedCommentsMinusNew);
       }
-    } else if (dislike) {
-      if (!alreadydisliked) {
+    } else if (downvote) {
+      if (!alreadydownvoted) {
         if (alreadyliked) {
           user.likedComments = Promise.resolve(likedCommentsMinusNew);
         }
-        user.dislikedComments = Promise.resolve([...dislikedComments, comment]);
+        user.downvotedComments = Promise.resolve([
+          ...downvotedComments,
+          comment,
+        ]);
       } else {
-        user.dislikedComments = Promise.resolve(dislikedCommentsMinusNew);
+        user.downvotedComments = Promise.resolve(downvotedCommentsMinusNew);
       }
     }
 
@@ -92,9 +95,9 @@ export class LikeDislikeCommentResolver {
   }
 
   @FieldResolver(() => Float)
-  async dislikes(@Root() comment: Comment) {
+  async downvotes(@Root() comment: Comment) {
     return User.createQueryBuilder('user')
-      .innerJoin(`user.dislikedComments`, 'comment', 'comment.id = :id', {
+      .innerJoin(`user.downvotedComments`, 'comment', 'comment.id = :id', {
         id: comment.id,
       })
       .getCount();

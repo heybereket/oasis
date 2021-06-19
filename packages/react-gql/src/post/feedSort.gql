@@ -12,7 +12,7 @@ query FeedSortPosts($postsLimit: Float!, $postsOffset: Float!) {
       avatar
     }
     createdAt
-    dislikes
+    downvotes
     id
     lastEdited
     likes
@@ -27,8 +27,8 @@ query FeedSortPosts($postsLimit: Float!, $postsOffset: Float!) {
       total
     }
     topics
-    isLiked
-    isDisliked
+    isUpvoted
+    isDownvoted
     imageName
   }
 }

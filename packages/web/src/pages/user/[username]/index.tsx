@@ -8,13 +8,13 @@ import {
   useGetUserByNameQuery,
   useFollowUserMutation,
   GetUserByNameQueryVariables,
-  useLikeDislikePostMutation,
+  useUpvoteDownvotePostMutation,
   useGetUsersPostsLazyQuery,
-  useGetUsersLikedPostsLazyQuery,
+  useGetUsersUpvotedPostsLazyQuery,
   GetCurrentUserDocument,
   useDeletePostMutation,
   useGetUsersCommentsLazyQuery,
-  useLikeDislikeCommentMutation,
+  useUpvoteDownvoteCommentMutation,
   useReportEntityMutation,
   GetUsersPostsQueryResult,
   GetUsersPostsQuery,
@@ -47,7 +47,7 @@ import { useState, useEffect } from 'react';
 enum CenterColumnTabState {
   AboutTab,
   PostsTab,
-  LikesTab,
+  UpvotesTab,
   CommentsTab,
 }
 
@@ -66,8 +66,8 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
   myUser,
   profileUser,
 }) => {
-  const [likeDislikePost] = useLikeDislikePostMutation();
-  const [likeDislikeComment] = useLikeDislikeCommentMutation();
+  const [likeDownvotePost] = useUpvoteDownvotePostMutation();
+  const [likeDownvoteComment] = useUpvoteDownvoteCommentMutation();
   const [deletePost] = useDeletePostMutation();
 
   const [getPosts, postsData] = useGetUsersPostsLazyQuery({
@@ -78,7 +78,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
     },
   });
 
-  const [getLikedPosts, likedPostsData] = useGetUsersLikedPostsLazyQuery({
+  const [getUpvotedPosts, likedPostsData] = useGetUsersUpvotedPostsLazyQuery({
     variables: {
       postsLimit: 10,
       postsOffset: 0,
@@ -102,8 +102,8 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
       case CenterColumnTabState.CommentsTab:
         getComments();
         break;
-      case CenterColumnTabState.LikesTab:
-        getLikedPosts();
+      case CenterColumnTabState.UpvotesTab:
+        getUpvotedPosts();
         break;
       case CenterColumnTabState.PostsTab:
         getPosts();
@@ -139,7 +139,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
             posts={
               (postsData.data?.userOnlyPosts?.posts.items as TPost[]) ?? []
             }
-            likeDislikePost={likeDislikePost}
+            likeDownvotePost={likeDownvotePost}
             currentUser={myUser}
             profileUser={profileUser}
             deletePost={deletePost}
@@ -159,14 +159,14 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
         );
       }
 
-    case CenterColumnTabState.LikesTab:
+    case CenterColumnTabState.UpvotesTab:
       if (!likedPostsData.called) {
-        getLikedPosts();
+        getUpvotedPosts();
         return <div />;
       } else {
         return (
           <PostsTabItem
-            isInProfileLikes
+            isInProfileUpvotes
             markdown={(text: any) => (
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}
@@ -176,7 +176,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
               (likedPostsData.data?.getUserByName?.likedPosts
                 .items as TPost[]) ?? []
             }
-            likeDislikePost={likeDislikePost}
+            likeDownvotePost={likeDownvotePost}
             deletePost={deletePost}
             reportPost={reportEntity}
             fetch={async (limit, offset) => {
@@ -205,7 +205,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
               (commentsData.data?.userOnlyComments?.comments
                 .items as TComment[]) ?? []
             }
-            likeDislikeComment={likeDislikeComment}
+            likeDownvoteComment={likeDownvoteComment}
             markdown={(text) => (
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}
@@ -296,9 +296,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   />
                   <TabItem
                     name="Upvotes"
-                    active={tabState === CenterColumnTabState.LikesTab}
+                    active={tabState === CenterColumnTabState.UpvotesTab}
                     icon={UpArrow}
-                    onClick={() => setTabState(CenterColumnTabState.LikesTab)}
+                    onClick={() => setTabState(CenterColumnTabState.UpvotesTab)}
                   />
                   <TabItem
                     name="Comments"
@@ -423,9 +423,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
               />
               <TabItem
                 name="Upvotes"
-                active={tabState === CenterColumnTabState.LikesTab}
+                active={tabState === CenterColumnTabState.UpvotesTab}
                 icon={UpArrow}
-                onClick={() => setTabState(CenterColumnTabState.LikesTab)}
+                onClick={() => setTabState(CenterColumnTabState.UpvotesTab)}
               />
               <TabItem
                 name="Comments"

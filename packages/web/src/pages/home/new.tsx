@@ -18,7 +18,7 @@ import {
   Profile,
 } from '@oasis-sh/ui';
 import {
-  useLikeDislikePostMutation,
+  useUpvoteDownvotePostMutation,
   useMakePostMutation,
   GetCurrentUserDocument,
   useDeletePostMutation,
@@ -51,7 +51,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   const { user, currentUserLoading } = useGetCurrentUser();
   const posts = postsQuery.data?.feedSortPosts;
 
-  const [likeDislikePost] = useLikeDislikePostMutation();
+  const [likeDownvotePost] = useUpvoteDownvotePostMutation();
   const [deletePost] = useDeletePostMutation();
   const [reportPost] = useReportEntityMutation();
 
@@ -136,7 +136,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                 user={user}
                 posts={posts ?? []}
                 createPost={createPost}
-                likeDislikePost={likeDislikePost}
+                likeDownvotePost={likeDownvotePost}
                 deleteMutation={deletePost}
                 fetch={async (limit, offset) => {
                   const newData = (

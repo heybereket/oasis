@@ -1,6 +1,5 @@
 import {
   BaseEntity,
-  BeforeUpdate,
   Column,
   Entity,
   ManyToMany,
@@ -8,17 +7,17 @@ import {
   OneToMany,
   PrimaryColumn,
 } from 'typeorm';
-import { Field, ID, ObjectType, Root } from 'type-graphql';
+import { Field, ID, ObjectType } from 'type-graphql';
 import User from '@entities/User';
 import Comment from '@entities/Comment';
 import Resort from '@entities/Resort';
 import { RelationalPagination } from '@utils/paginate/RelationalPagination';
 import Report from './Report';
+import Answer from './Answer';
 
 @ObjectType()
 @Entity()
-export default class Post extends BaseEntity {
-  // @PrimaryGeneratedColumn('uuid')
+export default class Question extends BaseEntity {
   @PrimaryColumn()
   @Field(() => ID)
   id: string;
@@ -43,36 +42,27 @@ export default class Post extends BaseEntity {
   @ManyToOne(() => User, (user) => user.posts)
   author: Promise<User>;
 
-  // @Field(() => User, { complexity: 1 })
-  @RelationalPagination(() => Post, () => User, 'likedPosts')
-  @ManyToMany(() => User, (user) => user.likedPosts)
-  likers: Promise<User[]>;
+  @RelationalPagination(() => Question, () => Answer, 'question')
+  @OneToMany(() => Answer, (answer) => answer.question)
+  answers: Promise<Answer[]>;
 
-  @RelationalPagination(() => Post, () => User, 'downvotedPosts')
-  @ManyToMany(() => User, (user) => user.downvotedPosts)
+  // @Field(() => User, { complexity: 1 })
+  @RelationalPagination(() => Question, () => User, 'likedQuestions')
+  @ManyToMany(() => User, (user) => user.likedQuestions)
+  upvoters: Promise<User[]>;
+
+  @RelationalPagination(() => Question, () => User, 'downvotedQuestions')
+  @ManyToMany(() => User, (user) => user.downvotedQuestions)
   downvoters: Promise<User[]>;
 
-  // @Field(() => [Comment], { complexity: 5 })
-  @RelationalPagination(() => Post, () => Comment, 'post')
-  @OneToMany(() => Comment, (comment) => comment.post)
+  @RelationalPagination(() => Question, () => Comment, 'question')
+  @OneToMany(() => Comment, (comment) => comment.question)
   comments: Promise<Comment[]>;
 
   @Field(() => Resort, { nullable: true, complexity: 1 })
   @ManyToOne(() => Resort, (resort) => resort.posts, { nullable: true })
   resort?: Promise<Resort>;
 
-  @OneToMany(() => Report, (report) => report.post)
+  @OneToMany(() => Report, (report) => report.question)
   filedReports: Promise<Report[]>;
-
-  @Column({ nullable: true })
-  imageName?: string;
-
-  @Field(() => String, { nullable: true, name: 'imageName' })
-  imageNameResolver(@Root() post: Post): string | undefined {
-    return post.imageName !== null
-      ? process.env.STORE_IMAGES_ON_S3 === 'true'
-        ? `https://${process.env.AWS_S3_BUCKET}.${process.env.AWS_ENDPOINT}/${post.imageName}`
-        : `/images/${this.imageName}`
-      : undefined;
-  }
 }
