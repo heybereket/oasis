@@ -49,5 +49,5 @@ $ yarn lint
 ## Frequently Asked Questions
 
 **How can I add a translation?** <br>
-If you would like to add a language to Oasis, feel free to edit the [locales](packages/web/public/locales) directory. <br/>
+If you would like to add a language to Oasis, feel free to edit the [locales](/packages/ui/src/locales) directory. <br/>
 We are always open to making Oasis more accessible by adding languages.

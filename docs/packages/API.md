@@ -43,7 +43,7 @@ export default ormconfig;
 ## Running
 1. To run the API you will first need to build it by running `yarn build`
 2. To sync the schema run `yarn workspace @oasis/api typeorm:cli schema:sync` (This may result in data loss).
-3. If you want to run the api by itself you can run `yarn dev:api`, if you would like to run the api with the website follow the instructions in [the web quickstart guide](Web-Quick-Start)
+3. If you want to run the api by itself you can run `yarn dev:api`, if you would like to run the api with the website follow the instructions in [the web quickstart guide](WEB.md)
 
 ## Testing
 **Any new code without tests will be denied**
