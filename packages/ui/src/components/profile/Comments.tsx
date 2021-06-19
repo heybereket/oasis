@@ -31,13 +31,13 @@ export const Comments: React.FC<Props> = ({
   bgColorOveride,
 }) => {
   return (
-    <div
-      className="mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]"
-    >
+    <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]">
       <TabMeta
         title={`${currentUser?.name}'s Comments`}
         description={
-          comments.length <= 0 ? `@${currentUser?.username} does not have any comments.` : ''
+          comments.length <= 0
+            ? `@${currentUser?.username} does not have any comments.`
+            : ''
         }
       />
       <InfiniteScrollWrapper

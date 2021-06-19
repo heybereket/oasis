@@ -30,63 +30,67 @@ export const Posts: React.FC<Props> = ({
   deletePost,
   reportPost,
   fetch,
-  isInProfileLikes
+  isInProfileLikes,
 }) => {
   console.log(isInProfileLikes);
   return (
     <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]">
-        <TabMeta
-          title={
-            isInProfileLikes ? `${currentUser?.name}'s Upvotes` : `${currentUser?.name}'s Posts`
-          }
-          description={
-            posts.length <= 0
-            ? isInProfileLikes ? `@${currentUser?.username} has not upvoted any posts.` : `@${currentUser?.username} has no posts.`
+      <TabMeta
+        title={
+          isInProfileLikes
+            ? `${currentUser?.name}'s Upvotes`
+            : `${currentUser?.name}'s Posts`
+        }
+        description={
+          posts.length <= 0
+            ? isInProfileLikes
+              ? `@${currentUser?.username} has not upvoted any posts.`
+              : `@${currentUser?.username} has no posts.`
             : ''
-          }
-        />
-        <InfiniteScrollWrapper
-          amountPerFetch={10}
-          defaultItems={posts}
-          fetch={fetch}
-          renderComponent={(post, index) => (
-            <div key={index} className="mb-6">
-              <Post
-                post={post as TPost}
-                currentUser={currentUser}
-                deletePost={(id) => {
-                  deletePost({
-                    variables: { postId: id },
-                  });
-                  window.location.reload();
-                }}
-                markdown={markdown}
-                bgColorOveride={'bg-gray-900'}
-                likePost={() => {
-                  likeDislikePost({
-                    variables: {
-                      dislike: false,
-                      like: true,
-                      postId: post.id,
-                    },
-                  });
-                  // window.location.reload();
-                }}
-                dislikePost={() => {
-                  likeDislikePost({
-                    variables: {
-                      dislike: true,
-                      like: false,
-                      postId: post.id,
-                    },
-                  });
-                  // window.location.reload();
-                }}
-                reportPost={reportPost}
-              />
-            </div>
-          )}
-        />
-      </div>
+        }
+      />
+      <InfiniteScrollWrapper
+        amountPerFetch={10}
+        defaultItems={posts}
+        fetch={fetch}
+        renderComponent={(post, index) => (
+          <div key={index} className="mb-6">
+            <Post
+              post={post as TPost}
+              currentUser={currentUser}
+              deletePost={(id) => {
+                deletePost({
+                  variables: { postId: id },
+                });
+                window.location.reload();
+              }}
+              markdown={markdown}
+              bgColorOveride={'bg-gray-900'}
+              likePost={() => {
+                likeDislikePost({
+                  variables: {
+                    dislike: false,
+                    like: true,
+                    postId: post.id,
+                  },
+                });
+                // window.location.reload();
+              }}
+              dislikePost={() => {
+                likeDislikePost({
+                  variables: {
+                    dislike: true,
+                    like: false,
+                    postId: post.id,
+                  },
+                });
+                // window.location.reload();
+              }}
+              reportPost={reportPost}
+            />
+          </div>
+        )}
+      />
+    </div>
   );
 };

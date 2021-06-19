@@ -103,7 +103,6 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
           name={data?.name}
           username={data?.username}
           badges={data?.badges}
-          marginTop="8"
           markdown={(text) => {
             return <StyledMarkdown isBio={true} text={text} />;
           }}
@@ -116,29 +115,29 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
         return <div></div>;
       } else {
         return (
-            <PostsTabItem
-              markdown={(text: any) => (
-                <StyledMarkdown text={text} isBio={false} isPost={true} />
-              )}
-              posts={
-                (postsData.data?.userOnlyPosts?.posts.items as TPost[]) ?? []
-              }
-              likeDislikePost={likeDislikePost}
-              currentUser={user}
-              deletePost={deletePost}
-              reportPost={reportEntity}
-              fetch={async (limit, offset) => {
-                const newData = (
-                  await postsData.fetchMore({
-                    variables: {
-                      postsLimit: limit,
-                      postsOffset: offset,
-                    },
-                  })
-                ).data.userOnlyPosts?.posts.items as TPost[];
-                return newData;
-              }}
-            />
+          <PostsTabItem
+            markdown={(text: any) => (
+              <StyledMarkdown text={text} isBio={false} isPost={true} />
+            )}
+            posts={
+              (postsData.data?.userOnlyPosts?.posts.items as TPost[]) ?? []
+            }
+            likeDislikePost={likeDislikePost}
+            currentUser={user}
+            deletePost={deletePost}
+            reportPost={reportEntity}
+            fetch={async (limit, offset) => {
+              const newData = (
+                await postsData.fetchMore({
+                  variables: {
+                    postsLimit: limit,
+                    postsOffset: offset,
+                  },
+                })
+              ).data.userOnlyPosts?.posts.items as TPost[];
+              return newData;
+            }}
+          />
         );
       }
 
