@@ -1,5 +1,5 @@
 import Question from '@entities/Question';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import { Ctx, FieldResolver, Resolver, Root } from 'type-graphql';
 
 @Resolver(() => Question)

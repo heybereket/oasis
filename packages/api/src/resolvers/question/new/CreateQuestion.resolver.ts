@@ -1,5 +1,5 @@
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import Question from '@entities/Question';
 import { customAlphabet } from 'nanoid';
 import CreateQuestionInput from './CreateQuestionInput';

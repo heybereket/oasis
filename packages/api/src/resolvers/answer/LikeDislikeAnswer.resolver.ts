@@ -9,7 +9,7 @@ import {
   Resolver,
   Root,
 } from 'type-graphql';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import User from '@entities/User';
 import Answer from '@entities/Answer';
 
