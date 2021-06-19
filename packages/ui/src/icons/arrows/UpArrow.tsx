@@ -1,8 +1,6 @@
 import React from 'react';
 
-export const UpArrow: React.FC<React.SVGProps<SVGSVGElement>> = (
-  props
-) => {
+export const UpArrow: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -14,7 +14,7 @@
     "start": "yarn workspace @oasis-sh/web run start",
     "deploy:prod": "git add . && git commit -m 'chore(deploy): Merge staging -> prod' && git checkout prod && git merge staging && git push origin prod --force && git checkout staging",
     "publish:bot": "yarn workspace @oasis-sh/bot-client run publish",
-    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "lint": "eslint . --ext ts --ext tsx --ext js && prettier --write \"packages/**/**src/*/**/*.{ts,tsx,js}\"",
     "clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/react-gql,@oasis-sh/ui -p run clean",
     "upgrade": "yarn upgrade-interactive",
     "reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",

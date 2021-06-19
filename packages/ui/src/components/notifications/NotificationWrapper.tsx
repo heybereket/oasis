@@ -1,8 +1,7 @@
-
 import React from 'react';
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export const NotificationWrapper: React.FC<Props> = ({

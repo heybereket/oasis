@@ -51,15 +51,14 @@ const NotificationPage: React.FC<NotificationPageProps> | any = () => {
                   username={value.performer?.username}
                   read={value.read}
                 />
-              ))
-            }
-            { (!data?.getNotifications?.length && !loading) &&
+              ))}
+            {!data?.getNotifications?.length && !loading && (
               <h5>
                 {
                   "Uh, oh. Seems like you don't have any notifications yet. Too bad."
                 }
               </h5>
-            }
+            )}
           </NotificationWrapper>
         </div>
       </div>

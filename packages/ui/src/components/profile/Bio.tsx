@@ -20,6 +20,7 @@ export const Bio: React.FC<Props> = ({
       <div
         className="mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]"
       >
+<<<<<<< HEAD
         <TabMeta
           title={`About ${name}`}
           description={
@@ -27,6 +28,19 @@ export const Bio: React.FC<Props> = ({
           }
         />
 
+=======
+        <h4 className="font-extrabold">About {name}</h4>
+        {bio !== null ? (
+          <div className="text-gray-300 font-bold">
+            {markdown(bio ?? '')}
+            {/* <StyledMarkdown text={bio ?? ''} isBio={true} /> */}
+          </div>
+        ) : (
+          <h5 className="text-gray-300 font-bold">
+            @{username} currently does not have a bio set.
+          </h5>
+        )}
+>>>>>>> 7fce666a92af237b071febcfa189221276be7198
         <div className="flex">
           {badges?.map((badge) => (
             <img

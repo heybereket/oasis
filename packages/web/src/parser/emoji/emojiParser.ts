@@ -17,7 +17,7 @@ export function plugin(_: typeof DEFAULT_SETTINGS): any {
   }
 
   function transformer(tree: any) {
-    visit(tree, 'text', function(node: any) {
+    visit(tree, 'text', function (node: any) {
       node.value = node.value.replace(RE_EMOJI, getEmoji);
     });
   }
