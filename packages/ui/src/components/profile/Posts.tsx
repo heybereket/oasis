@@ -17,6 +17,7 @@ type Props = {
   deletePost: ReturnType<typeof useDeletePostMutation>[0];
   markdown: (text: string) => JSX.Element;
   currentUser?: User;
+  profileUser?: User;
   reportPost?: ReportEntityMutationHookResult[0];
   fetch: (limit: number, offset: number) => Promise<TPost[]>;
   isInProfileLikes?: boolean;
@@ -31,6 +32,7 @@ export const Posts: React.FC<Props> = ({
   reportPost,
   fetch,
   isInProfileLikes,
+  profileUser,
 }) => {
   console.log(isInProfileLikes);
   return (
@@ -38,14 +40,14 @@ export const Posts: React.FC<Props> = ({
       <TabMeta
         title={
           isInProfileLikes
-            ? `${currentUser?.name}'s Upvotes`
-            : `${currentUser?.name}'s Posts`
+            ? `${profileUser?.name}'s Upvotes`
+            : `${profileUser?.name}'s Posts`
         }
         description={
           posts.length <= 0
             ? isInProfileLikes
-              ? `@${currentUser?.username} has not upvoted any posts.`
-              : `@${currentUser?.username} has no posts.`
+              ? `@${profileUser?.username} has not upvoted any posts.`
+              : `@${profileUser?.username} has no posts.`
             : ''
         }
       />

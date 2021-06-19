@@ -16,6 +16,7 @@ type Props = {
   // deleteComment: ReturnType<typeof useDeletePostMutation>[0];
   markdown: (text: string) => JSX.Element;
   currentUser?: User;
+  profileUser?: User;
   reportComment?: ReportEntityMutationHookResult[0];
   fetch: (limit: number, offset: number) => Promise<TComment[]>;
   bgColorOveride?: string;
@@ -29,14 +30,15 @@ export const Comments: React.FC<Props> = ({
   reportComment,
   fetch,
   bgColorOveride,
+  profileUser,
 }) => {
   return (
     <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]">
       <TabMeta
-        title={`${currentUser?.name}'s Comments`}
+        title={`${profileUser?.name}'s Comments`}
         description={
           comments.length <= 0
-            ? `@${currentUser?.username} does not have any comments.`
+            ? `@${profileUser?.username} does not have any comments.`
             : ''
         }
       />
