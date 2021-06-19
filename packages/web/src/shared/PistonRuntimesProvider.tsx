@@ -8,7 +8,9 @@ export const RuntimesProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     const getRuntimes = async () => {
-      const fetchRuntimes = await request('https://emkc.org/api/v2/piston/runtimes').then((res: any) => res.json());
+      const fetchRuntimes = await request(
+        'https://emkc.org/api/v2/piston/runtimes'
+      ).then((res: any) => res.json());
       setRuntimes(fetchRuntimes);
     };
 

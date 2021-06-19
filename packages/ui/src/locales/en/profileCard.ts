@@ -1,3 +1,3 @@
 export const profileCard = {
-  view: 'View Profile'
+  view: 'View Profile',
 };

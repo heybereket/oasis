@@ -4,9 +4,7 @@ import { generatedNumber } from '@utils/index';
 import { usernameRegex } from '@lib/constants';
 import { ApolloError } from 'apollo-server-express';
 
-export const checkUsername = async (
-  username: string
-): Promise<string> => {
+export const checkUsername = async (username: string): Promise<string> => {
   const existingWithUsername = await getRepository(User)
     .createQueryBuilder('users')
     .where('LOWER(username) = LOWER(:username)', { username })

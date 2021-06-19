@@ -23,7 +23,9 @@ export default function App({ Component, pageProps }: AppProps) {
           <LinkProvider
             link={(children, href, className) => (
               <div className={`inline cursor-pointer ${className}`}>
-                <Link href={href ?? '#'} passHref><a>{children}</a></Link>
+                <Link href={href ?? '#'} passHref>
+                  <a>{children}</a>
+                </Link>
               </div>
             )}
           >

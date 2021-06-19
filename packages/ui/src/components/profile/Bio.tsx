@@ -30,7 +30,7 @@ export const Bio: React.FC<Props> = ({
           </div>
         ) : (
           <h5 className="text-gray-300 font-bold">
-           @{username} currently does not have a bio set.
+            @{username} currently does not have a bio set.
           </h5>
         )}
         <div className="flex">
