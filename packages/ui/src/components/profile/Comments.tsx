@@ -8,7 +8,6 @@ import {
 import React from 'react';
 import Comment from '../comment/Comment';
 import { InfiniteScrollWrapper } from '../shared/InfiniteScrollWrapper';
-import TabMeta from './TabMeta';
 
 type Props = {
   comments: TComment[];
@@ -31,15 +30,7 @@ export const Comments: React.FC<Props> = ({
   bgColorOveride,
 }) => {
   return (
-    <div
-      className="mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]"
-    >
-      <TabMeta
-        title={`${currentUser?.name}'s Comments`}
-        description={
-          comments.length <= 0 ? `@${currentUser?.username} does not have any comments.` : ''
-        }
-      />
+    <>
       <InfiniteScrollWrapper
         amountPerFetch={10}
         defaultItems={comments}
@@ -82,6 +73,6 @@ export const Comments: React.FC<Props> = ({
           </div>
         )}
       />
-    </div>
+    </>
   );
 };

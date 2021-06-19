@@ -9,7 +9,6 @@ import {
 import React from 'react';
 import Post from '../post/Post';
 import { InfiniteScrollWrapper } from '../shared/InfiniteScrollWrapper';
-import TabMeta from './TabMeta';
 
 type Props = {
   posts: TPost[];
@@ -19,7 +18,6 @@ type Props = {
   currentUser?: User;
   reportPost?: ReportEntityMutationHookResult[0];
   fetch: (limit: number, offset: number) => Promise<TPost[]>;
-  isInProfileLikes?: boolean;
 };
 
 export const Posts: React.FC<Props> = ({
@@ -30,21 +28,12 @@ export const Posts: React.FC<Props> = ({
   deletePost,
   reportPost,
   fetch,
-  isInProfileLikes
 }) => {
-  console.log(isInProfileLikes);
   return (
-    <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]">
-        <TabMeta
-          title={
-            isInProfileLikes ? `${currentUser?.name}'s Upvotes` : `${currentUser?.name}'s Posts`
-          }
-          description={
-            posts.length <= 0
-            ? isInProfileLikes ? `@${currentUser?.username} has not upvoted any posts.` : `@${currentUser?.username} has no posts.`
-            : ''
-          }
-        />
+    <>
+      <div
+        className={`mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]`}
+      >
         <InfiniteScrollWrapper
           amountPerFetch={10}
           defaultItems={posts}
@@ -88,5 +77,6 @@ export const Posts: React.FC<Props> = ({
           )}
         />
       </div>
+    </>
   );
 };
