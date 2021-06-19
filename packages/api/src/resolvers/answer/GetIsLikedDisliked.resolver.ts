@@ -3,7 +3,7 @@ import { ContextType } from '@root/server';
 import { Ctx, FieldResolver, Resolver, Root } from 'type-graphql';
 
 @Resolver(() => Answer)
-export class GetIsLikedDisupvotedResolver {
+export class GetIsLikedDislikedResolver {
   @FieldResolver(() => Boolean)
   async isLiked(
     @Root() comment: Answer,
@@ -24,7 +24,7 @@ export class GetIsLikedDisupvotedResolver {
   }
 
   @FieldResolver(() => Boolean)
-  async isDisupvoted(
+  async isDisliked(
     @Root() comment: Answer,
     @Ctx() { getUser, hasAuth }: ContextType
   ) {
