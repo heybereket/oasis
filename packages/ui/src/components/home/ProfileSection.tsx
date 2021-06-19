@@ -41,10 +41,10 @@ export const ProfileSection: React.FC<Props> = ({
             className="flex items-center space-x-0.5 mt-2"
             href={`/u/${user?.username}`}
           >
-            <>
-              <p className="font-bold text-lg text-primary">{t('profileCard.view')}</p>
-              <RightArrow className="text-primary" />
-            </>
+            <div className="flex flex-row font-bold text-lg text-primary">
+              <p>{t('profileCard.view')}</p>
+              <RightArrow />
+            </div>
           </CustomLink>
         </div>
       )}
