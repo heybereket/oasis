@@ -17,7 +17,7 @@ import { CustomLink } from '../../providers/CustomLink';
 interface Props {
   comment: TComment;
   currentUser?: User;
-  likeComment?: () => any;
+  upvoteComment?: () => any;
   downvoteComment?: () => any;
   deleteComment?: (id: string) => any;
   markdown: (text: string) => JSX.Element;
@@ -33,7 +33,7 @@ enum UpvoteDownvoteState {
 
 export const Comment: React.FC<Props> = ({
   comment: commentData,
-  likeComment,
+  upvoteComment,
   downvoteComment,
   markdown,
   bgColorOveride,
@@ -43,11 +43,11 @@ export const Comment: React.FC<Props> = ({
 }) => {
   const date = formatDate(commentData.createdAt);
 
-  const [likes, setUpvotes] = useState(commentData.likes);
+  const [upvotes, setUpvotes] = useState(commentData.upvotes);
   const [downvotes, setDownvotes] = useState(commentData.downvotes);
-  const formattedVotes = formatNumber(likes - downvotes);
+  const formattedVotes = formatNumber(upvotes - downvotes);
 
-  const [likeState, setUpvoteState] = useState<UpvoteDownvoteState>(
+  const [upvoteState, setUpvoteState] = useState<UpvoteDownvoteState>(
     commentData.isUpvoted
       ? UpvoteDownvoteState.LIKED
       : commentData.isDownvoted
@@ -96,23 +96,23 @@ export const Comment: React.FC<Props> = ({
                 <div className="flex flex-col items-center">
                   <SmallUpArrow
                     onClick={() => {
-                      if (likeComment) likeComment();
-                      console.log(likeState);
-                      if (likeState === UpvoteDownvoteState.LIKED) {
+                      if (upvoteComment) upvoteComment();
+                      console.log(upvoteState);
+                      if (upvoteState === UpvoteDownvoteState.LIKED) {
                         setUpvoteState(UpvoteDownvoteState.NONE);
-                        setUpvotes(likes - 1);
-                      } else if (likeState === UpvoteDownvoteState.DISLIKED) {
+                        setUpvotes(upvotes - 1);
+                      } else if (upvoteState === UpvoteDownvoteState.DISLIKED) {
                         setUpvoteState(UpvoteDownvoteState.LIKED);
                         setDownvotes(downvotes - 1);
-                        setUpvotes(likes + 1);
+                        setUpvotes(upvotes + 1);
                       } else {
                         setUpvoteState(UpvoteDownvoteState.LIKED);
-                        setUpvotes(likes + 1);
+                        setUpvotes(upvotes + 1);
                       }
-                      console.log(likeState);
+                      console.log(upvoteState);
                     }}
                     className={`cursor-pointer ${
-                      likeState === UpvoteDownvoteState.LIKED
+                      upvoteState === UpvoteDownvoteState.LIKED
                         ? 'text-blue-400'
                         : ''
                     }`}
@@ -123,20 +123,20 @@ export const Comment: React.FC<Props> = ({
                   <SmallDownArrow
                     onClick={() => {
                       if (downvoteComment) downvoteComment();
-                      if (likeState === UpvoteDownvoteState.DISLIKED) {
+                      if (upvoteState === UpvoteDownvoteState.DISLIKED) {
                         setUpvoteState(UpvoteDownvoteState.NONE);
                         setDownvotes(downvotes - 1);
-                      } else if (likeState === UpvoteDownvoteState.LIKED) {
+                      } else if (upvoteState === UpvoteDownvoteState.LIKED) {
                         setUpvoteState(UpvoteDownvoteState.DISLIKED);
                         setDownvotes(downvotes + 1);
-                        setUpvotes(likes - 1);
+                        setUpvotes(upvotes - 1);
                       } else {
                         setUpvoteState(UpvoteDownvoteState.DISLIKED);
                         setDownvotes(downvotes + 1);
                       }
                     }}
                     className={`cursor-pointer ${
-                      likeState === UpvoteDownvoteState.DISLIKED
+                      upvoteState === UpvoteDownvoteState.DISLIKED
                         ? 'text-blue-400'
                         : ''
                     }`}

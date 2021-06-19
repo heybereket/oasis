@@ -26,7 +26,7 @@ const NotificationMap: INotificationMap[] = [
   {
     type: NotificationType.UpvotePost,
     icon: <Upvote />,
-    message: 'liked your post',
+    message: 'upvoted your post',
   },
   {
     type: NotificationType.Comment,
@@ -36,7 +36,7 @@ const NotificationMap: INotificationMap[] = [
   {
     type: NotificationType.UpvoteComment,
     icon: <Upvote />,
-    message: 'liked your comment',
+    message: 'upvoted your comment',
   },
 ];
 

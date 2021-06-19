@@ -12,7 +12,7 @@ import TabMeta from './TabMeta';
 
 type Props = {
   comments: TComment[];
-  likeDownvoteComment: ReturnType<typeof useUpvoteDownvoteCommentMutation>[0];
+  upvoteDownvoteComment: ReturnType<typeof useUpvoteDownvoteCommentMutation>[0];
   // deleteComment: ReturnType<typeof useDeletePostMutation>[0];
   markdown: (text: string) => JSX.Element;
   currentUser?: User;
@@ -25,7 +25,7 @@ type Props = {
 export const Comments: React.FC<Props> = ({
   comments,
   markdown,
-  likeDownvoteComment,
+  upvoteDownvoteComment,
   currentUser,
   reportComment,
   fetch,
@@ -59,21 +59,21 @@ export const Comments: React.FC<Props> = ({
               // }}
               markdown={markdown}
               bgColorOveride={bgColorOveride ?? 'bg-gray-900'}
-              likeComment={() => {
-                likeDownvoteComment({
+              upvoteComment={() => {
+                upvoteDownvoteComment({
                   variables: {
                     downvote: false,
-                    like: true,
+                    upvote: true,
                     commentId: comment.id,
                   },
                 });
                 // window.location.reload();
               }}
               downvoteComment={() => {
-                likeDownvoteComment({
+                upvoteDownvoteComment({
                   variables: {
                     downvote: true,
-                    like: false,
+                    upvote: false,
                     commentId: comment.id,
                   },
                 });

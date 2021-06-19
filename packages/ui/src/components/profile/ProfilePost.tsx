@@ -5,7 +5,7 @@ interface ProfilePostProps {
   name: string;
   atTag: string;
   quotes: string;
-  likes: string;
+  upvotes: string;
   replies: string;
   message: string;
 }
@@ -15,7 +15,7 @@ export const ProfilePost: React.FC<ProfilePostProps> = ({
   name,
   atTag,
   quotes,
-  likes,
+  upvotes,
   replies,
   message,
 }) => {
@@ -34,7 +34,7 @@ export const ProfilePost: React.FC<ProfilePostProps> = ({
       </div>
       <div className="flex mb-4 text-gray-300 divide-x divide-gray-500">
         <p className="pr-4 leading-none">{quotes} Quotes</p>
-        <p className="px-4 leading-none">{likes} likes</p>
+        <p className="px-4 leading-none">{upvotes} upvotes</p>
         <p className="pl-4 leading-none">{replies} replies</p>
       </div>
       <p className="text-gray-200">{message}</p>

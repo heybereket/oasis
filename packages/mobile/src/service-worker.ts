@@ -4,7 +4,7 @@
 // // This service worker can be customized!
 // // See https://developers.google.com/web/tools/workbox/modules
 // // for the list of available Workbox modules, or add any other
-// // code you'd like.
+// // code you'd upvote.
 // // You can also remove this file if you'd prefer not to use a
 // // service worker, and the Workbox build step will be skipped.
 
@@ -41,7 +41,7 @@
 //       return false;
 //     }
 
-//     // If this looks like a URL for a resource, because it contains
+//     // If this looks upvote a URL for a resource, because it contains
 //     // a file extension, skip.
 //     if (url.pathname.match(fileExtensionRegexp)) {
 //       return false;
@@ -54,7 +54,7 @@
 // );
 
 // // An example runtime caching route for requests that aren't handled by the
-// // precache, in this case same-origin .png requests like those from in public/
+// // precache, in this case same-origin .png requests upvote those from in public/
 // registerRoute(
 //   // Add in any other file extensions or routing criteria as needed.
 //   ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.png'),

@@ -23,7 +23,7 @@ import { CustomLink } from '../../providers/CustomLink';
 interface Props {
   post: TPost;
   currentUser?: User;
-  likePost?: () => any;
+  upvotePost?: () => any;
   downvotePost?: () => any;
   deletePost?: (id: string) => any;
   markdown: (text: string) => JSX.Element;
@@ -39,7 +39,7 @@ enum UpvoteDownvoteState {
 
 export const Post: React.FC<Props> = ({
   post: postData,
-  likePost,
+  upvotePost,
   downvotePost,
   markdown,
   bgColorOveride,
@@ -49,11 +49,11 @@ export const Post: React.FC<Props> = ({
 }) => {
   const date = formatDate(postData.createdAt);
 
-  const [likes, setUpvotes] = useState(postData.likes);
+  const [upvotes, setUpvotes] = useState(postData.upvotes);
   const [downvotes, setDownvotes] = useState(postData.downvotes);
-  const formattedVotes = formatNumber(likes - downvotes);
+  const formattedVotes = formatNumber(upvotes - downvotes);
 
-  const [likeState, setUpvoteState] = useState<UpvoteDownvoteState>(
+  const [upvoteState, setUpvoteState] = useState<UpvoteDownvoteState>(
     postData.isUpvoted
       ? UpvoteDownvoteState.LIKED
       : postData.isDownvoted
@@ -102,23 +102,23 @@ export const Post: React.FC<Props> = ({
                 <div className="flex flex-col items-center">
                   <SmallUpArrow
                     onClick={() => {
-                      if (likePost) likePost();
-                      console.log(likeState);
-                      if (likeState === UpvoteDownvoteState.LIKED) {
+                      if (upvotePost) upvotePost();
+                      console.log(upvoteState);
+                      if (upvoteState === UpvoteDownvoteState.LIKED) {
                         setUpvoteState(UpvoteDownvoteState.NONE);
-                        setUpvotes(likes - 1);
-                      } else if (likeState === UpvoteDownvoteState.DISLIKED) {
+                        setUpvotes(upvotes - 1);
+                      } else if (upvoteState === UpvoteDownvoteState.DISLIKED) {
                         setUpvoteState(UpvoteDownvoteState.LIKED);
                         setDownvotes(downvotes - 1);
-                        setUpvotes(likes + 1);
+                        setUpvotes(upvotes + 1);
                       } else {
                         setUpvoteState(UpvoteDownvoteState.LIKED);
-                        setUpvotes(likes + 1);
+                        setUpvotes(upvotes + 1);
                       }
-                      console.log(likeState);
+                      console.log(upvoteState);
                     }}
                     className={`cursor-pointer ${
-                      likeState === UpvoteDownvoteState.LIKED
+                      upvoteState === UpvoteDownvoteState.LIKED
                         ? 'text-blue-400'
                         : ''
                     }`}
@@ -129,20 +129,20 @@ export const Post: React.FC<Props> = ({
                   <SmallDownArrow
                     onClick={() => {
                       if (downvotePost) downvotePost();
-                      if (likeState === UpvoteDownvoteState.DISLIKED) {
+                      if (upvoteState === UpvoteDownvoteState.DISLIKED) {
                         setUpvoteState(UpvoteDownvoteState.NONE);
                         setDownvotes(downvotes - 1);
-                      } else if (likeState === UpvoteDownvoteState.LIKED) {
+                      } else if (upvoteState === UpvoteDownvoteState.LIKED) {
                         setUpvoteState(UpvoteDownvoteState.DISLIKED);
                         setDownvotes(downvotes + 1);
-                        setUpvotes(likes - 1);
+                        setUpvotes(upvotes - 1);
                       } else {
                         setUpvoteState(UpvoteDownvoteState.DISLIKED);
                         setDownvotes(downvotes + 1);
                       }
                     }}
                     className={`cursor-pointer ${
-                      likeState === UpvoteDownvoteState.DISLIKED
+                      upvoteState === UpvoteDownvoteState.DISLIKED
                         ? 'text-blue-400'
                         : ''
                     }`}

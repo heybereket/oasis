@@ -100,20 +100,20 @@ export default class User extends BaseEntity {
   @OneToMany(() => Report, (report) => report.user)
   filedReports: Promise<Report[]>;
 
-  @RelationalPagination(() => User, () => Post, 'likers')
-  @ManyToMany(() => Post, (post) => post.likers)
+  @RelationalPagination(() => User, () => Post, 'upvoters')
+  @ManyToMany(() => Post, (post) => post.upvoters)
   @JoinTable()
-  likedPosts: Promise<Post[]>;
+  upvotedPosts: Promise<Post[]>;
 
   @RelationalPagination(() => User, () => Post, 'downvoters')
   @ManyToMany(() => Post, (post) => post.downvoters)
   @JoinTable()
   downvotedPosts: Promise<Post[]>;
 
-  @RelationalPagination(() => User, () => Comment, 'likers')
-  @ManyToMany(() => Comment, (comment) => comment.likers)
+  @RelationalPagination(() => User, () => Comment, 'upvoters')
+  @ManyToMany(() => Comment, (comment) => comment.upvoters)
   @JoinTable()
-  likedComments: Promise<Comment[]>;
+  upvotedComments: Promise<Comment[]>;
 
   @RelationalPagination(() => User, () => Comment, 'downvoters')
   @ManyToMany(() => Comment, (comment) => comment.downvoters)
@@ -123,7 +123,7 @@ export default class User extends BaseEntity {
   @RelationalPagination(() => User, () => Question, 'upvoters')
   @ManyToMany(() => Question, (question) => question.upvoters)
   @JoinTable()
-  likedQuestions: Promise<Question[]>;
+  upvotedQuestions: Promise<Question[]>;
 
   @RelationalPagination(() => User, () => Question, 'downvoters')
   @ManyToMany(() => Question, (question) => question.downvoters)
@@ -133,7 +133,7 @@ export default class User extends BaseEntity {
   @RelationalPagination(() => User, () => Answer, 'upvoters')
   @ManyToMany(() => Answer, (answer) => answer.upvoters)
   @JoinTable()
-  likedAnswers: Promise<Answer[]>;
+  upvotedAnswers: Promise<Answer[]>;
 
   @RelationalPagination(() => User, () => Answer, 'downvoters')
   @ManyToMany(() => Answer, (answer) => answer.downvoters)

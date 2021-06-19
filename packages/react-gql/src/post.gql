@@ -15,7 +15,7 @@ query getPost($id: String!) {
     downvotes
     id
     lastEdited
-    likes
+    upvotes
     message
     resort {
       id
@@ -50,7 +50,7 @@ query PaginatePosts($postsLimit: Float!, $postsOffset: Float!) {
     downvotes
     id
     lastEdited
-    likes
+    upvotes
     message
     resort {
       id
@@ -69,11 +69,11 @@ query PaginatePosts($postsLimit: Float!, $postsOffset: Float!) {
 }
 
 mutation UpvoteDownvotePost(
-  $like: Boolean!
+  $upvote: Boolean!
   $downvote: Boolean!
   $postId: String!
 ) {
-  likeDownvote(like: $like, downvote: $downvote, postId: $postId)
+  upvoteDownvote(upvote: $upvote, downvote: $downvote, postId: $postId)
 }
 
 mutation MakePost($message: String!, $topics: [String!]!) {

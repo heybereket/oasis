@@ -66,8 +66,8 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
   myUser,
   profileUser,
 }) => {
-  const [likeDownvotePost] = useUpvoteDownvotePostMutation();
-  const [likeDownvoteComment] = useUpvoteDownvoteCommentMutation();
+  const [upvoteDownvotePost] = useUpvoteDownvotePostMutation();
+  const [upvoteDownvoteComment] = useUpvoteDownvoteCommentMutation();
   const [deletePost] = useDeletePostMutation();
 
   const [getPosts, postsData] = useGetUsersPostsLazyQuery({
@@ -78,7 +78,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
     },
   });
 
-  const [getUpvotedPosts, likedPostsData] = useGetUsersUpvotedPostsLazyQuery({
+  const [getUpvotedPosts, upvotedPostsData] = useGetUsersUpvotedPostsLazyQuery({
     variables: {
       postsLimit: 10,
       postsOffset: 0,
@@ -139,7 +139,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
             posts={
               (postsData.data?.userOnlyPosts?.posts.items as TPost[]) ?? []
             }
-            likeDownvotePost={likeDownvotePost}
+            upvoteDownvotePost={upvoteDownvotePost}
             currentUser={myUser}
             profileUser={profileUser}
             deletePost={deletePost}
@@ -160,7 +160,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
       }
 
     case CenterColumnTabState.UpvotesTab:
-      if (!likedPostsData.called) {
+      if (!upvotedPostsData.called) {
         getUpvotedPosts();
         return <div />;
       } else {
@@ -173,21 +173,21 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
             currentUser={myUser}
             profileUser={profileUser}
             posts={
-              (likedPostsData.data?.getUserByName?.likedPosts
+              (upvotedPostsData.data?.getUserByName?.upvotedPosts
                 .items as TPost[]) ?? []
             }
-            likeDownvotePost={likeDownvotePost}
+            upvoteDownvotePost={upvoteDownvotePost}
             deletePost={deletePost}
             reportPost={reportEntity}
             fetch={async (limit, offset) => {
               const newData = (
-                await likedPostsData.fetchMore({
+                await upvotedPostsData.fetchMore({
                   variables: {
                     postsLimit: limit,
                     postsOffset: offset,
                   },
                 })
-              ).data.getUserByName?.likedPosts.items as TPost[];
+              ).data.getUserByName?.upvotedPosts.items as TPost[];
               return newData;
             }}
           />
@@ -205,7 +205,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
               (commentsData.data?.userOnlyComments?.comments
                 .items as TComment[]) ?? []
             }
-            likeDownvoteComment={likeDownvoteComment}
+            upvoteDownvoteComment={upvoteDownvoteComment}
             markdown={(text) => (
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}

@@ -54,9 +54,9 @@ export default class Comment extends BaseEntity {
   @ManyToOne(() => User, (user) => user.comments)
   author: Promise<User>;
 
-  @RelationalPagination(() => Comment, () => User, 'likedComments')
-  @ManyToMany(() => User, (user) => user.likedComments)
-  likers: Promise<User[]>;
+  @RelationalPagination(() => Comment, () => User, 'upvotedComments')
+  @ManyToMany(() => User, (user) => user.upvotedComments)
+  upvoters: Promise<User[]>;
 
   @RelationalPagination(() => Comment, () => User, 'downvotedComments')
   @ManyToMany(() => User, (user) => user.downvotedComments)

@@ -46,7 +46,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   const { user, currentUserLoading } = useGetCurrentUser();
   const posts = postsQuery.data?.feedSortPosts;
 
-  const [likeDownvotePost] = useUpvoteDownvotePostMutation();
+  const [upvoteDownvotePost] = useUpvoteDownvotePostMutation();
   const [deletePost] = useDeletePostMutation();
   const [reportPost] = useReportEntityMutation();
 
@@ -85,7 +85,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
               user={user}
               posts={posts ?? []}
               createPost={createPost}
-              likeDownvotePost={likeDownvotePost}
+              upvoteDownvotePost={upvoteDownvotePost}
               deleteMutation={deletePost}
               fetch={async (limit, offset) => {
                 const newData = (

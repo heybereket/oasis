@@ -13,7 +13,7 @@ import TabMeta from './TabMeta';
 
 type Props = {
   posts: TPost[];
-  likeDownvotePost: ReturnType<typeof useUpvoteDownvotePostMutation>[0];
+  upvoteDownvotePost: ReturnType<typeof useUpvoteDownvotePostMutation>[0];
   deletePost: ReturnType<typeof useDeletePostMutation>[0];
   markdown: (text: string) => JSX.Element;
   currentUser?: User;
@@ -26,7 +26,7 @@ type Props = {
 export const Posts: React.FC<Props> = ({
   posts,
   markdown,
-  likeDownvotePost,
+  upvoteDownvotePost,
   currentUser,
   deletePost,
   reportPost,
@@ -68,21 +68,21 @@ export const Posts: React.FC<Props> = ({
               }}
               markdown={markdown}
               bgColorOveride={'bg-gray-900'}
-              likePost={() => {
-                likeDownvotePost({
+              upvotePost={() => {
+                upvoteDownvotePost({
                   variables: {
                     downvote: false,
-                    like: true,
+                    upvote: true,
                     postId: post.id,
                   },
                 });
                 // window.location.reload();
               }}
               downvotePost={() => {
-                likeDownvotePost({
+                upvoteDownvotePost({
                   variables: {
                     downvote: true,
-                    like: false,
+                    upvote: false,
                     postId: post.id,
                   },
                 });

@@ -1,7 +1,7 @@
 mutation UpvoteDownvoteComment(
-  $like: Boolean!
+  $upvote: Boolean!
   $downvote: Boolean!
   $commentId: String!
 ) {
-  likeDownvoteComment(like: $like, downvote: $downvote, commentId: $commentId)
+  upvoteDownvoteComment(upvote: $upvote, downvote: $downvote, commentId: $commentId)
 }

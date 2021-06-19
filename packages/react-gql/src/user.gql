@@ -88,7 +88,7 @@ query getUsersPosts(
         }
         isUpvoted
         isDownvoted
-        likes
+        upvotes
         downvotes
         comments(limit: 0, offset: 0) {
           total
@@ -106,7 +106,7 @@ query getUsersUpvotedPosts(
   $postsOffset: Float!
 ) {
   getUserByName(username: $username) {
-    likedPosts(offset: $postsOffset, limit: $postsLimit) {
+    upvotedPosts(offset: $postsOffset, limit: $postsLimit) {
       items {
         id
         message
@@ -121,7 +121,7 @@ query getUsersUpvotedPosts(
         }
         isUpvoted
         isDownvoted
-        likes
+        upvotes
         downvotes
         comments(limit: 0, offset: 0) {
           total

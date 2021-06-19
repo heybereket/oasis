@@ -5,7 +5,7 @@ query GetPostComments($postId: String! $commentsOffset: Float! $commentsLimit: F
       items {
         id
         content
-        likes
+        upvotes
         downvotes
         createdAt
         lastEdited

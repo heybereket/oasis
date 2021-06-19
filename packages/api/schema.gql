@@ -13,9 +13,9 @@ type Answer {
   isDownvoted: Boolean!
   isUpvoted: Boolean!
   lastEdited: String
-  likes: Float!
   question: Question!
-  upvoters(limit: Float!, offset: Float!): PaginatedUserFromAnswer_likedAnswersResponse!
+  upvoters(limit: Float!, offset: Float!): PaginatedUserFromAnswer_upvotedAnswersResponse!
+  upvotes: Float!
 }
 
 type Badge {
@@ -37,10 +37,10 @@ type Comment {
   isDownvoted: Boolean!
   isUpvoted: Boolean!
   lastEdited: String
-  likers(limit: Float!, offset: Float!): PaginatedUserFromComment_likedCommentsResponse!
-  likes: Float!
   post: Post
   question: Question
+  upvoters(limit: Float!, offset: Float!): PaginatedUserFromComment_upvotedCommentsResponse!
+  upvotes: Float!
 }
 
 input CreateBotInput {
@@ -115,9 +115,6 @@ type Mutation {
   followUser(userId: String!): Boolean!
   giveBadge(badgeName: String!, username: String!): Boolean!
   joinResort(resortId: String!): Boolean
-  likeDownvote(downvote: Boolean!, like: Boolean!, postId: String!): Boolean!
-  likeDownvoteAnswer(answerId: String!, downvote: Boolean!, like: Boolean!): Boolean!
-  likeDownvoteComment(commentId: String!, downvote: Boolean!, like: Boolean!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   makeReport(data: MakeReportInput!, reporteeData: ReportedEntityInput!): Boolean!
@@ -125,6 +122,9 @@ type Mutation {
   markNotificationAsRead(notificationId: String!): Boolean!
   refreshBotToken(botId: String!): String!
   updateProfile(data: UpdateProfileInput!): Boolean!
+  upvoteDownvote(downvote: Boolean!, postId: String!, upvote: Boolean!): Boolean!
+  upvoteDownvoteAnswer(answerId: String!, downvote: Boolean!, upvote: Boolean!): Boolean!
+  upvoteDownvoteComment(commentId: String!, downvote: Boolean!, upvote: Boolean!): Boolean!
 }
 
 input NewAnswerInput {
@@ -206,7 +206,7 @@ type PaginatedCommentFromUser_downvotersResponse {
   total: Float!
 }
 
-type PaginatedCommentFromUser_likersResponse {
+type PaginatedCommentFromUser_upvotersResponse {
   hasMore: Boolean!
   items: [Comment!]!
   total: Float!
@@ -230,7 +230,7 @@ type PaginatedPostFromUser_downvotersResponse {
   total: Float!
 }
 
-type PaginatedPostFromUser_likersResponse {
+type PaginatedPostFromUser_upvotersResponse {
   hasMore: Boolean!
   items: [Post!]!
   total: Float!
@@ -254,7 +254,7 @@ type PaginatedUserFromAnswer_downvotedAnswersResponse {
   total: Float!
 }
 
-type PaginatedUserFromAnswer_likedAnswersResponse {
+type PaginatedUserFromAnswer_upvotedAnswersResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
@@ -266,7 +266,7 @@ type PaginatedUserFromComment_downvotedCommentsResponse {
   total: Float!
 }
 
-type PaginatedUserFromComment_likedCommentsResponse {
+type PaginatedUserFromComment_upvotedCommentsResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
@@ -278,7 +278,7 @@ type PaginatedUserFromPost_downvotedPostsResponse {
   total: Float!
 }
 
-type PaginatedUserFromPost_likedPostsResponse {
+type PaginatedUserFromPost_upvotedPostsResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
@@ -290,7 +290,7 @@ type PaginatedUserFromQuestion_downvotedQuestionsResponse {
   total: Float!
 }
 
-type PaginatedUserFromQuestion_likedQuestionsResponse {
+type PaginatedUserFromQuestion_upvotedQuestionsResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
@@ -331,11 +331,11 @@ type Post {
   isDownvoted: Boolean!
   isUpvoted: Boolean!
   lastEdited: String
-  likers(limit: Float!, offset: Float!): PaginatedUserFromPost_likedPostsResponse!
-  likes: Float!
   message: String!
   resort: Resort
   topics: [String!]!
+  upvoters(limit: Float!, offset: Float!): PaginatedUserFromPost_upvotedPostsResponse!
+  upvotes: Float!
 }
 
 type Query {
@@ -377,7 +377,7 @@ type Question {
   questions(limit: Float!, offset: Float!): PaginatedAnswerFromQuestion_authorResponse!
   resort: Resort
   topics: [String!]!
-  upvoters(limit: Float!, offset: Float!): PaginatedUserFromQuestion_likedQuestionsResponse!
+  upvoters(limit: Float!, offset: Float!): PaginatedUserFromQuestion_upvotedQuestionsResponse!
 }
 
 type Report {
@@ -458,15 +458,15 @@ type User {
   google: String
   id: ID!
   isBot: Boolean
-  likedAnswers(limit: Float!, offset: Float!): PaginatedAnswerFromUser_upvotersResponse!
-  likedComments(limit: Float!, offset: Float!): PaginatedCommentFromUser_likersResponse!
-  likedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_likersResponse!
-  likedQuestions(limit: Float!, offset: Float!): PaginatedQuestionFromUser_upvotersResponse!
   name: String
   ownedResorts: [Resort!]
   posts(limit: Float!, offset: Float!): PaginatedPostFromUser_authorResponse!
   roles: [Role!]!
   twitter: String
+  upvotedAnswers(limit: Float!, offset: Float!): PaginatedAnswerFromUser_upvotersResponse!
+  upvotedComments(limit: Float!, offset: Float!): PaginatedCommentFromUser_upvotersResponse!
+  upvotedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_upvotersResponse!
+  upvotedQuestions(limit: Float!, offset: Float!): PaginatedQuestionFromUser_upvotersResponse!
   url: String
   username: String
   verified: Boolean!

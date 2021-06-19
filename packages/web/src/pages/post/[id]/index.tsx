@@ -35,9 +35,9 @@ export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
   const commentsData = comments.data?.getPost.comments.items;
 
   const [deletePost] = useDeletePostMutation();
-  const [likeDownvotePost] = useUpvoteDownvotePostMutation();
+  const [upvoteDownvotePost] = useUpvoteDownvotePostMutation();
   const [reportEntity] = useReportEntityMutation();
-  const [likeDownvoteComment] = useUpvoteDownvoteCommentMutation();
+  const [upvoteDownvoteComment] = useUpvoteDownvoteCommentMutation();
 
   return (
     <>
@@ -59,19 +59,19 @@ export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
           currentUser={user}
           deletePost={(id) => deletePost({ variables: { postId: id } })}
           downvotePost={() =>
-            likeDownvotePost({
+            upvoteDownvotePost({
               variables: {
                 downvote: true,
-                like: false,
+                upvote: false,
                 postId: postData?.id ?? '',
               },
             })
           }
-          likePost={() =>
-            likeDownvotePost({
+          upvotePost={() =>
+            upvoteDownvotePost({
               variables: {
                 downvote: false,
-                like: true,
+                upvote: true,
                 postId: postData?.id ?? '',
               },
             })
@@ -91,7 +91,7 @@ export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
                 })
               ).data.getPost.comments.items as TComment[];
             }}
-            likeDownvoteComment={likeDownvoteComment}
+            upvoteDownvoteComment={upvoteDownvoteComment}
             markdown={(text) => <StyledMarkdown text={text} isPost={true} />}
             currentUser={user}
             reportComment={reportEntity}

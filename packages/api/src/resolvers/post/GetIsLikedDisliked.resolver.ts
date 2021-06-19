@@ -12,7 +12,7 @@ export class GetIsUpvotedDownvotedResolver {
     if (hasAuth) {
       const user = await getUser();
       let retValue = false;
-      (await user.likedPosts).forEach((res) => {
+      (await user.upvotedPosts).forEach((res) => {
         if (res.id === post.id) {
           retValue = true;
         }

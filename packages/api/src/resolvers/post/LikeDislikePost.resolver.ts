@@ -13,15 +13,15 @@ import { ContextType } from '@root/server';
 import Post from '@entities/Post';
 import User from '@entities/User';
 
-// @bcg-resolver(mutation, likeDownvote, post)
+// @bcg-resolver(mutation, upvoteDownvote, post)
 
 @Resolver(() => Post)
 export class UpvoteDownvotePostResolver {
   @Mutation(() => Boolean)
   @Authorized()
-  async likeDownvote(
+  async upvoteDownvote(
     @Arg('postId') postId: string,
-    @Arg('like') like: boolean,
+    @Arg('upvote') upvote: boolean,
     @Arg('downvote') downvote: boolean,
     @Ctx() { getUser }: ContextType
   ) {
@@ -29,20 +29,20 @@ export class UpvoteDownvotePostResolver {
 
     if (!post) throw new ApolloError('Post not found');
 
-    if ((like && downvote) || (!like && !downvote)) {
-      throw new ApolloError('Please select like or downvote');
+    if ((upvote && downvote) || (!upvote && !downvote)) {
+      throw new ApolloError('Please select upvote or downvote');
     }
 
     const user = await getUser();
 
-    const likedPosts = await user.likedPosts;
-    let alreadyliked = false;
-    const likedPostsMinusNew: Post[] = [];
-    likedPosts.forEach((post) => {
+    const upvotedPosts = await user.upvotedPosts;
+    let alreadyupvoted = false;
+    const upvotedPostsMinusNew: Post[] = [];
+    upvotedPosts.forEach((post) => {
       if (post.id === postId) {
-        alreadyliked = true;
+        alreadyupvoted = true;
       } else {
-        likedPostsMinusNew.push(post);
+        upvotedPostsMinusNew.push(post);
       }
     });
 
@@ -56,19 +56,19 @@ export class UpvoteDownvotePostResolver {
         downvotedPostsMinusNew.push(post);
       }
     });
-    if (like) {
-      if (!alreadyliked) {
+    if (upvote) {
+      if (!alreadyupvoted) {
         if (alreadydownvoted) {
           user.downvotedPosts = Promise.resolve(downvotedPostsMinusNew);
         }
-        user.likedPosts = Promise.resolve([...likedPosts, post]);
+        user.upvotedPosts = Promise.resolve([...upvotedPosts, post]);
       } else {
-        user.likedPosts = Promise.resolve(likedPostsMinusNew);
+        user.upvotedPosts = Promise.resolve(upvotedPostsMinusNew);
       }
     } else if (downvote) {
       if (!alreadydownvoted) {
-        if (alreadyliked) {
-          user.likedPosts = Promise.resolve(likedPostsMinusNew);
+        if (alreadyupvoted) {
+          user.upvotedPosts = Promise.resolve(upvotedPostsMinusNew);
         }
         user.downvotedPosts = Promise.resolve([...downvotedPosts, post]);
       } else {
@@ -83,9 +83,9 @@ export class UpvoteDownvotePostResolver {
   }
 
   @FieldResolver(() => Float)
-  async likes(@Root() post: Post) {
+  async upvotes(@Root() post: Post) {
     return User.createQueryBuilder('user')
-      .innerJoin(`user.likedPosts`, 'post', 'post.id = :id', { id: post.id })
+      .innerJoin(`user.upvotedPosts`, 'post', 'post.id = :id', { id: post.id })
       .getCount();
   }
 

@@ -15,7 +15,7 @@ query FeedSortPosts($postsLimit: Float!, $postsOffset: Float!) {
     downvotes
     id
     lastEdited
-    likes
+    upvotes
     message
     resort {
       id
