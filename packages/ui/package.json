@@ -44,10 +44,6 @@
     "format": "prettier --write src",
     "clean": "rimraf dist"
   },
-  "prettier": "@oasis-sh/prettier-config",
-  "eslintConfig": {
-    "extends": "@oasis-sh/eslint-config"
-  },
   "dependencies": {
     "i18next": "^20.3.2",
     "i18next-browser-languagedetector": "^6.1.2",

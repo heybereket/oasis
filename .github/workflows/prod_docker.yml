@@ -2,7 +2,7 @@ name: Docker Image Prod Deploy
 
 on:
   push:
-    branches: [ prod ]
+    branches: [prod]
   workflow_dispatch:
 
 jobs:

@@ -55,10 +55,6 @@
     "server:dev": "ts-node-dev server/src/index.ts",
     "server:build": "tsc -p server"
   },
-  "prettier": "@oasis-sh/prettier-config",
-  "eslintConfig": {
-    "extends": "@oasis-sh/eslint-config"
-  },
   "dependencies": {
     "node-fetch": "^2.6.1",
     "react": "^17.0.2",

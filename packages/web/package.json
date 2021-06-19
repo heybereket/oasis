@@ -14,10 +14,6 @@
     "cy:run": "cypress run --browser chrome",
     "cy:open": "cypress open --browser chrome"
   },
-  "prettier": "@oasis-sh/prettier-config",
-  "eslintConfig": {
-    "extends": "@oasis-sh/eslint-config"
-  },
   "dependencies": {
     "@next/bundle-analyzer": "^11.0.0",
     "@sentry/react": "^6.7.1",

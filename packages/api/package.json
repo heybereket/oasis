@@ -20,10 +20,6 @@
     "prettify": "prettier --write src/{.,auth,entities,enums,middleware,resolvers,services,utils}/*.ts",
     "lint": "yarn run eslint . --ext ts"
   },
-  "prettier": "@oasis-sh/prettier-config",
-  "eslintConfig": {
-    "extends": "@oasis-sh/eslint-config"
-  },
   "devDependencies": {
     "@types/concurrently": "^6.2.0",
     "@types/connect-redis": "^0.0.16",

@@ -10,10 +10,6 @@
     "clean": "rimraf dist/*",
     "publish": "npm publish"
   },
-  "prettier": "@oasis-sh/prettier-config",
-  "eslintConfig": {
-    "extends": "@oasis-sh/eslint-config"
-  },
   "devDependencies": {
     "@types/eslint": "^7.2.13",
     "@types/node-emoji": "^1.8.1",

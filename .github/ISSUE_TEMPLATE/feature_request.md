@@ -1,7 +1,7 @@
 ---
 name: "\U0001F680 Feature request"
 about: Use this template for requesting a new feature.
-title: "Feat: [FEATURE NAME]"
+title: 'Feat: [FEATURE NAME]'
 labels: feature request, needs triage
 ---
 

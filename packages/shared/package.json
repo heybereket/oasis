@@ -16,10 +16,6 @@
     "build": "tsc",
     "clean": "rimraf dist"
   },
-  "prettier": "@oasis-sh/prettier-config",
-  "eslintConfig": {
-    "extends": "@oasis-sh/eslint-config"
-  },
   "dependencies": {
     "eslint": "^7.28.0",
     "prettier": "^2.3.1"
