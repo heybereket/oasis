@@ -123,22 +123,22 @@ export default class User extends BaseEntity {
   @RelationalPagination(() => User, () => Question, 'upvoters')
   @ManyToMany(() => Question, (question) => question.upvoters)
   @JoinTable()
-  upvotedQuestions: Promise<Question[]>;
+  likedQuestions: Promise<Question[]>;
 
   @RelationalPagination(() => User, () => Question, 'downvoters')
   @ManyToMany(() => Question, (question) => question.downvoters)
   @JoinTable()
-  downvotedQuestions: Promise<Question[]>;
+  dislikedQuestions: Promise<Question[]>;
 
   @RelationalPagination(() => User, () => Answer, 'upvoters')
   @ManyToMany(() => Answer, (answer) => answer.upvoters)
   @JoinTable()
-  upvotedAnswers: Promise<Answer[]>;
+  likedAnswers: Promise<Answer[]>;
 
   @RelationalPagination(() => User, () => Answer, 'downvoters')
   @ManyToMany(() => Answer, (answer) => answer.downvoters)
   @JoinTable()
-  downvotedAnswers: Promise<Answer[]>;
+  dislikedAnswers: Promise<Answer[]>;
 
   @OneToMany(() => Notification, (notification) => notification.user, {
     nullable: true,

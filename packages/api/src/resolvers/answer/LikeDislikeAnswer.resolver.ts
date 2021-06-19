@@ -32,12 +32,60 @@ export class LikeDislikeAnswerResolver {
     if ((like && dislike) || (!like && !dislike)) {
       throw new ApolloError('Please select like or dislike');
     }
+
+    const user = await getUser();
+
+    const likedAnswers = await user.likedAnswers;
+    let alreadyliked = false;
+    const likedAnswersMinusNew: Answer[] = [];
+    likedAnswers.forEach((answer) => {
+      if (answer.id === answerId) {
+        alreadyliked = true;
+      } else {
+        likedAnswersMinusNew.push(answer);
+      }
+    });
+
+    const dislikedAnswers = await user.dislikedAnswers;
+    let alreadydisliked = false;
+    const dislikedAnswersMinusNew: Answer[] = [];
+    dislikedAnswers.forEach((answer) => {
+      if (answer.id === answerId) {
+        alreadydisliked = true;
+      } else {
+        dislikedAnswersMinusNew.push(answer);
+      }
+    });
+    if (like) {
+      if (!alreadyliked) {
+        if (alreadydisliked) {
+          user.dislikedAnswers = Promise.resolve(dislikedAnswersMinusNew);
+        }
+        user.likedAnswers = Promise.resolve([...likedAnswers, answer]);
+      } else {
+        user.likedAnswers = Promise.resolve(likedAnswersMinusNew);
+      }
+    } else if (dislike) {
+      if (!alreadydisliked) {
+        if (alreadyliked) {
+          user.likedAnswers = Promise.resolve(likedAnswersMinusNew);
+        }
+        user.dislikedAnswers = Promise.resolve([...dislikedAnswers, answer]);
+      } else {
+        user.dislikedAnswers = Promise.resolve(dislikedAnswersMinusNew);
+      }
+    }
+
+    answer.save();
+    user.save();
+
+    return true;
   }
 
   @FieldResolver(() => Float)
   async likes(@Root() answer: Answer) {
     return User.createQueryBuilder('user')
-      .innerJoin(`user.upvotedAnswers`, 'answer', 'answer.id = :id', {
+      .innerJoin(`user.likedAnswers`, 'answer', 'answer.id = :id', {
         id: answer.id,
       })
       .getCount();
@@ -46,7 +94,7 @@ export class LikeDislikeAnswerResolver {
   @FieldResolver(() => Float)
   async dislikes(@Root() answer: Answer) {
     return User.createQueryBuilder('user')
-      .innerJoin(`user.downvotedAnswers`, 'answer', 'answer.id = :id', {
+      .innerJoin(`user.dislikedAnswers`, 'answer', 'answer.id = :id', {
         id: answer.id,
       })
       .getCount();

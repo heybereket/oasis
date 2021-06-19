@@ -42,12 +42,12 @@ export default class Answer extends BaseEntity {
   @ManyToOne(() => User, (user) => user.answers)
   author: Promise<User>;
 
-  @RelationalPagination(() => Answer, () => User, 'upvotedAnswers')
-  @ManyToMany(() => User, (user) => user.upvotedAnswers)
+  @RelationalPagination(() => Answer, () => User, 'likedAnswers')
+  @ManyToMany(() => User, (user) => user.likedAnswers)
   upvoters: Promise<User[]>;
 
-  @RelationalPagination(() => Answer, () => User, 'downvotedAnswers')
-  @ManyToMany(() => User, (user) => user.downvotedAnswers)
+  @RelationalPagination(() => Answer, () => User, 'dislikedAnswers')
+  @ManyToMany(() => User, (user) => user.dislikedAnswers)
   downvoters: Promise<User[]>;
 
   @OneToMany(() => Report, (report) => report.answer)

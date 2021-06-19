@@ -8,14 +8,14 @@ type Answer {
   content: String!
   createdAt: String!
   dislikes: Float!
-  downvoters(limit: Float!, offset: Float!): PaginatedUserFromAnswer_downvotedAnswersResponse!
+  downvoters(limit: Float!, offset: Float!): PaginatedUserFromAnswer_dislikedAnswersResponse!
   id: ID!
   isDisliked: Boolean!
   isLiked: Boolean!
   lastEdited: String
   likes: Float!
   question: Question!
-  upvoters(limit: Float!, offset: Float!): PaginatedUserFromAnswer_upvotedAnswersResponse!
+  upvoters(limit: Float!, offset: Float!): PaginatedUserFromAnswer_likedAnswersResponse!
 }
 
 type Badge {
@@ -248,13 +248,13 @@ type PaginatedQuestionFromUser_upvotersResponse {
   total: Float!
 }
 
-type PaginatedUserFromAnswer_downvotedAnswersResponse {
+type PaginatedUserFromAnswer_dislikedAnswersResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
 }
 
-type PaginatedUserFromAnswer_upvotedAnswersResponse {
+type PaginatedUserFromAnswer_likedAnswersResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
@@ -284,13 +284,13 @@ type PaginatedUserFromPost_likedPostsResponse {
   total: Float!
 }
 
-type PaginatedUserFromQuestion_downvotedQuestionsResponse {
+type PaginatedUserFromQuestion_dislikedQuestionsResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
 }
 
-type PaginatedUserFromQuestion_upvotedQuestionsResponse {
+type PaginatedUserFromQuestion_likedQuestionsResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
@@ -368,7 +368,7 @@ type Question {
   author: User!
   comments(limit: Float!, offset: Float!): PaginatedCommentFromQuestion_questionResponse!
   createdAt: String!
-  downvoters(limit: Float!, offset: Float!): PaginatedUserFromQuestion_downvotedQuestionsResponse!
+  downvoters(limit: Float!, offset: Float!): PaginatedUserFromQuestion_dislikedQuestionsResponse!
   id: ID!
   isDisliked: Boolean!
   isLiked: Boolean!
@@ -377,7 +377,7 @@ type Question {
   questions(limit: Float!, offset: Float!): PaginatedAnswerFromQuestion_authorResponse!
   resort: Resort
   topics: [String!]!
-  upvoters(limit: Float!, offset: Float!): PaginatedUserFromQuestion_upvotedQuestionsResponse!
+  upvoters(limit: Float!, offset: Float!): PaginatedUserFromQuestion_likedQuestionsResponse!
 }
 
 type Report {
@@ -448,25 +448,25 @@ type User {
   comments(limit: Float!, offset: Float!): PaginatedCommentFromUser_authorResponse!
   createdAt: String!
   discord: String
+  dislikedAnswers(limit: Float!, offset: Float!): PaginatedAnswerFromUser_downvotersResponse!
   dislikedComments(limit: Float!, offset: Float!): PaginatedCommentFromUser_dislikersResponse!
   dislikedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_dislikersResponse!
-  downvotedAnswers(limit: Float!, offset: Float!): PaginatedAnswerFromUser_downvotersResponse!
-  downvotedQuestions(limit: Float!, offset: Float!): PaginatedQuestionFromUser_downvotersResponse!
+  dislikedQuestions(limit: Float!, offset: Float!): PaginatedQuestionFromUser_downvotersResponse!
   followers(limit: Float!, offset: Float!): PaginatedUserFromUser_followingResponse!
   following(limit: Float!, offset: Float!): PaginatedUserFromUser_followersResponse!
   github: String
   google: String
   id: ID!
   isBot: Boolean
+  likedAnswers(limit: Float!, offset: Float!): PaginatedAnswerFromUser_upvotersResponse!
   likedComments(limit: Float!, offset: Float!): PaginatedCommentFromUser_likersResponse!
   likedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_likersResponse!
+  likedQuestions(limit: Float!, offset: Float!): PaginatedQuestionFromUser_upvotersResponse!
   name: String
   ownedResorts: [Resort!]
   posts(limit: Float!, offset: Float!): PaginatedPostFromUser_authorResponse!
   roles: [Role!]!
   twitter: String
-  upvotedAnswers(limit: Float!, offset: Float!): PaginatedAnswerFromUser_upvotersResponse!
-  upvotedQuestions(limit: Float!, offset: Float!): PaginatedQuestionFromUser_upvotersResponse!
   url: String
   username: String
   verified: Boolean!

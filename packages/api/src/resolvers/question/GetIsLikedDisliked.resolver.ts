@@ -12,7 +12,7 @@ export class GetIsLikedDislikedResolver {
     if (hasAuth) {
       const user = await getUser();
       let retValue = false;
-      (await user.upvotedQuestions).forEach((res) => {
+      (await user.likedQuestions).forEach((res) => {
         if (res.id === question.id) {
           retValue = true;
         }
@@ -31,7 +31,7 @@ export class GetIsLikedDislikedResolver {
     if (hasAuth) {
       const user = await getUser();
       let retValue = false;
-      (await user.downvotedQuestions).forEach((res) => {
+      (await user.dislikedQuestions).forEach((res) => {
         if (res.id === question.id) {
           retValue = true;
         }
