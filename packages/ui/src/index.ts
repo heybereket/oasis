@@ -1,5 +1,3 @@
-export { initTranslations } from './locales/i18n';
-
 // Components
 // Comments
 export { Comment } from './components/comment/Comment';
@@ -30,9 +28,9 @@ export { TrendingSection } from './components/home/TrendingSection';
 export { LeftSidebarItem } from './components/home/LeftSidebar';
 export { LeftSidebarTitle } from './components/home/LeftSidebar';
 
-// OSS
-export { Contributors } from './components/oss/Contributors';
-export { TeamMember } from './components/oss/TeamMember';
+// Locales
+export { initTranslations } from './locales/i18n';
+export { LanguageSelector } from './components/locales/LanguageSelector';
 
 // Navbar
 export { DropdownItem } from './components/navbar/DropdownItem';
