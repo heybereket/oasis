@@ -1,17 +1,20 @@
 import 'reflect-metadata';
 import { config } from 'dotenv';
 import express from 'express';
-import { createApolloServer } from '@root/apolloServer';
-import authRouter from '@modules/auth';
-import connectionRouter from '@modules/connections';
+import { createApolloServer } from '@root/server';
+import authRouter from '@auth/oauth';
+import connectionRouter from '@auth/connections';
+import apiRouter from './routes';
 import expressSession from 'express-session';
-import { redisStore, redisClient } from '@services/redis';
+import { redisStore, redisClient } from '@config/redis';
 import passport from 'passport';
 import { checkEnv } from '@utils/common/checkEnv';
 import { sessionSecret, isProduction, PORT } from '@lib/constants';
 import * as log from '@lib/log';
 import { checkNodeMajor } from '@lib/nodeMajor';
-import { getDatabase } from '@services/database';
+import { getDatabase } from '@config/database';
+import fileUpload from 'express-fileupload';
+import { joinRoot } from '@utils/common/rootPath';
 
 config();
 
@@ -54,11 +57,23 @@ export const initializeServer = async () => {
     passport.serializeUser((user, done) => done(null, user));
     passport.deserializeUser((user, done) => done(null, user));
 
+    // File Upload Config
+    app.use(fileUpload());
+    if (process.env.STORE_IMAGES_LOCALLY === 'true') {
+      app.use('/images', express.static(joinRoot('..', 'images')));
+      log.warn(
+        'You are storing images locally. Only allow trusted users access to the api as this can be unsafe.'
+      );
+    }
+
     // Authentication API
     app.use('/api/auth', authRouter(passport));
 
     // Connection API
     app.use('/api/connection', connectionRouter());
+
+    // Routes
+    app.use('/api', apiRouter());
 
     // Apollo GraphQL Server
     apolloServer.applyMiddleware({ app });
@@ -66,16 +81,16 @@ export const initializeServer = async () => {
     log.event('api started successfully');
     return app;
   } catch (err) {
-      log.error(err);
-    }
-  };
+    log.error(err);
+  }
+};
 
-  if (require.main === module) {
-    initializeServer().then((app) => {
-      if (!app) process.exit(1);
+if (require.main === module) {
+  initializeServer().then((app) => {
+    if (!app) process.exit(1);
 
-      app.listen(PORT, () =>
-        log.ready(`ready on http://localhost:${PORT}/graphql`)
-      );
-    });
+    app.listen(PORT, () =>
+      log.ready(`ready on http://localhost:${PORT}/graphql`)
+    );
+  });
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { CustomLink } from '../../providers/CustomLink';
 
 interface NavItemProps {
   name: string;
@@ -6,14 +7,14 @@ interface NavItemProps {
   to?: string;
   onClick: () => void;
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  className: string
+  className: string;
 }
 
 export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
   const Icon = props.icon;
   const onClick = props.onClick;
   const onClickRedirect = (_: any) => {
-      onClick();
+    onClick();
   };
 
   return (
@@ -22,12 +23,12 @@ export const NavItem: React.FC<NavItemProps> = (props: NavItemProps) => {
       onClick={onClickRedirect}
     >
       <Icon />
-      <a
+      <CustomLink
         href={props.href}
         className="hidden lg:block font-extrabold text-white text-lg"
       >
         {props.name}
-      </a>
+      </CustomLink>
     </div>
   );
 };

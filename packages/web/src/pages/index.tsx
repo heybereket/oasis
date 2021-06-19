@@ -21,6 +21,7 @@ import {
   useFeedSortPostsQuery,
   FeedSortPostsQueryVariables,
   FeedSortPostsDocument,
+  useReportEntityMutation,
 } from '@oasis-sh/react-gql';
 
 interface IndexPageProps {
@@ -47,6 +48,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
 
   const [likeDislikePost] = useLikeDislikePostMutation();
   const [deletePost] = useDeletePostMutation();
+  const [reportPost] = useReportEntityMutation();
 
   return (
     <>
@@ -94,10 +96,9 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                     },
                   })
                 ).data.feedSortPosts;
-
-                console.log(newData);
                 return newData;
               }}
+              reportPost={reportPost}
             />
           </div>
           <div className="hidden 2xl:flex flex-col flex-1 sticky top-28 h-px">

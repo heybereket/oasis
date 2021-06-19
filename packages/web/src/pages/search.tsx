@@ -14,6 +14,7 @@ import { LargeUserCard, Navbar, Post, User as UserCard } from '@oasis-sh/ui';
 import StyledMarkdown from '@parser/markdown/StyledMarkdown';
 import { GetServerSideProps } from 'next';
 import { SEO } from '@shared/SEO';
+import Link from 'next/link';
 
 type Props = {
   vars: SearchQueryVariables;
@@ -53,7 +54,7 @@ export const Search: React.FC<Props> = ({ vars }) => {
                 case 'User':
                   return (
                     <div className="bg-gray-800 rounded-2xl w-full flex flex-row justify-center">
-                      <a href={'/user/' + res.username}>
+                      <Link href={'/user/' + res.username}>
                         <LargeUserCard
                           avatar={res.avatar}
                           name={res.displayName}
@@ -66,7 +67,7 @@ export const Search: React.FC<Props> = ({ vars }) => {
                           //   } as any as User
                           // }
                         />
-                      </a>
+                      </Link>
                     </div>
                   );
 
@@ -107,4 +108,3 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 };
 
 export default Search;
-

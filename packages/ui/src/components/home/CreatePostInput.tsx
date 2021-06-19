@@ -30,6 +30,7 @@ export const CreatePostInput: React.FC<Props> = ({ onSubmit, avatarUrl }) => {
           className={`bg-transparent w-full placeholder-white ml-3 text-base focus:outline-none`}
           placeholder="What's on your mind?"
           onChange={handleChange}
+          rows={1}
         />
       </div>
       <div className="flex items-center">

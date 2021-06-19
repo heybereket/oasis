@@ -9,4 +9,7 @@ export default class CreatePostInput {
 
   @Field(() => [String], { nullable: false })
   topics: string[];
+
+  @Field({ nullable: true })
+  imageName?: string;
 }

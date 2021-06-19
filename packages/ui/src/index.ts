@@ -19,21 +19,28 @@ export { FollowUserSection } from './components/home/FollowUserSection';
 export { FriendActivity } from './components/home/FriendActivity';
 export { FriendActivitySection } from './components/home/FriendActivitySection';
 export { PostsSection } from './components/home/PostsSection';
+export { NewPostsSection } from './components/home/NewPostsSection';
 export { ProfileSection } from './components/home/ProfileSection';
 export { Sidebar } from './components/home/Sidebar';
 export { TrendingSection } from './components/home/TrendingSection';
 
-// OSS
-export { Contributors } from './components/oss/Contributors';
-export { TeamMember } from './components/oss/TeamMember';
+// New Home
+export { LeftSidebarItem } from './components/home/LeftSidebar';
+export { LeftSidebarTitle } from './components/home/LeftSidebar';
+
+// Locales
+export { initTranslations } from './locales/i18n';
+export { LanguageSelector } from './components/locales/LanguageSelector';
 
 // Navbar
 export { DropdownItem } from './components/navbar/DropdownItem';
 export { Navbar } from './components/navbar/Navbar';
+export { HomeTopBar } from './components/navbar/HomeTopBar';
 export { NavItem } from './components/navbar/NavItem';
 
 // Post
 export { Post } from './components/post/Post';
+export { NewPost } from './components/post/NewPost';
 
 // Profile
 export { LargeUserCard } from './components/profile/large/UserCard';
@@ -50,6 +57,11 @@ export { TopicBadge } from './components/profile/TopicBadge';
 // Resort
 export { ResortCard } from './components/resort/ResortCard';
 export { ResortHeader } from './components/resort/ResortHeader';
+
+// Notifications
+export { NotificationWrapper } from './components/notifications/NotificationWrapper';
+export { NotificationBlock } from './components/notifications/NotificationBlock';
+export { FilterButton } from './components/notifications/FilterButton';
 
 // Sections
 
@@ -75,3 +87,7 @@ export { SmallDownArrow } from './icons/arrows/SmallDownArrow';
 
 // User
 export { User } from './components/user/User';
+
+// Providers
+export { LinkProvider } from './providers/LinkProvider';
+export { LinkContext } from './providers/LinkProvider';

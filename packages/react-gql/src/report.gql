@@ -1,0 +1,3 @@
+mutation ReportEntity($reportData: MakeReportInput!, $reporteeData: ReportedEntityInput!) {
+  makeReport(data: $reportData reporteeData: $reporteeData)
+}

@@ -1,5 +1,8 @@
 import React from 'react';
 import { RightArrow } from '../../icons';
+import { CustomLink } from '../../providers/CustomLink';
+import { useTranslation } from 'react-i18next';
+
 type Props = {
   user: any;
   currentUserLoading: boolean;
@@ -11,10 +14,11 @@ export const ProfileSection: React.FC<Props> = ({
   currentUserLoading,
   StyledMarkdown,
 }) => {
+  const { t } = useTranslation();
   return (
     <>
       {currentUserLoading || (
-        <>
+        <div>
           <div className="flex items-center space-x-4">
             <img
               src={user?.avatar}
@@ -33,14 +37,16 @@ export const ProfileSection: React.FC<Props> = ({
               <p>Your bio has not been set.</p>
             )}
           </div>
-          <a
+          <CustomLink
             className="flex items-center space-x-0.5 mt-2"
             href={`/u/${user?.username}`}
           >
-            <p className="font-bold text-lg text-primary">View Profile</p>
-            <RightArrow className="text-primary" />
-          </a>
-        </>
+            <div className="flex flex-row font-bold text-lg text-primary">
+              <p>{t('profileCard.view')}</p>
+              <RightArrow />
+            </div>
+          </CustomLink>
+        </div>
       )}
     </>
   );

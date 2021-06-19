@@ -3,7 +3,7 @@ import Post from '@entities/Post';
 import Report from '@entities/Report';
 import Resort from '@entities/Resort';
 import User from '@entities/User';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import { ApolloError } from 'apollo-server-express';
 import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import MakeReportInput from './MakeReportInput';

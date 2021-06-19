@@ -17,10 +17,6 @@
     "dev": "run-p \"watch:gen\" \"watch:tsc\"",
     "clean": "rimraf dist/*"
   },
-  "prettier": "@oasis-sh/prettier-config",
-  "eslintConfig": {
-    "extends": "@oasis-sh/eslint-config"
-  },
   "publishConfig": {
     "access": "public"
   },
@@ -39,18 +35,18 @@
     "@graphql-codegen/typescript": "^1.22.1",
     "@types/eslint": "^7.2.13",
     "@types/jest": "^26.0.23",
-    "@types/node": "^15.12.2",
+    "@types/node": "^15.12.4",
     "@types/node-fetch": "^2.5.10",
     "@types/prettier": "^2.3.0",
     "dotenv": "^10.0.0",
     "jest": "^27.0.4",
     "ts-jest": "^27.0.3",
     "ts-node": "^10.0.0",
-    "typescript": "4.2.4"
+    "typescript": "4.3.4"
   },
   "dependencies": {
     "ee-ts": "^1.0.2",
-    "eslint": "^7.28.0",
+    "eslint": "^7.29.0",
     "node-fetch": "^2.6.1",
     "prettier": "^2.3.1"
   }

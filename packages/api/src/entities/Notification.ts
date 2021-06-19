@@ -1,6 +1,7 @@
-import { NotificationType } from '@typings/Notifications';
+import { NotificationType } from '@enums/Notifications';
 import { Field, ID, ObjectType } from 'type-graphql';
 import {
+  AfterInsert,
   BaseEntity,
   Column,
   Entity,
@@ -13,7 +14,7 @@ import User from './User';
 @Entity()
 export default class Notification extends BaseEntity {
   @Field()
-  @Column({ type: 'date' })
+  @Column()
   createdAt: string;
 
   @PrimaryGeneratedColumn('uuid')
@@ -25,12 +26,12 @@ export default class Notification extends BaseEntity {
   type: NotificationType;
 
   @Field(() => User)
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, (user) => user.notifications)
   user: Promise<User>;
 
-  @Field(() => User, { nullable: true })
-  @ManyToOne(() => User, { nullable: true })
-  performer?: Promise<User>;
+  @Field(() => User)
+  @ManyToOne(() => User)
+  performer: Promise<User>;
 
   @Field()
   @Column()

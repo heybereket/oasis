@@ -1,7 +1,7 @@
 import { Arg, Authorized, Mutation, Resolver } from 'type-graphql';
 import MakeBadgeInput from './MakeBadgeInput';
 import Badge from '@entities/Badge';
-import { Role } from '@typings/Roles';
+import { Role } from '@enums/Roles';
 
 // @bcg-resolver(mutation, makeBadge, badge)
 @Resolver()

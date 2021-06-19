@@ -16,9 +16,7 @@ export const DropdownItem: React.FC<DropdownItemProps> = (props) => {
       onClick={props.onClick}
     >
       <Icon />
-      <a href={props.href} className="font-medium text-white">
-        {props.name}
-      </a>
+      <p className="font-medium text-white">{props.name}</p>
     </div>
   );
 };

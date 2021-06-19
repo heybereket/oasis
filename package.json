@@ -3,40 +3,42 @@
   "private": true,
   "license": "MIT",
   "workspaces": [
-    "packages/*",
-    "config/*"
+    "packages/*"
   ],
   "scripts": {
-    "build:all": "yarn build api && yarn build react-gql && yarn build ui && yarn build web",
-    "build:dev": "yarn build api && yarn build react-gql && yarn build ui",
-    "commit": "git add . && cz && git push",
+    "build": "yarn workspace @oasis-sh/$0 run build",
+    "build:all": "yarn build api && yarn build react-gql && yarn build shared && yarn build ui && yarn build web",
+    "build:dev": "yarn build api && yarn build react-gql && yarn build shared && yarn build ui",
+    "rebuild": "yarn reinstall || yarn build:all",
     "dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
     "dev:api": "yarn workspace @oasis-sh/api run dev",
     "start": "yarn workspace @oasis-sh/web run start",
-    "deploy:prod": "git add . && git commit -m 'chore(deploy): Merge staging -> prod' && git checkout prod && git merge staging && git push origin prod --force && git checkout staging",
-    "publish:bot": "yarn workspace @oasis-sh/bot-client run publish",
-    "lint": "yarn workspaces foreach --exclude @oasis-sh/react-gql -p run prettify && yarn workspaces foreach --exclude @oasis-sh/react-gql -p run lint",
+    "fix:prettier": "prettier --write \"packages/**/**src/*/**/*.{ts,tsx,js}\"",
+    "fix:lint": "eslint . --ext ts --ext tsx --ext js --fix",
     "clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/react-gql,@oasis-sh/ui -p run clean",
     "upgrade": "yarn upgrade-interactive",
     "reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",
-    "rebuild": "yarn reinstall || yarn build:all",
-    "build": "yarn workspace @oasis-sh/$0 run build",
     "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
+    "test": "yarn workspace @oasis-sh/$0 run test",
     "prepare": "husky install",
-    "test:api:setup": "yarn build api && TESTING=true yarn dev:api",
-    "test:api:run": "yarn workspace @oasis-sh/api test",
-    "test:cy:run-web": "TESTING=true concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
-    "test:cy": "yarn workspace @oasis-sh/web run cy:run"
+    "commit": "cz c",
+    "commit:signed": "cz -S"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@types/concurrently": "^6.2.0",
+    "@types/eslint": "^7.2.13",
     "@types/jest": "^26.0.23",
-    "@types/node": "^15.12.2",
+    "@types/node": "^15.12.4",
+    "@types/prettier": "^2.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
     "commitizen": "^4.2.4",
     "concurrently": "^6.2.0",
     "cz-conventional-changelog": "3.3.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^6.0.0",
     "jest": "^27.0.4",
     "npm-run-all": "^4.1.5",
@@ -44,8 +46,10 @@
     "ts-jest": "^27.0.3"
   },
   "dependencies": {
+    "eslint": "^7.29.0",
+    "prettier": "^2.3.1",
     "typeorm": "^0.2.34",
-    "typescript": "4.2.4"
+    "typescript": "4.3.4"
   },
   "config": {
     "commitizen": {

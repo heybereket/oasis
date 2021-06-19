@@ -1,3 +1,6 @@
+import Notification from '@entities/Notification';
+import User from '@entities/User';
+
 // Generate a random number (digits customizable)
 export const generatedNumber = (n = 10) => {
   const multiplier = 10 ** (n - 1);
@@ -31,4 +34,28 @@ export const getShortMonth = () => {
   const day = today.getDate();
 
   return shortMonths[today.getMonth()] + ` ${day}, ${year}`;
+};
+
+export const createNotification = async ({ userId, performerId, type }) => {
+  const user = await User.findOne(userId);
+  const performer = await User.findOne(performerId);
+  const prevNotifs = (
+    await Notification.find({
+      where: {
+        user,
+        performer,
+        type,
+      },
+    })
+  ).length;
+  if (prevNotifs >= 1) {
+    return;
+  }
+  const notification = Notification.create();
+  notification.user = Promise.resolve(user);
+  notification.performer = Promise.resolve(performer);
+  notification.type = type;
+  notification.read = false;
+  notification.createdAt = String(Date.now());
+  notification.save();
 };

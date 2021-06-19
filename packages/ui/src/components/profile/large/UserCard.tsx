@@ -1,4 +1,5 @@
 import React from 'react';
+import { CustomLink } from '../../../providers/CustomLink';
 
 type Props = {
   avatar: string | undefined | null;
@@ -9,13 +10,13 @@ type Props = {
 export const LargeUserCard: React.FC<Props> = ({ avatar, name, username }) => {
   return (
     <div className="flex">
-      <a href={`/user/${username}`}>
+      <CustomLink href={`/user/${username}`}>
         <img
           src={avatar ?? ''}
           style={{ pointerEvents: 'none' }}
           className="rounded-full w-50 h-40"
         ></img>
-      </a>
+      </CustomLink>
       <div className="ml-8 flex flex-col justify-center">
         {name ? (
           <>

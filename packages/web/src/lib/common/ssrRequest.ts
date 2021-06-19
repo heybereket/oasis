@@ -15,9 +15,13 @@ export const ssrRequest = async (
 ): Promise<NormalizedCacheObject | void> => {
   if (process.env.API_MODE === 'remote') return {};
 
-  const { getSchema } = forceRequire('@oasis-sh/api/dist/utils/files/getSchema');
-  const { createContext } = forceRequire('@oasis-sh/api/dist/utils/auth/createContext');
-  const schema = await getSchema();
+  const { createSchema } = forceRequire(
+    '@oasis-sh/api/dist/utils/files/createSchema'
+  );
+  const { createContext } = forceRequire(
+    '@oasis-sh/api/dist/utils/auth/createContext'
+  );
+  const schema = await createSchema();
   const apolloClient = initializeApollo();
   const contextValue = await createContext(req);
 

@@ -1,5 +1,5 @@
 import { MiddlewareFn } from 'type-graphql';
-import { ContextType } from '@root/apolloServer';
+import { ContextType } from '@root/server';
 import User from '@entities/User';
 import { ApolloError } from 'apollo-server-errors';
 

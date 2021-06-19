@@ -4,17 +4,9 @@ on:
   push:
     branches:
       - staging
-    paths:
-      - "packages/web/**"
-      - "packages/api/**"
-      - "packages/ui/**"
   pull_request:
     branches:
       - staging
-    paths:
-     - "packages/web/**"
-     - "packages/api/**"
-     - "packages/ui/**"
 jobs:
   test:
     name: lint
@@ -23,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Use Node.js
         uses: actions/setup-node@v1
-        
+
       - run: yarn install
-      - run: yarn lint
-        id: test
+      - run: yarn fix:prettier
+      - run: yarn fix:lint

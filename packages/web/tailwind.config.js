@@ -1,7 +1,11 @@
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
-  purge: ['./src/**/*.tsx', '../ui/**/*.tsx'],
+  purge: [
+    './src/**/*.{tsx,jsx,js,ts}',
+    '../ui/**/*.{tsx,jsx,js,ts}',
+    '../mobile/**/*.{tsx,jsx,js,ts}',
+  ],
   theme: {
     flexShrink: {
       0: 0,
@@ -42,8 +46,7 @@ module.exports = {
         580: '580px',
         530: '530px',
         200: '200px',
-        'nav': '112rem'
-
+        nav: '112rem',
       },
       backgroundColor: {
         resortSecondary: '#141923',
@@ -52,6 +55,7 @@ module.exports = {
         secondary: '#828282',
       },
       gridTemplateColumns: {
+        'three-new': '280px 1fr 280px',
         two: '370px 500px',
         three: '370px 570px 470px',
       },
@@ -93,6 +97,11 @@ module.exports = {
           700: 'var(--color-gray-700)',
           800: 'var(--color-gray-800)',
           900: 'var(--color-gray-900)',
+          light: '#0C111B',
+          dark: '#141923',
+          '2dark': '#202225',
+          text: '#BDBDBD',
+          bg: '#232936',
         },
         primary: {
           DEFAULT: 'var(--color-primary)',
@@ -101,8 +110,10 @@ module.exports = {
         },
         light: 'var(--color-text-light)',
         dim: 'rgba(0,0,0,0.6)',
+        'home-bg': '#2F343F',
+        'home-sides': '#232831',
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar'), require('@tailwindcss/typography')],
 };
