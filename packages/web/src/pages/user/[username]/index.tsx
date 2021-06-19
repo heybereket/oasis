@@ -116,9 +116,6 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
         return <div></div>;
       } else {
         return (
-          <div
-            className={`mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]`}
-          >
             <PostsTabItem
               markdown={(text: any) => (
                 <StyledMarkdown text={text} isBio={false} isPost={true} />
@@ -142,7 +139,6 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
                 return newData;
               }}
             />
-          </div>
         );
       }
 
@@ -153,6 +149,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
       } else {
         return (
           <PostsTabItem
+            isInProfileLikes
             markdown={(text: any) => (
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}

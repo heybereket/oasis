@@ -1,11 +1,11 @@
 import React from 'react';
+import TabMeta from './TabMeta';
 
 type Props = {
   bio: string | undefined | null;
   name: string | undefined | null;
   username: string | undefined | null;
   badges: any[] | undefined | null;
-  marginTop: '4' | '8';
   markdown: (text: string) => JSX.Element;
 };
 
@@ -14,25 +14,19 @@ export const Bio: React.FC<Props> = ({
   name,
   username,
   badges,
-  marginTop,
   markdown,
 }) => {
   return (
-    <>
       <div
-        className={`mt-${marginTop} bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]`}
+        className="mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]"
       >
-        <h4 className="font-extrabold">About {name}</h4>
-        {bio !== null ? (
-          <div className="text-gray-300 font-bold">
-            {markdown(bio ?? '')}
-            {/* <StyledMarkdown text={bio ?? ''} isBio={true} /> */}
-          </div>
-        ) : (
-          <h5 className="text-gray-300 font-bold">
-            @{username} currently does not have a bio set.
-          </h5>
-        )}
+        <TabMeta
+          title={`About ${name}`}
+          description={
+           bio !== null ? markdown(bio ?? '') : `@${username} does not have a bio set.`
+          }
+        />
+
         <div className="flex">
           {badges?.map((badge) => (
             <img
@@ -44,6 +38,5 @@ export const Bio: React.FC<Props> = ({
           ))}
         </div>
       </div>
-    </>
   );
 };
