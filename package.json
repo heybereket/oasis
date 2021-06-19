@@ -6,26 +6,23 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "yarn workspace @oasis-sh/$0 run build",
     "build:all": "yarn build api && yarn build react-gql && yarn build shared && yarn build ui && yarn build web",
     "build:dev": "yarn build api && yarn build react-gql && yarn build shared && yarn build ui",
-    "commit": "git add . && cz && git push",
+    "rebuild": "yarn reinstall || yarn build:all",
     "dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
     "dev:api": "yarn workspace @oasis-sh/api run dev",
     "start": "yarn workspace @oasis-sh/web run start",
-    "deploy:prod": "git add . && git commit -m 'chore(deploy): Merge staging -> prod' && git checkout prod && git merge staging && git push origin prod --force && git checkout staging",
-    "publish:bot": "yarn workspace @oasis-sh/bot-client run publish",
-    "lint": "eslint . --ext ts --ext tsx --ext js && prettier --write \"packages/**/**src/*/**/*.{ts,tsx,js}\"",
+    "fix:prettier": "prettier --write \"packages/**/**src/*/**/*.{ts,tsx,js}\"",
+    "fix:lint": "eslint . --ext ts --ext tsx --ext js --fix",
     "clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/react-gql,@oasis-sh/ui -p run clean",
     "upgrade": "yarn upgrade-interactive",
     "reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",
-    "rebuild": "yarn reinstall || yarn build:all",
-    "build": "yarn workspace @oasis-sh/$0 run build",
     "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
+    "test": "yarn workspace @oasis-sh/$0 run test",
     "prepare": "husky install",
-    "test:api:setup": "yarn build api && TESTING=true yarn dev:api",
-    "test:api:run": "yarn workspace @oasis-sh/api test",
-    "test:cy:run-web": "TESTING=true concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
-    "test:cy": "yarn workspace @oasis-sh/web run cy:run"
+    "commit": "cz c",
+    "commit:signed": "cz -S"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
