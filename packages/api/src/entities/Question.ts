@@ -51,8 +51,8 @@ export default class Question extends BaseEntity {
   @ManyToMany(() => User, (user) => user.likedQuestions)
   upvoters: Promise<User[]>;
 
-  @RelationalPagination(() => Question, () => User, 'dislikedQuestions')
-  @ManyToMany(() => User, (user) => user.dislikedQuestions)
+  @RelationalPagination(() => Question, () => User, 'downvotedQuestions')
+  @ManyToMany(() => User, (user) => user.downvotedQuestions)
   downvoters: Promise<User[]>;
 
   @RelationalPagination(() => Question, () => Comment, 'question')

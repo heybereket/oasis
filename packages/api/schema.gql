@@ -7,11 +7,11 @@ type Answer {
   author: User!
   content: String!
   createdAt: String!
-  dislikes: Float!
-  downvoters(limit: Float!, offset: Float!): PaginatedUserFromAnswer_dislikedAnswersResponse!
+  downvoters(limit: Float!, offset: Float!): PaginatedUserFromAnswer_downvotedAnswersResponse!
+  downvotes: Float!
   id: ID!
-  isDisliked: Boolean!
-  isLiked: Boolean!
+  isDownvoted: Boolean!
+  isUpvoted: Boolean!
   lastEdited: String
   likes: Float!
   question: Question!
@@ -31,11 +31,11 @@ type Comment {
   author: User!
   content: String!
   createdAt: String!
-  dislikers(limit: Float!, offset: Float!): PaginatedUserFromComment_dislikedCommentsResponse!
-  dislikes: Float!
+  downvoters(limit: Float!, offset: Float!): PaginatedUserFromComment_downvotedCommentsResponse!
+  downvotes: Float!
   id: ID!
-  isDisliked: Boolean!
-  isLiked: Boolean!
+  isDownvoted: Boolean!
+  isUpvoted: Boolean!
   lastEdited: String
   likers(limit: Float!, offset: Float!): PaginatedUserFromComment_likedCommentsResponse!
   likes: Float!
@@ -115,9 +115,9 @@ type Mutation {
   followUser(userId: String!): Boolean!
   giveBadge(badgeName: String!, username: String!): Boolean!
   joinResort(resortId: String!): Boolean
-  likeDislike(dislike: Boolean!, like: Boolean!, postId: String!): Boolean!
-  likeDislikeAnswer(answerId: String!, dislike: Boolean!, like: Boolean!): Boolean!
-  likeDislikeComment(commentId: String!, dislike: Boolean!, like: Boolean!): Boolean!
+  likeDownvote(downvote: Boolean!, like: Boolean!, postId: String!): Boolean!
+  likeDownvoteAnswer(answerId: String!, downvote: Boolean!, like: Boolean!): Boolean!
+  likeDownvoteComment(commentId: String!, downvote: Boolean!, like: Boolean!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   makeReport(data: MakeReportInput!, reporteeData: ReportedEntityInput!): Boolean!
@@ -147,9 +147,9 @@ type Notification {
 enum NotificationType {
   Comment
   Follow
-  LikeComment
-  LikePost
   ReplyComment
+  UpvoteComment
+  UpvotePost
 }
 
 type PaginatedAnswerFromQuestion_authorResponse {
@@ -200,7 +200,7 @@ type PaginatedCommentFromUser_authorResponse {
   total: Float!
 }
 
-type PaginatedCommentFromUser_dislikersResponse {
+type PaginatedCommentFromUser_downvotersResponse {
   hasMore: Boolean!
   items: [Comment!]!
   total: Float!
@@ -224,7 +224,7 @@ type PaginatedPostFromUser_authorResponse {
   total: Float!
 }
 
-type PaginatedPostFromUser_dislikersResponse {
+type PaginatedPostFromUser_downvotersResponse {
   hasMore: Boolean!
   items: [Post!]!
   total: Float!
@@ -248,7 +248,7 @@ type PaginatedQuestionFromUser_upvotersResponse {
   total: Float!
 }
 
-type PaginatedUserFromAnswer_dislikedAnswersResponse {
+type PaginatedUserFromAnswer_downvotedAnswersResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
@@ -260,7 +260,7 @@ type PaginatedUserFromAnswer_likedAnswersResponse {
   total: Float!
 }
 
-type PaginatedUserFromComment_dislikedCommentsResponse {
+type PaginatedUserFromComment_downvotedCommentsResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
@@ -272,7 +272,7 @@ type PaginatedUserFromComment_likedCommentsResponse {
   total: Float!
 }
 
-type PaginatedUserFromPost_dislikedPostsResponse {
+type PaginatedUserFromPost_downvotedPostsResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
@@ -284,7 +284,7 @@ type PaginatedUserFromPost_likedPostsResponse {
   total: Float!
 }
 
-type PaginatedUserFromQuestion_dislikedQuestionsResponse {
+type PaginatedUserFromQuestion_downvotedQuestionsResponse {
   hasMore: Boolean!
   items: [User!]!
   total: Float!
@@ -324,12 +324,12 @@ type Post {
   author: User!
   comments(limit: Float!, offset: Float!): PaginatedCommentFromPost_postResponse!
   createdAt: String!
-  dislikers(limit: Float!, offset: Float!): PaginatedUserFromPost_dislikedPostsResponse!
-  dislikes: Float!
+  downvoters(limit: Float!, offset: Float!): PaginatedUserFromPost_downvotedPostsResponse!
+  downvotes: Float!
   id: ID!
   imageName: String
-  isDisliked: Boolean!
-  isLiked: Boolean!
+  isDownvoted: Boolean!
+  isUpvoted: Boolean!
   lastEdited: String
   likers(limit: Float!, offset: Float!): PaginatedUserFromPost_likedPostsResponse!
   likes: Float!
@@ -368,10 +368,10 @@ type Question {
   author: User!
   comments(limit: Float!, offset: Float!): PaginatedCommentFromQuestion_questionResponse!
   createdAt: String!
-  downvoters(limit: Float!, offset: Float!): PaginatedUserFromQuestion_dislikedQuestionsResponse!
+  downvoters(limit: Float!, offset: Float!): PaginatedUserFromQuestion_downvotedQuestionsResponse!
   id: ID!
-  isDisliked: Boolean!
-  isLiked: Boolean!
+  isDownvoted: Boolean!
+  isUpvoted: Boolean!
   lastEdited: String
   message: String!
   questions(limit: Float!, offset: Float!): PaginatedAnswerFromQuestion_authorResponse!
@@ -448,10 +448,10 @@ type User {
   comments(limit: Float!, offset: Float!): PaginatedCommentFromUser_authorResponse!
   createdAt: String!
   discord: String
-  dislikedAnswers(limit: Float!, offset: Float!): PaginatedAnswerFromUser_downvotersResponse!
-  dislikedComments(limit: Float!, offset: Float!): PaginatedCommentFromUser_dislikersResponse!
-  dislikedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_dislikersResponse!
-  dislikedQuestions(limit: Float!, offset: Float!): PaginatedQuestionFromUser_downvotersResponse!
+  downvotedAnswers(limit: Float!, offset: Float!): PaginatedAnswerFromUser_downvotersResponse!
+  downvotedComments(limit: Float!, offset: Float!): PaginatedCommentFromUser_downvotersResponse!
+  downvotedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_downvotersResponse!
+  downvotedQuestions(limit: Float!, offset: Float!): PaginatedQuestionFromUser_downvotersResponse!
   followers(limit: Float!, offset: Float!): PaginatedUserFromUser_followingResponse!
   following(limit: Float!, offset: Float!): PaginatedUserFromUser_followersResponse!
   github: String

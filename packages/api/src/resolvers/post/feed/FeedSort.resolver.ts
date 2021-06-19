@@ -11,7 +11,7 @@ export class DeletePostResolver {
     return await Post.createQueryBuilder('post')
       .addSelect('COUNT(likers.id) as likes')
       .leftJoin('post.likers', 'likers')
-      // .leftJoin('post.dislikers', 'dislikers')
+      // .leftJoin('post.downvoters', 'downvoters')
       .groupBy('post.id')
       .orderBy('likes', 'DESC')
       .addOrderBy('post.createdAt', 'DESC')

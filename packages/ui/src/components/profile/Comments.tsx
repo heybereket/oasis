@@ -3,7 +3,7 @@ import {
   Comment as TComment,
   User,
   ReportEntityMutationHookResult,
-  useLikeDislikeCommentMutation,
+  useUpvoteDownvoteCommentMutation,
 } from '@oasis-sh/react-gql';
 import React from 'react';
 import Comment from '../comment/Comment';
@@ -12,7 +12,7 @@ import TabMeta from './TabMeta';
 
 type Props = {
   comments: TComment[];
-  likeDislikeComment: ReturnType<typeof useLikeDislikeCommentMutation>[0];
+  likeDownvoteComment: ReturnType<typeof useUpvoteDownvoteCommentMutation>[0];
   // deleteComment: ReturnType<typeof useDeletePostMutation>[0];
   markdown: (text: string) => JSX.Element;
   currentUser?: User;
@@ -25,7 +25,7 @@ type Props = {
 export const Comments: React.FC<Props> = ({
   comments,
   markdown,
-  likeDislikeComment,
+  likeDownvoteComment,
   currentUser,
   reportComment,
   fetch,
@@ -60,19 +60,19 @@ export const Comments: React.FC<Props> = ({
               markdown={markdown}
               bgColorOveride={bgColorOveride ?? 'bg-gray-900'}
               likeComment={() => {
-                likeDislikeComment({
+                likeDownvoteComment({
                   variables: {
-                    dislike: false,
+                    downvote: false,
                     like: true,
                     commentId: comment.id,
                   },
                 });
                 // window.location.reload();
               }}
-              dislikeComment={() => {
-                likeDislikeComment({
+              downvoteComment={() => {
+                likeDownvoteComment({
                   variables: {
-                    dislike: true,
+                    downvote: true,
                     like: false,
                     commentId: comment.id,
                   },

@@ -105,20 +105,20 @@ export default class User extends BaseEntity {
   @JoinTable()
   likedPosts: Promise<Post[]>;
 
-  @RelationalPagination(() => User, () => Post, 'dislikers')
-  @ManyToMany(() => Post, (post) => post.dislikers)
+  @RelationalPagination(() => User, () => Post, 'downvoters')
+  @ManyToMany(() => Post, (post) => post.downvoters)
   @JoinTable()
-  dislikedPosts: Promise<Post[]>;
+  downvotedPosts: Promise<Post[]>;
 
   @RelationalPagination(() => User, () => Comment, 'likers')
   @ManyToMany(() => Comment, (comment) => comment.likers)
   @JoinTable()
   likedComments: Promise<Comment[]>;
 
-  @RelationalPagination(() => User, () => Comment, 'dislikers')
-  @ManyToMany(() => Comment, (comment) => comment.dislikers)
+  @RelationalPagination(() => User, () => Comment, 'downvoters')
+  @ManyToMany(() => Comment, (comment) => comment.downvoters)
   @JoinTable()
-  dislikedComments: Promise<Comment[]>;
+  downvotedComments: Promise<Comment[]>;
 
   @RelationalPagination(() => User, () => Question, 'upvoters')
   @ManyToMany(() => Question, (question) => question.upvoters)
@@ -128,7 +128,7 @@ export default class User extends BaseEntity {
   @RelationalPagination(() => User, () => Question, 'downvoters')
   @ManyToMany(() => Question, (question) => question.downvoters)
   @JoinTable()
-  dislikedQuestions: Promise<Question[]>;
+  downvotedQuestions: Promise<Question[]>;
 
   @RelationalPagination(() => User, () => Answer, 'upvoters')
   @ManyToMany(() => Answer, (answer) => answer.upvoters)
@@ -138,7 +138,7 @@ export default class User extends BaseEntity {
   @RelationalPagination(() => User, () => Answer, 'downvoters')
   @ManyToMany(() => Answer, (answer) => answer.downvoters)
   @JoinTable()
-  dislikedAnswers: Promise<Answer[]>;
+  downvotedAnswers: Promise<Answer[]>;
 
   @OneToMany(() => Notification, (notification) => notification.user, {
     nullable: true,

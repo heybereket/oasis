@@ -1,7 +1,7 @@
 // import StyledMarkdown from '../../../../web/src/components/markdown/StyledMarkdown';
 import {
   Post as TPost,
-  useLikeDislikePostMutation,
+  useUpvoteDownvotePostMutation,
   User,
   useDeletePostMutation,
   ReportEntityMutationHookResult,
@@ -13,39 +13,39 @@ import TabMeta from './TabMeta';
 
 type Props = {
   posts: TPost[];
-  likeDislikePost: ReturnType<typeof useLikeDislikePostMutation>[0];
+  likeDownvotePost: ReturnType<typeof useUpvoteDownvotePostMutation>[0];
   deletePost: ReturnType<typeof useDeletePostMutation>[0];
   markdown: (text: string) => JSX.Element;
   currentUser?: User;
   profileUser?: User;
   reportPost?: ReportEntityMutationHookResult[0];
   fetch: (limit: number, offset: number) => Promise<TPost[]>;
-  isInProfileLikes?: boolean;
+  isInProfileUpvotes?: boolean;
 };
 
 export const Posts: React.FC<Props> = ({
   posts,
   markdown,
-  likeDislikePost,
+  likeDownvotePost,
   currentUser,
   deletePost,
   reportPost,
   fetch,
-  isInProfileLikes,
+  isInProfileUpvotes,
   profileUser,
 }) => {
-  console.log(isInProfileLikes);
+  console.log(isInProfileUpvotes);
   return (
     <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]">
       <TabMeta
         title={
-          isInProfileLikes
+          isInProfileUpvotes
             ? `${profileUser?.name}'s Upvotes`
             : `${profileUser?.name}'s Posts`
         }
         description={
           posts.length <= 0
-            ? isInProfileLikes
+            ? isInProfileUpvotes
               ? `@${profileUser?.username} has not upvoted any posts.`
               : `@${profileUser?.username} has no posts.`
             : ''
@@ -69,19 +69,19 @@ export const Posts: React.FC<Props> = ({
               markdown={markdown}
               bgColorOveride={'bg-gray-900'}
               likePost={() => {
-                likeDislikePost({
+                likeDownvotePost({
                   variables: {
-                    dislike: false,
+                    downvote: false,
                     like: true,
                     postId: post.id,
                   },
                 });
                 // window.location.reload();
               }}
-              dislikePost={() => {
-                likeDislikePost({
+              downvotePost={() => {
+                likeDownvotePost({
                   variables: {
-                    dislike: true,
+                    downvote: true,
                     like: false,
                     postId: post.id,
                   },

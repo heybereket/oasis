@@ -1,6 +1,6 @@
 import { NotificationType } from '@oasis-sh/react-gql';
 import React from 'react';
-import { Friends, Like, Posts } from '../../icons';
+import { Friends, Upvote, Posts } from '../../icons';
 import { CustomLink } from '../../providers/CustomLink';
 
 interface Props {
@@ -24,8 +24,8 @@ const NotificationMap: INotificationMap[] = [
     message: 'followed you',
   },
   {
-    type: NotificationType.LikePost,
-    icon: <Like />,
+    type: NotificationType.UpvotePost,
+    icon: <Upvote />,
     message: 'liked your post',
   },
   {
@@ -34,8 +34,8 @@ const NotificationMap: INotificationMap[] = [
     message: 'commented on your post',
   },
   {
-    type: NotificationType.LikeComment,
-    icon: <Like />,
+    type: NotificationType.UpvoteComment,
+    icon: <Upvote />,
     message: 'liked your comment',
   },
 ];

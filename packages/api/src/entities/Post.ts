@@ -48,9 +48,9 @@ export default class Post extends BaseEntity {
   @ManyToMany(() => User, (user) => user.likedPosts)
   likers: Promise<User[]>;
 
-  @RelationalPagination(() => Post, () => User, 'dislikedPosts')
-  @ManyToMany(() => User, (user) => user.dislikedPosts)
-  dislikers: Promise<User[]>;
+  @RelationalPagination(() => Post, () => User, 'downvotedPosts')
+  @ManyToMany(() => User, (user) => user.downvotedPosts)
+  downvoters: Promise<User[]>;
 
   // @Field(() => [Comment], { complexity: 5 })
   @RelationalPagination(() => Post, () => Comment, 'post')

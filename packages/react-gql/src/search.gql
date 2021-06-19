@@ -29,7 +29,7 @@ query Search($searchQuery: String! $limit: Float!) {
       }
       createdAt
       likes
-      dislikes
+      downvotes
     }
     ... on Resort {
       name

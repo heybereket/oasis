@@ -18,14 +18,14 @@ interface Props {
   comment: TComment;
   currentUser?: User;
   likeComment?: () => any;
-  dislikeComment?: () => any;
+  downvoteComment?: () => any;
   deleteComment?: (id: string) => any;
   markdown: (text: string) => JSX.Element;
   bgColorOveride?: string;
   reportComment?: ReportEntityMutationHookResult[0];
 }
 
-enum LikeDislikeState {
+enum UpvoteDownvoteState {
   'LIKED',
   'NONE',
   'DISLIKED',
@@ -34,7 +34,7 @@ enum LikeDislikeState {
 export const Comment: React.FC<Props> = ({
   comment: commentData,
   likeComment,
-  dislikeComment,
+  downvoteComment,
   markdown,
   bgColorOveride,
   deleteComment,
@@ -43,16 +43,16 @@ export const Comment: React.FC<Props> = ({
 }) => {
   const date = formatDate(commentData.createdAt);
 
-  const [likes, setLikes] = useState(commentData.likes);
-  const [dislikes, setDislikes] = useState(commentData.dislikes);
-  const formattedVotes = formatNumber(likes - dislikes);
+  const [likes, setUpvotes] = useState(commentData.likes);
+  const [downvotes, setDownvotes] = useState(commentData.downvotes);
+  const formattedVotes = formatNumber(likes - downvotes);
 
-  const [likeState, setLikeState] = useState<LikeDislikeState>(
-    commentData.isLiked
-      ? LikeDislikeState.LIKED
-      : commentData.isDisliked
-      ? LikeDislikeState.DISLIKED
-      : LikeDislikeState.NONE
+  const [likeState, setUpvoteState] = useState<UpvoteDownvoteState>(
+    commentData.isUpvoted
+      ? UpvoteDownvoteState.LIKED
+      : commentData.isDownvoted
+      ? UpvoteDownvoteState.DISLIKED
+      : UpvoteDownvoteState.NONE
   );
 
   const [isDropdownActive, setDropdownActive] = useState(false);
@@ -98,21 +98,21 @@ export const Comment: React.FC<Props> = ({
                     onClick={() => {
                       if (likeComment) likeComment();
                       console.log(likeState);
-                      if (likeState === LikeDislikeState.LIKED) {
-                        setLikeState(LikeDislikeState.NONE);
-                        setLikes(likes - 1);
-                      } else if (likeState === LikeDislikeState.DISLIKED) {
-                        setLikeState(LikeDislikeState.LIKED);
-                        setDislikes(dislikes - 1);
-                        setLikes(likes + 1);
+                      if (likeState === UpvoteDownvoteState.LIKED) {
+                        setUpvoteState(UpvoteDownvoteState.NONE);
+                        setUpvotes(likes - 1);
+                      } else if (likeState === UpvoteDownvoteState.DISLIKED) {
+                        setUpvoteState(UpvoteDownvoteState.LIKED);
+                        setDownvotes(downvotes - 1);
+                        setUpvotes(likes + 1);
                       } else {
-                        setLikeState(LikeDislikeState.LIKED);
-                        setLikes(likes + 1);
+                        setUpvoteState(UpvoteDownvoteState.LIKED);
+                        setUpvotes(likes + 1);
                       }
                       console.log(likeState);
                     }}
                     className={`cursor-pointer ${
-                      likeState === LikeDislikeState.LIKED
+                      likeState === UpvoteDownvoteState.LIKED
                         ? 'text-blue-400'
                         : ''
                     }`}
@@ -122,21 +122,21 @@ export const Comment: React.FC<Props> = ({
                   </p>
                   <SmallDownArrow
                     onClick={() => {
-                      if (dislikeComment) dislikeComment();
-                      if (likeState === LikeDislikeState.DISLIKED) {
-                        setLikeState(LikeDislikeState.NONE);
-                        setDislikes(dislikes - 1);
-                      } else if (likeState === LikeDislikeState.LIKED) {
-                        setLikeState(LikeDislikeState.DISLIKED);
-                        setDislikes(dislikes + 1);
-                        setLikes(likes - 1);
+                      if (downvoteComment) downvoteComment();
+                      if (likeState === UpvoteDownvoteState.DISLIKED) {
+                        setUpvoteState(UpvoteDownvoteState.NONE);
+                        setDownvotes(downvotes - 1);
+                      } else if (likeState === UpvoteDownvoteState.LIKED) {
+                        setUpvoteState(UpvoteDownvoteState.DISLIKED);
+                        setDownvotes(downvotes + 1);
+                        setUpvotes(likes - 1);
                       } else {
-                        setLikeState(LikeDislikeState.DISLIKED);
-                        setDislikes(dislikes + 1);
+                        setUpvoteState(UpvoteDownvoteState.DISLIKED);
+                        setDownvotes(downvotes + 1);
                       }
                     }}
                     className={`cursor-pointer ${
-                      likeState === LikeDislikeState.DISLIKED
+                      likeState === UpvoteDownvoteState.DISLIKED
                         ? 'text-blue-400'
                         : ''
                     }`}

@@ -13,24 +13,24 @@ import { ContextType } from '@root/server';
 import User from '@entities/User';
 import Answer from '@entities/Answer';
 
-// @bcg-resolver(mutation, likeDislikeAnswer, answer)
+// @bcg-resolver(mutation, likeDownvoteAnswer, answer)
 
 @Resolver(() => Answer)
-export class LikeDislikeAnswerResolver {
+export class UpvoteDownvoteAnswerResolver {
   @Mutation(() => Boolean)
   @Authorized()
-  async likeDislikeAnswer(
+  async likeDownvoteAnswer(
     @Arg('answerId') answerId: string,
     @Arg('like') like: boolean,
-    @Arg('dislike') dislike: boolean,
+    @Arg('downvote') downvote: boolean,
     @Ctx() { getUser }: ContextType
   ) {
     const answer = await Answer.findOne(answerId);
 
     if (!answer) throw new ApolloError('Answer not found');
 
-    if ((like && dislike) || (!like && !dislike)) {
-      throw new ApolloError('Please select like or dislike');
+    if ((like && downvote) || (!like && !downvote)) {
+      throw new ApolloError('Please select like or downvote');
     }
 
     const user = await getUser();
@@ -46,33 +46,33 @@ export class LikeDislikeAnswerResolver {
       }
     });
 
-    const dislikedAnswers = await user.dislikedAnswers;
-    let alreadydisliked = false;
-    const dislikedAnswersMinusNew: Answer[] = [];
-    dislikedAnswers.forEach((answer) => {
+    const downvotedAnswers = await user.downvotedAnswers;
+    let alreadydownvoted = false;
+    const downvotedAnswersMinusNew: Answer[] = [];
+    downvotedAnswers.forEach((answer) => {
       if (answer.id === answerId) {
-        alreadydisliked = true;
+        alreadydownvoted = true;
       } else {
-        dislikedAnswersMinusNew.push(answer);
+        downvotedAnswersMinusNew.push(answer);
       }
     });
     if (like) {
       if (!alreadyliked) {
-        if (alreadydisliked) {
-          user.dislikedAnswers = Promise.resolve(dislikedAnswersMinusNew);
+        if (alreadydownvoted) {
+          user.downvotedAnswers = Promise.resolve(downvotedAnswersMinusNew);
         }
         user.likedAnswers = Promise.resolve([...likedAnswers, answer]);
       } else {
         user.likedAnswers = Promise.resolve(likedAnswersMinusNew);
       }
-    } else if (dislike) {
-      if (!alreadydisliked) {
+    } else if (downvote) {
+      if (!alreadydownvoted) {
         if (alreadyliked) {
           user.likedAnswers = Promise.resolve(likedAnswersMinusNew);
         }
-        user.dislikedAnswers = Promise.resolve([...dislikedAnswers, answer]);
+        user.downvotedAnswers = Promise.resolve([...downvotedAnswers, answer]);
       } else {
-        user.dislikedAnswers = Promise.resolve(dislikedAnswersMinusNew);
+        user.downvotedAnswers = Promise.resolve(downvotedAnswersMinusNew);
       }
     }
 
@@ -92,9 +92,9 @@ export class LikeDislikeAnswerResolver {
   }
 
   @FieldResolver(() => Float)
-  async dislikes(@Root() answer: Answer) {
+  async downvotes(@Root() answer: Answer) {
     return User.createQueryBuilder('user')
-      .innerJoin(`user.dislikedAnswers`, 'answer', 'answer.id = :id', {
+      .innerJoin(`user.downvotedAnswers`, 'answer', 'answer.id = :id', {
         id: answer.id,
       })
       .getCount();

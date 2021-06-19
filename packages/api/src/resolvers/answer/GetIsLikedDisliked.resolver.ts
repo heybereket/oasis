@@ -3,9 +3,9 @@ import { ContextType } from '@root/server';
 import { Ctx, FieldResolver, Resolver, Root } from 'type-graphql';
 
 @Resolver(() => Answer)
-export class GetIsLikedDislikedResolver {
+export class GetIsUpvotedDownvotedResolver {
   @FieldResolver(() => Boolean)
-  async isLiked(
+  async isUpvoted(
     @Root() comment: Answer,
     @Ctx() { getUser, hasAuth }: ContextType
   ) {
@@ -24,14 +24,14 @@ export class GetIsLikedDislikedResolver {
   }
 
   @FieldResolver(() => Boolean)
-  async isDisliked(
+  async isDownvoted(
     @Root() comment: Answer,
     @Ctx() { getUser, hasAuth }: ContextType
   ) {
     if (hasAuth) {
       const user = await getUser();
       let retValue = false;
-      (await user.dislikedAnswers).forEach((res) => {
+      (await user.downvotedAnswers).forEach((res) => {
         if (res.id === comment.id) {
           retValue = true;
         }

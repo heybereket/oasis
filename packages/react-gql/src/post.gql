@@ -12,7 +12,7 @@ query getPost($id: String!) {
       avatar
     }
     createdAt
-    dislikes
+    downvotes
     id
     lastEdited
     likes
@@ -27,8 +27,8 @@ query getPost($id: String!) {
       total
     }
     topics
-    isLiked
-    isDisliked
+    isUpvoted
+    isDownvoted
     imageName
   }
 }
@@ -47,7 +47,7 @@ query PaginatePosts($postsLimit: Float!, $postsOffset: Float!) {
       avatar
     }
     createdAt
-    dislikes
+    downvotes
     id
     lastEdited
     likes
@@ -62,18 +62,18 @@ query PaginatePosts($postsLimit: Float!, $postsOffset: Float!) {
       total
     }
     topics
-    isLiked
-    isDisliked
+    isUpvoted
+    isDownvoted
     imageName
   }
 }
 
-mutation LikeDislikePost(
+mutation UpvoteDownvotePost(
   $like: Boolean!
-  $dislike: Boolean!
+  $downvote: Boolean!
   $postId: String!
 ) {
-  likeDislike(like: $like, dislike: $dislike, postId: $postId)
+  likeDownvote(like: $like, downvote: $downvote, postId: $postId)
 }
 
 mutation MakePost($message: String!, $topics: [String!]!) {

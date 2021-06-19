@@ -86,10 +86,10 @@ query getUsersPosts(
           username
           name
         }
-        isLiked
-        isDisliked
+        isUpvoted
+        isDownvoted
         likes
-        dislikes
+        downvotes
         comments(limit: 0, offset: 0) {
           total
         }
@@ -100,7 +100,7 @@ query getUsersPosts(
   }
 }
 
-query getUsersLikedPosts(
+query getUsersUpvotedPosts(
   $username: String!
   $postsLimit: Float!
   $postsOffset: Float!
@@ -119,10 +119,10 @@ query getUsersLikedPosts(
           username
           name
         }
-        isLiked
-        isDisliked
+        isUpvoted
+        isDownvoted
         likes
-        dislikes
+        downvotes
         comments(limit: 0, offset: 0) {
           total
         }
