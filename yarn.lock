@@ -3863,7 +3863,7 @@ __metadata:
     "@types/express-fileupload": ^1.1.6
     "@types/express-session": ^1.17.3
     "@types/ioredis": ^4.26.4
-    "@types/jsonwebtoken": ^8.5.1
+    "@types/jsonwebtoken": ^8.5.2
     "@types/passport": ^1.0.6
     "@types/passport-discord": ^0.1.3
     "@types/passport-github2": ^1.2.4
@@ -3884,7 +3884,7 @@ __metadata:
     connect-redis: ^6.0.0
     cross-fetch: ^3.1.4
     dotenv: ^10.0.0
-    eslint: ^7.28.0
+    eslint: ^7.29.0
     express: ^4.17.1
     express-fileupload: ^1.2.1
     express-session: ^1.17.2
@@ -3909,7 +3909,7 @@ __metadata:
     sqlite3: ^5.0.2
     ts-node: ^10.0.0
     ts-node-dev: ^1.1.6
-    tsc-alias: ^1.3.2
+    tsc-alias: ^1.3.3
     tslib: ^2.3.0
     type-graphql: ^1.1.1
     typeorm: ^0.2.34
@@ -3927,7 +3927,7 @@ __metadata:
     "@types/prettier": ^2.3.0
     "@types/yargs": ^17.0.0
     chalk: ^4.1.1
-    eslint: ^7.28.0
+    eslint: ^7.29.0
     node-emoji: ^1.10.0
     prettier: ^2.3.1
     typescript: 4.3.4
@@ -3944,7 +3944,7 @@ __metadata:
     electron: ^13.1.2
     electron-log: ^4.3.5
     electron-updater: ^4.3.10
-    eslint: ^7.28.0
+    eslint: ^7.29.0
     pinst: ^2.1.6
     prettier: ^2.3.1
     typescript: 4.3.4
@@ -3968,15 +3968,15 @@ __metadata:
     "@testing-library/user-event": ^13.1.9
     "@types/eslint": ^7.2.13
     "@types/jest": ^26.0.23
-    "@types/node": ^15.12.2
+    "@types/node": ^15.12.4
     "@types/prettier": ^2.3.0
     "@types/react": ^17.0.11
-    "@types/react-dom": ^17.0.7
+    "@types/react-dom": ^17.0.8
     "@types/react-router": ^5.1.15
     "@types/react-router-dom": ^5.1.7
     "@types/tailwindcss": ^2.0.6
     "@types/webpack-dev-server": ^3.11.4
-    eslint: ^7.28.0
+    eslint: ^7.29.0
     html-webpack-plugin: ^5.3.1
     ionicons: ^5.5.2
     postcss: ^8.3.5
@@ -3987,7 +3987,7 @@ __metadata:
     react-router: ^5.2.0
     react-router-dom: ^5.2.0
     react-scripts: 4.0.3
-    tailwindcss: ^2.2.0
+    tailwindcss: ^2.2.2
     ts-loader: ^9.2.3
     typescript: 4.3.4
     web-vitals: ^2.0.1
@@ -4037,12 +4037,12 @@ __metadata:
     "@graphql-codegen/typescript": ^1.22.1
     "@types/eslint": ^7.2.13
     "@types/jest": ^26.0.23
-    "@types/node": ^15.12.2
+    "@types/node": ^15.12.4
     "@types/node-fetch": ^2.5.10
     "@types/prettier": ^2.3.0
     dotenv: ^10.0.0
     ee-ts: ^1.0.2
-    eslint: ^7.28.0
+    eslint: ^7.29.0
     jest: ^27.0.4
     node-fetch: ^2.6.1
     prettier: ^2.3.1
@@ -4058,7 +4058,7 @@ __metadata:
   dependencies:
     "@types/eslint": ^7.2.13
     "@types/prettier": ^2.3.0
-    eslint: ^7.28.0
+    eslint: ^7.29.0
     moment: ^2.29.1
     prettier: ^2.3.1
     typescript: 4.3.4
@@ -4077,14 +4077,14 @@ __metadata:
     "@rollup/plugin-node-resolve": ^13.0.0
     "@types/eslint": ^7.2.13
     "@types/eslint-plugin-prettier": ^3.1.0
-    "@types/node": ^15.12.2
+    "@types/node": ^15.12.4
     "@types/prettier": ^2.3.0
-    "@types/react-dom": ^17.0.7
+    "@types/react-dom": ^17.0.8
     "@types/rollup-plugin-peer-deps-external": ^2.2.0
     "@typescript-eslint/eslint-plugin": ^4.27.0
     "@typescript-eslint/parser": ^4.27.0
     autoprefixer: ^10.2.6
-    eslint: ^7.28.0
+    eslint: ^7.29.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-prettier: ^3.4.0
     eslint-plugin-react: ^7.24.0
@@ -4114,17 +4114,17 @@ __metadata:
   resolution: "@oasis-sh/vsc-extension@workspace:packages/vsc-extension"
   dependencies:
     "@types/glob": ^7.1.3
-    "@types/node": ^15.12.2
+    "@types/node": ^15.12.4
     "@types/node-fetch": ^2.5.10
     "@types/prettier": ^2.3.0
     "@types/react": ^17.0.11
-    "@types/react-dom": ^17.0.7
+    "@types/react-dom": ^17.0.8
     "@types/vscode": ^1.57.0
     "@typescript-eslint/eslint-plugin": ^4.27.0
     "@typescript-eslint/parser": ^4.27.0
     "@vitejs/plugin-react-refresh": ^1.3.3
     concurrently: ^6.2.0
-    eslint: ^7.28.0
+    eslint: ^7.29.0
     glob: ^7.1.7
     node-fetch: ^2.6.1
     prettier: ^2.3.1
@@ -4148,9 +4148,9 @@ __metadata:
     "@sentry/tracing": ^6.7.1
     "@tailwindcss/typography": ^0.4.1
     "@types/express": ^4.17.12
-    "@types/node": ^15.12.2
+    "@types/node": ^15.12.4
     "@types/node-fetch": ^2.5.10
-    "@types/react-dom": ^17.0.7
+    "@types/react-dom": ^17.0.8
     "@types/react-syntax-highlighter": ^13.5.0
     "@types/rimraf": ^3.0.0
     "@typescript-eslint/eslint-plugin": ^4.27.0
@@ -4158,7 +4158,7 @@ __metadata:
     autoprefixer: ^10.2.6
     chalk: ^4.1.1
     cypress: ^7.5.0
-    eslint: ^7.28.0
+    eslint: ^7.29.0
     eslint-plugin-react: ^7.24.0
     eslint-plugin-react-hooks: ^4.2.0
     express: ^4.17.1
@@ -4178,7 +4178,7 @@ __metadata:
     remark-gfm: ^1.0.0
     rimraf: ^3.0.2
     tailwind-scrollbar: ^1.3.1
-    tailwindcss: ^2.2.0
+    tailwindcss: ^2.2.2
     ts-loader: ^9.2.3
     ts-node: ^10.0.0
     typescript: 4.3.4
@@ -4983,7 +4983,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:^7, @types/eslint@npm:^7.2.13":
+"@types/eslint@npm:^7.2.13":
   version: 7.2.13
   resolution: "@types/eslint@npm:7.2.13"
   dependencies:
@@ -5215,12 +5215,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jsonwebtoken@npm:^8.5.0, @types/jsonwebtoken@npm:^8.5.1":
+"@types/jsonwebtoken@npm:^8.5.0":
   version: 8.5.1
   resolution: "@types/jsonwebtoken@npm:8.5.1"
   dependencies:
     "@types/node": "*"
   checksum: f66ee4a12584a699a6dba5daa79d0f87ae77950a332f918c7f485b6d33501be84547fcac992d7f5a8960d04f77f206b118d9a558d8dd49f1aea99c64a17182b0
+  languageName: node
+  linkType: hard
+
+"@types/jsonwebtoken@npm:^8.5.2":
+  version: 8.5.2
+  resolution: "@types/jsonwebtoken@npm:8.5.2"
+  dependencies:
+    "@types/node": "*"
+  checksum: 835c4bf15ccc0531cb6f145093be76dbc1222d2868b9d4c6f93a40b6d46c65e4337abed6b62eddd1aa06a604bfee6326bba5e5757b4f947a72a942093e5e859f
   languageName: node
   linkType: hard
 
@@ -5347,10 +5356,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^15.12.2":
-  version: 15.12.2
-  resolution: "@types/node@npm:15.12.2"
-  checksum: 26b9170eb825656751955e919dcea7963d1be4d1eba361c67e41b51a55436c51d69d63f49ee98aaf4fe2e0e5eb3c0038408a8f542316b7583e9badf4fdd10024
+"@types/node@npm:^15.12.4":
+  version: 15.12.4
+  resolution: "@types/node@npm:15.12.4"
+  checksum: 64b121a7e805379382aeb3eefed56c4c34f1ebf5e818ba2c732e43beebc4fbde20be438f3eaaffd8dba5062f0e0c9ae085127b7239906d170eda816885a6c508
   languageName: node
   linkType: hard
 
@@ -5482,12 +5491,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^17.0.7":
-  version: 17.0.7
-  resolution: "@types/react-dom@npm:17.0.7"
+"@types/react-dom@npm:^17.0.8":
+  version: 17.0.8
+  resolution: "@types/react-dom@npm:17.0.8"
   dependencies:
     "@types/react": "*"
-  checksum: 97df2088b5e1e1d3c6bf2ff6e4f8536bcd788cc7baeb49d912184923e4bee63d155d9821f15c4f36a6b89afe043f892d20015063a39a67aebf14dbc8998a1ccf
+  checksum: 3859a6e06ec4545319c159ea71814beb3822801f0d4c41219855258557722cbcec8b5fba84551489169ec228b8817b4c05a8ef0dc87eb2bafb4d1431d1af9608
   languageName: node
   linkType: hard
 
@@ -11848,55 +11857,6 @@ __metadata:
   bin:
     eslint: bin/eslint.js
   checksum: c91a9a88091fb2654ec599b452f6d8aff22daa4a21761e762536877ec8b65cd6386c29ea2e0fec2668125a07c62973bc23922f924c999e140c1042b8cffca030
-  languageName: node
-  linkType: hard
-
-"eslint@npm:^7.28.0":
-  version: 7.28.0
-  resolution: "eslint@npm:7.28.0"
-  dependencies:
-    "@babel/code-frame": 7.12.11
-    "@eslint/eslintrc": ^0.4.2
-    ajv: ^6.10.0
-    chalk: ^4.0.0
-    cross-spawn: ^7.0.2
-    debug: ^4.0.1
-    doctrine: ^3.0.0
-    enquirer: ^2.3.5
-    escape-string-regexp: ^4.0.0
-    eslint-scope: ^5.1.1
-    eslint-utils: ^2.1.0
-    eslint-visitor-keys: ^2.0.0
-    espree: ^7.3.1
-    esquery: ^1.4.0
-    esutils: ^2.0.2
-    fast-deep-equal: ^3.1.3
-    file-entry-cache: ^6.0.1
-    functional-red-black-tree: ^1.0.1
-    glob-parent: ^5.1.2
-    globals: ^13.6.0
-    ignore: ^4.0.6
-    import-fresh: ^3.0.0
-    imurmurhash: ^0.1.4
-    is-glob: ^4.0.0
-    js-yaml: ^3.13.1
-    json-stable-stringify-without-jsonify: ^1.0.1
-    levn: ^0.4.1
-    lodash.merge: ^4.6.2
-    minimatch: ^3.0.4
-    natural-compare: ^1.4.0
-    optionator: ^0.9.1
-    progress: ^2.0.0
-    regexpp: ^3.1.0
-    semver: ^7.2.1
-    strip-ansi: ^6.0.0
-    strip-json-comments: ^3.1.0
-    table: ^6.0.9
-    text-table: ^0.2.0
-    v8-compile-cache: ^2.0.3
-  bin:
-    eslint: bin/eslint.js
-  checksum: 9d49d53ed56a1f1ccba9c71482722a91f2423432df70a3694d36ea478f0e3bb058034f170219f34f3d6b5cd5d47510b269b75e2b4117f88a3241b1db9cb95828
   languageName: node
   linkType: hard
 
@@ -19231,9 +19191,9 @@ fsevents@^1.2.7:
     "@commitlint/cli": ^12.1.4
     "@commitlint/config-conventional": ^12.1.4
     "@types/concurrently": ^6.2.0
-    "@types/eslint": ^7
+    "@types/eslint": ^7.2.13
     "@types/jest": ^26.0.23
-    "@types/node": ^15.12.2
+    "@types/node": ^15.12.4
     "@types/prettier": ^2.3.0
     "@typescript-eslint/eslint-plugin": ^4.27.0
     "@typescript-eslint/parser": ^4.27.0
@@ -24986,9 +24946,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "tailwindcss@npm:2.2.0"
+"tailwindcss@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "tailwindcss@npm:2.2.2"
   dependencies:
     "@fullhuman/postcss-purgecss": ^4.0.3
     arg: ^5.0.0
@@ -25027,7 +24987,7 @@ resolve@^2.0.0-next.3:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: 770737fd57a5e6413d3ad41eca658b8541ab6c0b72e61462947fc21d9aa5de9c6467ed4ea42cfbb2ea964a654b564b6aa60b2eabd08874de1a9b7bc3446aba00
+  checksum: 092b0d88ededd58ae2aa1b6b465673f1d8536ffd6ef61a48f347a2f85406025e1f6e470a74176272352edb50245a1d294328b0236ab7948f5fb1bd85db85a278
   languageName: node
   linkType: hard
 
@@ -25723,9 +25683,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tsc-alias@npm:^1.3.2":
-  version: 1.3.2
-  resolution: "tsc-alias@npm:1.3.2"
+"tsc-alias@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "tsc-alias@npm:1.3.3"
   dependencies:
     "@jfonx/console-utils": ^1.0.3
     "@jfonx/file-utils": ^3.0.1
@@ -25736,7 +25696,7 @@ resolve@^2.0.0-next.3:
     normalize-path: ^3.0.0
   bin:
     tsc-alias: dist/bin/index.js
-  checksum: f38201ce7bf8a4c6a986cd04fb3c4ce44b133ce50c0eae0f97e231a353df9e242a2e6dc2b37bb9918f0ebde3e7f38e8de1e5ab53735730eba83e9991859eebd5
+  checksum: e0f5d1274ddcd5ee948e0905e5c773112cbbf4668d3de2b25e06293cc4f24ae07ff3a4eb55c27b7547bfa24fce01eddde140cef71793a673ee6dd8d5be0ff39f
   languageName: node
   linkType: hard
 
