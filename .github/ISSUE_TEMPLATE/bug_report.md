@@ -1,7 +1,7 @@
 ---
 name: "\U0001F41B Bug Report"
 about: Use this template for reporting a bug.
-title: "Bug: [BUG NAME]"
+title: 'Bug: [BUG NAME]'
 labels: bug, needs triage
 ---
 

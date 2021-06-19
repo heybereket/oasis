@@ -11,7 +11,9 @@ const getAvatarURL = (options: {
   size?: number;
 }): string => {
   const extension = options.hash.startsWith('a_') ? 'gif' : 'png';
-  return `https://cdn.discordapp.com/avatars/${options.id}/${options.hash}.${extension}?size=${options.size ? options.size : 512}`;
+  return `https://cdn.discordapp.com/avatars/${options.id}/${
+    options.hash
+  }.${extension}?size=${options.size ? options.size : 512}`;
 };
 
 export default (passport: PassportStatic): Router => {

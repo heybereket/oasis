@@ -16,6 +16,12 @@ import {
   useGetUsersCommentsLazyQuery,
   useLikeDislikeCommentMutation,
   useReportEntityMutation,
+  GetUsersPostsQueryResult,
+  GetUsersPostsQuery,
+  GetUserByNameQuery,
+  User,
+  Post as TPost,
+  Comment as TComment,
 } from '@oasis-sh/react-gql';
 import {
   About,
@@ -36,13 +42,7 @@ import {
   CommentsTab as CommentsCenterTab,
 } from '@oasis-sh/ui';
 import { SEO } from 'src/shared/SEO';
-import { useState } from 'react';
-
-interface ProfileProps {
-  initialApolloState: any;
-  username: string;
-  vars: GetUserByNameQueryVariables;
-}
+import { useState, useEffect } from 'react';
 
 enum CenterColumnTabState {
   AboutTab,
@@ -51,25 +51,22 @@ enum CenterColumnTabState {
   CommentsTab,
 }
 
-const Profile: React.FC<ProfileProps> = (props) => {
-  const data = useGetUserByNameQuery({
-    variables: props.vars,
-  }).data?.getUserByName;
+interface CenterColumnProps {
+  tabState: CenterColumnTabState;
+  props: ProfileProps;
+  data: GetUserByNameQuery['getUserByName'];
+  user?: User;
+}
 
-  const [follow] = useFollowUserMutation({
-    variables: { userId: data?.id ?? '' },
-  });
-
-  const [deletePost] = useDeletePostMutation();
-
-  const { user, currentUserLoading } = useGetCurrentUser();
-
-  const [tabState, setTabState] = useState<CenterColumnTabState>(
-    CenterColumnTabState.AboutTab
-  );
-
+const CenterColumnComponent: React.FC<CenterColumnProps> = ({
+  tabState,
+  props,
+  data,
+  user,
+}) => {
   const [likeDislikePost] = useLikeDislikePostMutation();
   const [likeDislikeComment] = useLikeDislikeCommentMutation();
+  const [deletePost] = useDeletePostMutation();
 
   const [getPosts, postsData] = useGetUsersPostsLazyQuery({
     variables: {
@@ -95,85 +92,148 @@ const Profile: React.FC<ProfileProps> = (props) => {
     },
   });
 
-  const [reportPost] = useReportEntityMutation();
+  const [reportEntity] = useReportEntityMutation();
 
-  const CenterColumnComponent: React.FC = () => {
-    switch (tabState) {
-      case CenterColumnTabState.AboutTab:
+  useEffect(() => console.log('Remounted'), []);
+  switch (tabState) {
+    case CenterColumnTabState.AboutTab:
+      return (
+        <Bio
+          bio={data?.bio}
+          name={data?.name}
+          username={data?.username}
+          badges={data?.badges}
+          markdown={(text) => {
+            return <StyledMarkdown isBio={true} text={text} />;
+          }}
+        />
+      );
+
+    case CenterColumnTabState.PostsTab:
+      if (!postsData.called) {
+        getPosts();
+        return <div></div>;
+      } else {
         return (
-          <Bio
-            bio={data?.bio}
-            name={data?.name}
-            username={data?.username}
-            badges={data?.badges}
-            marginTop="8"
-            markdown={(text) => {
-              return <StyledMarkdown isBio={true} text={text} />;
+          <PostsTabItem
+            markdown={(text: any) => (
+              <StyledMarkdown text={text} isBio={false} isPost={true} />
+            )}
+            posts={
+              (postsData.data?.userOnlyPosts?.posts.items as TPost[]) ?? []
+            }
+            likeDislikePost={likeDislikePost}
+            currentUser={user}
+            deletePost={deletePost}
+            reportPost={reportEntity}
+            fetch={async (limit, offset) => {
+              const newData = (
+                await postsData.fetchMore({
+                  variables: {
+                    postsLimit: limit,
+                    postsOffset: offset,
+                  },
+                })
+              ).data.userOnlyPosts?.posts.items as TPost[];
+              return newData;
             }}
           />
         );
+      }
 
-      case CenterColumnTabState.PostsTab:
-        if (!postsData.called) {
-          getPosts();
-          return <div></div>;
-        } else {
-          return (
-            <PostsTabItem
-              markdown={(text: any) => (
-                <StyledMarkdown text={text} isBio={false} isPost={true} />
-              )}
-              posts={postsData.data?.userOnlyPosts}
-              likedPosts={null}
-              likeDislikePost={likeDislikePost}
-              currentUser={user}
-              deletePost={deletePost}
-              reportPost={reportPost}
-            />
-          );
-        }
+    case CenterColumnTabState.LikesTab:
+      if (!likedPostsData.called) {
+        getLikedPosts();
+        return <div />;
+      } else {
+        return (
+          <PostsTabItem
+            isInProfileLikes
+            markdown={(text: any) => (
+              <StyledMarkdown text={text} isBio={false} isPost={true} />
+            )}
+            currentUser={user}
+            posts={
+              (likedPostsData.data?.getUserByName?.likedPosts
+                .items as TPost[]) ?? []
+            }
+            likeDislikePost={likeDislikePost}
+            deletePost={deletePost}
+            reportPost={reportEntity}
+            fetch={async (limit, offset) => {
+              const newData = (
+                await likedPostsData.fetchMore({
+                  variables: {
+                    postsLimit: limit,
+                    postsOffset: offset,
+                  },
+                })
+              ).data.getUserByName?.likedPosts.items as TPost[];
+              return newData;
+            }}
+          />
+        );
+      }
 
-      case CenterColumnTabState.LikesTab:
-        if (!likedPostsData.called) {
-          getLikedPosts();
-          return <div />;
-        } else {
-          return (
-            <PostsTabItem
-              markdown={(text: any) => (
-                <StyledMarkdown text={text} isBio={false} isPost={true} />
-              )}
-              currentUser={user}
-              posts={null}
-              likedPosts={likedPostsData.data?.getUserByName}
-              likeDislikePost={likeDislikePost}
-              deletePost={deletePost}
-              reportPost={reportPost}
-            />
-          );
-        }
+    case CenterColumnTabState.CommentsTab:
+      if (!commentsData.called) {
+        getComments();
+        return <div />;
+      } else {
+        return (
+          <CommentsCenterTab
+            comments={
+              (commentsData.data?.userOnlyComments?.comments
+                .items as TComment[]) ?? []
+            }
+            likeDislikeComment={likeDislikeComment}
+            markdown={(text) => (
+              <StyledMarkdown text={text} isBio={false} isPost={true} />
+            )}
+            currentUser={user}
+            reportComment={reportEntity}
+            fetch={async (limit, offset) => {
+              const newData = (
+                await commentsData.fetchMore({
+                  variables: {
+                    commentsLimit: limit,
+                    commentsOffset: offset,
+                  },
+                })
+              ).data.userOnlyComments?.comments.items as TComment[];
+              return newData;
+            }}
+          />
+        );
+      }
 
-      case CenterColumnTabState.CommentsTab:
-        if (!commentsData.called) {
-          getComments();
-          return <div />;
-        } else {
-          return (
-            <CommentsCenterTab
-              comments={commentsData.data?.userOnlyComments}
-              likeDislikeComment={likeDislikeComment}
-              markdown={(text) => (
-                <StyledMarkdown text={text} isBio={false} isPost={true} />
-              )}
-              currentUser={user}
-            />
-          );
-        }
+    default:
+      return <div></div>;
+  }
+};
 
-      default:
-        return <div></div>;
-    }
-  };
+interface ProfileProps {
+  initialApolloState: any;
+  username: string;
+  vars: GetUserByNameQueryVariables;
+}
+
+const Profile: React.FC<ProfileProps> = (props) => {
+  const data = useGetUserByNameQuery({
+    variables: props.vars,
+  }).data?.getUserByName;
+
+  const [follow] = useFollowUserMutation({
+    variables: { userId: data?.id ?? '' },
+  });
+
+  const { user, currentUserLoading } = useGetCurrentUser();
+
+  const [tabState, setTabState] = useState<CenterColumnTabState>(
+    CenterColumnTabState.AboutTab
+  );
+
+  const viewingOwnProfile = data?.id === user?.id;
 
   return (
     <>
@@ -229,18 +289,32 @@ const Profile: React.FC<ProfileProps> = (props) => {
                     }
                   />
                 </div>
-                <CenterColumnComponent />
+                <CenterColumnComponent
+                  key="CenterColumn"
+                  props={props}
+                  tabState={tabState}
+                  data={data}
+                  user={user}
+                />
               </div>
             </div>
             {/* Right Side */}
             <div className="col-span-4 transform translate-y-16 flex flex-col">
-              <div className="grid md:grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 gap-2 ">
-                <Button
-                  color="gray"
-                  className="md:row-span-1 lg:col-span-1 text-sm"
-                >
-                  Send Message
-                </Button>
+              <div
+                className={`grid lg:grid-rows-1 ${
+                  viewingOwnProfile
+                    ? 'lg:grid-cols-1 md:grid-rows-1'
+                    : 'lg:grid-cols-2 md:grid-rows-2'
+                } gap-2`}
+              >
+                {!viewingOwnProfile && (
+                  <Button
+                    color="gray"
+                    className="md:row-span-1 lg:col-span-1 text-sm"
+                  >
+                    Send Message
+                  </Button>
+                )}
                 <Button
                   color="primary"
                   className="md:row-span-1 lg:col-span-1 text-sm"
@@ -250,7 +324,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                     }
                   }}
                 >
-                  {data?.id === user?.id
+                  {viewingOwnProfile
                     ? 'Edit Profile'
                     : `Follow @${data?.username}`}
                 </Button>
@@ -287,10 +361,16 @@ const Profile: React.FC<ProfileProps> = (props) => {
             following={data?.following.total}
             posts={data?.posts.total}
           />
-          <div className="grid grid-cols-2 mt-6 w-full max-w-sm gap-1 md:gap-2">
-            <Button color="gray" className="col-span-2 md:col-span-1 text-sm">
-              Send Message
-            </Button>
+          <div
+            className={`grid ${
+              viewingOwnProfile ? 'grid-cols-1' : 'grid-cols-2'
+            } mt-6 w-full max-w-sm gap-1 md:gap-2`}
+          >
+            {!viewingOwnProfile && (
+              <Button color="gray" className="col-span-2 md:col-span-1 text-sm">
+                Send Message
+              </Button>
+            )}
             <Button
               color="primary"
               className="col-span-2 md:col-span-1 text-sm"
@@ -300,9 +380,7 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 }
               }}
             >
-              {data?.id === user?.id
-                ? 'Edit Profile'
-                : `Follow @${data?.username}`}
+              {viewingOwnProfile ? 'Edit Profile' : `Follow @${data?.username}`}
             </Button>
           </div>
 
@@ -333,7 +411,13 @@ const Profile: React.FC<ProfileProps> = (props) => {
                 onClick={() => setTabState(CenterColumnTabState.CommentsTab)}
               />
             </div>
-            <CenterColumnComponent />
+            <CenterColumnComponent
+              key="CenterColumn"
+              props={props}
+              tabState={tabState}
+              data={data}
+              user={user}
+            />
             {/* <Bio
               badges={data?.badges}
               bio={data?.bio}

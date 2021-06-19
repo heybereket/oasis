@@ -1,7 +1,11 @@
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -35,12 +39,10 @@ export type Comment = {
   post: Post;
 };
 
-
 export type CommentDislikersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
-
 
 export type CommentLikersArgs = {
   limit: Scalars['Float'];
@@ -110,66 +112,54 @@ export type Mutation = {
   updateProfile: Scalars['Boolean'];
 };
 
-
 export type MutationBanUserArgs = {
   UserId: Scalars['String'];
   endDate: Scalars['String'];
 };
 
-
 export type MutationCreateBotArgs = {
   data: CreateBotInput;
 };
-
 
 export type MutationCreateCommentArgs = {
   data: NewCommentInput;
   postId: Scalars['String'];
 };
 
-
 export type MutationCreatePostArgs = {
   data: CreatePostInput;
 };
-
 
 export type MutationCreateResortArgs = {
   data: CreateResortInput;
 };
 
-
 export type MutationDeletePostArgs = {
   postId: Scalars['String'];
 };
-
 
 export type MutationEditCommentArgs = {
   commentId: Scalars['String'];
   data: EditCommentInput;
 };
 
-
 export type MutationEditPostArgs = {
   data: EditPostInput;
   postId: Scalars['String'];
 };
 
-
 export type MutationFollowUserArgs = {
   userId: Scalars['String'];
 };
-
 
 export type MutationGiveBadgeArgs = {
   badgeName: Scalars['String'];
   username: Scalars['String'];
 };
 
-
 export type MutationJoinResortArgs = {
   resortId: Scalars['String'];
 };
-
 
 export type MutationLikeDislikeArgs = {
   dislike: Scalars['Boolean'];
@@ -177,46 +167,38 @@ export type MutationLikeDislikeArgs = {
   postId: Scalars['String'];
 };
 
-
 export type MutationLikeDislikeCommentArgs = {
   commentId: Scalars['String'];
   dislike: Scalars['Boolean'];
   like: Scalars['Boolean'];
 };
 
-
 export type MutationMakeAdminArgs = {
   roles: Array<Role>;
   user: Scalars['String'];
 };
 
-
 export type MutationMakeBadgeArgs = {
   data: MakeBadgeInput;
 };
-
 
 export type MutationMakeReportArgs = {
   data: MakeReportInput;
   reporteeData: ReportedEntityInput;
 };
 
-
 export type MutationMarkAsResolvedArgs = {
   reportId: Scalars['String'];
   resolved: Scalars['Boolean'];
 };
 
-
 export type MutationMarkNotificationAsReadArgs = {
   notificationId: Scalars['String'];
 };
 
-
 export type MutationRefreshBotTokenArgs = {
   botId: Scalars['String'];
 };
-
 
 export type MutationUpdateProfileArgs = {
   data: UpdateProfileInput;
@@ -238,8 +220,8 @@ export type Notification = {
 export const enum NotificationType {
   Follow = 'Follow',
   Like = 'Like',
-  Reply = 'Reply'
-};
+  Reply = 'Reply',
+}
 
 export type PaginatedCommentFromPost_PostResponse = {
   hasMore: Scalars['Boolean'];
@@ -354,18 +336,15 @@ export type Post = {
   topics: Array<Scalars['String']>;
 };
 
-
 export type PostCommentsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
 
-
 export type PostDislikersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
-
 
 export type PostLikersArgs = {
   limit: Scalars['Float'];
@@ -393,82 +372,67 @@ export type Query = {
   search: Array<SearchResult>;
 };
 
-
 export type QueryFeedSortPostsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
 
-
 export type QueryGetAvailableUsernameArgs = {
   username: Scalars['String'];
 };
-
 
 export type QueryGetBadgeArgs = {
   id: Scalars['String'];
 };
 
-
 export type QueryGetCommentArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryGetPostArgs = {
   id: Scalars['String'];
 };
 
-
 export type QueryGetResortArgs = {
   id: Scalars['String'];
 };
-
 
 export type QueryGetResortByNameArgs = {
   name: Scalars['String'];
 };
 
-
 export type QueryGetUserArgs = {
   id: Scalars['String'];
 };
 
-
 export type QueryGetUserByNameArgs = {
   username: Scalars['String'];
 };
-
 
 export type QueryPaginateBadgesArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
 
-
 export type QueryPaginateCommentsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
-
 
 export type QueryPaginatePostsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
 
-
 export type QueryPaginateResortsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
 
-
 export type QueryPaginateUsersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
-
 
 export type QuerySearchArgs = {
   limit: Scalars['Float'];
@@ -489,8 +453,8 @@ export type Report = {
 };
 
 export const enum ReportType {
-  InappropriateContent = 'InappropriateContent'
-};
+  InappropriateContent = 'InappropriateContent',
+}
 
 export type ReportedEntityInput = {
   commentId?: Maybe<Scalars['String']>;
@@ -513,12 +477,10 @@ export type Resort = {
   posts: PaginatedPostFromResort_ResortResponse;
 };
 
-
 export type ResortMembersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
-
 
 export type ResortPostsArgs = {
   limit: Scalars['Float'];
@@ -528,8 +490,8 @@ export type ResortPostsArgs = {
 export const enum Role {
   Admin = 'Admin',
   Moderator = 'Moderator',
-  SuperAdmin = 'SuperAdmin'
-};
+  SuperAdmin = 'SuperAdmin',
+}
 
 export type SearchResult = Post | Resort | User;
 
@@ -572,54 +534,45 @@ export type User = {
   verified: Scalars['Boolean'];
 };
 
-
 export type UserBotsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
-
 
 export type UserCommentsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
 
-
 export type UserDislikedCommentsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
-
 
 export type UserDislikedPostsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
 
-
 export type UserFollowersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
-
 
 export type UserFollowingArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
 
-
 export type UserLikedCommentsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
 
-
 export type UserLikedPostsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
-
 
 export type UserPostsArgs = {
   limit: Scalars['Float'];

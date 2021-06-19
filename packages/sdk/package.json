@@ -17,10 +17,6 @@
     "dev": "run-p \"watch:gen\" \"watch:tsc\"",
     "clean": "rimraf dist/*"
   },
-  "prettier": "@oasis-sh/prettier-config",
-  "eslintConfig": {
-    "extends": "@oasis-sh/eslint-config"
-  },
   "publishConfig": {
     "access": "public"
   },
@@ -46,7 +42,7 @@
     "jest": "^27.0.4",
     "ts-jest": "^27.0.3",
     "ts-node": "^10.0.0",
-    "typescript": "4.2.4"
+    "typescript": "4.3.4"
   },
   "dependencies": {
     "ee-ts": "^1.0.2",

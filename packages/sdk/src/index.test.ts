@@ -16,7 +16,7 @@
 // });
 
 describe('Nothing', () => {
-	it('pass', () => {
-		expect(true).toBe(true);
-	});
+  it('pass', () => {
+    expect(true).toBe(true);
+  });
 });

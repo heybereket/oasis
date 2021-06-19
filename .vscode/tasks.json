@@ -6,9 +6,7 @@
       "command": "yarn build:dev",
       "type": "shell",
       "args": [],
-      "problemMatcher": [
-        "$tsc",
-      ],
+      "problemMatcher": ["$tsc"],
       "presentation": {
         "reveal": "always"
       },
@@ -22,9 +20,7 @@
       "command": "yarn build:all",
       "type": "shell",
       "args": [],
-      "problemMatcher": [
-        "$tsc",
-      ],
+      "problemMatcher": ["$tsc"],
       "presentation": {
         "reveal": "always"
       },
@@ -35,9 +31,7 @@
       "command": "yarn dev",
       "type": "shell",
       "args": [],
-      "problemMatcher": [
-        "$tsc",
-      ],
+      "problemMatcher": ["$tsc"],
       "presentation": {
         "reveal": "always"
       },
@@ -48,9 +42,7 @@
       "command": "yarn dev:api",
       "type": "shell",
       "args": [],
-      "problemMatcher": [
-        "$tsc",
-      ],
+      "problemMatcher": ["$tsc"],
       "presentation": {
         "reveal": "always"
       },

@@ -202,20 +202,21 @@ export const Post: React.FC<Props> = ({
               <img
                 src={postData?.imageName}
                 alt="Post Image"
+                loading="lazy"
                 className="w-full"
               />
             </div>
           )}
         </div>
-        <CustomLink href={'/post/' + postData.id}>
-          <footer className="flex justify-between">
-            <p className="text-sm font-medium">{date}</p>
+        <footer className="flex justify-between">
+          <p className="text-sm font-medium">{date}</p>
+          <CustomLink href={'/post/' + postData.id}>
             <div className="flex items-center space-x-2">
               <p className="text-sm">{postData.comments.total} replies</p>
               <Comments />
             </div>
-          </footer>
-        </CustomLink>
+          </CustomLink>
+        </footer>
       </div>
       <Modal
         closeHandler={() => {

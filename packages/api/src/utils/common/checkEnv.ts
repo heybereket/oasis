@@ -5,7 +5,7 @@ type EnvValidationFn = (logError: boolean) => Promise<boolean>;
 
 const checkRequiredEnv = (
   envProp: string,
-  required: boolean,
+  required: boolean
 ): EnvValidationFn => {
   return async (logError: boolean) => {
     const isValid: boolean =
@@ -56,7 +56,6 @@ export const checkEnv = async (): Promise<boolean> => {
     ...checkOAuthEnvs('DISCORD'),
     ...checkOAuthEnvs('GOOGLE'),
     ...checkOAuthEnvs('SPOTIFY'),
-
   ]) if (!(await requiredEnvChecker(true))) return exit(1);
   return true;
 };

@@ -41,7 +41,7 @@ const NotificationPage: React.FC<NotificationPageProps> | any = () => {
         <div style={{ width: 573 }}>
           <NotificationWrapper>
             {loading && <h1 className="text-2xl">Loading...</h1>}
-            {data?.getNotifications ? (
+            {data?.getNotifications &&
               data.getNotifications.map((value: any) => (
                 <NotificationBlock
                   key={value.id}
@@ -51,11 +51,11 @@ const NotificationPage: React.FC<NotificationPageProps> | any = () => {
                   username={value.performer?.username}
                   read={value.read}
                 />
-              ))
-            ) : (
+              ))}
+            {!data?.getNotifications?.length && !loading && (
               <h5>
                 {
-                  "Uh, oh. Seems like you don't have any notifications. Too bad."
+                  "Uh, oh. Seems like you don't have any notifications yet. Too bad."
                 }
               </h5>
             )}

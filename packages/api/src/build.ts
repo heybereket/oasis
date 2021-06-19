@@ -7,7 +7,7 @@ try {
   createSchema();
   log.event('successfully compiled api');
   process.exit();
-} catch(err) {
+} catch (err) {
   log.error(`failed to compile api: ${err}`);
   exit(1);
 }

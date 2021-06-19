@@ -1,3 +1,5 @@
+export { initTranslations } from './locales/i18n';
+
 // Components
 // Comments
 export { Comment } from './components/comment/Comment';
@@ -23,6 +25,10 @@ export { NewPostsSection } from './components/home/NewPostsSection';
 export { ProfileSection } from './components/home/ProfileSection';
 export { Sidebar } from './components/home/Sidebar';
 export { TrendingSection } from './components/home/TrendingSection';
+
+// New Home
+export { LeftSidebarItem } from './components/home/LeftSidebar';
+export { LeftSidebarTitle } from './components/home/LeftSidebar';
 
 // OSS
 export { Contributors } from './components/oss/Contributors';
