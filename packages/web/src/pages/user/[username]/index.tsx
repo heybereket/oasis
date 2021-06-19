@@ -96,6 +96,21 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
 
   const [reportEntity] = useReportEntityMutation();
 
+  // Refresh tab data on state change
+  useEffect(() => {
+    switch (tabState) {
+      case CenterColumnTabState.CommentsTab:
+        getComments();
+        break;
+      case CenterColumnTabState.LikesTab:
+        getLikedPosts();
+        break;
+      case CenterColumnTabState.PostsTab:
+        getPosts();
+        break;
+    }
+  }, [tabState]);
+
   useEffect(() => console.log('Remounted'), []);
   switch (tabState) {
     case CenterColumnTabState.AboutTab:
