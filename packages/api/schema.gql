@@ -7,14 +7,14 @@ type Answer {
   author: User!
   content: String!
   createdAt: String!
-  downvoters(limit: Float!, offset: Float!): PaginatedUserFromAnswer_downvotedAnswersResponse!
+  downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromAnswer_downvotedAnswersResponse!
   downvotes: Float!
   id: ID!
   isDownvoted: Boolean!
   isUpvoted: Boolean!
   lastEdited: String
   question: Question!
-  upvoters(limit: Float!, offset: Float!): PaginatedUserFromAnswer_upvotedAnswersResponse!
+  upvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromAnswer_upvotedAnswersResponse!
   upvotes: Float!
 }
 
@@ -31,7 +31,7 @@ type Comment {
   author: User!
   content: String!
   createdAt: String!
-  downvoters(limit: Float!, offset: Float!): PaginatedUserFromComment_downvotedCommentsResponse!
+  downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromComment_downvotedCommentsResponse!
   downvotes: Float!
   id: ID!
   isDownvoted: Boolean!
@@ -39,7 +39,7 @@ type Comment {
   lastEdited: String
   post: Post
   question: Question
-  upvoters(limit: Float!, offset: Float!): PaginatedUserFromComment_upvotedCommentsResponse!
+  upvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromComment_upvotedCommentsResponse!
   upvotes: Float!
 }
 
@@ -322,9 +322,9 @@ type PaginatedUserFromUser_followingResponse {
 
 type Post {
   author: User!
-  comments(limit: Float!, offset: Float!): PaginatedCommentFromPost_postResponse!
+  comments(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedCommentFromPost_postResponse!
   createdAt: String!
-  downvoters(limit: Float!, offset: Float!): PaginatedUserFromPost_downvotedPostsResponse!
+  downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromPost_downvotedPostsResponse!
   downvotes: Float!
   id: ID!
   imageName: String
@@ -334,7 +334,7 @@ type Post {
   message: String!
   resort: Resort
   topics: [String!]!
-  upvoters(limit: Float!, offset: Float!): PaginatedUserFromPost_upvotedPostsResponse!
+  upvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromPost_upvotedPostsResponse!
   upvotes: Float!
 }
 
@@ -353,31 +353,31 @@ type Query {
   getResortByName(name: String!): Resort
   getUser(id: String!): User!
   getUserByName(username: String!): User
-  paginateAnswers(limit: Float!, offset: Float!): [Answer!]!
-  paginateBadges(limit: Float!, offset: Float!): [Badge!]!
-  paginateComments(limit: Float!, offset: Float!): [Comment!]!
-  paginatePosts(limit: Float!, offset: Float!): [Post!]!
-  paginateQuestions(limit: Float!, offset: Float!): [Question!]!
-  paginateResorts(limit: Float!, offset: Float!): [Resort!]!
-  paginateUsers(limit: Float!, offset: Float!): [User!]!
+  paginateAnswers(limit: Float!, offset: Float!, sortCol: String, sortType: String): [Answer!]!
+  paginateBadges(limit: Float!, offset: Float!, sortCol: String, sortType: String): [Badge!]!
+  paginateComments(limit: Float!, offset: Float!, sortCol: String, sortType: String): [Comment!]!
+  paginatePosts(limit: Float!, offset: Float!, sortCol: String, sortType: String): [Post!]!
+  paginateQuestions(limit: Float!, offset: Float!, sortCol: String, sortType: String): [Question!]!
+  paginateResorts(limit: Float!, offset: Float!, sortCol: String, sortType: String): [Resort!]!
+  paginateUsers(limit: Float!, offset: Float!, sortCol: String, sortType: String): [User!]!
   search(limit: Float!, searchQuery: String!): [SearchResult!]!
 }
 
 type Question {
-  answers(limit: Float!, offset: Float!): PaginatedAnswerFromQuestion_questionResponse!
+  answers(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedAnswerFromQuestion_questionResponse!
   author: User!
-  comments(limit: Float!, offset: Float!): PaginatedCommentFromQuestion_questionResponse!
+  comments(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedCommentFromQuestion_questionResponse!
   createdAt: String!
-  downvoters(limit: Float!, offset: Float!): PaginatedUserFromQuestion_downvotedQuestionsResponse!
+  downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromQuestion_downvotedQuestionsResponse!
   id: ID!
   isDownvoted: Boolean!
   isUpvoted: Boolean!
   lastEdited: String
   message: String!
-  questions(limit: Float!, offset: Float!): PaginatedAnswerFromQuestion_authorResponse!
+  questions(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedAnswerFromQuestion_authorResponse!
   resort: Resort
   topics: [String!]!
-  upvoters(limit: Float!, offset: Float!): PaginatedUserFromQuestion_upvotedQuestionsResponse!
+  upvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromQuestion_upvotedQuestionsResponse!
 }
 
 type Report {
@@ -414,10 +414,10 @@ type Resort {
   id: String!
   isJoined: Boolean!
   logo: String!
-  members(limit: Float!, offset: Float!): PaginatedUserFromResort_joinedResortsResponse!
+  members(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromResort_joinedResortsResponse!
   name: String!
   owner: User!
-  posts(limit: Float!, offset: Float!): PaginatedPostFromResort_resortResponse!
+  posts(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedPostFromResort_resortResponse!
 }
 
 enum Role {
@@ -437,36 +437,36 @@ input UpdateProfileInput {
 }
 
 type User {
-  answers(limit: Float!, offset: Float!): PaginatedAnswerFromUser_authorResponse!
+  answers(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedAnswerFromUser_authorResponse!
   avatar: String!
   badges: [Badge!]
   banExiration: String
   banner: String
   bio: String
   botOwner: User
-  bots(limit: Float!, offset: Float!): PaginatedUserFromUser_botOwnerResponse!
-  comments(limit: Float!, offset: Float!): PaginatedCommentFromUser_authorResponse!
+  bots(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromUser_botOwnerResponse!
+  comments(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedCommentFromUser_authorResponse!
   createdAt: String!
   discord: String
-  downvotedAnswers(limit: Float!, offset: Float!): PaginatedAnswerFromUser_downvotersResponse!
-  downvotedComments(limit: Float!, offset: Float!): PaginatedCommentFromUser_downvotersResponse!
-  downvotedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_downvotersResponse!
-  downvotedQuestions(limit: Float!, offset: Float!): PaginatedQuestionFromUser_downvotersResponse!
-  followers(limit: Float!, offset: Float!): PaginatedUserFromUser_followingResponse!
-  following(limit: Float!, offset: Float!): PaginatedUserFromUser_followersResponse!
+  downvotedAnswers(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedAnswerFromUser_downvotersResponse!
+  downvotedComments(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedCommentFromUser_downvotersResponse!
+  downvotedPosts(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedPostFromUser_downvotersResponse!
+  downvotedQuestions(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedQuestionFromUser_downvotersResponse!
+  followers(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromUser_followingResponse!
+  following(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromUser_followersResponse!
   github: String
   google: String
   id: ID!
   isBot: Boolean
   name: String
   ownedResorts: [Resort!]
-  posts(limit: Float!, offset: Float!): PaginatedPostFromUser_authorResponse!
+  posts(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedPostFromUser_authorResponse!
   roles: [Role!]!
   twitter: String
-  upvotedAnswers(limit: Float!, offset: Float!): PaginatedAnswerFromUser_upvotersResponse!
-  upvotedComments(limit: Float!, offset: Float!): PaginatedCommentFromUser_upvotersResponse!
-  upvotedPosts(limit: Float!, offset: Float!): PaginatedPostFromUser_upvotersResponse!
-  upvotedQuestions(limit: Float!, offset: Float!): PaginatedQuestionFromUser_upvotersResponse!
+  upvotedAnswers(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedAnswerFromUser_upvotersResponse!
+  upvotedComments(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedCommentFromUser_upvotersResponse!
+  upvotedPosts(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedPostFromUser_upvotersResponse!
+  upvotedQuestions(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedQuestionFromUser_upvotersResponse!
   url: String
   username: String
   verified: Boolean!
