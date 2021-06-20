@@ -80,6 +80,5 @@ module.exports = withBundleAnalyzer({
     PROJECT_ROOT: join(__dirname, '../..'),
     IS_NEXT: true,
     OASIS_API_SRC_PATH: join(__dirname, '../api/src'),
-    API_MODE: process.env.API_MODE === 'remote' ? 'remote' : 'local',
   },
 });
