@@ -1,6 +1,7 @@
 {
   "name": "@oasis-sh/parser",
   "private": true,
+  "main": "./dist/index.js",
   "scripts": {
     "build": "tsc"
   },
