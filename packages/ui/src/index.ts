@@ -29,7 +29,12 @@ export { LeftSidebarItem } from './components/home/LeftSidebar';
 export { LeftSidebarTitle } from './components/home/LeftSidebar';
 
 // Locales
-export { initTranslations } from './locales/i18n';
+export { ILanguage } from './locales/BaseLanguage';
+export {
+  LanguageContext,
+  useTranslations,
+  LanguageProvider,
+} from './locales/LocalesProvider';
 export { LanguageSelector } from './components/locales/LanguageSelector';
 
 // Navbar

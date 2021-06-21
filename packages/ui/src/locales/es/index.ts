@@ -1,5 +1,11 @@
-import { profileCard } from './profileCard';
+import { ILanguage } from '../..';
 
-export const es = {
-  profileCard,
+export const lang: ILanguage = {
+  langCode: 'es',
+  langName: '🇨🇴 Español',
+  profileCard: {
+    view: 'Ver Perfil',
+  },
 };
+
+export default lang;
