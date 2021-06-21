@@ -4,6 +4,7 @@ module.exports = {
   purge: [
     './src/**/*.{tsx,jsx,js,ts}',
     '../ui/**/*.{tsx,jsx,js,ts}',
+    '../parser/**/*.{tsx,jsx,js,ts}',
     '../mobile/**/*.{tsx,jsx,js,ts}',
   ],
   theme: {
