@@ -2,7 +2,7 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import StyledMarkdown from '@parser/markdown/StyledMarkdown';
+import { StyledMarkdown } from '@oasis-sh/parser';
 import { login, logout } from '@lib/auth/login';
 import { SEO } from '@shared/SEO';
 import {

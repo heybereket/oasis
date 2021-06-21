@@ -5,8 +5,8 @@ import gfm from 'remark-gfm';
 import styles from './styles/StyledMarkdown.module.css';
 import poststyles from './styles/StyledMarkdownPost.module.css';
 import biostyles from './styles/StyledMarkdownBio.module.css';
-import { RunCode } from '@parser/runner/RunCode';
-import { RuntimesContext } from '@shared/PistonRuntimesProvider';
+import { RunCode } from '../runner/RunCode';
+import { RuntimesContext } from '../runner/PistonRuntimesProvider';
 
 export const StyledMarkdown: React.FC<{
   text: string;

@@ -12,6 +12,7 @@ COPY ./packages/api/package.json ./packages/api/package.json
 COPY ./packages/react-gql/package.json ./packages/react-gql/package.json
 COPY ./packages/shared/package.json ./packages/shared/package.json
 COPY ./packages/ui/package.json ./packages/ui/package.json
+COPY ./packages/parser/package.json ./packages/parser/package.json
 COPY ./packages/web/package.json ./packages/web/package.json
 
 
@@ -29,6 +30,9 @@ RUN yarn workspace @oasis-sh/shared build
 
 COPY ./packages/ui ./packages/ui
 RUN yarn workspace @oasis-sh/ui build
+
+COPY ./packages/parser ./packages/parser
+RUN yarn workspace @oasis-sh/parser build
 
 COPY ./packages/web ./packages/web
 RUN yarn workspace @oasis-sh/web build

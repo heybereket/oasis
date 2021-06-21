@@ -1,5 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
-import { request } from '@utils/request';
+import React, { createContext, useEffect, useState } from 'react';
 
 export const RuntimesContext = createContext<any>({});
 
@@ -8,9 +7,9 @@ export const RuntimesProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     const getRuntimes = async () => {
-      const fetchRuntimes = await request(
+      const fetchRuntimes = await fetch(
         'https://emkc.org/api/v2/piston/runtimes'
-      ).then((res: any) => res.json());
+      ).then((res) => res.json());
       setRuntimes(fetchRuntimes);
     };
 
