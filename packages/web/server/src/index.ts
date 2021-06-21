@@ -6,10 +6,10 @@ import * as log from './lib/log';
 import { exit } from './lib/exit';
 import { getServer } from './lib/getServer';
 
-config({ path: join(__dirname, '../../.env') });
+config({ path: join(__dirname, '../../../api/.env') });
 
-if (process.env.API_MODE === 'local') {
-  config({ path: join(__dirname, '../../../api/.env') });
+if (Boolean(process.env.STAGING_API) === true) {
+  config({ path: join(__dirname, '../../.env') });
 }
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -18,7 +18,7 @@ const handle = app.getRequestHandler();
 const start = Date.now();
 
 (async () => {
-  const server = await getServer(process.env.API_MODE as string);
+  const server = await getServer();
   const PORT = Number(process.env.PORT) || 3000;
 
   if (!server) {
