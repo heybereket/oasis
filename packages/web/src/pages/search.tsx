@@ -11,7 +11,7 @@ import {
   useSearchQuery,
 } from '@oasis-sh/react-gql';
 import { LargeUserCard, Navbar, Post, User as UserCard } from '@oasis-sh/ui';
-import StyledMarkdown from '@parser/markdown/StyledMarkdown';
+import { StyledMarkdown } from '@oasis-sh/parser';
 import { GetServerSideProps } from 'next';
 import { SEO } from '@shared/SEO';
 import Link from 'next/link';

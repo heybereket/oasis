@@ -5228,6 +5228,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@oasis-sh/parser@workspace:packages/parser"
   dependencies:
+    "@types/copyfiles": ^2
+    "@types/rimraf": ^3.0.0
+    copyfiles: ^2.4.1
+    rimraf: ^3.0.2
     typescript: ^4.3.4
   languageName: unknown
   linkType: soft
@@ -7107,6 +7111,13 @@ __metadata:
     "@types/keygrip": "*"
     "@types/node": "*"
   checksum: c15012d2cd76aebb032998b0fcfb26dec1da65ecb2241daf1269f54b198293e4f71bf412cc1868213b0d9c98c0f532d9e8bc1e145cf0a0aa171dab708c41e959
+  languageName: node
+  linkType: hard
+
+"@types/copyfiles@npm:^2":
+  version: 2.4.0
+  resolution: "@types/copyfiles@npm:2.4.0"
+  checksum: fde2bff29a8081dc51f61f75d103c589814e6cfc52f63a92180653a93e5e6626d7ae92c1742dbb26930a4bc290c1341f9efe21592ff2e3838e1936716b2c4c46
   languageName: node
   linkType: hard
 
@@ -12311,6 +12322,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"copyfiles@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "copyfiles@npm:2.4.1"
+  dependencies:
+    glob: ^7.0.5
+    minimatch: ^3.0.3
+    mkdirp: ^1.0.4
+    noms: 0.0.0
+    through2: ^2.0.1
+    untildify: ^4.0.0
+    yargs: ^16.1.0
+  bin:
+    copyfiles: copyfiles
+    copyup: copyfiles
+  checksum: bdde4b9667ed208796817399f238fce18f6f09e5b6e112c06348e6003228a72ad8cf7d970692516fda8252c4c827d02fb841a86a1f930727396fc8bcb6142686
+  languageName: node
+  linkType: hard
+
 "core-js-compat@npm:^3.14.0, core-js-compat@npm:^3.8.1":
   version: 3.15.0
   resolution: "core-js-compat@npm:3.15.0"
@@ -16319,7 +16348,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.0.0, glob@npm:^7.0.3, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6, glob@npm:^7.1.7, glob@npm:~7.1.1":
+"glob@npm:^7.0.0, glob@npm:^7.0.3, glob@npm:^7.0.5, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6, glob@npm:^7.1.7, glob@npm:~7.1.1":
   version: 7.1.7
   resolution: "glob@npm:7.1.7"
   dependencies:
@@ -21634,7 +21663,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"minimatch@npm:3.0.4, minimatch@npm:^3.0.2, minimatch@npm:^3.0.4, minimatch@npm:~3.0.2":
+"minimatch@npm:3.0.4, minimatch@npm:^3.0.2, minimatch@npm:^3.0.3, minimatch@npm:^3.0.4, minimatch@npm:~3.0.2":
   version: 3.0.4
   resolution: "minimatch@npm:3.0.4"
   dependencies:
@@ -22384,6 +22413,16 @@ fsevents@^1.2.7:
   bin:
     node-sass: bin/node-sass
   checksum: 982c26d182c289964fc9ccd2cbcbcd69d5e770fe7ff540a0cefe98392727ca8987d56c24dc05bec81fd8cea935e2caa63ddc514aa4af43630737c1ab74221a5a
+  languageName: node
+  linkType: hard
+
+"noms@npm:0.0.0":
+  version: 0.0.0
+  resolution: "noms@npm:0.0.0"
+  dependencies:
+    inherits: ^2.0.1
+    readable-stream: ~1.0.31
+  checksum: 74c2d97da45f4dccc8eb5e9614612154e56893232f20487cc8db9d889a4e1a9c5d99aa912b3b3da2fc6dfc0a512357be8a0abb54fd2fe3fb9dd652a19c49c968
   languageName: node
   linkType: hard
 
@@ -26057,6 +26096,18 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"readable-stream@npm:~1.0.31":
+  version: 1.0.34
+  resolution: "readable-stream@npm:1.0.34"
+  dependencies:
+    core-util-is: ~1.0.0
+    inherits: ~2.0.1
+    isarray: 0.0.1
+    string_decoder: ~0.10.x
+  checksum: 90f868f0a37e97794ce963f92c3dd8997a66a2143f867075521ac6905ed49967f425842de0dc53a952a49c60aa81e1239af6e32348e9f3dadffd61101b1c4fdc
+  languageName: node
+  linkType: hard
+
 "readdirp@npm:^2.2.1":
   version: 2.2.1
   resolution: "readdirp@npm:2.2.1"
@@ -28432,6 +28483,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"string_decoder@npm:~0.10.x":
+  version: 0.10.31
+  resolution: "string_decoder@npm:0.10.31"
+  checksum: ae53bca3796913fe686c6b519299a3631d04f0d388f35e7412914e3d351024f711d783d0415babfec276f5f533e84fae687e77220829d872fadb5bb9f7190890
+  languageName: node
+  linkType: hard
+
 "string_decoder@npm:~1.1.1":
   version: 1.1.1
   resolution: "string_decoder@npm:1.1.1"
@@ -29251,7 +29309,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"through2@npm:^2.0.0":
+"through2@npm:^2.0.0, through2@npm:^2.0.1":
   version: 2.0.5
   resolution: "through2@npm:2.0.5"
   dependencies:
@@ -32075,7 +32133,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yargs@npm:^16.0.0, yargs@npm:^16.0.3, yargs@npm:^16.2.0":
+"yargs@npm:^16.0.0, yargs@npm:^16.0.3, yargs@npm:^16.1.0, yargs@npm:^16.2.0":
   version: 16.2.0
   resolution: "yargs@npm:16.2.0"
   dependencies:
