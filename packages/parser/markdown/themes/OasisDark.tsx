@@ -1,4 +1,4 @@
-export default {
+export const OasisDark = {
   'pre[class*="language-"]': {
     color: '#d4d4d4',
     fontSize: '13px',

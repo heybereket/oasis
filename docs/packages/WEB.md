@@ -1,7 +1,7 @@
 # Oasis Web Application
 
 **Prerequisites**<br>
-1. Setup the [API](/API.md)
+1. Setup the [API](API.md)
 2. Run `yarn` in root to install all dependencies.
 
 **Installation**<br>

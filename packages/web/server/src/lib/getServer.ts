@@ -1,9 +1,9 @@
 import express, { Express } from 'express';
 
-export const getServer = async (apiMode: string): Promise<Express> => {
+export const getServer = async (): Promise<Express> => {
   const app = express();
 
-  if (apiMode === 'local') {
+  if (!process.env.STAGING_API) {
     /* eslint-disable @typescript-eslint/ban-ts-comment */
     // @ts-ignore
     return import('@oasis-sh/api').then(

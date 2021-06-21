@@ -44,13 +44,13 @@ export default class Post extends BaseEntity {
   author: Promise<User>;
 
   // @Field(() => User, { complexity: 1 })
-  @RelationalPagination(() => Post, () => User, 'likedPosts')
-  @ManyToMany(() => User, (user) => user.likedPosts)
-  likers: Promise<User[]>;
+  @RelationalPagination(() => Post, () => User, 'upvotedPosts')
+  @ManyToMany(() => User, (user) => user.upvotedPosts)
+  upvoters: Promise<User[]>;
 
-  @RelationalPagination(() => Post, () => User, 'dislikedPosts')
-  @ManyToMany(() => User, (user) => user.dislikedPosts)
-  dislikers: Promise<User[]>;
+  @RelationalPagination(() => Post, () => User, 'downvotedPosts')
+  @ManyToMany(() => User, (user) => user.downvotedPosts)
+  downvoters: Promise<User[]>;
 
   // @Field(() => [Comment], { complexity: 5 })
   @RelationalPagination(() => Post, () => Comment, 'post')

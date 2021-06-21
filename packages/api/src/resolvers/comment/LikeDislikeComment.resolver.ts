@@ -13,66 +13,69 @@ import { ContextType } from '@root/server';
 import User from '@entities/User';
 import Comment from '@entities/Comment';
 
-// @bcg-resolver(mutation, likeDislikeComment, comment)
+// @bcg-resolver(mutation, upvoteDownvoteComment, comment)
 
 @Resolver(() => Comment)
-export class LikeDislikeCommentResolver {
+export class UpvoteDownvoteCommentResolver {
   @Mutation(() => Boolean)
   @Authorized()
-  async likeDislikeComment(
+  async upvoteDownvoteComment(
     @Arg('commentId') commentId: string,
-    @Arg('like') like: boolean,
-    @Arg('dislike') dislike: boolean,
+    @Arg('upvote') upvote: boolean,
+    @Arg('downvote') downvote: boolean,
     @Ctx() { getUser }: ContextType
   ) {
     const comment = await Comment.findOne(commentId);
 
     if (!comment) throw new ApolloError('Comment not found');
 
-    if ((like && dislike) || (!like && !dislike)) {
-      throw new ApolloError('Please select like or dislike');
+    if ((upvote && downvote) || (!upvote && !downvote)) {
+      throw new ApolloError('Please select upvote or downvote');
     }
 
     const user = await getUser();
 
-    const likedComments = await user.likedComments;
-    let alreadyliked = false;
-    const likedCommentsMinusNew: Comment[] = [];
-    likedComments.forEach((comment) => {
+    const upvotedComments = await user.upvotedComments;
+    let alreadyupvoted = false;
+    const upvotedCommentsMinusNew: Comment[] = [];
+    upvotedComments.forEach((comment) => {
       if (comment.id === commentId) {
-        alreadyliked = true;
+        alreadyupvoted = true;
       } else {
-        likedCommentsMinusNew.push(comment);
+        upvotedCommentsMinusNew.push(comment);
       }
     });
 
-    const dislikedComments = await user.dislikedComments;
-    let alreadydisliked = false;
-    const dislikedCommentsMinusNew: Comment[] = [];
-    dislikedComments.forEach((comment) => {
+    const downvotedComments = await user.downvotedComments;
+    let alreadydownvoted = false;
+    const downvotedCommentsMinusNew: Comment[] = [];
+    downvotedComments.forEach((comment) => {
       if (comment.id === commentId) {
-        alreadydisliked = true;
+        alreadydownvoted = true;
       } else {
-        dislikedCommentsMinusNew.push(comment);
+        downvotedCommentsMinusNew.push(comment);
       }
     });
-    if (like) {
-      if (!alreadyliked) {
-        if (alreadydisliked) {
-          user.dislikedComments = Promise.resolve(dislikedCommentsMinusNew);
+    if (upvote) {
+      if (!alreadyupvoted) {
+        if (alreadydownvoted) {
+          user.downvotedComments = Promise.resolve(downvotedCommentsMinusNew);
         }
-        user.likedComments = Promise.resolve([...likedComments, comment]);
+        user.upvotedComments = Promise.resolve([...upvotedComments, comment]);
       } else {
-        user.likedComments = Promise.resolve(likedCommentsMinusNew);
+        user.upvotedComments = Promise.resolve(upvotedCommentsMinusNew);
       }
-    } else if (dislike) {
-      if (!alreadydisliked) {
-        if (alreadyliked) {
-          user.likedComments = Promise.resolve(likedCommentsMinusNew);
+    } else if (downvote) {
+      if (!alreadydownvoted) {
+        if (alreadyupvoted) {
+          user.upvotedComments = Promise.resolve(upvotedCommentsMinusNew);
         }
-        user.dislikedComments = Promise.resolve([...dislikedComments, comment]);
+        user.downvotedComments = Promise.resolve([
+          ...downvotedComments,
+          comment,
+        ]);
       } else {
-        user.dislikedComments = Promise.resolve(dislikedCommentsMinusNew);
+        user.downvotedComments = Promise.resolve(downvotedCommentsMinusNew);
       }
     }
 
@@ -83,18 +86,18 @@ export class LikeDislikeCommentResolver {
   }
 
   @FieldResolver(() => Float)
-  async likes(@Root() comment: Comment) {
+  async upvotes(@Root() comment: Comment) {
     return User.createQueryBuilder('user')
-      .innerJoin(`user.likedComments`, 'comment', 'comment.id = :id', {
+      .innerJoin(`user.upvotedComments`, 'comment', 'comment.id = :id', {
         id: comment.id,
       })
       .getCount();
   }
 
   @FieldResolver(() => Float)
-  async dislikes(@Root() comment: Comment) {
+  async downvotes(@Root() comment: Comment) {
     return User.createQueryBuilder('user')
-      .innerJoin(`user.dislikedComments`, 'comment', 'comment.id = :id', {
+      .innerJoin(`user.downvotedComments`, 'comment', 'comment.id = :id', {
         id: comment.id,
       })
       .getCount();

@@ -86,10 +86,10 @@ query getUsersPosts(
           username
           name
         }
-        isLiked
-        isDisliked
-        likes
-        dislikes
+        isUpvoted
+        isDownvoted
+        upvotes
+        downvotes
         comments(limit: 0, offset: 0) {
           total
         }
@@ -100,13 +100,13 @@ query getUsersPosts(
   }
 }
 
-query getUsersLikedPosts(
+query getUsersUpvotedPosts(
   $username: String!
   $postsLimit: Float!
   $postsOffset: Float!
 ) {
   getUserByName(username: $username) {
-    likedPosts(offset: $postsOffset, limit: $postsLimit) {
+    upvotedPosts(offset: $postsOffset, limit: $postsLimit) {
       items {
         id
         message
@@ -119,10 +119,10 @@ query getUsersLikedPosts(
           username
           name
         }
-        isLiked
-        isDisliked
-        likes
-        dislikes
+        isUpvoted
+        isDownvoted
+        upvotes
+        downvotes
         comments(limit: 0, offset: 0) {
           total
         }

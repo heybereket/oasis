@@ -11,7 +11,7 @@ type DeleteMutation = DeletePostMutationHookResult[0];
 
 interface Props {
   createPost: (variables: object) => void;
-  likeDislikePost: (variable: object) => void;
+  upvoteDownvotePost: (variable: object) => void;
   user: any;
   posts: any;
   StyledMarkdown: any;
@@ -23,7 +23,7 @@ interface Props {
 
 export const PostsSection: React.FC<Props> = ({
   createPost,
-  likeDislikePost,
+  upvoteDownvotePost,
   user,
   posts,
   StyledMarkdown,
@@ -54,21 +54,21 @@ export const PostsSection: React.FC<Props> = ({
               markdown={(text) => {
                 return <StyledMarkdown text={text} isPost={true} />;
               }}
-              likePost={() => {
-                likeDislikePost({
+              upvotePost={() => {
+                upvoteDownvotePost({
                   variables: {
                     postId: post.id,
-                    dislike: false,
-                    like: true,
+                    downvote: false,
+                    upvote: true,
                   },
                 });
               }}
-              dislikePost={() => {
-                likeDislikePost({
+              downvotePost={() => {
+                upvoteDownvotePost({
                   variables: {
                     postId: post.id,
-                    dislike: true,
-                    like: false,
+                    downvote: true,
+                    upvote: false,
                   },
                 });
               }}

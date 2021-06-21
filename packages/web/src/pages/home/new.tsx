@@ -2,23 +2,20 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import StyledMarkdown from '@parser/markdown/StyledMarkdown';
+import { StyledMarkdown } from '@oasis-sh/parser';
 import { login, logout } from '@lib/auth/login';
 import { SEO } from '@shared/SEO';
 import {
-  Navbar,
   FollowUserSection,
-  FriendActivitySection,
   NewPostsSection,
   ProfileSection,
-  TrendingSection,
   HomeTopBar,
   LeftSidebarItem,
   LeftSidebarTitle,
   Profile,
 } from '@oasis-sh/ui';
 import {
-  useLikeDislikePostMutation,
+  useUpvoteDownvotePostMutation,
   useMakePostMutation,
   GetCurrentUserDocument,
   useDeletePostMutation,
@@ -51,7 +48,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
   const { user, currentUserLoading } = useGetCurrentUser();
   const posts = postsQuery.data?.feedSortPosts;
 
-  const [likeDislikePost] = useLikeDislikePostMutation();
+  const [upvoteDownvotePost] = useUpvoteDownvotePostMutation();
   const [deletePost] = useDeletePostMutation();
   const [reportPost] = useReportEntityMutation();
 
@@ -136,7 +133,7 @@ const HomePage: React.FC<IndexPageProps> = ({ vars }) => {
                 user={user}
                 posts={posts ?? []}
                 createPost={createPost}
-                likeDislikePost={likeDislikePost}
+                upvoteDownvotePost={upvoteDownvotePost}
                 deleteMutation={deletePost}
                 fetch={async (limit, offset) => {
                   const newData = (

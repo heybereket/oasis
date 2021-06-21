@@ -16,10 +16,10 @@ query getUsersComments(
           username
           name
         }
-        isLiked
-        isDisliked
-        likes
-        dislikes
+        isUpvoted
+        isDownvoted
+        upvotes
+        downvotes
       }
       hasMore
       total

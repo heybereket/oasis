@@ -13,66 +13,66 @@ import { ContextType } from '@root/server';
 import Post from '@entities/Post';
 import User from '@entities/User';
 
-// @bcg-resolver(mutation, likeDislike, post)
+// @bcg-resolver(mutation, upvoteDownvote, post)
 
 @Resolver(() => Post)
-export class LikeDislikePostResolver {
+export class UpvoteDownvotePostResolver {
   @Mutation(() => Boolean)
   @Authorized()
-  async likeDislike(
+  async upvoteDownvote(
     @Arg('postId') postId: string,
-    @Arg('like') like: boolean,
-    @Arg('dislike') dislike: boolean,
+    @Arg('upvote') upvote: boolean,
+    @Arg('downvote') downvote: boolean,
     @Ctx() { getUser }: ContextType
   ) {
     const post = await Post.findOne(postId);
 
     if (!post) throw new ApolloError('Post not found');
 
-    if ((like && dislike) || (!like && !dislike)) {
-      throw new ApolloError('Please select like or dislike');
+    if ((upvote && downvote) || (!upvote && !downvote)) {
+      throw new ApolloError('Please select upvote or downvote');
     }
 
     const user = await getUser();
 
-    const likedPosts = await user.likedPosts;
-    let alreadyliked = false;
-    const likedPostsMinusNew: Post[] = [];
-    likedPosts.forEach((post) => {
+    const upvotedPosts = await user.upvotedPosts;
+    let alreadyupvoted = false;
+    const upvotedPostsMinusNew: Post[] = [];
+    upvotedPosts.forEach((post) => {
       if (post.id === postId) {
-        alreadyliked = true;
+        alreadyupvoted = true;
       } else {
-        likedPostsMinusNew.push(post);
+        upvotedPostsMinusNew.push(post);
       }
     });
 
-    const dislikedPosts = await user.dislikedPosts;
-    let alreadydisliked = false;
-    const dislikedPostsMinusNew: Post[] = [];
-    dislikedPosts.forEach((post) => {
+    const downvotedPosts = await user.downvotedPosts;
+    let alreadydownvoted = false;
+    const downvotedPostsMinusNew: Post[] = [];
+    downvotedPosts.forEach((post) => {
       if (post.id === postId) {
-        alreadydisliked = true;
+        alreadydownvoted = true;
       } else {
-        dislikedPostsMinusNew.push(post);
+        downvotedPostsMinusNew.push(post);
       }
     });
-    if (like) {
-      if (!alreadyliked) {
-        if (alreadydisliked) {
-          user.dislikedPosts = Promise.resolve(dislikedPostsMinusNew);
+    if (upvote) {
+      if (!alreadyupvoted) {
+        if (alreadydownvoted) {
+          user.downvotedPosts = Promise.resolve(downvotedPostsMinusNew);
         }
-        user.likedPosts = Promise.resolve([...likedPosts, post]);
+        user.upvotedPosts = Promise.resolve([...upvotedPosts, post]);
       } else {
-        user.likedPosts = Promise.resolve(likedPostsMinusNew);
+        user.upvotedPosts = Promise.resolve(upvotedPostsMinusNew);
       }
-    } else if (dislike) {
-      if (!alreadydisliked) {
-        if (alreadyliked) {
-          user.likedPosts = Promise.resolve(likedPostsMinusNew);
+    } else if (downvote) {
+      if (!alreadydownvoted) {
+        if (alreadyupvoted) {
+          user.upvotedPosts = Promise.resolve(upvotedPostsMinusNew);
         }
-        user.dislikedPosts = Promise.resolve([...dislikedPosts, post]);
+        user.downvotedPosts = Promise.resolve([...downvotedPosts, post]);
       } else {
-        user.dislikedPosts = Promise.resolve(dislikedPostsMinusNew);
+        user.downvotedPosts = Promise.resolve(downvotedPostsMinusNew);
       }
     }
 
@@ -83,16 +83,18 @@ export class LikeDislikePostResolver {
   }
 
   @FieldResolver(() => Float)
-  async likes(@Root() post: Post) {
+  async upvotes(@Root() post: Post) {
     return User.createQueryBuilder('user')
-      .innerJoin(`user.likedPosts`, 'post', 'post.id = :id', { id: post.id })
+      .innerJoin(`user.upvotedPosts`, 'post', 'post.id = :id', { id: post.id })
       .getCount();
   }
 
   @FieldResolver(() => Float)
-  async dislikes(@Root() post: Post) {
+  async downvotes(@Root() post: Post) {
     return User.createQueryBuilder('user')
-      .innerJoin(`user.dislikedPosts`, 'post', 'post.id = :id', { id: post.id })
+      .innerJoin(`user.downvotedPosts`, 'post', 'post.id = :id', {
+        id: post.id,
+      })
       .getCount();
   }
 }

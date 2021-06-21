@@ -1,5 +1,3 @@
-export { initTranslations } from './locales/i18n';
-
 // Components
 // Comments
 export { Comment } from './components/comment/Comment';
@@ -30,9 +28,14 @@ export { TrendingSection } from './components/home/TrendingSection';
 export { LeftSidebarItem } from './components/home/LeftSidebar';
 export { LeftSidebarTitle } from './components/home/LeftSidebar';
 
-// OSS
-export { Contributors } from './components/oss/Contributors';
-export { TeamMember } from './components/oss/TeamMember';
+// Locales
+export { ILanguage } from './locales/BaseLanguage';
+export {
+  LanguageContext,
+  useTranslations,
+  LanguageProvider,
+} from './locales/LocalesProvider';
+export { LanguageSelector } from './components/locales/LanguageSelector';
 
 // Navbar
 export { DropdownItem } from './components/navbar/DropdownItem';
@@ -74,7 +77,7 @@ export { Comments } from './icons/posts/Comments';
 export { DownArrow } from './icons/arrows/DownArrow';
 export { Friends } from './icons/navbar/Friends';
 export { Home } from './icons/navbar/Home';
-export { Like } from './icons/posts/Like';
+export { Upvote } from './icons/posts/Like';
 export { Logout } from './icons/navbar/Logout';
 export { Search } from './icons/navbar/Search';
 export { Posts } from './icons/navbar/Posts';

@@ -3,7 +3,7 @@ import {
   Comment as TComment,
   User,
   ReportEntityMutationHookResult,
-  useLikeDislikeCommentMutation,
+  useUpvoteDownvoteCommentMutation,
 } from '@oasis-sh/react-gql';
 import React from 'react';
 import Comment from '../comment/Comment';
@@ -12,10 +12,11 @@ import TabMeta from './TabMeta';
 
 type Props = {
   comments: TComment[];
-  likeDislikeComment: ReturnType<typeof useLikeDislikeCommentMutation>[0];
+  upvoteDownvoteComment: ReturnType<typeof useUpvoteDownvoteCommentMutation>[0];
   // deleteComment: ReturnType<typeof useDeletePostMutation>[0];
   markdown: (text: string) => JSX.Element;
   currentUser?: User;
+  profileUser?: User;
   reportComment?: ReportEntityMutationHookResult[0];
   fetch: (limit: number, offset: number) => Promise<TComment[]>;
   bgColorOveride?: string;
@@ -24,19 +25,20 @@ type Props = {
 export const Comments: React.FC<Props> = ({
   comments,
   markdown,
-  likeDislikeComment,
+  upvoteDownvoteComment,
   currentUser,
   reportComment,
   fetch,
   bgColorOveride,
+  profileUser,
 }) => {
   return (
     <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]">
       <TabMeta
-        title={`${currentUser?.name}'s Comments`}
+        title={`${profileUser?.name}'s Comments`}
         description={
           comments.length <= 0
-            ? `@${currentUser?.username} does not have any comments.`
+            ? `@${profileUser?.username} does not have any comments.`
             : ''
         }
       />
@@ -57,21 +59,21 @@ export const Comments: React.FC<Props> = ({
               // }}
               markdown={markdown}
               bgColorOveride={bgColorOveride ?? 'bg-gray-900'}
-              likeComment={() => {
-                likeDislikeComment({
+              upvoteComment={() => {
+                upvoteDownvoteComment({
                   variables: {
-                    dislike: false,
-                    like: true,
+                    downvote: false,
+                    upvote: true,
                     commentId: comment.id,
                   },
                 });
                 // window.location.reload();
               }}
-              dislikeComment={() => {
-                likeDislikeComment({
+              downvoteComment={() => {
+                upvoteDownvoteComment({
                   variables: {
-                    dislike: true,
-                    like: false,
+                    downvote: true,
+                    upvote: false,
                     commentId: comment.id,
                   },
                 });

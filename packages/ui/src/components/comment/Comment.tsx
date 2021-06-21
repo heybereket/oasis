@@ -17,15 +17,15 @@ import { CustomLink } from '../../providers/CustomLink';
 interface Props {
   comment: TComment;
   currentUser?: User;
-  likeComment?: () => any;
-  dislikeComment?: () => any;
+  upvoteComment?: () => any;
+  downvoteComment?: () => any;
   deleteComment?: (id: string) => any;
   markdown: (text: string) => JSX.Element;
   bgColorOveride?: string;
   reportComment?: ReportEntityMutationHookResult[0];
 }
 
-enum LikeDislikeState {
+enum UpvoteDownvoteState {
   'LIKED',
   'NONE',
   'DISLIKED',
@@ -33,8 +33,8 @@ enum LikeDislikeState {
 
 export const Comment: React.FC<Props> = ({
   comment: commentData,
-  likeComment,
-  dislikeComment,
+  upvoteComment,
+  downvoteComment,
   markdown,
   bgColorOveride,
   deleteComment,
@@ -43,16 +43,16 @@ export const Comment: React.FC<Props> = ({
 }) => {
   const date = formatDate(commentData.createdAt);
 
-  const [likes, setLikes] = useState(commentData.likes);
-  const [dislikes, setDislikes] = useState(commentData.dislikes);
-  const formattedVotes = formatNumber(likes - dislikes);
+  const [upvotes, setUpvotes] = useState(commentData.upvotes);
+  const [downvotes, setDownvotes] = useState(commentData.downvotes);
+  const formattedVotes = formatNumber(upvotes - downvotes);
 
-  const [likeState, setLikeState] = useState<LikeDislikeState>(
-    commentData.isLiked
-      ? LikeDislikeState.LIKED
-      : commentData.isDisliked
-      ? LikeDislikeState.DISLIKED
-      : LikeDislikeState.NONE
+  const [upvoteState, setUpvoteState] = useState<UpvoteDownvoteState>(
+    commentData.isUpvoted
+      ? UpvoteDownvoteState.LIKED
+      : commentData.isDownvoted
+      ? UpvoteDownvoteState.DISLIKED
+      : UpvoteDownvoteState.NONE
   );
 
   const [isDropdownActive, setDropdownActive] = useState(false);
@@ -96,23 +96,23 @@ export const Comment: React.FC<Props> = ({
                 <div className="flex flex-col items-center">
                   <SmallUpArrow
                     onClick={() => {
-                      if (likeComment) likeComment();
-                      console.log(likeState);
-                      if (likeState === LikeDislikeState.LIKED) {
-                        setLikeState(LikeDislikeState.NONE);
-                        setLikes(likes - 1);
-                      } else if (likeState === LikeDislikeState.DISLIKED) {
-                        setLikeState(LikeDislikeState.LIKED);
-                        setDislikes(dislikes - 1);
-                        setLikes(likes + 1);
+                      if (upvoteComment) upvoteComment();
+                      console.log(upvoteState);
+                      if (upvoteState === UpvoteDownvoteState.LIKED) {
+                        setUpvoteState(UpvoteDownvoteState.NONE);
+                        setUpvotes(upvotes - 1);
+                      } else if (upvoteState === UpvoteDownvoteState.DISLIKED) {
+                        setUpvoteState(UpvoteDownvoteState.LIKED);
+                        setDownvotes(downvotes - 1);
+                        setUpvotes(upvotes + 1);
                       } else {
-                        setLikeState(LikeDislikeState.LIKED);
-                        setLikes(likes + 1);
+                        setUpvoteState(UpvoteDownvoteState.LIKED);
+                        setUpvotes(upvotes + 1);
                       }
-                      console.log(likeState);
+                      console.log(upvoteState);
                     }}
                     className={`cursor-pointer ${
-                      likeState === LikeDislikeState.LIKED
+                      upvoteState === UpvoteDownvoteState.LIKED
                         ? 'text-blue-400'
                         : ''
                     }`}
@@ -122,21 +122,21 @@ export const Comment: React.FC<Props> = ({
                   </p>
                   <SmallDownArrow
                     onClick={() => {
-                      if (dislikeComment) dislikeComment();
-                      if (likeState === LikeDislikeState.DISLIKED) {
-                        setLikeState(LikeDislikeState.NONE);
-                        setDislikes(dislikes - 1);
-                      } else if (likeState === LikeDislikeState.LIKED) {
-                        setLikeState(LikeDislikeState.DISLIKED);
-                        setDislikes(dislikes + 1);
-                        setLikes(likes - 1);
+                      if (downvoteComment) downvoteComment();
+                      if (upvoteState === UpvoteDownvoteState.DISLIKED) {
+                        setUpvoteState(UpvoteDownvoteState.NONE);
+                        setDownvotes(downvotes - 1);
+                      } else if (upvoteState === UpvoteDownvoteState.LIKED) {
+                        setUpvoteState(UpvoteDownvoteState.DISLIKED);
+                        setDownvotes(downvotes + 1);
+                        setUpvotes(upvotes - 1);
                       } else {
-                        setLikeState(LikeDislikeState.DISLIKED);
-                        setDislikes(dislikes + 1);
+                        setUpvoteState(UpvoteDownvoteState.DISLIKED);
+                        setDownvotes(downvotes + 1);
                       }
                     }}
                     className={`cursor-pointer ${
-                      likeState === LikeDislikeState.DISLIKED
+                      upvoteState === UpvoteDownvoteState.DISLIKED
                         ? 'text-blue-400'
                         : ''
                     }`}

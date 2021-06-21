@@ -1,23 +1,21 @@
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import StyledMarkdown from '@parser/markdown/StyledMarkdown';
+import { StyledMarkdown } from '@oasis-sh/parser';
 import { login, logout } from '@lib/auth/login';
 import {
   GetUserByNameDocument,
   useGetUserByNameQuery,
   useFollowUserMutation,
   GetUserByNameQueryVariables,
-  useLikeDislikePostMutation,
+  useUpvoteDownvotePostMutation,
   useGetUsersPostsLazyQuery,
-  useGetUsersLikedPostsLazyQuery,
+  useGetUsersUpvotedPostsLazyQuery,
   GetCurrentUserDocument,
   useDeletePostMutation,
   useGetUsersCommentsLazyQuery,
-  useLikeDislikeCommentMutation,
+  useUpvoteDownvoteCommentMutation,
   useReportEntityMutation,
-  GetUsersPostsQueryResult,
-  GetUsersPostsQuery,
   GetUserByNameQuery,
   User,
   Post as TPost,
@@ -47,7 +45,7 @@ import { useState, useEffect } from 'react';
 enum CenterColumnTabState {
   AboutTab,
   PostsTab,
-  LikesTab,
+  UpvotesTab,
   CommentsTab,
 }
 
@@ -55,17 +53,19 @@ interface CenterColumnProps {
   tabState: CenterColumnTabState;
   props: ProfileProps;
   data: GetUserByNameQuery['getUserByName'];
-  user?: User;
+  myUser?: User;
+  profileUser?: User;
 }
 
 const CenterColumnComponent: React.FC<CenterColumnProps> = ({
   tabState,
   props,
   data,
-  user,
+  myUser,
+  profileUser,
 }) => {
-  const [likeDislikePost] = useLikeDislikePostMutation();
-  const [likeDislikeComment] = useLikeDislikeCommentMutation();
+  const [upvoteDownvotePost] = useUpvoteDownvotePostMutation();
+  const [upvoteDownvoteComment] = useUpvoteDownvoteCommentMutation();
   const [deletePost] = useDeletePostMutation();
 
   const [getPosts, postsData] = useGetUsersPostsLazyQuery({
@@ -76,7 +76,7 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
     },
   });
 
-  const [getLikedPosts, likedPostsData] = useGetUsersLikedPostsLazyQuery({
+  const [getUpvotedPosts, upvotedPostsData] = useGetUsersUpvotedPostsLazyQuery({
     variables: {
       postsLimit: 10,
       postsOffset: 0,
@@ -93,6 +93,21 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
   });
 
   const [reportEntity] = useReportEntityMutation();
+
+  // Refresh tab data on state change
+  useEffect(() => {
+    switch (tabState) {
+      case CenterColumnTabState.CommentsTab:
+        getComments();
+        break;
+      case CenterColumnTabState.UpvotesTab:
+        getUpvotedPosts();
+        break;
+      case CenterColumnTabState.PostsTab:
+        getPosts();
+        break;
+    }
+  }, [tabState]);
 
   useEffect(() => console.log('Remounted'), []);
   switch (tabState) {
@@ -122,8 +137,9 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
             posts={
               (postsData.data?.userOnlyPosts?.posts.items as TPost[]) ?? []
             }
-            likeDislikePost={likeDislikePost}
-            currentUser={user}
+            upvoteDownvotePost={upvoteDownvotePost}
+            currentUser={myUser}
+            profileUser={profileUser}
             deletePost={deletePost}
             reportPost={reportEntity}
             fetch={async (limit, offset) => {
@@ -141,34 +157,35 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
         );
       }
 
-    case CenterColumnTabState.LikesTab:
-      if (!likedPostsData.called) {
-        getLikedPosts();
+    case CenterColumnTabState.UpvotesTab:
+      if (!upvotedPostsData.called) {
+        getUpvotedPosts();
         return <div />;
       } else {
         return (
           <PostsTabItem
-            isInProfileLikes
+            isInProfileUpvotes
             markdown={(text: any) => (
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}
-            currentUser={user}
+            currentUser={myUser}
+            profileUser={profileUser}
             posts={
-              (likedPostsData.data?.getUserByName?.likedPosts
+              (upvotedPostsData.data?.getUserByName?.upvotedPosts
                 .items as TPost[]) ?? []
             }
-            likeDislikePost={likeDislikePost}
+            upvoteDownvotePost={upvoteDownvotePost}
             deletePost={deletePost}
             reportPost={reportEntity}
             fetch={async (limit, offset) => {
               const newData = (
-                await likedPostsData.fetchMore({
+                await upvotedPostsData.fetchMore({
                   variables: {
                     postsLimit: limit,
                     postsOffset: offset,
                   },
                 })
-              ).data.getUserByName?.likedPosts.items as TPost[];
+              ).data.getUserByName?.upvotedPosts.items as TPost[];
               return newData;
             }}
           />
@@ -186,11 +203,12 @@ const CenterColumnComponent: React.FC<CenterColumnProps> = ({
               (commentsData.data?.userOnlyComments?.comments
                 .items as TComment[]) ?? []
             }
-            likeDislikeComment={likeDislikeComment}
+            upvoteDownvoteComment={upvoteDownvoteComment}
             markdown={(text) => (
               <StyledMarkdown text={text} isBio={false} isPost={true} />
             )}
-            currentUser={user}
+            currentUser={myUser}
+            profileUser={profileUser}
             reportComment={reportEntity}
             fetch={async (limit, offset) => {
               const newData = (
@@ -219,46 +237,46 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = (props) => {
-  const data = useGetUserByNameQuery({
+  const profileData = useGetUserByNameQuery({
     variables: props.vars,
   }).data?.getUserByName;
 
   const [follow] = useFollowUserMutation({
-    variables: { userId: data?.id ?? '' },
+    variables: { userId: profileData?.id ?? '' },
   });
 
-  const { user, currentUserLoading } = useGetCurrentUser();
+  const { user: myUser, currentUserLoading } = useGetCurrentUser();
 
   const [tabState, setTabState] = useState<CenterColumnTabState>(
     CenterColumnTabState.AboutTab
   );
 
-  const viewingOwnProfile = data?.id === user?.id;
+  const viewingOwnProfile = profileData?.id === myUser?.id;
 
   return (
     <>
       <SEO
-        title={data?.name ? data?.name : data?.username}
-        metaDesc={`@${data?.username} — ${data?.bio ?? ''}`}
-        metaImg={data?.avatar}
+        title={profileData?.name ? profileData?.name : profileData?.username}
+        metaDesc={`@${profileData?.username} — ${profileData?.bio ?? ''}`}
+        metaImg={profileData?.avatar}
       />
       <Navbar
-        user={user}
+        user={myUser}
         currentUserLoading={currentUserLoading}
         login={login}
         logout={logout}
       />
       <div className="flex w-screen flex-col">
-        <ProfileBanner bannerUrl={data?.banner} />
+        <ProfileBanner bannerUrl={profileData?.banner} />
         {/* Large and Medium Screens */}
         <Container>
           <div className="hidden md-50:grid grid-cols-12 transform -translate-y-12 px-8">
             {/* Left Side */}
             <div className="col-span-8 flex flex-col mr-8">
               <LargeUserCard
-                avatar={data?.avatar}
-                name={data?.name}
-                username={data?.username}
+                avatar={profileData?.avatar}
+                name={profileData?.name}
+                username={profileData?.username}
               />
               <div className="flex flex-col mt-6">
                 <div className="flex">
@@ -276,9 +294,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   />
                   <TabItem
                     name="Upvotes"
-                    active={tabState === CenterColumnTabState.LikesTab}
+                    active={tabState === CenterColumnTabState.UpvotesTab}
                     icon={UpArrow}
-                    onClick={() => setTabState(CenterColumnTabState.LikesTab)}
+                    onClick={() => setTabState(CenterColumnTabState.UpvotesTab)}
                   />
                   <TabItem
                     name="Comments"
@@ -293,8 +311,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   key="CenterColumn"
                   props={props}
                   tabState={tabState}
-                  data={data}
-                  user={user}
+                  data={profileData}
+                  myUser={myUser}
+                  profileUser={(profileData as User) ?? undefined}
                 />
               </div>
             </div>
@@ -319,21 +338,21 @@ const Profile: React.FC<ProfileProps> = (props) => {
                   color="primary"
                   className="md:row-span-1 lg:col-span-1 text-sm"
                   onClick={() => {
-                    if (data?.id !== user?.id) {
+                    if (profileData?.id !== myUser?.id) {
                       follow();
                     }
                   }}
                 >
                   {viewingOwnProfile
                     ? 'Edit Profile'
-                    : `Follow @${data?.username}`}
+                    : `Follow @${profileData?.username}`}
                 </Button>
               </div>
               <FollowersInfo
                 size="large"
-                followers={data?.followers.total}
-                following={data?.following.total}
-                posts={data?.posts.total}
+                followers={profileData?.followers.total}
+                following={profileData?.following.total}
+                posts={profileData?.posts.total}
               />
               <div className="mt-8 flex flex-col bg-gray-800 rounded-2xl py-4 px-6">
                 <h4 className="font-extrabold">Topics Following</h4>
@@ -351,15 +370,15 @@ const Profile: React.FC<ProfileProps> = (props) => {
         {/* Small Screens */}
         <div className="flex flex-col md-50:hidden transform -translate-y-20 md:-translate-y-32 items-center mx-6 sm-50:mx-8">
           <SmallUserCard
-            avatar={data?.avatar}
-            name={data?.name}
-            username={data?.username}
+            avatar={profileData?.avatar}
+            name={profileData?.name}
+            username={profileData?.username}
           />
           <FollowersInfo
             size="small"
-            followers={data?.followers.total}
-            following={data?.following.total}
-            posts={data?.posts.total}
+            followers={profileData?.followers.total}
+            following={profileData?.following.total}
+            posts={profileData?.posts.total}
           />
           <div
             className={`grid ${
@@ -375,12 +394,14 @@ const Profile: React.FC<ProfileProps> = (props) => {
               color="primary"
               className="col-span-2 md:col-span-1 text-sm"
               onClick={() => {
-                if (data?.id !== user?.id) {
+                if (profileData?.id !== myUser?.id) {
                   follow();
                 }
               }}
             >
-              {viewingOwnProfile ? 'Edit Profile' : `Follow @${data?.username}`}
+              {viewingOwnProfile
+                ? 'Edit Profile'
+                : `Follow @${profileData?.username}`}
             </Button>
           </div>
 
@@ -400,9 +421,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
               />
               <TabItem
                 name="Upvotes"
-                active={tabState === CenterColumnTabState.LikesTab}
+                active={tabState === CenterColumnTabState.UpvotesTab}
                 icon={UpArrow}
-                onClick={() => setTabState(CenterColumnTabState.LikesTab)}
+                onClick={() => setTabState(CenterColumnTabState.UpvotesTab)}
               />
               <TabItem
                 name="Comments"
@@ -415,8 +436,9 @@ const Profile: React.FC<ProfileProps> = (props) => {
               key="CenterColumn"
               props={props}
               tabState={tabState}
-              data={data}
-              user={user}
+              data={profileData}
+              myUser={myUser}
+              profileUser={(profileData as User) ?? undefined}
             />
             {/* <Bio
               badges={data?.badges}

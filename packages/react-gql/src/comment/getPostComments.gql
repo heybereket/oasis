@@ -5,8 +5,8 @@ query GetPostComments($postId: String! $commentsOffset: Float! $commentsLimit: F
       items {
         id
         content
-        likes
-        dislikes
+        upvotes
+        downvotes
         createdAt
         lastEdited
         author {
@@ -14,8 +14,8 @@ query GetPostComments($postId: String! $commentsOffset: Float! $commentsLimit: F
           username
           name
         }
-        isLiked
-        isDisliked
+        isUpvoted
+        isDownvoted
       }
     }
   }

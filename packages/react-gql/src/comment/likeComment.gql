@@ -1,7 +1,7 @@
-mutation LikeDislikeComment(
-  $like: Boolean!
-  $dislike: Boolean!
+mutation UpvoteDownvoteComment(
+  $upvote: Boolean!
+  $downvote: Boolean!
   $commentId: String!
 ) {
-  likeDislikeComment(like: $like, dislike: $dislike, commentId: $commentId)
+  upvoteDownvoteComment(upvote: $upvote, downvote: $downvote, commentId: $commentId)
 }

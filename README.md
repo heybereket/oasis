@@ -18,7 +18,7 @@ Oasis is open to contributions, but we recommend creating an issue or replying i
 Take a look at our [documentation](/docs) for more information on how to get started! 🎉
 
 ## Code of Conduct
-Read the Oasis [Code of Conduct](/docs/guidelines/CODE_OF_CONDUCT.md) for more details.
+Read the Oasis [Code of Conduct](/.github/CODE_OF_CONDUCT.md) for more details.
 
 ## License
 Oasis is open-source and is under the [MIT License](LICENSE).

@@ -3,13 +3,16 @@ import { ContextType } from '@root/server';
 import { Ctx, FieldResolver, Resolver, Root } from 'type-graphql';
 
 @Resolver(() => Post)
-export class GetIsLikedDislikedResolver {
+export class GetIsUpvotedDownvotedResolver {
   @FieldResolver(() => Boolean)
-  async isLiked(@Root() post: Post, @Ctx() { getUser, hasAuth }: ContextType) {
+  async isUpvoted(
+    @Root() post: Post,
+    @Ctx() { getUser, hasAuth }: ContextType
+  ) {
     if (hasAuth) {
       const user = await getUser();
       let retValue = false;
-      (await user.likedPosts).forEach((res) => {
+      (await user.upvotedPosts).forEach((res) => {
         if (res.id === post.id) {
           retValue = true;
         }
@@ -21,14 +24,14 @@ export class GetIsLikedDislikedResolver {
   }
 
   @FieldResolver(() => Boolean)
-  async isDisliked(
+  async isDownvoted(
     @Root() post: Post,
     @Ctx() { getUser, hasAuth }: ContextType
   ) {
     if (hasAuth) {
       const user = await getUser();
       let retValue = false;
-      (await user.dislikedPosts).forEach((res) => {
+      (await user.downvotedPosts).forEach((res) => {
         if (res.id === post.id) {
           retValue = true;
         }

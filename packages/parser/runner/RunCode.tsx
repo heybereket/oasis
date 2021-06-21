@@ -1,5 +1,5 @@
 import { Modal } from '@oasis-sh/ui';
-import OasisDark from '@parser/markdown/themes/OasisDark';
+import { OasisDark } from '../markdown/themes/OasisDark';
 import React, { useState, useEffect } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism';
 

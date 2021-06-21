@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Post, CommentsTab } from '@oasis-sh/ui';
-import StyledMarkdown from '@parser/markdown/StyledMarkdown';
+import { StyledMarkdown } from '@oasis-sh/parser';
 import { GetServerSideProps } from 'next';
 import {
   GetCurrentUserDocument,
@@ -13,9 +13,9 @@ import {
   useDeletePostMutation,
   useGetPostCommentsQuery,
   useGetPostQuery,
-  useLikeDislikePostMutation,
+  useUpvoteDownvotePostMutation,
   useReportEntityMutation,
-  useLikeDislikeCommentMutation,
+  useUpvoteDownvoteCommentMutation,
 } from '@oasis-sh/react-gql';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { SEO } from '@shared/SEO';
@@ -35,9 +35,9 @@ export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
   const commentsData = comments.data?.getPost.comments.items;
 
   const [deletePost] = useDeletePostMutation();
-  const [likeDislikePost] = useLikeDislikePostMutation();
+  const [upvoteDownvotePost] = useUpvoteDownvotePostMutation();
   const [reportEntity] = useReportEntityMutation();
-  const [likeDislikeComment] = useLikeDislikeCommentMutation();
+  const [upvoteDownvoteComment] = useUpvoteDownvoteCommentMutation();
 
   return (
     <>
@@ -58,20 +58,20 @@ export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
           post={postData as TPost}
           currentUser={user}
           deletePost={(id) => deletePost({ variables: { postId: id } })}
-          dislikePost={() =>
-            likeDislikePost({
+          downvotePost={() =>
+            upvoteDownvotePost({
               variables: {
-                dislike: true,
-                like: false,
+                downvote: true,
+                upvote: false,
                 postId: postData?.id ?? '',
               },
             })
           }
-          likePost={() =>
-            likeDislikePost({
+          upvotePost={() =>
+            upvoteDownvotePost({
               variables: {
-                dislike: false,
-                like: true,
+                downvote: false,
+                upvote: true,
                 postId: postData?.id ?? '',
               },
             })
@@ -91,7 +91,7 @@ export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
                 })
               ).data.getPost.comments.items as TComment[];
             }}
-            likeDislikeComment={likeDislikeComment}
+            upvoteDownvoteComment={upvoteDownvoteComment}
             markdown={(text) => <StyledMarkdown text={text} isPost={true} />}
             currentUser={user}
             reportComment={reportEntity}

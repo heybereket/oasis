@@ -55,7 +55,7 @@ const NotificationPage: React.FC<NotificationPageProps> | any = () => {
             {!data?.getNotifications?.length && !loading && (
               <h5>
                 {
-                  "Uh, oh. Seems like you don't have any notifications yet. Too bad."
+                  "Uh, oh. Seems upvote you don't have any notifications yet. Too bad."
                 }
               </h5>
             )}
