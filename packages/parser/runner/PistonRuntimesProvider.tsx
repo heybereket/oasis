@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from 'react';
-import { request } from '@utils/request';
+import React, { createContext, useEffect, useState } from 'react';
+import { request } from '@oasis-sh/shared';
 
 export const RuntimesContext = createContext<any>({});
 

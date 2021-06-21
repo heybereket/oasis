@@ -5224,6 +5224,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@oasis-sh/parser@workspace:packages/parser":
+  version: 0.0.0-use.local
+  resolution: "@oasis-sh/parser@workspace:packages/parser"
+  dependencies:
+    typescript: ^4.3.4
+  languageName: unknown
+  linkType: soft
+
 "@oasis-sh/react-gql@workspace:packages/react-gql":
   version: 0.0.0-use.local
   resolution: "@oasis-sh/react-gql@workspace:packages/react-gql"
@@ -5388,6 +5396,7 @@ __metadata:
     github-markdown-css: ^4.0.0
     moment-timezone: ^0.5.33
     next: ^11.0.0
+    next-transpile-modules: ^8.0.0
     node-fetch: ^2.6.1
     postcss: ^8.3.5
     prettier: 2.3.1
@@ -14089,7 +14098,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.0.0, enhanced-resolve@npm:^5.8.0":
+"enhanced-resolve@npm:^5.0.0, enhanced-resolve@npm:^5.7.0, enhanced-resolve@npm:^5.8.0":
   version: 5.8.2
   resolution: "enhanced-resolve@npm:5.8.2"
   dependencies:
@@ -22033,6 +22042,16 @@ fsevents@^1.2.7:
   version: 1.0.0
   resolution: "next-tick@npm:1.0.0"
   checksum: 18db63c447c6e65a23235b91da9ccdae53f74f9194cfbc71a1fd3170cdf81bd157d9676e47c2ea4ea5bd20e09fb019917b0a45d8e1a63e377175fc083f285234
+  languageName: node
+  linkType: hard
+
+"next-transpile-modules@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "next-transpile-modules@npm:8.0.0"
+  dependencies:
+    enhanced-resolve: ^5.7.0
+    escalade: ^3.1.1
+  checksum: 5088efa5033ac06296acd43ed5e9b0392c8189bfcfe29edc2e09cbf22f408b133bc301781bf20b723110b059c95660458f7698c4b719fdc3daeebe9e61245e32
   languageName: node
   linkType: hard
 
@@ -29992,7 +30011,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-typescript@4.3.4:
+"typescript@4.3.4, typescript@^4.3.4":
   version: 4.3.4
   resolution: "typescript@npm:4.3.4"
   bin:
@@ -30002,7 +30021,7 @@ typescript@4.3.4:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.3.4#builtin<compat/typescript>":
+"typescript@patch:typescript@4.3.4#builtin<compat/typescript>, typescript@patch:typescript@^4.3.4#builtin<compat/typescript>":
   version: 4.3.4
   resolution: "typescript@patch:typescript@npm%3A4.3.4#builtin<compat/typescript>::version=4.3.4&hash=ddfc1b"
   bin:

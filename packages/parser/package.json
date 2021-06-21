@@ -1,0 +1,10 @@
+{
+  "name": "@oasis-sh/parser",
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "typescript": "^4.3.4"
+  }
+}

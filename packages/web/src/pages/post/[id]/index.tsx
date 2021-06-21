@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Post, CommentsTab } from '@oasis-sh/ui';
-import StyledMarkdown from '@parser/markdown/StyledMarkdown';
+import { StyledMarkdown } from '@oasis-sh/parser';
 import { GetServerSideProps } from 'next';
 import {
   GetCurrentUserDocument,

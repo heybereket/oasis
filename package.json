@@ -8,7 +8,7 @@
   "scripts": {
     "build": "yarn workspace @oasis-sh/$0 run build",
     "build:all": "yarn build api && yarn build react-gql && yarn build shared && yarn build ui && yarn build web",
-    "build:dev": "yarn build api && yarn build react-gql && yarn build shared && yarn build ui",
+    "build:dev": "yarn build api && yarn build react-gql && yarn build shared && yarn build ui && yarn build parser",
     "rebuild": "yarn reinstall || yarn build:all",
     "dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
     "dev:api": "yarn workspace @oasis-sh/api run dev",
