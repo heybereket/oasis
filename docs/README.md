@@ -46,6 +46,10 @@ $ yarn prettify
 $ yarn lint
 ```
 
+## Translations
+You can view the translations in the [locales](/packages/ui/src/locales) folder. <br />
+To add a new translation all you need to do is make a new folder in the [locales](/packages/ui/src/locales) directory, create an index.ts file and add it to the [index](/packages/ui/src/index.ts) file.
+
 ## Frequently Asked Questions
 
 **How can I add a translation?** <br>
