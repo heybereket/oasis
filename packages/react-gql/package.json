@@ -15,17 +15,17 @@
   "license": "MIT",
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.5",
-    "@graphql-codegen/typescript": "^1.22.1",
-    "@graphql-codegen/typescript-document-nodes": "^1.17.12",
-    "@graphql-codegen/typescript-operations": "^1.18.0",
-    "@graphql-codegen/typescript-react-apollo": "^2.2.5",
+    "@graphql-codegen/typescript": "^1.22.3",
+    "@graphql-codegen/typescript-document-nodes": "^1.17.14",
+    "@graphql-codegen/typescript-operations": "^1.18.2",
+    "@graphql-codegen/typescript-react-apollo": "^2.2.7",
     "@types/rimraf": "^3.0.0",
     "graphql-tag": "^2.12.4",
     "npm-run-all": "^4.1.5"
   },
   "dependencies": {
     "@apollo/client": "^3.3.20",
-    "graphql": "^15.5.0",
+    "graphql": "^15.5.1",
     "rimraf": "^3.0.2",
     "typescript": "4.3.4"
   }

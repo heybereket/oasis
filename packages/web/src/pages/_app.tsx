@@ -9,6 +9,7 @@ import { RuntimesProvider } from '@oasis-sh/parser';
 import { SEO } from '@shared/SEO';
 import { initSentry } from '@utils/sentry';
 import { useApollo } from '@lib/common/apolloClient';
+import { useEffect } from 'react';
 
 initSentry();
 

@@ -20,6 +20,7 @@ type Props = {
   reportComment?: ReportEntityMutationHookResult[0];
   fetch: (limit: number, offset: number) => Promise<TComment[]>;
   bgColorOveride?: string;
+  showName?: boolean;
 };
 
 export const Comments: React.FC<Props> = ({
@@ -31,17 +32,20 @@ export const Comments: React.FC<Props> = ({
   fetch,
   bgColorOveride,
   profileUser,
+  showName = true,
 }) => {
   return (
     <div className="mt-8 bg-gray-800 rounded-xl py-6 px-6 max-w-full w-[100vw]">
-      <TabMeta
-        title={`${profileUser?.name}'s Comments`}
-        description={
-          comments.length <= 0
-            ? `@${profileUser?.username} does not have any comments.`
-            : ''
-        }
-      />
+      {showName && (
+        <TabMeta
+          title={`${profileUser?.name}'s Comments`}
+          description={
+            comments.length <= 0
+              ? `@${profileUser?.username} does not have any comments.`
+              : ''
+          }
+        />
+      )}
       <InfiniteScrollWrapper
         amountPerFetch={10}
         defaultItems={comments}

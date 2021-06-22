@@ -16,6 +16,7 @@ import {
   useUpvoteDownvotePostMutation,
   useReportEntityMutation,
   useUpvoteDownvoteCommentMutation,
+  User,
 } from '@oasis-sh/react-gql';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { SEO } from '@shared/SEO';
@@ -78,7 +79,7 @@ export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
           }
           reportPost={reportEntity}
         />
-        <div className="w-full pl-5 mt-6">
+        <div className="w-full mt-6">
           <CommentsTab
             comments={(commentsData ?? []) as TComment[]}
             fetch={async (limit, offset) => {
@@ -94,8 +95,8 @@ export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
             upvoteDownvoteComment={upvoteDownvoteComment}
             markdown={(text) => <StyledMarkdown text={text} isPost={true} />}
             currentUser={user}
+            showName={false}
             reportComment={reportEntity}
-            bgColorOveride="bg-gray-800"
           />
         </div>
       </div>

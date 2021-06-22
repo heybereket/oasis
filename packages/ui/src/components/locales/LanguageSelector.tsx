@@ -1,7 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import en from '../../locales/en';
-import { languages, useSetLanguage } from '../../locales/LocalesProvider';
+import {
+  defaultLanguage,
+  languages,
+  useSetLanguage,
+} from '../../locales/LocalesProvider';
 
 export const LanguageSelector = () => {
   const { i18n } = useTranslation();
@@ -9,7 +12,9 @@ export const LanguageSelector = () => {
   const changeLang = useSetLanguage();
 
   const handleLanguageChanged = ({ target: { value } }: any) => {
-    changeLang(languages.find((val) => val.langCode === value) ?? en);
+    changeLang(
+      languages.find((val) => val.langCode === value) ?? defaultLanguage
+    );
   };
 
   return (

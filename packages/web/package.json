@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@next/bundle-analyzer": "^11.0.0",
-    "@sentry/react": "^6.7.1",
-    "@sentry/tracing": "^6.7.1",
+    "@sentry/react": "^6.7.2",
+    "@sentry/tracing": "^6.7.2",
     "express": "^4.17.1",
     "formik": "^2.2.9",
     "github-markdown-css": "^4.0.0",

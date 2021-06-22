@@ -37,4 +37,4 @@ RUN yarn workspace @oasis-sh/parser build
 COPY ./packages/web ./packages/web
 RUN yarn workspace @oasis-sh/web build
 
-CMD yarn start
+CMD ["yarn", "start"]

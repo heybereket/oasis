@@ -1,11 +1,15 @@
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
-  purge: [
-    './src/**/*.{tsx,jsx,js,ts}',
-    '../ui/**/*.{tsx,jsx,js,ts}',
-    '../mobile/**/*.{tsx,jsx,js,ts}',
-  ],
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: [
+      './src/**/*.{tsx,jsx,js,ts}',
+      '../ui/**/*.{tsx,jsx,js,ts}',
+      '../parser/**/*.{tsx,jsx,js,ts}',
+      '../mobile/**/*.{tsx,jsx,js,ts}',
+    ],
+  },
   theme: {
     flexShrink: {
       0: 0,
