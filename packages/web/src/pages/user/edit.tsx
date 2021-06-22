@@ -9,7 +9,7 @@ import { ssrRequest } from '@lib/common/ssrRequest';
 import { Formik, Form, Field } from 'formik';
 import { Navbar, Button, StyledFormikInput } from '@oasis-sh/ui';
 import React from 'react';
-import { apolloClient } from '@lib/common/apolloClient';
+import { apolloClient } from '@lib/common/apollo';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { login, logout } from '@lib/auth/login';
 
