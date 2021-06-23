@@ -3,20 +3,22 @@ import { gql, GraphQLClient } from 'graphql-request';
 
 export async function handler(yargs: any) {
   const useJSON = yargs.json ?? false;
-  if (!yargs.message)
-    return log.error('you need to pass <message> in order for this to work');
 
   const client = new GraphQLClient('http://localhost:3000/graphql', {
-    headers: { authorization: 'Bearer INSERT TOKEN HERE' },
+    headers: {
+      authorization: 'STFU dulguuncodes',
+    },
   });
 
   const query = gql`
-    mutation CreatePost($message: String!) {
-      createPost(data: { message: $message, topics: [] })
+    query getMyUserId {
+      currentUser {
+        id
+      }
     }
   `;
 
-  client.request(query, { message: yargs.message }).then((res) => {
+  client.request(query).then((res) => {
     if (useJSON) return console.log(JSON.stringify(res));
     log.info(res);
   });
