@@ -1,8 +1,8 @@
-// import * as yargs from 'yargs';
+import * as yargs from 'yargs';
 
-// yargs
-//   .commandDir('commands')
-//   .demandCommand(1)
-//   .help()
-//   .version()
-//   .argv;
+yargs
+  .commandDir('commands')
+  .demandCommand(1)
+  .help()
+  .version()
+  .argv;
