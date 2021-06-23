@@ -4,12 +4,13 @@
 
 ## Structure
 - [`packages/web`](/packages/web) - Web App
-- [`packages/desktop`](/packages/desktop) - Oasis Desktop
+- [`packages/desktop`](/packages/desktop) - Desktop App
 - [`packages/mobile`](/packages/mobile) - Capacitor/Ionic Mobile App
 - [`packages/ui`](/packages/ui) - UI Components
 - [`packages/api`](/packages/api) - Backend and GraphQL API
 - [`packages/react-gql`](/packages/react-gql) - React GraphQL Hooks
 - [`packages/client`](/packages/bot-client) - API Client
+- [`packages/parser`](/packages/parser) - Parser
 
 ## Contributions
 Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let us know what you are working on first that way we don't overwrite each other or have many people adding the same feature/solving the same issue. <br/>
