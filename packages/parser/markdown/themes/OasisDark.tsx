@@ -1,4 +1,10 @@
-export const OasisDark = {
+type StyleType = React.HTMLAttributes<HTMLElement>['style'] & {
+  Opacity?: string;
+};
+
+export const OasisDark: {
+  [key: string]: StyleType;
+} = {
   'pre[class*="language-"]': {
     color: '#d4d4d4',
     fontSize: '13px',

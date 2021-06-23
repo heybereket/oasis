@@ -22,7 +22,7 @@ export const StyledMarkdown: React.FC<{
     >
       <ReactMarkdown
         components={{
-          code({ node: _, inline, className, children, ...props }) {
+          code({ inline, className, children, ...props }) {
             const match = /language-(\*?\w+)/.exec(className || '');
             return !inline ? (
               <RuntimesContext.Consumer>
