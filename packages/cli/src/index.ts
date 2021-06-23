@@ -2,6 +2,7 @@ import * as yargs from 'yargs';
 import fs from 'fs';
 import * as log from './utils/log';
 
+<<<<<<< HEAD
 const argv = <any>(
   yargs.commandDir('commands').demandCommand().version('1.0.0').argv
 );
@@ -16,3 +17,6 @@ for (const file in commands) {
     break;
   }
 }
+=======
+yargs.commandDir('commands').demandCommand().version('1.0.0').argv;
+>>>>>>> 08ae8e95 (feat(cli): added more commands)
