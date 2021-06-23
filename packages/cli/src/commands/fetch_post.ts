@@ -29,4 +29,3 @@ export async function handler(yargs: any) {
     log.info(res);
   });
 }
-
