@@ -247,9 +247,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/eslint-parser@npm:^7.14.5":
-  version: 7.14.5
-  resolution: "@babel/eslint-parser@npm:7.14.5"
+"@babel/eslint-parser@npm:^7.14.7":
+  version: 7.14.7
+  resolution: "@babel/eslint-parser@npm:7.14.7"
   dependencies:
     eslint-scope: ^5.1.1
     eslint-visitor-keys: ^2.1.0
@@ -257,7 +257,7 @@ __metadata:
   peerDependencies:
     "@babel/core": ">=7.11.0"
     eslint: ">=7.5.0"
-  checksum: 2f24858075b84ddc346cedd5638c499f56550ba7add6be205557b9c6fb519a1ee7af7669035099626160ac4a5a1243d583d955ce2409075a373e8a6bc2d75df3
+  checksum: 2cb99cc3cbe6efde53a55a113d3a3b2ddbd807489e1443c47391401986b71ff5a3c07ca2f565c39b501224a30142cd7eb75f2555174e54aeff60dacc073aeaa5
   languageName: node
   linkType: hard
 
@@ -4309,43 +4309,43 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/core@npm:5.6.9":
-  version: 5.6.9
-  resolution: "@ionic/core@npm:5.6.9"
+"@ionic/core@npm:5.6.10":
+  version: 5.6.10
+  resolution: "@ionic/core@npm:5.6.10"
   dependencies:
     "@stencil/core": ^2.4.0
     ionicons: ^5.5.1
     tslib: ^2.1.0
-  checksum: a1245b145d5b4fb30b15a5e0e3a09bd49b97316ab96bb61c6c6d45b69b05031d103a884f2eaaa9be58e06f5cc18253dabaf307176f9e672cd7d4c9d49d5a6ecf
+  checksum: 42e5294d4090ad6425488d4d9d7c658c481b00679dc2fc1c65441fa05c768fecfabeaad4878b496124072311ea8344faa14e285dd27122f6b6707654b6ac209c
   languageName: node
   linkType: hard
 
-"@ionic/react-router@npm:^5.6.9":
-  version: 5.6.9
-  resolution: "@ionic/react-router@npm:5.6.9"
+"@ionic/react-router@npm:^5.6.10":
+  version: 5.6.10
+  resolution: "@ionic/react-router@npm:5.6.10"
   dependencies:
     tslib: "*"
   peerDependencies:
-    "@ionic/react": 5.6.9
+    "@ionic/react": 5.6.10
     react: ">=16.8.6"
     react-dom: ">=16.8.6"
     react-router: ^5.0.1
     react-router-dom: ^5.0.1
-  checksum: 79fbb09bb2c5f3164a6d2277b4d5923b4b1ef3f41097ade8f67e83fa32da9b610d5ef45fcec1b82be2a9d5412f939eeb05dc6745c23b60197842f420b3b2989e
+  checksum: ad5e9f50113b845442af6afcd21f355c72f5a3f1bdcc8c34cb57ec3fa47456e9d5b7d0f2b489bd3bd5baab18d139c0297291486961a262b12d47f338c75afea6
   languageName: node
   linkType: hard
 
-"@ionic/react@npm:^5.6.9":
-  version: 5.6.9
-  resolution: "@ionic/react@npm:5.6.9"
+"@ionic/react@npm:^5.6.10":
+  version: 5.6.10
+  resolution: "@ionic/react@npm:5.6.10"
   dependencies:
-    "@ionic/core": 5.6.9
+    "@ionic/core": 5.6.10
     ionicons: ^5.1.2
     tslib: "*"
   peerDependencies:
     react: ">=16.8.6"
     react-dom: ">=16.8.6"
-  checksum: 50071672a7456776dc6ab72658b09c247795943d3a42685b4400ef660797cee2d8881704bad0b5a0c737e8b38e45c2281d69d0b045c04e9d7c882290acf2761b
+  checksum: dad9729e43600b9d754b81938005d5e3e5b5fd50e56526f32b72cc52202b5ffe865e774e7885b6099eb8cadc98bf8e7342e3b48902c7564ab5a8a4267ebc9f44
   languageName: node
   linkType: hard
 
@@ -5142,6 +5142,7 @@ __metadata:
     "@types/yargs": ^17.0.0
     chalk: ^4.1.1
     eslint: ^7.29.0
+    graphql-request: ^3.4.0
     node-emoji: ^1.10.0
     prettier: ^2.3.1
     typescript: 4.3.4
@@ -5175,8 +5176,8 @@ __metadata:
     "@capacitor/core": 3.0.1
     "@capacitor/haptics": 1.0.1
     "@capacitor/keyboard": 1.0.1
-    "@ionic/react": ^5.6.9
-    "@ionic/react-router": ^5.6.9
+    "@ionic/react": ^5.6.10
+    "@ionic/react-router": ^5.6.10
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^11.2.7
     "@testing-library/user-event": ^13.1.9
@@ -5188,7 +5189,7 @@ __metadata:
     "@types/react-dom": ^17.0.8
     "@types/react-router": ^5.1.15
     "@types/react-router-dom": ^5.1.7
-    "@types/tailwindcss": ^2.0.6
+    "@types/tailwindcss": ^2.2.0
     "@types/webpack-dev-server": ^3.11.4
     eslint: ^7.29.0
     html-webpack-plugin: ^5.3.1
@@ -5367,7 +5368,7 @@ __metadata:
   resolution: "@oasis-sh/web@workspace:packages/web"
   dependencies:
     "@babel/core": ^7.14.6
-    "@babel/eslint-parser": ^7.14.5
+    "@babel/eslint-parser": ^7.14.7
     "@cypress/webpack-preprocessor": ^5.9.0
     "@mdx-js/react": ^1.6.22
     "@next/bundle-analyzer": ^11.0.0
@@ -5418,7 +5419,7 @@ __metadata:
     ts-node: ^10.0.0
     typescript: 4.3.4
     webpack: ^5.39.1
-    zustand: ^3.5.2
+    zustand: ^3.5.4
   languageName: unknown
   linkType: soft
 
@@ -7986,10 +7987,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/tailwindcss@npm:^2.0.6":
-  version: 2.0.6
-  resolution: "@types/tailwindcss@npm:2.0.6"
-  checksum: 78982ebf7e67896436c07d2a60607006c301644a2d95b31e600682bf4eac40cea178e4d9e39defc4e218e6b80dc1828f05e55ce63ec035fdc8f31d59b14965e7
+"@types/tailwindcss@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@types/tailwindcss@npm:2.2.0"
+  checksum: 939bbfc27bff494dd54285676b85dd4521adc5d224f758dc84bbf46a26be40d07c257e99ed932bc7537f1e066b227f4fa7239154ab41c844c402aa9d3be4965d
   languageName: node
   linkType: hard
 
@@ -16663,7 +16664,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"graphql-request@npm:^3.3.0":
+"graphql-request@npm:^3.3.0, graphql-request@npm:^3.4.0":
   version: 3.4.0
   resolution: "graphql-request@npm:3.4.0"
   dependencies:
@@ -32214,15 +32215,15 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"zustand@npm:^3.5.2":
-  version: 3.5.2
-  resolution: "zustand@npm:3.5.2"
+"zustand@npm:^3.5.4":
+  version: 3.5.4
+  resolution: "zustand@npm:3.5.4"
   peerDependencies:
     react: ">=16.8"
   peerDependenciesMeta:
     react:
       optional: true
-  checksum: f5df58852571142d7448ba09b259843d38c5e6b2313d7a864a868bfb7e4e16182e80ffc381a2124958dfc625e710182ec917d849c3286c1c067c981a9095e2f5
+  checksum: 0bcc0d15e47dcb503ff51dec3551a15ee1b6521315f820cb805531f4ba4124a61a9b7f7639bb4c8d0ffc5d77f7ff75f057388fee1b69ce087c3fe490a6193521
   languageName: node
   linkType: hard
 
