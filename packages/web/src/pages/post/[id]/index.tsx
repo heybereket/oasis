@@ -87,17 +87,19 @@ export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
           reportPost={reportEntity}
         />
         <div className="w-full mt-6">
-          <CreatePostInput
-            avatarUrl={user?.avatar ?? ''}
-            onSubmit={(value) => {
-              createComment({
-                variables: {
-                  data: { content: value },
-                  postId: postData?.id ?? '',
-                },
-              });
-            }}
-          />
+          {user && (
+            <CreatePostInput
+              avatarUrl={user?.avatar ?? ''}
+              onSubmit={(value) => {
+                createComment({
+                  variables: {
+                    data: { content: value },
+                    postId: postData?.id ?? '',
+                  },
+                });
+              }}
+            />
+          )}
           <CommentsTab
             comments={(commentsData ?? []) as TComment[]}
             fetch={async (limit, offset) => {
