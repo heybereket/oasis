@@ -7,10 +7,12 @@ export async function handler(yargs: any) {
   const client = new GraphQLClient('https://dev.oasis.sh/graphql');
 
   const searchQuery = yargs._.slice(1).join(' ');
-	const limit = yargs.limit ?? 10.0
+  const limit = yargs.limit ?? 10.0;
 
   if (!searchQuery)
-    return log.error('you need to pass <search query> in order for this to work');
+    return log.error(
+      'you need to pass <search query> in order for this to work'
+    );
 
   const query = gql`
     query Search($searchQuery: String!, $limit: Float!) {
@@ -57,8 +59,8 @@ export async function handler(yargs: any) {
 
   client
     .request(query, {
-      searchQuery: searchQuery,
-      limit: limit,
+      searchQuery,
+      limit,
     })
     .then((res) => {
       if (useJSON) return console.log(JSON.stringify(res));

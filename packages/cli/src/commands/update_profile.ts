@@ -9,7 +9,7 @@ export async function handler(yargs: any) {
 
   const client = new GraphQLClient('http://localhost:3000/graphql', {
     headers: {
-      authorization: 'STFU dulguuncodes',
+      authorization: 'Bearer INSERT TOKEN HERE',
     },
   });
 
@@ -23,7 +23,7 @@ export async function handler(yargs: any) {
     const data = JSON.parse(rawData);
 
     client
-      .request(query, { data: data })
+      .request(query, { data })
       .then((res) => {
         if (useJSON) return console.log(JSON.stringify(res));
         log.info(res);
@@ -32,7 +32,7 @@ export async function handler(yargs: any) {
   } catch (e) {
     if (!data) return log.error(e);
 
-    client.request(query, { data: data }).then((res) => {
+    client.request(query, { data }).then((res) => {
       if (useJSON) return console.log(JSON.stringify(res));
       log.info(res);
     });

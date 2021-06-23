@@ -6,7 +6,7 @@ export async function handler(yargs: any) {
 
   const client = new GraphQLClient('http://localhost:3000/graphql', {
     headers: {
-      authorization: 'STFU dulguuncodes',
+      authorization: 'Bearer INSERT TOKEN HERE',
     },
   });
 

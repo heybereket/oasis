@@ -50,9 +50,9 @@ export async function handler(yargs: any) {
 
   client
     .request(query, {
-      username: username,
-      postsLimit: postsLimit,
-      postsOffset: postsOffset,
+      username,
+      postsLimit,
+      postsOffset,
     })
     .then((res) => {
       if (useJSON) return console.log(JSON.stringify(res));

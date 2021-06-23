@@ -5,7 +5,7 @@ export async function handler(yargs: any) {
   const useJSON = yargs.json ?? false;
 
   const client = new GraphQLClient('http://localhost:3000/graphql', {
-    headers: { authorization: 'STFU dulguuncodes' },
+    headers: { authorization: 'Bearer INSERT TOKEN HERE' },
   });
 
   const userID = yargs._[1];
