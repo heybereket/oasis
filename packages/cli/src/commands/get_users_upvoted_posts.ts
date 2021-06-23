@@ -10,12 +10,8 @@ export async function handler(yargs: any) {
   const postsLimit = yargs.limit ?? 10.0;
   const postsOffset = yargs.limit ?? 0.0;
 
-<<<<<<< HEAD
-  if (!username) return log.error('you need to pass <username> in order for this to work');
-=======
   if (!username)
     return log.error('you need to pass <username> in order for this to work');
->>>>>>> 293dbe7e (feat(cli): search command, more fetches, etc)
 
   const query = gql`
     query getUsersUpvotedPosts(
@@ -54,15 +50,9 @@ export async function handler(yargs: any) {
 
   client
     .request(query, {
-<<<<<<< HEAD
       username,
       postsLimit,
       postsOffset,
-=======
-      username: username,
-      postsLimit: postsLimit,
-      postsOffset: postsOffset,
->>>>>>> 293dbe7e (feat(cli): search command, more fetches, etc)
     })
     .then((res) => {
       if (useJSON) return console.log(JSON.stringify(res));

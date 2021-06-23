@@ -2,10 +2,6 @@ import * as yargs from 'yargs';
 import fs from 'fs';
 import * as log from './utils/log';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 8eb29849 (feat(cli): error out when unknown command is called)
 const argv = <any>(
   yargs.commandDir('commands').demandCommand().version('1.0.0').argv
 );
@@ -20,9 +16,3 @@ for (const file in commands) {
     break;
   }
 }
-<<<<<<< HEAD
-=======
-yargs.commandDir('commands').demandCommand().version('1.0.0').argv;
->>>>>>> 08ae8e95 (feat(cli): added more commands)
-=======
->>>>>>> 8eb29849 (feat(cli): error out when unknown command is called)

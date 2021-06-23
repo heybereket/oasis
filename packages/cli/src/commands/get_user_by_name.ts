@@ -4,16 +4,10 @@ import { gql, GraphQLClient } from 'graphql-request';
 export async function handler(yargs: any) {
   const useJSON = yargs.json ?? false;
 
-<<<<<<< HEAD
   const username = yargs._[1];
-
-  if (!username) return log.error('you need to pass <username> in order for this to work');
-=======
-  const username = yargs._[1]
 
   if (!username)
     return log.error('you need to pass <username> in order for this to work');
->>>>>>> 293dbe7e (feat(cli): search command, more fetches, etc)
 
   const client = new GraphQLClient('https://dev.oasis.sh/graphql');
 
@@ -52,11 +46,7 @@ export async function handler(yargs: any) {
     }
   `;
 
-<<<<<<< HEAD
   client.request(query, { username }).then((res) => {
-=======
-  client.request(query, { username: username }).then((res) => {
->>>>>>> 293dbe7e (feat(cli): search command, more fetches, etc)
     if (useJSON) return console.log(JSON.stringify(res));
     log.info(res);
   });
