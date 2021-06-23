@@ -9,7 +9,7 @@
 - [`packages/ui`](/packages/ui) - UI Components
 - [`packages/api`](/packages/api) - Backend and GraphQL API
 - [`packages/react-gql`](/packages/react-gql) - React GraphQL Hooks
-- [`packages/client`](/packages/bot-client) - API Client
+- [`packages/sdk`](/packages/sdk) - API Client
 - [`packages/parser`](/packages/parser) - Parser
 
 ## Contributions
