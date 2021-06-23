@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Post, CommentsTab } from '@oasis-sh/ui';
+import { Navbar, Post, CommentsTab, CreatePostInput } from '@oasis-sh/ui';
 import { StyledMarkdown } from '@oasis-sh/parser';
 import { GetServerSideProps } from 'next';
 import {
@@ -17,6 +17,7 @@ import {
   useReportEntityMutation,
   useUpvoteDownvoteCommentMutation,
   User,
+  useCreateCommentMutation,
 } from '@oasis-sh/react-gql';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { SEO } from '@shared/SEO';
@@ -39,6 +40,12 @@ export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
   const [upvoteDownvotePost] = useUpvoteDownvotePostMutation();
   const [reportEntity] = useReportEntityMutation();
   const [upvoteDownvoteComment] = useUpvoteDownvoteCommentMutation();
+
+  const [createComment] = useCreateCommentMutation({
+    onCompleted: () => {
+      window.location.reload();
+    },
+  });
 
   return (
     <>
@@ -80,6 +87,17 @@ export const PostPage: React.FC<Props> = ({ PostVars, CommentVars }) => {
           reportPost={reportEntity}
         />
         <div className="w-full mt-6">
+          <CreatePostInput
+            avatarUrl={user?.avatar ?? ''}
+            onSubmit={(value) => {
+              createComment({
+                variables: {
+                  data: { content: value },
+                  postId: postData?.id ?? '',
+                },
+              });
+            }}
+          />
           <CommentsTab
             comments={(commentsData ?? []) as TComment[]}
             fetch={async (limit, offset) => {
