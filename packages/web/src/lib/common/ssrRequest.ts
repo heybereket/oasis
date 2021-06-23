@@ -1,5 +1,5 @@
 import { NormalizedCacheObject } from '@apollo/client';
-import { initializeApollo } from './apolloClient';
+import { initializeApollo } from '../apollo';
 import { graphql, DocumentNode, print } from 'graphql';
 import { IncomingMessage } from 'http';
 import forceRequire from '@utils/require';

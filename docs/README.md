@@ -36,14 +36,11 @@ $ yarn clean
 
 ## Linting
 ```bash
-# Run Prettier + Eslint Globally
-$ yarn format
-
 # Run Prettier
-$ yarn prettify
+$ yarn fix:prettier
 
 # Run Eslint
-$ yarn lint
+$ yarn fix:lint
 ```
 
 ## Translations
