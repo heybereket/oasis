@@ -5437,7 +5437,10 @@ __metadata:
   dependencies:
     "@types/eslint": ^7.2.13
     "@types/prettier": ^2.3.0
+<<<<<<< HEAD
     chalk: ^4.1.1
+=======
+>>>>>>> 59177c29 (fix(shared): Removed moment.js and used dayjs instead)
     dayjs: ^1.10.5
     eslint: ^7.29.0
     prettier: ^2.3.1
