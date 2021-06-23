@@ -20,3 +20,6 @@ packages/web/server/index.js
 *.rdb
 
 .dockerenv
+
+# ignores generic vim sessions
+Session.vim

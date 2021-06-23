@@ -10,8 +10,7 @@ export async function handler(yargs: any) {
   const postsLimit = yargs.limit ?? 10.0;
   const postsOffset = yargs.limit ?? 0.0;
 
-  if (!username)
-    return log.error('you need to pass <username> in order for this to work');
+  if (!username) return log.error('you need to pass <username> in order for this to work');
 
   const query = gql`
     query getUsersPosts(

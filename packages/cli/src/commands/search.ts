@@ -9,8 +9,7 @@ export async function handler(yargs: any) {
   const searchQuery = yargs._.slice(1).join(' ');
   const limit = yargs.limit ?? 10.0;
 
-  if (!searchQuery)
-    return log.error(
+  if (!searchQuery) return log.error(
       'you need to pass <search query> in order for this to work'
     );
 

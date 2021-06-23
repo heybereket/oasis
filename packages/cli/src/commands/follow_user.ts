@@ -10,8 +10,7 @@ export async function handler(yargs: any) {
 
   const userID = yargs._[1];
 
-  if (!userID)
-    return log.error('you need to pass <username> in order for this to work');
+  if (!userID) return log.error('you need to pass <username> in order for this to work');
 
   const query = gql`
     mutation FollowUser($userId: String!) {
