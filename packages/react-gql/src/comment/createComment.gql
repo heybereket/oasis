@@ -1,0 +1,3 @@
+mutation CreateComment($data: NewCommentInput! $postId: String!) {
+  createComment(data: $data postId: $postId)
+}
