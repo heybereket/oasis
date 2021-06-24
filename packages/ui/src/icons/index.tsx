@@ -19,3 +19,6 @@ export { UpArrow } from './arrows/UpArrow';
 export { SmallDownArrow } from './arrows/SmallDownArrow';
 export { Info } from './other/Info';
 export { Trash } from './other/Trash';
+export { Featured } from './other/Featured';
+export { Latest } from './posts/Latest';
+export { Trending } from './posts/Trending';
