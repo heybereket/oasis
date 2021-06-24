@@ -18,15 +18,15 @@ COPY ./packages/web/package.json ./packages/web/package.json
 
 RUN yarn install
 
+COPY ./packages/shared ./packages/shared
+RUN yarn workspace @oasis-sh/shared build
+
 COPY ./packages/api ./packages/api
 COPY ./docker/docker-ormconfig.ts ./packages/api/src/ormconfig.ts
 RUN yarn workspace @oasis-sh/api build
 
 COPY ./packages/react-gql ./packages/react-gql
 RUN yarn workspace @oasis-sh/react-gql build
-
-COPY ./packages/shared ./packages/shared
-RUN yarn workspace @oasis-sh/shared build
 
 COPY ./packages/ui ./packages/ui
 RUN yarn workspace @oasis-sh/ui build
