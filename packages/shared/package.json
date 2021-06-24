@@ -13,7 +13,7 @@
     "typescript": "4.3.4"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "yarn clean && tsc",
     "clean": "rimraf dist"
   },
   "dependencies": {
