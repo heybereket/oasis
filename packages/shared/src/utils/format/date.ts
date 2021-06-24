@@ -29,7 +29,7 @@ export const formatDate = (createdAt: number | string | Date): string => {
   const diff = now - date.getTime();
   let time;
 
-  if (typeof window === 'undefined') {
+  if (typeof window !== 'undefined') {
     time = dayjs(Number(createdAt)).format('h:mm A');
   }
 
