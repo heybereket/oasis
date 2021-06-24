@@ -27,6 +27,6 @@
 
 import * as log from '@oasis-sh/shared';
 
-export async function handler() {
+export const handler = async (yargs: any) => {
   log.error('this command has not been implemented yet.');
-}
+};

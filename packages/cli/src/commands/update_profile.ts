@@ -2,7 +2,7 @@ import * as log from '@oasis-sh/shared';
 import { gqlURL } from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
 
-export async function handler(yargs: any) {
+export const handler = async (yargs: any) => {
   const useJSON = yargs.json ?? false;
   const { _, $0, ...data } = yargs;
 
@@ -38,4 +38,4 @@ export async function handler(yargs: any) {
       log.info(res);
     });
   }
-}
+};
