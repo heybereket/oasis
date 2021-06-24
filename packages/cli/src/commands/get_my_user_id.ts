@@ -6,26 +6,14 @@ export async function handler(yargs: any) {
 
   const client = new GraphQLClient('http://localhost:3000/graphql', {
     headers: {
-      authorization: 'STFU dulguuncodes',
+      authorization: 'Bearer INSERT TOKEN HERE',
     },
   });
 
   const query = gql`
-    query {
+    query getMyUserId {
       currentUser {
         id
-        banner
-        avatar
-        createdAt
-        github
-        twitter
-        discord
-        google
-        bio
-        username
-        name
-        verified
-        roles
       }
     }
   `;
