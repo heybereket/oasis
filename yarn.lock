@@ -5437,6 +5437,7 @@ __metadata:
   dependencies:
     "@types/eslint": ^7.2.13
     "@types/prettier": ^2.3.0
+    chalk: ^4.1.1
     dayjs: ^1.10.5
     eslint: ^7.29.0
     prettier: ^2.3.1
