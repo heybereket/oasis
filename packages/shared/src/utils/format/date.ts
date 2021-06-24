@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
 export const MS = 1; // 1
 export const SECOND = 1000 * MS; // 1000
@@ -20,14 +20,18 @@ const AS_A_MONTH = 45 * DAY;
 const AS_MONTHS = 320 * DAY;
 const AS_A_YEAR = 548 * DAY;
 
-export const invalidDate = "Invalid Date";
+export const invalidDate = 'Invalid Date';
 
 export const formatDate = (createdAt: number | string | Date): string => {
   const date = new Date(Number(createdAt));
   if (isNaN(date.getTime())) return invalidDate;
   const now = Date.now();
   const diff = now - date.getTime();
-  const time = dayjs(Number(createdAt)).format("h:mm A");
+  let time;
+
+  if (typeof window !== 'undefined') {
+    time = dayjs(Number(createdAt)).format('h:mm A');
+  }
 
   if (diff < 0) return invalidDate;
   if (diff < AS_JUST_NOW) return `${time} • just now`;
