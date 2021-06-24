@@ -1,5 +1,6 @@
 import * as log from '../utils/log';
 import { request, gql } from 'graphql-request';
+import { GQL_URL } from '../constants';
 
 export async function handler(yargs: any) {
   const limit = yargs.limit ?? 10;
@@ -21,7 +22,7 @@ export async function handler(yargs: any) {
     }
   `;
 
-  request('https://dev.oasis.sh/graphql', query, {
+  request(GQL_URL, query, {
     postsLimit: limit,
     postsOffset: offset,
   }).then((res) => {

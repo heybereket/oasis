@@ -1,10 +1,11 @@
 import * as log from '../utils/log';
 import { gql, GraphQLClient } from 'graphql-request';
+import { GQL_URL } from '../constants';
 
 export async function handler(yargs: any) {
   const useJSON = yargs.json ?? false;
 
-  const client = new GraphQLClient('http://localhost:3000/graphql', {
+  const client = new GraphQLClient(GQL_URL, {
     headers: { authorization: 'Bearer INSERT TOKEN HERE' },
   });
 

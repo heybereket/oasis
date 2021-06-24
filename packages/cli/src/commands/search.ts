@@ -1,15 +1,17 @@
 import * as log from '../utils/log';
 import { gql, GraphQLClient } from 'graphql-request';
+import { GQL_URL } from '../constants';
 
 export async function handler(yargs: any) {
   const useJSON = yargs.json ?? false;
 
-  const client = new GraphQLClient('https://dev.oasis.sh/graphql');
+  const client = new GraphQLClient(GQL_URL);
 
   const searchQuery = yargs._.slice(1).join(' ');
   const limit = yargs.limit ?? 10.0;
 
-  if (!searchQuery) return log.error(
+  if (!searchQuery)
+    return log.error(
       'you need to pass <search query> in order for this to work'
     );
 
