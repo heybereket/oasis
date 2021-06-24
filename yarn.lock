@@ -5285,9 +5285,12 @@ __metadata:
   dependencies:
     "@types/eslint": ^7.2.13
     "@types/prettier": ^2.3.0
+<<<<<<< HEAD
     chalk: ^4.1.1
+=======
+    dayjs: ^1.10.5
+>>>>>>> 53576a60fe79eaeb0fa9882ca6c6268f668ebeb0
     eslint: ^7.29.0
-    moment: ^2.29.1
     prettier: ^2.3.1
     typescript: 4.3.4
   peerDependencies:
@@ -5319,8 +5322,6 @@ __metadata:
     eslint-plugin-react-hooks: ^4.2.0
     i18next: ^20.3.2
     i18next-browser-languagedetector: ^6.1.2
-    moment: ^2.29.1
-    moment-timezone: ^0.5.33
     node-sass: ^6.0.0
     prettier: ^2.3.1
     react: ^17.0.2
@@ -5400,7 +5401,6 @@ __metadata:
     express: ^4.17.1
     formik: ^2.2.9
     github-markdown-css: ^4.0.0
-    moment-timezone: ^0.5.33
     next: ^11.0.0
     next-transpile-modules: ^8.0.0
     node-fetch: ^2.6.1
@@ -13159,7 +13159,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.10.4":
+"dayjs@npm:^1.10.4, dayjs@npm:^1.10.5":
   version: 1.10.5
   resolution: "dayjs@npm:1.10.5"
   checksum: 11b3a952cdb77959b07318804bd982d1d377581e4752ec478da82b494da1ebb9d82e0539481ab51f90a36e35a268a730034cb6f3cac1b45609755c909329c0a1
@@ -21840,22 +21840,6 @@ fsevents@^1.2.7:
   version: 1.1.0
   resolution: "modern-normalize@npm:1.1.0"
   checksum: d75412f804e93ccc4b992b5c66f3a37093b4e105e1ed90ac2fa718601dad2c1250d06d7773fe0fee054927bd53b4ab624e04ecafddfa80ea337937f6282791b2
-  languageName: node
-  linkType: hard
-
-"moment-timezone@npm:^0.5.33":
-  version: 0.5.33
-  resolution: "moment-timezone@npm:0.5.33"
-  dependencies:
-    moment: ">= 2.9.0"
-  checksum: d4e72a3514a2885ab26b1cbc640e2f4785c997f9de28bb48bf3994ef137b0a560ca8f07eb07f11121e1223eef0c3bce4bc647b911111481a6a066bbc61285f99
-  languageName: node
-  linkType: hard
-
-"moment@npm:>= 2.9.0, moment@npm:^2.29.1":
-  version: 2.29.1
-  resolution: "moment@npm:2.29.1"
-  checksum: 86729013febf7160de5b93da69273dd304d674b0224f9544b3abd09a87671ddd2cdd57598261ce57588910d63747ffd5590965e83c790d8bf327083c0e0a06e0
   languageName: node
   linkType: hard
 

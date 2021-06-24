@@ -61,7 +61,6 @@
     "eslint": "^7.29.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "moment-timezone": "^0.5.33",
     "next-transpile-modules": "^8.0.0",
     "node-fetch": "^2.6.1",
     "postcss": "^8.3.5",
