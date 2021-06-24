@@ -1,6 +1,6 @@
-import * as log from '../utils/log';
+import * as log from '@oasis-sh/shared';
+import { gqlURL } from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
-import { GQL_URL } from '../constants';
 
 export async function handler(yargs: any) {
   const useJSON = yargs.json ?? false;
@@ -8,7 +8,7 @@ export async function handler(yargs: any) {
 
   const rawData = _;
 
-  const client = new GraphQLClient(GQL_URL, {
+  const client = new GraphQLClient(gqlURL, {
     headers: {
       authorization: 'Bearer INSERT TOKEN HERE',
     },
