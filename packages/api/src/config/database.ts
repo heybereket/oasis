@@ -1,7 +1,7 @@
 import { ConnectionOptions, createConnection } from 'typeorm';
 import { joinRoot } from '@utils/common/rootPath';
 import { seedDatabase } from '@utils/testing/seedDatabase';
-import { log } from '@oasis-sh/shared';
+import * as log from '@oasis-sh/shared';
 
 export const getDatabase = async () => {
   let ormconfig: ConnectionOptions;
