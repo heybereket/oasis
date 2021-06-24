@@ -25,7 +25,7 @@
 //   });
 // }
 
-import * as log from '../utils/log';
+import * as log from '@oasis-sh/shared';
 
 export async function handler() {
   log.error('this command has not been implemented yet.');

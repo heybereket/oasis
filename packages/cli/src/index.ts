@@ -1,6 +1,6 @@
 import * as yargs from 'yargs';
 import fs from 'fs';
-import * as log from './utils/log';
+import * as log from '@oasis-sh/shared';
 
 const argv = <any>(
   yargs.commandDir('commands').demandCommand().version('1.0.0').argv

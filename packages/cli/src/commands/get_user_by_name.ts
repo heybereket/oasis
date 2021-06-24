@@ -1,6 +1,6 @@
-import * as log from '../utils/log';
+import * as log from '@oasis-sh/shared';
+import { gqlURL } from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
-import { GQL_URL } from '../constants';
 
 export async function handler(yargs: any) {
   const useJSON = yargs.json ?? false;
@@ -9,7 +9,7 @@ export async function handler(yargs: any) {
 
   if (!username) return log.error('you need to pass <username> in order for this to work');
 
-  const client = new GraphQLClient(GQL_URL);
+  const client = new GraphQLClient(gqlURL);
 
   const query = gql`
     query getUserByName($username: String!) {
