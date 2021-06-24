@@ -1,4 +1,5 @@
-import * as log from '../utils/log';
+import * as log from '@oasis-sh/shared';
+import { gqlURL } from '@oasis-sh/shared';
 import { request, gql } from 'graphql-request';
 
 export async function handler(yargs: any) {
@@ -21,7 +22,7 @@ export async function handler(yargs: any) {
     }
   `;
 
-  request('https://dev.oasis.sh/graphql', query, {
+  request(gqlURL, query, {
     postsLimit: limit,
     postsOffset: offset,
   }).then((res) => {

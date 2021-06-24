@@ -8,7 +8,8 @@
     "build": "tsc",
     "watch": "tsc --watch",
     "clean": "rimraf dist/*",
-    "publish": "npm publish"
+    "publish": "npm publish",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/eslint": "^7.2.13",
@@ -20,6 +21,7 @@
     "chalk": "^4.1.1",
     "eslint": "^7.29.0",
     "graphql-request": "^3.4.0",
+    "jest": "^27.0.5",
     "node-emoji": "^1.10.0",
     "prettier": "^2.3.1",
     "typescript": "4.3.4",

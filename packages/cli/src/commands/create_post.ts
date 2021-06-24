@@ -1,11 +1,14 @@
-import * as log from '../utils/log';
+import * as log from '@oasis-sh/shared';
+import { gqlURL } from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
 
 export async function handler(yargs: any) {
   const useJSON = yargs.json ?? false;
-  if (!yargs.message) return log.error('you need to pass <message> in order for this to work');
+  if (!yargs.message) {
+    return log.error('you need to pass <message> in order for this to work');
+  }
 
-  const client = new GraphQLClient('http://localhost:3000/graphql', {
+  const client = new GraphQLClient(gqlURL, {
     headers: { authorization: 'Bearer INSERT TOKEN HERE' },
   });
 

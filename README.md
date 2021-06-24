@@ -11,6 +11,7 @@
 - [`packages/react-gql`](/packages/react-gql) - React GraphQL Hooks
 - [`packages/sdk`](/packages/sdk) - API Client
 - [`packages/parser`](/packages/parser) - Parser
+- [`packages/cli`](/packages/cli) - CLI
 
 ## Contributions
 Oasis is open to contributions, but we recommend creating an issue or replying in a comment to let us know what you are working on first that way we don't overwrite each other or have many people adding the same feature/solving the same issue. <br/>
