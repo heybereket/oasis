@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 export const MS = 1; // 1
 export const SECOND = 1000 * MS; // 1000
 export const MINUTE = 60 * SECOND; // 60000
@@ -27,7 +25,7 @@ export const formatDate = (createdAt: number | string | Date): string => {
   if (isNaN(date.getTime())) return invalidDate;
   const now = Date.now();
   const diff = now - date.getTime();
-  const time = moment.utc(Number(createdAt)).format('h:mm A');
+  const time = date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone });
 
   if (diff < 0) return invalidDate;
   if (diff < AS_JUST_NOW) return `${time} • just now`;

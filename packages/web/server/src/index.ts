@@ -1,10 +1,9 @@
 import { config } from 'dotenv';
-import path, { join } from 'path';
+import { join } from 'path';
 import ms from 'pretty-ms';
 import next from 'next';
-import * as log from './lib/log';
-import { exit } from './lib/exit';
-import { getServer } from './lib/getServer';
+import { log, exit } from '@oasis-sh/shared';
+import { getServer } from './getServer';
 
 config({ path: join(__dirname, '../../../api/.env') });
 
