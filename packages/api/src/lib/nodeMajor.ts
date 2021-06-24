@@ -1,5 +1,6 @@
 import { nodeMajor } from '@lib/constants';
-import { log, exit } from '@oasis-sh/shared';
+import * as log from '@oasis-sh/shared';
+import { exit } from '@oasis-sh/shared';
 
 export const checkNodeMajor = (version: number) => {
   if (nodeMajor < version) {

@@ -1,7 +1,7 @@
 import { createContext } from '@utils/auth/createContext';
 import Connection from '@entities/Connection';
 import { Request } from 'express';
-import { log } from '@oasis-sh/shared';
+import * as log from '@oasis-sh/shared';
 
 const createConnection = async (
   accessToken: string,
