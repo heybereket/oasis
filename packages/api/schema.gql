@@ -8,14 +8,14 @@ type Answer {
   content: String!
   createdAt: String!
   downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromAnswer_downvotedAnswersResponse!
-  downvotes: Float!
+  downvotes: Float
   id: ID!
   isDownvoted: Boolean!
   isUpvoted: Boolean!
   lastEdited: String
   question: Question!
   upvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromAnswer_upvotedAnswersResponse!
-  upvotes: Float!
+  upvotes: Float
 }
 
 type Badge {
@@ -32,7 +32,7 @@ type Comment {
   content: String!
   createdAt: String!
   downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromComment_downvotedCommentsResponse!
-  downvotes: Float!
+  downvotes: Float
   id: ID!
   isDownvoted: Boolean!
   isUpvoted: Boolean!
@@ -40,7 +40,7 @@ type Comment {
   post: Post
   question: Question
   upvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromComment_upvotedCommentsResponse!
-  upvotes: Float!
+  upvotes: Float
 }
 
 input CreateBotInput {
@@ -325,7 +325,7 @@ type Post {
   comments(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedCommentFromPost_postResponse!
   createdAt: String!
   downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromPost_downvotedPostsResponse!
-  downvotes: Float!
+  downvotes: Float
   id: ID!
   imageName: String
   isDownvoted: Boolean!
@@ -335,7 +335,7 @@ type Post {
   resort: Resort
   topics: [String!]!
   upvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromPost_upvotedPostsResponse!
-  upvotes: Float!
+  upvotes: Float
 }
 
 type Query {

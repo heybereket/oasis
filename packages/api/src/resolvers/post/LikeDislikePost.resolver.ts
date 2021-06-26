@@ -37,19 +37,19 @@ export class UpvoteDownvotePostResolver {
     );
   }
 
-  @FieldResolver(() => Float)
-  async upvotes(@Root() post: Post) {
-    return User.createQueryBuilder('user')
-      .innerJoin(`user.upvotedPosts`, 'post', 'post.id = :id', { id: post.id })
-      .getCount();
-  }
+  // @FieldResolver(() => Float)
+  // async upvotes(@Root() post: Post) {
+  //   return User.createQueryBuilder('user')
+  //     .innerJoin(`user.upvotedPosts`, 'post', 'post.id = :id', { id: post.id })
+  //     .getCount();
+  // }
 
-  @FieldResolver(() => Float)
-  async downvotes(@Root() post: Post) {
-    return User.createQueryBuilder('user')
-      .innerJoin(`user.downvotedPosts`, 'post', 'post.id = :id', {
-        id: post.id,
-      })
-      .getCount();
-  }
+  // @FieldResolver(() => Float)
+  // async downvotes(@Root() post: Post) {
+  //   return User.createQueryBuilder('user')
+  //     .innerJoin(`user.downvotedPosts`, 'post', 'post.id = :id', {
+  //       id: post.id,
+  //     })
+  //     .getCount();
+  // }
 }

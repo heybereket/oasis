@@ -3,7 +3,13 @@ import { ApolloError } from 'apollo-server-express';
 import { BaseEntity } from 'typeorm';
 
 export const upvoteDownvote = async <
-  Entity extends BaseEntity & { id: string }
+  Entity extends BaseEntity & {
+    id: string;
+    upvotes?: number;
+    upvoters: Promise<User[]>;
+    downvotes?: number;
+    downvoters: Promise<User[]>;
+  }
 >(
   root: Entity,
   user: User,
@@ -61,8 +67,13 @@ export const upvoteDownvote = async <
     }
   }
 
-  root.save();
-  user.save();
+  await user.save();
+  const newRoot = await root.save();
+
+  newRoot.upvotes = (await newRoot.upvoters).length;
+  newRoot.downvotes = (await newRoot.downvoters).length;
+
+  newRoot.save();
 
   return true;
 };

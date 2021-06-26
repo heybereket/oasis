@@ -38,21 +38,21 @@ export class UpvoteDownvoteCommentResolver {
     );
   }
 
-  @FieldResolver(() => Float)
-  async upvotes(@Root() comment: Comment) {
-    return User.createQueryBuilder('user')
-      .innerJoin(`user.upvotedComments`, 'comment', 'comment.id = :id', {
-        id: comment.id,
-      })
-      .getCount();
-  }
+  // @FieldResolver(() => Float)
+  // async upvotes(@Root() comment: Comment) {
+  //   return User.createQueryBuilder('user')
+  //     .innerJoin(`user.upvotedComments`, 'comment', 'comment.id = :id', {
+  //       id: comment.id,
+  //     })
+  //     .getCount();
+  // }
 
-  @FieldResolver(() => Float)
-  async downvotes(@Root() comment: Comment) {
-    return User.createQueryBuilder('user')
-      .innerJoin(`user.downvotedComments`, 'comment', 'comment.id = :id', {
-        id: comment.id,
-      })
-      .getCount();
-  }
+  // @FieldResolver(() => Float)
+  // async downvotes(@Root() comment: Comment) {
+  //   return User.createQueryBuilder('user')
+  //     .innerJoin(`user.downvotedComments`, 'comment', 'comment.id = :id', {
+  //       id: comment.id,
+  //     })
+  //     .getCount();
+  // }
 }

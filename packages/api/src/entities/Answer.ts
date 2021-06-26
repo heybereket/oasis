@@ -52,4 +52,12 @@ export default class Answer extends BaseEntity {
 
   @OneToMany(() => Report, (report) => report.answer)
   filedReports: Promise<Report[]>;
+
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  upvotes?: number = 0;
+
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  downvotes?: number = 0;
 }
