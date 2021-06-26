@@ -4,6 +4,7 @@ import User from '@entities/User';
 import { v4 as uuid } from 'uuid';
 import { checkUsername } from '@utils/auth/checkUsername';
 import { PassportStatic } from 'passport';
+import { URLs } from '@config/urls';
 
 const getAvatarURL = (options: {
   hash?: string;
@@ -28,8 +29,7 @@ export default (passport: PassportStatic): Router => {
         const id = String(profile.id);
 
         try {
-          const user =
-            (await User.findOne({ where: { discord: id } })) || User.create();
+          const user = (await User.findOne({ where: { discord: id } })) || User.create();
 
           if (!user.id) {
             user.id = uuid();
@@ -68,8 +68,8 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('discord', {
-      successReturnToOrRedirect: '/auth/success',
-      failureRedirect: '/login',
+      successReturnToOrRedirect: URLs.authSuccess,
+      failureRedirect: URLs.login,
       session: true,
     })
   );

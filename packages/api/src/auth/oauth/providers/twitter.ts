@@ -4,6 +4,8 @@ import User from '@entities/User';
 import { v4 as uuid } from 'uuid';
 import { checkUsername } from '@utils/auth/checkUsername';
 import { PassportStatic } from 'passport';
+import isNull from '@utils/common/isNull';
+import { URLs } from '@config/urls';
 
 export default (passport: PassportStatic): Router => {
   passport.use(
@@ -17,16 +19,12 @@ export default (passport: PassportStatic): Router => {
         const id = String(profile.id);
 
         try {
-          const user =
-            (await User.findOne({ where: { twitter: id } })) || User.create();
+          const user = (await User.findOne({ where: { twitter: id } })) || User.create();
 
-          // Store data from Twitter only on user's first login
           if (!user.id) {
             user.id = uuid();
             user.avatar = profile._json.profile_image_url_https;
-            user.banner = profile._json.profile_banner_url
-              ? profile._json.profile_banner_url
-              : null;
+            user.banner = isNull(profile._json.profile_banner_url);
             user.name = profile.displayName;
             user.twitter = id;
             user.username = await checkUsername(profile.username);
@@ -56,8 +54,8 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('twitter', {
-      successReturnToOrRedirect: '/auth/success',
-      failureRedirect: '/login',
+      successReturnToOrRedirect: URLs.authSuccess,
+      failureRedirect: URLs.login,
       session: true,
     })
   );

@@ -8,7 +8,7 @@ describe('getting user by name', () => {
   it('gets valid data', () => {
     const [output, error] = testCommand('getUserByName', 'dulguuncodes --json');
 
-    expect(error).toBeNull();;
+    expect(error).toBeNull();
 
     const parsed = JSON.parse(output);
     expect(parsed).toMatchSchema(userSchema);
@@ -28,9 +28,9 @@ describe('getting user by name', () => {
   it('rejects incomplete requests', () => {
     const [output, error] = testCommand('getUserByName', '--json');
 
-    expect(error).toBeNull()
+    expect(error).toBeNull();
 
-    console.log(output)
+    console.log(output);
   });
   it.todo('dumps the raw json');
 });

@@ -7,6 +7,7 @@ import { http } from '@utils/common/http';
 import { searchJSON } from '@utils/index';
 import { PassportStatic } from 'passport';
 import Badge from '@entities/Badge';
+import { URLs } from '@config/urls';
 
 export default (passport: PassportStatic): Router => {
   passport.use(
@@ -24,10 +25,8 @@ export default (passport: PassportStatic): Router => {
         );
 
         try {
-          const user =
-            (await User.findOne({ where: { github: id } })) || User.create();
+          const user = (await User.findOne({ where: { github: id } })) || User.create();
 
-          // Store data from GitHub only on user's first login
           if (!user.id) {
             user.id = uuid();
             user.avatar = profile._json.avatar_url;
@@ -73,8 +72,8 @@ export default (passport: PassportStatic): Router => {
   router.get(
     '/callback',
     passport.authenticate('github', {
-      successReturnToOrRedirect: '/auth/success',
-      failureRedirect: '/login',
+      successReturnToOrRedirect: URLs.authSuccess,
+      failureRedirect: URLs.login,
       session: true,
     })
   );
