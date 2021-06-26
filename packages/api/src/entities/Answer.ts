@@ -7,7 +7,7 @@ import {
   ManyToMany,
   OneToMany,
 } from 'typeorm';
-import { Field, ID, ObjectType } from 'type-graphql';
+import { Field, ID, ObjectType, Root } from 'type-graphql';
 import User from '@entities/User';
 import { RelationalPagination } from '@utils/paginate/RelationalPagination';
 import Report from './Report';
@@ -53,11 +53,19 @@ export default class Answer extends BaseEntity {
   @OneToMany(() => Report, (report) => report.answer)
   filedReports: Promise<Report[]>;
 
-  @Field({ nullable: true })
   @Column({ nullable: true })
   upvotes?: number = 0;
 
-  @Field({ nullable: true })
+  @Field({ nullable: false, name: 'upvotes' })
+  getUpvotes(@Root() root: any): number {
+    return root.upvotes ?? 0;
+  }
+
   @Column({ nullable: true })
   downvotes?: number = 0;
+
+  @Field({ nullable: false, name: 'donwvotes' })
+  getDownvotes(@Root() root: any): number {
+    return root.downvotes ?? 0;
+  }
 }
