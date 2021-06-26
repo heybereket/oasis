@@ -16,6 +16,12 @@ export default async function genArguments() {
     await readFile(join(__dirname, '../../../api/schema.gql'))
   ).toString();
 
+  const matches = [
+    ...content.matchAll(/type\s+(.*?)\s+{(\r?)\n(.*?)(\r?)\n}/gs),
+  ].map((a) => [...a]);
+
+  console.log(matches);
+
   const results: GQLArgumentTypes = {};
   const typeResults: any = {};
 
@@ -28,9 +34,7 @@ export default async function genArguments() {
     'Comment',
   ];
 
-  for (const [_, parentType, fieldsStr] of content.matchAll(
-    /\ntype\s+(.*?)\s+{\n(.*?)\n}/gs
-  )) {
+  for (const [_, parentType, __, fieldsStr] of matches) {
     const data: ResolverType = (results[parentType] = {});
     const typeData = (typeResults[parentType] = {});
 

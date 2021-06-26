@@ -1,23 +1,9 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-invalid-this */
 import BaseClient from './base-client';
-import {
-  Mutation,
-  Post,
-  Query,
-  User,
-  UserAnswersArgs,
-  UserPostsArgs,
-} from './generated/types';
+import { Mutation, Query } from './generated/types';
 import { allMutations, Arguments } from './generated/allResolvers';
 import { ArgLogic, ArgumentGQLTypes } from './generated/arguments';
-
-type MAP = {
-  User: {
-    posts: UserPostsArgs;
-    answers: UserAnswersArgs;
-  };
-};
 
 type FieldTypesOf<T> = T extends any[] ? T[0] : T;
 
@@ -27,12 +13,6 @@ type SpecificFields<T, K, R> = {
     : true;
 } &
   ArgLogic<R, K>;
-
-type X = SpecificFields<
-  Resolvers['currentUser'],
-  'currentUser',
-  Resolvers
->['answers']['ARGS'];
 
 const recurse = (a: object, b: object) => {
   for (const key in b) {
