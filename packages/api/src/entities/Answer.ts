@@ -7,7 +7,7 @@ import {
   ManyToMany,
   OneToMany,
 } from 'typeorm';
-import { Field, ID, ObjectType, Root } from 'type-graphql';
+import { Field, ID, ObjectType } from 'type-graphql';
 import User from '@entities/User';
 import { RelationalPagination } from '@utils/paginate/RelationalPagination';
 import Report from './Report';

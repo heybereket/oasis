@@ -2,16 +2,12 @@ import {
   Arg,
   Authorized,
   Ctx,
-  FieldResolver,
-  Float,
   Mutation,
   Resolver,
-  Root,
 } from 'type-graphql';
 import { ContextType } from '@root/server';
 import Post from '@entities/Post';
-import User from '@entities/User';
-import { upvoteDownvote } from '@utils/upvoteDownvote/upvoteDownvoteEntity';
+import { upvoteDownvote } from '@utils/votes/upvoteDownvoteEntity';
 
 // @bcg-resolver(mutation, upvoteDownvote, post)
 

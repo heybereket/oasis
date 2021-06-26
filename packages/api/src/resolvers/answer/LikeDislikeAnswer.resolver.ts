@@ -1,18 +1,13 @@
-import { ApolloError } from 'apollo-server-errors';
 import {
   Arg,
   Authorized,
   Ctx,
-  FieldResolver,
-  Float,
   Mutation,
   Resolver,
-  Root,
 } from 'type-graphql';
 import { ContextType } from '@root/server';
-import User from '@entities/User';
 import Answer from '@entities/Answer';
-import { upvoteDownvote } from '@utils/upvoteDownvote/upvoteDownvoteEntity';
+import { upvoteDownvote } from '@utils/votes/upvoteDownvoteEntity';
 
 // @bcg-resolver(mutation, upvoteDownvoteAnswer, answer)
 
