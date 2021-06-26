@@ -2,7 +2,7 @@ name: Docker Image CI, CD
 
 on:
   push:
-    branches: [staging]
+    branches: [dev]
     paths:
       - 'packages/web/**'
       - 'packages/api/**'
@@ -60,7 +60,7 @@ jobs:
         with:
           command: |
             docker pull ghcr.io/oasis-sh/oasis:latest
-            cd /opt/oasis/docker/staging
+            cd /opt/oasis/docker/dev
             docker-compose stop web
             docker-compose rm -f web
             docker-compose up -d
