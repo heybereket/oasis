@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { PassportStatic } from 'passport';
 import Spotify from './methods/spotify';
 
 export default (): Router => {

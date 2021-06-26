@@ -1,7 +1,6 @@
 import { NotificationType } from '@enums/Notifications';
 import { Field, ID, ObjectType } from 'type-graphql';
 import {
-  AfterInsert,
   BaseEntity,
   Column,
   Entity,
