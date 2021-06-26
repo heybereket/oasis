@@ -94,12 +94,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 708 - ((22 * winheight(0) + 11) / 23)
+let s:l = 1201 - ((2 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 708
-normal! 0
+keepjumps 1201
+normal! 08|
 wincmd w
 argglobal
 if bufexists("test/helper.ts") | buffer test/helper.ts | else | edit test/helper.ts | endif
