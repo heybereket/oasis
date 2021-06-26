@@ -75,4 +75,12 @@ export default class Post extends BaseEntity {
         : `/images/${this.imageName}`
       : undefined;
   }
+
+  @Field()
+  @Column()
+  upvotes: number = 0;
+
+  @Field()
+  @Column()
+  downvotes: number = 0;
 }

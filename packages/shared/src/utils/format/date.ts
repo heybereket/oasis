@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 export const MS = 1; // 1
 export const SECOND = 1000 * MS; // 1000
@@ -27,7 +27,11 @@ export const formatDate = (createdAt: number | string | Date): string => {
   if (isNaN(date.getTime())) return invalidDate;
   const now = Date.now();
   const diff = now - date.getTime();
-  const time = moment.utc(Number(createdAt)).format('h:mm A');
+  let time;
+
+  if (typeof window !== 'undefined') {
+    time = dayjs(Number(createdAt)).format('h:mm A');
+  }
 
   if (diff < 0) return invalidDate;
   if (diff < AS_JUST_NOW) return `${time} • just now`;

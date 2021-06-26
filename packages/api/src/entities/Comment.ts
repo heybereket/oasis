@@ -8,7 +8,7 @@ import {
   AfterInsert,
   OneToMany,
 } from 'typeorm';
-import { Field, ID, ObjectType } from 'type-graphql';
+import { Field, ID, ObjectType, Root } from 'type-graphql';
 import Post from '@entities/Post';
 import User from '@entities/User';
 import { RelationalPagination } from '@utils/paginate/RelationalPagination';
@@ -65,12 +65,11 @@ export default class Comment extends BaseEntity {
   @OneToMany(() => Report, (report) => report.comment)
   filedReports: Promise<Report[]>;
 
-  @AfterInsert()
-  async notification() {
-    createNotification({
-      userId: (await (await this.post).author).id,
-      performerId: (await this.author).id,
-      type: NotificationType.Comment,
-    });
-  }
+  @Field()
+  @Column()
+  upvotes: number = 0;
+
+  @Field()
+  @Column()
+  downvotes: number = 0;
 }

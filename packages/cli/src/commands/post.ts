@@ -1,13 +1,15 @@
-import * as log from '../utils/log';
+import * as log from '@oasis-sh/shared';
+import { gqlURL } from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
 
-export async function handler(yargs: any) {
+export const handler = async (yargs: any) => {
   const useJSON = yargs.json ?? false;
-  if (!yargs.message)
+  if (!yargs.message) {
     return log.error('you need to pass <message> in order for this to work');
+  }
 
-  const client = new GraphQLClient('http://localhost:3000/graphql', {
-    headers: { authorization: 'Bearer INSERT TOKEN HERE' }, // TODO: Authenticate with oasis
+  const client = new GraphQLClient(gqlURL, {
+    headers: { authorization: 'Bearer INSERT TOKEN HERE' },
   });
 
   const query = gql`
@@ -20,4 +22,4 @@ export async function handler(yargs: any) {
     if (useJSON) return console.log(JSON.stringify(res));
     log.info(res);
   });
-}
+};

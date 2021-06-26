@@ -7,8 +7,8 @@
   ],
   "scripts": {
     "build": "yarn workspace @oasis-sh/$0 run build",
-    "build:all": "yarn build api && yarn build react-gql && yarn build shared && yarn build ui && yarn build web",
-    "build:dev": "yarn build api && yarn build react-gql && yarn build shared && yarn build ui && yarn build parser",
+    "build:all": "yarn build shared && yarn build api && yarn build react-gql && yarn build ui && yarn build parser && yarn build web",
+    "build:dev": "yarn build shared && yarn build api && yarn build react-gql && yarn build ui && yarn build parser",
     "rebuild": "yarn reinstall || yarn build:all",
     "dev": "concurrently \"yarn workspace @oasis-sh/web dev\" \"yarn workspace @oasis-sh/ui build:watch\"",
     "dev:api": "yarn workspace @oasis-sh/api run dev",
@@ -21,12 +21,13 @@
     "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
     "test": "yarn workspace @oasis-sh/$0 run test",
     "prepare": "husky install",
-    "commit": "cz c",
+    "commit": "git add . && cz",
     "commit:signed": "cz -S"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@types/cli-spinner": "^0",
     "@types/concurrently": "^6.2.0",
     "@types/eslint": "^7.2.13",
     "@types/jest": "^26.0.23",
@@ -46,8 +47,12 @@
     "ts-jest": "^27.0.3"
   },
   "dependencies": {
+    "cli-spinner": "^0.2.10",
+    "cmdify": "^0.0.4",
     "eslint": "^7.29.0",
+    "inquirer": "^8.1.1",
     "prettier": "^2.3.1",
+    "rxjs": "^7.1.0",
     "typeorm": "^0.2.34",
     "typescript": "4.3.4"
   },

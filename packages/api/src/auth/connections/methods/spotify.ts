@@ -22,7 +22,7 @@ export default (): Router => {
 
     if (error) {
       console.error('Callback Error:', error);
-      res.send(`Callback Error`);
+      res.status(400).send(`Callback Error`);
       return;
     }
 
@@ -46,7 +46,7 @@ export default (): Router => {
       })
       .catch((error) => {
         console.error('Error getting Tokens:', error);
-        res.send(`Error getting Tokens`);
+        res.status(400).send(`Error getting Tokens`);
       });
   });
 
@@ -65,7 +65,8 @@ export default (): Router => {
       console.log(result.body);
       res.status(200).send(result.body);
     } catch (err) {
-      res.status(400).send(err);
+      console.log('Error: ', err);
+      res.status(400).send('There was an error getting current track');
     }
   });
 

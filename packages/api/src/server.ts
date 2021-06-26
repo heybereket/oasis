@@ -1,6 +1,6 @@
 import { ApolloError, ApolloServer } from 'apollo-server-express';
 import type { Request } from 'express';
-import createQueryComplexityValidator, {
+import {
   fieldExtensionsEstimator,
   simpleEstimator,
   getComplexity,

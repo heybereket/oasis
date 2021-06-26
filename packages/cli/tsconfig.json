@@ -10,5 +10,7 @@
     "emitDecoratorMetadata": true,
     "declaration": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": ["jest.config.ts", "test/**/*", "dist/**/*"]
 }
+
