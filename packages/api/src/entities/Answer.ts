@@ -64,7 +64,7 @@ export default class Answer extends BaseEntity {
   @Column({ nullable: true })
   downvotes?: number = 0;
 
-  @Field({ nullable: false, name: 'donwvotes' })
+  @Field({ nullable: false, name: 'downvotes' })
   getDownvotes(@Root() root: any): number {
     return root.downvotes ?? 0;
   }
