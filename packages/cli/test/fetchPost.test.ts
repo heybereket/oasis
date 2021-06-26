@@ -7,7 +7,10 @@ expect.extend(matchers);
 
 describe('fetching posts', () => {
   it('gets the right amount of posts', async () => {
-    const output = testCommand('fetchPosts', '--json --limit 8');
+    const [output, error] = testCommand('fetchPosts', '--json --limit 8');
+
+    expect(error).toBeNull();
+
     const parsed = JSON.parse(output);
     expect(parsed.paginatePosts.length).toBe(8);
   });
@@ -15,7 +18,13 @@ describe('fetching posts', () => {
   it('applies limits and offsets correctly', async () => {
     // todo - switch to @oasis-sh/sdk
 
-    const output = testCommand('fetchPosts', '--json --limit 4 --offset 5');
+    const [output, error] = testCommand(
+      'fetchPosts',
+      '--json --limit 4 --offset 5'
+    );
+
+    expect(error).toBeNull();
+
     const data = JSON.parse(output);
 
     const query = gql`
@@ -38,13 +47,14 @@ describe('fetching posts', () => {
       postsOffset: 5,
     });
 
-    console.log(response, data);
-
     expect(response).toEqual(data);
   });
 
   it('gets valid data', () => {
-    const output = testCommand('fetchPosts', '--json');
+    const [output, error] = testCommand('fetchPosts', '--json');
+
+    expect(error).toBeNull()
+
     const data = JSON.parse(output);
 
     data.paginatePosts.forEach((post: any) => {
@@ -53,7 +63,9 @@ describe('fetching posts', () => {
   });
 
   it('dumps valid json', () => {
-    const output = testCommand('fetchPosts', '--json');
+    const [output, error] = testCommand('fetchPosts', '--json');
+
+    expect(error).toBeNull()
 
     JSON.parse(output);
   });
