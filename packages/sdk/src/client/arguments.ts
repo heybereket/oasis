@@ -32,6 +32,8 @@ export default async function genArguments() {
     'Resort',
     'User',
     'Comment',
+    'Mutation',
+    'Query',
   ];
 
   for (const [_, parentType, __, fieldsStr] of matches) {
@@ -84,12 +86,7 @@ export default async function genArguments() {
           .map((a) => a.join(': '))
           .join(';\n    ')}\n  }`
     )}};\n\nexport type ArgLogic<R, K> = ${Object.keys(typeResults)
-      .filter(
-        (a) =>
-          Object.keys(typeResults[a]).length > 0 &&
-          a !== 'Mutation' &&
-          a !== 'Query'
-      )
+      .filter((a) => Object.keys(typeResults[a]).length > 0)
       .map(
         (key) =>
           `R extends ${key} ? K extends keyof NestedArguments['${key}'] ? { ARGS: NestedArguments['${key}'][K] } : {} : `

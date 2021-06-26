@@ -7,20 +7,16 @@ const client = new Client({
 
 (async () => {
   const data = await client
-    .createQueryBuilder('currentUser')
+    .createQueryBuilder('paginatePosts')
     .addFields({
       __typename: true,
       id: true,
-      isBot: true,
-      posts: {
-        ARGS: {
-          limit: 50,
-          offset: 0,
-        },
-        items: {
-          id: true,
-          createdAt: true,
-        },
+      author: {
+        id: true,
+      },
+      ARGS: {
+        limit: 50,
+        offset: 50,
       },
     })
     .send();

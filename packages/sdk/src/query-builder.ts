@@ -26,10 +26,11 @@ const recurse = (a: object, b: object) => {
 
 type Resolvers = Query & Mutation;
 type Field<T extends keyof Resolvers> = SpecificFields<
-  Resolvers[T],
+  FieldTypesOf<Resolvers[T]>,
   T,
-  Resolvers
+  T extends keyof Mutation ? Mutation : Query
 >;
+
 export class QueryBuilder<T extends keyof Resolvers> {
   fields: Field<T>;
   constructor(public client: BaseClient, public resolver: T) {}
@@ -58,9 +59,7 @@ export class QueryBuilder<T extends keyof Resolvers> {
     return this;
   }
 
-  send: T extends keyof Arguments
-    ? (vars: Arguments[T]) => Promise<Resolvers[T]>
-    : () => Promise<Resolvers[T]> = ((vars: any = {}) => {
+  send(vars?: any) {
     if (!this.fields) {
       throw new TypeError(
         'Cannot send request without fields. Did you forget to call `addFields` on the query builder?'
@@ -87,8 +86,6 @@ export class QueryBuilder<T extends keyof Resolvers> {
       addArg
     );
 
-    console.log(args);
-
     return this.client.fetchGraphQL(
       `${allMutations.includes(this.resolver) ? 'mutation' : 'query'}${
         Object.keys(args).length > 0
@@ -100,7 +97,7 @@ export class QueryBuilder<T extends keyof Resolvers> {
       (a) => a,
       { ...vars, ...args }
     );
-  }) as any;
+  }
 
   createQueryString(
     res: string,
