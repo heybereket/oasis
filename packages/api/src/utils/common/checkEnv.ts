@@ -56,6 +56,7 @@ export const checkEnv = async (): Promise<boolean> => {
     ...checkOAuthEnvs('DISCORD'),
     ...checkOAuthEnvs('GOOGLE'),
     ...checkOAuthEnvs('SPOTIFY'),
-  ]) if (!(await requiredEnvChecker(true))) return exit(1);
+  ])
+    if (!(await requiredEnvChecker(true))) return exit(1);
   return true;
 };

@@ -7,7 +7,8 @@ export const handler = async (yargs: any) => {
 
   const username = yargs._[1];
 
-  if (!username) return log.error('you need to pass <username> in order for this to work');
+  if (!username)
+    return log.error('you need to pass <username> in order for this to work');
 
   const client = new GraphQLClient(gqlURL);
 
