@@ -1,23 +1,9 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-invalid-this */
 import BaseClient from './base-client';
-import {
-  Mutation,
-  Post,
-  Query,
-  User,
-  UserAnswersArgs,
-  UserPostsArgs,
-} from './generated/types';
+import { Mutation, Query } from './generated/types';
 import { allMutations, Arguments } from './generated/allResolvers';
 import { ArgLogic, ArgumentGQLTypes } from './generated/arguments';
-
-type MAP = {
-  User: {
-    posts: UserPostsArgs;
-    answers: UserAnswersArgs;
-  };
-};
 
 type FieldTypesOf<T> = T extends any[] ? T[0] : T;
 
@@ -27,12 +13,6 @@ type SpecificFields<T, K, R> = {
     : true;
 } &
   ArgLogic<R, K>;
-
-type X = SpecificFields<
-  Resolvers['currentUser'],
-  'currentUser',
-  Resolvers
->['answers']['ARGS'];
 
 const recurse = (a: object, b: object) => {
   for (const key in b) {
@@ -46,10 +26,11 @@ const recurse = (a: object, b: object) => {
 
 type Resolvers = Query & Mutation;
 type Field<T extends keyof Resolvers> = SpecificFields<
-  Resolvers[T],
+  FieldTypesOf<Resolvers[T]>,
   T,
-  Resolvers
+  T extends keyof Mutation ? Mutation : Query
 >;
+
 export class QueryBuilder<T extends keyof Resolvers> {
   fields: Field<T>;
   constructor(public client: BaseClient, public resolver: T) {}
@@ -78,9 +59,7 @@ export class QueryBuilder<T extends keyof Resolvers> {
     return this;
   }
 
-  send: T extends keyof Arguments
-    ? (vars: Arguments[T]) => Promise<Resolvers[T]>
-    : () => Promise<Resolvers[T]> = ((vars: any = {}) => {
+  send(vars?: any) {
     if (!this.fields) {
       throw new TypeError(
         'Cannot send request without fields. Did you forget to call `addFields` on the query builder?'
@@ -107,8 +86,6 @@ export class QueryBuilder<T extends keyof Resolvers> {
       addArg
     );
 
-    console.log(args);
-
     return this.client.fetchGraphQL(
       `${allMutations.includes(this.resolver) ? 'mutation' : 'query'}${
         Object.keys(args).length > 0
@@ -117,10 +94,10 @@ export class QueryBuilder<T extends keyof Resolvers> {
               .join(', ')})`
           : ''
       } { ${queryStr} }`,
-      (a) => a,
+      (data) => data[this.resolver],
       { ...vars, ...args }
     );
-  }) as any;
+  }
 
   createQueryString(
     res: string,
@@ -149,7 +126,6 @@ export class QueryBuilder<T extends keyof Resolvers> {
                 trail.reduce((acc: any, key: string, i: number) => {
                   const obj =
                     acc[key] || ArgumentGQLTypes[acc.__returns__][key];
-                  console.log(Object.keys(obj));
                   return obj;
                 }, ArgumentGQLTypes as any)[key]
               )}`

@@ -16,6 +16,10 @@ export default async function genArguments() {
     await readFile(join(__dirname, '../../../api/schema.gql'))
   ).toString();
 
+  const matches = [
+    ...content.matchAll(/type\s+(.*?)\s+{(\r?)\n(.*?)(\r?)\n}/gs),
+  ].map((a) => [...a]);
+
   const results: GQLArgumentTypes = {};
   const typeResults: any = {};
 
@@ -26,11 +30,11 @@ export default async function genArguments() {
     'Resort',
     'User',
     'Comment',
+    'Mutation',
+    'Query',
   ];
 
-  for (const [_, parentType, fieldsStr] of content.matchAll(
-    /\ntype\s+(.*?)\s+{\n(.*?)\n}/gs
-  )) {
+  for (const [_, parentType, __, fieldsStr] of matches) {
     const data: ResolverType = (results[parentType] = {});
     const typeData = (typeResults[parentType] = {});
 
@@ -63,8 +67,6 @@ export default async function genArguments() {
     }
   }
 
-  // console.log(typeResults);
-
   await writeFile(
     join(__dirname, '../generated/arguments.ts'),
     `import type { GQLArgumentTypes } from "../client/arguments";\nimport type {\n  ${allImports.join(
@@ -80,12 +82,7 @@ export default async function genArguments() {
           .map((a) => a.join(': '))
           .join(';\n    ')}\n  }`
     )}};\n\nexport type ArgLogic<R, K> = ${Object.keys(typeResults)
-      .filter(
-        (a) =>
-          Object.keys(typeResults[a]).length > 0 &&
-          a !== 'Mutation' &&
-          a !== 'Query'
-      )
+      .filter((a) => Object.keys(typeResults[a]).length > 0)
       .map(
         (key) =>
           `R extends ${key} ? K extends keyof NestedArguments['${key}'] ? { ARGS: NestedArguments['${key}'][K] } : {} : `

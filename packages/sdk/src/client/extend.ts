@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { readFile, writeFile } from 'fs/promises';
 import { glob } from 'glob';
 import { join } from 'path';
 
@@ -8,20 +8,18 @@ const genFile = join(__dirname, '../../src/generated/client.ts');
 const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
 
 export default async function extend() {
-  const types = readFileSync(
-    join(__dirname, '../../src/generated/types.ts')
+  const types = (
+    await readFile(join(__dirname, '../../src/generated/types.ts'))
   ).toString();
 
   return new Promise((resolve) => {
-    glob(dir, (err, filenames) => {
+    glob(dir, async (err, filenames) => {
       const keyMap: Record<string, string[][]> = {};
 
       if (err) throw err;
 
       for (const filename of filenames) {
-        const content = readFileSync(filename).toString();
-
-        // console.log(content);
+        const content = (await readFile(filename)).toString();
 
         const matches = [...content.matchAll(/\/\/\s*@bcg-resolver\((.*?)\)/g)];
 
@@ -75,7 +73,7 @@ export default async function extend() {
         '\n  ' + imports.join(',\n  ') + ',\n'
       );
 
-      writeFileSync(genFile, output);
+      await writeFile(genFile, output);
 
       resolve(null);
     });
