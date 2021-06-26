@@ -16,8 +16,6 @@ describe('fetching posts', () => {
   });
 
   it('applies limits and offsets correctly', async () => {
-    // todo - switch to @oasis-sh/sdk
-
     const [output, error] = testCommand(
       'fetchPosts',
       '--json --limit 4 --offset 5'
@@ -53,7 +51,7 @@ describe('fetching posts', () => {
   it('gets valid data', () => {
     const [output, error] = testCommand('fetchPosts', '--json');
 
-    expect(error).toBeNull()
+    expect(error).toBeNull();
 
     const data = JSON.parse(output);
 
@@ -65,7 +63,7 @@ describe('fetching posts', () => {
   it('dumps valid json', () => {
     const [output, error] = testCommand('fetchPosts', '--json');
 
-    expect(error).toBeNull()
+    expect(error).toBeNull();
 
     JSON.parse(output);
   });

@@ -94,7 +94,7 @@ export class QueryBuilder<T extends keyof Resolvers> {
               .join(', ')})`
           : ''
       } { ${queryStr} }`,
-      (a) => a,
+      (data) => data[this.resolver],
       { ...vars, ...args }
     );
   }
@@ -126,7 +126,6 @@ export class QueryBuilder<T extends keyof Resolvers> {
                 trail.reduce((acc: any, key: string, i: number) => {
                   const obj =
                     acc[key] || ArgumentGQLTypes[acc.__returns__][key];
-                  console.log(Object.keys(obj));
                   return obj;
                 }, ArgumentGQLTypes as any)[key]
               )}`

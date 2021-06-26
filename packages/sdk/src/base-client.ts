@@ -45,8 +45,6 @@ export default class BaseClient extends EventEmitter<Events> {
     extractor: (data: R) => T = (d: any) => d,
     variables: { [key: string]: any } = {}
   ): Promise<T> {
-    console.log(query);
-
     const res = await fetch(`${gqlURL}/graphql`, {
       method: 'POST',
       headers: {
@@ -72,7 +70,7 @@ export default class BaseClient extends EventEmitter<Events> {
       );
     }
 
-    return extractor(data);
+    return extractor(data.data);
   }
 
   getSelections(key: string): string {

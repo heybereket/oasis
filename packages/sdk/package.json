@@ -2,12 +2,12 @@
   "name": "@oasis-sh/sdk",
   "version": "0.0.0",
   "description": "The official wrapper for the Oasis API.",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "keywords": [
     "oasis",
     "bot"
   ],
-  "module": "src/index.ts",
+  "module": "dist/index.js",
   "scripts": {
     "publish": "npm publish",
     "build": "graphql-codegen && ts-node src/client && tsc",

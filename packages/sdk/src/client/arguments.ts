@@ -20,8 +20,6 @@ export default async function genArguments() {
     ...content.matchAll(/type\s+(.*?)\s+{(\r?)\n(.*?)(\r?)\n}/gs),
   ].map((a) => [...a]);
 
-  console.log(matches);
-
   const results: GQLArgumentTypes = {};
   const typeResults: any = {};
 
@@ -68,8 +66,6 @@ export default async function genArguments() {
       }
     }
   }
-
-  // console.log(typeResults);
 
   await writeFile(
     join(__dirname, '../generated/arguments.ts'),

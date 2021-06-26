@@ -1,32 +1,29 @@
 import * as log from '@oasis-sh/shared';
-import { gqlURL } from '@oasis-sh/shared';
-import { request, gql } from 'graphql-request';
+import { client } from '../sdkClient';
 
 export const handler = async (yargs: any) => {
   const limit = yargs.limit ?? 10;
   const offset = yargs.offset ?? 0;
   const useJSON = yargs.json ?? false;
 
-  const query = gql`
-    query paginatePosts($postsLimit: Float!, $postsOffset: Float!) {
-      paginatePosts(limit: $postsLimit, offset: $postsOffset) {
-        message
-        author {
-          id
-          name
-          username
-        }
-        downvotes
-        upvotes
-      }
-    }
-  `;
+  const data = await client
+    .createQueryBuilder('paginatePosts')
+    .addFields({
+      message: true,
+      author: {
+        id: true,
+        name: true,
+        username: true,
+      },
+      downvotes: true,
+      upvotes: true,
+      ARGS: {
+        limit,
+        offset,
+      },
+    })
+    .send();
 
-  request(gqlURL, query, {
-    postsLimit: limit,
-    postsOffset: offset,
-  }).then((res) => {
-    if (useJSON) return console.log(JSON.stringify(res));
-    log.info(res);
-  });
+  if (useJSON) return console.log(JSON.stringify(data));
+  log.info(data);
 };

@@ -21,8 +21,6 @@ export default async function extend() {
       for (const filename of filenames) {
         const content = (await readFile(filename)).toString();
 
-        // console.log(content);
-
         const matches = [...content.matchAll(/\/\/\s*@bcg-resolver\((.*?)\)/g)];
 
         for (const [, str] of matches) {
