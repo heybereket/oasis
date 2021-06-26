@@ -20,3 +20,7 @@ packages/web/server/index.js
 *.rdb
 
 .dockerenv
+
+# vim sessions
+Session.vim
+

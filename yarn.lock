@@ -2997,7 +2997,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-typescript@npm:^7.12.7":
+"@babel/preset-typescript@npm:^7.12.7, @babel/preset-typescript@npm:^7.14.5":
   version: 7.14.5
   resolution: "@babel/preset-typescript@npm:7.14.5"
   dependencies:
@@ -5287,7 +5287,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@oasis-sh/cli@workspace:packages/cli"
   dependencies:
+    "@babel/preset-typescript": ^7.14.5
     "@types/eslint": ^7.2.13
+    "@types/jest-json-schema": ^2.1.3
     "@types/node-emoji": ^1.8.1
     "@types/prettier": ^2.3.0
     "@types/yargs": ^17.0.0
@@ -5295,6 +5297,7 @@ __metadata:
     eslint: ^7.29.0
     graphql-request: ^3.4.0
     jest: ^27.0.5
+    jest-json-schema: ^5.0.0
     node-emoji: ^1.10.0
     prettier: ^2.3.1
     typescript: 4.3.4
@@ -7531,6 +7534,16 @@ __metadata:
   dependencies:
     "@types/istanbul-lib-report": "*"
   checksum: 8aee794ea2e8065aa83e0a1017420068d10110f5e67f8473f5751e74462509306c451f79db3856e6848507519bf1d4de7d101daede6539701cc4d74b4646acd9
+  languageName: node
+  linkType: hard
+
+"@types/jest-json-schema@npm:^2.1.3":
+  version: 2.1.3
+  resolution: "@types/jest-json-schema@npm:2.1.3"
+  dependencies:
+    "@types/jest": "*"
+    ajv: ^6.10.2
+  checksum: 40e843a487b483fe02dabce1a9aee1be374178ac523e52c5dccca5a2df3dedb4869b47b2ad90be2ba120676ec5cdb30d14db5be70dcf5951e4fbee90d46fb146
   languageName: node
   linkType: hard
 
@@ -19657,6 +19670,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"jest-json-schema@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "jest-json-schema@npm:5.0.0"
+  dependencies:
+    ajv: ^6.10.2
+    chalk: ^4.1.0
+    jest-matcher-utils: ^26.6.1
+  checksum: 22a1ee37d042f5f672f005a86314095495630aea5c057d6b9c4d79a201a40a04a946974f3c10f4d13ad52cab93f2e398776ce7f44fdb9ce9c42c4fe6e05b7c97
+  languageName: node
+  linkType: hard
+
 "jest-leak-detector@npm:^26.6.2":
   version: 26.6.2
   resolution: "jest-leak-detector@npm:26.6.2"
@@ -19677,7 +19701,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jest-matcher-utils@npm:^26.6.0, jest-matcher-utils@npm:^26.6.2":
+"jest-matcher-utils@npm:^26.6.0, jest-matcher-utils@npm:^26.6.1, jest-matcher-utils@npm:^26.6.2":
   version: 26.6.2
   resolution: "jest-matcher-utils@npm:26.6.2"
   dependencies:
