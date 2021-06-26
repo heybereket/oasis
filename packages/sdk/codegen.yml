@@ -5,4 +5,3 @@ generates:
       - typescript
     config:
       constEnums: true
-      skipTypename: true

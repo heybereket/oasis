@@ -1,17 +1,38 @@
+/* eslint-disable no-continue */
 /* eslint-disable no-invalid-this */
 import BaseClient from './base-client';
-import { Mutation, Query } from './generated/types';
+import {
+  Mutation,
+  Post,
+  Query,
+  User,
+  UserAnswersArgs,
+  UserPostsArgs,
+} from './generated/types';
 import { allMutations, Arguments } from './generated/allResolvers';
+import { ArgLogic, ArgumentGQLTypes } from './generated/arguments';
 
-// type SpecificFields<F, T extends { [P in keyof F]: any }> = {
-//   [P in keyof F]: F[P] extends true
-//     ? T[P]
-//     : F[P] extends object
-//     ? SpecificFields<F[P], T[P]>
-//     : undefined;
-// };
+type MAP = {
+  User: {
+    posts: UserPostsArgs;
+    answers: UserAnswersArgs;
+  };
+};
 
-type SpecificFields<T> = { [P in keyof T]?: true | SpecificFields<T[P]> };
+type FieldTypesOf<T> = T extends any[] ? T[0] : T;
+
+type SpecificFields<T, K, R> = {
+  [P in keyof T]?: FieldTypesOf<T[P]> extends object
+    ? SpecificFields<FieldTypesOf<T[P]>, P, T>
+    : true;
+} &
+  ArgLogic<R, K>;
+
+type X = SpecificFields<
+  Resolvers['currentUser'],
+  'currentUser',
+  Resolvers
+>['answers']['ARGS'];
 
 const recurse = (a: object, b: object) => {
   for (const key in b) {
@@ -23,34 +44,33 @@ const recurse = (a: object, b: object) => {
   }
 };
 
-const createQueryString = (obj: object) => {
-  const arr = [];
-
-  for (const key in obj) {
-    const val = obj[key];
-    arr.push(
-      typeof val === 'object' ? `${key} { ${createQueryString(val)} }` : key
-    );
-  }
-
-  return arr.join(', ');
-};
-
 type Resolvers = Query & Mutation;
+type Field<T extends keyof Resolvers> = SpecificFields<
+  Resolvers[T],
+  T,
+  Resolvers
+>;
 export class QueryBuilder<T extends keyof Resolvers> {
-  fields: SpecificFields<Resolvers[T]>;
+  fields: Field<T>;
   constructor(public client: BaseClient, public resolver: T) {}
 
-  addFields(newFields: SpecificFields<Resolvers[T]>): QueryBuilder<T>;
-  addFields(...newFields: (keyof Resolvers[T])[]): QueryBuilder<T> {
-    if (typeof newFields[0] !== 'object') {
-      if (!this.fields) this.fields = {};
-      for (const field of newFields) {
-        this.fields[field] = true;
-      }
+  addFields(newFields: Field<T>): QueryBuilder<T>;
+  addFields(...properties: (keyof Resolvers[T])[]): QueryBuilder<T>;
+  addFields(...a: any[]) {
+    const args = a as (keyof Resolvers[T])[] | Field<T>[];
+    const first = args[0];
+    if (typeof first === 'string') {
+      const a = args as (keyof Resolvers[T])[];
+
+      this.fields = {
+        ...this.fields,
+        ...a.reduce((acc, key) => ({ ...acc, [key]: true }), {}),
+      };
+
+      return;
     }
 
-    const obj = newFields[0] as any as SpecificFields<Resolvers[T]>;
+    const obj = first as Field<T>;
 
     if (!this.fields) this.fields = obj;
     else recurse(this.fields, obj);
@@ -67,12 +87,74 @@ export class QueryBuilder<T extends keyof Resolvers> {
       );
     }
 
+    let argIdx = 0;
+    const args: any = {};
+    const argTypes: any = {};
+    const addArg = (val: any, type: string) => {
+      const str = `OasisSdkArgs${argIdx++}`;
+      args[str] = val;
+      argTypes[str] = type;
+      return str;
+    };
+
+    const queryStr = this.createQueryString(
+      this.resolver,
+      this.fields,
+      [
+        allMutations.includes(this.resolver) ? 'Mutation' : 'Query',
+        this.resolver,
+      ],
+      addArg
+    );
+
+    console.log(args);
+
     return this.client.fetchGraphQL(
-      `${allMutations.includes(this.resolver) ? 'mutation' : 'query'} ${
-        this.resolver
-      } { ${createQueryString(this.fields)} }`,
+      `${allMutations.includes(this.resolver) ? 'mutation' : 'query'}${
+        Object.keys(args).length > 0
+          ? `(${Object.entries(argTypes)
+              .map(([arg, type]) => `$${arg}: ${type}`)
+              .join(', ')})`
+          : ''
+      } { ${queryStr} }`,
       (a) => a,
-      vars
+      { ...vars, ...args }
     );
   }) as any;
+
+  createQueryString(
+    res: string,
+    obj: object & { ARGS?: any },
+    trail: string[],
+    addArg: (val: string, type: string) => string
+  ) {
+    const arr = [];
+
+    for (const key in obj) {
+      if (key === 'ARGS') continue;
+      const val = obj[key];
+      arr.push(
+        typeof val === 'object'
+          ? this.createQueryString(key, val, [...trail, key], addArg)
+          : key
+      );
+    }
+
+    return `${res}${
+      'ARGS' in obj
+        ? `(${Object.keys(obj.ARGS).map(
+            (key) =>
+              `${key}: $${addArg(
+                obj.ARGS[key],
+                trail.reduce((acc: any, key: string, i: number) => {
+                  const obj =
+                    acc[key] || ArgumentGQLTypes[acc.__returns__][key];
+                  console.log(Object.keys(obj));
+                  return obj;
+                }, ArgumentGQLTypes as any)[key]
+              )}`
+          )})`
+        : ''
+    } { ${arr.join(', ')} }`;
+  }
 }

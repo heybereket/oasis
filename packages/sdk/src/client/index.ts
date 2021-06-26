@@ -1,3 +1,4 @@
+import genArguments from './arguments';
 import extend from './extend';
 import listAll from './listAll';
 import relations from './relations';
@@ -6,4 +7,5 @@ import relations from './relations';
   await extend();
   await relations();
   await listAll();
+  await genArguments();
 })();

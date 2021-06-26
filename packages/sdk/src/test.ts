@@ -5,27 +5,28 @@ const client = new Client({
   token: process.env.TOKEN,
 });
 
-test('gets `currentUser` data', async () => {
+(async () => {
   const data = await client
     .createQueryBuilder('currentUser')
     .addFields({
+      __typename: true,
       id: true,
       isBot: true,
-      answers: {
+      posts: {
         ARGS: {
           limit: 50,
           offset: 0,
         },
         items: {
           id: true,
+          createdAt: true,
         },
       },
     })
     .send();
 
-  expect(data).toBeTruthy();
-  expect(data).toBeInstanceOf(Object);
-});
+  console.log(data);
+})();
 
 // describe('Nothing', () => {
 //   it('pass', () => {

@@ -5,11 +5,11 @@ import { join, parse } from 'path';
 const globPath = join(__dirname, '../../../api/src/entities/*.ts');
 const genFile = join(__dirname, '../../src/generated/relations.ts');
 
-export default async function relations() {
+export const relations: any = {};
+
+export default async function genRelations() {
   glob(globPath, (err, filenames) => {
     if (err) throw err;
-
-    const relations: any = {};
 
     for (const filename of filenames) {
       // eslint-disable-next-line no-continue

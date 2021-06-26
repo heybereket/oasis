@@ -10,13 +10,17 @@ export default async function listAll() {
     ...content
       .match(/Mutation\s+=\s+\{(.*?)\}/gs)[0]
       .matchAll(/\s*(.*?)(\??):\s*(.*?)(;?)\n/g),
-  ].map(([, resolverName]) => resolverName);
+  ]
+    .slice(1)
+    .map(([, resolverName]) => resolverName);
 
   const allQueries = [
     ...content
       .match(/Query\s+=\s+\{(.*?)\}/gs)[0]
       .matchAll(/\s*(.*?)(\??):\s*(.*?)(;?)\n/g),
-  ].map(([, resolverName]) => resolverName);
+  ]
+    .slice(1)
+    .map(([, resolverName]) => resolverName);
 
   const allMutationArgTypes = allMutations
     .map((m) => `Mutation${m[0].toUpperCase()}${m.slice(1)}Args`)
@@ -32,7 +36,6 @@ export default async function listAll() {
       (s, i) => `  ${s[5].toLowerCase()}${s.slice(6, -4)}: ${s}`
     ),
   ];
-  console.log(allArgs);
 
   writeFileSync(
     join(__dirname, '../generated/allResolvers.ts'),

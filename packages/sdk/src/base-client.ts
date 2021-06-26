@@ -44,6 +44,8 @@ export default class BaseClient extends EventEmitter<Events> {
     extractor: (data: R) => T = (d: any) => d,
     variables: { [key: string]: any } = {}
   ): Promise<T> {
+    console.log(query);
+
     const res = await fetch(`${API_BASE_URL}/graphql`, {
       method: 'POST',
       headers: {
