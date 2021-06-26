@@ -31,6 +31,7 @@ export type Events = {};
 
 export type Options = {
   token: string;
+  tokenType?: 'BOT' | 'VSC';
   selections?: Selections;
 };
 
@@ -51,7 +52,9 @@ export default class BaseClient extends EventEmitter<Events> {
       headers: {
         accept: '*/*',
         'content-type': 'application/json',
-        authorization: `BOT ${this.options.token}`,
+        authorization: `${this.options.tokenType ?? 'BOT'} ${
+          this.options.token
+        }`,
       },
       body: JSON.stringify({
         query,
