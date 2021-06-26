@@ -1,6 +1,6 @@
 import { EventEmitter } from 'ee-ts';
 import fetch from 'node-fetch';
-import { API_BASE_URL } from './constants';
+import { gqlURL } from '@oasis-sh/shared';
 import {
   Notification,
   Post,
@@ -47,7 +47,7 @@ export default class BaseClient extends EventEmitter<Events> {
   ): Promise<T> {
     console.log(query);
 
-    const res = await fetch(`${API_BASE_URL}/graphql`, {
+    const res = await fetch(`${gqlURL}/graphql`, {
       method: 'POST',
       headers: {
         accept: '*/*',

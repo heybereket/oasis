@@ -1,5 +1,6 @@
 import Notification from '@entities/Notification';
 import User from '@entities/User';
+import { NotificationType } from '@enums/Notifications';
 
 // Generate a random number (digits customizable)
 export const generatedNumber = (n = 10) => {
@@ -37,6 +38,8 @@ export const getShortMonth = () => {
 };
 
 export const createNotification = async ({ userId, performerId, type }) => {
+  const oneTimeNotifications = [NotificationType.Follow];
+
   const user = await User.findOne(userId);
   const performer = await User.findOne(performerId);
   const prevNotifs = (
@@ -48,7 +51,7 @@ export const createNotification = async ({ userId, performerId, type }) => {
       },
     })
   ).length;
-  if (prevNotifs >= 1) {
+  if (prevNotifs >= 1 && oneTimeNotifications.includes(type)) {
     return;
   }
   const notification = Notification.create();
