@@ -65,28 +65,11 @@ export default class Comment extends BaseEntity {
   @OneToMany(() => Report, (report) => report.comment)
   filedReports: Promise<Report[]>;
 
-  @Column({ nullable: true })
-  upvotes?: number = 0;
+  @Field()
+  @Column()
+  upvotes: number = 0;
 
-  @Field({ nullable: false, name: 'upvotes' })
-  getUpvotes(@Root() root: any): number {
-    return root.upvotes ?? 0;
-  }
-
-  @Column({ nullable: true })
-  downvotes?: number = 0;
-
-  @Field({ nullable: false, name: 'downvotes' })
-  getDownvotes(@Root() root: any): number {
-    return root.downvotes ?? 0;
-  }
-
-  @AfterInsert()
-  async notification() {
-    createNotification({
-      userId: (await (await this.post).author).id,
-      performerId: (await this.author).id,
-      type: NotificationType.Comment,
-    });
-  }
+  @Field()
+  @Column()
+  downvotes: number = 0;
 }
