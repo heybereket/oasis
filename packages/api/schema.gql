@@ -7,7 +7,7 @@ type Answer {
   author: User!
   content: String!
   createdAt: String!
-  donwvotes: Float!
+  downvotes: Float!
   downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromAnswer_downvotedAnswersResponse!
   id: ID!
   isDownvoted: Boolean!
@@ -31,7 +31,7 @@ type Comment {
   author: User!
   content: String!
   createdAt: String!
-  donwvotes: Float!
+  downvotes: Float!
   downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromComment_downvotedCommentsResponse!
   id: ID!
   isDownvoted: Boolean!
@@ -324,7 +324,7 @@ type Post {
   author: User!
   comments(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedCommentFromPost_postResponse!
   createdAt: String!
-  donwvotes: Float!
+  downvotes: Float!
   downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromPost_downvotedPostsResponse!
   id: ID!
   imageName: String
