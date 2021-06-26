@@ -1,5 +1,5 @@
 import { EventEmitter } from 'ee-ts';
-import fetch from 'node-fetch';
+import fetch from 'cross-fetch';
 import { gqlURL } from '@oasis-sh/shared';
 import {
   Notification,
