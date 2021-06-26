@@ -31,14 +31,12 @@ type Comment {
   author: User!
   content: String!
   createdAt: String!
-  dislikes: Float!
   downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromComment_downvotedCommentsResponse!
   downvotes: Float!
   id: ID!
   isDownvoted: Boolean!
   isUpvoted: Boolean!
   lastEdited: String
-  likes: Float!
   post: Post
   question: Question
   upvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromComment_upvotedCommentsResponse!
@@ -117,7 +115,6 @@ type Mutation {
   followUser(userId: String!): Boolean!
   giveBadge(badgeName: String!, username: String!): Boolean!
   joinResort(resortId: String!): Boolean
-  likeDislikeComment(commentId: String!, dislike: Boolean!, like: Boolean!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   makeReport(data: MakeReportInput!, reporteeData: ReportedEntityInput!): Boolean!
