@@ -58,14 +58,12 @@ export type Comment = {
   author: User;
   content: Scalars['String'];
   createdAt: Scalars['String'];
-  dislikes: Scalars['Float'];
   downvoters: PaginatedUserFromComment_DownvotedCommentsResponse;
   downvotes: Scalars['Float'];
   id: Scalars['ID'];
   isDownvoted: Scalars['Boolean'];
   isUpvoted: Scalars['Boolean'];
   lastEdited?: Maybe<Scalars['String']>;
-  likes: Scalars['Float'];
   post?: Maybe<Post>;
   question?: Maybe<Question>;
   upvoters: PaginatedUserFromComment_UpvotedCommentsResponse;
@@ -161,7 +159,6 @@ export type Mutation = {
   followUser: Scalars['Boolean'];
   giveBadge: Scalars['Boolean'];
   joinResort?: Maybe<Scalars['Boolean']>;
-  likeDislikeComment: Scalars['Boolean'];
   makeAdmin: Scalars['Boolean'];
   makeBadge: Scalars['Boolean'];
   makeReport: Scalars['Boolean'];
@@ -260,13 +257,6 @@ export type MutationGiveBadgeArgs = {
 
 export type MutationJoinResortArgs = {
   resortId: Scalars['String'];
-};
-
-
-export type MutationLikeDislikeCommentArgs = {
-  commentId: Scalars['String'];
-  dislike: Scalars['Boolean'];
-  like: Scalars['Boolean'];
 };
 
 
