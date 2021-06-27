@@ -1,5 +1,5 @@
 const bundleAnalyzer = require('@next/bundle-analyzer');
-const withTM = require('next-transpile-modules')(['@oasis-sh/parser', '@oasis-sh/ui']);
+const withTM = require('next-transpile-modules')(['@oasis-sh/parser']);
 const { join } = require('path');
 
 const withBundleAnalyzer = bundleAnalyzer({
