@@ -6,7 +6,10 @@ expect.extend(matchers);
 
 describe('getting user by name', () => {
   it('gets valid data', () => {
-    const [output, error] = testCommand('getUserByName', 'dulguuncodes --json');
+    const [output, error] = testCommand('getUserByName', [
+      'dulguuncodes',
+      '--json',
+    ]);
 
     expect(error).toBeNull();
 
@@ -15,9 +18,13 @@ describe('getting user by name', () => {
   });
 
   it('retrieves the correct user', () => {
-    const [output, error] = testCommand('getUserByName', 'alexover1 --json');
+    const [output, error] = testCommand('getUserByName', [
+      'alexover1',
+      '--json',
+    ]);
 
     expect(error).toBeNull();
+    expect(output).not.toBeNull();
 
     const parsed = JSON.parse(output);
 
@@ -26,11 +33,9 @@ describe('getting user by name', () => {
   });
 
   it('rejects incomplete requests', () => {
-    const [output, error] = testCommand('getUserByName', '--json');
+    const [_, error] = testCommand('getUserByName', ['--json']);
 
-    expect(error).toBeNull();
-
-    console.log(output);
+    expect(error).not.toBeNull();
   });
   it.todo('dumps the raw json');
 });

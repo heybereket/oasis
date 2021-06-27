@@ -1,11 +1,17 @@
-import { execSync } from 'child_process';
+import { spawnSync } from 'child_process';
 
-const testCommand = (command: string, args: string | undefined) => {
-  try {
-    return [execSync(`node dist/index.js ${command} ${args}`).toString(), null];
-  } catch (e) {
-    return [null, e];
-  }
+const testCommand = (command: string, args: string[] | undefined) => {
+  const { output } = spawnSync('node', [
+    'dist/index.js',
+    command,
+    ...args,
+  ]);
+
+  const [_, stdout, stderr] = output;
+
+  if (stderr.toString()) return [null, stderr.toString()];
+
+  return [stdout.toString(), null];
 };
 
 export default testCommand;

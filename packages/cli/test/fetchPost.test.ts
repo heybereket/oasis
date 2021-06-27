@@ -7,7 +7,11 @@ expect.extend(matchers);
 
 describe('fetching posts', () => {
   it('gets the right amount of posts', async () => {
-    const [output, error] = testCommand('fetchPosts', '--json --limit 8');
+    const [output, error] = testCommand('fetchPosts', [
+      '--json',
+      '--limit',
+      '8',
+    ]);
 
     expect(error).toBeNull();
 
@@ -16,10 +20,13 @@ describe('fetching posts', () => {
   });
 
   it('applies limits and offsets correctly', async () => {
-    const [output, error] = testCommand(
-      'fetchPosts',
-      '--json --limit 4 --offset 5'
-    );
+    const [output, error] = testCommand('fetchPosts', [
+      '--json',
+      '--limit',
+      '4',
+      '--offset',
+      '5',
+    ]);
 
     expect(error).toBeNull();
 
@@ -49,7 +56,7 @@ describe('fetching posts', () => {
   });
 
   it('gets valid data', () => {
-    const [output, error] = testCommand('fetchPosts', '--json');
+    const [output, error] = testCommand('fetchPosts', ['--json']);
 
     expect(error).toBeNull();
 
@@ -61,7 +68,7 @@ describe('fetching posts', () => {
   });
 
   it('dumps valid json', () => {
-    const [output, error] = testCommand('fetchPosts', '--json');
+    const [output, error] = testCommand('fetchPosts', ['--json']);
 
     expect(error).toBeNull();
 
