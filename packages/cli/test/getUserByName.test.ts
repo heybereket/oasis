@@ -37,5 +37,17 @@ describe('getting user by name', () => {
 
     expect(error).not.toBeNull();
   });
-  it.todo('dumps the raw json');
+
+  it('dumps the raw json', () => {
+    const [output, error] = testCommand('getUserByName', [
+      'heybereket',
+      '--json',
+    ]);
+
+    expect(error).toBeNull();
+
+    const data = JSON.parse(output);
+
+    expect(data).toMatchSchema(userSchema);
+  });
 });
