@@ -105,6 +105,7 @@ type Mutation {
   createPost(data: CreatePostInput!): Boolean!
   createQuestion(data: CreateQuestionInput!): Boolean!
   createResort(data: CreateResortInput!): Boolean!
+  createTokens: TokenData!
   deleteAccount: Boolean!
   deletePost(postId: String!): Boolean!
   deleteQuestion(questionId: String!): Boolean!
@@ -121,6 +122,7 @@ type Mutation {
   markAsResolved(reportId: String!, resolved: Boolean!): Boolean!
   markNotificationAsRead(notificationId: String!): Boolean!
   refreshBotToken(botId: String!): String!
+  refreshToken(refreshToken: String!): String!
   updateProfile(data: UpdateProfileInput!): Boolean!
   upvoteDownvote(downvote: Boolean!, postId: String!, upvote: Boolean!): Boolean!
   upvoteDownvoteAnswer(answerId: String!, downvote: Boolean!, upvote: Boolean!): Boolean!
@@ -427,6 +429,11 @@ enum Role {
 }
 
 union SearchResult = Post | Resort | User
+
+type TokenData {
+  accessToken: String!
+  refreshToken: String!
+}
 
 input UpdateProfileInput {
   avatar: String

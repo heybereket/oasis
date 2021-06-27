@@ -5346,6 +5346,7 @@ __metadata:
     rollup-plugin-dts: ^3.0.2
     rollup-plugin-peer-deps-external: ^2.2.4
     rollup-plugin-typescript2: ^0.30.0
+    tsup: ^4.12.0
     typescript: 4.3.4
   peerDependencies:
     react: ^17.0.2
@@ -11193,6 +11194,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cac@npm:^6.7.2":
+  version: 6.7.3
+  resolution: "cac@npm:6.7.3"
+  checksum: fc77c9d7309bfaded1a630fe61c5b3319ffeb6e02aeb561e55bd48d8e86724cb8414adf53bd4792db7ebcd112576b15ee695a3c3de19896a72cb34eb04508d34
+  languageName: node
+  linkType: hard
+
 "cacache@npm:^12.0.2":
   version: 12.0.4
   resolution: "cacache@npm:12.0.4"
@@ -12118,7 +12126,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^4.1.1":
+"commander@npm:^4.0.0, commander@npm:^4.1.1":
   version: 4.1.1
   resolution: "commander@npm:4.1.1"
   checksum: 448585071bf8fb4c0bf9dd52abaee43dea086f801334caec2c8e8c9f456f8abc224c1614ccbbdbf7da5ac2524d230f13cf1fc86c233cf8a041ebecea7df106e9
@@ -14595,7 +14603,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.12.8":
+"esbuild@npm:^0.12.8, esbuild@npm:^0.12.9":
   version: 0.12.9
   resolution: "esbuild@npm:0.12.9"
   bin:
@@ -16572,6 +16580,20 @@ fsevents@^1.2.7:
     once: ^1.3.0
     path-is-absolute: ^1.0.0
   checksum: a6c21756701482f9809a981d6ff9c8cac092ee6f63af01aa7f588b543ba8fe4ed8f0c4a2c7264be66fa65b7d25db05cc47dca93be458bbebbca31891409ed1b4
+  languageName: node
+  linkType: hard
+
+"glob@npm:7.1.6":
+  version: 7.1.6
+  resolution: "glob@npm:7.1.6"
+  dependencies:
+    fs.realpath: ^1.0.0
+    inflight: ^1.0.4
+    inherits: 2
+    minimatch: ^3.0.4
+    once: ^1.3.0
+    path-is-absolute: ^1.0.0
+  checksum: 789977b52432865bd63846da5c75a6efc2c56abdc0cb5ffcdb8e91eeb67a58fa5594c1195d18b2b4aff99675b0739ed6bd61024b26562e0cca18c8f993efdc82
   languageName: node
   linkType: hard
 
@@ -20134,6 +20156,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"joycon@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "joycon@npm:3.0.1"
+  checksum: db64c93cf05d6f99ea832708ac9ec10e8bbb92d767e3cc38f8c5111b513dbce4b1419b0fe42620e664998639b455dd943e8dd493d8753c5034837501f8e823c4
+  languageName: node
+  linkType: hard
+
 "js-base64@npm:^2.1.8":
   version: 2.6.4
   resolution: "js-base64@npm:2.6.4"
@@ -22226,7 +22255,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mz@npm:^2.4.0":
+"mz@npm:^2.4.0, mz@npm:^2.7.0":
   version: 2.7.0
   resolution: "mz@npm:2.7.0"
   dependencies:
@@ -24581,7 +24610,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"postcss-load-config@npm:^3.1.0":
+"postcss-load-config@npm:^3.0.1, postcss-load-config@npm:^3.1.0":
   version: 3.1.0
   resolution: "postcss-load-config@npm:3.1.0"
   dependencies:
@@ -27386,7 +27415,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.52.3":
+"rollup@npm:^2.45.2, rollup@npm:^2.52.3":
   version: 2.52.3
   resolution: "rollup@npm:2.52.3"
   dependencies:
@@ -29079,6 +29108,23 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"sucrase@npm:^3.18.1":
+  version: 3.19.0
+  resolution: "sucrase@npm:3.19.0"
+  dependencies:
+    commander: ^4.0.0
+    glob: 7.1.6
+    lines-and-columns: ^1.1.6
+    mz: ^2.7.0
+    pirates: ^4.0.1
+    ts-interface-checker: ^0.1.9
+  bin:
+    sucrase: bin/sucrase
+    sucrase-node: bin/sucrase-node
+  checksum: ab99f905e3233612d95c75c82c24d8bc24645b162770ef12e164bf93ec296738e921137d00fe90147217187d561ec78b4704da8f3ea4bccaf75a2b39b13169e2
+  languageName: node
+  linkType: hard
+
 "sumchecker@npm:^3.0.1":
   version: 3.0.1
   resolution: "sumchecker@npm:3.0.1"
@@ -29952,6 +29998,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"ts-interface-checker@npm:^0.1.9":
+  version: 0.1.13
+  resolution: "ts-interface-checker@npm:0.1.13"
+  checksum: df3e240963951b9fdcb6c89fe7cbbf3facac2f8202dec7d6854f136ac50ddbee8f4783bc233940a7c033eed0f1fec8272ed4a12ec505b333d69b58388267d37a
+  languageName: node
+  linkType: hard
+
 "ts-invariant@npm:^0.4.0":
   version: 0.4.4
   resolution: "ts-invariant@npm:0.4.4"
@@ -30181,6 +30234,35 @@ resolve@^2.0.0-next.3:
   version: 2.0.3
   resolution: "tslib@npm:2.0.3"
   checksum: 447bfca5deaa157806c3f77eaba74d05dd0b38b014e47ce79d98b5c77ce7d91b00a687ba13ca1b5a74d35ca1098ac7a072c0a97fad06f0266612f2a03a6c8e8f
+  languageName: node
+  linkType: hard
+
+"tsup@npm:^4.12.0":
+  version: 4.12.0
+  resolution: "tsup@npm:4.12.0"
+  dependencies:
+    cac: ^6.7.2
+    chalk: ^4.1.0
+    chokidar: ^3.5.1
+    debug: ^4.3.1
+    esbuild: ^0.12.9
+    execa: ^5.0.0
+    globby: ^11.0.3
+    joycon: ^3.0.1
+    postcss-load-config: ^3.0.1
+    resolve-from: ^5.0.0
+    rollup: ^2.45.2
+    sucrase: ^3.18.1
+    tree-kill: ^1.2.2
+  peerDependencies:
+    typescript: ^4.2.3
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  bin:
+    tsup: dist/cli-default.js
+    tsup-node: dist/cli-node.js
+  checksum: 8ec0b80f10f5dd1ca8cf1f425abba693afe5310e4c48906214d2428821194535e94fb089f0e9dada39062ce3e4d85367a9d69281360e70d4677374d72de1fae1
   languageName: node
   linkType: hard
 
