@@ -114,13 +114,16 @@ type Mutation {
   editPost(data: EditPostInput!, postId: String!): Boolean!
   editQuestion(data: EditQuestionInput!, questionId: String!): Boolean!
   followUser(userId: String!): Boolean!
+  getTokenData(tokenId: String!): PremiumToken!
   giveBadge(badgeName: String!, username: String!): Boolean!
   joinResort(resortId: String!): Boolean
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
+  makePremiumToken(time: Float!): String!
   makeReport(data: MakeReportInput!, reporteeData: ReportedEntityInput!): Boolean!
   markAsResolved(reportId: String!, resolved: Boolean!): Boolean!
   markNotificationAsRead(notificationId: String!): Boolean!
+  redeemPremium(tokenId: String!): Boolean!
   refreshBotToken(botId: String!): String!
   refreshToken(refreshToken: String!): String!
   updateProfile(data: UpdateProfileInput!): Boolean!
@@ -340,6 +343,11 @@ type Post {
   upvotes: Float!
 }
 
+type PremiumToken {
+  id: ID!
+  premiumTime: Float!
+}
+
 type Query {
   currentUser: User
   feedSortPosts(limit: Float!, offset: Float!): [Post!]!
@@ -468,6 +476,7 @@ type User {
   name: String
   ownedResorts: [Resort!]
   posts(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedPostFromUser_authorResponse!
+  premiumExiration: String
   roles: [Role!]!
   twitter: String
   upvotedAnswers(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedAnswerFromUser_upvotersResponse!
