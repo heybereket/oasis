@@ -27,7 +27,7 @@ export const initializeServer = async () => {
     const app = express();
     app.disable('x-powered-by');
 
-    if (process.env.OASIS_API_TRUST_PROXY === 'true') {
+    if (process.env.TRUST_PROXY === 'true') {
       app.set('trust proxy', 1);
     }
 

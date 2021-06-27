@@ -13,9 +13,9 @@ export default (passport: PassportStatic): Router => {
   passport.use(
     new Strategy(
       {
-        clientID: process.env.OASIS_API_GITHUB_CLIENT_ID,
-        clientSecret: process.env.OASIS_API_GITHUB_CLIENT_SECRET,
-        callbackURL: process.env.OASIS_API_GITHUB_CALLBACK_URL,
+        clientID: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        callbackURL: process.env.GITHUB_CALLBACK_URL,
       },
       async (_, __, profile, done) => {
         const id = String(profile.id);

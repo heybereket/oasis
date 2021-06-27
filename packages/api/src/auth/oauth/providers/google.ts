@@ -10,9 +10,9 @@ export default (passport: PassportStatic): Router => {
   passport.use(
     new Strategy(
       {
-        clientID: process.env.OASIS_API_GOOGLE_CLIENT_ID,
-        clientSecret: process.env.OASIS_API_GOOGLE_CLIENT_SECRET,
-        callbackURL: process.env.OASIS_API_GOOGLE_CALLBACK_URL,
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: process.env.GOOGLE_CALLBACK_URL,
       },
       async (_, __, profile, done) => {
         const id = String(profile.id);

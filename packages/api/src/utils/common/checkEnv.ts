@@ -31,24 +31,24 @@ const checkRequiredEnv = (
 
 const checkOAuthEnvs = (serviceName: string) => {
   return [
-    checkRequiredEnv(`OASIS_API_${serviceName}_CLIENT_ID`, false),
-    checkRequiredEnv(`OASIS_API_${serviceName}_CLIENT_SECRET`, false),
-    checkRequiredEnv(`OASIS_API_${serviceName}_CALLBACK_URL`, false),
+    checkRequiredEnv(`${serviceName}_CLIENT_ID`, false),
+    checkRequiredEnv(`${serviceName}_CLIENT_SECRET`, false),
+    checkRequiredEnv(`${serviceName}_CALLBACK_URL`, false),
   ];
 };
 
 const checkTwitterOAuthEnvs = (serviceName: string) => {
   return [
-    checkRequiredEnv(`OASIS_API_${serviceName}_KEY`, false),
-    checkRequiredEnv(`OASIS_API_${serviceName}_SECRET_KEY`, false),
-    checkRequiredEnv(`OASIS_API_${serviceName}_CALLBACK_URL`, false),
+    checkRequiredEnv(`${serviceName}_KEY`, false),
+    checkRequiredEnv(`${serviceName}_SECRET_KEY`, false),
+    checkRequiredEnv(`${serviceName}_CALLBACK_URL`, false),
   ];
 };
 
 export const checkEnv = async (): Promise<boolean> => {
   for (const requiredEnvChecker of [
     // Redis Connection URL
-    checkRequiredEnv('OASIS_API_REDIS_URL', true),
+    checkRequiredEnv('REDIS_URL', true),
 
     // OAuth Credentials
     ...checkOAuthEnvs('GITHUB'),
