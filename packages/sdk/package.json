@@ -36,7 +36,7 @@
     "@graphql-codegen/typescript": "^1.22.3",
     "@types/eslint": "^7.2.13",
     "@types/jest": "^26.0.23",
-    "@types/node": "^15.12.4",
+    "@types/node": "^15.12.5",
     "@types/prettier": "^2.3.0",
     "dotenv": "^10.0.0",
     "jest": "^27.0.5",

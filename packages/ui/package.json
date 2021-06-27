@@ -12,7 +12,7 @@
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@types/eslint": "^7.2.13",
     "@types/eslint-plugin-prettier": "^3.1.0",
-    "@types/node": "^15.12.4",
+    "@types/node": "^15.12.5",
     "@types/prettier": "^2.3.0",
     "@types/react-dom": "^17.0.8",
     "@types/rollup-plugin-peer-deps-external": "^2.2.0",
