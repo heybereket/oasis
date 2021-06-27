@@ -29,7 +29,8 @@ export default (passport: PassportStatic): Router => {
         const id = String(profile.id);
 
         try {
-          const user = (await User.findOne({ where: { discord: id } })) || User.create();
+          const user =
+            (await User.findOne({ where: { discord: id } })) || User.create();
 
           if (!user.id) {
             user.id = uuid();

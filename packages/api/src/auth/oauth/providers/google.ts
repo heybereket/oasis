@@ -18,7 +18,8 @@ export default (passport: PassportStatic): Router => {
         const id = String(profile.id);
 
         try {
-          const user = (await User.findOne({ where: { google: id } })) || User.create();
+          const user =
+            (await User.findOne({ where: { google: id } })) || User.create();
           const username = profile.displayName.replace(/ /g, '_');
 
           if (!user.id) {

@@ -24,7 +24,7 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": [".next", "dist", "out", "generated"],
+  "ignorePatterns": [".next", "dist", "out", "generated", "*.d.ts"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",

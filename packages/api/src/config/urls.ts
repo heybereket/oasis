@@ -1,4 +1,4 @@
 export const URLs = {
   authSuccess: '/auth/success',
-  login: '/login'
+  login: '/login',
 };

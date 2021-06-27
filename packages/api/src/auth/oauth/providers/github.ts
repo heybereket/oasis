@@ -25,7 +25,8 @@ export default (passport: PassportStatic): Router => {
         );
 
         try {
-          const user = (await User.findOne({ where: { github: id } })) || User.create();
+          const user =
+            (await User.findOne({ where: { github: id } })) || User.create();
 
           if (!user.id) {
             user.id = uuid();
