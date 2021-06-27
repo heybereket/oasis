@@ -247,20 +247,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/eslint-parser@npm:^7.14.7":
-  version: 7.14.7
-  resolution: "@babel/eslint-parser@npm:7.14.7"
-  dependencies:
-    eslint-scope: ^5.1.1
-    eslint-visitor-keys: ^2.1.0
-    semver: ^6.3.0
-  peerDependencies:
-    "@babel/core": ">=7.11.0"
-    eslint: ">=7.5.0"
-  checksum: 2cb99cc3cbe6efde53a55a113d3a3b2ddbd807489e1443c47391401986b71ff5a3c07ca2f565c39b501224a30142cd7eb75f2555174e54aeff60dacc073aeaa5
-  languageName: node
-  linkType: hard
-
 "@babel/generator@npm:^7.12.1, @babel/generator@npm:^7.12.13, @babel/generator@npm:^7.14.2, @babel/generator@npm:^7.14.3, @babel/generator@npm:^7.5.0, @babel/generator@npm:^7.7.2":
   version: 7.14.3
   resolution: "@babel/generator@npm:7.14.3"
@@ -5086,7 +5072,6 @@ __metadata:
     "@types/concurrently": ^6.2.0
     "@types/connect-redis": ^0.0.16
     "@types/dotenv": ^8.2.0
-    "@types/eslint": ^7.2.13
     "@types/express": ^4.17.12
     "@types/express-fileupload": ^1.1.6
     "@types/express-session": ^1.17.3
@@ -5097,13 +5082,10 @@ __metadata:
     "@types/passport-github2": ^1.2.4
     "@types/passport-google-oauth20": ^2.0.8
     "@types/passport-twitter": ^1.0.36
-    "@types/prettier": ^2.3.0
     "@types/rimraf": ^3.0.0
     "@types/sharp": ^0.28.3
     "@types/spotify-web-api-node": ^5.0.2
     "@types/uuid": ^8.3.0
-    "@typescript-eslint/eslint-plugin": ^4.28.0
-    "@typescript-eslint/parser": ^4.28.0
     apollo-server-express: ^2.25.2
     aws-sdk: ^2.935.0
     chalk: ^4.1.1
@@ -5112,7 +5094,6 @@ __metadata:
     connect-redis: ^6.0.0
     cross-fetch: ^3.1.4
     dotenv: ^10.0.0
-    eslint: ^7.29.0
     express: ^4.17.1
     express-fileupload: ^1.2.1
     express-session: ^1.17.2
@@ -5128,7 +5109,6 @@ __metadata:
     passport-google-oauth20: ^2.0.0
     passport-twitter: ^1.0.4
     pg: ^8.6.0
-    prettier: ^2.3.2
     redis: ^3.1.2
     reflect-metadata: ^0.1.13
     rimraf: ^3.0.2
@@ -5151,18 +5131,14 @@ __metadata:
   resolution: "@oasis-sh/cli@workspace:packages/cli"
   dependencies:
     "@babel/preset-typescript": ^7.14.5
-    "@types/eslint": ^7.2.13
     "@types/jest-json-schema": ^2.1.3
     "@types/node-emoji": ^1.8.1
-    "@types/prettier": ^2.3.0
     "@types/yargs": ^17.0.0
     chalk: ^4.1.1
-    eslint: ^7.29.0
     graphql-request: ^3.4.0
     jest: ^27.0.5
     jest-json-schema: ^5.0.0
     node-emoji: ^1.10.0
-    prettier: ^2.3.2
     typescript: 4.3.4
     yargs: ^17.0.1
   languageName: unknown
@@ -5172,14 +5148,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@oasis-sh/desktop@workspace:packages/desktop"
   dependencies:
-    "@types/eslint": ^7.2.13
-    "@types/prettier": ^2.3.0
     electron: ^13.1.4
     electron-log: ^4.3.5
     electron-updater: ^4.3.10
-    eslint: ^7.29.0
     pinst: ^2.1.6
-    prettier: ^2.3.2
     typescript: 4.3.4
   languageName: unknown
   linkType: soft
@@ -5199,22 +5171,18 @@ __metadata:
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^12.0.0
     "@testing-library/user-event": ^13.1.9
-    "@types/eslint": ^7.2.13
     "@types/jest": ^26.0.23
     "@types/node": ^15.12.5
-    "@types/prettier": ^2.3.0
     "@types/react": ^17.0.11
     "@types/react-dom": ^17.0.8
     "@types/react-router": ^5.1.15
     "@types/react-router-dom": ^5.1.7
     "@types/tailwindcss": ^2.2.0
     "@types/webpack-dev-server": ^3.11.4
-    eslint: ^7.29.0
     html-webpack-plugin: ^5.3.2
     ionicons: ^5.5.2
     postcss: ^8.3.5
     postcss-loader: ^6.1.0
-    prettier: ^2.3.2
     react: ^17.0.2
     react-dom: ^17.0.2
     react-router: ^5.2.0
@@ -5280,17 +5248,13 @@ __metadata:
   dependencies:
     "@graphql-codegen/cli": ^1.21.5
     "@graphql-codegen/typescript": ^1.22.3
-    "@types/eslint": ^7.2.13
     "@types/jest": ^26.0.23
     "@types/node": ^15.12.5
-    "@types/prettier": ^2.3.0
     cross-fetch: ^3.1.4
     dotenv: ^10.0.0
     ee-ts: ^1.0.2
-    eslint: ^7.29.0
     jest: ^27.0.5
     node-fetch: ^2.6.1
-    prettier: ^2.3.2
     ts-jest: ^27.0.3
     ts-node: ^10.0.0
     typescript: 4.3.4
@@ -5301,12 +5265,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@oasis-sh/shared@workspace:packages/shared"
   dependencies:
-    "@types/eslint": ^7.2.13
-    "@types/prettier": ^2.3.0
     chalk: ^4.1.1
     dayjs: ^1.10.5
-    eslint: ^7.29.0
-    prettier: ^2.3.2
     typescript: 4.3.4
   peerDependencies:
     react: ^17.0.2
@@ -5321,24 +5281,13 @@ __metadata:
     "@rollup/plugin-commonjs": ^19.0.0
     "@rollup/plugin-json": ^4.1.0
     "@rollup/plugin-node-resolve": ^13.0.0
-    "@types/eslint": ^7.2.13
-    "@types/eslint-plugin-prettier": ^3.1.0
     "@types/node": ^15.12.5
-    "@types/prettier": ^2.3.0
     "@types/react-dom": ^17.0.8
     "@types/rollup-plugin-peer-deps-external": ^2.2.0
-    "@typescript-eslint/eslint-plugin": ^4.28.0
-    "@typescript-eslint/parser": ^4.28.0
     autoprefixer: ^10.2.6
-    eslint: ^7.29.0
-    eslint-config-prettier: ^8.3.0
-    eslint-plugin-prettier: ^3.4.0
-    eslint-plugin-react: ^7.24.0
-    eslint-plugin-react-hooks: ^4.2.0
     i18next: ^20.3.2
     i18next-browser-languagedetector: ^6.1.2
     node-sass: ^6.0.1
-    prettier: ^2.3.2
     react: ^17.0.2
     react-dom: ^17.0.2
     react-i18next: ^11.11.0
@@ -5361,18 +5310,13 @@ __metadata:
     "@types/glob": ^7.1.3
     "@types/node": ^15.12.5
     "@types/node-fetch": ^2.5.10
-    "@types/prettier": ^2.3.0
     "@types/react": ^17.0.11
     "@types/react-dom": ^17.0.8
     "@types/vscode": ^1.57.0
-    "@typescript-eslint/eslint-plugin": ^4.28.0
-    "@typescript-eslint/parser": ^4.28.0
     "@vitejs/plugin-react-refresh": ^1.3.3
     concurrently: ^6.2.0
-    eslint: ^7.29.0
     glob: ^7.1.7
     node-fetch: ^2.6.1
-    prettier: ^2.3.2
     react: ^17.0.2
     react-dom: ^17.0.2
     typescript: 4.3.4
@@ -5386,7 +5330,6 @@ __metadata:
   resolution: "@oasis-sh/web@workspace:packages/web"
   dependencies:
     "@babel/core": ^7.14.6
-    "@babel/eslint-parser": ^7.14.7
     "@cypress/webpack-preprocessor": ^5.9.1
     "@mdx-js/react": ^1.6.22
     "@next/bundle-analyzer": ^11.0.1
@@ -5405,15 +5348,10 @@ __metadata:
     "@types/react-dom": ^17.0.8
     "@types/react-syntax-highlighter": ^13.5.1
     "@types/rimraf": ^3.0.0
-    "@typescript-eslint/eslint-plugin": ^4.28.0
-    "@typescript-eslint/parser": ^4.28.0
     autoprefixer: ^10.2.6
     babel-loader: ^8.2.2
     chalk: ^4.1.1
     cypress: ^7.6.0
-    eslint: ^7.29.0
-    eslint-plugin-react: ^7.24.0
-    eslint-plugin-react-hooks: ^4.2.0
     express: ^4.17.1
     formik: ^2.2.9
     github-markdown-css: ^4.0.0
@@ -5421,7 +5359,6 @@ __metadata:
     next-transpile-modules: ^8.0.0
     node-fetch: ^2.6.1
     postcss: ^8.3.5
-    prettier: 2.3.2
     pretty-ms: ^7.0.1
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -7275,15 +7212,6 @@ __metadata:
   dependencies:
     dotenv: "*"
   checksum: 8b4d00f8849c550a6888b8f426f85f14171bf1bab53f6b2683bd71a25869a93cb4b960f4fa8de592f2b4c43366240fc9c50d89e6cc1cffffafbb843879c6fdd6
-  languageName: node
-  linkType: hard
-
-"@types/eslint-plugin-prettier@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@types/eslint-plugin-prettier@npm:3.1.0"
-  dependencies:
-    "@types/eslint": "*"
-  checksum: 2fb9fc7e402378aa95e02455d657b3fee2693ca85fae9c2f9a9d9b543ddb3723f3b3a103cfc4306de963bab15c3162d291f32b4e7605870a8637c503779b6e7a
   languageName: node
   linkType: hard
 
@@ -14666,17 +14594,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:^8.3.0":
-  version: 8.3.0
-  resolution: "eslint-config-prettier@npm:8.3.0"
-  peerDependencies:
-    eslint: ">=7.0.0"
-  bin:
-    eslint-config-prettier: bin/cli.js
-  checksum: 94ccbb50fb67e5e47e8ba6cfa257b5cbf53619990ab13f46b99518cfe9b900394b93bdf6ffedbde1a8e2997d301b0fbd73a6b4202146bc53475dfb30a8c812f2
-  languageName: node
-  linkType: hard
-
 "eslint-config-react-app@npm:^6.0.0":
   version: 6.0.0
   resolution: "eslint-config-react-app@npm:6.0.0"
@@ -14796,21 +14713,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:^3.4.0":
-  version: 3.4.0
-  resolution: "eslint-plugin-prettier@npm:3.4.0"
-  dependencies:
-    prettier-linter-helpers: ^1.0.0
-  peerDependencies:
-    eslint: ">=5.0.0"
-    prettier: ">=1.13.0"
-  peerDependenciesMeta:
-    eslint-config-prettier:
-      optional: true
-  checksum: 322be1af8c7a6b7f1c718d912090722b65da072fda05bbc0a9d94523e6c3dfda49a7f62fd411126f1909c12bbc63e827ee6459163b2ce3458adb292541decf66
-  languageName: node
-  linkType: hard
-
 "eslint-plugin-react-hooks@npm:^4.2.0":
   version: 4.2.0
   resolution: "eslint-plugin-react-hooks@npm:4.2.0"
@@ -14922,7 +14824,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-visitor-keys@npm:^2.0.0, eslint-visitor-keys@npm:^2.1.0":
+"eslint-visitor-keys@npm:^2.0.0":
   version: 2.1.0
   resolution: "eslint-visitor-keys@npm:2.1.0"
   checksum: 75eaae9006f5bcb9d1e09641719b840b83c4758f5f25bc06a0e94918d78658d0f19691bdc2e3b100604d0fe2d1eb94a2aab287ba24ad2f02f87cacdccb86c2e4
@@ -15517,13 +15419,6 @@ __metadata:
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
   checksum: 451526766b219503131d11e823eaadd1533080b0be4860e316670b039dcaf31cd1007c2fe036a9b922abba7c040dfad5e942ed79d21f2ff849e50049f36e0fb7
-  languageName: node
-  linkType: hard
-
-"fast-diff@npm:^1.1.2":
-  version: 1.2.0
-  resolution: "fast-diff@npm:1.2.0"
-  checksum: 9c5407d9c4869407854fe8838b8d9d26065ca747c9b80697957ae37482e982e880de823efa2c97ea1cba05dc06fce853a005e7557d10550c64c052cf7021ba9e
   languageName: node
   linkType: hard
 
@@ -25326,16 +25221,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prettier-linter-helpers@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "prettier-linter-helpers@npm:1.0.0"
-  dependencies:
-    fast-diff: ^1.1.2
-  checksum: 6d698b9c8dc28e52c8d69df520cde3410cc06cc40471acf81b4b7c18ca08e73d0efb0f878654985bb02fce4f8d3d64cdf64fe9f3ffad3e1dc7e17b837d4ddcb2
-  languageName: node
-  linkType: hard
-
-"prettier@npm:2.3.2, prettier@npm:^2.3.2":
+"prettier@npm:^2.3.2":
   version: 2.3.2
   resolution: "prettier@npm:2.3.2"
   bin:
