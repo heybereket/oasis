@@ -7,10 +7,10 @@
 ## Installation
 1. Install Redis Server
 2. Populate `.env` files in `packages/web` and `packages/api`
-   - If you used a custom port for Redis, make sure to modify `OASIS_API_REDIS_URL`, otherwise leave it as the default.
-   - If you're running behind an NGINX reverse proxy, you'll want to [read our NGINX setup guide](NGINX-Setup-Guide) and make sure that you set `OASIS_API_TRUST_PROXY` to `true`.
-   - `OASIS_API_GITHUB_CLIENT_*` are obtainable from making a [Github OAuth developer application](https://docs.github.com/en/developers/apps/creating-an-oauth-app).
-   - If running locally, `OASIS_API_GITHUB_CALLBACK_URL` is most likely `http://localhost:3000/api/auth/github/callback`, but this can depend on your setup.
+   - If you used a custom port for Redis, make sure to modify `REDIS_URL`, otherwise leave it as the default.
+   - If you're running behind an NGINX reverse proxy, you'll want to [read our NGINX setup guide](NGINX-Setup-Guide) and make sure that you set `TRUST_PROXY` to `true`.
+   - `GITHUB_CLIENT_*` are obtainable from making a [Github OAuth developer application](https://docs.github.com/en/developers/apps/creating-an-oauth-app).
+   - If running locally, `GITHUB_CALLBACK_URL` is most likely `http://localhost:3000/api/auth/github/callback`, but this can depend on your setup.
 3. Copy the `ormconfig.ts` example below to fill in yours.
 4. You're set! You can now run the Oasis API locally!
 

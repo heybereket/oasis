@@ -7,43 +7,43 @@ ANALYZE=true yarn build
 
 ## API
 # Session Secret Token
-OASIS_API_SESSION_SECRET=can-be-anything-even-this
+SESSION_SECRET=can-be-anything-even-this
 
 # Trust Proxy ('true' ONLY if you are reverse-proxying the API)
-OASIS_API_TRUST_PROXY=false
+TRUST_PROXY=false
 
 # https://redis.io/download
-OASIS_API_REDIS_URL=redis://redis:6379
+REDIS_URL=redis://redis:6379
 
 # Github Authentication (Optional)
 # https://github.com/settings/developers
-OASIS_API_GITHUB_CLIENT_ID=
-OASIS_API_GITHUB_CLIENT_SECRET=
-OASIS_API_GITHUB_CALLBACK_URL=http://localhost:3000/api/auth/github/callback
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+GITHUB_CALLBACK_URL=http://localhost:3000/api/auth/github/callback
 
 # Twitter Authentication (Optional)
 # https://apps.twitter.com
-OASIS_API_TWITTER_KEY=
-OASIS_API_TWITTER_SECRET_KEY=
-OASIS_API_TWITTER_CALLBACK_URL=http://localhost:3000/api/auth/twitter/callback
+TWITTER_KEY=
+TWITTER_SECRET_KEY=
+TWITTER_CALLBACK_URL=http://localhost:3000/api/auth/twitter/callback
 
 # Discord Authentication (Optional)
 # https://discord.com/developers/applications
-OASIS_API_DISCORD_CLIENT_ID=
-OASIS_API_DISCORD_CLIENT_SECRET=
-OASIS_API_DISCORD_CALLBACK_URL=http://localhost:3000/api/auth/discord/callback
+DISCORD_CLIENT_ID=
+DISCORD_CLIENT_SECRET=
+DISCORD_CALLBACK_URL=http://localhost:3000/api/auth/discord/callback
 
 # Google Authentication (Optional)
 # https://console.developers.google.com
-OASIS_API_GOOGLE_CLIENT_ID=
-OASIS_API_GOOGLE_CLIENT_SECRET=
-OASIS_API_GOOGLE_CALLBACK_URL=http://localhost:3000/api/auth/google/callback
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_CALLBACK_URL=http://localhost:3000/api/auth/google/callback
 
 # Spotify Connection (Optional)
 # https://developer.spotify.com/dashboard
-OASIS_API_SPOTIFY_CLIENT_SECRET=
-OASIS_API_SPOTIFY_CLIENT_SECRET=
-OASIS_API_SPOTIFY_CALLBACK_URL=
+SPOTIFY_CLIENT_SECRET=
+SPOTIFY_CLIENT_SECRET=
+SPOTIFY_CALLBACK_URL=
 
 # AWS Credentials (Optional)
 AWS_ACCESS_KEY_ID=

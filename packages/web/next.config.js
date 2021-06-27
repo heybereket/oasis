@@ -78,10 +78,5 @@ module.exports = withBundleAnalyzer(
     webpack: (config) => {
       return config;
     },
-    env: {
-      PROJECT_ROOT: join(__dirname, '../..'),
-      IS_NEXT: true,
-      OASIS_API_SRC_PATH: join(__dirname, '../api/src'),
-    },
   })
 );
