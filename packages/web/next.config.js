@@ -1,10 +1,30 @@
 const bundleAnalyzer = require('@next/bundle-analyzer');
 const withTM = require('next-transpile-modules')(['@oasis-sh/parser']);
-const { join } = require('path');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
+
+const esBuildMinify = (config, options) => {
+	const terserIndex = config.optimization.minimizer.findIndex(minimizer => (minimizer.constructor.name === 'TerserPlugin'));
+	if (terserIndex > -1) {
+		config.optimization.minimizer.splice(
+			terserIndex,
+			1,
+			new ESBuildMinifyPlugin(options),
+		);
+	}
+};
+
+const esBuildLoader = (config, options) => {
+	const tsLoader = config.module.rules.find(rule => rule.test && rule.test.test('.ts'));
+
+	if (tsLoader) {
+		tsLoader.use.loader = 'esbuild-loader';
+		tsLoader.use.options = options;
+	}
+};
 
 module.exports = withBundleAnalyzer(
   withTM({
@@ -75,7 +95,21 @@ module.exports = withBundleAnalyzer(
         },
       ];
     },
-    webpack: (config) => {
+    webpack: (config, { webpack }) => {
+      config.plugins.push(
+        new webpack.ProvidePlugin({
+          React: 'react',
+        }),
+      );
+
+      esBuildMinify(config);
+
+      esBuildLoader(config, {
+        // Specify `tsx` if you're using TypeSCript
+        loader: 'tsx',
+        target: 'es2017',
+      });
+
       return config;
     },
   })

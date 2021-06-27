@@ -53,6 +53,7 @@
     "babel-loader": "^8.2.2",
     "chalk": "^4.1.1",
     "cypress": "^7.6.0",
+    "esbuild-loader": "^2.13.1",
     "next-transpile-modules": "^8.0.0",
     "node-fetch": "^2.6.1",
     "postcss": "^8.3.5",
