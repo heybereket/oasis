@@ -5,7 +5,7 @@ import { gql, GraphQLClient } from 'graphql-request';
 expect.extend(matchers);
 
 describe("getting a user's posts", () => {
-  const [output, error] = execCommand('getUsersPosts', [
+  const [output, error] = execCommand('get_users_posts', [
     'dulguuncodes',
     '--json',
     '--limit',

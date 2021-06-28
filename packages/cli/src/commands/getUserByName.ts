@@ -21,7 +21,7 @@ export const builder = {
 export const handler = async (yargs: any) => {
   const useJSON = yargs.json;
 
-  const username = yargs._[1] ?? yargs.username;
+  const username = yargs.username;
 
   if (!username)
     return log.error('you need to pass <username> in order for this to work');

@@ -4,6 +4,10 @@ import { gql, GraphQLClient } from 'graphql-request';
 
 export const command = 'get_users_posts <username> [json]';
 export const builder = {
+  username: {
+    default: undefined,
+    describe: "the specified user's name",
+  },
   limit: {
     default: 10.0,
     type: { type: 'float' },
@@ -24,7 +28,7 @@ export const handler = async (yargs: any) => {
 
   const client = new GraphQLClient(gqlURL);
 
-  const username = yargs._[1];
+  const username = yargs.username;
   const postsLimit = yargs.limit;
   const postsOffset = yargs.offset;
 
