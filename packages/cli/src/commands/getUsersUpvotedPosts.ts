@@ -55,8 +55,10 @@ export const handler = async (yargs: any) => {
       postsLimit,
       postsOffset,
     })
-    .then((res) => {
-      if (useJSON) return console.log(JSON.stringify(res));
-      log.info(res);
+    .then(({ getUserByName }) => {
+      if (useJSON)
+        return console.log(JSON.stringify(getUserByName.upvotedPosts));
+
+      log.info(getUserByName.upvotedPosts);
     });
 };
