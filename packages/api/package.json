@@ -15,7 +15,7 @@
     "typeorm:generate_migration": "yarn typeorm:cli migration:generate -d ./src/migrations -n",
     "typeorm:run_migrations": "yarn typeorm:cli migration:run",
     "db:setup": "node dist/test-utils/setup.js",
-    "test": "jest -c ./dist/jest.config.js",
+    "test": "jest",
     "clean": "rimraf dist"
   },
   "devDependencies": {
