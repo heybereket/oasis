@@ -5,7 +5,7 @@ import { Role } from '@enums/Roles';
 import { ApolloError } from 'apollo-server-errors';
 
 @Resolver()
-export class BanUser {
+export default class BanUser {
   @Mutation(() => Boolean)
   @Authorized(Role.Moderator)
   async banUser(

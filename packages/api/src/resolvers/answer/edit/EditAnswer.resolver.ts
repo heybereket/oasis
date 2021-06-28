@@ -9,7 +9,7 @@ import EditAnswerInput from './EditAnswerInput';
 // @bcg-resolver(mutation, editAnswer, answer)
 
 @Resolver()
-export class EditAnswerResolver {
+export default class EditAnswerResolver {
   @Mutation(() => Boolean)
   async editAnswer(
     @Arg('answerId') answerId: string,

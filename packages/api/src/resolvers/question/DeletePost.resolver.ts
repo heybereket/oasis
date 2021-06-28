@@ -8,7 +8,7 @@ import { Role } from '@enums/Roles';
 // @bcg-resolver(mutation, deleteQuestion, question)
 
 @Resolver()
-export class DeleteQuestionResolver {
+export default class DeleteQuestionResolver {
   @Mutation(() => Boolean)
   async deleteQuestion(
     @Arg('questionId') questionId: string,

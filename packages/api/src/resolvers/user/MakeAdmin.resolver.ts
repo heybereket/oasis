@@ -3,7 +3,7 @@ import User from '@entities/User';
 import { Role } from '@enums/Roles';
 
 @Resolver()
-export class MakeAdminResolver {
+export default class MakeAdminResolver {
   @Mutation(() => Boolean)
   @Authorized(Role.SuperAdmin)
   async makeAdmin(

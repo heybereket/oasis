@@ -6,7 +6,7 @@ import { ContextType } from '@root/server';
 // @bcg-resolver(mutation, joinResort, resort)
 
 @Resolver()
-export class JoinResortResolver {
+export default class JoinResortResolver {
   @Mutation(() => Boolean, { nullable: true })
   @Authorized()
   async joinResort(

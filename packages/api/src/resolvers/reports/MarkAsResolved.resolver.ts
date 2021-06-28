@@ -3,7 +3,7 @@ import { Role } from '@enums/Roles';
 import { Arg, Authorized, Mutation, Resolver } from 'type-graphql';
 
 @Resolver()
-export class MarkAsResolvedResolver {
+export default class MarkAsResolvedResolver {
   @Authorized(Role.Moderator)
   @Mutation(() => Boolean)
   async markAsResolved(

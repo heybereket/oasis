@@ -7,7 +7,7 @@ import CreateQuestionInput from './CreateQuestionInput';
 // @bcg-resolver(mutation, createQuestion, question)
 
 @Resolver()
-export class CreateQuestionResolver {
+export default class CreateQuestionResolver {
   @Mutation(() => Boolean)
   @Authorized()
   async createQuestion(

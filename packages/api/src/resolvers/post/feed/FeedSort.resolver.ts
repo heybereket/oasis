@@ -2,7 +2,7 @@ import { Arg, Query, Resolver } from 'type-graphql';
 import Post from '@entities/Post';
 
 @Resolver()
-export class DeletePostResolver {
+export default class DeletePostResolver {
   @Query(() => [Post])
   async feedSortPosts(
     @Arg('limit') limit: number,

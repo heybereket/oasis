@@ -16,7 +16,7 @@ import { generatedNumber } from '@utils/index';
 import { sign } from 'jsonwebtoken';
 
 @Resolver()
-export class RefreshBotTokenResolver {
+export default class RefreshBotTokenResolver {
   @Mutation(() => String)
   @Authorized()
   @NoBot()

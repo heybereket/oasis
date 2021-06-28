@@ -9,7 +9,7 @@ import EditPostInput from './EditPostInput';
 // @bcg-resolver(mutation, editPost, post)
 
 @Resolver()
-export class EditPostResolver {
+export default class EditPostResolver {
   @Mutation(() => Boolean)
   async editPost(
     @Arg('postId') postId: string,

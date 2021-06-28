@@ -4,7 +4,7 @@ import { Arg, Query, Resolver } from 'type-graphql';
 // @bcg-resolver(query, getResortByName, resort)
 
 @Resolver()
-export class GetResortByNameResolver {
+export default class GetResortByNameResolver {
   @Query(() => Resort, { nullable: true })
   getResortByName(@Arg('name') name: string) {
     return Resort.createQueryBuilder('resort')

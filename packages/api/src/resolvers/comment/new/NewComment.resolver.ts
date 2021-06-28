@@ -8,7 +8,7 @@ import NewCommentInput from './NewCommentInput';
 // @bcg-resolver(mutation, createComment, comment)
 
 @Resolver()
-export class NewCommentResolver {
+export default class NewCommentResolver {
   @Mutation(() => Boolean)
   @Authorized()
   async createComment(

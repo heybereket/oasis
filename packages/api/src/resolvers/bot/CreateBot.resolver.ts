@@ -24,7 +24,7 @@ class CreateBotInput {
 }
 
 @Resolver()
-export class CreateBotResolver {
+export default class CreateBotResolver {
   @Mutation(() => String)
   @Authorized()
   @NoBot()

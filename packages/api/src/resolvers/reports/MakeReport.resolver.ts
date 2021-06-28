@@ -10,7 +10,7 @@ import MakeReportInput from './MakeReportInput';
 import ReportedEntityInput from './ReportedEntityInput';
 
 @Resolver()
-export class MakeReportResolver {
+export default class MakeReportResolver {
   @Authorized()
   @Mutation(() => Boolean)
   async makeReport(

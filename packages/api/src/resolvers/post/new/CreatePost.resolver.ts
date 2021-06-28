@@ -7,7 +7,7 @@ import CreatePostInput from './CreatePostInput';
 // @bcg-resolver(mutation, createPost, post)
 
 @Resolver()
-export class CreatePostResolver {
+export default class CreatePostResolver {
   @Mutation(() => Boolean)
   @Authorized()
   async createPost(

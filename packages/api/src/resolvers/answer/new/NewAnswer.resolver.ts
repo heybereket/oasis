@@ -8,7 +8,7 @@ import NewAnswerInput from './NewAnswerInput';
 // @bcg-resolver(mutation, createAnswer, answer)
 
 @Resolver()
-export class NewAnswerResolver {
+export default class NewAnswerResolver {
   @Mutation(() => Boolean)
   @Authorized()
   async createAnswer(

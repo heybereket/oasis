@@ -11,7 +11,7 @@ const SearchResultUnion = createUnionType({
 const AMOUNT_OF_SEARCH_TYPES = 3;
 
 @Resolver()
-export class SearchResolver {
+export default class SearchResolver {
   @Query(() => [SearchResultUnion])
   async search(
     @Arg('searchQuery') searchQuery: string,

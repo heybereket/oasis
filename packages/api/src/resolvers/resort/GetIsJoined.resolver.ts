@@ -12,7 +12,7 @@ import {
 } from 'type-graphql';
 
 @Resolver(() => Resort)
-export class PaginateResortMembersResolver {
+export default class PaginateResortMembersResolver {
   @FieldResolver(() => Boolean)
   async isJoined(
     @Root() resort: Resort,

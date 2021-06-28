@@ -2,7 +2,7 @@ import { PremiumToken } from '@entities/PremiumToken';
 import { Arg, Mutation, Resolver } from 'type-graphql';
 
 @Resolver()
-export class MakePremiumToken {
+export default class MakePremiumToken {
   @Mutation(() => String)
   async makePremiumToken(@Arg('time') time: number) {
     const token = PremiumToken.create({

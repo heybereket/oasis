@@ -4,7 +4,7 @@ import { Authorized, Mutation, Resolver, Ctx } from 'type-graphql';
 import { TokenData } from './TokenDataInput';
 
 @Resolver()
-export class CreateTokensResolvers {
+export default class CreateTokensResolvers {
   @Mutation(() => TokenData)
   @Authorized()
   createTokens(@Ctx() { uid }: ContextType): TokenData {

@@ -4,7 +4,7 @@ import User from '@entities/User';
 // @bcg-resolver(query, getUserByName, user)
 
 @Resolver()
-export class GetUserByNameResolver {
+export default class GetUserByNameResolver {
   @Query(() => User, { nullable: true })
   async getUserByName(@Arg('username') username: string) {
     return await User.createQueryBuilder('user')

@@ -4,7 +4,7 @@ import CreateResortInput from './CreateResortInput';
 import Resort from '@entities/Resort';
 
 @Resolver()
-export class CreateResortResolver {
+export default class CreateResortResolver {
   @Mutation(() => Boolean)
   @Authorized()
   async createResort(

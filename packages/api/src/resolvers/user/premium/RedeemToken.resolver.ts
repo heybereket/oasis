@@ -7,7 +7,7 @@ import { verify } from 'jsonwebtoken';
 import { PremiumToken } from '@entities/PremiumToken';
 
 @Resolver()
-export class RedeemToken {
+export default class RedeemToken {
   @Mutation(() => Boolean)
   @Authorized()
   async redeemPremium(

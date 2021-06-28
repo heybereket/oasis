@@ -6,7 +6,7 @@ import { upvoteDownvote } from '@utils/votes/upvoteDownvoteEntity';
 // @bcg-resolver(mutation, upvoteDownvoteAnswer, answer)
 
 @Resolver(() => Answer)
-export class UpvoteDownvoteAnswerResolver {
+export default class UpvoteDownvoteAnswerResolver {
   @Mutation(() => Boolean)
   @Authorized()
   async upvoteDownvoteAnswer(

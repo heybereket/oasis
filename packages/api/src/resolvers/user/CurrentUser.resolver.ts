@@ -5,7 +5,7 @@ import User from '@entities/User';
 // @bcg-resolver(query, currentUser, user)
 
 @Resolver()
-export class CurrentUser {
+export default class CurrentUser {
   @Query(() => User, { nullable: true })
   @Authorized()
   currentUser(@Ctx() { getUser }: ContextType) {

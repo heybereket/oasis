@@ -4,7 +4,7 @@ import { sign, verify } from 'jsonwebtoken';
 import { Authorized, Mutation, Resolver, Ctx, Arg } from 'type-graphql';
 
 @Resolver()
-export class RefreshTokenResolvers {
+export default class RefreshTokenResolvers {
   @Mutation(() => String)
   @Authorized()
   async refreshToken(

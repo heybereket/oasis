@@ -9,7 +9,7 @@ import EditCommentInput from './EditCommentInput';
 // @bcg-resolver(mutation, editComment, comment)
 
 @Resolver()
-export class EditCommentResolver {
+export default class EditCommentResolver {
   @Mutation(() => Boolean)
   async editComment(
     @Arg('commentId') commentId: string,

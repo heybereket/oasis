@@ -3,7 +3,7 @@ import { Role } from '@enums/Roles';
 import { Authorized, Query, Resolver } from 'type-graphql';
 
 @Resolver()
-export class GetQueueResolver {
+export default class GetQueueResolver {
   @Authorized(Role.Admin)
   @Query(() => [Report])
   async getQueue() {
