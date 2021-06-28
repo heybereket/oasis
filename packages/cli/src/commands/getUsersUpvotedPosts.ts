@@ -3,7 +3,7 @@ import { gqlURL } from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
 
 export const handler = async (yargs: any) => {
-  const useJSON = yargs.json ?? false;
+  const useJSON = yargs.json;
 
   const client = new GraphQLClient(gqlURL);
 

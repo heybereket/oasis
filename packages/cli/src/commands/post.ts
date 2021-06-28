@@ -3,7 +3,8 @@ import { gqlURL } from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
 
 export const handler = async (yargs: any) => {
-  const useJSON = yargs.json ?? false;
+  const useJSON = yargs.json;
+
   if (!yargs.message) {
     return log.error('you need to pass <message> in order for this to work');
   }
