@@ -5,7 +5,7 @@ import { matchers } from 'jest-json-schema';
 expect.extend(matchers);
 
 describe('getting user by name', () => {
-  const [output, error] = execCommand('getUserByName', ['bereket', '--json']);
+  const [output, error] = execCommand('get_user_by_name', ['bereket', '--json']);
 
   expect(error).toBeNull();
   expect(output).not.toBeNull();
@@ -24,7 +24,7 @@ describe('getting user by name', () => {
   });
 
   it('rejects incomplete requests', () => {
-    const [_, error] = execCommand('getUserByName', ['--json']);
+    const [_, error] = execCommand('get_user_by_name', ['--json']);
 
     expect(error).not.toBeNull();
   });

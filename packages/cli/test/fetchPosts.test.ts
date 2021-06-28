@@ -5,7 +5,7 @@ import { GraphQLClient, gql } from 'graphql-request';
 expect.extend(matchers);
 
 describe('fetching posts', () => {
-  const [output, error] = execCommand('fetchPosts', [
+  const [output, error] = execCommand('fetch_posts', [
     '--json',
     '--limit',
     '8',

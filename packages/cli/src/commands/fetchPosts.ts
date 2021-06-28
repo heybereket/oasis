@@ -1,7 +1,7 @@
 import * as log from '@oasis-sh/shared';
 import { client } from '../sdkClient';
 
-export const command = 'fetch_posts <limit> <offset> <json>';
+export const command = 'fetch_posts [limit] [offset] [json]';
 export const desc =
   'Queries posts from the Oasis API. Returns an array of posts';
 export const builder = {
@@ -15,7 +15,6 @@ export const builder = {
       'offsets the posts that are being queries, useful for paginating posts',
   },
   json: {
-    default: false,
     describe:
       'writes the raw JSON to stdout, powerful when used with jq (a JSON processor)',
   },
