@@ -10,7 +10,7 @@
 - [`packages/api`](/packages/api) - Backend and GraphQL API
 - [`packages/react-gql`](/packages/react-gql) - React GraphQL Hooks
 - [`packages/sdk`](/packages/sdk) - API Client
-- [`packages/parser`](/packages/parser) - Parser
+<!-- - [`packages/parser`](/packages/parser) - Parser !-->
 - [`packages/cli`](/packages/cli) - CLI
 
 ## Contributions
