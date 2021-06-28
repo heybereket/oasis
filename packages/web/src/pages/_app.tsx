@@ -5,7 +5,7 @@ import { AuthProvider } from '@shared/AuthProvider';
 import Head from 'next/head';
 import Link from 'next/link';
 import { LinkProvider, LanguageProvider } from '@oasis-sh/ui';
-import { RuntimesProvider } from '@oasis-sh/parser';
+import { RuntimesProvider } from '@parser/index';
 import { SEO } from '@shared/SEO';
 import { initSentry } from '@utils/sentry';
 import { useApollo } from '@lib/apollo';

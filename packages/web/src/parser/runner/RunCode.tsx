@@ -1,7 +1,7 @@
 import { Modal } from '@oasis-sh/ui';
 import { OasisDark } from '../markdown/themes/OasisDark';
 import React, { useState, useEffect } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/cjs/prism';
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 type Props = {
   languageMatch: RegExpExecArray | null;

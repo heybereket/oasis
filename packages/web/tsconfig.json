@@ -19,7 +19,7 @@
       ],
       "@utils/*": [
         "src/utils/*"
-      ]
+      ],
     },
     "target": "es6",
     "lib": [
