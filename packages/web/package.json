@@ -40,7 +40,7 @@
     "@storybook/addon-docs": "^6.3.0",
     "@storybook/addon-essentials": "^6.3.0",
     "@storybook/addon-links": "^6.3.0",
-    "@storybook/react": "^6.3.0",
+    "@storybook/react": "^6.3.1",
     "@tailwindcss/typography": "^0.4.1",
     "@types/express": "^4.17.12",
     "@types/mdx-js__react": "^1.5.3",
