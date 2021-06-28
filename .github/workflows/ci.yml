@@ -1,19 +1,21 @@
 name: CI
-
 on:
-  push:
-    branches: dev
-  pull_request:
-    branches: dev
-
+  - push
+  - pull_request
 jobs:
   test:
+    name: Node.js ${{ matrix.node-version }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version:
+        - 16
     steps:
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: yarn install
-    - name: Run API tests
-      run: yarn test api
-    - name: Run CLI tests
-      run: yarn test cli
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install
+      - run: yarn test api
+      - run: yarn test cli
