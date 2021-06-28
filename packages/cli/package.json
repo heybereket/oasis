@@ -4,9 +4,9 @@
   "description": "The official cli for Oasis.",
   "main": "src/index.ts",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "./bin/oasis",
     "build": "tsc",
-    "watch": "tsc --watch",
+    "build:watch": "tsc --watch",
     "clean": "rimraf dist/*",
     "publish": "npm publish",
     "test": "jest --maxWorkers=50%",
