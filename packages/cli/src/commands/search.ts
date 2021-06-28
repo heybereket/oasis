@@ -64,7 +64,7 @@ export const handler = async (yargs: any) => {
       limit,
     })
     .then((res) => {
-      if (useJSON) return console.log(JSON.stringify(res));
-      log.info(res);
+      if (useJSON) return console.log(JSON.stringify(res.search));
+      log.info(res.search);
     });
 };

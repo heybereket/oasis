@@ -29,7 +29,8 @@
   "jest": {
     "setupFiles": [
       "helper.ts"
-    ]
+    ],
+    "testEnvironment": "node"
   },
   "publishConfig": {
     "access": "public"

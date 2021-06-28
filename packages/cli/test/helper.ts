@@ -1,6 +1,10 @@
 import { spawnSync } from 'child_process';
+import { gqlURL } from '@oasis-sh/shared';
 
-const testCommand = (command: string, args?: string[]) => {
+const serverURL =
+  process.env.TESTING === 'true' ? 'http://localhost:3000' : gqlURL;
+
+const execCommand = (command: string, args?: string[]) => {
   const { output } = spawnSync('node', ['dist/index.js', command, ...args]);
 
   const [_, stdout, stderr] = output;
@@ -10,4 +14,4 @@ const testCommand = (command: string, args?: string[]) => {
   return [stdout.toString(), null];
 };
 
-export default testCommand;
+export { execCommand, serverURL };

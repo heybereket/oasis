@@ -1,33 +1,30 @@
-import testCommand from './helper';
+import { execCommand, serverURL } from './helper';
 import { post as postSchema } from './schemas/postSchema';
 import { matchers } from 'jest-json-schema';
 import { gqlURL } from '@oasis-sh/shared';
-import { request, gql } from 'graphql-request';
+import { GraphQLClient, gql } from 'graphql-request';
 expect.extend(matchers);
 
 describe('fetching posts', () => {
+  const [output, error] = execCommand('fetchPosts', [
+    '--json',
+    '--limit',
+    '8',
+    '--offset',
+    '5',
+  ]);
+
+  expect(error).toBeNull();
+
+  const data = JSON.parse(output);
+
+  const client = new GraphQLClient(serverURL);
+
   it('gets the right amount of posts', async () => {
-    const [output, error] = testCommand('fetchPosts', [
-      '--json',
-      '--limit',
-      '8',
-    ]);
-
-    expect(error).toBeNull();
-
-    const parsed = JSON.parse(output);
-    expect(parsed.length).toBe(8);
+    expect(data.length).toBe(8);
   });
 
   it('applies limits and offsets correctly', async () => {
-    const [output, error] = testCommand('fetchPosts', [
-      '--json',
-      '--limit',
-      '4',
-      '--offset',
-      '5',
-    ]);
-
     expect(error).toBeNull();
 
     const data = JSON.parse(output);
@@ -35,43 +32,24 @@ describe('fetching posts', () => {
     const query = gql`
       query paginatePosts($postsLimit: Float!, $postsOffset: Float!) {
         paginatePosts(limit: $postsLimit, offset: $postsOffset) {
-          message
-          author {
-            id
-            name
-            username
-          }
-          downvotes
-          upvotes
+          id
         }
       }
     `;
 
-    const response = await request(gqlURL, query, {
-      postsLimit: 4,
-      postsOffset: 5,
+    const { paginatePosts } = await client.request(query, {
+      postsLimit: 8.0,
+      postsOffset: 5.0,
     });
 
-    expect(response.paginatePosts).toEqual(data);
+    paginatePosts.forEach((post, index: number) => {
+      expect(post.id).toEqual(data[index].id);
+    });
   });
 
   it('gets valid data', () => {
-    const [output, error] = testCommand('fetchPosts', ['--json']);
-
-    expect(error).toBeNull();
-
-    const data = JSON.parse(output);
-
     data.forEach((post: any) => {
       expect(post).toMatchSchema(postSchema);
     });
-  });
-
-  it('dumps valid json', () => {
-    const [output, error] = testCommand('fetchPosts', ['--json']);
-
-    expect(error).toBeNull();
-
-    JSON.parse(output);
   });
 });

@@ -9,6 +9,7 @@ export const handler = async (yargs: any) => {
   const data = await client
     .createQueryBuilder('paginatePosts')
     .addFields({
+      id: true,
       message: true,
       author: {
         id: true,

@@ -1,13 +1,11 @@
-import testCommand from './helper';
+import { execCommand, serverURL } from './helper';
 import { matchers } from 'jest-json-schema';
 import { post as postSchema } from './schemas/postSchema';
 import { gql, GraphQLClient } from 'graphql-request';
-import { gqlURL } from '@oasis-sh/shared';
-
 expect.extend(matchers);
 
 describe("getting a user's posts", () => {
-  const [output, error] = testCommand('getUsersPosts', [
+  const [output, error] = execCommand('getUsersPosts', [
     'dulguuncodes',
     '--json',
     '--limit',
@@ -20,7 +18,7 @@ describe("getting a user's posts", () => {
 
   const data = JSON.parse(output);
 
-  const client = new GraphQLClient(gqlURL);
+  const client = new GraphQLClient(serverURL);
 
   it('yields the correct data', async () => {
     const query = gql`
@@ -33,26 +31,7 @@ describe("getting a user's posts", () => {
           posts(offset: $postsOffset, limit: $postsLimit) {
             items {
               id
-              message
-              createdAt
-              lastEdited
-              topics
-              author {
-                id
-                avatar
-                username
-                name
-              }
-              isUpvoted
-              isDownvoted
-              upvotes
-              downvotes
-              comments(limit: 0, offset: 0) {
-                total
-              }
             }
-            hasMore
-            total
           }
         }
       }
@@ -65,7 +44,10 @@ describe("getting a user's posts", () => {
     });
 
     expect(error).toBeNull();
-    expect(data.posts).toEqual(response.userOnlyPosts.posts);
+
+    response.userOnlyPosts.posts.items.forEach((post: any, index: number) => {
+      expect(post.id).toEqual(data.posts.items[index].id);
+    });
   });
 
   it('yields valid data', () => {
@@ -77,7 +59,7 @@ describe("getting a user's posts", () => {
   });
 
   it('rejects incomplete requests', () => {
-    const [_, error] = testCommand('getUsersPosts', ['--json']);
+    const [_, error] = execCommand('getUsersPosts', ['--json']);
 
     expect(error).not.toBeNull();
   });
@@ -93,26 +75,7 @@ describe("getting a user's posts", () => {
           posts(offset: $postsOffset, limit: $postsLimit) {
             items {
               id
-              message
-              createdAt
-              lastEdited
-              topics
-              author {
-                id
-                avatar
-                username
-                name
-              }
-              isUpvoted
-              isDownvoted
-              upvotes
-              downvotes
-              comments(limit: 0, offset: 0) {
-                total
-              }
             }
-            hasMore
-            total
           }
         }
       }
@@ -125,6 +88,8 @@ describe("getting a user's posts", () => {
     });
 
     expect(data.posts.items.length).toEqual(5);
-    expect(data.posts.items).toEqual(response.userOnlyPosts.posts.items);
+    data.posts.items.forEach((post, index: number) => {
+      expect(post.id).toEqual(response.userOnlyPosts.posts.items[index].id);
+    });
   });
 });
