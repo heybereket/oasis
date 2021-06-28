@@ -7,12 +7,12 @@ on:
     branches: dev
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Install modules
-      run: yarn
+    - name: Install dependencies
+      run: yarn install
     - name: Run API tests
       run: yarn test api
     - name: Run CLI tests
