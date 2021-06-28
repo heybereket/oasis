@@ -18,6 +18,7 @@ import { joinRoot } from '@utils/common/rootPath';
 
 config();
 
+// function to start server
 export const initializeServer = async () => {
   try {
     await checkEnv();
