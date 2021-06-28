@@ -1,8 +1,9 @@
 import * as log from '@oasis-sh/shared';
 import { client } from '../sdkClient';
 
-export const command = 'fetch_posts --limit <limit> --offset <offset> --json';
-export const desc = 'Queries posts from the Oasis API. Returns an array of posts';
+export const command = 'fetch_posts <limit> <offset> <json>';
+export const desc =
+  'Queries posts from the Oasis API. Returns an array of posts';
 export const builder = {
   limit: {
     default: 10.0,
