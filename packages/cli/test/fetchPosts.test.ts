@@ -1,7 +1,6 @@
 import { execCommand, serverURL } from './helper';
 import { post as postSchema } from './schemas/postSchema';
 import { matchers } from 'jest-json-schema';
-import { gqlURL } from '@oasis-sh/shared';
 import { GraphQLClient, gql } from 'graphql-request';
 expect.extend(matchers);
 

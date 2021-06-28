@@ -1,4 +1,4 @@
-import { execCommand, serverURL } from './helper';
+import { execCommand } from './helper';
 import { user as userSchema } from './schemas/userSchema';
 import { matchers } from 'jest-json-schema';
 
