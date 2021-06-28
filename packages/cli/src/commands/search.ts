@@ -2,6 +2,12 @@ import * as log from '@oasis-sh/shared';
 import { gqlURL } from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
 
+interface SearchArguments {
+  query: string;
+  limit: number;
+  json: boolean;
+}
+
 export const command = 'search <query|searchquery|q> [limit] [json]';
 export const desc =
   'Searches for data from the Oasis API. Can return a range of possible types of data';
@@ -23,13 +29,13 @@ export const builder = {
   },
 };
 
-export const handler = async (yargs: any) => {
-  const useJSON = yargs.json;
-
+export const handler = async (yargs: SearchArguments) => {
   const client = new GraphQLClient(gqlURL);
 
-  const searchQuery = yargs._.slice(1).join(' ');
-  const limit = yargs.limit ?? 10.0;
+  const useJSON = yargs.json;
+
+  const searchQuery = yargs.query;
+  const limit = yargs.limit;
 
   if (!searchQuery)
     return log.error(
