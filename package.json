@@ -5,6 +5,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "engines": {
+		"node": "16.x.x"
+	},
   "scripts": {
     "build": "yarn workspace @oasis-sh/$0 run build",
     "build:all": "yarn build shared && yarn build api && yarn build react-gql && yarn build ui && yarn build parser && yarn build web",
