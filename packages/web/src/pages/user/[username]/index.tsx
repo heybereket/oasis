@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
-import { StyledMarkdown } from '@oasis-sh/parser';
+import { StyledMarkdown } from '@parser/index';
 import { login, logout } from '@lib/auth/login';
 import {
   GetUserByNameDocument,

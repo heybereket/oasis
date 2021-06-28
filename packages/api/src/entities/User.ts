@@ -197,4 +197,9 @@ export default class User extends BaseEntity {
   @Field({ nullable: true })
   @SelfOnly()
   banExiration?: string;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  @SelfOnly()
+  premiumExiration?: string;
 }

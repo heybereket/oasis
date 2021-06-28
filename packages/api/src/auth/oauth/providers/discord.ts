@@ -21,15 +21,16 @@ export default (passport: PassportStatic): Router => {
   passport.use(
     new Strategy(
       {
-        clientID: process.env.OASIS_API_DISCORD_CLIENT_ID,
-        clientSecret: process.env.OASIS_API_DISCORD_CLIENT_SECRET,
-        callbackURL: process.env.OASIS_API_DISCORD_CALLBACK_URL,
+        clientID: process.env.DISCORD_CLIENT_ID,
+        clientSecret: process.env.DISCORD_CLIENT_SECRET,
+        callbackURL: process.env.DISCORD_CALLBACK_URL,
       },
       async (_, __, profile, done) => {
         const id = String(profile.id);
 
         try {
-          const user = (await User.findOne({ where: { discord: id } })) || User.create();
+          const user =
+            (await User.findOne({ where: { discord: id } })) || User.create();
 
           if (!user.id) {
             user.id = uuid();

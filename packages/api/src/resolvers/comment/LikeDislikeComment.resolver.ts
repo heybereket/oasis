@@ -1,10 +1,4 @@
-import {
-  Arg,
-  Authorized,
-  Ctx,
-  Mutation,
-  Resolver,
-} from 'type-graphql';
+import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/server';
 import Comment from '@entities/Comment';
 import { upvoteDownvote } from '@utils/votes/upvoteDownvoteEntity';

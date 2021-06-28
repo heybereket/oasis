@@ -15,7 +15,9 @@ const NotFoundPage: React.FC = () => {
           <p className="text-gray-300 text-lg mt-4">
             Oh no! That page doesn’t exist... <br />
             <Button className="mt-4">
-              <Link href="/">Home</Link>
+              <Link href="/">
+                <a>Home</a>
+              </Link>
             </Button>
           </p>
         </div>

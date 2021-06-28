@@ -2,9 +2,9 @@ name: Code Scanning
 
 on:
   push:
-    branches: [staging]
+    branches: dev
   pull_request:
-    branches: [staging]
+    branches: dev
   schedule:
     - cron: '0 0 * * 0'
 
