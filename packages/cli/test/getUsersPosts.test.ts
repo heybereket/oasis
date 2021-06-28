@@ -59,7 +59,7 @@ describe("getting a user's posts", () => {
   });
 
   it('rejects incomplete requests', () => {
-    const [_, error] = execCommand('getUsersPosts', ['--json']);
+    const [_, error] = execCommand('get_users_posts', ['--json']);
 
     expect(error).not.toBeNull();
   });
