@@ -11,4 +11,4 @@
 
 **Running**<br>
 1. To run the Web you will first need to build it by running `yarn build`
-2. To run the web server you will need to run `yarn dev` this will also run the api and client-gql library which are required.
+2. To run the web server you will need to run `yarn dev` this will also run the api and react-gql library which are required.
