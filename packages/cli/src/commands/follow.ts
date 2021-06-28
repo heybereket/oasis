@@ -2,7 +2,7 @@ import * as log from '@oasis-sh/shared';
 import { gqlURL } from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
 
-export const command = 'follow <user> --json';
+export const command = 'follow <user> [json]';
 export const desc =
   'Follows a user. <user> must be a valid user ID. Must be authenticated with "oasis login" before running';
 
