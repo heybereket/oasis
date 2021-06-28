@@ -19,7 +19,7 @@ describe('getting user by name', () => {
 
   it('retrieves the correct user', () => {
     const [output, error] = testCommand('getUserByName', [
-      'alexover1',
+      'dulguuncodes',
       '--json',
     ]);
 
@@ -28,8 +28,8 @@ describe('getting user by name', () => {
 
     const parsed = JSON.parse(output);
 
-    expect(parsed.name).toEqual('Alex');
-    expect(parsed.username).toEqual('alexover1');
+    expect(parsed.name).toEqual('dulguuncodes');
+    expect(parsed.username).toEqual('dulguuncodes');
   });
 
   it('rejects incomplete requests', () => {
@@ -40,7 +40,7 @@ describe('getting user by name', () => {
 
   it('dumps the raw json', () => {
     const [output, error] = testCommand('getUserByName', [
-      'heybereket',
+      'bereket',
       '--json',
     ]);
 

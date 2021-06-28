@@ -9,7 +9,7 @@ export const handler = async (yargs: any) => {
 
   const username = yargs._[1];
   const postsLimit = yargs.limit ?? 10.0;
-  const postsOffset = yargs.limit ?? 0.0;
+  const postsOffset = yargs.offset ?? 0.0;
 
   if (!username)
     return log.error('you need to pass <username> in order for this to work');
@@ -56,7 +56,7 @@ export const handler = async (yargs: any) => {
       postsOffset,
     })
     .then((res) => {
-      if (useJSON) return console.log(JSON.stringify(res));
-      log.info(res);
+      if (useJSON) return console.log(JSON.stringify(res.userOnlyPosts));
+      log.info(res.userOnlyPosts);
     });
 };

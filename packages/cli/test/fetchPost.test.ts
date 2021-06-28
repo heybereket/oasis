@@ -16,7 +16,7 @@ describe('fetching posts', () => {
     expect(error).toBeNull();
 
     const parsed = JSON.parse(output);
-    expect(parsed.paginatePosts.length).toBe(8);
+    expect(parsed.length).toBe(8);
   });
 
   it('applies limits and offsets correctly', async () => {
@@ -52,7 +52,7 @@ describe('fetching posts', () => {
       postsOffset: 5,
     });
 
-    expect(response).toEqual(data);
+    expect(response.paginatePosts).toEqual(data);
   });
 
   it('gets valid data', () => {
@@ -62,7 +62,7 @@ describe('fetching posts', () => {
 
     const data = JSON.parse(output);
 
-    data.paginatePosts.forEach((post: any) => {
+    data.forEach((post: any) => {
       expect(post).toMatchSchema(postSchema);
     });
   });
