@@ -19,7 +19,7 @@
     "upgrade": "yarn upgrade-interactive",
     "reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",
     "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
-    "test:api": "yarn workspace @oasis-sh/api run test",
+    "test": "yarn workspace @oasis-sh/$0 run test",
     "prepare": "husky install",
     "commit": "git add . && cz",
     "commit:signed": "cz -S"

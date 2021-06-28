@@ -1,11 +1,7 @@
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
-  { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
-  { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -31,12 +27,14 @@ export type Answer = {
   upvotes: Scalars['Float'];
 };
 
+
 export type AnswerDownvotersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type AnswerUpvotersArgs = {
   limit: Scalars['Float'];
@@ -72,12 +70,14 @@ export type Comment = {
   upvotes: Scalars['Float'];
 };
 
+
 export type CommentDownvotersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type CommentUpvotersArgs = {
   limit: Scalars['Float'];
@@ -176,124 +176,152 @@ export type Mutation = {
   upvoteDownvoteComment: Scalars['Boolean'];
 };
 
+
 export type MutationBanUserArgs = {
   UserId: Scalars['String'];
   endDate: Scalars['String'];
 };
+
 
 export type MutationCreateAnswerArgs = {
   data: NewAnswerInput;
   questionId: Scalars['String'];
 };
 
+
 export type MutationCreateBotArgs = {
   data: CreateBotInput;
 };
+
 
 export type MutationCreateCommentArgs = {
   data: NewCommentInput;
   postId: Scalars['String'];
 };
 
+
 export type MutationCreatePostArgs = {
   data: CreatePostInput;
 };
+
 
 export type MutationCreateQuestionArgs = {
   data: CreateQuestionInput;
 };
 
+
 export type MutationCreateResortArgs = {
   data: CreateResortInput;
 };
+
 
 export type MutationDeletePostArgs = {
   postId: Scalars['String'];
 };
 
+
 export type MutationDeleteQuestionArgs = {
   questionId: Scalars['String'];
 };
+
 
 export type MutationEditAnswerArgs = {
   answerId: Scalars['String'];
   data: EditAnswerInput;
 };
 
+
 export type MutationEditCommentArgs = {
   commentId: Scalars['String'];
   data: EditCommentInput;
 };
+
 
 export type MutationEditPostArgs = {
   data: EditPostInput;
   postId: Scalars['String'];
 };
 
+
 export type MutationEditQuestionArgs = {
   data: EditQuestionInput;
   questionId: Scalars['String'];
 };
 
+
 export type MutationFollowUserArgs = {
   userId: Scalars['String'];
 };
 
+
 export type MutationGetTokenDataArgs = {
   tokenId: Scalars['String'];
 };
+
 
 export type MutationGiveBadgeArgs = {
   badgeName: Scalars['String'];
   username: Scalars['String'];
 };
 
+
 export type MutationJoinResortArgs = {
   resortId: Scalars['String'];
 };
+
 
 export type MutationMakeAdminArgs = {
   roles: Array<Role>;
   user: Scalars['String'];
 };
 
+
 export type MutationMakeBadgeArgs = {
   data: MakeBadgeInput;
 };
 
+
 export type MutationMakePremiumTokenArgs = {
   time: Scalars['Float'];
 };
+
 
 export type MutationMakeReportArgs = {
   data: MakeReportInput;
   reporteeData: ReportedEntityInput;
 };
 
+
 export type MutationMarkAsResolvedArgs = {
   reportId: Scalars['String'];
   resolved: Scalars['Boolean'];
 };
 
+
 export type MutationMarkNotificationAsReadArgs = {
   notificationId: Scalars['String'];
 };
+
 
 export type MutationRedeemPremiumArgs = {
   tokenId: Scalars['String'];
 };
 
+
 export type MutationRefreshBotTokenArgs = {
   botId: Scalars['String'];
 };
+
 
 export type MutationRefreshTokenArgs = {
   refreshToken: Scalars['String'];
 };
 
+
 export type MutationUpdateProfileArgs = {
   data: UpdateProfileInput;
 };
+
 
 export type MutationUpvoteDownvoteArgs = {
   downvote: Scalars['Boolean'];
@@ -301,11 +329,13 @@ export type MutationUpvoteDownvoteArgs = {
   upvote: Scalars['Boolean'];
 };
 
+
 export type MutationUpvoteDownvoteAnswerArgs = {
   answerId: Scalars['String'];
   downvote: Scalars['Boolean'];
   upvote: Scalars['Boolean'];
 };
+
 
 export type MutationUpvoteDownvoteCommentArgs = {
   commentId: Scalars['String'];
@@ -336,8 +366,8 @@ export const enum NotificationType {
   Follow = 'Follow',
   ReplyComment = 'ReplyComment',
   UpvoteComment = 'UpvoteComment',
-  UpvotePost = 'UpvotePost',
-}
+  UpvotePost = 'UpvotePost'
+};
 
 export type PaginatedAnswerFromQuestion_AuthorResponse = {
   __typename?: 'PaginatedAnswerFromQuestion_authorResponse';
@@ -554,6 +584,7 @@ export type Post = {
   upvotes: Scalars['Float'];
 };
 
+
 export type PostCommentsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
@@ -561,12 +592,14 @@ export type PostCommentsArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type PostDownvotersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type PostUpvotersArgs = {
   limit: Scalars['Float'];
@@ -607,50 +640,62 @@ export type Query = {
   search: Array<SearchResult>;
 };
 
+
 export type QueryFeedSortPostsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
 };
 
+
 export type QueryGetAnswerArgs = {
   id: Scalars['String'];
 };
+
 
 export type QueryGetAvailableUsernameArgs = {
   username: Scalars['String'];
 };
 
+
 export type QueryGetBadgeArgs = {
   id: Scalars['String'];
 };
+
 
 export type QueryGetCommentArgs = {
   id: Scalars['String'];
 };
 
+
 export type QueryGetPostArgs = {
   id: Scalars['String'];
 };
+
 
 export type QueryGetQuestionArgs = {
   id: Scalars['String'];
 };
 
+
 export type QueryGetResortArgs = {
   id: Scalars['String'];
 };
+
 
 export type QueryGetResortByNameArgs = {
   name: Scalars['String'];
 };
 
+
 export type QueryGetUserArgs = {
   id: Scalars['String'];
 };
 
+
 export type QueryGetUserByNameArgs = {
   username: Scalars['String'];
 };
+
 
 export type QueryPaginateAnswersArgs = {
   limit: Scalars['Float'];
@@ -659,12 +704,14 @@ export type QueryPaginateAnswersArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type QueryPaginateBadgesArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type QueryPaginateCommentsArgs = {
   limit: Scalars['Float'];
@@ -673,12 +720,14 @@ export type QueryPaginateCommentsArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type QueryPaginatePostsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type QueryPaginateQuestionsArgs = {
   limit: Scalars['Float'];
@@ -687,6 +736,7 @@ export type QueryPaginateQuestionsArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type QueryPaginateResortsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
@@ -694,12 +744,14 @@ export type QueryPaginateResortsArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type QueryPaginateUsersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type QuerySearchArgs = {
   limit: Scalars['Float'];
@@ -724,12 +776,14 @@ export type Question = {
   upvoters: PaginatedUserFromQuestion_UpvotedQuestionsResponse;
 };
 
+
 export type QuestionAnswersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type QuestionCommentsArgs = {
   limit: Scalars['Float'];
@@ -738,6 +792,7 @@ export type QuestionCommentsArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type QuestionDownvotersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
@@ -745,12 +800,14 @@ export type QuestionDownvotersArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type QuestionQuestionsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type QuestionUpvotersArgs = {
   limit: Scalars['Float'];
@@ -776,8 +833,8 @@ export type Report = {
 };
 
 export const enum ReportType {
-  InappropriateContent = 'InappropriateContent',
-}
+  InappropriateContent = 'InappropriateContent'
+};
 
 export type ReportedEntityInput = {
   commentId?: Maybe<Scalars['String']>;
@@ -801,12 +858,14 @@ export type Resort = {
   posts: PaginatedPostFromResort_ResortResponse;
 };
 
+
 export type ResortMembersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type ResortPostsArgs = {
   limit: Scalars['Float'];
@@ -818,8 +877,8 @@ export type ResortPostsArgs = {
 export const enum Role {
   Admin = 'Admin',
   Moderator = 'Moderator',
-  SuperAdmin = 'SuperAdmin',
-}
+  SuperAdmin = 'SuperAdmin'
+};
 
 export type SearchResult = Post | Resort | User;
 
@@ -875,12 +934,14 @@ export type User = {
   verified: Scalars['Boolean'];
 };
 
+
 export type UserAnswersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type UserBotsArgs = {
   limit: Scalars['Float'];
@@ -889,12 +950,14 @@ export type UserBotsArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type UserCommentsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type UserDownvotedAnswersArgs = {
   limit: Scalars['Float'];
@@ -903,12 +966,14 @@ export type UserDownvotedAnswersArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type UserDownvotedCommentsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type UserDownvotedPostsArgs = {
   limit: Scalars['Float'];
@@ -917,12 +982,14 @@ export type UserDownvotedPostsArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type UserDownvotedQuestionsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type UserFollowersArgs = {
   limit: Scalars['Float'];
@@ -931,12 +998,14 @@ export type UserFollowersArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type UserFollowingArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type UserPostsArgs = {
   limit: Scalars['Float'];
@@ -945,12 +1014,14 @@ export type UserPostsArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type UserUpvotedAnswersArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type UserUpvotedCommentsArgs = {
   limit: Scalars['Float'];
@@ -959,12 +1030,14 @@ export type UserUpvotedCommentsArgs = {
   sortType?: Maybe<Scalars['String']>;
 };
 
+
 export type UserUpvotedPostsArgs = {
   limit: Scalars['Float'];
   offset: Scalars['Float'];
   sortCol?: Maybe<Scalars['String']>;
   sortType?: Maybe<Scalars['String']>;
 };
+
 
 export type UserUpvotedQuestionsArgs = {
   limit: Scalars['Float'];

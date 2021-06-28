@@ -1,4 +1,4 @@
-import { createClient } from '@utils/testing/gql-request';
+import { createClient } from '../src/utils/testing/gql-request';
 import { gql } from 'apollo-server-express';
 
 describe('Testing Search Query', () => {

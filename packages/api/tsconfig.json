@@ -22,4 +22,5 @@
     "skipLibCheck": true,
     "importHelpers": true
   },
+  "exclude": ["jest.config.ts", "__tests__/**/*", "dist/**/*"]
 }
