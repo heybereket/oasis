@@ -2,7 +2,6 @@ import * as log from '@oasis-sh/shared';
 import { client } from '../sdkClient';
 
 interface QueryPostsArguments {
-  _: string[];
   limit: number;
   offset: number;
   json: boolean;
