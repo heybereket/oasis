@@ -5141,6 +5141,8 @@ __metadata:
     node-emoji: ^1.10.0
     typescript: 4.3.4
     yargs: ^17.0.1
+  bin:
+    oasis: ./bin/oasis
   languageName: unknown
   linkType: soft
 
