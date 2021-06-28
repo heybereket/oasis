@@ -4,9 +4,10 @@ import * as log from '@oasis-sh/shared';
 import path from 'path';
 
 const main = () => {
-  const argv = <any>(
-    yargs.commandDir('commands').demandCommand().version('1.0.0').argv
-  );
+  const argv = <any>yargs
+    .commandDir('commands')
+    .demandCommand()
+    .version('1.0.0').argv;
 
   const commands = fs.readdirSync(path.join(__dirname, './commands'));
 
