@@ -2,6 +2,13 @@ import * as log from '@oasis-sh/shared';
 import { gqlURL } from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
 
+interface GetUsersPostsArguments {
+  username?: string;
+  limit: number;
+  offset: number;
+  json: boolean;
+}
+
 export const command = 'get_users_posts <username> [json]';
 export const builder = {
   username: {
@@ -23,7 +30,8 @@ export const builder = {
       'writes the raw JSON to stdout, powerful when used with jq (a JSON processor)',
   },
 };
-export const handler = async (yargs: any) => {
+
+export const handler = async (yargs: GetUsersPostsArguments) => {
   const useJSON = yargs.json;
 
   const client = new GraphQLClient(gqlURL);
