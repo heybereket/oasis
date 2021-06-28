@@ -34,6 +34,9 @@
     ],
     "testEnvironment": "node"
   },
+  "bin": {
+    "oasis": "./bin/oasis"
+  },
   "publishConfig": {
     "access": "public"
   },
