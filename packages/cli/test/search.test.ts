@@ -1,5 +1,4 @@
-import { execCommand, serverURL } from './helper';
-import { gql, GraphQLClient } from 'graphql-request';
+import { execCommand } from './helper';
 import { query as querySchema } from './schemas/querySchema';
 import { matchers } from 'jest-json-schema';
 
