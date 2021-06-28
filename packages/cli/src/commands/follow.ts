@@ -8,7 +8,6 @@ export const desc =
 
 export const builder = {
   json: {
-    default: false,
     describe:
       'writes the raw JSON to stdout, powerful when used with jq (a JSON processor)',
   },
