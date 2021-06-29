@@ -1,3 +1,5 @@
 #!/usr/bin/env node
 
-require('../dist/index').default();
+const path = require('path');
+
+require(path.join(__dirname, '../dist/index')).default();
