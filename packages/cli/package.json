@@ -9,7 +9,8 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "clean": "rimraf dist/*",
-    "publish": "npm publish",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
     "test": "yarn build && jest --maxWorkers=50%",
     "test:watch": "jest --watch --maxWorkers=25%",
     "test:ci": "jest --runInBand"
