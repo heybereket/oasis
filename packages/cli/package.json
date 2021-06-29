@@ -1,7 +1,7 @@
 {
   "name": "@oasis-sh/cli",
-  "version": "0.0.0",
-  "description": "The official cli for Oasis.",
+  "version": "1.0.0",
+  "description": "The Official CLI for dev.oasis.sh.",
   "main": "src/index.ts",
   "scripts": {
     "start": "./bin/oasis",
