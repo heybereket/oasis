@@ -15,8 +15,6 @@
     "@types/rollup-plugin-peer-deps-external": "^2.2.0",
     "autoprefixer": "^10.2.6",
     "node-sass": "^6.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
     "rollup": "^2.52.3",
     "rollup-plugin-dts": "^3.0.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -31,6 +29,8 @@
   "dependencies": {
     "i18next": "^20.3.2",
     "i18next-browser-languagedetector": "^6.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-i18next": "^11.11.0"
   },
   "sideEffects": false
