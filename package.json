@@ -61,8 +61,5 @@
       "path": "./node_modules/cz-conventional-changelog",
       "defaultScope": "global"
     }
-  },
-  "resolutions": {
-    "@oasis-sh/cli": "portal:/home/dulguuncodes/Code/oasis/packages/cli"
   }
 }
