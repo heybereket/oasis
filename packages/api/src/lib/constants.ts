@@ -10,6 +10,7 @@ export const rateLimitTime = 60 * 60;
 export const isProduction = process.env.NODE_ENV === 'production';
 export const isDevelopment = process.env.NODE_ENV !== 'production';
 export const sessionSecret = process.env.SESSION_SECRET || 'oasis_session';
+export const redisURL = process.env.REDIS_URL || 'redis://localhost:6379';
 
 // Regex Patterns
 export const usernameRegex = /^[a-zA-Z0-9_.-]{3,15}$/;

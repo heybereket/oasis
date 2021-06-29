@@ -47,9 +47,6 @@ const checkTwitterOAuthEnvs = (serviceName: string) => {
 
 export const checkEnv = async (): Promise<boolean> => {
   for (const requiredEnvChecker of [
-    // Redis Connection URL
-    checkRequiredEnv('REDIS_URL', true),
-
     // OAuth Credentials
     ...checkOAuthEnvs('GITHUB'),
     ...checkTwitterOAuthEnvs('TWITTER'),
