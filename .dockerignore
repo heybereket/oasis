@@ -1,6 +1,9 @@
 # yarn v2
-.yarn/build-state.yml
-.yarn/install-state.gz
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
 
 node_modules/
 postgres_data/

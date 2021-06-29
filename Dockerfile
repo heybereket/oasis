@@ -69,6 +69,7 @@ COPY --from=BUILD_IMAGE /opt/oasis/packages/ui/dist ./packages/ui/dist
 
 COPY --from=BUILD_IMAGE /opt/oasis/packages/web/package.json ./packages/web/package.json
 COPY --from=BUILD_IMAGE /opt/oasis/packages/web/.next ./packages/web/.next
+COPY --from=BUILD_IMAGE /opt/oasis/packages/web/public ./packages/web/public
 COPY --from=BUILD_IMAGE /opt/oasis/packages/web/next.config.js ./packages/web/next.config.js
 COPY --from=BUILD_IMAGE /opt/oasis/packages/web/server/dist ./packages/web/server/dist
 
