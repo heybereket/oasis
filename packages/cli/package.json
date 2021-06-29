@@ -1,10 +1,11 @@
 {
   "name": "@oasis-sh/cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The Official CLI for dev.oasis.sh.",
   "main": "src/index.ts",
   "scripts": {
     "start": "./bin/oasis",
+    "install": "yarn build",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "clean": "rimraf dist/*",
