@@ -1,5 +1,6 @@
 import { Client } from '@oasis-sh/sdk';
+import { Options } from '@oasis-sh/sdk/src/base-client';
 
-export const client = new Client({
-  token: '',
-});
+export default (options: Options) => {
+  return new Client(options);
+};

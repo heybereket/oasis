@@ -31,13 +31,17 @@ export type Events = {};
 
 export type Options = {
   token: string;
+  server?: string;
   tokenType?: 'BOT' | 'VSC';
   selections?: Selections;
 };
 
 export default class BaseClient extends EventEmitter<Events> {
+  server: string;
+
   constructor(public options: Options) {
     super();
+    this.server = options.server ?? gqlURL;
   }
 
   async fetchGraphQL<T = any, R = any>(
@@ -45,7 +49,7 @@ export default class BaseClient extends EventEmitter<Events> {
     extractor: (data: R) => T = (d: any) => d,
     variables: { [key: string]: any } = {}
   ): Promise<T> {
-    const res = await fetch(`${gqlURL}/graphql`, {
+    const res = await fetch(`${this.server}/graphql`, {
       method: 'POST',
       headers: {
         accept: '*/*',

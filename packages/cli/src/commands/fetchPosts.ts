@@ -1,7 +1,8 @@
 import * as log from '@oasis-sh/shared';
-import { client } from '../sdkClient';
+import Client from '../sdkClient';
+import { BaseArguments } from '../types/arguments';
 
-interface QueryPostsArguments {
+interface QueryPostsArguments extends BaseArguments {
   limit: number;
   offset: number;
   json: boolean;
@@ -32,7 +33,7 @@ export const handler = async (yargs: QueryPostsArguments) => {
   const offset = yargs.offset;
   const useJSON = yargs.json;
 
-  const data = await client
+  const data = await Client({ token: '', server: yargs.server })
     .createQueryBuilder('paginatePosts')
     .addFields({
       id: true,

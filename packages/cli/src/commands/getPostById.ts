@@ -1,10 +1,10 @@
 import * as shared from '@oasis-sh/shared';
 import { GraphQLClient, gql } from 'graphql-request';
+import { BaseArguments } from '../types/arguments';
 
-interface GetPostByIdArguments {
+interface GetPostByIdArguments extends BaseArguments {
   id: string;
   json: boolean;
-  auth: string;
 }
 
 export const command = 'get_post_by_id <id> [json]';
@@ -24,7 +24,7 @@ export const builder = {
 };
 
 export const handler = async (yargs: GetPostByIdArguments) => {
-  const client = new GraphQLClient(shared.gqlURL, {
+  const client = new GraphQLClient(yargs.server, {
     headers: { authorization: yargs.auth },
   });
 
@@ -67,5 +67,6 @@ export const handler = async (yargs: GetPostByIdArguments) => {
 
   const data = await client.request(query, { id: yargs.id });
 
+  if (yargs.json) return console.log(JSON.stringify(data))
   shared.info(data);
 };

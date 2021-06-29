@@ -44,6 +44,6 @@ export const handler = async (yargs: FollowUserArguments) => {
 
   client.request(query, { user }).then((res) => {
     if (useJSON) return console.log(JSON.stringify(res));
-    log.info(res);
+    shared.info(res);
   });
 };
