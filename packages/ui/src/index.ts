@@ -1,4 +1,3 @@
-// Components
 // Comments
 export { Comment } from './components/comment/Comment';
 
@@ -71,24 +70,7 @@ export { FilterButton } from './components/notifications/FilterButton';
 // Sections
 
 // Icons
-export { About } from './icons/navbar/About';
-export { Bell } from './icons/navbar/Bell';
-export { Comments } from './icons/posts/Comments';
-export { DownArrow } from './icons/arrows/DownArrow';
-export { Friends } from './icons/navbar/Friends';
-export { Home } from './icons/navbar/Home';
-export { Upvote } from './icons/posts/Like';
-export { Logout } from './icons/navbar/Logout';
-export { Search } from './icons/navbar/Search';
-export { Posts } from './icons/navbar/Posts';
-export { Saved } from './icons/navbar/Saved';
-export { Topics } from './icons/navbar/Topics';
-export { Twitter } from './icons/social/Twitter';
-export { RightArrow } from './icons/arrows/RightArrow';
-export { Profile } from './icons/navbar/Profile';
-export { SmallUpArrow } from './icons/arrows/SmallUpArrow';
-export { UpArrow } from './icons/arrows/UpArrow';
-export { SmallDownArrow } from './icons/arrows/SmallDownArrow';
+export { Profile } from './icons';
 
 // User
 export { User } from './components/user/User';
