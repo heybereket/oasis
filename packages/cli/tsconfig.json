@@ -12,6 +12,5 @@
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "exclude": ["jest.config.ts", "test/**/*", "dist/**/*"]
+  "exclude": ["__tests__/**/*", "dist/**/*", "jest.config.ts"]
 }
-

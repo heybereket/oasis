@@ -16,7 +16,6 @@ describe('fetching posts', () => {
   expect(error).toBeNull();
 
   const data = JSON.parse(output);
-
   const client = new GraphQLClient(serverURL);
 
   it('gets the right amount of posts', async () => {

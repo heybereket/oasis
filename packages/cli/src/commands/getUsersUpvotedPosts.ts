@@ -39,7 +39,7 @@ export const handler = async (yargs: GetUsersUpvotedPostsArguments) => {
 
   const username = yargs.username;
   const postsLimit = yargs.limit;
-  const postsOffset = yargs.limit;
+  const postsOffset = yargs.offset;
 
   if (!username)
     return log.error('you need to pass <username> in order for this to work');

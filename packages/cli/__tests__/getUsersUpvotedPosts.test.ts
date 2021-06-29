@@ -5,7 +5,7 @@ import { matchers } from 'jest-json-schema';
 expect.extend(matchers);
 
 describe("getting a user's upvoted posts", () => {
-  const [output, error] = execCommand('getUsersUpvotedPosts', [
+  const [output, error] = execCommand('get_users_upvoted_posts', [
     'bereket',
     '--json',
   ]);
