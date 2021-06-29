@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const Hashtag: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
