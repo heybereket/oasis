@@ -65,8 +65,8 @@ export const handler = async (yargs: GetPostByIdArguments) => {
     }
   `;
 
-  const data = await client.request(query, { id: yargs.id });
+  const { getPost } = await client.request(query, { id: yargs.id });
 
-  if (yargs.json) return console.log(JSON.stringify(data))
-  shared.info(data);
+  if (yargs.json) return console.log(JSON.stringify(getPost));
+  shared.info(getPost);
 };
