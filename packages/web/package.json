@@ -17,7 +17,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "^11.0.1",
     "@sentry/react": "^6.8.0",
-    "@sentry/tracing": "^6.7.2",
+    "@sentry/tracing": "^6.8.0",
     "chalk": "^4.1.1",
     "express": "^4.17.1",
     "formik": "^2.2.9",
