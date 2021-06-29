@@ -1,6 +1,13 @@
 import * as log from '@oasis-sh/shared';
+import Client from '../sdkClient';
 import { gqlURL } from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
+import { BaseArguments } from '../types/arguments';
+
+interface GetUserByNameArguments extends BaseArguments {
+  username: string;
+  json: boolean;
+}
 
 export const command = 'get_user_by_name <username> [json]';
 export const desc =
@@ -18,53 +25,31 @@ export const builder = {
   },
 };
 
-export const handler = async (yargs: any) => {
-  const useJSON = yargs.json;
-
-  const username = yargs.username;
-
-  if (!username)
-    return log.error('you need to pass <username> in order for this to work');
-
-  const client = new GraphQLClient(gqlURL);
-
-  const query = gql`
-    query getUserByName($username: String!) {
-      getUserByName(username: $username) {
-        id
-        banner
-        avatar
-        createdAt
-        github
-        twitter
-        discord
-        google
-        bio
-        username
-        name
-        verified
-        badges {
-          name
-          id
-          imagePath
-          level
-          description
-        }
-        followers(offset: 0, limit: 0) {
-          total
-        }
-        following(offset: 0, limit: 0) {
-          total
-        }
-        posts(offset: 0, limit: 0) {
-          total
-        }
-      }
-    }
-  `;
-
-  client.request(query, { username }).then((res) => {
-    if (useJSON) return console.log(JSON.stringify(res.getUserByName));
-    log.info(res.getUserByName);
-  });
+export const handler = async (yargs: GetUserByNameArguments) => {
+  const data = await Client({ token: '', server: yargs.server })
+    .createQueryBuilder('getUserByName')
+    .addFields({
+      id: true,
+      banner: true,
+      avatar: true,
+      createdAt: true,
+      github: true,
+      twitter: true,
+      discord: true,
+      bio: true,
+      username: true,
+      name: true,
+      verified: true,
+      badges: {
+        name: true,
+        id: true,
+        imagePath: true,
+        level: true,
+        description: true,
+      },
+      ARGS: { username: yargs.username },
+    }).send();
+  
+    if (yargs.json) return console.log(JSON.stringify(data));
+    log.info(data);
 };
