@@ -1,8 +1,7 @@
-import * as log from '@oasis-sh/shared';
-import { gqlURL } from '@oasis-sh/shared';
+import * as shared from '@oasis-sh/shared';
 import { gql, GraphQLClient } from 'graphql-request';
-
-interface FollowUserArguments {
+import { BaseArguments } from '../types/arguments';
+interface FollowUserArguments extends BaseArguments {
   user: string;
   json: boolean;
 }
@@ -26,14 +25,16 @@ export const builder = {
 export const handler = async (yargs: FollowUserArguments) => {
   const useJSON = yargs.json;
 
-  const client = new GraphQLClient(gqlURL, {
-    headers: { authorization: 'Bearer INSERT TOKEN HERE' },
+  const client = new GraphQLClient(yargs.server, {
+    headers: { authorization: yargs.auth ?? 'Bearer INSERT TOKEN HERE' },
   });
 
   const user = yargs.user;
 
   if (!user)
-    return log.error('you need to pass <username> in order for this to work');
+    return shared.error(
+      'you need to pass <username> in order for this to work'
+    );
 
   const query = gql`
     mutation FollowUser($user: String!) {
