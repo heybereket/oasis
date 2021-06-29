@@ -48,8 +48,9 @@ export const handler = async (yargs: GetUserByNameArguments) => {
         description: true,
       },
       ARGS: { username: yargs.username },
-    }).send();
-  
-    if (yargs.json) return console.log(JSON.stringify(data));
-    log.info(data);
+    })
+    .send();
+
+  if (yargs.json) return console.log(JSON.stringify(data));
+  log.info(data);
 };
