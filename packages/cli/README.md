@@ -1,6 +1,12 @@
 # cli - official oasis command line interface
 
-<!-- haha bereket cannot see this !-->
+## Installation
+
+`npm i -g @oasis-sh/cli`
+
+`yarn global add @oasis-sh/cli`
+
+NOTE: You may have to prefix sudo in order for it to install properly
 
 ## building
 
@@ -9,5 +15,7 @@
 ## running tests
 
 `yarn test`
+
 `yarn test:ci`
+
 `yarn test:watch`
