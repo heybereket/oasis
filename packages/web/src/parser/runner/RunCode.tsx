@@ -1,7 +1,14 @@
 import { Modal } from '@oasis-sh/ui';
 import { OasisDark } from '../markdown/themes/OasisDark';
 import React, { useState, useEffect } from 'react';
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
+import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+import python from 'react-syntax-highlighter/dist/cjs/languages/prism/python';
+
+SyntaxHighlighter.registerLanguage('jsx', jsx);
+SyntaxHighlighter.registerLanguage('javascript', javascript);
+SyntaxHighlighter.registerLanguage('python', python);
 
 type Props = {
   languageMatch: RegExpExecArray | null;
