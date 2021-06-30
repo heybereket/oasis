@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import { createSchema } from '@utils/files/createSchema';
-import * as log from '@oasis-sh/shared';
-import { exit } from '@oasis-sh/shared';
+import * as log from '@utils/output/log';
+import { exit } from '@utils/output/exit';
 
 try {
   createSchema();

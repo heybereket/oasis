@@ -1,5 +1,5 @@
-import * as log from '@oasis-sh/shared';
-import { exit } from '@oasis-sh/shared';
+import * as log from '@utils/output/log';
+import { exit } from '@utils/output/exit';
 
 type EnvValidationFn = (logError: boolean) => Promise<boolean>;
 

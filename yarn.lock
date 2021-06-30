@@ -5131,7 +5131,6 @@ __metadata:
   resolution: "@oasis-sh/cli@workspace:packages/cli"
   dependencies:
     "@babel/preset-typescript": ^7.14.5
-    "@oasis-sh/shared": "file:../shared"
     "@types/jest-json-schema": ^2.1.3
     "@types/node-emoji": ^1.8.1
     "@types/rimraf": ^3.0.0
@@ -5251,34 +5250,6 @@ __metadata:
     ts-jest: ^27.0.3
     ts-node: ^10.0.0
     typescript: 4.3.4
-  languageName: unknown
-  linkType: soft
-
-"@oasis-sh/shared@file:../shared::locator=%40oasis-sh%2Fcli%40workspace%3Apackages%2Fcli":
-  version: 1.1.0
-  resolution: "@oasis-sh/shared@file:../shared#../shared::hash=c1fdfe&locator=%40oasis-sh%2Fcli%40workspace%3Apackages%2Fcli"
-  dependencies:
-    dayjs: ^1.10.5
-    rimraf: ^3.0.2
-  peerDependencies:
-    react: ^17.0.2
-    react-dom: ^17.0.2
-  checksum: 16ff365131f689a090e5145b2a1fbfa32d3721428f2eb0b01e81ec7451ef5c894a8c1e16bd2dc020f8e10b5b653bf3abbc2815828003eec3593f41f2f98fa8ef
-  languageName: node
-  linkType: hard
-
-"@oasis-sh/shared@workspace:packages/shared":
-  version: 0.0.0-use.local
-  resolution: "@oasis-sh/shared@workspace:packages/shared"
-  dependencies:
-    "@types/rimraf": ^3.0.0
-    chalk: ^4.1.1
-    dayjs: ^1.10.5
-    rimraf: ^3.0.2
-    typescript: 4.3.4
-  peerDependencies:
-    react: ^17.0.2
-    react-dom: ^17.0.2
   languageName: unknown
   linkType: soft
 
@@ -13546,7 +13517,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.10.4, dayjs@npm:^1.10.5":
+"dayjs@npm:^1.10.4":
   version: 1.10.5
   resolution: "dayjs@npm:1.10.5"
   checksum: 11b3a952cdb77959b07318804bd982d1d377581e4752ec478da82b494da1ebb9d82e0539481ab51f90a36e35a268a730034cb6f3cac1b45609755c909329c0a1

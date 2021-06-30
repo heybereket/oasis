@@ -1,4 +1,4 @@
-import * as log from '@oasis-sh/shared';
+import * as log from '../utils/output/log';
 import Client from '../sdkClient';
 import { BaseArguments } from '../types/arguments';
 

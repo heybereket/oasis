@@ -1,5 +1,5 @@
-import * as log from '@oasis-sh/shared';
-import { gqlURL } from '@oasis-sh/shared';
+import * as log from '../utils/output/log';
+import { gqlURL } from '../lib/constants';
 import { gql, GraphQLClient } from 'graphql-request';
 
 interface GetUsersUpvotedPostsArguments {

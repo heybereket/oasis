@@ -15,15 +15,11 @@ COPY ./yarn.lock ./yarn.lock
 
 COPY ./packages/api/package.json ./packages/api/package.json
 COPY ./packages/react-gql/package.json ./packages/react-gql/package.json
-COPY ./packages/shared/package.json ./packages/shared/package.json
 COPY ./packages/ui/package.json ./packages/ui/package.json
 COPY ./packages/web/package.json ./packages/web/package.json
 
 
 RUN yarn install
-
-COPY ./packages/shared ./packages/shared
-RUN yarn workspace @oasis-sh/shared build
 
 COPY ./packages/api ./packages/api
 COPY ./docker/docker-ormconfig.ts ./packages/api/src/ormconfig.ts
@@ -54,9 +50,6 @@ COPY --from=BUILD_IMAGE /opt/oasis/package.json ./package.json
 COPY --from=BUILD_IMAGE /opt/oasis/node_modules ./node_modules
 
 # Copy dist folders and package.json
-COPY --from=BUILD_IMAGE /opt/oasis/packages/shared/package.json ./packages/shared/package.json
-COPY --from=BUILD_IMAGE /opt/oasis/packages/shared/dist ./packages/shared/dist
-
 COPY --from=BUILD_IMAGE /opt/oasis/packages/api/package.json ./packages/api/package.json
 COPY --from=BUILD_IMAGE /opt/oasis/packages/api/dist ./packages/api/dist
 

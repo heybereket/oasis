@@ -1,7 +1,5 @@
-import * as log from '@oasis-sh/shared';
+import * as log from '../utils/output/log';
 import Client from '../sdkClient';
-import { gqlURL } from '@oasis-sh/shared';
-import { gql, GraphQLClient } from 'graphql-request';
 import { BaseArguments } from '../types/arguments';
 
 interface GetUserByNameArguments extends BaseArguments {

@@ -1,6 +1,7 @@
 import * as yargs from 'yargs';
 import fs from 'fs';
-import * as shared from '@oasis-sh/shared';
+import * as log from './utils/output/log';
+import { gqlURL } from './lib/constants';
 import path from 'path';
 
 const main = () => {
@@ -13,7 +14,7 @@ const main = () => {
       },
       server: {
         type: 'string',
-        default: shared.gqlURL,
+        default: gqlURL,
         describe: 'Specifies the server to exchange data from',
       },
     })
@@ -30,7 +31,7 @@ const main = () => {
     if (extensions.pop() !== 'ts') break;
 
     if (argv._[0] !== command) {
-      shared.error('that command does not exist!');
+      log.error('that command does not exist!');
       break;
     }
   }

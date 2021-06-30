@@ -1,6 +1,6 @@
 import { EventEmitter } from 'ee-ts';
 import fetch from 'cross-fetch';
-import { gqlURL } from '@oasis-sh/shared';
+import { gqlURL } from './lib/constants';
 import {
   Notification,
   Post,

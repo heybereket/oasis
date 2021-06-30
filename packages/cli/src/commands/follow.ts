@@ -1,4 +1,4 @@
-import * as shared from '@oasis-sh/shared';
+import * as shared from '../utils/output/log';
 import { gql, GraphQLClient } from 'graphql-request';
 import { BaseArguments } from '../types/arguments';
 interface FollowUserArguments extends BaseArguments {

@@ -10,7 +10,7 @@ import { redisStore, redisClient } from '@config/redis';
 import passport from 'passport';
 import { checkEnv } from '@utils/common/checkEnv';
 import { sessionSecret, isProduction, PORT } from '@lib/constants';
-import * as log from '@oasis-sh/shared';
+import * as log from '@utils/output/log';
 import { checkNodeMajor } from '@lib/nodeMajor';
 import { getDatabase } from '@config/database';
 import fileUpload from 'express-fileupload';
