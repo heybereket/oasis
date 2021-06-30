@@ -20,6 +20,7 @@
     "reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",
     "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
     "test": "yarn workspace @oasis-sh/$0 run test",
+    "test:ci": "yarn workspace @oasis-sh/$0 run test:ci",
     "prepare": "husky install",
     "commit": "git add . && cz",
     "commit:signed": "cz -S"

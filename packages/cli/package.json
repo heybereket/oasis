@@ -13,7 +13,7 @@
     "prepublishOnly": "yarn test",
     "test": "yarn build && jest --maxWorkers=50%",
     "test:watch": "jest --watch --maxWorkers=25%",
-    "test:ci": "jest --runInBand"
+    "test:ci": "yarn build && jest --runInBand"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.14.5",
@@ -26,6 +26,7 @@
     "rimraf": "^3.0.2"
   },
   "dependencies": {
+    "@oasis-sh/shared": "file:../shared",
     "chalk": "^4.1.1",
     "graphql-request": "^3.4.0",
     "node-emoji": "^1.10.0",
