@@ -70,7 +70,31 @@ export { FilterButton } from './components/notifications/FilterButton';
 // Sections
 
 // Icons
-export { Profile } from './icons';
+export {
+  Profile,
+  About,
+  Bell,
+  Comments,
+  DownArrow,
+  Featured,
+  Friends,
+  Home,
+  Info,
+  Latest,
+  Logout,
+  Posts,
+  RightArrow,
+  Saved,
+  Search,
+  SmallDownArrow,
+  SmallUpArrow,
+  Topics,
+  Trash,
+  Trending,
+  Twitter,
+  UpArrow,
+  Upvote,
+} from './icons';
 
 // User
 export { User } from './components/user/User';
