@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # this example requires jq and glow installed
 
 POSTS=$(../../bin/oasis fetch_posts --limit 5 --json | jq)
