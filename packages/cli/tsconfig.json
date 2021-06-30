@@ -10,7 +10,8 @@
     "emitDecoratorMetadata": true,
     "declaration": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
   },
   "exclude": ["__tests__/**/*", "dist/**/*", "jest.config.ts"]
 }
