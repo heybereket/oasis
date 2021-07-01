@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.25.2",
-    "aws-sdk": "^2.935.0",
+    "aws-sdk": "^2.937.0",
     "chalk": "^4.1.1",
     "class-validator": "^0.13.1",
     "connect-redis": "^6.0.0",
