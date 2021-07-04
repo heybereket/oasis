@@ -22,7 +22,7 @@
     "test": "yarn workspace @oasis-sh/$0 run test",
     "test:ci": "yarn workspace @oasis-sh/$0 run test:ci",
     "prepare": "husky install",
-    "commit": "git add . && cz",
+    "commit": "cz",
     "commit:signed": "cz -S"
   },
   "devDependencies": {
