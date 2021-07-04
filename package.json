@@ -18,7 +18,7 @@
     "clean": "yarn workspaces foreach --include @oasis-sh/api,@oasis-sh/web,@oasis-sh/react-gql,@oasis-sh/ui -p run clean",
     "upgrade": "yarn upgrade-interactive",
     "reinstall": "yarn clean || rimraf packages/**/*.sqlite || yarn install",
-    "setup:remote": "yarn workspace @oasis-sh/web run setup:remote && yarn build react-gql && yarn build ui",
+    "setup": "node scripts/setup.js",
     "test": "yarn workspace @oasis-sh/$0 run test",
     "test:ci": "yarn workspace @oasis-sh/$0 run test:ci",
     "prepare": "husky install",
