@@ -24,7 +24,7 @@ type Post struct {
 // And stack them in a column
 func (p Post) Render(width int) (string, error) {
 	PostStyle := lipgloss.NewStyle().Align(lipgloss.Center).Bold(true).Width(width)
-	BorderStyle := lipgloss.NewStyle().Align(lipgloss.Center).Border(lipgloss.RoundedBorder())
+	BorderStyle := lipgloss.NewStyle().Align(lipgloss.Center).Border(lipgloss.RoundedBorder()).Width(int(float32(width) * 0.6))
 
 	strippedPost := strings.ReplaceAll(p.Content, "\t", "  ")
 
