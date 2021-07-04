@@ -8,7 +8,6 @@ import apiRouter from './routes';
 import expressSession from 'express-session';
 import { redisStore, redisClient } from '@config/redis';
 import passport from 'passport';
-import { checkEnv } from '@utils/common/checkEnv';
 import { sessionSecret, isProduction, PORT } from '@lib/constants';
 import * as log from '@utils/output/log';
 import { checkNodeMajor } from '@lib/nodeMajor';
@@ -21,7 +20,6 @@ config();
 // function to start server
 export const initializeServer = async () => {
   try {
-    await checkEnv();
     await getDatabase();
     checkNodeMajor(15);
 
