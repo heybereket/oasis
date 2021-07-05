@@ -212,7 +212,7 @@ export const Post: React.FC<Props> = ({
           <p className="text-sm font-medium">{date}</p>
           <CustomLink href={'/post/' + postData.id}>
             <div className="flex items-center space-x-2">
-              <p className="text-sm">{postData.comments.total} replies</p>
+              <p className="text-sm">{(postData.comments.total == 1) ? '1 reply' : postData.comments.total}</p>
               <Comments />
             </div>
           </CustomLink>
