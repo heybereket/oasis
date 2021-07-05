@@ -18,7 +18,6 @@ COPY ./packages/react-gql/package.json ./packages/react-gql/package.json
 COPY ./packages/ui/package.json ./packages/ui/package.json
 COPY ./packages/web/package.json ./packages/web/package.json
 
-
 RUN yarn install
 
 COPY ./packages/api ./packages/api
