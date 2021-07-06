@@ -1,35 +1,28 @@
+fragment UserFields on User {
+  id
+  banner
+  avatar
+  createdAt
+  github
+  twitter
+  discord
+  google
+  bio
+  username
+  name
+  verified
+}
+
 query getCurrentUser {
   currentUser {
-    id
-    banner
-    avatar
-    createdAt
-    github
-    twitter
-    discord
-    google
-    bio
-    username
-    name
-    verified
+    ...UserFields
     roles
   }
 }
 
 query getUserByName($username: String!) {
   getUserByName(username: $username) {
-    id
-    banner
-    avatar
-    createdAt
-    github
-    twitter
-    discord
-    google
-    bio
-    username
-    name
-    verified
+    ...UserFields
     badges {
       name
       id

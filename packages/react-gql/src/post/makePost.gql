@@ -1,0 +1,3 @@
+mutation MakePost($message: String!, $topics: [String!]!) {
+  createPost(data: { message: $message, topics: $topics })
+}

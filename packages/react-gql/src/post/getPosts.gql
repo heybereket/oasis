@@ -1,0 +1,44 @@
+fragment PostFields on Post {
+  author {
+    id
+    name
+    username
+    badges {
+      description
+      id
+      imagePath
+    }
+    avatar
+  }
+  createdAt
+  downvotes
+  id
+  lastEdited
+  upvotes
+  message
+  resort {
+    id
+    description
+    logo
+    name
+  }
+  comments(limit: 0, offset: 0) {
+    total
+  }
+  topics
+  isUpvoted
+  isDownvoted
+  imageName
+}
+
+query getPost($id: String!) {
+  getPost(id: $id) {
+    ...PostFields
+  }
+}
+
+query PaginatePosts($postsLimit: Float!, $postsOffset: Float!) {
+  paginatePosts(limit: $postsLimit, offset: $postsOffset) {
+    ...PostFields
+  }
+}
