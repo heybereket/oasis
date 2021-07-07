@@ -1,7 +1,7 @@
 # Managing Docker Deployments
 
 ## Basic Info
-1. Oasis uses docker-commpose to orchestrate mutliple dcoker containers
+1. Oasis uses docker-commpose to orchestrate mutliple Docker Containers
 2. The beta and prod deployments use external docker networks for communication (You may need to start it seperately after a restart)
 
 ## Dev

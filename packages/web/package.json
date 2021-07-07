@@ -17,7 +17,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "^11.0.1",
     "@sentry/react": "^6.8.0",
-    "@sentry/tracing": "^6.7.2",
+    "@sentry/tracing": "^6.8.0",
     "chalk": "^4.1.1",
     "express": "^4.17.1",
     "formik": "^2.2.9",
@@ -35,7 +35,7 @@
     "rimraf": "^3.0.2",
     "tailwindcss": "^2.2.4",
     "typescript": "4.3.4",
-    "zustand": "^3.5.4"
+    "zustand": "^3.5.5"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
