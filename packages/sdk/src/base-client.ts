@@ -8,10 +8,9 @@ import {
   Resort,
   Comment,
   Badge,
-  Query,
 } from './generated/types';
 import { relations } from './generated/relations';
-import { QueryBuilder } from './query-builder';
+import { QueryBuilder, Resolvers } from './query-builder';
 
 type EntityKey = 'badge' | 'comment' | 'post' | 'resort' | 'user' | 'bot';
 
@@ -98,7 +97,7 @@ export default class BaseClient extends EventEmitter<Events> {
     return str;
   }
 
-  createQueryBuilder<T extends keyof Query>(resolver: T) {
+  createQueryBuilder<T extends keyof Resolvers>(resolver: T) {
     return new QueryBuilder(this, resolver);
   }
 }

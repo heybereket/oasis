@@ -24,24 +24,33 @@ const recurse = (a: object, b: object) => {
   }
 };
 
-type Resolvers = Query & Mutation;
-type Field<T extends keyof Resolvers> = SpecificFields<
+type Pure<T extends Object> = Omit<T, keyof Object>;
+
+// The Query and Mutation types merged - but with object prototype keys trimmed out
+export type Resolvers = {
+  [P in keyof Pure<Query & Mutation>]: Pure<Pure<Query & Mutation>[P]>;
+};
+
+export type Field<T extends keyof Resolvers> = SpecificFields<
   FieldTypesOf<Resolvers[T]>,
   T,
   T extends keyof Mutation ? Mutation : Query
 >;
 
+export type ResolverKeys<T extends keyof Resolvers> = (keyof FieldTypesOf<
+  Resolvers[T]
+>)[];
 export class QueryBuilder<T extends keyof Resolvers> {
   fields: Field<T>;
   constructor(public client: BaseClient, public resolver: T) {}
 
   addFields(newFields: Field<T>): QueryBuilder<T>;
-  addFields(...properties: (keyof Resolvers[T])[]): QueryBuilder<T>;
+  addFields(...properties: ResolverKeys<T>): QueryBuilder<T>;
   addFields(...a: any[]) {
-    const args = a as (keyof Resolvers[T])[] | Field<T>[];
+    const args = a as ResolverKeys<T> | Field<T>[];
     const first = args[0];
     if (typeof first === 'string') {
-      const a = args as (keyof Resolvers[T])[];
+      const a = args as ResolverKeys<T>;
 
       this.fields = {
         ...this.fields,
