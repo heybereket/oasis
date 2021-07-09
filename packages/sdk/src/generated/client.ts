@@ -4,27 +4,64 @@ import { Field } from "../query-builder";
 import {
   Mutation,
   Query,
+  QueryPaginateAnswersArgs,
+  QueryGetAnswerArgs,
   MutationEditAnswerArgs,
   MutationUpvoteDownvoteAnswerArgs,
   MutationCreateAnswerArgs,
+  QueryPaginateBadgesArgs,
+  QueryGetBadgeArgs,
   MutationGiveBadgeArgs,
   MutationMakeBadgeArgs,
+  QueryPaginateCommentsArgs,
+  QueryGetCommentArgs,
   MutationEditCommentArgs,
   MutationUpvoteDownvoteCommentArgs,
   MutationCreateCommentArgs,
+  QueryPaginatePostsArgs,
+  QueryGetPostArgs,
   MutationDeletePostArgs,
   MutationEditPostArgs,
   MutationUpvoteDownvoteArgs,
   MutationCreatePostArgs,
+  QueryPaginateQuestionsArgs,
+  QueryGetQuestionArgs,
   MutationDeleteQuestionArgs,
   MutationEditQuestionArgs,
   MutationCreateQuestionArgs,
+  QueryPaginateResortsArgs,
+  QueryGetResortArgs,
   QueryGetResortByNameArgs,
   MutationJoinResortArgs,
+  QueryPaginateUsersArgs,
+  QueryGetUserArgs,
   QueryGetUserByNameArgs,
 } from "./types";
 export class Client extends BaseClient {
   answer = {
+    paginate: (
+      limit: QueryPaginateAnswersArgs['limit'],
+      offset: QueryPaginateAnswersArgs['offset'],
+      sortCol?: QueryPaginateAnswersArgs['sortCol'],
+      sortType?: QueryPaginateAnswersArgs['sortType'],
+      queryFields: Field<"paginateAnswers"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("paginateAnswers")
+        .args({ limit, offset, sortCol, sortType })
+        .addFields(queryFields)
+        .send()
+    },
+    get: (
+      id: QueryGetAnswerArgs['id'],
+      queryFields: Field<"getAnswer"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("getAnswer")
+        .args({ id })
+        .addFields(queryFields)
+        .send()
+    },
     edit: (
       answerId: MutationEditAnswerArgs['answerId'],
       data: MutationEditAnswerArgs['data'],
@@ -61,6 +98,29 @@ export class Client extends BaseClient {
     },
   };
   badge = {
+    paginate: (
+      limit: QueryPaginateBadgesArgs['limit'],
+      offset: QueryPaginateBadgesArgs['offset'],
+      sortCol?: QueryPaginateBadgesArgs['sortCol'],
+      sortType?: QueryPaginateBadgesArgs['sortType'],
+      queryFields: Field<"paginateBadges"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("paginateBadges")
+        .args({ limit, offset, sortCol, sortType })
+        .addFields(queryFields)
+        .send()
+    },
+    get: (
+      id: QueryGetBadgeArgs['id'],
+      queryFields: Field<"getBadge"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("getBadge")
+        .args({ id })
+        .addFields(queryFields)
+        .send()
+    },
     give: (
       badgeName: MutationGiveBadgeArgs['badgeName'],
       username: MutationGiveBadgeArgs['username'],
@@ -84,6 +144,29 @@ export class Client extends BaseClient {
     },
   };
   comment = {
+    paginate: (
+      limit: QueryPaginateCommentsArgs['limit'],
+      offset: QueryPaginateCommentsArgs['offset'],
+      sortCol?: QueryPaginateCommentsArgs['sortCol'],
+      sortType?: QueryPaginateCommentsArgs['sortType'],
+      queryFields: Field<"paginateComments"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("paginateComments")
+        .args({ limit, offset, sortCol, sortType })
+        .addFields(queryFields)
+        .send()
+    },
+    get: (
+      id: QueryGetCommentArgs['id'],
+      queryFields: Field<"getComment"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("getComment")
+        .args({ id })
+        .addFields(queryFields)
+        .send()
+    },
     edit: (
       commentId: MutationEditCommentArgs['commentId'],
       data: MutationEditCommentArgs['data'],
@@ -120,6 +203,29 @@ export class Client extends BaseClient {
     },
   };
   post = {
+    paginate: (
+      limit: QueryPaginatePostsArgs['limit'],
+      offset: QueryPaginatePostsArgs['offset'],
+      sortCol?: QueryPaginatePostsArgs['sortCol'],
+      sortType?: QueryPaginatePostsArgs['sortType'],
+      queryFields: Field<"paginatePosts"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("paginatePosts")
+        .args({ limit, offset, sortCol, sortType })
+        .addFields(queryFields)
+        .send()
+    },
+    get: (
+      id: QueryGetPostArgs['id'],
+      queryFields: Field<"getPost"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("getPost")
+        .args({ id })
+        .addFields(queryFields)
+        .send()
+    },
     delete: (
       postId: MutationDeletePostArgs['postId'],
       queryFields: Field<"deletePost"> = {}
@@ -165,6 +271,29 @@ export class Client extends BaseClient {
     },
   };
   question = {
+    paginate: (
+      limit: QueryPaginateQuestionsArgs['limit'],
+      offset: QueryPaginateQuestionsArgs['offset'],
+      sortCol?: QueryPaginateQuestionsArgs['sortCol'],
+      sortType?: QueryPaginateQuestionsArgs['sortType'],
+      queryFields: Field<"paginateQuestions"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("paginateQuestions")
+        .args({ limit, offset, sortCol, sortType })
+        .addFields(queryFields)
+        .send()
+    },
+    get: (
+      id: QueryGetQuestionArgs['id'],
+      queryFields: Field<"getQuestion"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("getQuestion")
+        .args({ id })
+        .addFields(queryFields)
+        .send()
+    },
     delete: (
       questionId: MutationDeleteQuestionArgs['questionId'],
       queryFields: Field<"deleteQuestion"> = {}
@@ -198,6 +327,29 @@ export class Client extends BaseClient {
     },
   };
   resort = {
+    paginate: (
+      limit: QueryPaginateResortsArgs['limit'],
+      offset: QueryPaginateResortsArgs['offset'],
+      sortCol?: QueryPaginateResortsArgs['sortCol'],
+      sortType?: QueryPaginateResortsArgs['sortType'],
+      queryFields: Field<"paginateResorts"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("paginateResorts")
+        .args({ limit, offset, sortCol, sortType })
+        .addFields(queryFields)
+        .send()
+    },
+    get: (
+      id: QueryGetResortArgs['id'],
+      queryFields: Field<"getResort"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("getResort")
+        .args({ id })
+        .addFields(queryFields)
+        .send()
+    },
     getByName: (
       name: QueryGetResortByNameArgs['name'],
       queryFields: Field<"getResortByName"> = {}
@@ -220,6 +372,29 @@ export class Client extends BaseClient {
     },
   };
   user = {
+    paginate: (
+      limit: QueryPaginateUsersArgs['limit'],
+      offset: QueryPaginateUsersArgs['offset'],
+      sortCol?: QueryPaginateUsersArgs['sortCol'],
+      sortType?: QueryPaginateUsersArgs['sortType'],
+      queryFields: Field<"paginateUsers"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("paginateUsers")
+        .args({ limit, offset, sortCol, sortType })
+        .addFields(queryFields)
+        .send()
+    },
+    get: (
+      id: QueryGetUserArgs['id'],
+      queryFields: Field<"getUser"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("getUser")
+        .args({ id })
+        .addFields(queryFields)
+        .send()
+    },
     current: (
       queryFields: Field<"currentUser"> = {}
     ) => {

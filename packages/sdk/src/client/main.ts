@@ -66,6 +66,8 @@ export default async function mainClient() {
 
           argString = argString.slice(0, argString.indexOf('}'));
 
+          console.log(argType, argString);
+
           const argEntries = argString
             .split('\n')
             .filter((x) => x)
@@ -87,6 +89,8 @@ export default async function mainClient() {
               ? scalarKeys
               : objKeys;
 
+            // console.log(key);
+
             arr.push(key.includes('?') ? key.slice(0, -1) : key);
           }
 
@@ -100,7 +104,12 @@ export default async function mainClient() {
             new RegExp(`${key}(s?)`, 'ig'),
             ''
           )}: (\n${[
-            ...argKeys.map((k) => `      ${k}: ${argType}['${k}'],`),
+            ...argKeys.map(
+              (k) =>
+                `      ${k}${
+                  optionalKeys.includes(k) ? '?:' : ':'
+                } ${argType}['${k}'],`
+            ),
             `      queryFields: Field<"${resolver}"> = {}`,
           ].join('\n')}\n    ) => {`;
           // output += `      return this.fetchGraphQL<${capitalize(
