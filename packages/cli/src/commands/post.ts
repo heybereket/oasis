@@ -1,8 +1,28 @@
 import * as log from '../utils/output/log';
 import { gqlURL } from '../lib/constants';
 import { gql, GraphQLClient } from 'graphql-request';
+import { BaseArguments } from '../types/arguments';
 
-export const handler = async (yargs: any) => {
+interface PostMutationArguments extends BaseArguments {
+  message: string;
+  json: boolean;
+}
+
+export const command = 'post <message> [json]';
+export const desc = "Adds a post under the authorized user's account";
+
+export const builder = {
+  message: {
+    type: 'string',
+    describe: 'the body of the message you are trying to relay',
+  },
+  json: {
+    describe:
+      'writes the raw JSON to stdout, powerful when used with jq (a JSON processor)',
+  },
+};
+
+export const handler = async (yargs: PostMutationArguments) => {
   const useJSON = yargs.json;
 
   if (!yargs.message) {
@@ -10,7 +30,7 @@ export const handler = async (yargs: any) => {
   }
 
   const client = new GraphQLClient(gqlURL, {
-    headers: { authorization: 'Bearer INSERT TOKEN HERE' },
+    headers: { authorization: yargs.auth },
   });
 
   const query = gql`

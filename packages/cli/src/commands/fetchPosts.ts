@@ -1,5 +1,5 @@
 import * as log from '../utils/output/log';
-import Client from '../sdkClient';
+import { gql, GraphQLClient } from 'graphql-request';
 import { BaseArguments } from '../types/arguments';
 
 interface QueryPostsArguments extends BaseArguments {
@@ -29,29 +29,53 @@ export const builder = {
 };
 
 export const handler = async (yargs: QueryPostsArguments) => {
-  const limit = yargs.limit;
-  const offset = yargs.offset;
+  const postsLimit = yargs.limit;
+  const postsOffset = yargs.offset;
   const useJSON = yargs.json;
 
-  const data = await Client({ token: '', server: yargs.server })
-    .createQueryBuilder('paginatePosts')
-    .addFields({
-      id: true,
-      message: true,
-      author: {
-        id: true,
-        name: true,
-        username: true,
-      },
-      downvotes: true,
-      upvotes: true,
-      ARGS: {
-        limit,
-        offset,
-      },
-    })
-    .send();
+  const query = gql`
+    query PaginatePosts($postsLimit: Float!, $postsOffset: Float!) {
+      paginatePosts(limit: $postsLimit, offset: $postsOffset) {
+        author {
+          id
+          name
+          username
+          badges {
+            description
+            id
+            imagePath
+          }
+          avatar
+        }
+        createdAt
+        downvotes
+        id
+        lastEdited
+        upvotes
+        message
+        resort {
+          id
+          description
+          logo
+          name
+        }
+        comments(limit: 0, offset: 0) {
+          total
+        }
+        topics
+        isUpvoted
+        isDownvoted
+        imageName
+      }
+    }
+  `;
 
-  if (useJSON) return console.log(JSON.stringify(data));
-  log.info(data);
+  const client = new GraphQLClient(yargs.server, {
+    headers: { authorization: yargs.auth },
+  });
+
+  const { paginatePosts } = await client.request(query, { postsLimit, postsOffset });
+
+  if (useJSON) return console.log(JSON.stringify(paginatePosts));
+  log.info(paginatePosts);
 };

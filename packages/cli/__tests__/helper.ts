@@ -1,5 +1,5 @@
 import { spawnSync } from 'child_process';
-import { gqlURL } from '@oasis-sh/shared';
+import { gqlURL } from '../src/lib/constants';
 import path from 'path';
 
 const serverURL =

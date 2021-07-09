@@ -40,7 +40,7 @@ describe('fetching posts', () => {
       postsOffset: 5.0,
     });
 
-    paginatePosts.forEach((post, index: number) => {
+    paginatePosts.forEach((post: any, index: number) => {
       expect(post.id).toEqual(data[index].id);
     });
   });

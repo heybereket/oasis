@@ -1,5 +1,5 @@
 import * as log from '../utils/output/log';
-import Client from '../sdkClient';
+import { gql, GraphQLClient } from 'graphql-request';
 import { BaseArguments } from '../types/arguments';
 
 interface GetUserByNameArguments extends BaseArguments {
@@ -24,31 +24,47 @@ export const builder = {
 };
 
 export const handler = async (yargs: GetUserByNameArguments) => {
-  const data = await Client({ token: '', server: yargs.server })
-    .createQueryBuilder('getUserByName')
-    .addFields({
-      id: true,
-      banner: true,
-      avatar: true,
-      createdAt: true,
-      github: true,
-      twitter: true,
-      discord: true,
-      bio: true,
-      username: true,
-      name: true,
-      verified: true,
-      badges: {
-        name: true,
-        id: true,
-        imagePath: true,
-        level: true,
-        description: true,
-      },
-      ARGS: { username: yargs.username },
-    })
-    .send();
+  const query = gql`
+    query getUserByName($username: String!) {
+      getUserByName(username: $username) {
+        id
+        banner
+        avatar
+        createdAt
+        github
+        twitter
+        discord
+        google
+        bio
+        username
+        name
+        verified
+        badges {
+          name
+          id
+          imagePath
+          level
+          description
+        }
+        followers(offset: 0, limit: 0) {
+          total
+        }
+        following(offset: 0, limit: 0) {
+          total
+        }
+        posts(offset: 0, limit: 0) {
+          total
+        }
+      }
+    }
+  `;
 
-  if (yargs.json) return console.log(JSON.stringify(data));
-  log.info(data);
+  const client = new GraphQLClient(yargs.server, {
+    headers: { authorization: yargs.auth },
+  });
+
+  const { getUserByName } = await client.request(query, { username: yargs.username })
+
+  if (yargs.json) return console.log(JSON.stringify(getUserByName));
+  log.info(getUserByName);
 };

@@ -15,7 +15,7 @@ describe("getting a user's upvoted posts", () => {
   const data = JSON.parse(output);
 
   it('yields valid data', () => {
-    data.items.forEach((post) => {
+    data.items.forEach((post: any) => {
       expect(post).toMatchSchema(postSchema);
     });
   });
