@@ -1,17 +1,20 @@
 {
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
-    "target": "ES2018",
+    "target": "es5",
     "module": "commonjs",
-    "lib": ["ESNext"],
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "lib": ["es2017", "es7", "es6", "dom"],
     "declaration": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node"
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "rootDir": "src",
+    "skipLibCheck": true
   },
-  "exclude": ["__tests__/**/*", "dist/**/*", "jest.config.ts"]
+  "exclude": [
+    "node_modules",
+    "__tests__/**/*",
+    "dist/**/*",
+    "jest.config.ts",
+    "babel.config.js"
+  ]
 }

@@ -7,7 +7,7 @@ const serverURL =
 
 const execCommand = (command: string, args?: string[]) => {
   const { output } = spawnSync('node', [
-    path.join(__dirname, '..', './bin/oasis'),
+    path.join(__dirname, '../dist', './bin/oasis.js'),
     command,
     ...args,
   ]);
