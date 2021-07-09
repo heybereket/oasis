@@ -11,9 +11,9 @@
     "clean": "rimraf dist/*",
     "install": "yarn build",
     "prepublishOnly": "yarn test",
-    "test": "yarn build && jest --maxWorkers=50%",
+    "test": "jest --maxWorkers=50%",
     "test:watch": "jest --watch --maxWorkers=25%",
-    "test:ci": "yarn build && jest --runInBand"
+    "test:ci": "jest --runInBand"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.14.5",
