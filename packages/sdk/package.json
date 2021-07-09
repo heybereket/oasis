@@ -10,6 +10,7 @@
   "module": "dist/index.js",
   "scripts": {
     "publish": "npm publish",
+    "gen-client": "ts-node src/client",
     "build": "graphql-codegen && ts-node src/client && tsc",
     "watch": "tsc --watch",
     "gen": "graphql-codegen",

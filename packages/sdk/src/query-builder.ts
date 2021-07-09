@@ -68,6 +68,12 @@ export class QueryBuilder<T extends keyof Resolvers> {
     return this;
   }
 
+  args(args: 'ARGS' extends keyof Field<T> ? Field<T>['ARGS'] : any) {
+    ((this.fields as any) || (this.fields = {} as any)).ARGS = args;
+
+    return this;
+  }
+
   send(vars?: any) {
     if (!this.fields) {
       throw new TypeError(

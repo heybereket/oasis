@@ -1,10 +1,10 @@
 import genArguments from './arguments';
-import extend from './extend';
 import listAll from './listAll';
+import mainClient from './main';
 import relations from './relations';
 
 (async () => {
-  await extend();
+  await mainClient();
   await relations();
   await listAll();
   await genArguments();

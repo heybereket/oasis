@@ -4,7 +4,7 @@ import { join } from 'path';
 const pathToTypes = join(__dirname, '../generated/types.ts');
 
 export default async function listAll() {
-  const content = readFileSync(pathToTypes).toString();
+  const content = readFileSync(pathToTypes).toString().replace(/\r/g, '');
 
   const allMutations = [
     ...content

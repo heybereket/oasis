@@ -12,9 +12,9 @@ export type GQLArgumentTypes = {
 const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
 
 export default async function genArguments() {
-  const content = (
-    await readFile(join(__dirname, '../../../api/schema.gql'))
-  ).toString();
+  const content = (await readFile(join(__dirname, '../../../api/schema.gql')))
+    .toString()
+    .replace(/\r/g, '');
 
   const matches = [
     ...content.matchAll(/type\s+(.*?)\s+{(\r?)\n(.*?)(\r?)\n}/gs),
@@ -85,7 +85,7 @@ export default async function genArguments() {
       .filter((a) => Object.keys(typeResults[a]).length > 0)
       .map(
         (key) =>
-          `R extends ${key} ? K extends keyof NestedArguments['${key}'] ? { ARGS: NestedArguments['${key}'][K] } : {} : `
+          `R extends ${key} ? K extends keyof NestedArguments['${key}'] ? { ARGS ?: NestedArguments['${key}'][K] } : {} : `
       )
       .join('\n')} {};`
   );

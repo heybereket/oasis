@@ -1,5 +1,6 @@
 /* eslint-disable no-invalid-this */
 import BaseClient from "../base-client";
+import { Field } from "../query-builder";
 import {
   Mutation,
   Query,
@@ -24,150 +25,219 @@ import {
 } from "./types";
 export class Client extends BaseClient {
   answer = {
-    edit: (args: MutationEditAnswerArgs) => {
-      return this.fetchGraphQL<Mutation["editAnswer"]>(
-        `mutation { paginateBadges { ${this.getSelections("answer")} } }`,
-        data => data.editAnswer,
-        args
-      );
+    edit: (
+      answerId: MutationEditAnswerArgs['answerId'],
+      data: MutationEditAnswerArgs['data'],
+      queryFields: Field<"editAnswer"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("editAnswer")
+        .args({ answerId, data })
+        .addFields(queryFields)
+        .send()
     },
-    upvoteDownvote: (args: MutationUpvoteDownvoteAnswerArgs) => {
-      return this.fetchGraphQL<Mutation["upvoteDownvoteAnswer"]>(
-        `mutation { paginateBadges { ${this.getSelections("answer")} } }`,
-        data => data.upvoteDownvoteAnswer,
-        args
-      );
+    upvoteDownvote: (
+      answerId: MutationUpvoteDownvoteAnswerArgs['answerId'],
+      downvote: MutationUpvoteDownvoteAnswerArgs['downvote'],
+      upvote: MutationUpvoteDownvoteAnswerArgs['upvote'],
+      queryFields: Field<"upvoteDownvoteAnswer"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("upvoteDownvoteAnswer")
+        .args({ answerId, downvote, upvote })
+        .addFields(queryFields)
+        .send()
     },
-    create: (args: MutationCreateAnswerArgs) => {
-      return this.fetchGraphQL<Mutation["createAnswer"]>(
-        `mutation { paginateBadges { ${this.getSelections("answer")} } }`,
-        data => data.createAnswer,
-        args
-      );
+    create: (
+      questionId: MutationCreateAnswerArgs['questionId'],
+      data: MutationCreateAnswerArgs['data'],
+      queryFields: Field<"createAnswer"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("createAnswer")
+        .args({ questionId, data })
+        .addFields(queryFields)
+        .send()
     },
   };
   badge = {
-    give: (args: MutationGiveBadgeArgs) => {
-      return this.fetchGraphQL<Mutation["giveBadge"]>(
-        `mutation { paginateBadges { ${this.getSelections("badge")} } }`,
-        data => data.giveBadge,
-        args
-      );
+    give: (
+      badgeName: MutationGiveBadgeArgs['badgeName'],
+      username: MutationGiveBadgeArgs['username'],
+      queryFields: Field<"giveBadge"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("giveBadge")
+        .args({ badgeName, username })
+        .addFields(queryFields)
+        .send()
     },
-    make: (args: MutationMakeBadgeArgs) => {
-      return this.fetchGraphQL<Mutation["makeBadge"]>(
-        `mutation { paginateBadges { ${this.getSelections("badge")} } }`,
-        data => data.makeBadge,
-        args
-      );
+    make: (
+      data: MutationMakeBadgeArgs['data'],
+      queryFields: Field<"makeBadge"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("makeBadge")
+        .args({ data })
+        .addFields(queryFields)
+        .send()
     },
   };
   comment = {
-    edit: (args: MutationEditCommentArgs) => {
-      return this.fetchGraphQL<Mutation["editComment"]>(
-        `mutation { paginateBadges { ${this.getSelections("comment")} } }`,
-        data => data.editComment,
-        args
-      );
+    edit: (
+      commentId: MutationEditCommentArgs['commentId'],
+      data: MutationEditCommentArgs['data'],
+      queryFields: Field<"editComment"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("editComment")
+        .args({ commentId, data })
+        .addFields(queryFields)
+        .send()
     },
-    upvoteDownvote: (args: MutationUpvoteDownvoteCommentArgs) => {
-      return this.fetchGraphQL<Mutation["upvoteDownvoteComment"]>(
-        `mutation { paginateBadges { ${this.getSelections("comment")} } }`,
-        data => data.upvoteDownvoteComment,
-        args
-      );
+    upvoteDownvote: (
+      commentId: MutationUpvoteDownvoteCommentArgs['commentId'],
+      downvote: MutationUpvoteDownvoteCommentArgs['downvote'],
+      upvote: MutationUpvoteDownvoteCommentArgs['upvote'],
+      queryFields: Field<"upvoteDownvoteComment"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("upvoteDownvoteComment")
+        .args({ commentId, downvote, upvote })
+        .addFields(queryFields)
+        .send()
     },
-    create: (args: MutationCreateCommentArgs) => {
-      return this.fetchGraphQL<Mutation["createComment"]>(
-        `mutation { paginateBadges { ${this.getSelections("comment")} } }`,
-        data => data.createComment,
-        args
-      );
+    create: (
+      postId: MutationCreateCommentArgs['postId'],
+      data: MutationCreateCommentArgs['data'],
+      queryFields: Field<"createComment"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("createComment")
+        .args({ postId, data })
+        .addFields(queryFields)
+        .send()
     },
   };
   post = {
-    delete: (args: MutationDeletePostArgs) => {
-      return this.fetchGraphQL<Mutation["deletePost"]>(
-        `mutation { paginateBadges { ${this.getSelections("post")} } }`,
-        data => data.deletePost,
-        args
-      );
+    delete: (
+      postId: MutationDeletePostArgs['postId'],
+      queryFields: Field<"deletePost"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("deletePost")
+        .args({ postId })
+        .addFields(queryFields)
+        .send()
     },
-    edit: (args: MutationEditPostArgs) => {
-      return this.fetchGraphQL<Mutation["editPost"]>(
-        `mutation { paginateBadges { ${this.getSelections("post")} } }`,
-        data => data.editPost,
-        args
-      );
+    edit: (
+      postId: MutationEditPostArgs['postId'],
+      data: MutationEditPostArgs['data'],
+      queryFields: Field<"editPost"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("editPost")
+        .args({ postId, data })
+        .addFields(queryFields)
+        .send()
     },
-    upvoteDownvote: (args: MutationUpvoteDownvoteArgs) => {
-      return this.fetchGraphQL<Mutation["upvoteDownvote"]>(
-        `mutation { paginateBadges { ${this.getSelections("post")} } }`,
-        data => data.upvoteDownvote,
-        args
-      );
+    upvoteDownvote: (
+      downvote: MutationUpvoteDownvoteArgs['downvote'],
+      postId: MutationUpvoteDownvoteArgs['postId'],
+      upvote: MutationUpvoteDownvoteArgs['upvote'],
+      queryFields: Field<"upvoteDownvote"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("upvoteDownvote")
+        .args({ downvote, postId, upvote })
+        .addFields(queryFields)
+        .send()
     },
-    create: (args: MutationCreatePostArgs) => {
-      return this.fetchGraphQL<Mutation["createPost"]>(
-        `mutation { paginateBadges { ${this.getSelections("post")} } }`,
-        data => data.createPost,
-        args
-      );
+    create: (
+      data: MutationCreatePostArgs['data'],
+      queryFields: Field<"createPost"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("createPost")
+        .args({ data })
+        .addFields(queryFields)
+        .send()
     },
   };
   question = {
-    delete: (args: MutationDeleteQuestionArgs) => {
-      return this.fetchGraphQL<Mutation["deleteQuestion"]>(
-        `mutation { paginateBadges { ${this.getSelections("question")} } }`,
-        data => data.deleteQuestion,
-        args
-      );
+    delete: (
+      questionId: MutationDeleteQuestionArgs['questionId'],
+      queryFields: Field<"deleteQuestion"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("deleteQuestion")
+        .args({ questionId })
+        .addFields(queryFields)
+        .send()
     },
-    edit: (args: MutationEditQuestionArgs) => {
-      return this.fetchGraphQL<Mutation["editQuestion"]>(
-        `mutation { paginateBadges { ${this.getSelections("question")} } }`,
-        data => data.editQuestion,
-        args
-      );
+    edit: (
+      questionId: MutationEditQuestionArgs['questionId'],
+      data: MutationEditQuestionArgs['data'],
+      queryFields: Field<"editQuestion"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("editQuestion")
+        .args({ questionId, data })
+        .addFields(queryFields)
+        .send()
     },
-    create: (args: MutationCreateQuestionArgs) => {
-      return this.fetchGraphQL<Mutation["createQuestion"]>(
-        `mutation { paginateBadges { ${this.getSelections("question")} } }`,
-        data => data.createQuestion,
-        args
-      );
+    create: (
+      data: MutationCreateQuestionArgs['data'],
+      queryFields: Field<"createQuestion"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("createQuestion")
+        .args({ data })
+        .addFields(queryFields)
+        .send()
     },
   };
   resort = {
-    getByName: (args: QueryGetResortByNameArgs) => {
-      return this.fetchGraphQL<Query["getResortByName"]>(
-        `query { paginateBadges { ${this.getSelections("resort")} } }`,
-        data => data.getResortByName,
-        args
-      );
+    getByName: (
+      name: QueryGetResortByNameArgs['name'],
+      queryFields: Field<"getResortByName"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("getResortByName")
+        .args({ name })
+        .addFields(queryFields)
+        .send()
     },
-    join: (args: MutationJoinResortArgs) => {
-      return this.fetchGraphQL<Mutation["joinResort"]>(
-        `mutation { paginateBadges { ${this.getSelections("resort")} } }`,
-        data => data.joinResort,
-        args
-      );
+    join: (
+      resortId: MutationJoinResortArgs['resortId'],
+      queryFields: Field<"joinResort"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("joinResort")
+        .args({ resortId })
+        .addFields(queryFields)
+        .send()
     },
   };
   user = {
-    current: () => {
-      return this.fetchGraphQL<Query["currentUser"]>(
-        `query { paginateBadges { ${this.getSelections("user")} } }`,
-        data => data.currentUser,
-        {}
-      );
+    current: (
+      queryFields: Field<"currentUser"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("currentUser")
+        .args({})
+        .addFields(queryFields)
+        .send()
     },
-    getByName: (args: QueryGetUserByNameArgs) => {
-      return this.fetchGraphQL<Query["getUserByName"]>(
-        `query { paginateBadges { ${this.getSelections("user")} } }`,
-        data => data.getUserByName,
-        args
-      );
+    getByName: (
+      username: QueryGetUserByNameArgs['username'],
+      queryFields: Field<"getUserByName"> = {}
+    ) => {
+      return this
+        .createQueryBuilder("getUserByName")
+        .args({ username })
+        .addFields(queryFields)
+        .send()
     },
   };
 }
