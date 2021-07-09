@@ -6,20 +6,10 @@ const client = new Client({
 });
 
 (async () => {
-  const data = await client
-    .createQueryBuilder('paginatePosts')
-    .addFields({
-      __typename: true,
-      id: true,
-      author: {
-        id: true,
-      },
-      ARGS: {
-        limit: 50,
-        offset: 50,
-      },
-    })
-    .send();
+  const data = await client.post.paginate({ limit: 2, offset: 0 }, [
+    'id',
+    'message',
+  ]);
 
   console.log(data);
 })();

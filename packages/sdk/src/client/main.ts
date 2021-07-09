@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'fs/promises';
 import { glob } from 'glob';
 import { join } from 'path';
+import * as prettier from 'prettier';
 
 const dir = join(__dirname, '../../../api/src/resolvers/**/*.resolver.ts');
 const genFile = join(__dirname, '../../src/generated/client.ts');
@@ -40,13 +41,13 @@ export default async function mainClient() {
         }
       }
 
-      let output = '/* eslint-disable no-invalid-this */\n';
+      let output = '/* eslint-disable no-invalid-this */';
       const imports = ['Mutation', 'Query'];
 
-      output += 'import BaseClient from "../base-client";\n';
-      output += 'import { Field } from "../query-builder";\n';
-      output += 'import {/* IMPORT_SPACE */} from "./types";\n';
-      output += 'export class Client extends BaseClient {\n';
+      output += 'import BaseClient from "../base-client";';
+      output += 'import { Field, ResolverKeys } from "../query-builder";';
+      output += 'import {/* IMPORT_SPACE */} from "./types";';
+      output += 'export class Client extends BaseClient {';
 
       for (const key in keyMap) {
         const resolverNames = keyMap[key];
@@ -57,79 +58,20 @@ export default async function mainClient() {
 
           if (needsArgs) imports.push(argType);
 
-          let argString = !needsArgs
-            ? ''
-            : types.slice(
-                types.indexOf(`export type ${argType} = {\n`) +
-                  `export type ${argType} = {\n`.length
-              );
-
-          argString = argString.slice(0, argString.indexOf('}'));
-
-          console.log(argType, argString);
-
-          const argEntries = argString
-            .split('\n')
-            .filter((x) => x)
-            .map((x) =>
-              x
-                .trim()
-                .split(':')
-                .map((x) => x.trim())
-            );
-
-          const scalarKeys = [];
-          const objKeys = [];
-          const optionalKeys = [];
-
-          for (const [key, val] of argEntries) {
-            const arr = key.includes('?')
-              ? optionalKeys
-              : val.startsWith("Scalars['")
-              ? scalarKeys
-              : objKeys;
-
-            // console.log(key);
-
-            arr.push(key.includes('?') ? key.slice(0, -1) : key);
-          }
-
-          const argKeys: string[] = [
-            ...scalarKeys,
-            ...objKeys,
-            ...optionalKeys,
-          ];
-
           output += `    ${resolver.replace(
             new RegExp(`${key}(s?)`, 'ig'),
             ''
-          )}: (\n${[
-            ...argKeys.map(
-              (k) =>
-                `      ${k}${
-                  optionalKeys.includes(k) ? '?:' : ':'
-                } ${argType}['${k}'],`
-            ),
-            `      queryFields: Field<"${resolver}"> = {}`,
-          ].join('\n')}\n    ) => {`;
-          // output += `      return this.fetchGraphQL<${capitalize(
-          //   type
-          // )}["${resolver}"]>(\n`;
-
-          // output += `        \`${type} { paginateBadges { \${this.getSelections("${key}")} } }\`,\n`;
-          // output += `        data => data.${resolver},\n`;
-          // output += `        { ${argKeys.join(', ')} }\n`;
-          // output += `      );\n`;
+          )}: (
+                ${needsArgs ? `args: ${argType},` : ''}
+                queryFields: ResolverKeys<"${resolver}"> | Field<"${resolver}"> = {}
+            ) => {`;
           output += `
             return this
               .createQueryBuilder("${resolver}")
-              .args({${needsArgs ? ` ${argKeys.join(', ')} ` : ''}})
-              .addFields(queryFields)
+              ${needsArgs ? '.args(args)' : ''}
+              .addFields(queryFields as any)
               .send()
-          },\n`
-            .split('\n')
-            .map((x) => x.replace('      ', ''))
-            .join('\n');
+          },`;
         }
         output += '  };\n';
       }
@@ -141,7 +83,16 @@ export default async function mainClient() {
         '\n  ' + imports.join(',\n  ') + ',\n'
       );
 
-      await writeFile(genFile, output);
+      await writeFile(
+        genFile,
+        prettier.format(output, {
+          useTabs: false,
+          semi: true,
+          singleQuote: true,
+          endOfLine: 'lf',
+          parser: 'typescript',
+        })
+      );
 
       resolve(null);
     });

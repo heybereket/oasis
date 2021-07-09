@@ -1,6 +1,5 @@
-/* eslint-disable no-invalid-this */
-import BaseClient from "../base-client";
-import { Field } from "../query-builder";
+/* eslint-disable no-invalid-this */ import BaseClient from '../base-client';
+import { Field, ResolverKeys } from '../query-builder';
 import {
   Mutation,
   Query,
@@ -36,383 +35,330 @@ import {
   QueryPaginateUsersArgs,
   QueryGetUserArgs,
   QueryGetUserByNameArgs,
-} from "./types";
+} from './types';
 export class Client extends BaseClient {
   answer = {
     paginate: (
-      limit: QueryPaginateAnswersArgs['limit'],
-      offset: QueryPaginateAnswersArgs['offset'],
-      sortCol?: QueryPaginateAnswersArgs['sortCol'],
-      sortType?: QueryPaginateAnswersArgs['sortType'],
-      queryFields: Field<"paginateAnswers"> = {}
+      args: QueryPaginateAnswersArgs,
+      queryFields:
+        | ResolverKeys<'paginateAnswers'>
+        | Field<'paginateAnswers'> = {}
     ) => {
-      return this
-        .createQueryBuilder("paginateAnswers")
-        .args({ limit, offset, sortCol, sortType })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('paginateAnswers')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     get: (
-      id: QueryGetAnswerArgs['id'],
-      queryFields: Field<"getAnswer"> = {}
+      args: QueryGetAnswerArgs,
+      queryFields: ResolverKeys<'getAnswer'> | Field<'getAnswer'> = {}
     ) => {
-      return this
-        .createQueryBuilder("getAnswer")
-        .args({ id })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('getAnswer')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     edit: (
-      answerId: MutationEditAnswerArgs['answerId'],
-      data: MutationEditAnswerArgs['data'],
-      queryFields: Field<"editAnswer"> = {}
+      args: MutationEditAnswerArgs,
+      queryFields: ResolverKeys<'editAnswer'> | Field<'editAnswer'> = {}
     ) => {
-      return this
-        .createQueryBuilder("editAnswer")
-        .args({ answerId, data })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('editAnswer')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     upvoteDownvote: (
-      answerId: MutationUpvoteDownvoteAnswerArgs['answerId'],
-      downvote: MutationUpvoteDownvoteAnswerArgs['downvote'],
-      upvote: MutationUpvoteDownvoteAnswerArgs['upvote'],
-      queryFields: Field<"upvoteDownvoteAnswer"> = {}
+      args: MutationUpvoteDownvoteAnswerArgs,
+      queryFields:
+        | ResolverKeys<'upvoteDownvoteAnswer'>
+        | Field<'upvoteDownvoteAnswer'> = {}
     ) => {
-      return this
-        .createQueryBuilder("upvoteDownvoteAnswer")
-        .args({ answerId, downvote, upvote })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('upvoteDownvoteAnswer')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     create: (
-      questionId: MutationCreateAnswerArgs['questionId'],
-      data: MutationCreateAnswerArgs['data'],
-      queryFields: Field<"createAnswer"> = {}
+      args: MutationCreateAnswerArgs,
+      queryFields: ResolverKeys<'createAnswer'> | Field<'createAnswer'> = {}
     ) => {
-      return this
-        .createQueryBuilder("createAnswer")
-        .args({ questionId, data })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('createAnswer')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
   };
   badge = {
     paginate: (
-      limit: QueryPaginateBadgesArgs['limit'],
-      offset: QueryPaginateBadgesArgs['offset'],
-      sortCol?: QueryPaginateBadgesArgs['sortCol'],
-      sortType?: QueryPaginateBadgesArgs['sortType'],
-      queryFields: Field<"paginateBadges"> = {}
+      args: QueryPaginateBadgesArgs,
+      queryFields: ResolverKeys<'paginateBadges'> | Field<'paginateBadges'> = {}
     ) => {
-      return this
-        .createQueryBuilder("paginateBadges")
-        .args({ limit, offset, sortCol, sortType })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('paginateBadges')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     get: (
-      id: QueryGetBadgeArgs['id'],
-      queryFields: Field<"getBadge"> = {}
+      args: QueryGetBadgeArgs,
+      queryFields: ResolverKeys<'getBadge'> | Field<'getBadge'> = {}
     ) => {
-      return this
-        .createQueryBuilder("getBadge")
-        .args({ id })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('getBadge')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     give: (
-      badgeName: MutationGiveBadgeArgs['badgeName'],
-      username: MutationGiveBadgeArgs['username'],
-      queryFields: Field<"giveBadge"> = {}
+      args: MutationGiveBadgeArgs,
+      queryFields: ResolverKeys<'giveBadge'> | Field<'giveBadge'> = {}
     ) => {
-      return this
-        .createQueryBuilder("giveBadge")
-        .args({ badgeName, username })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('giveBadge')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     make: (
-      data: MutationMakeBadgeArgs['data'],
-      queryFields: Field<"makeBadge"> = {}
+      args: MutationMakeBadgeArgs,
+      queryFields: ResolverKeys<'makeBadge'> | Field<'makeBadge'> = {}
     ) => {
-      return this
-        .createQueryBuilder("makeBadge")
-        .args({ data })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('makeBadge')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
   };
   comment = {
     paginate: (
-      limit: QueryPaginateCommentsArgs['limit'],
-      offset: QueryPaginateCommentsArgs['offset'],
-      sortCol?: QueryPaginateCommentsArgs['sortCol'],
-      sortType?: QueryPaginateCommentsArgs['sortType'],
-      queryFields: Field<"paginateComments"> = {}
+      args: QueryPaginateCommentsArgs,
+      queryFields:
+        | ResolverKeys<'paginateComments'>
+        | Field<'paginateComments'> = {}
     ) => {
-      return this
-        .createQueryBuilder("paginateComments")
-        .args({ limit, offset, sortCol, sortType })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('paginateComments')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     get: (
-      id: QueryGetCommentArgs['id'],
-      queryFields: Field<"getComment"> = {}
+      args: QueryGetCommentArgs,
+      queryFields: ResolverKeys<'getComment'> | Field<'getComment'> = {}
     ) => {
-      return this
-        .createQueryBuilder("getComment")
-        .args({ id })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('getComment')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     edit: (
-      commentId: MutationEditCommentArgs['commentId'],
-      data: MutationEditCommentArgs['data'],
-      queryFields: Field<"editComment"> = {}
+      args: MutationEditCommentArgs,
+      queryFields: ResolverKeys<'editComment'> | Field<'editComment'> = {}
     ) => {
-      return this
-        .createQueryBuilder("editComment")
-        .args({ commentId, data })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('editComment')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     upvoteDownvote: (
-      commentId: MutationUpvoteDownvoteCommentArgs['commentId'],
-      downvote: MutationUpvoteDownvoteCommentArgs['downvote'],
-      upvote: MutationUpvoteDownvoteCommentArgs['upvote'],
-      queryFields: Field<"upvoteDownvoteComment"> = {}
+      args: MutationUpvoteDownvoteCommentArgs,
+      queryFields:
+        | ResolverKeys<'upvoteDownvoteComment'>
+        | Field<'upvoteDownvoteComment'> = {}
     ) => {
-      return this
-        .createQueryBuilder("upvoteDownvoteComment")
-        .args({ commentId, downvote, upvote })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('upvoteDownvoteComment')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     create: (
-      postId: MutationCreateCommentArgs['postId'],
-      data: MutationCreateCommentArgs['data'],
-      queryFields: Field<"createComment"> = {}
+      args: MutationCreateCommentArgs,
+      queryFields: ResolverKeys<'createComment'> | Field<'createComment'> = {}
     ) => {
-      return this
-        .createQueryBuilder("createComment")
-        .args({ postId, data })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('createComment')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
   };
   post = {
     paginate: (
-      limit: QueryPaginatePostsArgs['limit'],
-      offset: QueryPaginatePostsArgs['offset'],
-      sortCol?: QueryPaginatePostsArgs['sortCol'],
-      sortType?: QueryPaginatePostsArgs['sortType'],
-      queryFields: Field<"paginatePosts"> = {}
+      args: QueryPaginatePostsArgs,
+      queryFields: ResolverKeys<'paginatePosts'> | Field<'paginatePosts'> = {}
     ) => {
-      return this
-        .createQueryBuilder("paginatePosts")
-        .args({ limit, offset, sortCol, sortType })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('paginatePosts')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     get: (
-      id: QueryGetPostArgs['id'],
-      queryFields: Field<"getPost"> = {}
+      args: QueryGetPostArgs,
+      queryFields: ResolverKeys<'getPost'> | Field<'getPost'> = {}
     ) => {
-      return this
-        .createQueryBuilder("getPost")
-        .args({ id })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('getPost')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     delete: (
-      postId: MutationDeletePostArgs['postId'],
-      queryFields: Field<"deletePost"> = {}
+      args: MutationDeletePostArgs,
+      queryFields: ResolverKeys<'deletePost'> | Field<'deletePost'> = {}
     ) => {
-      return this
-        .createQueryBuilder("deletePost")
-        .args({ postId })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('deletePost')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     edit: (
-      postId: MutationEditPostArgs['postId'],
-      data: MutationEditPostArgs['data'],
-      queryFields: Field<"editPost"> = {}
+      args: MutationEditPostArgs,
+      queryFields: ResolverKeys<'editPost'> | Field<'editPost'> = {}
     ) => {
-      return this
-        .createQueryBuilder("editPost")
-        .args({ postId, data })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('editPost')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     upvoteDownvote: (
-      downvote: MutationUpvoteDownvoteArgs['downvote'],
-      postId: MutationUpvoteDownvoteArgs['postId'],
-      upvote: MutationUpvoteDownvoteArgs['upvote'],
-      queryFields: Field<"upvoteDownvote"> = {}
+      args: MutationUpvoteDownvoteArgs,
+      queryFields: ResolverKeys<'upvoteDownvote'> | Field<'upvoteDownvote'> = {}
     ) => {
-      return this
-        .createQueryBuilder("upvoteDownvote")
-        .args({ downvote, postId, upvote })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('upvoteDownvote')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     create: (
-      data: MutationCreatePostArgs['data'],
-      queryFields: Field<"createPost"> = {}
+      args: MutationCreatePostArgs,
+      queryFields: ResolverKeys<'createPost'> | Field<'createPost'> = {}
     ) => {
-      return this
-        .createQueryBuilder("createPost")
-        .args({ data })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('createPost')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
   };
   question = {
     paginate: (
-      limit: QueryPaginateQuestionsArgs['limit'],
-      offset: QueryPaginateQuestionsArgs['offset'],
-      sortCol?: QueryPaginateQuestionsArgs['sortCol'],
-      sortType?: QueryPaginateQuestionsArgs['sortType'],
-      queryFields: Field<"paginateQuestions"> = {}
+      args: QueryPaginateQuestionsArgs,
+      queryFields:
+        | ResolverKeys<'paginateQuestions'>
+        | Field<'paginateQuestions'> = {}
     ) => {
-      return this
-        .createQueryBuilder("paginateQuestions")
-        .args({ limit, offset, sortCol, sortType })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('paginateQuestions')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     get: (
-      id: QueryGetQuestionArgs['id'],
-      queryFields: Field<"getQuestion"> = {}
+      args: QueryGetQuestionArgs,
+      queryFields: ResolverKeys<'getQuestion'> | Field<'getQuestion'> = {}
     ) => {
-      return this
-        .createQueryBuilder("getQuestion")
-        .args({ id })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('getQuestion')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     delete: (
-      questionId: MutationDeleteQuestionArgs['questionId'],
-      queryFields: Field<"deleteQuestion"> = {}
+      args: MutationDeleteQuestionArgs,
+      queryFields: ResolverKeys<'deleteQuestion'> | Field<'deleteQuestion'> = {}
     ) => {
-      return this
-        .createQueryBuilder("deleteQuestion")
-        .args({ questionId })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('deleteQuestion')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     edit: (
-      questionId: MutationEditQuestionArgs['questionId'],
-      data: MutationEditQuestionArgs['data'],
-      queryFields: Field<"editQuestion"> = {}
+      args: MutationEditQuestionArgs,
+      queryFields: ResolverKeys<'editQuestion'> | Field<'editQuestion'> = {}
     ) => {
-      return this
-        .createQueryBuilder("editQuestion")
-        .args({ questionId, data })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('editQuestion')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     create: (
-      data: MutationCreateQuestionArgs['data'],
-      queryFields: Field<"createQuestion"> = {}
+      args: MutationCreateQuestionArgs,
+      queryFields: ResolverKeys<'createQuestion'> | Field<'createQuestion'> = {}
     ) => {
-      return this
-        .createQueryBuilder("createQuestion")
-        .args({ data })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('createQuestion')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
   };
   resort = {
     paginate: (
-      limit: QueryPaginateResortsArgs['limit'],
-      offset: QueryPaginateResortsArgs['offset'],
-      sortCol?: QueryPaginateResortsArgs['sortCol'],
-      sortType?: QueryPaginateResortsArgs['sortType'],
-      queryFields: Field<"paginateResorts"> = {}
+      args: QueryPaginateResortsArgs,
+      queryFields:
+        | ResolverKeys<'paginateResorts'>
+        | Field<'paginateResorts'> = {}
     ) => {
-      return this
-        .createQueryBuilder("paginateResorts")
-        .args({ limit, offset, sortCol, sortType })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('paginateResorts')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     get: (
-      id: QueryGetResortArgs['id'],
-      queryFields: Field<"getResort"> = {}
+      args: QueryGetResortArgs,
+      queryFields: ResolverKeys<'getResort'> | Field<'getResort'> = {}
     ) => {
-      return this
-        .createQueryBuilder("getResort")
-        .args({ id })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('getResort')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     getByName: (
-      name: QueryGetResortByNameArgs['name'],
-      queryFields: Field<"getResortByName"> = {}
+      args: QueryGetResortByNameArgs,
+      queryFields:
+        | ResolverKeys<'getResortByName'>
+        | Field<'getResortByName'> = {}
     ) => {
-      return this
-        .createQueryBuilder("getResortByName")
-        .args({ name })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('getResortByName')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     join: (
-      resortId: MutationJoinResortArgs['resortId'],
-      queryFields: Field<"joinResort"> = {}
+      args: MutationJoinResortArgs,
+      queryFields: ResolverKeys<'joinResort'> | Field<'joinResort'> = {}
     ) => {
-      return this
-        .createQueryBuilder("joinResort")
-        .args({ resortId })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('joinResort')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
   };
   user = {
     paginate: (
-      limit: QueryPaginateUsersArgs['limit'],
-      offset: QueryPaginateUsersArgs['offset'],
-      sortCol?: QueryPaginateUsersArgs['sortCol'],
-      sortType?: QueryPaginateUsersArgs['sortType'],
-      queryFields: Field<"paginateUsers"> = {}
+      args: QueryPaginateUsersArgs,
+      queryFields: ResolverKeys<'paginateUsers'> | Field<'paginateUsers'> = {}
     ) => {
-      return this
-        .createQueryBuilder("paginateUsers")
-        .args({ limit, offset, sortCol, sortType })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('paginateUsers')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     get: (
-      id: QueryGetUserArgs['id'],
-      queryFields: Field<"getUser"> = {}
+      args: QueryGetUserArgs,
+      queryFields: ResolverKeys<'getUser'> | Field<'getUser'> = {}
     ) => {
-      return this
-        .createQueryBuilder("getUser")
-        .args({ id })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('getUser')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
     current: (
-      queryFields: Field<"currentUser"> = {}
+      queryFields: ResolverKeys<'currentUser'> | Field<'currentUser'> = {}
     ) => {
-      return this
-        .createQueryBuilder("currentUser")
-        .args({})
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('currentUser')
+
+        .addFields(queryFields as any)
+        .send();
     },
     getByName: (
-      username: QueryGetUserByNameArgs['username'],
-      queryFields: Field<"getUserByName"> = {}
+      args: QueryGetUserByNameArgs,
+      queryFields: ResolverKeys<'getUserByName'> | Field<'getUserByName'> = {}
     ) => {
-      return this
-        .createQueryBuilder("getUserByName")
-        .args({ username })
-        .addFields(queryFields)
-        .send()
+      return this.createQueryBuilder('getUserByName')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
     },
   };
 }

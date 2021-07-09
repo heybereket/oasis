@@ -46,9 +46,10 @@ export class QueryBuilder<T extends keyof Resolvers> {
 
   addFields(newFields: Field<T>): QueryBuilder<T>;
   addFields(...properties: ResolverKeys<T>): QueryBuilder<T>;
+  addFields(properties: ResolverKeys<T>): QueryBuilder<T>;
   addFields(...a: any[]) {
     const args = a as ResolverKeys<T> | Field<T>[];
-    const first = args[0];
+    const first = args.flat()[0];
     if (typeof first === 'string') {
       const a = args as ResolverKeys<T>;
 
@@ -57,7 +58,7 @@ export class QueryBuilder<T extends keyof Resolvers> {
         ...a.reduce((acc, key) => ({ ...acc, [key]: true }), {}),
       };
 
-      return;
+      return this;
     }
 
     const obj = first as Field<T>;
