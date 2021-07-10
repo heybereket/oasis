@@ -58,12 +58,14 @@ export type Comment = {
   author: User;
   content: Scalars['String'];
   createdAt: Scalars['String'];
+  dislikes: Scalars['Float'];
   downvoters: PaginatedUserFromComment_DownvotedCommentsResponse;
   downvotes: Scalars['Float'];
   id: Scalars['ID'];
   isDownvoted: Scalars['Boolean'];
   isUpvoted: Scalars['Boolean'];
   lastEdited?: Maybe<Scalars['String']>;
+  likes: Scalars['Float'];
   post?: Maybe<Post>;
   question?: Maybe<Question>;
   upvoters: PaginatedUserFromComment_UpvotedCommentsResponse;
@@ -153,6 +155,9 @@ export type Mutation = {
   deleteAccount: Scalars['Boolean'];
   deletePost: Scalars['Boolean'];
   deleteQuestion: Scalars['Boolean'];
+  downvoteAnswer: Scalars['Boolean'];
+  downvoteComment: Scalars['Boolean'];
+  downvotePost: Scalars['Boolean'];
   editAnswer: Scalars['Boolean'];
   editComment: Scalars['Boolean'];
   editPost: Scalars['Boolean'];
@@ -161,6 +166,7 @@ export type Mutation = {
   getTokenData: PremiumToken;
   giveBadge: Scalars['Boolean'];
   joinResort?: Maybe<Scalars['Boolean']>;
+  likeDislikeComment: Scalars['Boolean'];
   makeAdmin: Scalars['Boolean'];
   makeBadge: Scalars['Boolean'];
   makePremiumToken: Scalars['String'];
@@ -171,9 +177,12 @@ export type Mutation = {
   refreshBotToken: Scalars['String'];
   refreshToken: Scalars['String'];
   updateProfile: Scalars['Boolean'];
+  upvoteAnswer: Scalars['Boolean'];
+  upvoteComment: Scalars['Boolean'];
   upvoteDownvote: Scalars['Boolean'];
   upvoteDownvoteAnswer: Scalars['Boolean'];
   upvoteDownvoteComment: Scalars['Boolean'];
+  upvotePost: Scalars['Boolean'];
 };
 
 
@@ -225,6 +234,21 @@ export type MutationDeleteQuestionArgs = {
 };
 
 
+export type MutationDownvoteAnswerArgs = {
+  answerId: Scalars['String'];
+};
+
+
+export type MutationDownvoteCommentArgs = {
+  commentId: Scalars['String'];
+};
+
+
+export type MutationDownvotePostArgs = {
+  postId: Scalars['String'];
+};
+
+
 export type MutationEditAnswerArgs = {
   answerId: Scalars['String'];
   data: EditAnswerInput;
@@ -267,6 +291,13 @@ export type MutationGiveBadgeArgs = {
 
 export type MutationJoinResortArgs = {
   resortId: Scalars['String'];
+};
+
+
+export type MutationLikeDislikeCommentArgs = {
+  commentId: Scalars['String'];
+  dislike: Scalars['Boolean'];
+  like: Scalars['Boolean'];
 };
 
 
@@ -323,6 +354,16 @@ export type MutationUpdateProfileArgs = {
 };
 
 
+export type MutationUpvoteAnswerArgs = {
+  answerId: Scalars['String'];
+};
+
+
+export type MutationUpvoteCommentArgs = {
+  commentId: Scalars['String'];
+};
+
+
 export type MutationUpvoteDownvoteArgs = {
   downvote: Scalars['Boolean'];
   postId: Scalars['String'];
@@ -341,6 +382,11 @@ export type MutationUpvoteDownvoteCommentArgs = {
   commentId: Scalars['String'];
   downvote: Scalars['Boolean'];
   upvote: Scalars['Boolean'];
+};
+
+
+export type MutationUpvotePostArgs = {
+  postId: Scalars['String'];
 };
 
 export type NewAnswerInput = {

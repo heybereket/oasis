@@ -6,8 +6,9 @@ import {
   QueryPaginateAnswersArgs,
   QueryGetAnswerArgs,
   MutationEditAnswerArgs,
-  MutationUpvoteDownvoteAnswerArgs,
   MutationCreateAnswerArgs,
+  MutationUpvoteAnswerArgs,
+  MutationDownvoteAnswerArgs,
   QueryPaginateBadgesArgs,
   QueryGetBadgeArgs,
   MutationGiveBadgeArgs,
@@ -15,14 +16,16 @@ import {
   QueryPaginateCommentsArgs,
   QueryGetCommentArgs,
   MutationEditCommentArgs,
-  MutationUpvoteDownvoteCommentArgs,
   MutationCreateCommentArgs,
+  MutationUpvoteCommentArgs,
+  MutationDownvoteCommentArgs,
   QueryPaginatePostsArgs,
   QueryGetPostArgs,
   MutationDeletePostArgs,
   MutationEditPostArgs,
-  MutationUpvoteDownvoteArgs,
   MutationCreatePostArgs,
+  MutationUpvotePostArgs,
+  MutationDownvotePostArgs,
   QueryPaginateQuestionsArgs,
   QueryGetQuestionArgs,
   MutationDeleteQuestionArgs,
@@ -67,22 +70,29 @@ export class Client extends BaseClient {
         .addFields(queryFields as any)
         .send();
     },
-    upvoteDownvote: (
-      args: MutationUpvoteDownvoteAnswerArgs,
-      queryFields:
-        | ResolverKeys<'upvoteDownvoteAnswer'>
-        | Field<'upvoteDownvoteAnswer'> = {}
-    ) => {
-      return this.createQueryBuilder('upvoteDownvoteAnswer')
-        .args(args)
-        .addFields(queryFields as any)
-        .send();
-    },
     create: (
       args: MutationCreateAnswerArgs,
       queryFields: ResolverKeys<'createAnswer'> | Field<'createAnswer'> = {}
     ) => {
       return this.createQueryBuilder('createAnswer')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
+    },
+    upvote: (
+      args: MutationUpvoteAnswerArgs,
+      queryFields: ResolverKeys<'upvoteAnswer'> | Field<'upvoteAnswer'> = {}
+    ) => {
+      return this.createQueryBuilder('upvoteAnswer')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
+    },
+    downvote: (
+      args: MutationDownvoteAnswerArgs,
+      queryFields: ResolverKeys<'downvoteAnswer'> | Field<'downvoteAnswer'> = {}
+    ) => {
+      return this.createQueryBuilder('downvoteAnswer')
         .args(args)
         .addFields(queryFields as any)
         .send();
@@ -156,22 +166,31 @@ export class Client extends BaseClient {
         .addFields(queryFields as any)
         .send();
     },
-    upvoteDownvote: (
-      args: MutationUpvoteDownvoteCommentArgs,
-      queryFields:
-        | ResolverKeys<'upvoteDownvoteComment'>
-        | Field<'upvoteDownvoteComment'> = {}
-    ) => {
-      return this.createQueryBuilder('upvoteDownvoteComment')
-        .args(args)
-        .addFields(queryFields as any)
-        .send();
-    },
     create: (
       args: MutationCreateCommentArgs,
       queryFields: ResolverKeys<'createComment'> | Field<'createComment'> = {}
     ) => {
       return this.createQueryBuilder('createComment')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
+    },
+    upvote: (
+      args: MutationUpvoteCommentArgs,
+      queryFields: ResolverKeys<'upvoteComment'> | Field<'upvoteComment'> = {}
+    ) => {
+      return this.createQueryBuilder('upvoteComment')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
+    },
+    downvote: (
+      args: MutationDownvoteCommentArgs,
+      queryFields:
+        | ResolverKeys<'downvoteComment'>
+        | Field<'downvoteComment'> = {}
+    ) => {
+      return this.createQueryBuilder('downvoteComment')
         .args(args)
         .addFields(queryFields as any)
         .send();
@@ -214,20 +233,29 @@ export class Client extends BaseClient {
         .addFields(queryFields as any)
         .send();
     },
-    upvoteDownvote: (
-      args: MutationUpvoteDownvoteArgs,
-      queryFields: ResolverKeys<'upvoteDownvote'> | Field<'upvoteDownvote'> = {}
-    ) => {
-      return this.createQueryBuilder('upvoteDownvote')
-        .args(args)
-        .addFields(queryFields as any)
-        .send();
-    },
     create: (
       args: MutationCreatePostArgs,
       queryFields: ResolverKeys<'createPost'> | Field<'createPost'> = {}
     ) => {
       return this.createQueryBuilder('createPost')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
+    },
+    upvote: (
+      args: MutationUpvotePostArgs,
+      queryFields: ResolverKeys<'upvotePost'> | Field<'upvotePost'> = {}
+    ) => {
+      return this.createQueryBuilder('upvotePost')
+        .args(args)
+        .addFields(queryFields as any)
+        .send();
+    },
+    downvote: (
+      args: MutationDownvotePostArgs,
+      queryFields: ResolverKeys<'downvotePost'> | Field<'downvotePost'> = {}
+    ) => {
+      return this.createQueryBuilder('downvotePost')
         .args(args)
         .addFields(queryFields as any)
         .send();
