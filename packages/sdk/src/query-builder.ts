@@ -4,6 +4,7 @@ import BaseClient from './base-client';
 import { Mutation, Query } from './generated/types';
 import { allMutations, Arguments } from './generated/allResolvers';
 import { ArgLogic, ArgumentGQLTypes } from './generated/arguments';
+import { VariableType } from './variable-type';
 
 type FieldTypesOf<T> = T extends any[] ? T[0] : T;
 
@@ -91,6 +92,10 @@ export class QueryBuilder<T extends keyof Resolvers> {
       argTypes[str] = type;
       return str;
     };
+    const useVar = ({ name }: VariableType, type: string) => {
+      argTypes[name] = type;
+      return name;
+    };
 
     const queryStr = this.createQueryString(
       this.resolver,
@@ -99,12 +104,13 @@ export class QueryBuilder<T extends keyof Resolvers> {
         allMutations.includes(this.resolver) ? 'Mutation' : 'Query',
         this.resolver,
       ],
-      addArg
+      addArg,
+      useVar
     );
 
     return this.client.fetchGraphQL(
       `${allMutations.includes(this.resolver) ? 'mutation' : 'query'}${
-        Object.keys(args).length > 0
+        Object.keys(argTypes).length > 0
           ? `(${Object.entries(argTypes)
               .map(([arg, type]) => `$${arg}: ${type}`)
               .join(', ')})`
@@ -119,7 +125,8 @@ export class QueryBuilder<T extends keyof Resolvers> {
     res: string,
     obj: object & { ARGS?: any },
     trail: string[],
-    addArg: (val: string, type: string) => string
+    addArg: (val: string, type: string) => string,
+    useVar: (val: VariableType, type: string) => string
   ) {
     const arr = [];
 
@@ -128,7 +135,7 @@ export class QueryBuilder<T extends keyof Resolvers> {
       const val = obj[key];
       arr.push(
         typeof val === 'object'
-          ? this.createQueryString(key, val, [...trail, key], addArg)
+          ? this.createQueryString(key, val, [...trail, key], addArg, useVar)
           : key
       );
     }
@@ -137,9 +144,11 @@ export class QueryBuilder<T extends keyof Resolvers> {
       'ARGS' in obj
         ? `(${Object.keys(obj.ARGS).map(
             (key) =>
-              `${key}: $${addArg(
+              `${key}: $${(obj.ARGS[key] instanceof VariableType
+                ? useVar
+                : addArg)(
                 obj.ARGS[key],
-                trail.reduce((acc: any, key: string, i: number) => {
+                trail.reduce((acc: any, key: string) => {
                   const obj =
                     acc[key] || ArgumentGQLTypes[acc.__returns__][key];
                   return obj;

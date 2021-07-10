@@ -68,7 +68,7 @@ export default class BaseClient extends EventEmitter<Events> {
     if (data.errors) {
       throw new Error(
         `GraphQL Returned Error: ${data.errors
-          .map((err) => JSON.stringify(err))
+          .map((err) => JSON.stringify(err, null, 2))
           .join(', \n')}`
       );
     }
