@@ -76,7 +76,15 @@ export class QueryBuilder<T extends keyof Resolvers> {
     return this;
   }
 
-  send(vars?: any) {
+  send(
+    vars?: any
+  ): Promise<
+    T extends keyof Query
+      ? Query[T]
+      : T extends keyof Mutation
+      ? Mutation[T]
+      : any
+  > {
     if (!this.fields) {
       throw new TypeError(
         'Cannot send request without fields. Did you forget to call `addFields` on the query builder?'

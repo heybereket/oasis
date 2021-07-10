@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'fs/promises';
+import { readFile, writeFile, readdir } from 'fs/promises';
 import { glob } from 'glob';
 import { join } from 'path';
 import * as prettier from 'prettier';
@@ -17,6 +17,10 @@ export default async function mainClient() {
   )
     .toString()
     .replace(/\r/g, '');
+
+  const wrappers = (await readdir(join(__dirname, '../../src/wrappers'))).map(
+    (fileName) => fileName.slice(0, -3)
+  );
 
   return new Promise((resolve) => {
     glob(dir, async (err, filenames) => {
@@ -41,17 +45,28 @@ export default async function mainClient() {
         }
       }
 
-      let output = '/* eslint-disable no-invalid-this */';
-      const imports = ['Mutation', 'Query'];
+      let output = '/* eslint-disable no-invalid-this */\n';
+      const imports = [];
 
       output += 'import BaseClient from "../base-client";';
       output += 'import { Field, ResolverKeys } from "../query-builder";';
+      for (const wrapperName of wrappers) {
+        output += `import { wrap${capitalize(
+          wrapperName
+        )} } from "../wrappers/${wrapperName}";`;
+      }
       output += 'import {/* IMPORT_SPACE */} from "./types";';
       output += 'export class Client extends BaseClient {';
 
       for (const key in keyMap) {
         const resolverNames = keyMap[key];
         output += `  ${key} = {\n`;
+        if (wrappers.includes(key)) {
+          output += `wrap: (${key}: ${capitalize(key)}) => wrap${capitalize(
+            key
+          )}(${key}, this),`;
+          imports.push(capitalize(key));
+        }
         for (const [type, resolver] of resolverNames) {
           const argType = `${capitalize(type)}${capitalize(resolver)}Args`;
           const needsArgs = types.includes(argType);

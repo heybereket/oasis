@@ -1,5 +1,7 @@
-/* eslint-disable no-invalid-this */ import BaseClient from '../base-client';
+/* eslint-disable no-invalid-this */
+import BaseClient from '../base-client';
 import { Field, ResolverKeys } from '../query-builder';
+import { wrapPost } from '../wrappers/post';
 import {
   Mutation,
   Query,
@@ -19,6 +21,7 @@ import {
   MutationCreateCommentArgs,
   MutationUpvoteCommentArgs,
   MutationDownvoteCommentArgs,
+  Post,
   QueryPaginatePostsArgs,
   QueryGetPostArgs,
   MutationDeletePostArgs,
@@ -197,6 +200,7 @@ export class Client extends BaseClient {
     },
   };
   post = {
+    wrap: (post: Post) => wrapPost(post, this),
     paginate: (
       args: QueryPaginatePostsArgs,
       queryFields: ResolverKeys<'paginatePosts'> | Field<'paginatePosts'> = {}
