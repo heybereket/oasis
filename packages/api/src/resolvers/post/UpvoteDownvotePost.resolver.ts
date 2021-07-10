@@ -2,29 +2,37 @@ import { Arg, Authorized, Ctx, Mutation, Resolver } from 'type-graphql';
 import { ContextType } from '@root/server';
 import Post from '@entities/Post';
 import { upvoteDownvote } from '@utils/votes/upvoteDownvoteEntity';
+import type User from '@entities/User';
 
 // @bcg-resolver(mutation, upvoteDownvote, post)
+
+const action = async (upvote: boolean, postId: string, user: User) =>
+  upvoteDownvote<Post>(
+    await Post.findOne(postId),
+    user,
+    upvote,
+    !upvote,
+    (user) => user.upvotedPosts,
+    (user) => user.downvotedPosts,
+    (user, entities) => (user.upvotedPosts = Promise.resolve(entities)),
+    (user, entities) => (user.downvotedPosts = Promise.resolve(entities))
+  );
 
 @Resolver(() => Post)
 export default class UpvoteDownvotePostResolver {
   @Mutation(() => Boolean)
   @Authorized()
-  async upvoteDownvote(
+  async upvote(@Arg('postId') postId: string, @Ctx() { getUser }: ContextType) {
+    return action(true, postId, await getUser());
+  }
+
+  @Mutation(() => Boolean)
+  @Authorized()
+  async downvote(
     @Arg('postId') postId: string,
-    @Arg('upvote') upvote: boolean,
-    @Arg('downvote') downvote: boolean,
     @Ctx() { getUser }: ContextType
   ) {
-    return upvoteDownvote<Post>(
-      await Post.findOne(postId),
-      await getUser(),
-      upvote,
-      downvote,
-      (user) => user.upvotedPosts,
-      (user) => user.downvotedPosts,
-      (user, entities) => (user.upvotedPosts = Promise.resolve(entities)),
-      (user, entities) => (user.downvotedPosts = Promise.resolve(entities))
-    );
+    return action(false, postId, await getUser());
   }
 
   // @FieldResolver(() => Float)
