@@ -3,8 +3,6 @@ import BaseClient from '../base-client';
 import { Field, ResolverKeys } from '../query-builder';
 import { wrapPost } from '../wrappers/post';
 import {
-  Mutation,
-  Query,
   QueryPaginateAnswersArgs,
   QueryGetAnswerArgs,
   MutationEditAnswerArgs,

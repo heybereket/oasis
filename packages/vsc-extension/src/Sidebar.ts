@@ -1,9 +1,7 @@
 import * as vscode from 'vscode';
+import { getNonce } from './getNonce';
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { Keys } from './keys';
-import fetch from 'node-fetch';
-import { nanoid } from 'nanoid';
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
   _view?: vscode.WebviewView;
@@ -25,29 +23,15 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 
     webviewView.webview.onDidReceiveMessage(async (msg) => {
       switch (msg.type) {
-        case 'open-login': {
-          const authId = nanoid();
-          globalState.update(Keys.authId, authId);
+        case 'request-token': {
+          const refreshToken = await vscode.window.showInputBox({
+            placeHolder: 'Enter your vscode token here',
+          });
 
-          vscode.env.openExternal(
-            vscode.Uri.parse(
-              `http://localhost:3000/auth/vscode?authId=${authId}`
-            )
-          );
-
-          break;
-        }
-
-        case 'logged-in': {
-          const authId = globalState.get<string>(Keys.authId) || '';
-
-          const res = await fetch(
-            `http://localhost:3000/api/auth/vscode/get-access?authId=${authId}`
-          );
-          const data = await res.json();
-
-          await globalState.update(Keys.accessToken, data.accessToken);
-          await globalState.update(Keys.refreshToken, data.refreshToken);
+          webviewView.webview.postMessage({
+            type: 'refresh-token',
+            refreshToken,
+          });
 
           break;
         }
@@ -60,16 +44,47 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
   }
 
   private _getHtmlForWebview(webview: vscode.Webview) {
-    let content = readFileSync(
-      join(__dirname, '../vsc-ui/dist/index.html')
-    ).toString();
+    const extensionUri = this._context.extensionUri;
 
-    content = content.replace(/(href|src)="(.*?)"/g, (_, hrefOrSrc, path) => {
-      return `${hrefOrSrc}="${webview.asWebviewUri(
-        vscode.Uri.joinPath(this._context.extensionUri, 'vsc-ui/dist', path)
-      )}"`;
-    });
+    const scriptUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(extensionUri, 'out/compiled', 'Sidebar.js')
+    );
 
-    return content;
+    // Uri to load styles into webview
+    const stylesResetUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(extensionUri, 'media', 'reset.css')
+    );
+    const stylesMainUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(extensionUri, 'media', 'vscode.css')
+    );
+
+    // Use a nonce to only allow specific scripts to be run
+    const nonce = getNonce();
+
+    return `<!DOCTYPE html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8">
+				<!--
+					Use a content security policy to only allow loading images from https or from our extension directory,
+					and only allow scripts that have a specific nonce.
+        -->
+        <meta http-equiv="Content-Security-Policy" content="img-src https: data:; style-src 'unsafe-inline' ${
+          webview.cspSource
+        }; script-src 'nonce-${nonce}';">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="${stylesResetUri}" rel="stylesheet">
+        <link href="${stylesMainUri}" rel="stylesheet">
+        <script nonce="${nonce}">
+          const process = { env: { NODE_ENV: "${
+            process.env.NODE_ENV || 'development'
+          }" } }
+        </script>
+			</head>
+      <body>
+      <div id="root"></div>
+			</body>
+      <script src="${scriptUri}" nonce="${nonce}"></script>
+			</html>`;
   }
 }

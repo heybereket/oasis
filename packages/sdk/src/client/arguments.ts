@@ -90,5 +90,3 @@ export default async function genArguments() {
       .join('\n')} {};`
   );
 }
-
-if (require.main === module) genArguments();
