@@ -4,7 +4,8 @@ import Post from '@entities/Post';
 import { upvoteDownvote } from '@utils/votes/upvoteDownvoteEntity';
 import type User from '@entities/User';
 
-// @bcg-resolver(mutation, upvoteDownvote, post)
+// @bcg-resolver(mutation, upvotePost, post)
+// @bcg-resolver(mutation, downvotePost, post)
 
 const action = async (upvote: boolean, postId: string, user: User) =>
   upvoteDownvote<Post>(
@@ -22,13 +23,16 @@ const action = async (upvote: boolean, postId: string, user: User) =>
 export default class UpvoteDownvotePostResolver {
   @Mutation(() => Boolean)
   @Authorized()
-  async upvote(@Arg('postId') postId: string, @Ctx() { getUser }: ContextType) {
+  async upvotePost(
+    @Arg('postId') postId: string,
+    @Ctx() { getUser }: ContextType
+  ) {
     return action(true, postId, await getUser());
   }
 
   @Mutation(() => Boolean)
   @Authorized()
-  async downvote(
+  async downvotePost(
     @Arg('postId') postId: string,
     @Ctx() { getUser }: ContextType
   ) {

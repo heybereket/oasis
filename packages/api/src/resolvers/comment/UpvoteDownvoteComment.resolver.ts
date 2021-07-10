@@ -4,7 +4,8 @@ import Comment from '@entities/Comment';
 import { upvoteDownvote } from '@utils/votes/upvoteDownvoteEntity';
 import type User from '@entities/User';
 
-// @bcg-resolver(mutation, upvoteDownvoteComment, comment)
+// @bcg-resolver(mutation, upvoteComment, comment)
+// @bcg-resolver(mutation, downvoteComment, comment)
 
 const action = async (upvote: boolean, commentId: string, user: User) =>
   upvoteDownvote<Comment>(
