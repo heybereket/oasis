@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "electron-log": "^4.3.5",
-    "electron-updater": "^4.3.10"
+    "electron-updater": "^4.4.0"
   }
 }
