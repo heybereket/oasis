@@ -1,11 +1,14 @@
 import express, { Express } from 'express';
-import { getDatabase } from './config/database';
 
 export const getServer = async (): Promise<Express> => {
   const app = express();
 
   if (!process.env.STAGING_API) {
-    getDatabase();
+    /* eslint-disable @typescript-eslint/ban-ts-comment */
+    // @ts-ignore
+    return import('@oasis-sh/api').then(
+      async ({ initializeServer }) => await initializeServer()
+    );
   }
 
   return app;
