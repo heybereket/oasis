@@ -109,6 +109,9 @@ type Mutation {
   deleteAccount: Boolean!
   deletePost(postId: String!): Boolean!
   deleteQuestion(questionId: String!): Boolean!
+  downvoteAnswer(answerId: String!): Boolean!
+  downvoteComment(commentId: String!): Boolean!
+  downvotePost(postId: String!): Boolean!
   editAnswer(answerId: String!, data: EditAnswerInput!): Boolean!
   editComment(commentId: String!, data: EditCommentInput!): Boolean!
   editPost(data: EditPostInput!, postId: String!): Boolean!
@@ -127,9 +130,12 @@ type Mutation {
   refreshBotToken(botId: String!): String!
   refreshToken(refreshToken: String!): String!
   updateProfile(data: UpdateProfileInput!): Boolean!
+  upvoteAnswer(answerId: String!): Boolean!
+  upvoteComment(commentId: String!): Boolean!
   upvoteDownvote(downvote: Boolean!, postId: String!, upvote: Boolean!): Boolean!
   upvoteDownvoteAnswer(answerId: String!, downvote: Boolean!, upvote: Boolean!): Boolean!
   upvoteDownvoteComment(commentId: String!, downvote: Boolean!, upvote: Boolean!): Boolean!
+  upvotePost(postId: String!): Boolean!
 }
 
 input NewAnswerInput {
