@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Post, CommentsTab, CreatePostInput } from '@oasis-sh/ui';
+import { Navbar, Post, CommentsTab, CreatePostInput } from '@components/index';
 import { StyledMarkdown } from '@parser/index';
 import { GetServerSideProps } from 'next';
 import {

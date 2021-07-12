@@ -1,7 +1,7 @@
 import { redirect } from '@utils/redirect';
 import { setCurrentUser } from '@lib/common/getCurrentUser';
 import { baseURL } from '@lib/constants';
-import { request } from '@utils/request';
+import { request } from '@utils/common/request';
 
 export const login = (type: string): any => {
   window.localStorage.setItem('redirectPath', window.location.href);

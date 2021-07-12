@@ -7,7 +7,7 @@ import {
 } from '@oasis-sh/react-gql';
 import { GetServerSideProps } from 'next';
 import React from 'react';
-import { Navbar, Container, ResortHeader } from '@oasis-sh/ui';
+import { Navbar, Container, ResortHeader } from '@components/index';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { login, logout } from '@lib/auth/login';
 

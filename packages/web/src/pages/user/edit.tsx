@@ -7,7 +7,7 @@ import {
 import { GetServerSideProps } from 'next';
 import { ssrRequest } from '@lib/common/ssrRequest';
 import { Formik, Form, Field } from 'formik';
-import { Navbar, Button, StyledFormikInput } from '@oasis-sh/ui';
+import { Navbar, Button, StyledFormikInput } from '@components/index';
 import React from 'react';
 import { apolloClient } from '@lib/apollo';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';

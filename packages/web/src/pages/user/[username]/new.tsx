@@ -22,10 +22,6 @@ import {
     Comment as TComment,
 } from '@oasis-sh/react-gql';
 import {
-    About,
-    Comments,
-    UpArrow,
-    Posts,
     Navbar,
     Container,
     Button,
@@ -42,10 +38,15 @@ import {
     FollowUserSection,
     LeftSidebarItem,
     LeftSidebarTitle,
-    Profile,
     HomeTopBar
-} from '@oasis-sh/ui';
-
+} from '@components/index';
+import {
+  About,
+  Comments,
+  UpArrow,
+  Posts,
+  Profile,
+} from '@icons/index';
 import { SEO } from 'src/shared/SEO';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -261,9 +262,6 @@ const ProfilePage: React.FC<ProfileProps> = (props) => {
 
     const viewingOwnProfile = profileData?.id === myUser?.id;
 
-
-
-
     return (
         <>
             <SEO
@@ -335,7 +333,6 @@ const ProfilePage: React.FC<ProfileProps> = (props) => {
                             </div>
                         </div>
                     </div>
-                    {/*removed space-y-12 property in div to reduce extra  white space on top */}
                     <div className="max-w-screen-sm:hidden lg:col-span-7  2xl:col-span-8 flex flex-col flex-1   w-full h-full">
                         {/* Center */}
                         <div className="">

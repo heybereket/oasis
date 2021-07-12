@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Footer } from '@oasis-sh/ui';
+import { Button, Footer } from '@components/index';
 import Link from 'next/link';
 
 const NotFoundPage: React.FC = () => {

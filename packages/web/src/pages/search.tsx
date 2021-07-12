@@ -10,7 +10,7 @@ import {
   User,
   useSearchQuery,
 } from '@oasis-sh/react-gql';
-import { LargeUserCard, Navbar, Post, User as UserCard } from '@oasis-sh/ui';
+import { LargeUserCard, Navbar, Post } from '@components/index';
 import { StyledMarkdown } from '@parser/index';
 import { GetServerSideProps } from 'next';
 import { SEO } from '@shared/SEO';

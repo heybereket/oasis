@@ -12,7 +12,7 @@ import {
   PostsSection,
   ProfileSection,
   TrendingSection,
-} from '@oasis-sh/ui';
+} from '@components/index';
 import {
   useUpvoteDownvotePostMutation,
   useMakePostMutation,

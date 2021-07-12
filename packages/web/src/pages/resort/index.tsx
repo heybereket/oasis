@@ -1,6 +1,6 @@
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { login, logout } from '@lib/auth/login';
-import { Navbar, ResortCard } from '@oasis-sh/ui';
+import { Navbar, ResortCard } from '@components/index';
 import React from 'react';
 
 const Resort: React.FC = () => {

@@ -1,4 +1,4 @@
-import { Button } from '@oasis-sh/ui';
+import { Button } from '@components/index';
 import { apiBaseURL } from '@lib/constants';
 import { login } from '@lib/auth/login';
 import { useGetCurrentUserQuery } from '@oasis-sh/react-gql';

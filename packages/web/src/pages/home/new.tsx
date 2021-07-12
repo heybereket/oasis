@@ -12,8 +12,8 @@ import {
   HomeTopBar,
   LeftSidebarItem,
   LeftSidebarTitle,
-  Profile,
-} from '@oasis-sh/ui';
+} from '@components/index';
+import { Profile } from '@icons/index';
 import {
   useUpvoteDownvotePostMutation,
   useMakePostMutation,

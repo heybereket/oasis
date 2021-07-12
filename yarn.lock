@@ -997,7 +997,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-decorators@npm:^7.12.12":
+"@babel/plugin-proposal-decorators@npm:^7.12.12, @babel/plugin-proposal-decorators@npm:^7.14.5":
   version: 7.14.5
   resolution: "@babel/plugin-proposal-decorators@npm:7.14.5"
   dependencies:
@@ -5310,6 +5310,8 @@ __metadata:
   resolution: "@oasis-sh/web@workspace:packages/web"
   dependencies:
     "@babel/core": ^7.14.6
+    "@babel/plugin-proposal-class-properties": ^7.14.5
+    "@babel/plugin-proposal-decorators": ^7.14.5
     "@cypress/webpack-preprocessor": ^5.9.1
     "@mdx-js/react": ^1.6.22
     "@next/bundle-analyzer": ^11.0.1
@@ -5352,6 +5354,7 @@ __metadata:
     tailwindcss: ^2.2.4
     ts-loader: ^9.2.3
     ts-node: ^10.0.0
+    typeorm: ^0.2.34
     typescript: 4.3.4
     webpack: ^5.40.0
     zustand: ^3.5.5

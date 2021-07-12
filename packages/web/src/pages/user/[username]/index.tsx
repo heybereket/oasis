@@ -22,10 +22,6 @@ import {
   Comment as TComment,
 } from '@oasis-sh/react-gql';
 import {
-  About,
-  Comments,
-  UpArrow,
-  Posts,
   Navbar,
   Container,
   Button,
@@ -38,7 +34,13 @@ import {
   Bio,
   PostsTab as PostsTabItem,
   CommentsTab as CommentsCenterTab,
-} from '@oasis-sh/ui';
+} from '@components/index';
+import {
+  About,
+  Comments,
+  UpArrow,
+  Posts,
+} from '@icons/index';
 import { SEO } from 'src/shared/SEO';
 import { useState, useEffect } from 'react';
 

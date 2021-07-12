@@ -2,24 +2,18 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@public/*": [
-        "public/*"
-      ],
-      "@lib/*": [
-        "src/lib/*"
-      ],
-      "@modules/*": [
-        "src/modules/*"
-      ],
-      "@parser/*": [
-        "src/parser/*"
-      ],
-      "@shared/*": [
-        "src/shared/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
+      "@public/*": ["public/*"],
+      "@lib/*": ["src/lib/*"],
+      "@parser/*": ["src/parser/*"],
+      "@shared/*": ["src/shared/*"],
+      "@utils/*": ["src/utils/*"],
+      "@entities/*": ["src/entities/*"],
+      "@enums/*": ["src/enums/*"],
+      "@icons/*": ["src/icons/*"],
+      "@components/*": ["src/components/*"],
+      "@providers/*": ["src/providers/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@locales/*": ["src/locales/*"],
     },
     "target": "es6",
     "lib": [
@@ -38,7 +32,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "preserveWatchOutput": true
+    "preserveWatchOutput": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "importHelpers": true,
+    "strictPropertyInitialization": false,
   },
   "exclude": [
     "node_modules",

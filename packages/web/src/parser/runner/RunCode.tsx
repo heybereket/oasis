@@ -1,4 +1,4 @@
-import { Modal } from '@oasis-sh/ui';
+import { Modal } from '@components/index';
 import { OasisDark } from '../markdown/themes/OasisDark';
 import React, { useState, useEffect } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';

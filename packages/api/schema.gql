@@ -31,14 +31,12 @@ type Comment {
   author: User!
   content: String!
   createdAt: String!
-  dislikes: Float!
   downvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromComment_downvotedCommentsResponse!
   downvotes: Float!
   id: ID!
   isDownvoted: Boolean!
   isUpvoted: Boolean!
   lastEdited: String
-  likes: Float!
   post: Post
   question: Question
   upvoters(limit: Float!, offset: Float!, sortCol: String, sortType: String): PaginatedUserFromComment_upvotedCommentsResponse!
@@ -111,9 +109,6 @@ type Mutation {
   deleteAccount: Boolean!
   deletePost(postId: String!): Boolean!
   deleteQuestion(questionId: String!): Boolean!
-  downvoteAnswer(answerId: String!): Boolean!
-  downvoteComment(commentId: String!): Boolean!
-  downvotePost(postId: String!): Boolean!
   editAnswer(answerId: String!, data: EditAnswerInput!): Boolean!
   editComment(commentId: String!, data: EditCommentInput!): Boolean!
   editPost(data: EditPostInput!, postId: String!): Boolean!
@@ -122,7 +117,6 @@ type Mutation {
   getTokenData(tokenId: String!): PremiumToken!
   giveBadge(badgeName: String!, username: String!): Boolean!
   joinResort(resortId: String!): Boolean
-  likeDislikeComment(commentId: String!, dislike: Boolean!, like: Boolean!): Boolean!
   makeAdmin(roles: [Role!]!, user: String!): Boolean!
   makeBadge(data: MakeBadgeInput!): Boolean!
   makePremiumToken(time: Float!): String!
@@ -133,12 +127,9 @@ type Mutation {
   refreshBotToken(botId: String!): String!
   refreshToken(refreshToken: String!): String!
   updateProfile(data: UpdateProfileInput!): Boolean!
-  upvoteAnswer(answerId: String!): Boolean!
-  upvoteComment(commentId: String!): Boolean!
   upvoteDownvote(downvote: Boolean!, postId: String!, upvote: Boolean!): Boolean!
   upvoteDownvoteAnswer(answerId: String!, downvote: Boolean!, upvote: Boolean!): Boolean!
   upvoteDownvoteComment(commentId: String!, downvote: Boolean!, upvote: Boolean!): Boolean!
-  upvotePost(postId: String!): Boolean!
 }
 
 input NewAnswerInput {

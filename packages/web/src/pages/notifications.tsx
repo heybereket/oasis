@@ -1,4 +1,4 @@
-import { Navbar, NotificationBlock, NotificationWrapper } from '@oasis-sh/ui';
+import { Navbar, NotificationBlock, NotificationWrapper } from '@components/index';
 import React from 'react';
 import { useGetCurrentUser } from '@lib/common/getCurrentUser';
 import { login, logout } from '@lib/auth/login';
