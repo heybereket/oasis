@@ -53,9 +53,6 @@ COPY --from=BUILD_IMAGE /opt/oasis/packages/react-gql/package.json ./packages/re
 COPY --from=BUILD_IMAGE /opt/oasis/packages/react-gql/dist ./packages/react-gql/dist
 COPY --from=BUILD_IMAGE /opt/oasis/packages/react-gql/generated ./packages/react-gql/generated
 
-COPY --from=BUILD_IMAGE /opt/oasis/packages/ui/package.json ./packages/ui/package.json
-COPY --from=BUILD_IMAGE /opt/oasis/packages/ui/dist ./packages/ui/dist
-
 COPY --from=BUILD_IMAGE /opt/oasis/packages/web/package.json ./packages/web/package.json
 COPY --from=BUILD_IMAGE /opt/oasis/packages/web/.next ./packages/web/.next
 COPY --from=BUILD_IMAGE /opt/oasis/packages/web/public ./packages/web/public
