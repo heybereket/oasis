@@ -20,7 +20,7 @@ const main = () => {
     })
     .commandDir('commands')
     .demandCommand()
-    .version('1.0.0').argv;
+    .version('1.0.10').argv;
 
   const commands = fs.readdirSync(path.join(__dirname, './commands'));
 
