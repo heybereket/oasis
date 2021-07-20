@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/concurrently": "^6.2.0",
-    "@types/connect-redis": "^0.0.16",
+    "@types/connect-redis": "^0.0.17",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.12",
     "@types/express-fileupload": "^1.1.6",
