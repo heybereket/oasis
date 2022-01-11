@@ -50,7 +50,7 @@
   "dependencies": {
     "cli-spinner": "^0.2.10",
     "cmdify": "^0.0.4",
-    "eslint": "^7.29.0",
+    "eslint": "^7.32.0",
     "inquirer": "^8.1.1",
     "prettier": "^2.3.2",
     "rxjs": "^7.1.0",
