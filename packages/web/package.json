@@ -23,7 +23,7 @@
     "formik": "^2.2.9",
     "github-markdown-css": "^4.0.0",
     "next": "^11.0.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.1.1",
     "postcss": "^8.3.5",
     "pretty-ms": "^7.0.1",
     "react": "^17.0.2",
