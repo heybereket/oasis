@@ -1976,12 +1976,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/app@npm:1.0.2":
-  version: 1.0.2
-  resolution: "@capacitor/app@npm:1.0.2"
+"@capacitor/app@npm:4.1.1":
+  version: 4.1.1
+  resolution: "@capacitor/app@npm:4.1.1"
   peerDependencies:
-    "@capacitor/core": ^3.0.0
-  checksum: b2a0787954a9e7494829266071b58916b404c49d67af11e1c5a51873a31e8681eb028e0bfd857e070c056c8186f67067429067b42d5a369f2404c90c417b2de4
+    "@capacitor/core": ^4.0.0
+  checksum: 6ba557a07313370d4baa0261fe8799be8526e5599dca91d689dfda9178d454b222abf73dbb63047e93fd468a1d651d51b71aa5ad44e12302b2c4589f9b1a965d
   languageName: node
   linkType: hard
 
@@ -3910,7 +3910,7 @@ __metadata:
   resolution: "@oasis-sh/mobile@workspace:packages/mobile"
   dependencies:
     "@babel/preset-react": ^7.14.5
-    "@capacitor/app": 1.0.2
+    "@capacitor/app": 4.1.1
     "@capacitor/cli": 3.0.2
     "@capacitor/core": 3.0.2
     "@capacitor/haptics": 1.0.2
