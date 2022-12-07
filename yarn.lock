@@ -3934,7 +3934,7 @@ __metadata:
     postcss-loader: ^6.1.0
     react: ^17.0.2
     react-dom: ^17.0.2
-    react-router: ^5.2.0
+    react-router: ^6.4.4
     react-router-dom: ^5.2.0
     react-scripts: 4.0.3
     tailwindcss: ^2.2.4
@@ -4213,6 +4213,13 @@ __metadata:
     react: 15.x || 16.x || 16.4.0-alpha.0911da3
     react-dom: 15.x || 16.x || 16.4.0-alpha.0911da3
   checksum: 7fedb32b5f589d0de236f83af7a0098bef93327925ac3dc090026ce79f6571005207d872fb01378ef00dfcd6e9ed0f0583755c5817ae9d85f3fd6d5b34b84417
+  languageName: node
+  linkType: hard
+
+"@remix-run/router@npm:1.0.4":
+  version: 1.0.4
+  resolution: "@remix-run/router@npm:1.0.4"
+  checksum: d472256406959c3e1b31e225fe44da1daec67d03bb4cf30b77bd0aa94f1de85576b3b041b16c8f0dfbb19064c8c0cca59a124aaa74475d5fccfe3d9fd515a458
   languageName: node
   linkType: hard
 
@@ -23780,7 +23787,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-router@npm:5.2.0, react-router@npm:^5.2.0":
+"react-router@npm:5.2.0":
   version: 5.2.0
   resolution: "react-router@npm:5.2.0"
   dependencies:
@@ -23797,6 +23804,17 @@ fsevents@^1.2.7:
   peerDependencies:
     react: ">=15"
   checksum: 4437eaa9bab02d46a7d6ea4915731c1f31642d6c3e3f7b9f951f5c6a9a73f35d4deb43a2d6b4be85f27816a20de96c3b9a9239f4b7e9136742106794ad20e95c
+  languageName: node
+  linkType: hard
+
+"react-router@npm:^6.4.4":
+  version: 6.4.4
+  resolution: "react-router@npm:6.4.4"
+  dependencies:
+    "@remix-run/router": 1.0.4
+  peerDependencies:
+    react: ">=16.8"
+  checksum: b9f84a31e18a059337f097cf97a94678305a6c02dff93110278edaf4f0dea8cbf15a4d53ff112f07693e2fa2fcb7869f0119cf5ad0fd0041e8fd73b0ebe437b6
   languageName: node
   linkType: hard
 
