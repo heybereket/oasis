@@ -3844,7 +3844,7 @@ __metadata:
     graphql-query-complexity: ^0.8.1
     ioredis: ^4.27.6
     jest: ^27.0.5
-    jsonwebtoken: ^8.5.1
+    jsonwebtoken: ^9.0.0
     nanoid: ^3.1.23
     passport: ^0.4.1
     passport-custom: ^1.1.1
@@ -18372,6 +18372,18 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"jsonwebtoken@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "jsonwebtoken@npm:9.0.0"
+  dependencies:
+    jws: ^3.2.2
+    lodash: ^4.17.21
+    ms: ^2.1.1
+    semver: ^7.3.8
+  checksum: 8b2f16708501d17b56e2a12941a0a8963dbdcda4ea5f8329e2bf1ce235e0dc546e2b7ef0c28ba941e7bda3a2b4ee8b3838e6d8c10c269be4dbee8ca1b744c310
+  languageName: node
+  linkType: hard
+
 "jsprim@npm:^1.2.2":
   version: 1.4.1
   resolution: "jsprim@npm:1.4.1"
@@ -25183,6 +25195,17 @@ resolve@^2.0.0-next.3:
   bin:
     semver: ./bin/semver.js
   checksum: f0d155c06a67cc7e500c92d929339f1c6efd4ce9fe398aee6acc00a2333489cca0f5b4e76ee7292beba237fcca4b5a3d4a6153471f105f56299801bdab37289f
+  languageName: node
+  linkType: hard
+
+"semver@npm:^7.3.8":
+  version: 7.3.8
+  resolution: "semver@npm:7.3.8"
+  dependencies:
+    lru-cache: ^6.0.0
+  bin:
+    semver: bin/semver.js
+  checksum: cfb9c2101dae4ee93c415471f48797c750174d65def4e06ff691bf910194cc6ca92793e597be8302175ceb640100a3da36451e7656320da53b51167eeaf11eb5
   languageName: node
   linkType: hard
 
