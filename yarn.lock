@@ -3856,7 +3856,7 @@ __metadata:
     redis: ^3.1.2
     reflect-metadata: ^0.1.13
     rimraf: ^3.0.2
-    sharp: ^0.28.3
+    sharp: ^0.31.3
     spotify-web-api-node: ^5.0.2
     sqlite3: ^5.0.2
     ts-node: ^10.0.0
@@ -10363,6 +10363,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"color-string@npm:^1.9.0":
+  version: 1.9.1
+  resolution: "color-string@npm:1.9.1"
+  dependencies:
+    color-name: ^1.0.0
+    simple-swizzle: ^0.2.2
+  checksum: 3d2141907ff0b7bda3d38f433592bebd26e44ec8c4c0506fff712cf4068b270551f9381342c67bcf5a38d46aeb18b8389d9c84806da8fb78dc5c07991ed16163
+  languageName: node
+  linkType: hard
+
 "color@npm:^3.0.0, color@npm:^3.1.3":
   version: 3.1.3
   resolution: "color@npm:3.1.3"
@@ -10370,6 +10380,16 @@ __metadata:
     color-convert: ^1.9.1
     color-string: ^1.5.4
   checksum: d0f4139e986806aaacaa748d170c9778faed93695fb776cd27d9c5825424263eb9354f69033804d0d2d350d9831a31d14dddff045da00713499f279da97e602f
+  languageName: node
+  linkType: hard
+
+"color@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "color@npm:4.2.3"
+  dependencies:
+    color-convert: ^2.0.1
+    color-string: ^1.9.0
+  checksum: c75b8afebdf2444696d358c301dda59f213f79164744bd5a8fe47092785fe6cfff4511aade49a62607a541d02c2e4c1df153d9c03a41ef1bf60222e99b8676a8
   languageName: node
   linkType: hard
 
@@ -11671,12 +11691,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"decompress-response@npm:^4.2.0":
-  version: 4.2.1
-  resolution: "decompress-response@npm:4.2.1"
+"decompress-response@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "decompress-response@npm:6.0.0"
   dependencies:
-    mimic-response: ^2.0.0
-  checksum: d854171a100833d66171ffba0990fc581133cfb62befc18edd2365edc40e8a48f9f96b6156465f1a74802112b9c241c792d865f5ee27e285c2e4417a17ac6c66
+    mimic-response: ^3.1.0
+  checksum: bb8b8c42be7767994764d27f91a3949e3dc9008da82f1aaeab1de40f1ebb50d7abf17b31b2e4000f8d267a1e75f76052efd58d4419124c04bf430e184c164fad
   languageName: node
   linkType: hard
 
@@ -11917,12 +11937,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"detect-libc@npm:^1.0.2, detect-libc@npm:^1.0.3":
+"detect-libc@npm:^1.0.2":
   version: 1.0.3
   resolution: "detect-libc@npm:1.0.3"
   bin:
     detect-libc: ./bin/detect-libc.js
   checksum: 6cec442139459ec2e8517076974b0eba42079885938683eca013c2e0b5db02ef048870725ce68e7ac8e4cf17e482f67d7322f45bbc5f203b7332817bc7833b39
+  languageName: node
+  linkType: hard
+
+"detect-libc@npm:^2.0.0, detect-libc@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "detect-libc@npm:2.0.1"
+  checksum: 18266d3cc95aff315809cd0d292cbb0e40673df164a0a674c31e05ff9574b5b088e9f6517c9ac9b5e1896548edc105ad59af71b4c8172229226fbc448a6814ad
   languageName: node
   linkType: hard
 
@@ -19765,10 +19792,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mimic-response@npm:^2.0.0":
-  version: 2.1.0
-  resolution: "mimic-response@npm:2.1.0"
-  checksum: 9c206f3aebdc8de306550394301de8ce593e7757f3f9be43b5f99728e38ae787d17e6b72b96eb1b7a998d041da0ee465c48d29c927be4ff6ac3319453285d075
+"mimic-response@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "mimic-response@npm:3.1.0"
+  checksum: cfbf19f66de6ad46df7481d9e8c1a7f30b6fa77dd771ad4a72a0443265041a39768182bde6d1de39001c2774168635bc74f42902e401c8ba33db55d69b773004
   languageName: node
   linkType: hard
 
@@ -20324,21 +20351,30 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"node-abi@npm:^2.21.0":
-  version: 2.30.0
-  resolution: "node-abi@npm:2.30.0"
+"node-abi@npm:^3.3.0":
+  version: 3.30.0
+  resolution: "node-abi@npm:3.30.0"
   dependencies:
-    semver: ^5.4.1
-  checksum: d048604a9f5694051a9d23650f4ce2e881d751385d913534c964895fea9849dceb6bffd2a0e0581aa03f5743bd2f3d6de37316bf1ed106f382e4492929806970
+    semver: ^7.3.5
+  checksum: 79df4cf90530465a5dced52b6a7116792dd95db5d64361f7210e81f9f72b8488bff00ebf4e59f7220277f1e3c2cfa3c37ba344df0abd95835b2d257d107d52ed
   languageName: node
   linkType: hard
 
-"node-addon-api@npm:^3.0.0, node-addon-api@npm:^3.2.0":
+"node-addon-api@npm:^3.0.0":
   version: 3.2.1
   resolution: "node-addon-api@npm:3.2.1"
   dependencies:
     node-gyp: latest
   checksum: b4c69283fc7baa813e7f38085ee8cd3bd9fd1463a11621eb7e9be12cd494bfabd83b1e7880dc7f7a8d664f8545238ce310d61301b3c4ae608e6e49f4862c41e5
+  languageName: node
+  linkType: hard
+
+"node-addon-api@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "node-addon-api@npm:5.0.0"
+  dependencies:
+    node-gyp: latest
+  checksum: 034b6aa9512e8e3a029cfe8f1332407b032c0bba0e101a6791516577ce5cbfeaeb0f59b28db8e4a4aca9ff0e1d83de6e9fae344c8e34ace650cbdd49043c817f
   languageName: node
   linkType: hard
 
@@ -20694,7 +20730,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"npmlog@npm:0 || 1 || 2 || 3 || 4, npmlog@npm:^4.0.1, npmlog@npm:^4.0.2, npmlog@npm:^4.1.2":
+"npmlog@npm:0 || 1 || 2 || 3 || 4, npmlog@npm:^4.0.2, npmlog@npm:^4.1.2":
   version: 4.1.2
   resolution: "npmlog@npm:4.1.2"
   dependencies:
@@ -22910,26 +22946,25 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prebuild-install@npm:^6.1.2":
-  version: 6.1.3
-  resolution: "prebuild-install@npm:6.1.3"
+"prebuild-install@npm:^7.1.1":
+  version: 7.1.1
+  resolution: "prebuild-install@npm:7.1.1"
   dependencies:
-    detect-libc: ^1.0.3
+    detect-libc: ^2.0.0
     expand-template: ^2.0.3
     github-from-package: 0.0.0
     minimist: ^1.2.3
     mkdirp-classic: ^0.5.3
     napi-build-utils: ^1.0.1
-    node-abi: ^2.21.0
-    npmlog: ^4.0.1
+    node-abi: ^3.3.0
     pump: ^3.0.0
     rc: ^1.2.7
-    simple-get: ^3.0.3
+    simple-get: ^4.0.0
     tar-fs: ^2.0.0
     tunnel-agent: ^0.6.0
   bin:
     prebuild-install: bin.js
-  checksum: 4b9a6f4b9000648a3e38b96938b22bfa1fa4ced1f14fb290891d5ad182c621ccbfb14eb7e7d588448536c02a08c4727a19e42197d56308c3ff2ed1f18b4f1605
+  checksum: 2d6d48ec9adf56eeef79d69bf3f1ca58a768e26a7b2b0809eb2a82d77461cd9a51f2460370459af87c2ac24e466b7c9016360e2f4a93ea9f2eab1dbd6ba218dc
   languageName: node
   linkType: hard
 
@@ -25186,6 +25221,17 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"semver@npm:^7.3.8":
+  version: 7.3.8
+  resolution: "semver@npm:7.3.8"
+  dependencies:
+    lru-cache: ^6.0.0
+  bin:
+    semver: bin/semver.js
+  checksum: cfb9c2101dae4ee93c415471f48797c750174d65def4e06ff691bf910194cc6ca92793e597be8302175ceb640100a3da36451e7656320da53b51167eeaf11eb5
+  languageName: node
+  linkType: hard
+
 "semver@npm:~5.3.0":
   version: 5.3.0
   resolution: "semver@npm:5.3.0"
@@ -25378,20 +25424,20 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"sharp@npm:^0.28.3":
-  version: 0.28.3
-  resolution: "sharp@npm:0.28.3"
+"sharp@npm:^0.31.3":
+  version: 0.31.3
+  resolution: "sharp@npm:0.31.3"
   dependencies:
-    color: ^3.1.3
-    detect-libc: ^1.0.3
-    node-addon-api: ^3.2.0
+    color: ^4.2.3
+    detect-libc: ^2.0.1
+    node-addon-api: ^5.0.0
     node-gyp: latest
-    prebuild-install: ^6.1.2
-    semver: ^7.3.5
-    simple-get: ^3.1.0
+    prebuild-install: ^7.1.1
+    semver: ^7.3.8
+    simple-get: ^4.0.1
     tar-fs: ^2.1.1
     tunnel-agent: ^0.6.0
-  checksum: 7490ab4afbb7a1987c011a5eb40be15873841d5dd92a66d47ec424f618daed616ed597533bb985dfabc2e186b5d8476a06003c84a618b749ae6f3de413cad736
+  checksum: d95d88be9a4d338e812f2474709381f183d25a262777c092a4d0bffc6be211dbe72ea6638045be1474385e55b229cf7ed0adb5c96b9ed82dead15987df075351
   languageName: node
   linkType: hard
 
@@ -25473,14 +25519,14 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"simple-get@npm:^3.0.3, simple-get@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "simple-get@npm:3.1.0"
+"simple-get@npm:^4.0.0, simple-get@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "simple-get@npm:4.0.1"
   dependencies:
-    decompress-response: ^4.2.0
+    decompress-response: ^6.0.0
     once: ^1.3.1
     simple-concat: ^1.0.0
-  checksum: f56f08765eafde034b379d38d3dd1eb9b9ffb41d090d8216e71dce6ea3936499ee34b20942773a2605b08e8abce940691bd06e110ac12d08f83917493078831e
+  checksum: 8e7d8dd396915df8461d27ca3ecb8c0c3ddb6c48e14cc44cd6999374295ea125ad332f15b1cb5bd4b579df99685e749a27f4c72e9bd8fa81a46830172032e44b
   languageName: node
   linkType: hard
 
